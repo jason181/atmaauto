@@ -22,7 +22,7 @@ class Konsumen extends Model
         return $this->hasMany('App\Transaksi_Penjualan');
     }
 
-    public function cabangs()
+    public function motor_konsumens()
     {
         return $this->hasMany('App\Motor_Konsumen');
     }
