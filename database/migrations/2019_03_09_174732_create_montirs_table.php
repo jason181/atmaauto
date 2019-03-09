@@ -14,7 +14,9 @@ class CreateMontirsTable extends Migration
     public function up()
     {
         Schema::create('montirs', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('Id_Jasa_Montir');
+            $table->integer('Id_Pegawai');
+            $table->integer('Id_Motor_Konsumen');
             $table->timestamps();
         });
     }
