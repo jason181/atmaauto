@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDetailSparepartsTable extends Migration
+class CreateDetailJasasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateDetailSparepartsTable extends Migration
      */
     public function up()
     {
-        Schema::create('detail_spareparts', function (Blueprint $table) {
-            $table->increments('Id_Detail_Sparepart');
+        Schema::create('detail_jasas', function (Blueprint $table) {
+            $table->increments('Id_Detail_Jasa');
             $table->integer('Id_Transaksi');
+            $table->integer('Id_Jasa');
             $table->integer('Id_Jasa_Montir');
-            $table->string('Kode_Sparepart',10);
-            $table->double('Harga_Satuan');
-            $table->integer('Jumlah');
-            $table->double('Subtotal_Detail_Sparepart');
+            $table->double('Subtotal_Detail_Jasa');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateDetailSparepartsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detail_spareparts');
+        Schema::dropIfExists('detail_jasas');
     }
 }
