@@ -15,7 +15,7 @@ class Cabang extends Model
         'Alamat_Cabang'
     ];
 
-    public function cabangs()
+    public function pegawais()
     {
         return $this->hasMany('App\Pegawai');
     }

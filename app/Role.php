@@ -13,7 +13,7 @@ class Role extends Model
         'Nama_Role'
     ];
 
-    public function roles()
+    public function pegawais()
     {
         return $this->hasMany('App\Pegawai');
     }
