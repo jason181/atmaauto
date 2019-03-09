@@ -13,7 +13,7 @@ class Role extends Model
         'Nama_Role'
     ];
 
-    public function cabangs()
+    public function roles()
     {
         return $this->hasMany('App\Pegawai');
     }
