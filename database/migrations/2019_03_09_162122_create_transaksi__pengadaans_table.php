@@ -13,8 +13,12 @@ class CreateTransaksiPengadaansTable extends Migration
      */
     public function up()
     {
-        Schema::create('transaksi__pengadaans', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('transaksi_pengadaans', function (Blueprint $table) {
+            $table->increments('Id_Pengadaan');
+            $table->integer('Id_Supplier');
+            $table->date('Tanggal_Pengadaan');
+            $table->double('Total_Harga');
+            $table->integer('Status_Pengadaan');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateTransaksiPengadaansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaksi__pengadaans');
+        Schema::dropIfExists('transaksi_pengadaans');
     }
 }
