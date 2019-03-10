@@ -19,4 +19,6 @@ class Cabang extends Model
     {
         return $this->hasMany('App\Pegawai');
     }
+    //test commit
+    //test again
 }
