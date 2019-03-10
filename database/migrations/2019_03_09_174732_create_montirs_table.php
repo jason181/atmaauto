@@ -18,6 +18,9 @@ class CreateMontirsTable extends Migration
             $table->integer('Id_Pegawai');
             $table->integer('Id_Motor_Konsumen');
             $table->timestamps();
+
+            $table->foreign('Id_Pegawai')->references('Id_Pegawai')->on('pegawais');
+            $table->foreign('Id_Motor_Konsumen')->references('Id_Motor_Konsumen')->on('motor_konsumens');
         });
     }
 

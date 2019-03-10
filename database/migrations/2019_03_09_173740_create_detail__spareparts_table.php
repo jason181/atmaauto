@@ -22,6 +22,10 @@ class CreateDetailSparepartsTable extends Migration
             $table->integer('Jumlah');
             $table->double('Subtotal_Detail_Sparepart');
             $table->timestamps();
+
+            $table->foreign('Id_Transaksi')->references('Id_Transaksi')->on('transaksi_penjualans');
+            $table->foreign('Id_Jasa_Montir')->references('Id_Jasa_Montir')->on('montirs');
+            $table->foreign('Kode_Sparepart')->references('Kode_Sparepart')->on('spareparts');
         });
     }
 

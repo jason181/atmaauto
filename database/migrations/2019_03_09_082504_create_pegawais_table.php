@@ -24,6 +24,9 @@ class CreatePegawaisTable extends Migration
             $table->string('Username',20);
             $table->string('Password',50);
             $table->timestamps();
+
+            $table->foreign('Id_Role')->references('Id_Role')->on('roles');
+            $table->foreign('Id_Cabang')->references('Id_Cabang')->on('cabangs');
         });
     }
 

@@ -20,6 +20,10 @@ class CreateDetailJasasTable extends Migration
             $table->integer('Id_Jasa_Montir');
             $table->double('Subtotal_Detail_Jasa');
             $table->timestamps();
+
+            $table->foreign('Id_Transaksi')->references('Id_Transaksi')->on('transaksi_penjualans');
+            $table->foreign('Id_Jasa')->references('Id_Jasa')->on('jasas');
+            $table->foreign('Id_Jasa_Montir')->references('Id_Jasa_Montir')->on('montirs');
         });
     }
 

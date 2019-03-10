@@ -19,6 +19,7 @@ class CreateCabangsTable extends Migration
             $table->string('Alamat_Cabang',50);
             $table->timestamps();
         });
+
     }
 
     /**

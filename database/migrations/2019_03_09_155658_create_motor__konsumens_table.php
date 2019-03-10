@@ -19,6 +19,9 @@ class CreateMotorKonsumensTable extends Migration
             $table->integer('Id_Motor');
             $table->string('Plat_Kendaraan',15);
             $table->timestamps();
+
+            $table->foreign('Id_Konsumen')->references('Id_Konsumen')->on('konsumens');
+            $table->foreign('Id_Motor')->references('Id_Motor')->on('motors');
         });
     }
 

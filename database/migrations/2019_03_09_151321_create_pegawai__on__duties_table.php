@@ -13,11 +13,14 @@ class CreatePegawaiOnDutiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pegawai__on__duties', function (Blueprint $table) {
+        Schema::create('pegawai_on_duties', function (Blueprint $table) {
             $table->increments('Id_Duty');
             $table->integer('Id_Pegawai');
             $table->integer('Id_Transaksi');
             $table->timestamps();
+
+            $table->foreign('Id_Pegawai')->references('Id_Pegawai')->on('pegawais');
+            $table->foreign('Id_Transaksi')->references('Id_Transaksi')->on('transaksi_penjualans');
         });
     }
 
@@ -28,6 +31,6 @@ class CreatePegawaiOnDutiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pegawai__on__duties');
+        Schema::dropIfExists('pegawai_on_duties');
     }
 }

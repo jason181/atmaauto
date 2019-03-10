@@ -21,6 +21,9 @@ class CreateDetailPengadaansTable extends Migration
             $table->integer('Jumlah');
             $table->double('Subtotal_Pengadaan');
             $table->timestamps();
+            
+            $table->foreign('Id_Pengadaan')->references('Id_Pengadaan')->on('transaksi_pengadaans');
+            $table->foreign('Kode_Sparepart')->references('Kode_Sparepart')->on('spareparts');
         });
     }
 

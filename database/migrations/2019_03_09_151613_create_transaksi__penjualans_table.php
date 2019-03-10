@@ -23,6 +23,8 @@ class CreateTransaksiPenjualansTable extends Migration
             $table->double('Total');
             $table->integer('Status');
             $table->timestamps();
+
+            $table->foreign('Id_Konsumen')->references('Id_Konsumen')->on('konsumens');
         });
     }
 

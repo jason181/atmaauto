@@ -20,6 +20,8 @@ class CreateTransaksiPengadaansTable extends Migration
             $table->double('Total_Harga');
             $table->integer('Status_Pengadaan');
             $table->timestamps();
+
+            $table->foreign('Id_Supplier')->references('Id_Supplier')->on('suppliers');
         });
     }
 
