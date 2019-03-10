@@ -15,8 +15,8 @@ class CreateDetailSparepartsTable extends Migration
     {
         Schema::create('detail_spareparts', function (Blueprint $table) {
             $table->increments('Id_Detail_Sparepart');
-            $table->integer('Id_Transaksi');
-            $table->integer('Id_Jasa_Montir');
+            $table->unsignedInteger('Id_Transaksi');
+            $table->unsignedInteger('Id_Jasa_Montir');
             $table->string('Kode_Sparepart',10);
             $table->double('Harga_Satuan');
             $table->integer('Jumlah');

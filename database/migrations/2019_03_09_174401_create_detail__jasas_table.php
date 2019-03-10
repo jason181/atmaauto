@@ -15,9 +15,9 @@ class CreateDetailJasasTable extends Migration
     {
         Schema::create('detail_jasas', function (Blueprint $table) {
             $table->increments('Id_Detail_Jasa');
-            $table->integer('Id_Transaksi');
-            $table->integer('Id_Jasa');
-            $table->integer('Id_Jasa_Montir');
+            $table->unsignedInteger('Id_Transaksi');
+            $table->unsignedInteger('Id_Jasa');
+            $table->unsignedInteger('Id_Jasa_Montir');
             $table->double('Subtotal_Detail_Jasa');
             $table->timestamps();
 

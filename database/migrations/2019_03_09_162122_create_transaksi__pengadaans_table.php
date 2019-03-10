@@ -15,7 +15,7 @@ class CreateTransaksiPengadaansTable extends Migration
     {
         Schema::create('transaksi_pengadaans', function (Blueprint $table) {
             $table->increments('Id_Pengadaan');
-            $table->integer('Id_Supplier');
+            $table->unsignedInteger('Id_Supplier');
             $table->date('Tanggal_Pengadaan');
             $table->double('Total_Harga');
             $table->integer('Status_Pengadaan');

@@ -15,8 +15,8 @@ class CreateMontirsTable extends Migration
     {
         Schema::create('montirs', function (Blueprint $table) {
             $table->increments('Id_Jasa_Montir');
-            $table->integer('Id_Pegawai');
-            $table->integer('Id_Motor_Konsumen');
+            $table->unsignedInteger('Id_Pegawai');
+            $table->unsignedInteger('Id_Motor_Konsumen');
             $table->timestamps();
 
             $table->foreign('Id_Pegawai')->references('Id_Pegawai')->on('pegawais');

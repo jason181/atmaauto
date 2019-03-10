@@ -15,8 +15,8 @@ class CreatePegawaiOnDutiesTable extends Migration
     {
         Schema::create('pegawai_on_duties', function (Blueprint $table) {
             $table->increments('Id_Duty');
-            $table->integer('Id_Pegawai');
-            $table->integer('Id_Transaksi');
+            $table->unsignedInteger('Id_Pegawai');
+            $table->unsignedInteger('Id_Transaksi');
             $table->timestamps();
 
             $table->foreign('Id_Pegawai')->references('Id_Pegawai')->on('pegawais');

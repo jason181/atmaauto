@@ -15,7 +15,7 @@ class CreateDetailPengadaansTable extends Migration
     {
         Schema::create('detail_pengadaans', function (Blueprint $table) {
             $table->increments('Id_Detail_Pengadaan');
-            $table->integer('Id_Pengadaan');
+            $table->unsignedInteger('Id_Pengadaan');
             $table->string('Kode_Sparepart');
             $table->double('Harga_Satuan');
             $table->integer('Jumlah');

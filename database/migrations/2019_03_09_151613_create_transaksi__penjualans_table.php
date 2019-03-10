@@ -15,7 +15,7 @@ class CreateTransaksiPenjualansTable extends Migration
     {
         Schema::create('transaksi__penjualans', function (Blueprint $table) {
             $table->increments('Id_Transaksi');
-            $table->integer('Id_Konsumen');
+            $table->unsignedInteger('Id_Konsumen');
             $table->date('Tanggal_Transaksi');
             $table->string('Jenis_Transaksi',10);
             $table->double('Subtotal');

@@ -15,8 +15,8 @@ class CreateMotorKonsumensTable extends Migration
     {
         Schema::create('motor_konsumens', function (Blueprint $table) {
             $table->increments('Id_Motor_Konsumen');
-            $table->integer('Id_Konsumen');
-            $table->integer('Id_Motor');
+            $table->unsignedInteger('Id_Konsumen');
+            $table->unsignedInteger('Id_Motor');
             $table->string('Plat_Kendaraan',15);
             $table->timestamps();
 
