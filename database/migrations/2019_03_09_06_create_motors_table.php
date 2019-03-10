@@ -12,7 +12,7 @@ class CreateMotorsTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {   
         Schema::create('motors', function (Blueprint $table) {
             $table->increments('Id_Motor');
             $table->string('Kode_Sparepart',10);
