@@ -13,7 +13,7 @@ class CreateTransaksiPenjualansTable extends Migration
      */
     public function up()
     {
-        Schema::create('transaksi__penjualans', function (Blueprint $table) {
+        Schema::create('transaksi_penjualans', function (Blueprint $table) {
             $table->increments('Id_Transaksi');
             $table->unsignedInteger('Id_Konsumen');
             $table->date('Tanggal_Transaksi');
@@ -35,6 +35,6 @@ class CreateTransaksiPenjualansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaksi__penjualans');
+        Schema::dropIfExists('transaksi_penjualans');
     }
 }
