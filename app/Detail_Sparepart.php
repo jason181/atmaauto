@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Detail_Sparepart extends Model
 {
     //
-    protected $table = 'Detail_Sparepart';
+    protected $table = 'detail_spareparts';
     protected $primaryKey = 'Id_Detail_Sparepart';
     public $timestamp = true;
     protected $fillable = [

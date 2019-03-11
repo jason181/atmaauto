@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Supplier extends Model
 {
     //
-    protected $table = 'Supplier';
+    protected $table = 'suppliers';
     protected $primaryKey = 'Id_Supplier';
     public $timestamp = true;
     protected $fillable = [

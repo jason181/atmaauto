@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transaksi_Penjualan extends Model
 {
     //
-    protected $table = 'Transaksi_Penjualan';
+    protected $table = 'transaksi_penjualans';
     protected $primaryKey = 'Id_Transaksi';
     public $timestamp = true;
     protected $fillable = [
@@ -18,7 +18,7 @@ class Transaksi_Penjualan extends Model
         'Subtotal',
         'Diskon',
         'Total',
-        'Status',
+        'Status'
     ];
 
     public function detail_spareparts()
