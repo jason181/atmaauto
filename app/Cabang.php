@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cabang extends Model
 {
     //
-    protected $table = 'Cabang';
+    protected $table = 'cabangs';
     protected $primaryKey = 'Id_Cabang';
     public $timestamp = true;
     protected $fillable = [

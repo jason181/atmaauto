@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Jasa extends Model
 {
     //
-    protected $table = 'Jasa';
+    protected $table = 'jasas';
     protected $primaryKey = 'Id_Jasa';
     public $timestamp = true;
     protected $fillable = [

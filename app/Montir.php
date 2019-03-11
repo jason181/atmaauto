@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Montir extends Model
 {
     //
-    protected $table = 'Montir';
+    protected $table = 'montirs';
     protected $primaryKey = 'Id_Jasa_Montir';
     public $timestamp = true;
     protected $fillable = [
