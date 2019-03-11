@@ -17,7 +17,7 @@ class CreateMotorKonsumensTable extends Migration
             $table->increments('Id_Motor_Konsumen');
             $table->unsignedInteger('Id_Konsumen');
             $table->unsignedInteger('Id_Motor');
-            $table->string('Plat_Kendaraan',15)->nullable(true)->change();
+            $table->string('Plat_Kendaraan',15);
             $table->timestamps();
 
             $table->foreign('Id_Konsumen')->references('Id_Konsumen')->on('konsumens');

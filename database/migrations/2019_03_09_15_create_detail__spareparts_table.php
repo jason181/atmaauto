@@ -17,10 +17,10 @@ class CreateDetailSparepartsTable extends Migration
             $table->increments('Id_Detail_Sparepart');
             $table->unsignedInteger('Id_Transaksi');
             $table->unsignedInteger('Id_Jasa_Montir');
-            $table->string('Kode_Sparepart',10)->nullable(true)->change();
-            $table->double('Harga_Satuan')->nullable(true)->change();
-            $table->integer('Jumlah')->nullable(true)->change();
-            $table->double('Subtotal_Detail_Sparepart')->nullable(true)->change();
+            $table->string('Kode_Sparepart',10);
+            $table->double('Harga_Satuan');
+            $table->integer('Jumlah');
+            $table->double('Subtotal_Detail_Sparepart');
             $table->timestamps();
 
             $table->foreign('Id_Transaksi')->references('Id_Transaksi')->on('transaksi_penjualans');

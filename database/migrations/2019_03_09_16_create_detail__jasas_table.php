@@ -18,7 +18,7 @@ class CreateDetailJasasTable extends Migration
             $table->unsignedInteger('Id_Transaksi');
             $table->unsignedInteger('Id_Jasa');
             $table->unsignedInteger('Id_Jasa_Montir');
-            $table->double('Subtotal_Detail_Jasa')->nullable(true)->change();
+            $table->double('Subtotal_Detail_Jasa');
             $table->timestamps();
 
             $table->foreign('Id_Transaksi')->references('Id_Transaksi')->on('transaksi_penjualans');

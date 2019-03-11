@@ -17,7 +17,7 @@ class CreateMotorsTable extends Migration
             $table->increments('Id_Motor');
             $table->string('Kode_Sparepart',10);
             $table->string('Merk',50);
-            $table->string('Tipe',50)->nullable(true)->change();
+            $table->string('Tipe',50);
             $table->timestamps();
 
             $table->foreign('Kode_Sparepart')->references('Kode_Sparepart')->on('spareparts');
