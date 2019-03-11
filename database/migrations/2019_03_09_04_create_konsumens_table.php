@@ -15,9 +15,9 @@ class CreateKonsumensTable extends Migration
     {
         Schema::create('konsumens', function (Blueprint $table) {
             $table->increments('Id_Konsumen');
-            $table->string('Nama_Konsumen',50);
-            $table->string('Telepon_Konsumen',15);
-            $table->string('Alamat_Konsumen',255);
+            $table->string('Nama_Konsumen',50)->nullable(true)->change();
+            $table->string('Telepon_Konsumen',15)->nullable(true)->change();
+            $table->string('Alamat_Konsumen',255)->nullable(true)->change();
             $table->timestamps();
         });
     }

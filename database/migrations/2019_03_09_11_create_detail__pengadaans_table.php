@@ -16,10 +16,10 @@ class CreateDetailPengadaansTable extends Migration
         Schema::create('detail_pengadaans', function (Blueprint $table) {
             $table->increments('Id_Detail_Pengadaan');
             $table->unsignedInteger('Id_Pengadaan');
-            $table->string('Kode_Sparepart',10);
-            $table->double('Harga_Satuan');
-            $table->integer('Jumlah');
-            $table->double('Subtotal_Pengadaan');
+            $table->string('Kode_Sparepart',10)->nullable(true)->change();
+            $table->double('Harga_Satuan')->nullable(true)->change();
+            $table->integer('Jumlah')->nullable(true)->change();
+            $table->double('Subtotal_Pengadaan')->nullable(true)->change();
             $table->timestamps();
             
             $table->foreign('Id_Pengadaan')->references('Id_Pengadaan')->on('transaksi_pengadaans');
