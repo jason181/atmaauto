@@ -17,7 +17,7 @@ class Pegawai extends Model
         'Alamat_Pegawai',
         'Telepon_Pegawai',
         'Gaji_Pegawai',
-        'Username',
+        'Username', 
         'Password'
     ];
 

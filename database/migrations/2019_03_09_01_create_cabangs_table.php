@@ -15,8 +15,8 @@ class CreateCabangsTable extends Migration
     {
         Schema::create('cabangs', function (Blueprint $table) {
             $table->increments('Id_Cabang');
-            $table->string('Nama_Cabang',50);
-            $table->string('Alamat_Cabang',50);
+            $table->string('Nama_Cabang',50)->nullable(true)->change();
+            $table->string('Alamat_Cabang',50)->nullable(true)->change();
             $table->timestamps();
         });
 
