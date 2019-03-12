@@ -13,6 +13,7 @@ class Supplier extends Model
     protected $fillable = [
         'Nama_Supplier',
         'Alamat_Supplier',
+        'Telepon_Supplier',
         'Nama_Sales',
         'Telepon_Sales'
     ];
