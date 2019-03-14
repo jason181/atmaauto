@@ -12,7 +12,8 @@ class Cabang extends Model
     public $timestamp = true;
     protected $fillable = [
         'Nama_Cabang',
-        'Alamat_Cabang'
+        'Alamat_Cabang',
+        'Telepon_Cabang'
     ];
 
     public function pegawais()

@@ -17,6 +17,7 @@ class CreateCabangsTable extends Migration
             $table->increments('Id_Cabang');
             $table->string('Nama_Cabang',50);
             $table->string('Alamat_Cabang',50);
+            $table->string('Telepon_Cabang',15);
             $table->timestamps();
         });
 
