@@ -20,8 +20,8 @@ class KonsumenController extends Controller
         ]);
 
         return response()->json([
-            'status' => (bool) $role,
-            'data' => $role,
+            'status' => (bool) $konsumen,
+            'data' => $konsumen,
             'message' => $konsumen ? 'Success' : 'Error Konsumen'
         ]);
     }
@@ -32,10 +32,13 @@ class KonsumenController extends Controller
 
         if(!is_null($request->Nama_Konsumen)){
             $konsumen->Nama_Konsumen = $request->Nama_Konsumen;
+        }
+        if(!is_null($request->Alamat_Konsumen)){
             $konsumen->Alamat_Konsumen = $request->Alamat_Konsumen;
+        }
+        if(!is_null($request->Telepon_Konsumen)){
             $konsumen->Telepon_Konsumen = $request->Telepon_Konsumen;
         }
-
         $success = $konsumen->save();
         if(!$success){
             return response()->json('Error Update',500);
@@ -58,5 +61,4 @@ class KonsumenController extends Controller
             'message' => $status ? 'Deleted' : 'Error Delete'
         ]);
     }
-    
 }
