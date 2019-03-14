@@ -32,7 +32,7 @@ class RoleController extends Controller
             $role->Nama_Role = $request->Nama_Role;
         }
 
-        $success = $Role->save();
+        $success = $role->save();
         if(!$success){
             return response()->json('Error Update',500);
         }else   
