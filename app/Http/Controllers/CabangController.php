@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Transformers\CabangTransformers;
+use App\Cabang;
 
-class CabangController extends Controller
+
+class CabangController extends RestController
 {
+    protected $transformer=CabangTransformers::Class;
+
     public function index()
     {
-        return response()->json(Cabang::all(),200);
+        $cabang=Cabang::get();
+        $response=$this->generateCollection($cabang);
+        return $this->sendResponse($response,201);
     }
 
     public function store(Request $request)
