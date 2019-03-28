@@ -15,7 +15,6 @@ class CabangController extends RestController
         $cabang=Cabang::get();
         $response=$this->generateCollection($cabang);
         return $this->sendResponse($response,201);
-        // return response()->json(Cabang::all(),200);
     }
 
     public function store(Request $request)

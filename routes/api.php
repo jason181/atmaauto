@@ -22,3 +22,14 @@ Route::delete('/cabangs/delete/{id}', 'CabangController@destroy');
 
 //Konsumen
 Route::get('/konsumens', 'KonsumenController@index');
+Route::post('/konsumens/store', 'KonsumenController@store');
+Route::get('/konsumens/{id}', 'KonsumenController@showbyID');
+Route::patch('/konsumens/update/{id}', 'KonsumenController@update'); 
+Route::delete('/konsumens/delete/{id}', 'KonsumenController@destroy');
+
+//Jasa
+Route::get('/jasas', 'JasaController@index');
+Route::post('/jasas/store', 'JasaController@store');
+Route::get('/jasas/{id}', 'JasaController@showbyID');
+Route::patch('/jasas/update/{id}', 'JasaController@update'); 
+Route::delete('/jasas/delete/{id}', 'JasaController@destroy');
