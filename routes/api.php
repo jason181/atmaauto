@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 //Cabang
 Route::get('/cabangs', 'CabangController@index');
-Route::post('/store', 'CabangController@store');
+Route::post('/cabangs/store', 'CabangController@store');
 Route::get('/cabangs/{id}', 'CabangController@show');
 Route::patch('cabangs/update/{id}', 'CabangController@update'); 
 Route::delete('/cabangs/delete/{id}', 'CabangController@destroy');
