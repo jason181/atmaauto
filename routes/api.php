@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Cabang
+Route::get('/cabangs', 'CabangController@index');
+Route::post('/store', 'CabangController@store');
+Route::get('/cabangs/{id}', 'CabangController@show');
+Route::patch('cabangs/update/{id}', 'CabangController@update'); 
+Route::delete('/cabangs/delete/{id}', 'CabangController@destroy');
