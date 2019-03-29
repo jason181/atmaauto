@@ -15,7 +15,7 @@ class KonsumenTransformers extends TransformerAbstract
     public function transform(Konsumen $konsumen)
     {
         return [
-            'id'                  => $konsumen->Id_Konsumen,
+            'id'                    => $konsumen->Id_Konsumen,
             'Nama_Konsumen'         => $konsumen->Nama_Konsumen,
             'Alamat_Konsumen'       => $konsumen->Alamat_Konsumen,
             'Telepon_Konsumen'      => $konsumen->Telepon_Konsumen,

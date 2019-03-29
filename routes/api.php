@@ -33,3 +33,10 @@ Route::post('/jasas/store', 'JasaController@store');
 Route::get('/jasas/{id}', 'JasaController@showbyID');
 Route::patch('/jasas/update/{id}', 'JasaController@update'); 
 Route::delete('/jasas/delete/{id}', 'JasaController@destroy');
+
+//Pegawai
+Route::get('/pegawais', 'PegawaiController@index');
+Route::post('/pegawais/store', 'PegawaiController@store');
+Route::get('/pegawais/{id}', 'PegawaiController@showbyID');
+Route::patch('/pegawais/update/{id}', 'PegawaiController@update'); 
+Route::delete('/pegawais/delete/{id}', 'PegawaiController@destroy');
