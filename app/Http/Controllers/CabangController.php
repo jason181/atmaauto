@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Transformers\CabangTransformers;
 use App\Cabang;
 
-
 class CabangController extends RestController
 {
     protected $transformer=CabangTransformers::Class;
@@ -29,7 +28,7 @@ class CabangController extends RestController
         return response()->json([
             'status' => (bool) $cabang,
             'data' => $cabang,
-            'message' => $cabang ? 'Success' : 'Error Konsumen'
+            'message' => $cabang ? 'Success' : 'Error Cabang'
         ]);
     }
 
@@ -56,14 +55,14 @@ class CabangController extends RestController
 
     public function showbyID($id)
     {
-        $konsumen = Konsumen::find($id);
-        return response()->json($konsumen,200);
+        $cabang = Cabang::find($id);
+        return response()->json($cabang,200);
     }
 
     public function destroy($id)
     {
-        $konsumen = Konsumen::find($id);
-        $status = $konsumen->delete();
+        $cabang = Cabang::find($id);
+        $status = $cabang->delete();
         return response()->json([
             'status' => $status,
             'message' => $status ? 'Deleted' : 'Error Delete'

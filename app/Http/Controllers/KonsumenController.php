@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Transformers\KonsumenTransformers;
+use App\Konsumen;
 
-class KonsumenController extends Controller
+class KonsumenController extends RestController
 {
+    protected $transformer=KonsumenTransformers::Class;
+
     public function index()
     {
-        return response()->json(Konsumen::all(),200);
+        $konsumen=Konsumen::get();
+        $response=$this->generateCollection($konsumen);
+        return $this->sendResponse($response,201);
     }
 
     public function store(Request $request)
