@@ -15,10 +15,10 @@ class CabangTransformers extends TransformerAbstract
     public function transform(Cabang $cabang)
     {
         return [
-            'id'            => $cabang->Id_Cabang,
-            'Nama_Cabang'          => $cabang->Nama_Cabang,
-            'Alamat_Cabang'       => $cabang->Alamat_Cabang,
-            'Telepon_Cabang'       => $cabang->Telepon_Cabang,
+            'id'                    => $cabang->Id_Cabang,
+            'Nama_Cabang'           => $cabang->Nama_Cabang,
+            'Alamat_Cabang'         => $cabang->Alamat_Cabang,
+            'Telepon_Cabang'        => $cabang->Telepon_Cabang,
         ];
     }
 }
