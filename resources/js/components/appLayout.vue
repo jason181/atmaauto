@@ -34,7 +34,10 @@
 			  	<a class="nav-tabs nav-item nav-link" href="motor.php">Motor</a>
 			  	<a class="nav-tabs nav-item nav-link" href="konsumen.php">Konsumen</a>
 			  	<a class="nav-tabs nav-item nav-link" href="sales.php">Sales</a>
-			  	<a class="nav-tabs nav-item nav-link" href="supplier.php">Supplier</a>
+				<router-link :to="{name:'Supplier'}" class="">
+                    <a class="nav-tabs nav-item nav-link">Supplier</a>
+                </router-link>
+			  	<!-- <a class="nav-tabs nav-item nav-link" href="supplier.php">Supplier</a> -->
 			  	<a class="nav-tabs nav-item nav-link" href="cabang.php">Cabang</a>
 			  	<a class="nav-tabs nav-item nav-link" href="pengadaan.php">Pengadaan</a>
 			  	<a class="nav-tabs nav-item nav-link" href="laporan.php">Laporan</a>

@@ -40,3 +40,10 @@ Route::post('/pegawais/store', 'PegawaiController@store');
 Route::get('/pegawais/{id}', 'PegawaiController@showbyID');
 Route::patch('/pegawais/update/{id}', 'PegawaiController@update'); 
 Route::delete('/pegawais/delete/{id}', 'PegawaiController@destroy');
+
+//Supplier
+Route::get('/suppliers','SupplierController@index');
+Route::post('/suppliers/store', 'SupplierController@store');
+Route::get('/suppliers/{id}', 'SupplierController@showbyID');
+Route::patch('/suppliers/update/{id}', 'SupplierController@update'); 
+Route::delete('/suppliers/delete/{id}', 'SupplierController@destroy');

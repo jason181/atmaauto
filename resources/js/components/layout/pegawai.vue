@@ -49,7 +49,7 @@
                             </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                    <button @click="deletejasaservice(jasa.id)" class="btn btn-danger">
+                                    <button @click="deletepegawai(jasa.id)" class="btn btn-danger">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </p>
@@ -92,6 +92,81 @@
                         
                     </tbody>
                 </table>
+            </div>
+        </div>
+        <div class="modal fade" id="Tambah_Pegawai" tabindex="-1" role="dialog" aria-labelledby="Tambah_Pegawai" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Tambah Pegawai</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="pegawai.php" method="POST">
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Nama</span>
+                            </div>
+                                <input type="text" class="form-control" placeholder="Masukkan Nama Pegawai" aria-label="Nama_Pegawai" aria-describedby="basic-addon2" id="Nama_Pegawai" name="Nama_Pegawai">
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Alamat</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Masukkan Alamat" aria-label="Nama_Lengkap" aria-describedby="basic-addon2" id="Alamat" name="Alamat">
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Telepon</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Masukkan Nomor Telepon" aria-label="Telepon_Pegawai" aria-describedby="basic-addon2" id="Telepon_Pegawai" name="Telepon_Pegawai">
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Email</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Masukkan Gaji" aria-label="Gaji_Pegawai" aria-describedby="basic-addon2" id="Gaji_Pegawai" name="Gaji_Pegawai">
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Username</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Masukkan Username" aria-label="Username" aria-describedby="basic-addon2" id="Username" name="Username">
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Password</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Masukkan Password" aria-label="Password" aria-describedby="basic-addon2" id="Password" name="Password">
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Cabang</span>
+                                </div>
+                                <select class="form-control">
+                                    <option disabled="disabled" selected="selected">-- Pilih Cabang --</option>
+                                    <option>CABANG 1</option>
+                                    <option>CABANG 2</option>
+                                </select>
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Jabatan</span>
+                                </div>
+                                <select class="form-control">
+                                    <option disabled="disabled" selected="selected">-- Pilih Jabatan --</option>
+                                    <option>Jabatan 1</option>
+                                    <option>Jabatan 2</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer ">
+                                <button type="submit" class="btn btn-success btn-lg" style="width: 100%;">Tambahkan Pegawai</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </body>

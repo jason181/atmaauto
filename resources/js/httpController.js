@@ -76,7 +76,22 @@ export default {
             Http.get('/api/pegawais', successCallback, errorCallback)
         })
     },
+    getallsupplier(){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
 
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.get('/api/suppliers', successCallback, errorCallback)
+        })
+    },
+    
 
 
 }

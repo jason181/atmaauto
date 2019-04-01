@@ -9,6 +9,7 @@ import AppLayout from './components/appLayout.vue';
 import HomeLayout from './components/layout/HomeLayout.vue';
 import Pegawai from './components/layout/pegawai.vue';
 import Jasa_Service from './components/layout/jasa_service.vue';
+import Supplier from './components/layout/supplier.vue';
 
 Vue.config.productionTip = false;
 
@@ -30,7 +31,11 @@ const router = new VueRouter({
             path: '/jasa_service',
             component: Jasa_Service
         },
-
+        {
+            name: 'Supplier',
+            path: '/supplier',
+            component: Supplier
+        },
     ]
 })
 
