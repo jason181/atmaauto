@@ -24,6 +24,24 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr v-bind:key="jasa['id']" v-for="jasa in jasaservicedata">
+                            <td>{{jasa.Nama_Jasa}} </td>
+                            <td>{{jasa.Harga_Jasa}} </td>
+                            <td class="text-center">
+                                <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                    <button class="btn btn-primary" @click="updatehandler(jasa)" data-id=(jasa.id) data-title="Edit_Jasa_Service" data-toggle="modal" data-target="#Edit_Jasa_Service">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </p>
+                            </td>
+                            <td class="text-center">
+                                <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                    <button @click="deletejasaservice(jasa.id)" class="btn btn-danger">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </p>
+                            </td>
+                        </tr>
                         <!-- <?php  
                         $query="SELECT * FROM jasas";
                         $result=mysqli_query($conn,$query);
@@ -53,8 +71,142 @@
                         ?> -->
                         
                     </tbody>
+
                 </table>
             </div>
         </div>
+        <!-- MY MODALS -->
+        <!-- TAMBAH JASA SERVICE -->
+        <div class="modal fade" id="Tambah_Jasa_Service" tabindex="-1" role="dialog" aria-labelledby="Tambah_Jasa_Service" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Tambah Jasa Service</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form @submit.prevent="addjasaservice()">
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Nama</span>
+                            </div>
+                                <input type="text" v-model="Nama_Jasa" class="form-control" placeholder="Masukkan Nama Jasa Service" aria-label="Nama_Jasa_Service" aria-describedby="basic-addon2" id="Nama_Jasa_Service" name="Nama_Pegawai">
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Harga</span>
+                            </div>
+                                <input type="number" v-model="Harga_Jasa" class="form-control" placeholder="Masukkan Harga Jasa Service" aria-label="Harga_Jasa_Service" aria-describedby="basic-addon2" id="Harga_Jasa_Service" name="Harga_Jasa_Service">
+                            </div>
+                            <div class="modal-footer ">
+                                <button type="submit" class="btn btn-success btn-lg" style="width: 100%;">Tambahkan Jasa Service</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END OF TAMBAH JASA SERVICE -->
+        <!-- EDIT JASA SERVICE -->
+        <div class="modal fade" id="Edit_Jasa_Service" tabindex="-1" role="dialog" aria-labelledby="Edit_Jasa_Service" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Edit Jasa Service</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form @submit.prevent="updatejasaservice(editedjasaservice.id)">
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Nama</span>
+                            </div>
+                                <input type="text" v-model="editedjasaservice.Nama_Jasa" class="form-control" placeholder="Masukkan Nama Jasa Service" aria-label="Nama_Jasa_Service" aria-describedby="basic-addon2" id="Nama_Jasa_Service" name="Nama_Pegawai">
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Harga</span>
+                            </div>
+                                <input type="number" v-model="editedjasaservice.Harga_Jasa" class="form-control" placeholder="Masukkan Harga Jasa Service" aria-label="Harga_Jasa_Service" aria-describedby="basic-addon2" id="Harga_Jasa_Service" name="Harga_Jasa_Service">
+                            </div>
+                            <div class="modal-footer ">
+                                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Simpan Perubahan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END OF EDIT JASA SERVICE -->
+        <!-- END OF MY MODALS -->
     </body>
 </template>
+<script>
+import Controller from '../../httpController'
+export default {
+    data: () => ({
+        jasaservicedata:[],
+        editedjasaservice:[],
+        Nama_Jasa:'',
+        Harga_Jasa:0,
+    }),
+    mounted(){
+        this.getalljasaservice()
+    },
+    methods:{
+        async getalljasaservice () {
+            try {
+                this.jasaservicedata = (await Controller.getalljasaservice()).data
+                console.log(this.jasaservicedata)
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async addjasaservice () {
+            try {
+                const payload = {
+                    Nama_Jasa : this.Nama_Jasa,
+                    Harga_Jasa : this.Harga_Jasa,
+                }
+                await Controller.addjasaservice(payload)
+                this.getalljasaservice()
+                // console.log()
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async updatejasaservice (id) {
+            try {
+                const payload = {
+                    Nama_Jasa : this.editedjasaservice.Nama_Jasa,
+                    Harga_Jasa : this.editedjasaservice.Harga_Jasa,
+                }
+                await Controller.updatejasaservice(payload,id)
+                this.getalljasaservice()
+                // console.log()
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async deletejasaservice (id) {
+            try {
+                await Controller.deletejasaservice(id)
+                this.getalljasaservice()
+                // console.log()
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        updatehandler(jasa){
+            this.editedjasaservice = jasa
+        }
+
+        
+    }
+}
+</script>
+

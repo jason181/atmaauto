@@ -17,7 +17,7 @@
                 <table class="table table-striped table-hover">
                     <thead class="table-primary text-center">
                         <tr>
-                            <th scope="col">Id</th>
+                            <!-- <th scope="col">Id</th> -->
                             <th scope="col">Nama</th>
                             <th scope="col">Alamat</th>
                             <th scope="col">Telepon</th>
@@ -31,6 +31,30 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr v-bind:key="pegawai['id']" v-for="pegawai in pegawaidata">
+                            <td>{{pegawai.Nama_Pegawai }} </td>
+                            <td>{{pegawai.Alamat_Pegawai}} </td>
+                            <td>{{pegawai.Telepon_Pegawai}} </td>
+                            <td>Cabang</td>
+                            <td>Jabatan</td>     
+                            <td>{{pegawai.Gaji_Pegawai}} </td>
+                            <td>{{pegawai.Username}} </td>
+                            <td>{{pegawai.Password}} </td>
+                            <td class="text-center">
+                                <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                    <button class="btn btn-primary" @click="updatehandler(jasa)" data-id=(jasa.id) data-title="Edit_Jasa_Service" data-toggle="modal" data-target="#Edit_Jasa_Service">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </p>
+                            </td>
+                            <td class="text-center">
+                                <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                    <button @click="deletejasaservice(jasa.id)" class="btn btn-danger">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </p>
+                            </td>
+                        </tr>
                         <!-- <?php  
                         $query="SELECT * FROM pegawais JOIN cabangs USING(Id_Cabang) JOIN roles USING(Id_Role)";
                         $result=mysqli_query($conn,$query);
@@ -72,3 +96,32 @@
         </div>
     </body>
 </template>
+<script>
+import Controller from '../../httpController'
+export default {
+    data:()=>({
+        pegawaidata:[],
+        editedegawai:[],
+        Nama_Pegawai:'',
+        Alamat_Pegawai:'',
+        Telepon_Pegawai:'',
+        Gaji_Pegawai:0,
+        Username:'',
+        Password:'',
+    }),
+    mounted(){
+        this.getallpegawai()
+    },
+    methods:{
+        async getallpegawai () {
+            try {
+                this.pegawaidata = (await Controller.getallpegawai()).data
+                console.log(this.pegawaidata)
+            } catch (err) {
+                console.log(err)
+            }
+        },
+    }
+
+}
+</script>
