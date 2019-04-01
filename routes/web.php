@@ -13,3 +13,4 @@
 
 Route::get('/', function () {return view('app');});
 Route::get('/pegawai', function () {return view('app');});
+Route::get('/jasa_service', function () {return view('app');});

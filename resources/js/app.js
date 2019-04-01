@@ -8,6 +8,7 @@ window.VueRouter = require('vue-router').default;
 import AppLayout from './components/appLayout.vue';
 import HomeLayout from './components/layout/HomeLayout.vue';
 import Pegawai from './components/layout/pegawai.vue';
+import Jasa_Service from './components/layout/jasa_service.vue';
 
 Vue.config.productionTip = false;
 
@@ -23,6 +24,11 @@ const router = new VueRouter({
             name: 'Pegawai',
             path: '/pegawai',
             component: Pegawai
+        },
+        {
+            name: 'Jasa_Service',
+            path: '/jasa_service',
+            component: Jasa_Service
         },
 
     ]
