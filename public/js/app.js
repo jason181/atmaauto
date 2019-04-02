@@ -2627,18 +2627,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2692,7 +2680,137 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return getallsupplier;
-    }()
+    }(),
+    addsupplier: function () {
+      var _addsupplier = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                payload = {
+                  Nama_Supplier: this.Nama_Supplier,
+                  Alamat_Supplier: this.Alamat_Supplier,
+                  Telepon_Supplier: this.Telepon_Supplier,
+                  Nama_Sales: this.Nama_Sales,
+                  Telepon_Sales: this.Telepon_Sales
+                };
+                _context2.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addsupplier(payload);
+
+              case 4:
+                this.getallsupplier(); // console.log()
+
+                _context2.next = 10;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 7]]);
+      }));
+
+      function addsupplier() {
+        return _addsupplier.apply(this, arguments);
+      }
+
+      return addsupplier;
+    }(),
+    updatesupplier: function () {
+      var _updatesupplier = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(id) {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                payload = {
+                  Nama_Supplier: this.editedsupplier.Nama_Supplier,
+                  Alamat_Supplier: this.editedsupplier.Alamat_Supplier,
+                  Telepon_Supplier: this.editedsupplier.Telepon_Supplier,
+                  Nama_Sales: this.editedsupplier.Nama_Sales,
+                  Telepon_Sales: this.editedsupplier.Telepon_Sales
+                };
+                _context3.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatesupplier(payload, id);
+
+              case 4:
+                this.getallsupplier(); // console.log()
+
+                _context3.next = 10;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 7]]);
+      }));
+
+      function updatesupplier(_x) {
+        return _updatesupplier.apply(this, arguments);
+      }
+
+      return updatesupplier;
+    }(),
+    deletesupplier: function () {
+      var _deletesupplier = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deletesupplier(id);
+
+              case 3:
+                this.getallsupplier(); // console.log()
+
+                _context4.next = 9;
+                break;
+
+              case 6:
+                _context4.prev = 6;
+                _context4.t0 = _context4["catch"](0);
+                console.log(_context4.t0);
+
+              case 9:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[0, 6]]);
+      }));
+
+      function deletesupplier(_x2) {
+        return _deletesupplier.apply(this, arguments);
+      }
+
+      return deletesupplier;
+    }(),
+    updatehandler: function updatehandler(supplier) {
+      this.editedsupplier = supplier;
+    }
   }
 });
 
@@ -39161,7 +39279,7 @@ var staticRenderFns = [
         {
           staticClass: "btn btn-success btn-lg",
           staticStyle: { width: "100%" },
-          attrs: { type: "submit" }
+          attrs: { type: "submit", "data-dismiss": "modal" }
         },
         [_vm._v("Tambahkan Jasa Service")]
       )
@@ -39242,7 +39360,7 @@ var staticRenderFns = [
         {
           staticClass: "btn btn-primary btn-lg",
           staticStyle: { width: "100%" },
-          attrs: { type: "submit" }
+          attrs: { type: "submit", "data-dismiss": "modal" }
         },
         [_vm._v("Simpan Perubahan")]
       )
@@ -39803,7 +39921,7 @@ var render = function() {
           "div",
           {
             staticClass: "table-responsive",
-            staticStyle: { "max-width": "1000px", margin: "auto" }
+            staticStyle: { "max-width": "1200px", margin: "auto" }
           },
           [
             _c("table", { staticClass: "table table-striped table-hover" }, [
@@ -39839,10 +39957,9 @@ var render = function() {
                             {
                               staticClass: "btn btn-primary",
                               attrs: {
-                                "data-id": "(jasa.id)",
-                                "data-title": "Edit_Jasa_Service",
+                                "data-title": "Edit_Supplier",
                                 "data-toggle": "modal",
-                                "data-target": "#Edit_Jasa_Service"
+                                "data-target": "#Edit_Supplier"
                               },
                               on: {
                                 click: function($event) {
@@ -39873,7 +39990,7 @@ var render = function() {
                               staticClass: "btn btn-danger",
                               on: {
                                 click: function($event) {
-                                  return _vm.deletejasaservice(supplier.id)
+                                  return _vm.deletesupplier(supplier.id)
                                 }
                               }
                             },
@@ -39889,6 +40006,325 @@ var render = function() {
             ])
           ]
         )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Tambah_Supplier",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Tambah_Supplier",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.addsupplier()
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Nama_Supplier,
+                          expression: "Nama_Supplier"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Nama Supplier",
+                        "aria-label": "Nama_Supplier",
+                        "aria-describedby": "basic-addon2",
+                        id: "Nama_Supplier",
+                        name: "Nama_Supplier"
+                      },
+                      domProps: { value: _vm.Nama_Supplier },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Nama_Supplier = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(4),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Alamat_Supplier,
+                          expression: "Alamat_Supplier"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Alamat Supplier",
+                        "aria-label": "Alamat_Supplier",
+                        "aria-describedby": "basic-addon2",
+                        id: "Alamat_Supplier",
+                        name: "Alamat_Supplier"
+                      },
+                      domProps: { value: _vm.Alamat_Supplier },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Alamat_Supplier = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(5),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Telepon_Supplier,
+                          expression: "Telepon_Supplier"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Telepon Supplier",
+                        "aria-label": "Telepon_Supplier",
+                        "aria-describedby": "basic-addon2",
+                        id: "Telepon_Supplier",
+                        name: "Telepon_Supplier"
+                      },
+                      domProps: { value: _vm.Telepon_Supplier },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Telepon_Supplier = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(6),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(7),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Nama_Sales,
+                          expression: "Nama_Sales"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Nama Sales",
+                        "aria-label": "Nama_Sales",
+                        "aria-describedby": "basic-addon2",
+                        id: "Nama_Sales",
+                        name: "Nama_Sales"
+                      },
+                      domProps: { value: _vm.Nama_Sales },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Nama_Sales = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(8),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Telepon_Sales,
+                          expression: "Telepon_Sales"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Telepon Sales",
+                        "aria-label": "Telepon_Sales",
+                        "aria-describedby": "basic-addon2",
+                        id: "Telepon_Sales",
+                        name: "Telepon_Sales"
+                      },
+                      domProps: { value: _vm.Telepon_Sales },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Telepon_Sales = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(9)
+              ]
+            )
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Edit_Supplier",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Edit_Supplier",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(10),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.updatesupplier(_vm.editedsupplier.id)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(11),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.editedsupplier.Nama_Supplier,
+                          expression: "editedsupplier.Nama_Supplier"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Nama Supplier",
+                        "aria-label": "Nama_Supplier",
+                        "aria-describedby": "basic-addon2",
+                        id: "Nama_Supplier",
+                        name: "Nama_Supplier"
+                      },
+                      domProps: { value: _vm.editedsupplier.Nama_Supplier },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.editedsupplier,
+                            "Nama_Supplier",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(12),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.editedsupplier.Alamat_Supplier,
+                          expression: "editedsupplier.Alamat_Supplier"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Alamat Supplier",
+                        "aria-label": "Alamat_Supplier",
+                        "aria-describedby": "basic-addon2",
+                        id: "Alamat_Supplier",
+                        name: "Alamat_Supplier"
+                      },
+                      domProps: { value: _vm.editedsupplier.Alamat_Supplier },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.editedsupplier,
+                            "Alamat_Supplier",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(13)
+                ]
+              )
+            ])
+          ])
+        ])
       ]
     )
   ])
@@ -39948,28 +40384,251 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "table-primary text-center" }, [
       _c("tr", [
-        _c("th", { attrs: { colspan: "3" } }, [_vm._v("Supplier")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama Supplier")]),
         _vm._v(" "),
-        _c("th", { attrs: { colspan: "2" } }, [_vm._v("Sales")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Alamat Supplier ")]),
         _vm._v(" "),
-        _c("th", { attrs: { colspan: "2" } }, [_vm._v("Action")])
-      ]),
-      _vm._v(" "),
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Telepon Supplier")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Alamat")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama Sales")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Telepon")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Telepon")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Telepon Sales")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Tambah Supplier")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Nama")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Alamat")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Telepon")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Tambah Sales")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Nama")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Telepon")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success btn-lg",
+          staticStyle: { width: "100%" },
+          attrs: { type: "submit" }
+        },
+        [_vm._v("Tambahkan Supplier")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Edit Supplier")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Nama")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Alamat Supplier")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer " }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary btn-lg",
+          staticStyle: { width: "100%" },
+          attrs: { type: "submit" }
+        },
+        [_vm._v("Simpan Perubahan")]
+      )
     ])
   }
 ]
@@ -55336,6 +55995,48 @@ __webpack_require__.r(__webpack_exports__);
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/pegawais', successCallback, errorCallback);
     });
   },
+  addpegawai: function addpegawai(payload) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/pegawai/store', payload, successCallback, errorCallback);
+    });
+  },
+  updatepegawai: function updatepegawai(payload, id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/pegawai/update/' + id, payload, successCallback, errorCallback);
+    });
+  },
+  deletepegawai: function deletepegawai(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].delete('/api/pegawai/delete/' + id, successCallback, errorCallback);
+    });
+  },
   getallsupplier: function getallsupplier() {
     return new Promise(function (resolve, reject) {
       var successCallback = function successCallback(res) {
@@ -55348,6 +56049,48 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/suppliers', successCallback, errorCallback);
+    });
+  },
+  addsupplier: function addsupplier(payload) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/suppliers/store', payload, successCallback, errorCallback);
+    });
+  },
+  updatesupplier: function updatesupplier(payload, id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/suppliers/update/' + id, payload, successCallback, errorCallback);
+    });
+  },
+  deletesupplier: function deletesupplier(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].delete('/api/suppliers/delete/' + id, successCallback, errorCallback);
     });
   }
 });

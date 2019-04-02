@@ -101,7 +101,7 @@
                                 <input type="number" v-model="Harga_Jasa" class="form-control" placeholder="Masukkan Harga Jasa Service" aria-label="Harga_Jasa_Service" aria-describedby="basic-addon2" id="Harga_Jasa_Service" name="Harga_Jasa_Service">
                             </div>
                             <div class="modal-footer ">
-                                <button type="submit" class="btn btn-success btn-lg" style="width: 100%;">Tambahkan Jasa Service</button>
+                                <button type="submit" class="btn btn-success btn-lg" style="width: 100%;" data-dismiss="modal">Tambahkan Jasa Service</button>
                             </div>
                         </form>
                     </div>
@@ -134,7 +134,7 @@
                                 <input type="number" v-model="editedjasaservice.Harga_Jasa" class="form-control" placeholder="Masukkan Harga Jasa Service" aria-label="Harga_Jasa_Service" aria-describedby="basic-addon2" id="Harga_Jasa_Service" name="Harga_Jasa_Service">
                             </div>
                             <div class="modal-footer ">
-                                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Simpan Perubahan</button>
+                                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;" data-dismiss="modal">Simpan Perubahan</button>
                             </div>
                         </form>
                     </div>

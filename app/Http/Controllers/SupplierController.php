@@ -21,7 +21,7 @@ class SupplierController extends RestController
     {
         $supplier = Supplier::create([
             'Nama_Supplier' => $request->Nama_Supplier,
-            'Alamat_Supplier' => $request->Harga_Supplier,
+            'Alamat_Supplier' => $request->Alamat_Supplier,
             'Telepon_Supplier' =>$request->Telepon_Supplier,
             'Nama_Sales' =>$request->Nama_Sales,
             'Telepon_Sales' =>$request->Telepon_Sales
