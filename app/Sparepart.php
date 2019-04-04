@@ -10,6 +10,7 @@ class Sparepart extends Model
     protected $table = 'spareparts';
     protected $primaryKey = 'Kode_Sparepart';
     public $timestamp = true;
+    public $incrementing = false;
     protected $fillable = [
         'Kode_Sparepart',
         'Tipe_Barang',

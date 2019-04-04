@@ -2032,7 +2032,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       jasaservicedata: [],
       handledjasaservice: [],
       Nama_Jasa: '',
-      Harga_Jasa: 0
+      Harga_Jasa: 0,
+      Cari_Jasa_Service: ''
     };
   },
   mounted: function mounted() {
@@ -2129,8 +2130,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
                 payload = {
-                  Nama_Jasa: this.editedjasaservice.Nama_Jasa,
-                  Harga_Jasa: this.editedjasaservice.Harga_Jasa
+                  Nama_Jasa: this.handledjasaservice.Nama_Jasa,
+                  Harga_Jasa: this.handledjasaservice.Harga_Jasa
                 };
                 _context3.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatejasaservice(payload, id);
@@ -2199,6 +2200,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     datajasaservicehandler: function datajasaservicehandler(jasa) {
       this.handledjasaservice = jasa;
+    }
+  },
+  computed: {
+    filteredjasaservice: function filteredjasaservice() {
+      var _this = this;
+
+      return this.jasaservicedata.filter(function (jasa) {
+        return jasa.Nama_Jasa.match(_this.Cari_Jasa_Service);
+      });
     }
   }
 });
@@ -2407,7 +2417,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       Telepon_Pegawai: '',
       Gaji_Pegawai: 0,
       Username: '',
-      Password: ''
+      Password: '',
+      Cari_Pegawai: ''
     };
   },
   mounted: function mounted() {
@@ -2451,6 +2462,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return getallpegawai;
     }()
+  },
+  computed: {
+    filteredpegawai: function filteredpegawai() {
+      var _this = this;
+
+      return this.pegawaidata.filter(function (pegawai) {
+        return pegawai.Nama_Pegawai.match(_this.Cari_Pegawai);
+      });
+    }
   }
 });
 
@@ -2622,6 +2642,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2636,7 +2664,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       Stok_Minimum_Sparepart: '',
       Harga_Beli: 0,
       Harga_Jual: 0,
-      Gambar: ''
+      Gambar: '',
+      Cari_Sparepart: ''
     };
   },
   mounted: function mounted() {
@@ -2656,8 +2685,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallsparepart();
 
               case 3:
-                this.jasaservicedata = _context.sent.data;
-                console.log(this.jasaservicedata);
+                this.sparepartdata = _context.sent.data;
+                console.log(this.sparepartdata);
                 _context.next = 10;
                 break;
 
@@ -2690,8 +2719,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
-                payload = {// Nama_Jasa : this.Nama_Jasa,
-                  // Harga_Jasa : this.Harga_Jasa,
+                payload = {
+                  Kode_Sparepart: this.Kode_Sparepart,
+                  Nama_Sparepart: this.Nama_Sparepart,
+                  Merk_Sparepart: this.Merk_Sparepart,
+                  Rak_Sparepart: this.Rak_Sparepart,
+                  Jumlah_Sparepart: this.Jumlah_Sparepart,
+                  Stok_Minimum_Sparepart: this.Stok_Minimum_Sparepart,
+                  Harga_Beli: this.Harga_Beli,
+                  Harga_Jual: this.Harga_Jual,
+                  Gambar: this.Gambar
                 };
                 _context2.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addsparepart(payload);
@@ -2731,8 +2768,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.prev = 0;
-                payload = {// Nama_Jasa : this.editedjasaservice.Nama_Jasa,
-                  // Harga_Jasa : this.editedjasaservice.Harga_Jasa,
+                payload = {
+                  Kode_Sparepart: this.handledsparepart.Kode_Sparepart,
+                  Nama_Sparepart: this.handledsparepart.Nama_Sparepart,
+                  Merk_Sparepart: this.handledsparepart.Merk_Sparepart,
+                  Rak_Sparepart: this.handledsparepart.Rak_Sparepart,
+                  Jumlah_Sparepart: this.handledsparepart.Jumlah_Sparepart,
+                  Stok_Minimum_Sparepart: this.handledsparepart.Stok_Minimum_Sparepart,
+                  Harga_Beli: this.handledsparepart.Harga_Beli,
+                  Harga_Jual: this.handledsparepart.Harga_Jual,
+                  Gambar: this.handledsparepart.Gambar
                 };
                 _context3.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatesparepart(payload, id);
@@ -2801,6 +2846,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     dataspareparthandler: function dataspareparthandler(sparepart) {
       this.handledsparepart = sparepart;
+    }
+  },
+  computed: {
+    filteredsparepart: function filteredsparepart() {
+      var _this = this;
+
+      return this.sparepartdata.filter(function (sparepart) {
+        return sparepart.Nama_Sparepart.match(_this.Cari_Sparepart);
+      });
     }
   }
 });
@@ -3027,7 +3081,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       Alamat_Supplier: '',
       Telepon_Supplier: '',
       Nama_Sales: '',
-      Telepon_Sales: ''
+      Telepon_Sales: '',
+      Cari_Supplier: ''
     };
   },
   mounted: function mounted() {
@@ -3200,6 +3255,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     datasupplierhandler: function datasupplierhandler(supplier) {
       this.handledsupplier = supplier;
+    }
+  },
+  computed: {
+    filteredsupplier: function filteredsupplier() {
+      var _this = this;
+
+      return this.supplierdata.filter(function (supplier) {
+        return supplier.Nama_Supplier.match(_this.Cari_Supplier);
+      });
     }
   }
 });
@@ -39220,7 +39284,48 @@ var render = function() {
       "div",
       { staticClass: "container mt-3", staticStyle: { "max-width": "800px" } },
       [
-        _vm._m(0),
+        _c("div", { staticClass: "clearfix my-2" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "navbar navbar-light bg-light float-right p-0" },
+            [
+              _c("form", { staticClass: "form-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Cari_Jasa_Service,
+                      expression: "Cari_Jasa_Service"
+                    }
+                  ],
+                  staticClass: "form-control mr-sm-2",
+                  attrs: { type: "search", placeholder: "Cari Jasa Service" },
+                  domProps: { value: _vm.Cari_Jasa_Service },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.Cari_Jasa_Service = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-outline-primary my-2 my-sm-0",
+                    attrs: { type: "submit" }
+                  },
+                  [_vm._v("Search")]
+                )
+              ])
+            ]
+          )
+        ]),
         _vm._v(" "),
         _c(
           "div",
@@ -39234,7 +39339,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                _vm._l(_vm.jasaservicedata, function(jasa) {
+                _vm._l(_vm.filteredjasaservice, function(jasa) {
                   return _c("tr", { key: jasa["id"] }, [
                     _c("td", [_vm._v(_vm._s(jasa.Nama_Jasa) + " ")]),
                     _vm._v(" "),
@@ -39592,49 +39697,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "clearfix my-2" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-success float-left mb-2",
-          attrs: {
-            "data-title": "Tambah_Jasa_Service",
-            "data-toggle": "modal",
-            "data-target": "#Tambah_Jasa_Service"
-          }
-        },
-        [
-          _c("i", { staticClass: "fas fa-plus mr-2" }),
-          _vm._v("Tambah\n                ")
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "navbar navbar-light bg-light float-right p-0" },
-        [
-          _c("form", { staticClass: "form-inline" }, [
-            _c("input", {
-              staticClass: "form-control mr-sm-2",
-              attrs: {
-                type: "search",
-                placeholder: "Search",
-                "aria-label": "Search"
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-outline-primary my-2 my-sm-0",
-                attrs: { type: "submit" }
-              },
-              [_vm._v("Search")]
-            )
-          ])
-        ]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-success float-left mb-2",
+        attrs: {
+          "data-title": "Tambah_Jasa_Service",
+          "data-toggle": "modal",
+          "data-target": "#Tambah_Jasa_Service"
+        }
+      },
+      [
+        _c("i", { staticClass: "fas fa-plus mr-2" }),
+        _vm._v("Tambah\n                ")
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -39892,7 +39969,52 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("body", [
     _c("div", { staticClass: "container-fluid mt-3" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "clearfix my-2" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "navbar navbar-light bg-light float-right p-0" },
+          [
+            _c("form", { staticClass: "form-inline" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.Cari_Pegawai,
+                    expression: "Cari_Pegawai"
+                  }
+                ],
+                staticClass: "form-control mr-sm-2",
+                attrs: {
+                  type: "search",
+                  placeholder: "Search",
+                  "aria-label": "Search"
+                },
+                domProps: { value: _vm.Cari_Pegawai },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.Cari_Pegawai = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-outline-primary my-2 my-sm-0",
+                  attrs: { type: "submit" }
+                },
+                [_vm._v("Search")]
+              )
+            ])
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "table-responsive" }, [
         _c("table", { staticClass: "table table-striped table-hover" }, [
@@ -39900,7 +40022,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "tbody",
-            _vm._l(_vm.pegawaidata, function(pegawai) {
+            _vm._l(_vm.filteredpegawai, function(pegawai) {
               return _c("tr", { key: pegawai["id"] }, [
                 _c("td", [_vm._v(_vm._s(pegawai.Nama_Pegawai) + " ")]),
                 _vm._v(" "),
@@ -39908,9 +40030,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(pegawai.Telepon_Pegawai) + " ")]),
                 _vm._v(" "),
-                _c("td", [_vm._v("Cabang")]),
+                _c("td", [_vm._v(_vm._s(pegawai.Cabang))]),
                 _vm._v(" "),
-                _c("td", [_vm._v("Jabatan")]),
+                _c("td", [_vm._v(_vm._s(pegawai.Role) + " ")]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(pegawai.Gaji_Pegawai) + " ")]),
                 _vm._v(" "),
@@ -39993,49 +40115,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "clearfix my-2" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-success float-left mb-2",
-          attrs: {
-            "data-title": "Tambah_Pegawai",
-            "data-toggle": "modal",
-            "data-target": "#Tambah_Pegawai"
-          }
-        },
-        [
-          _c("i", { staticClass: "fas fa-plus mr-2" }),
-          _vm._v("Tambah\n                ")
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "navbar navbar-light bg-light float-right p-0" },
-        [
-          _c("form", { staticClass: "form-inline" }, [
-            _c("input", {
-              staticClass: "form-control mr-sm-2",
-              attrs: {
-                type: "search",
-                placeholder: "Search",
-                "aria-label": "Search"
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-outline-primary my-2 my-sm-0",
-                attrs: { type: "submit" }
-              },
-              [_vm._v("Search")]
-            )
-          ])
-        ]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-success float-left mb-2",
+        attrs: {
+          "data-title": "Tambah_Pegawai",
+          "data-toggle": "modal",
+          "data-target": "#Tambah_Pegawai"
+        }
+      },
+      [
+        _c("i", { staticClass: "fas fa-plus mr-2" }),
+        _vm._v("Tambah\n                ")
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -40414,7 +40508,52 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("body", [
     _c("div", { staticClass: "container mt-3" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "clearfix my-2" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "navbar navbar-light bg-light float-right p-0" },
+          [
+            _c("form", { staticClass: "form-inline" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.Cari_Sparepart,
+                    expression: "Cari_Sparepart"
+                  }
+                ],
+                staticClass: "form-control mr-sm-2",
+                attrs: {
+                  type: "search",
+                  placeholder: "Search",
+                  "aria-label": "Search"
+                },
+                domProps: { value: _vm.Cari_Sparepart },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.Cari_Sparepart = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-outline-primary my-2 my-sm-0",
+                  attrs: { type: "submit" }
+                },
+                [_vm._v("Search")]
+              )
+            ])
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c(
         "div",
@@ -40425,11 +40564,27 @@ var render = function() {
             _vm._v(" "),
             _c(
               "tbody",
-              _vm._l(_vm.sparepartdata, function(sparepart) {
-                return _c("tr", { key: sparepart["id"] }, [
-                  _c("td", [_vm._v(_vm._s(sparepart.id) + " ")]),
+              _vm._l(_vm.filteredsparepart, function(sparepart, index) {
+                return _c("tr", { key: index }, [
+                  _c("td", [_vm._v(_vm._s(sparepart.Kode_Sparepart) + " ")]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(sparepart.Nama_Sparepart) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Merk_Sparepart) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Rak_Sparepart) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Jumlah_Sparepart) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(_vm._s(sparepart.Stok_Minimum_Sparepart) + " ")
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Harga_Beli) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Harga_Jual) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Gambar) + " ")]),
                   _vm._v(" "),
                   _c("td", { staticClass: "text-center" }, [
                     _c(
@@ -40509,49 +40664,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "clearfix my-2" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-success float-left mb-2",
-          attrs: {
-            "data-title": "Tambah_Jasa_Service",
-            "data-toggle": "modal",
-            "data-target": "#Tambah_Jasa_Service"
-          }
-        },
-        [
-          _c("i", { staticClass: "fas fa-plus mr-2" }),
-          _vm._v("Tambah\n                ")
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "navbar navbar-light bg-light float-right p-0" },
-        [
-          _c("form", { staticClass: "form-inline" }, [
-            _c("input", {
-              staticClass: "form-control mr-sm-2",
-              attrs: {
-                type: "search",
-                placeholder: "Search",
-                "aria-label": "Search"
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-outline-primary my-2 my-sm-0",
-                attrs: { type: "submit" }
-              },
-              [_vm._v("Search")]
-            )
-          ])
-        ]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-success float-left mb-2",
+        attrs: {
+          "data-title": "Tambah_Jasa_Service",
+          "data-toggle": "modal",
+          "data-target": "#Tambah_Jasa_Service"
+        }
+      },
+      [
+        _c("i", { staticClass: "fas fa-plus mr-2" }),
+        _vm._v("Tambah\n                ")
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -40610,7 +40737,52 @@ var render = function() {
       "div",
       { staticClass: "container mt-3", staticStyle: { "max-width": "800px" } },
       [
-        _vm._m(0),
+        _c("div", { staticClass: "clearfix my-2" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "navbar navbar-light bg-light float-right p-0" },
+            [
+              _c("form", { staticClass: "form-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Cari_Supplier,
+                      expression: "Cari_Supplier"
+                    }
+                  ],
+                  staticClass: "form-control mr-sm-2",
+                  attrs: {
+                    type: "search",
+                    placeholder: "Search",
+                    "aria-label": "Search"
+                  },
+                  domProps: { value: _vm.Cari_Supplier },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.Cari_Supplier = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-outline-primary my-2 my-sm-0",
+                    attrs: { type: "submit" }
+                  },
+                  [_vm._v("Search")]
+                )
+              ])
+            ]
+          )
+        ]),
         _vm._v(" "),
         _c(
           "div",
@@ -40624,7 +40796,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                _vm._l(_vm.supplierdata, function(supplier) {
+                _vm._l(_vm.filteredsupplier, function(supplier) {
                   return _c("tr", { key: supplier["id"] }, [
                     _c("td", [_vm._v(_vm._s(supplier.Nama_Supplier) + " ")]),
                     _vm._v(" "),
@@ -41204,49 +41376,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "clearfix my-2" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-success float-left mb-2",
-          attrs: {
-            "data-title": "Tambah_Supplier",
-            "data-toggle": "modal",
-            "data-target": "#Tambah_Supplier"
-          }
-        },
-        [
-          _c("i", { staticClass: "fas fa-plus mr-2" }),
-          _vm._v("Tambah\n                ")
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "navbar navbar-light bg-light float-right p-0" },
-        [
-          _c("form", { staticClass: "form-inline" }, [
-            _c("input", {
-              staticClass: "form-control mr-sm-2",
-              attrs: {
-                type: "search",
-                placeholder: "Search",
-                "aria-label": "Search"
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-outline-primary my-2 my-sm-0",
-                attrs: { type: "submit" }
-              },
-              [_vm._v("Search")]
-            )
-          ])
-        ]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-success float-left mb-2",
+        attrs: {
+          "data-title": "Tambah_Supplier",
+          "data-toggle": "modal",
+          "data-target": "#Tambah_Supplier"
+        }
+      },
+      [
+        _c("i", { staticClass: "fas fa-plus mr-2" }),
+        _vm._v("Tambah\n                ")
+      ]
+    )
   },
   function() {
     var _vm = this

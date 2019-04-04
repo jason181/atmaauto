@@ -7,7 +7,7 @@
                 </button>
                 <div class="navbar navbar-light bg-light float-right p-0">
 				  	<form class="form-inline">
-				    	<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				    	<input class="form-control mr-sm-2" type="search" v-model="Cari_Pegawai" placeholder="Search" aria-label="Search">
 				    	<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
 				  	</form>
 				</div>
@@ -31,12 +31,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-bind:key="pegawai['id']" v-for="pegawai in pegawaidata">
+                        <tr v-bind:key="pegawai['id']" v-for="pegawai in filteredpegawai">
                             <td>{{pegawai.Nama_Pegawai }} </td>
                             <td>{{pegawai.Alamat_Pegawai}} </td>
                             <td>{{pegawai.Telepon_Pegawai}} </td>
-                            <td>Cabang</td>
-                            <td>Jabatan</td>     
+                            <td>{{pegawai.Cabang}}</td>
+                            <td>{{pegawai.Role}} </td>     
                             <td>{{pegawai.Gaji_Pegawai}} </td>
                             <td>{{pegawai.Username}} </td>
                             <td>{{pegawai.Password}} </td>
@@ -183,6 +183,7 @@ export default {
         Gaji_Pegawai:0,
         Username:'',
         Password:'',
+        Cari_Pegawai:'',
     }),
     mounted(){
         this.getallpegawai()
@@ -196,6 +197,13 @@ export default {
                 console.log(err)
             }
         },
+    },
+    computed:{
+        filteredpegawai:function(){
+            return this.pegawaidata.filter((pegawai)=>{
+                return pegawai.Nama_Pegawai.match(this.Cari_Pegawai);
+            });
+        }
     }
 
 }

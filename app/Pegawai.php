@@ -33,11 +33,11 @@ class Pegawai extends Model
 
     public function cabangs()
     {
-        return $this->belongsTo('App\Cabang');
+        return $this->belongsTo('App\Cabang','Id_Cabang');
     }
 
     public function roles()
     {
-        return $this->belongsTo('App\Role');
+        return $this->belongsTo('App\Role','Id_Role');
     }
 }

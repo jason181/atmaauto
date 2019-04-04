@@ -7,7 +7,7 @@
                 </button>
                 <div class="navbar navbar-light bg-light float-right p-0">
 				  	<form class="form-inline">
-				    	<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				    	<input class="form-control mr-sm-2" v-model="Cari_Jasa_Service" type="search" placeholder="Cari Jasa Service">
 				    	<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
 				  	</form>
 				</div>
@@ -24,7 +24,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-bind:key="jasa['id']" v-for="jasa in jasaservicedata">
+                        <tr v-bind:key="jasa['id']" v-for="jasa in filteredjasaservice">
                             <td>{{jasa.Nama_Jasa}} </td>
                             <td>{{jasa.Harga_Jasa}} </td>
                             <td class="text-center">
@@ -147,6 +147,7 @@ export default {
         handledjasaservice:[],
         Nama_Jasa:'',
         Harga_Jasa:0,
+        Cari_Jasa_Service:'',
     }),
     mounted(){
         this.getalljasaservice()
@@ -176,8 +177,8 @@ export default {
         async updatejasaservice (id) {
             try {
                 const payload = {
-                    Nama_Jasa : this.editedjasaservice.Nama_Jasa,
-                    Harga_Jasa : this.editedjasaservice.Harga_Jasa,
+                    Nama_Jasa : this.handledjasaservice.Nama_Jasa,
+                    Harga_Jasa : this.handledjasaservice.Harga_Jasa,
                 }
                 await Controller.updatejasaservice(payload,id)
                 this.getalljasaservice()
@@ -199,6 +200,13 @@ export default {
             this.handledjasaservice = jasa
         }
 
+    },
+    computed:{
+        filteredjasaservice:function(){
+            return this.jasaservicedata.filter((jasa)=>{
+                return jasa.Nama_Jasa.match(this.Cari_Jasa_Service);
+            });
+        }
     }
 }
 </script>

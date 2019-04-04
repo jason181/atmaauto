@@ -4,6 +4,7 @@ namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
 use App\Pegawai;
+use App\Role;
 
 class PegawaiTransformers extends TransformerAbstract
 {
@@ -15,15 +16,15 @@ class PegawaiTransformers extends TransformerAbstract
     public function transform(Pegawai $pegawai)
     {
         return [
-            'Id_Role'              => $pegawai->Id_Role,
-            'Id_Cabang'            => $pegawai->Id_Cabang,
-            'id'                   => $pegawai->Id_Pegawai,
-            'Nama_Pegawai'         => $pegawai->Nama_Pegawai,
-            'Alamat'       => $pegawai->Alamat,
-            'Telepon_Pegawai'      => $pegawai->Telepon_Pegawai,
-            'Gaji_Pegawai'         => $pegawai->Gaji_Pegawai,
-            'Username'             => $pegawai->Username,
-            'Password'             => $pegawai->Password        
+            'Role'                  => $pegawai->roles->Nama_Role,
+            'Cabang'                => $pegawai->cabangs->Nama_Cabang,
+            'id'                    => $pegawai->Id_Pegawai,
+            'Nama_Pegawai'          => $pegawai->Nama_Pegawai,
+            'Alamat_Pegawai'        => $pegawai->Alamat_Pegawai,
+            'Telepon_Pegawai'       => $pegawai->Telepon_Pegawai,
+            'Gaji_Pegawai'          => $pegawai->Gaji_Pegawai,
+            'Username'              => $pegawai->Username,
+            'Password'              => $pegawai->Password        
         ];
     }
 }

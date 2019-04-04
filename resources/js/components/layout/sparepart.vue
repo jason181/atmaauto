@@ -7,7 +7,7 @@
                 </button>
                 <div class="navbar navbar-light bg-light float-right p-0">
 				  	<form class="form-inline">
-				    	<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				    	<input class="form-control mr-sm-2" type="search" v-model="Cari_Sparepart" placeholder="Search" aria-label="Search">
 				    	<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
 				  	</form>
 				</div>
@@ -31,9 +31,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-bind:key="sparepart['id']" v-for="sparepart in sparepartdata">
-                            <td>{{sparepart.id}} </td>
+                        <!-- <tr v-bind:key="index" v-for="sparepart in sparepartdata"> -->
+                        <tr v-bind:key="index" v-for="(sparepart,index) in filteredsparepart">
+                            <td>{{sparepart.Kode_Sparepart}} </td>
                             <td>{{sparepart.Nama_Sparepart}} </td>
+                            <td>{{sparepart.Merk_Sparepart}} </td>
+                            <td>{{sparepart.Rak_Sparepart}} </td>
+                            <td>{{sparepart.Jumlah_Sparepart}} </td>
+                            <td>{{sparepart.Stok_Minimum_Sparepart}} </td>
+                            <td>{{sparepart.Harga_Beli}} </td>
+                            <td>{{sparepart.Harga_Jual}} </td>
+                            <td>{{sparepart.Gambar}} </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Edit">
                                     <button class="btn btn-primary" @click="dataspareparthandler(sparepart)" data-title="Edit_Jasa_Service" data-toggle="modal" data-target="#Edit_Jasa_Service">
@@ -161,6 +169,7 @@ export default {
         Harga_Beli:0,
         Harga_Jual:0,
         Gambar:'',
+        Cari_Sparepart:'',
     }),
     mounted(){
         this.getallsparepart()
@@ -168,8 +177,8 @@ export default {
     methods:{
         async getallsparepart () {
             try {
-                this.jasaservicedata = (await Controller.getallsparepart()).data
-                console.log(this.jasaservicedata)
+                this.sparepartdata = (await Controller.getallsparepart()).data
+                console.log(this.sparepartdata)
             } catch (err) {
                 console.log(err)
             }
@@ -177,8 +186,15 @@ export default {
         async addsparepart () {
             try {
                 const payload = {
-                    // Nama_Jasa : this.Nama_Jasa,
-                    // Harga_Jasa : this.Harga_Jasa,
+                    Kode_Sparepart      : this.Kode_Sparepart,
+                    Nama_Sparepart      : this.Nama_Sparepart,
+                    Merk_Sparepart      : this.Merk_Sparepart,
+                    Rak_Sparepart       : this.Rak_Sparepart,
+                    Jumlah_Sparepart    : this.Jumlah_Sparepart,
+                    Stok_Minimum_Sparepart:this.Stok_Minimum_Sparepart,
+                    Harga_Beli          : this.Harga_Beli,
+                    Harga_Jual          : this.Harga_Jual,
+                    Gambar              : this.Gambar,
                 }
                 await Controller.addsparepart(payload)
                 this.getallsparepart()
@@ -190,8 +206,15 @@ export default {
         async updatesparepart (id) {
             try {
                 const payload = {
-                    // Nama_Jasa : this.editedjasaservice.Nama_Jasa,
-                    // Harga_Jasa : this.editedjasaservice.Harga_Jasa,
+                    Kode_Sparepart      : this.handledsparepart.Kode_Sparepart,
+                    Nama_Sparepart      : this.handledsparepart.Nama_Sparepart,
+                    Merk_Sparepart      : this.handledsparepart.Merk_Sparepart,
+                    Rak_Sparepart       : this.handledsparepart.Rak_Sparepart,
+                    Jumlah_Sparepart    : this.handledsparepart.Jumlah_Sparepart,
+                    Stok_Minimum_Sparepart:this.handledsparepart.Stok_Minimum_Sparepart,
+                    Harga_Beli          : this.handledsparepart.Harga_Beli,
+                    Harga_Jual          : this.handledsparepart.Harga_Jual,
+                    Gambar              : this.handledsparepart.Gambar,
                 }
                 await Controller.updatesparepart(payload,id)
                 this.getallsparepart()
@@ -212,7 +235,13 @@ export default {
         dataspareparthandler(sparepart){
             this.handledsparepart = sparepart
         }
-
+    },
+    computed:{
+        filteredsparepart:function(){
+            return this.sparepartdata.filter((sparepart)=>{
+                return sparepart.Nama_Sparepart.match(this.Cari_Sparepart);
+            });
+        }
     }
 }
 </script>

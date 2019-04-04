@@ -7,7 +7,7 @@
                 </button>
                 <div class="navbar navbar-light bg-light float-right p-0">
 				  	<form class="form-inline">
-				    	<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				    	<input class="form-control mr-sm-2" type="search" v-model="Cari_Supplier" placeholder="Search" aria-label="Search">
 				    	<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
 				  	</form>
 				</div>
@@ -26,7 +26,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-bind:key="supplier['id']" v-for="supplier in supplierdata">
+                        <tr v-bind:key="supplier['id']" v-for="supplier in filteredsupplier">
                             <td>{{supplier.Nama_Supplier}} </td>
                             <td>{{supplier.Alamat_Supplier}} </td>
                             <td>{{supplier.Telepon_Supplier}} </td>
@@ -201,6 +201,7 @@ export default {
         Telepon_Supplier:'',
         Nama_Sales:'',
         Telepon_Sales:'',
+        Cari_Supplier:'',
     }),
     mounted(){
         this.getallsupplier()
@@ -257,9 +258,14 @@ export default {
         },
         datasupplierhandler(supplier){
             this.handledsupplier = supplier
+        },
+    },
+    computed:{
+        filteredsupplier:function(){
+            return this.supplierdata.filter((supplier)=>{
+                return supplier.Nama_Supplier.match(this.Cari_Supplier);
+            });
         }
-
-        
     }
 }
 </script>
