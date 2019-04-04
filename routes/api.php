@@ -20,6 +20,13 @@ Route::get('/cabangs/{id}', 'CabangController@showbyID');
 Route::patch('/cabangs/update/{id}', 'CabangController@update'); 
 Route::delete('/cabangs/delete/{id}', 'CabangController@destroy');
 
+//Role
+Route::get('/roles', 'RoleController@index');
+Route::post('/roles/store', 'RoleController@store');
+Route::get('/roles/{id}', 'RoleController@showbyID');
+Route::patch('/roles/update/{id}', 'RoleController@update'); 
+Route::delete('/roles/delete/{id}', 'RoleController@destroy');
+
 //Konsumen
 Route::get('/konsumens', 'KonsumenController@index');
 Route::post('/konsumens/store', 'KonsumenController@store');
@@ -40,6 +47,7 @@ Route::post('/pegawais/store', 'PegawaiController@store');
 Route::get('/pegawais/{id}', 'PegawaiController@showbyID');
 Route::patch('/pegawais/update/{id}', 'PegawaiController@update'); 
 Route::delete('/pegawais/delete/{id}', 'PegawaiController@destroy');
+Route::POST('/pegawais/mobileauthenticate','PegawaiController@mobileauthenticate');
 
 //Supplier
 Route::get('/suppliers','SupplierController@index');
