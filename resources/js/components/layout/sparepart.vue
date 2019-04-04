@@ -239,7 +239,9 @@ export default {
     computed:{
         filteredsparepart:function(){
             return this.sparepartdata.filter((sparepart)=>{
-                return sparepart.Nama_Sparepart.match(this.Cari_Sparepart);
+                return  sparepart.Nama_Sparepart.toLowerCase().match(this.Cari_Sparepart.toLowerCase())||
+                        sparepart.Kode_Sparepart.toLowerCase().match(this.Cari_Sparepart.toLowerCase())||
+                        sparepart.Merk_Sparepart.toLowerCase().match(this.Cari_Sparepart.toLowerCase());
             });
         }
     }

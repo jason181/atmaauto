@@ -2853,7 +2853,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return this.sparepartdata.filter(function (sparepart) {
-        return sparepart.Nama_Sparepart.match(_this.Cari_Sparepart);
+        return sparepart.Nama_Sparepart.toLowerCase().match(_this.Cari_Sparepart.toLowerCase()) || sparepart.Kode_Sparepart.toLowerCase().match(_this.Cari_Sparepart.toLowerCase()) || sparepart.Merk_Sparepart.toLowerCase().match(_this.Cari_Sparepart.toLowerCase());
       });
     }
   }
