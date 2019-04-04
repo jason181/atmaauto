@@ -3,17 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Transformers\RoleTransformers;
+use App\Role;
 
-class RoleController extends Controller
+class RoleController extends RestController
 {
+    protected $transformer=RoleTransformers::Class;
+
     public function index()
     {
-        return response()->json(Role::all(),200);
+        $role=Role::get();
+        $response=$this->generateCollection($role);
+        return $this->sendResponse($response,201);
     }
 
     public function store(Request $request)
     {
-        $job = Role::create([
+        $role = Role::create([
             'Nama_Role' => $request->Nama_Role,
         ]);
 
