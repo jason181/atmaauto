@@ -14,7 +14,7 @@ class Pegawai extends Model
         'Id_Role',
         'Id_Cabang',
         'Nama_Pegawai',
-        'Alamat_Pegawai',
+        'Alamat',
         'Telepon_Pegawai',
         'Gaji_Pegawai',
         'Username',
@@ -33,11 +33,11 @@ class Pegawai extends Model
 
     public function cabangs()
     {
-        return $this->belongsTo('App\Cabang');
+        return $this->belongsTo('App\Cabang','Id_Cabang');
     }
 
     public function roles()
     {
-        return $this->belongsTo('App\Role');
+        return $this->belongsTo('App\Role','Id_Role');
     }
 }

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Transformers\JasaTransformers;
+use App\Transformers\RoleTransformers;
+use App\Role;
 
 class RoleController extends RestController
 {

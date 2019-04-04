@@ -20,6 +20,13 @@ Route::get('/cabangs/{id}', 'CabangController@showbyID');
 Route::patch('/cabangs/update/{id}', 'CabangController@update'); 
 Route::delete('/cabangs/delete/{id}', 'CabangController@destroy');
 
+//Role
+Route::get('/roles', 'RoleController@index');
+Route::post('/roles/store', 'RoleController@store');
+Route::get('/roles/{id}', 'RoleController@showbyID');
+Route::patch('/roles/update/{id}', 'RoleController@update'); 
+Route::delete('/roles/delete/{id}', 'RoleController@destroy');
+
 //Konsumen
 Route::get('/konsumens', 'KonsumenController@index');
 Route::post('/konsumens/store', 'KonsumenController@store');
@@ -40,3 +47,18 @@ Route::post('/pegawais/store', 'PegawaiController@store');
 Route::get('/pegawais/{id}', 'PegawaiController@showbyID');
 Route::patch('/pegawais/update/{id}', 'PegawaiController@update'); 
 Route::delete('/pegawais/delete/{id}', 'PegawaiController@destroy');
+Route::POST('/pegawais/mobileauthenticate','PegawaiController@mobileauthenticate');
+
+//Supplier
+Route::get('/suppliers','SupplierController@index');
+Route::post('/suppliers/store', 'SupplierController@store');
+Route::get('/suppliers/{id}', 'SupplierController@showbyID');
+Route::patch('/suppliers/update/{id}', 'SupplierController@update'); 
+Route::delete('/suppliers/delete/{id}', 'SupplierController@destroy');
+
+//Sparepart
+Route::get('/spareparts','SparepartController@index');
+Route::post('/spareparts/store', 'SparepartController@store');
+Route::get('/spareparts/{id}', 'SparepartController@showbyID');
+Route::patch('/spareparts/update/{id}', 'SparepartController@update'); 
+Route::delete('/spareparts/delete/{id}', 'SparepartController@destroy');

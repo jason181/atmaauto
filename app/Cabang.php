@@ -18,6 +18,6 @@ class Cabang extends Model
 
     public function pegawais()
     {
-        return $this->hasMany('App\Pegawai');
+        return $this->hasMany('App\Pegawai','Id_Cabang');
     }
 }

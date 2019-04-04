@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -1820,6 +1832,8 @@ module.exports = {
 //
 //
 //
+//
+//
 
 /***/ }),
 
@@ -1847,6 +1861,1410 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/jasa_service.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/jasa_service.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../httpController */ "./resources/js/httpController.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      jasaservicedata: [],
+      handledjasaservice: [],
+      Nama_Jasa: '',
+      Harga_Jasa: 0,
+      Cari_Jasa_Service: ''
+    };
+  },
+  mounted: function mounted() {
+    this.getalljasaservice();
+  },
+  methods: {
+    getalljasaservice: function () {
+      var _getalljasaservice = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getalljasaservice();
+
+              case 3:
+                this.jasaservicedata = _context.sent.data;
+                console.log(this.jasaservicedata);
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 7]]);
+      }));
+
+      function getalljasaservice() {
+        return _getalljasaservice.apply(this, arguments);
+      }
+
+      return getalljasaservice;
+    }(),
+    addjasaservice: function () {
+      var _addjasaservice = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                payload = {
+                  Nama_Jasa: this.Nama_Jasa,
+                  Harga_Jasa: this.Harga_Jasa
+                };
+                _context2.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addjasaservice(payload);
+
+              case 4:
+                this.getalljasaservice(); // console.log()
+
+                _context2.next = 10;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 7]]);
+      }));
+
+      function addjasaservice() {
+        return _addjasaservice.apply(this, arguments);
+      }
+
+      return addjasaservice;
+    }(),
+    updatejasaservice: function () {
+      var _updatejasaservice = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(id) {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                payload = {
+                  Nama_Jasa: this.handledjasaservice.Nama_Jasa,
+                  Harga_Jasa: this.handledjasaservice.Harga_Jasa
+                };
+                _context3.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatejasaservice(payload, id);
+
+              case 4:
+                this.getalljasaservice(); // console.log()
+
+                _context3.next = 10;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 7]]);
+      }));
+
+      function updatejasaservice(_x) {
+        return _updatejasaservice.apply(this, arguments);
+      }
+
+      return updatejasaservice;
+    }(),
+    deletejasaservice: function () {
+      var _deletejasaservice = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deletejasaservice(id);
+
+              case 3:
+                this.getalljasaservice(); // console.log()
+
+                _context4.next = 9;
+                break;
+
+              case 6:
+                _context4.prev = 6;
+                _context4.t0 = _context4["catch"](0);
+                console.log(_context4.t0);
+
+              case 9:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[0, 6]]);
+      }));
+
+      function deletejasaservice(_x2) {
+        return _deletejasaservice.apply(this, arguments);
+      }
+
+      return deletejasaservice;
+    }(),
+    datajasaservicehandler: function datajasaservicehandler(jasa) {
+      this.handledjasaservice = jasa;
+    }
+  },
+  computed: {
+    filteredjasaservice: function filteredjasaservice() {
+      var _this = this;
+
+      return this.jasaservicedata.filter(function (jasa) {
+        return jasa.Nama_Jasa.match(_this.Cari_Jasa_Service);
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/pegawai.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/pegawai.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../httpController */ "./resources/js/httpController.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      pegawaidata: [],
+      editedegawai: [],
+      Nama_Pegawai: '',
+      Alamat_Pegawai: '',
+      Telepon_Pegawai: '',
+      Gaji_Pegawai: 0,
+      Username: '',
+      Password: '',
+      Cari_Pegawai: ''
+    };
+  },
+  mounted: function mounted() {
+    this.getallpegawai();
+  },
+  methods: {
+    getallpegawai: function () {
+      var _getallpegawai = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallpegawai();
+
+              case 3:
+                this.pegawaidata = _context.sent.data;
+                console.log(this.pegawaidata);
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 7]]);
+      }));
+
+      function getallpegawai() {
+        return _getallpegawai.apply(this, arguments);
+      }
+
+      return getallpegawai;
+    }()
+  },
+  computed: {
+    filteredpegawai: function filteredpegawai() {
+      var _this = this;
+
+      return this.pegawaidata.filter(function (pegawai) {
+        return pegawai.Nama_Pegawai.match(_this.Cari_Pegawai);
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/sparepart.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/sparepart.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../httpController */ "./resources/js/httpController.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      sparepartdata: [],
+      handledsparepart: [],
+      Kode_Sparepart: '',
+      Nama_Sparepart: '',
+      Merk_Sparepart: '',
+      Rak_Sparepart: '',
+      Jumlah_Sparepart: '',
+      Stok_Minimum_Sparepart: '',
+      Harga_Beli: 0,
+      Harga_Jual: 0,
+      Gambar: '',
+      Cari_Sparepart: ''
+    };
+  },
+  mounted: function mounted() {
+    this.getallsparepart();
+  },
+  methods: {
+    getallsparepart: function () {
+      var _getallsparepart = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallsparepart();
+
+              case 3:
+                this.sparepartdata = _context.sent.data;
+                console.log(this.sparepartdata);
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 7]]);
+      }));
+
+      function getallsparepart() {
+        return _getallsparepart.apply(this, arguments);
+      }
+
+      return getallsparepart;
+    }(),
+    addsparepart: function () {
+      var _addsparepart = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                payload = {
+                  Kode_Sparepart: this.Kode_Sparepart,
+                  Nama_Sparepart: this.Nama_Sparepart,
+                  Merk_Sparepart: this.Merk_Sparepart,
+                  Rak_Sparepart: this.Rak_Sparepart,
+                  Jumlah_Sparepart: this.Jumlah_Sparepart,
+                  Stok_Minimum_Sparepart: this.Stok_Minimum_Sparepart,
+                  Harga_Beli: this.Harga_Beli,
+                  Harga_Jual: this.Harga_Jual,
+                  Gambar: this.Gambar
+                };
+                _context2.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addsparepart(payload);
+
+              case 4:
+                this.getallsparepart(); // console.log()
+
+                _context2.next = 10;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 7]]);
+      }));
+
+      function addsparepart() {
+        return _addsparepart.apply(this, arguments);
+      }
+
+      return addsparepart;
+    }(),
+    updatesparepart: function () {
+      var _updatesparepart = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(id) {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                payload = {
+                  Kode_Sparepart: this.handledsparepart.Kode_Sparepart,
+                  Nama_Sparepart: this.handledsparepart.Nama_Sparepart,
+                  Merk_Sparepart: this.handledsparepart.Merk_Sparepart,
+                  Rak_Sparepart: this.handledsparepart.Rak_Sparepart,
+                  Jumlah_Sparepart: this.handledsparepart.Jumlah_Sparepart,
+                  Stok_Minimum_Sparepart: this.handledsparepart.Stok_Minimum_Sparepart,
+                  Harga_Beli: this.handledsparepart.Harga_Beli,
+                  Harga_Jual: this.handledsparepart.Harga_Jual,
+                  Gambar: this.handledsparepart.Gambar
+                };
+                _context3.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatesparepart(payload, id);
+
+              case 4:
+                this.getallsparepart(); // console.log()
+
+                _context3.next = 10;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 7]]);
+      }));
+
+      function updatesparepart(_x) {
+        return _updatesparepart.apply(this, arguments);
+      }
+
+      return updatesparepart;
+    }(),
+    deletesparepart: function () {
+      var _deletesparepart = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deletesparepart(id);
+
+              case 3:
+                this.getallsparepart(); // console.log()
+
+                _context4.next = 9;
+                break;
+
+              case 6:
+                _context4.prev = 6;
+                _context4.t0 = _context4["catch"](0);
+                console.log(_context4.t0);
+
+              case 9:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[0, 6]]);
+      }));
+
+      function deletesparepart(_x2) {
+        return _deletesparepart.apply(this, arguments);
+      }
+
+      return deletesparepart;
+    }(),
+    dataspareparthandler: function dataspareparthandler(sparepart) {
+      this.handledsparepart = sparepart;
+    }
+  },
+  computed: {
+    filteredsparepart: function filteredsparepart() {
+      var _this = this;
+
+      return this.sparepartdata.filter(function (sparepart) {
+        return sparepart.Nama_Sparepart.toLowerCase().match(_this.Cari_Sparepart.toLowerCase()) || sparepart.Kode_Sparepart.toLowerCase().match(_this.Cari_Sparepart.toLowerCase()) || sparepart.Merk_Sparepart.toLowerCase().match(_this.Cari_Sparepart.toLowerCase());
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/supplier.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/supplier.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../httpController */ "./resources/js/httpController.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      supplierdata: [],
+      handledsupplier: [],
+      Nama_Supplier: '',
+      Alamat_Supplier: '',
+      Telepon_Supplier: '',
+      Nama_Sales: '',
+      Telepon_Sales: '',
+      Cari_Supplier: ''
+    };
+  },
+  mounted: function mounted() {
+    this.getallsupplier();
+  },
+  methods: {
+    getallsupplier: function () {
+      var _getallsupplier = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallsupplier();
+
+              case 3:
+                this.supplierdata = _context.sent.data;
+                console.log(this.supplierdata);
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 7]]);
+      }));
+
+      function getallsupplier() {
+        return _getallsupplier.apply(this, arguments);
+      }
+
+      return getallsupplier;
+    }(),
+    addsupplier: function () {
+      var _addsupplier = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                payload = {
+                  Nama_Supplier: this.Nama_Supplier,
+                  Alamat_Supplier: this.Alamat_Supplier,
+                  Telepon_Supplier: this.Telepon_Supplier,
+                  Nama_Sales: this.Nama_Sales,
+                  Telepon_Sales: this.Telepon_Sales
+                };
+                _context2.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addsupplier(payload);
+
+              case 4:
+                this.getallsupplier(); // console.log()
+
+                _context2.next = 10;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 7]]);
+      }));
+
+      function addsupplier() {
+        return _addsupplier.apply(this, arguments);
+      }
+
+      return addsupplier;
+    }(),
+    updatesupplier: function () {
+      var _updatesupplier = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(id) {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                payload = {
+                  Nama_Supplier: this.editedsupplier.Nama_Supplier,
+                  Alamat_Supplier: this.editedsupplier.Alamat_Supplier,
+                  Telepon_Supplier: this.editedsupplier.Telepon_Supplier,
+                  Nama_Sales: this.editedsupplier.Nama_Sales,
+                  Telepon_Sales: this.editedsupplier.Telepon_Sales
+                };
+                _context3.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatesupplier(payload, id);
+
+              case 4:
+                this.getallsupplier(); // console.log()
+
+                _context3.next = 10;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 7]]);
+      }));
+
+      function updatesupplier(_x) {
+        return _updatesupplier.apply(this, arguments);
+      }
+
+      return updatesupplier;
+    }(),
+    deletesupplier: function () {
+      var _deletesupplier = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deletesupplier(id);
+
+              case 3:
+                this.getallsupplier(); // console.log()
+
+                _context4.next = 9;
+                break;
+
+              case 6:
+                _context4.prev = 6;
+                _context4.t0 = _context4["catch"](0);
+                console.log(_context4.t0);
+
+              case 9:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[0, 6]]);
+      }));
+
+      function deletesupplier(_x2) {
+        return _deletesupplier.apply(this, arguments);
+      }
+
+      return deletesupplier;
+    }(),
+    datasupplierhandler: function datasupplierhandler(supplier) {
+      this.handledsupplier = supplier;
+    }
+  },
+  computed: {
+    filteredsupplier: function filteredsupplier() {
+      var _this = this;
+
+      return this.supplierdata.filter(function (supplier) {
+        return supplier.Nama_Supplier.match(_this.Cari_Supplier);
+      });
+    }
   }
 });
 
@@ -36606,6 +38024,743 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/regenerator-runtime/runtime.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var runtime = (function (exports) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  exports.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunctionPrototype[toStringTagSymbol] =
+    GeneratorFunction.displayName = "GeneratorFunction";
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      prototype[method] = function(arg) {
+        return this._invoke(method, arg);
+      };
+    });
+  }
+
+  exports.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  exports.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      if (!(toStringTagSymbol in genFun)) {
+        genFun[toStringTagSymbol] = "GeneratorFunction";
+      }
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  exports.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return Promise.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return Promise.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new Promise(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  exports.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  exports.async = function(innerFn, outerFn, self, tryLocsList) {
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList)
+    );
+
+    return exports.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  Gp[toStringTagSymbol] = "Generator";
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function() {
+    return this;
+  };
+
+  Gp.toString = function() {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  exports.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+
+  // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+  return exports;
+
+}(
+  // If this script is executing as a CommonJS module, use module.exports
+  // as the regeneratorRuntime namespace. Otherwise create a new empty
+  // object. Either way, the resulting object will be used to initialize
+  // the regeneratorRuntime variable at the top of this file.
+   true ? module.exports : undefined
+));
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  Function("r", "regeneratorRuntime = r")(runtime);
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/setimmediate/setImmediate.js":
 /*!***************************************************!*\
   !*** ./node_modules/setimmediate/setImmediate.js ***!
@@ -36923,14 +39078,11 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "nav-tabs nav-item nav-link",
-                attrs: { href: "sparepart.php" }
-              },
-              [_vm._v("Sparepart")]
-            ),
+            _c("router-link", { attrs: { to: { name: "Sparepart" } } }, [
+              _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                _vm._v("Sparepart")
+              ])
+            ]),
             _vm._v(" "),
             _c(
               "a",
@@ -36959,14 +39111,11 @@ var render = function() {
               [_vm._v("Sales")]
             ),
             _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "nav-tabs nav-item nav-link",
-                attrs: { href: "supplier.php" }
-              },
-              [_vm._v("Supplier")]
-            ),
+            _c("router-link", { attrs: { to: { name: "Supplier" } } }, [
+              _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                _vm._v("Supplier")
+              ])
+            ]),
             _vm._v(" "),
             _c(
               "a",
@@ -37130,92 +39279,671 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("body", [
+    _c(
+      "div",
+      { staticClass: "container mt-3", staticStyle: { "max-width": "800px" } },
+      [
+        _c("div", { staticClass: "clearfix my-2" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "navbar navbar-light bg-light float-right p-0" },
+            [
+              _c("form", { staticClass: "form-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Cari_Jasa_Service,
+                      expression: "Cari_Jasa_Service"
+                    }
+                  ],
+                  staticClass: "form-control mr-sm-2",
+                  attrs: { type: "search", placeholder: "Cari Jasa Service" },
+                  domProps: { value: _vm.Cari_Jasa_Service },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.Cari_Jasa_Service = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-outline-primary my-2 my-sm-0",
+                    attrs: { type: "submit" }
+                  },
+                  [_vm._v("Search")]
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "table-responsive",
+            staticStyle: { "max-width": "800px", margin: "auto" }
+          },
+          [
+            _c("table", { staticClass: "table table-striped table-hover" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.filteredjasaservice, function(jasa) {
+                  return _c("tr", { key: jasa["id"] }, [
+                    _c("td", [_vm._v(_vm._s(jasa.Nama_Jasa) + " ")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(jasa.Harga_Jasa) + " ")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _c(
+                        "p",
+                        {
+                          attrs: {
+                            "data-placement": "top",
+                            "data-toggle": "tooltip",
+                            title: "Edit"
+                          }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: {
+                                "data-title": "Edit_Jasa_Service",
+                                "data-toggle": "modal",
+                                "data-target": "#Edit_Jasa_Service"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.datajasaservicehandler(jasa)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-edit" })]
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _c(
+                        "p",
+                        {
+                          attrs: {
+                            "data-placement": "top",
+                            "data-toggle": "tooltip",
+                            title: "Delete"
+                          }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-danger",
+                              attrs: {
+                                "data-title": "Delete_Jasa_Service",
+                                "data-toggle": "modal",
+                                "data-target": "#Delete_Jasa_Service"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.datajasaservicehandler(jasa)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-trash-alt" })]
+                          )
+                        ]
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Tambah_Jasa_Service",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Tambah_Jasa_Service",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.addjasaservice()
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Nama_Jasa,
+                          expression: "Nama_Jasa"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Nama Jasa Service",
+                        "aria-label": "Nama_Jasa_Service",
+                        "aria-describedby": "basic-addon2",
+                        id: "Nama_Jasa_Service",
+                        name: "Nama_Pegawai"
+                      },
+                      domProps: { value: _vm.Nama_Jasa },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Nama_Jasa = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(4),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Harga_Jasa,
+                          expression: "Harga_Jasa"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "number",
+                        placeholder: "Masukkan Harga Jasa Service",
+                        "aria-label": "Harga_Jasa_Service",
+                        "aria-describedby": "basic-addon2",
+                        id: "Harga_Jasa_Service",
+                        name: "Harga_Jasa_Service"
+                      },
+                      domProps: { value: _vm.Harga_Jasa },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Harga_Jasa = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(5)
+                ]
+              )
+            ])
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Edit_Jasa_Service",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Edit_Jasa_Service",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(6),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.updatejasaservice(_vm.handledjasaservice.id)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(7),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.handledjasaservice.Nama_Jasa,
+                          expression: "handledjasaservice.Nama_Jasa"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Nama Jasa Service",
+                        "aria-label": "Nama_Jasa_Service",
+                        "aria-describedby": "basic-addon2",
+                        id: "Nama_Jasa_Service",
+                        name: "Nama_Pegawai"
+                      },
+                      domProps: { value: _vm.handledjasaservice.Nama_Jasa },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.handledjasaservice,
+                            "Nama_Jasa",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(8),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.handledjasaservice.Harga_Jasa,
+                          expression: "handledjasaservice.Harga_Jasa"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "number",
+                        placeholder: "Masukkan Harga Jasa Service",
+                        "aria-label": "Harga_Jasa_Service",
+                        "aria-describedby": "basic-addon2",
+                        id: "Harga_Jasa_Service",
+                        name: "Harga_Jasa_Service"
+                      },
+                      domProps: { value: _vm.handledjasaservice.Harga_Jasa },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.handledjasaservice,
+                            "Harga_Jasa",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(9)
+                ]
+              )
+            ])
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Delete_Jasa_Service",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Delete_Jasa_Service",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(10),
+            _vm._v(" "),
+            _vm._m(11),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer " }, [
+              _c(
+                "a",
+                {
+                  staticClass: "float-left w-100",
+                  attrs: { id: "delete_btn" }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger float-left w-50",
+                      attrs: { type: "button", "data-dismiss": "modal" },
+                      on: {
+                        click: function($event) {
+                          return _vm.deletejasaservice(
+                            _vm.handledjasaservice.id
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("span", {
+                        staticClass: "glyphicon glyphicon-ok-sign"
+                      }),
+                      _vm._v("Ya")
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(12)
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("body", [
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-success float-left mb-2",
+        attrs: {
+          "data-title": "Tambah_Jasa_Service",
+          "data-toggle": "modal",
+          "data-target": "#Tambah_Jasa_Service"
+        }
+      },
+      [
+        _c("i", { staticClass: "fas fa-plus mr-2" }),
+        _vm._v("Tambah\n                ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "table-primary text-center" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Harga")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
       _c(
-        "div",
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Tambah Jasa Service")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
         {
-          staticClass: "container mt-3",
-          staticStyle: { "max-width": "800px" }
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
         },
-        [
-          _c("div", { staticClass: "clearfix my-2" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-success float-left mb-2",
-                attrs: {
-                  "data-title": "Tambah_Jasa_Service",
-                  "data-toggle": "modal",
-                  "data-target": "#Tambah_Jasa_Service"
-                }
-              },
-              [
-                _c("i", { staticClass: "fas fa-plus mr-2" }),
-                _vm._v("Tambah\n                ")
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "navbar navbar-light bg-light float-right p-0" },
-              [
-                _c("form", { staticClass: "form-inline" }, [
-                  _c("input", {
-                    staticClass: "form-control mr-sm-2",
-                    attrs: {
-                      type: "search",
-                      placeholder: "Search",
-                      "aria-label": "Search"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-primary my-2 my-sm-0",
-                      attrs: { type: "submit" }
-                    },
-                    [_vm._v("Search")]
-                  )
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "table-responsive",
-              staticStyle: { "max-width": "800px", margin: "auto" }
-            },
-            [
-              _c("table", { staticClass: "table table-striped table-hover" }, [
-                _c("thead", { staticClass: "table-primary text-center" }, [
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Harga")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tbody")
-              ])
-            ]
-          )
-        ]
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
       )
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Nama")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Harga")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer " }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success btn-lg",
+          staticStyle: { width: "100%" },
+          attrs: { type: "submit" }
+        },
+        [_vm._v("Tambahkan Jasa Service")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Edit Jasa Service")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Nama")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Harga")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer " }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary btn-lg",
+          staticStyle: { width: "100%" },
+          attrs: { type: "submit" }
+        },
+        [_vm._v("Simpan Perubahan")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Hapus Data Jasa Service")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("div", { staticClass: "alert alert-danger" }, [
+        _c("span", { staticClass: "glyphicon glyphicon-warning-sign" }),
+        _vm._v(" Apakah Anda Yakin Ingin Menghapus Data Jasa Service Ini ?")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-secondary float-right w-50",
+        attrs: { type: "button", "data-dismiss": "modal" }
+      },
+      [
+        _c("span", { staticClass: "glyphicon glyphicon-remove" }),
+        _vm._v("Tidak")
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -37239,31 +39967,778 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("body", [
+    _c("div", { staticClass: "container-fluid mt-3" }, [
+      _c("div", { staticClass: "clearfix my-2" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "navbar navbar-light bg-light float-right p-0" },
+          [
+            _c("form", { staticClass: "form-inline" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.Cari_Pegawai,
+                    expression: "Cari_Pegawai"
+                  }
+                ],
+                staticClass: "form-control mr-sm-2",
+                attrs: {
+                  type: "search",
+                  placeholder: "Search",
+                  "aria-label": "Search"
+                },
+                domProps: { value: _vm.Cari_Pegawai },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.Cari_Pegawai = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-outline-primary my-2 my-sm-0",
+                  attrs: { type: "submit" }
+                },
+                [_vm._v("Search")]
+              )
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "table-responsive" }, [
+        _c("table", { staticClass: "table table-striped table-hover" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.filteredpegawai, function(pegawai) {
+              return _c("tr", { key: pegawai["id"] }, [
+                _c("td", [_vm._v(_vm._s(pegawai.Nama_Pegawai) + " ")]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(pegawai.Alamat_Pegawai) + " ")]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(pegawai.Telepon_Pegawai) + " ")]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(pegawai.Cabang))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(pegawai.Role) + " ")]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(pegawai.Gaji_Pegawai) + " ")]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(pegawai.Username) + " ")]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(pegawai.Password) + " ")]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _c(
+                    "p",
+                    {
+                      attrs: {
+                        "data-placement": "top",
+                        "data-toggle": "tooltip",
+                        title: "Edit"
+                      }
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: {
+                            "data-id": "(jasa.id)",
+                            "data-title": "Edit_Jasa_Service",
+                            "data-toggle": "modal",
+                            "data-target": "#Edit_Jasa_Service"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.updatehandler(_vm.jasa)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fas fa-edit" })]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _c(
+                    "p",
+                    {
+                      attrs: {
+                        "data-placement": "top",
+                        "data-toggle": "tooltip",
+                        title: "Delete"
+                      }
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          on: {
+                            click: function($event) {
+                              return _vm.deletepegawai(_vm.jasa.id)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fas fa-trash-alt" })]
+                      )
+                    ]
+                  )
+                ])
+              ])
+            }),
+            0
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(2)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("body", [
-      _c("div", { staticClass: "container-fluid mt-3" }, [
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-success float-left mb-2",
+        attrs: {
+          "data-title": "Tambah_Pegawai",
+          "data-toggle": "modal",
+          "data-target": "#Tambah_Pegawai"
+        }
+      },
+      [
+        _c("i", { staticClass: "fas fa-plus mr-2" }),
+        _vm._v("Tambah\n                ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "table-primary text-center" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Alamat")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Telepon")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Cabang")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Jabatan")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Gaji")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Username")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Password")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Tambah_Pegawai",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Tambah_Pegawai",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c(
+                "h4",
+                {
+                  staticClass: "modal-title mx-auto",
+                  attrs: { id: "Heading" }
+                },
+                [_vm._v("Tambah Pegawai")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  staticStyle: { "margin-left": "-30px" },
+                  attrs: {
+                    type: "button",
+                    "data-dismiss": "modal",
+                    "aria-hidden": "true",
+                    "aria-label": "Close"
+                  }
+                },
+                [
+                  _c("span", { attrs: { "aria-hidden": "true" } }, [
+                    _vm._v("×")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("form", { attrs: { action: "pegawai.php", method: "POST" } }, [
+                _c("div", { staticClass: "input-group mb-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "input-group-prepend d-block",
+                      staticStyle: { width: "100px" }
+                    },
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "input-group-text",
+                          attrs: { id: "basic-addon2" }
+                        },
+                        [_vm._v("Nama")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      placeholder: "Masukkan Nama Pegawai",
+                      "aria-label": "Nama_Pegawai",
+                      "aria-describedby": "basic-addon2",
+                      id: "Nama_Pegawai",
+                      name: "Nama_Pegawai"
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group mb-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "input-group-prepend d-block",
+                      staticStyle: { width: "100px" }
+                    },
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "input-group-text",
+                          attrs: { id: "basic-addon2" }
+                        },
+                        [_vm._v("Alamat")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      placeholder: "Masukkan Alamat",
+                      "aria-label": "Nama_Lengkap",
+                      "aria-describedby": "basic-addon2",
+                      id: "Alamat",
+                      name: "Alamat"
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group mb-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "input-group-prepend d-block",
+                      staticStyle: { width: "100px" }
+                    },
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "input-group-text",
+                          attrs: { id: "basic-addon2" }
+                        },
+                        [_vm._v("Telepon")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      placeholder: "Masukkan Nomor Telepon",
+                      "aria-label": "Telepon_Pegawai",
+                      "aria-describedby": "basic-addon2",
+                      id: "Telepon_Pegawai",
+                      name: "Telepon_Pegawai"
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group mb-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "input-group-prepend d-block",
+                      staticStyle: { width: "100px" }
+                    },
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "input-group-text",
+                          attrs: { id: "basic-addon2" }
+                        },
+                        [_vm._v("Email")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      placeholder: "Masukkan Gaji",
+                      "aria-label": "Gaji_Pegawai",
+                      "aria-describedby": "basic-addon2",
+                      id: "Gaji_Pegawai",
+                      name: "Gaji_Pegawai"
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group mb-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "input-group-prepend d-block",
+                      staticStyle: { width: "100px" }
+                    },
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "input-group-text",
+                          attrs: { id: "basic-addon2" }
+                        },
+                        [_vm._v("Username")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      placeholder: "Masukkan Username",
+                      "aria-label": "Username",
+                      "aria-describedby": "basic-addon2",
+                      id: "Username",
+                      name: "Username"
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group mb-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "input-group-prepend d-block",
+                      staticStyle: { width: "100px" }
+                    },
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "input-group-text",
+                          attrs: { id: "basic-addon2" }
+                        },
+                        [_vm._v("Password")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      placeholder: "Masukkan Password",
+                      "aria-label": "Password",
+                      "aria-describedby": "basic-addon2",
+                      id: "Password",
+                      name: "Password"
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group mb-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "input-group-prepend d-block",
+                      staticStyle: { width: "100px" }
+                    },
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "input-group-text",
+                          attrs: { id: "basic-addon2" }
+                        },
+                        [_vm._v("Cabang")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("select", { staticClass: "form-control" }, [
+                    _c(
+                      "option",
+                      { attrs: { disabled: "disabled", selected: "selected" } },
+                      [_vm._v("-- Pilih Cabang --")]
+                    ),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("CABANG 1")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("CABANG 2")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group mb-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "input-group-prepend d-block",
+                      staticStyle: { width: "100px" }
+                    },
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "input-group-text",
+                          attrs: { id: "basic-addon2" }
+                        },
+                        [_vm._v("Jabatan")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("select", { staticClass: "form-control" }, [
+                    _c(
+                      "option",
+                      { attrs: { disabled: "disabled", selected: "selected" } },
+                      [_vm._v("-- Pilih Jabatan --")]
+                    ),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("Jabatan 1")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("Jabatan 2")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer " }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success btn-lg",
+                      staticStyle: { width: "100%" },
+                      attrs: { type: "submit" }
+                    },
+                    [_vm._v("Tambahkan Pegawai")]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/sparepart.vue?vue&type=template&id=ff5c2b20&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/sparepart.vue?vue&type=template&id=ff5c2b20& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("body", [
+    _c("div", { staticClass: "container mt-3" }, [
+      _c("div", { staticClass: "clearfix my-2" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "navbar navbar-light bg-light float-right p-0" },
+          [
+            _c("form", { staticClass: "form-inline" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.Cari_Sparepart,
+                    expression: "Cari_Sparepart"
+                  }
+                ],
+                staticClass: "form-control mr-sm-2",
+                attrs: {
+                  type: "search",
+                  placeholder: "Search",
+                  "aria-label": "Search"
+                },
+                domProps: { value: _vm.Cari_Sparepart },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.Cari_Sparepart = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-outline-primary my-2 my-sm-0",
+                  attrs: { type: "submit" }
+                },
+                [_vm._v("Search")]
+              )
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "table-responsive", staticStyle: { margin: "auto" } },
+        [
+          _c("table", { staticClass: "table table-striped table-hover" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.filteredsparepart, function(sparepart, index) {
+                return _c("tr", { key: index }, [
+                  _c("td", [_vm._v(_vm._s(sparepart.Kode_Sparepart) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Nama_Sparepart) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Merk_Sparepart) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Rak_Sparepart) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Jumlah_Sparepart) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(_vm._s(sparepart.Stok_Minimum_Sparepart) + " ")
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Harga_Beli) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Harga_Jual) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Gambar) + " ")]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "p",
+                      {
+                        attrs: {
+                          "data-placement": "top",
+                          "data-toggle": "tooltip",
+                          title: "Edit"
+                        }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: {
+                              "data-title": "Edit_Jasa_Service",
+                              "data-toggle": "modal",
+                              "data-target": "#Edit_Jasa_Service"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.dataspareparthandler(sparepart)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-edit" })]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "p",
+                      {
+                        attrs: {
+                          "data-placement": "top",
+                          "data-toggle": "tooltip",
+                          title: "Delete"
+                        }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            attrs: {
+                              "data-title": "Delete_Jasa_Service",
+                              "data-toggle": "modal",
+                              "data-target": "#Delete_Jasa_Service"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.dataspareparthandler(sparepart)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-trash-alt" })]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              }),
+              0
+            )
+          ])
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-success float-left mb-2",
+        attrs: {
+          "data-title": "Tambah_Jasa_Service",
+          "data-toggle": "modal",
+          "data-target": "#Tambah_Jasa_Service"
+        }
+      },
+      [
+        _c("i", { staticClass: "fas fa-plus mr-2" }),
+        _vm._v("Tambah\n                ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "table-primary text-center" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Kode")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Merk")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Rak")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Jumlah")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Stok Minimum")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Harga Beli")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Harga Jual")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Gambar")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/supplier.vue?vue&type=template&id=3de0a316&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/supplier.vue?vue&type=template&id=3de0a316& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("body", [
+    _c(
+      "div",
+      { staticClass: "container mt-3", staticStyle: { "max-width": "800px" } },
+      [
         _c("div", { staticClass: "clearfix my-2" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-success float-left mb-2",
-              attrs: {
-                "data-title": "Tambah_Pegawai",
-                "data-toggle": "modal",
-                "data-target": "#Tambah_Pegawai"
-              }
-            },
-            [
-              _c("i", { staticClass: "fas fa-plus mr-2" }),
-              _vm._v("Tambah\n                ")
-            ]
-          ),
+          _vm._m(0),
           _vm._v(" "),
           _c(
             "div",
@@ -37271,11 +40746,28 @@ var staticRenderFns = [
             [
               _c("form", { staticClass: "form-inline" }, [
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Cari_Supplier,
+                      expression: "Cari_Supplier"
+                    }
+                  ],
                   staticClass: "form-control mr-sm-2",
                   attrs: {
                     type: "search",
                     placeholder: "Search",
                     "aria-label": "Search"
+                  },
+                  domProps: { value: _vm.Cari_Supplier },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.Cari_Supplier = $event.target.value
+                    }
                   }
                 }),
                 _vm._v(" "),
@@ -37292,39 +40784,989 @@ var staticRenderFns = [
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "table-responsive" }, [
-          _c("table", { staticClass: "table table-striped table-hover" }, [
-            _c("thead", { staticClass: "table-primary text-center" }, [
-              _c("tr", [
-                _c("th", { attrs: { scope: "col" } }, [_vm._v("Id")]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama")]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [_vm._v("Alamat")]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [_vm._v("Telepon")]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [_vm._v("Cabang")]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [_vm._v("Jabatan")]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [_vm._v("Gaji")]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [_vm._v("Username")]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [_vm._v("Password")]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
-              ])
-            ]),
+        _c(
+          "div",
+          {
+            staticClass: "table-responsive",
+            staticStyle: { "max-width": "1200px", margin: "auto" }
+          },
+          [
+            _c("table", { staticClass: "table table-striped table-hover" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.filteredsupplier, function(supplier) {
+                  return _c("tr", { key: supplier["id"] }, [
+                    _c("td", [_vm._v(_vm._s(supplier.Nama_Supplier) + " ")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(supplier.Alamat_Supplier) + " ")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(supplier.Telepon_Supplier) + " ")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(supplier.Nama_Sales) + " ")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(supplier.Telepon_Sales) + " ")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _c(
+                        "p",
+                        {
+                          attrs: {
+                            "data-placement": "top",
+                            "data-toggle": "tooltip",
+                            title: "Edit"
+                          }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: {
+                                "data-title": "Edit_Supplier",
+                                "data-toggle": "modal",
+                                "data-target": "#Edit_Supplier"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.datasupplierhandler(supplier)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-edit" })]
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _c(
+                        "p",
+                        {
+                          attrs: {
+                            "data-placement": "top",
+                            "data-toggle": "tooltip",
+                            title: "Delete"
+                          }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-danger",
+                              attrs: {
+                                "data-title": "Delete_Supplier",
+                                "data-toggle": "modal",
+                                "data-target": "#Delete_Supplier"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.datasupplierhandler(supplier)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-trash-alt" })]
+                          )
+                        ]
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Tambah_Supplier",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Tambah_Supplier",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(2),
             _vm._v(" "),
-            _c("tbody")
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.addsupplier()
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Nama_Supplier,
+                          expression: "Nama_Supplier"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Nama Supplier",
+                        "aria-label": "Nama_Supplier",
+                        "aria-describedby": "basic-addon2",
+                        id: "Nama_Supplier",
+                        name: "Nama_Supplier"
+                      },
+                      domProps: { value: _vm.Nama_Supplier },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Nama_Supplier = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(4),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Alamat_Supplier,
+                          expression: "Alamat_Supplier"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Alamat Supplier",
+                        "aria-label": "Alamat_Supplier",
+                        "aria-describedby": "basic-addon2",
+                        id: "Alamat_Supplier",
+                        name: "Alamat_Supplier"
+                      },
+                      domProps: { value: _vm.Alamat_Supplier },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Alamat_Supplier = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(5),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Telepon_Supplier,
+                          expression: "Telepon_Supplier"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Telepon Supplier",
+                        "aria-label": "Telepon_Supplier",
+                        "aria-describedby": "basic-addon2",
+                        id: "Telepon_Supplier",
+                        name: "Telepon_Supplier"
+                      },
+                      domProps: { value: _vm.Telepon_Supplier },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Telepon_Supplier = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(6),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(7),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Nama_Sales,
+                          expression: "Nama_Sales"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Nama Sales",
+                        "aria-label": "Nama_Sales",
+                        "aria-describedby": "basic-addon2",
+                        id: "Nama_Sales",
+                        name: "Nama_Sales"
+                      },
+                      domProps: { value: _vm.Nama_Sales },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Nama_Sales = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(8),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Telepon_Sales,
+                          expression: "Telepon_Sales"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Telepon Sales",
+                        "aria-label": "Telepon_Sales",
+                        "aria-describedby": "basic-addon2",
+                        id: "Telepon_Sales",
+                        name: "Telepon_Sales"
+                      },
+                      domProps: { value: _vm.Telepon_Sales },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Telepon_Sales = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(9)
+              ]
+            )
           ])
         ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Edit_Supplier",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Edit_Supplier",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(10),
+            _vm._v(" "),
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.updatesupplier(_vm.handledsupplier.id)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(11),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.handledsupplier.Nama_Supplier,
+                          expression: "handledsupplier.Nama_Supplier"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Nama Supplier",
+                        "aria-label": "Nama_Supplier",
+                        "aria-describedby": "basic-addon2",
+                        id: "Nama_Supplier",
+                        name: "Nama_Supplier"
+                      },
+                      domProps: { value: _vm.handledsupplier.Nama_Supplier },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.handledsupplier,
+                            "Nama_Supplier",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(12),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.handledsupplier.Alamat_Supplier,
+                          expression: "handledsupplier.Alamat_Supplier"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Alamat Supplier",
+                        "aria-label": "Alamat_Supplier",
+                        "aria-describedby": "basic-addon2",
+                        id: "Alamat_Supplier",
+                        name: "Alamat_Supplier"
+                      },
+                      domProps: { value: _vm.handledsupplier.Alamat_Supplier },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.handledsupplier,
+                            "Alamat_Supplier",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(13),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.handledsupplier.Telepon_Supplier,
+                          expression: "handledsupplier.Telepon_Supplier"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Telepon Supplier",
+                        "aria-label": "Telepon_Supplier",
+                        "aria-describedby": "basic-addon2",
+                        id: "Telepon_Supplier",
+                        name: "Telepon_Supplier"
+                      },
+                      domProps: { value: _vm.handledsupplier.Telepon_Supplier },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.handledsupplier,
+                            "Telepon_Supplier",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(14),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(15),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.handledsupplier.Nama_Sales,
+                          expression: "handledsupplier.Nama_Sales"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Nama Sales",
+                        "aria-label": "Nama_Sales",
+                        "aria-describedby": "basic-addon2",
+                        id: "Nama_Sales",
+                        name: "Nama_Sales"
+                      },
+                      domProps: { value: _vm.handledsupplier.Nama_Sales },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.handledsupplier,
+                            "Nama_Sales",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(16),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.handledsupplier.Telepon_Sales,
+                          expression: "handledsupplier.Telepon_Sales"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Telepon Sales",
+                        "aria-label": "Telepon_Sales",
+                        "aria-describedby": "basic-addon2",
+                        id: "Telepon_Sales",
+                        name: "Telepon_Sales"
+                      },
+                      domProps: { value: _vm.handledsupplier.Telepon_Sales },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.handledsupplier,
+                            "Telepon_Sales",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(17)
+              ]
+            )
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Delete_Supplier",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Delete_Supplier",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(18),
+            _vm._v(" "),
+            _vm._m(19),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer " }, [
+              _c(
+                "a",
+                {
+                  staticClass: "float-left w-100",
+                  attrs: { id: "delete_btn" }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger float-left w-50",
+                      attrs: { type: "button", "data-dismiss": "modal" },
+                      on: {
+                        click: function($event) {
+                          return _vm.deletesupplier(_vm.handledsupplier.id)
+                        }
+                      }
+                    },
+                    [
+                      _c("span", {
+                        staticClass: "glyphicon glyphicon-ok-sign"
+                      }),
+                      _vm._v("Ya")
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(20)
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-success float-left mb-2",
+        attrs: {
+          "data-title": "Tambah_Supplier",
+          "data-toggle": "modal",
+          "data-target": "#Tambah_Supplier"
+        }
+      },
+      [
+        _c("i", { staticClass: "fas fa-plus mr-2" }),
+        _vm._v("Tambah\n                ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "table-primary text-center" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama Supplier")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Alamat Supplier ")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Telepon Supplier")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama Sales")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Telepon Sales")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Tambah Supplier")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Nama")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Alamat")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Telepon")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Tambah Sales")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Nama")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Telepon")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success btn-lg",
+          staticStyle: { width: "100%" },
+          attrs: { type: "submit" }
+        },
+        [_vm._v("Tambahkan Supplier")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Edit Supplier")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Nama")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Alamat")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Telepon")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Tambah Sales")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Nama")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Telepon")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success btn-lg",
+          staticStyle: { width: "100%" },
+          attrs: { type: "submit" }
+        },
+        [_vm._v("Tambahkan Supplier")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Hapus Data Supplier")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("div", { staticClass: "alert alert-danger" }, [
+        _c("span", { staticClass: "glyphicon glyphicon-warning-sign" }),
+        _vm._v(" Apakah Anda Yakin Ingin Menghapus Data Supplier Ini ?")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-secondary float-right w-50",
+        attrs: { type: "button", "data-dismiss": "modal" }
+      },
+      [
+        _c("span", { staticClass: "glyphicon glyphicon-remove" }),
+        _vm._v("Tidak")
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -52113,11 +56555,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_layout_HomeLayout_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/layout/HomeLayout.vue */ "./resources/js/components/layout/HomeLayout.vue");
 /* harmony import */ var _components_layout_pegawai_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/layout/pegawai.vue */ "./resources/js/components/layout/pegawai.vue");
 /* harmony import */ var _components_layout_jasa_service_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/layout/jasa_service.vue */ "./resources/js/components/layout/jasa_service.vue");
+/* harmony import */ var _components_layout_supplier_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/layout/supplier.vue */ "./resources/js/components/layout/supplier.vue");
+/* harmony import */ var _components_layout_sparepart_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/layout/sparepart.vue */ "./resources/js/components/layout/sparepart.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // import Buefy from 'buefy';
 
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 window.VueRouter = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js").default; // Vue.use(Buefy,{defaultIconPack: 'fa'}, VueRouter, axios);
+
+
 
 
 
@@ -52138,6 +56584,14 @@ var router = new VueRouter({
     name: 'Jasa_Service',
     path: '/jasa_service',
     component: _components_layout_jasa_service_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }, {
+    name: 'Supplier',
+    path: '/supplier',
+    component: _components_layout_supplier_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }, {
+    name: 'Sparepart',
+    path: '/sparepart',
+    component: _components_layout_sparepart_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }]
 });
 var app = new Vue({
@@ -52359,15 +56813,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _jasa_service_vue_vue_type_template_id_52be99f6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jasa_service.vue?vue&type=template&id=52be99f6& */ "./resources/js/components/layout/jasa_service.vue?vue&type=template&id=52be99f6&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _jasa_service_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./jasa_service.vue?vue&type=script&lang=js& */ "./resources/js/components/layout/jasa_service.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _jasa_service_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _jasa_service_vue_vue_type_template_id_52be99f6___WEBPACK_IMPORTED_MODULE_0__["render"],
   _jasa_service_vue_vue_type_template_id_52be99f6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -52381,6 +56837,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/layout/jasa_service.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/jasa_service.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/layout/jasa_service.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jasa_service_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./jasa_service.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/jasa_service.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jasa_service_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -52412,15 +56882,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pegawai_vue_vue_type_template_id_4d915a96___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pegawai.vue?vue&type=template&id=4d915a96& */ "./resources/js/components/layout/pegawai.vue?vue&type=template&id=4d915a96&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _pegawai_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pegawai.vue?vue&type=script&lang=js& */ "./resources/js/components/layout/pegawai.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _pegawai_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _pegawai_vue_vue_type_template_id_4d915a96___WEBPACK_IMPORTED_MODULE_0__["render"],
   _pegawai_vue_vue_type_template_id_4d915a96___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -52434,6 +56906,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/layout/pegawai.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/pegawai.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/layout/pegawai.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_pegawai_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./pegawai.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/pegawai.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_pegawai_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -52452,6 +56938,430 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pegawai_vue_vue_type_template_id_4d915a96___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/sparepart.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/layout/sparepart.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _sparepart_vue_vue_type_template_id_ff5c2b20___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sparepart.vue?vue&type=template&id=ff5c2b20& */ "./resources/js/components/layout/sparepart.vue?vue&type=template&id=ff5c2b20&");
+/* harmony import */ var _sparepart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sparepart.vue?vue&type=script&lang=js& */ "./resources/js/components/layout/sparepart.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _sparepart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _sparepart_vue_vue_type_template_id_ff5c2b20___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _sparepart_vue_vue_type_template_id_ff5c2b20___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/layout/sparepart.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/sparepart.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/layout/sparepart.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_sparepart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./sparepart.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/sparepart.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_sparepart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/sparepart.vue?vue&type=template&id=ff5c2b20&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/layout/sparepart.vue?vue&type=template&id=ff5c2b20& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_sparepart_vue_vue_type_template_id_ff5c2b20___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./sparepart.vue?vue&type=template&id=ff5c2b20& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/sparepart.vue?vue&type=template&id=ff5c2b20&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_sparepart_vue_vue_type_template_id_ff5c2b20___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_sparepart_vue_vue_type_template_id_ff5c2b20___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/supplier.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/layout/supplier.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _supplier_vue_vue_type_template_id_3de0a316___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./supplier.vue?vue&type=template&id=3de0a316& */ "./resources/js/components/layout/supplier.vue?vue&type=template&id=3de0a316&");
+/* harmony import */ var _supplier_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./supplier.vue?vue&type=script&lang=js& */ "./resources/js/components/layout/supplier.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _supplier_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _supplier_vue_vue_type_template_id_3de0a316___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _supplier_vue_vue_type_template_id_3de0a316___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/layout/supplier.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/supplier.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/layout/supplier.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_supplier_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./supplier.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/supplier.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_supplier_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/supplier.vue?vue&type=template&id=3de0a316&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/layout/supplier.vue?vue&type=template&id=3de0a316& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_supplier_vue_vue_type_template_id_3de0a316___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./supplier.vue?vue&type=template&id=3de0a316& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/supplier.vue?vue&type=template&id=3de0a316&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_supplier_vue_vue_type_template_id_3de0a316___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_supplier_vue_vue_type_template_id_3de0a316___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/http.js":
+/*!******************************!*\
+  !*** ./resources/js/http.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  init: function init() {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = '127.0.0.1';
+  },
+  get: function get(url, successCallback, errorCallback) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.request({
+      url: url,
+      method: 'get'
+    }).then(successCallback).catch(errorCallback);
+  },
+  post: function post(url, data, successCallback, errorCallback) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.request({
+      url: url,
+      data: data,
+      method: 'post'
+    }).then(successCallback).catch(errorCallback);
+  },
+  patch: function patch(url, data, successCallback, errorCallback) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.request({
+      url: url,
+      data: data,
+      method: 'patch'
+    }).then(successCallback).catch(errorCallback);
+  },
+  delete: function _delete(url, successCallback, errorCallback) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.request({
+      url: url,
+      method: 'delete'
+    }).then(successCallback).catch(errorCallback);
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/httpController.js":
+/*!****************************************!*\
+  !*** ./resources/js/httpController.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./http */ "./resources/js/http.js");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  getalljasaservice: function getalljasaservice() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/jasas', successCallback, errorCallback);
+    });
+  },
+  addjasaservice: function addjasaservice(payload) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/jasas/store', payload, successCallback, errorCallback);
+    });
+  },
+  updatejasaservice: function updatejasaservice(payload, id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/jasas/update/' + id, payload, successCallback, errorCallback);
+    });
+  },
+  deletejasaservice: function deletejasaservice(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].delete('/api/jasas/delete/' + id, successCallback, errorCallback);
+    });
+  },
+  getallpegawai: function getallpegawai() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/pegawais', successCallback, errorCallback);
+    });
+  },
+  addpegawai: function addpegawai(payload) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/pegawai/store', payload, successCallback, errorCallback);
+    });
+  },
+  updatepegawai: function updatepegawai(payload, id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/pegawai/update/' + id, payload, successCallback, errorCallback);
+    });
+  },
+  deletepegawai: function deletepegawai(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].delete('/api/pegawai/delete/' + id, successCallback, errorCallback);
+    });
+  },
+  getallsupplier: function getallsupplier() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/suppliers', successCallback, errorCallback);
+    });
+  },
+  addsupplier: function addsupplier(payload) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/suppliers/store', payload, successCallback, errorCallback);
+    });
+  },
+  updatesupplier: function updatesupplier(payload, id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/suppliers/update/' + id, payload, successCallback, errorCallback);
+    });
+  },
+  deletesupplier: function deletesupplier(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].delete('/api/suppliers/delete/' + id, successCallback, errorCallback);
+    });
+  },
+  getallsparepart: function getallsparepart() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/spareparts', successCallback, errorCallback);
+    });
+  },
+  addsparepart: function addsparepart(payload) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/spareparts/store', payload, successCallback, errorCallback);
+    });
+  },
+  updatesparepart: function updatesparepart(payload, id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/sparepart/update/' + id, payload, successCallback, errorCallback);
+    });
+  },
+  deletesparepart: function deletesparepart(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].delete('/api/spareparts/delete/' + id, successCallback, errorCallback);
+    });
+  }
+});
 
 /***/ }),
 
