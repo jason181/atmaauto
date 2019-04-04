@@ -10,6 +10,7 @@ import HomeLayout from './components/layout/HomeLayout.vue';
 import Pegawai from './components/layout/pegawai.vue';
 import Jasa_Service from './components/layout/jasa_service.vue';
 import Supplier from './components/layout/supplier.vue';
+import Sparepart from './components/layout/sparepart.vue';
 
 Vue.config.productionTip = false;
 
@@ -35,6 +36,11 @@ const router = new VueRouter({
             name: 'Supplier',
             path: '/supplier',
             component: Supplier
+        },
+        {
+            name: 'Sparepart',
+            path: '/sparepart',
+            component: Sparepart
         },
     ]
 })

@@ -20,14 +20,14 @@ class PegawaiController extends RestController
     public function store(Request $request)
     {
         $pegawai = Pegawai::create([
-            'Id_Role' => $request->Id_Role,
-            'Id_Cabang' => $request->Id_Cabang,
-            'Nama_Pegawai' => $request->Nama_Pegawai,
-            'Alamat_Pegawai' => $request->Alamat_Pegawai,
-            'Telepon_Pegawai' => $request->Telepon_Pegawai,
-            'Gaji_Pegawai' => $request->Gaji_Pegawai,
-            'Username' => $request->Username,
-            'Password' => $request->Password,
+            'Id_Role'           => $request->Id_Role,
+            'Id_Cabang'         => $request->Id_Cabang,
+            'Nama_Pegawai'      => $request->Nama_Pegawai,
+            'Alamat_Pegawai'    => $request->Alamat_Pegawai,
+            'Telepon_Pegawai'   => $request->Telepon_Pegawai,
+            'Gaji_Pegawai'      => $request->Gaji_Pegawai,
+            'Username'          => $request->Username,
+            'Password'          => $request->Password,
         ]);
 
         return response()->json([

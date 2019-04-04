@@ -25,19 +25,18 @@
                 <router-link :to="{name:'Pegawai'}" class="">
                     <a class="nav-tabs nav-item nav-link">Pegawai</a>
                 </router-link>
-			  	<!-- <a class="nav-tabs nav-item nav-link" href="pegawai.php">Pegawai</a> -->
 			  	<router-link :to="{name:'Jasa_Service'}" class="">
                     <a class="nav-tabs nav-item nav-link">Jasa Service</a>
                 </router-link>
-				<!-- <a class="nav-tabs nav-item nav-link" href="jasa_service.php">Jasa Service</a> -->
-			  	<a class="nav-tabs nav-item nav-link" href="sparepart.php">Sparepart</a>
+				<router-link :to="{name:'Sparepart'}" class="">
+                    <a class="nav-tabs nav-item nav-link">Sparepart</a>
+                </router-link>
 			  	<a class="nav-tabs nav-item nav-link" href="motor.php">Motor</a>
 			  	<a class="nav-tabs nav-item nav-link" href="konsumen.php">Konsumen</a>
 			  	<a class="nav-tabs nav-item nav-link" href="sales.php">Sales</a>
 				<router-link :to="{name:'Supplier'}" class="">
                     <a class="nav-tabs nav-item nav-link">Supplier</a>
                 </router-link>
-			  	<!-- <a class="nav-tabs nav-item nav-link" href="supplier.php">Supplier</a> -->
 			  	<a class="nav-tabs nav-item nav-link" href="cabang.php">Cabang</a>
 			  	<a class="nav-tabs nav-item nav-link" href="pengadaan.php">Pengadaan</a>
 			  	<a class="nav-tabs nav-item nav-link" href="laporan.php">Laporan</a>

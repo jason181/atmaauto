@@ -47,3 +47,10 @@ Route::post('/suppliers/store', 'SupplierController@store');
 Route::get('/suppliers/{id}', 'SupplierController@showbyID');
 Route::patch('/suppliers/update/{id}', 'SupplierController@update'); 
 Route::delete('/suppliers/delete/{id}', 'SupplierController@destroy');
+
+//Sparepart
+Route::get('/spareparts','SparepartController@index');
+Route::post('/spareparts/store', 'SparepartController@store');
+Route::get('/spareparts/{id}', 'SparepartController@showbyID');
+Route::patch('/spareparts/update/{id}', 'SparepartController@update'); 
+Route::delete('/spareparts/delete/{id}', 'SparepartController@destroy');
