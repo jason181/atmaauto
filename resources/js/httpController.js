@@ -88,7 +88,7 @@ export default {
                 reject(err)
     
             }
-            Http.post('/api/pegawai/store', payload, successCallback, errorCallback)
+            Http.post('/api/pegawais/store', payload, successCallback, errorCallback)
         })
     },
     updatepegawai(payload,id){
@@ -97,12 +97,11 @@ export default {
                 const data = res.data
                 resolve(data)
             }
-
             const errorCallback = (err) => {
                 reject(err)
             }
 
-            Http.patch('/api/pegawai/update/'+id, payload, successCallback, errorCallback)
+            Http.patch('/api/pegawais/update/'+id, payload, successCallback, errorCallback)
         })
     },
     deletepegawai(id){
@@ -117,7 +116,7 @@ export default {
 
             }
 
-            Http.delete('/api/pegawai/delete/'+id, successCallback, errorCallback)
+            Http.delete('/api/pegawais/delete/'+id, successCallback, errorCallback)
         })
     },
     getallsupplier(){

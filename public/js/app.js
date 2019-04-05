@@ -3198,11 +3198,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
                 payload = {
-                  Nama_Supplier: this.editedsupplier.Nama_Supplier,
-                  Alamat_Supplier: this.editedsupplier.Alamat_Supplier,
-                  Telepon_Supplier: this.editedsupplier.Telepon_Supplier,
-                  Nama_Sales: this.editedsupplier.Nama_Sales,
-                  Telepon_Sales: this.editedsupplier.Telepon_Sales
+                  Nama_Supplier: this.handledsupplier.Nama_Supplier,
+                  Alamat_Supplier: this.handledsupplier.Alamat_Supplier,
+                  Telepon_Supplier: this.handledsupplier.Telepon_Supplier,
+                  Nama_Sales: this.handledsupplier.Nama_Sales,
+                  Telepon_Sales: this.handledsupplier.Telepon_Sales
                 };
                 _context3.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatesupplier(payload, id);
@@ -41734,7 +41734,7 @@ var staticRenderFns = [
       _c(
         "h4",
         { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
-        [_vm._v("Tambah Sales")]
+        [_vm._v("Edit Sales")]
       )
     ])
   },
@@ -41784,11 +41784,11 @@ var staticRenderFns = [
       _c(
         "button",
         {
-          staticClass: "btn btn-success btn-lg",
+          staticClass: "btn btn-primary btn-lg",
           staticStyle: { width: "100%" },
-          attrs: { type: "submit" }
+          attrs: { type: "submit", "data-dismiss": "modal" }
         },
-        [_vm._v("Tambahkan Supplier")]
+        [_vm._v("Simpan Perubahan")]
       )
     ])
   },
@@ -57296,7 +57296,7 @@ __webpack_require__.r(__webpack_exports__);
         reject(err);
       };
 
-      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/pegawai/store', payload, successCallback, errorCallback);
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/pegawais/store', payload, successCallback, errorCallback);
     });
   },
   updatepegawai: function updatepegawai(payload, id) {
@@ -57310,7 +57310,7 @@ __webpack_require__.r(__webpack_exports__);
         reject(err);
       };
 
-      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/pegawai/update/' + id, payload, successCallback, errorCallback);
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/pegawais/update/' + id, payload, successCallback, errorCallback);
     });
   },
   deletepegawai: function deletepegawai(id) {
@@ -57324,7 +57324,7 @@ __webpack_require__.r(__webpack_exports__);
         reject(err);
       };
 
-      _http__WEBPACK_IMPORTED_MODULE_0__["default"].delete('/api/pegawai/delete/' + id, successCallback, errorCallback);
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].delete('/api/pegawais/delete/' + id, successCallback, errorCallback);
     });
   },
   getallsupplier: function getallsupplier() {

@@ -140,7 +140,7 @@
                             </div>
                         </div>
                         <div class="modal-header">
-                            <h4 class="modal-title mx-auto" id="Heading">Tambah Sales</h4>
+                            <h4 class="modal-title mx-auto" id="Heading">Edit Sales</h4>
                         </div>
                         <div class="modal-body">
                             <div class="input-group mb-4">
@@ -157,7 +157,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-success btn-lg" style="width: 100%;">Tambahkan Supplier</button>
+                            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;" data-dismiss="modal">Simpan Perubahan</button>
                         </div>
                     </form>
                 </div>
@@ -234,11 +234,11 @@ export default {
         async updatesupplier (id) {
             try {
                 const payload = {
-                    Nama_Supplier   : this.editedsupplier.Nama_Supplier,
-                    Alamat_Supplier : this.editedsupplier.Alamat_Supplier,
-                    Telepon_Supplier: this.editedsupplier.Telepon_Supplier,
-                    Nama_Sales      : this.editedsupplier.Nama_Sales,
-                    Telepon_Sales   : this.editedsupplier.Telepon_Sales
+                    Nama_Supplier   : this.handledsupplier.Nama_Supplier,
+                    Alamat_Supplier : this.handledsupplier.Alamat_Supplier,
+                    Telepon_Supplier: this.handledsupplier.Telepon_Supplier,
+                    Nama_Sales      : this.handledsupplier.Nama_Sales,
+                    Telepon_Sales   : this.handledsupplier.Telepon_Sales
                 }
                 await Controller.updatesupplier(payload,id)
                 this.getallsupplier()
