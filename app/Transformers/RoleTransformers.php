@@ -15,7 +15,7 @@ class RoleTransformers extends TransformerAbstract
     public function transform(Role $role)
     {
         return [
-            'id'                    => $role->Id_Role,
+            'Id_Role'                  => $role->Id_Role,
             'Nama_Role'           => $role->Nama_Role,
             
         ];
