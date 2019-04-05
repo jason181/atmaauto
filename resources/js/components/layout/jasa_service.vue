@@ -24,7 +24,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-bind:key="jasa['id']" v-for="jasa in filteredjasaservice">
+                        <tr v-bind:key="jasa['Id_Jasa']" v-for="jasa in filteredjasaservice">
                             <td>{{jasa.Nama_Jasa}} </td>
                             <td>{{jasa.Harga_Jasa}} </td>
                             <td class="text-center">
@@ -91,7 +91,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form @submit.prevent="updatejasaservice(handledjasaservice.id)">
+                        <form @submit.prevent="updatejasaservice(handledjasaservice.Id_Jasa)">
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Nama</span>
@@ -128,7 +128,7 @@
                     </div>
                     <div class="modal-footer ">
                         <a id="delete_btn" class="float-left w-100">
-                            <button type="button" @click="deletejasaservice(handledjasaservice.id)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
+                            <button type="button" @click="deletejasaservice(handledjasaservice.Id_Jasa)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
                         </a>
                         <button type="button" class="btn btn-secondary float-right w-50" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
                     </div>
