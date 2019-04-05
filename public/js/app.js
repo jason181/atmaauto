@@ -2419,6 +2419,74 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2600,7 +2668,95 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return addpegawai;
-    }()
+    }(),
+    updatepegawai: function () {
+      var _updatepegawai = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(id) {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                payload = {
+                  Id_Cabang: this.handledpegawai.Id_Cabang,
+                  Id_Role: this.handledpegawai.Id_Role,
+                  Nama_Pegawai: this.handledpegawai.Nama_Pegawai,
+                  Alamat_Pegawai: this.handledpegawai.Alamat_Pegawai,
+                  Telepon_Pegawai: this.handledpegawai.Telepon_Pegawai,
+                  Gaji_Pegawai: this.handledpegawai.Gaji_Pegawai,
+                  Username: this.handledpegawai.Username,
+                  Password: this.handledpegawai.Password
+                };
+                _context5.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatepegawai(payload, id);
+
+              case 4:
+                this.getallpegawai(); // console.log()
+
+                _context5.next = 10;
+                break;
+
+              case 7:
+                _context5.prev = 7;
+                _context5.t0 = _context5["catch"](0);
+                console.log(_context5.t0);
+
+              case 10:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this, [[0, 7]]);
+      }));
+
+      function updatepegawai(_x) {
+        return _updatepegawai.apply(this, arguments);
+      }
+
+      return updatepegawai;
+    }(),
+    deletepegawai: function () {
+      var _deletepegawai = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.prev = 0;
+                _context6.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deletepegawai(id);
+
+              case 3:
+                this.getallpegawai(); // console.log()
+
+                _context6.next = 9;
+                break;
+
+              case 6:
+                _context6.prev = 6;
+                _context6.t0 = _context6["catch"](0);
+                console.log(_context6.t0);
+
+              case 9:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, this, [[0, 6]]);
+      }));
+
+      function deletepegawai(_x2) {
+        return _deletepegawai.apply(this, arguments);
+      }
+
+      return deletepegawai;
+    }(),
+    datapegawaihandler: function datapegawaihandler(pegawai) {
+      this.handledpegawai = pegawai;
+    }
   },
   computed: {
     filteredpegawai: function filteredpegawai() {
@@ -40256,14 +40412,13 @@ var render = function() {
                         {
                           staticClass: "btn btn-primary",
                           attrs: {
-                            "data-id": "(jasa.id)",
-                            "data-title": "Edit_Jasa_Service",
+                            "data-title": "Edit_Pegawai",
                             "data-toggle": "modal",
-                            "data-target": "#Edit_Jasa_Service"
+                            "data-target": "#Edit_Pegawai"
                           },
                           on: {
                             click: function($event) {
-                              return _vm.updatehandler(_vm.jasa)
+                              return _vm.datapegawaihandler(pegawai)
                             }
                           }
                         },
@@ -40288,9 +40443,14 @@ var render = function() {
                         "button",
                         {
                           staticClass: "btn btn-danger",
+                          attrs: {
+                            "data-title": "Delete_Pegawai",
+                            "data-toggle": "modal",
+                            "data-target": "#Delete_Pegawai"
+                          },
                           on: {
                             click: function($event) {
-                              return _vm.deletepegawai(_vm.jasa.id)
+                              return _vm.datapegawaihandler(pegawai)
                             }
                           }
                         },
@@ -40657,6 +40817,447 @@ var render = function() {
           ])
         ])
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Edit_Pegawai",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Edit_Pegawai",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(12),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.updatepegawai(_vm.handledpegawai.Id_Pegawai)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(13),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.handledpegawai.Nama_Pegawai,
+                          expression: "handledpegawai.Nama_Pegawai"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Nama Pegawai",
+                        "aria-label": "Nama_Pegawai",
+                        "aria-describedby": "basic-addon2",
+                        id: "Nama_Pegawai",
+                        name: "Nama_Pegawai"
+                      },
+                      domProps: { value: _vm.handledpegawai.Nama_Pegawai },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.handledpegawai,
+                            "Nama_Pegawai",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(14),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.handledpegawai.Alamat_Pegawai,
+                          expression: "handledpegawai.Alamat_Pegawai"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Alamat Pegawai",
+                        "aria-label": "Nama_Lengkap",
+                        "aria-describedby": "basic-addon2",
+                        id: "Alamat",
+                        name: "Alamat"
+                      },
+                      domProps: { value: _vm.handledpegawai.Alamat_Pegawai },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.handledpegawai,
+                            "Alamat_Pegawai",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(15),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.handledpegawai.Telepon_Pegawai,
+                          expression: "handledpegawai.Telepon_Pegawai"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Nomor Telepon Pegawai",
+                        "aria-label": "Telepon_Pegawai",
+                        "aria-describedby": "basic-addon2",
+                        id: "Telepon_Pegawai",
+                        name: "Telepon_Pegawai"
+                      },
+                      domProps: { value: _vm.handledpegawai.Telepon_Pegawai },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.handledpegawai,
+                            "Telepon_Pegawai",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(16),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.handledpegawai.Gaji_Pegawai,
+                          expression: "handledpegawai.Gaji_Pegawai"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Gaji",
+                        "aria-label": "Gaji_Pegawai",
+                        "aria-describedby": "basic-addon2",
+                        id: "Gaji_Pegawai",
+                        name: "Gaji_Pegawai"
+                      },
+                      domProps: { value: _vm.handledpegawai.Gaji_Pegawai },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.handledpegawai,
+                            "Gaji_Pegawai",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(17),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.handledpegawai.Username,
+                          expression: "handledpegawai.Username"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Username",
+                        "aria-label": "Username",
+                        "aria-describedby": "basic-addon2",
+                        id: "Username",
+                        name: "Username"
+                      },
+                      domProps: { value: _vm.handledpegawai.Username },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.handledpegawai,
+                            "Username",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(18),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.handledpegawai.Password,
+                          expression: "handledpegawai.Password"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Password",
+                        "aria-label": "Password",
+                        "aria-describedby": "basic-addon2",
+                        id: "Password",
+                        name: "Password"
+                      },
+                      domProps: { value: _vm.handledpegawai.Password },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.handledpegawai,
+                            "Password",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(19),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.handledpegawai.Id_Cabang,
+                            expression: "handledpegawai.Id_Cabang"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.handledpegawai,
+                              "Id_Cabang",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              disabled: "disabled",
+                              selected: "selected"
+                            }
+                          },
+                          [_vm._v("-- Pilih Cabang --")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.cabangdata, function(cabang) {
+                          return _c(
+                            "option",
+                            {
+                              key: cabang["Id_Cabang"],
+                              domProps: { value: cabang.Id_Cabang }
+                            },
+                            [_vm._v(_vm._s(cabang.Nama_Cabang) + " ")]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(20),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.handledpegawai.Id_Role,
+                            expression: "handledpegawai.Id_Role"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.handledpegawai,
+                              "Id_Role",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              disabled: "disabled",
+                              selected: "selected"
+                            }
+                          },
+                          [_vm._v("-- Pilih Jabatan --")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.roledata, function(role) {
+                          return _c(
+                            "option",
+                            {
+                              key: role["Id_Role"],
+                              domProps: { value: role.Id_Role }
+                            },
+                            [_vm._v(_vm._s(role.Nama_Role) + " ")]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(21)
+                ]
+              )
+            ])
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Delete_Pegawai",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Delete_Pegawai",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(22),
+            _vm._v(" "),
+            _vm._m(23),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer " }, [
+              _c(
+                "a",
+                {
+                  staticClass: "float-left w-100",
+                  attrs: { id: "delete_btn" }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger float-left w-50",
+                      attrs: { type: "button", "data-dismiss": "modal" },
+                      on: {
+                        click: function($event) {
+                          return _vm.deletepegawai(
+                            _vm.handledpegawai.Id_Pegawai
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("span", {
+                        staticClass: "glyphicon glyphicon-ok-sign"
+                      }),
+                      _vm._v("Ya")
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(24)
+            ])
+          ])
+        ])
+      ]
     )
   ])
 }
@@ -40903,6 +41504,255 @@ var staticRenderFns = [
         [_vm._v("Tambahkan Pegawai")]
       )
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Edit Pegawai")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Nama")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Alamat")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Telepon")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Gaji")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Username")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Password")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Cabang")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Jabatan")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer " }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary btn-lg",
+          staticStyle: { width: "100%" },
+          attrs: { type: "submit" }
+        },
+        [_vm._v("Simpan Perubahan")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Hapus Data Pegawai")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("div", { staticClass: "alert alert-danger" }, [
+        _c("span", { staticClass: "glyphicon glyphicon-warning-sign" }),
+        _vm._v(" Apakah Anda Yakin Ingin Menghapus Data Pegawai Ini ?")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-secondary float-right w-50",
+        attrs: { type: "button", "data-dismiss": "modal" }
+      },
+      [
+        _c("span", { staticClass: "glyphicon glyphicon-remove" }),
+        _vm._v("Tidak")
+      ]
+    )
   }
 ]
 render._withStripped = true

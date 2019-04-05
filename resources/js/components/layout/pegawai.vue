@@ -42,58 +42,26 @@
                             <td>{{pegawai.Password}} </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                    <button class="btn btn-primary" @click="updatehandler(jasa)" data-id=(jasa.id) data-title="Edit_Jasa_Service" data-toggle="modal" data-target="#Edit_Jasa_Service">
+                                    <button class="btn btn-primary" @click="datapegawaihandler(pegawai)" data-title="Edit_Pegawai" data-toggle="modal" data-target="#Edit_Pegawai">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </p>
                             </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                    <button @click="deletepegawai(jasa.id)" class="btn btn-danger">
+                                    <button @click="datapegawaihandler(pegawai)" class="btn btn-danger" data-title="Delete_Pegawai" data-toggle="modal" data-target="#Delete_Pegawai">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </p>
                             </td>
                         </tr>
-                        <!-- <?php  
-                        $query="SELECT * FROM pegawais JOIN cabangs USING(Id_Cabang) JOIN roles USING(Id_Role)";
-                        $result=mysqli_query($conn,$query);
-                        while($data = mysqli_fetch_assoc($result))
-                        {
-                            echo '
-                                <tr>
-                                    <th scope="row" class="text-center">PEG-'.$data["Id_Pegawai"].'</th>
-                                    <td>'.$data["Nama_Pegawai"].'</td>
-                                    <td>'.$data["Alamat"].'</td>
-                                    <td>'.$data["Telepon_Pegawai"].'</td>
-                                    <td>'.$data["Nama_Cabang"].'</td>
-                                    <td>'.$data["Nama_Role"].'</td>
-                                    <td>'.$data["Gaji_Pegawai"].'</td>
-                                    <td>'.$data["Username"].'</td>
-                                    <td>'.$data["Password"].'</td>
-                                    <td class="text-center">
-                                        <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                            <button class="btn btn-primary" data-id="'.$data["Id_Pegawai"].'" data-title="Edit_Pegawai" data-toggle="modal" data-target="#Edit_Pegawai" >
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                        </p>
-                                    </td>
-                                    <td class="text-center">
-                                        <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                            <button class="btn btn-danger" data-id="'.$data["Id_Pegawai"].'" data-title="Delete_Pegawai" data-toggle="modal" data-target="#Delete_Pegawai">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                        </p>
-                                    </td>
-                                </tr>
-                            ';
-                        }
-                        ?> -->
                         
                     </tbody>
                 </table>
             </div>
         </div>
+        <!-- MY MODALS -->
+        <!-- TAMBAH PEGAWAI -->
         <div class="modal fade" id="Tambah_Pegawai" tabindex="-1" role="dialog" aria-labelledby="Tambah_Pegawai" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -167,6 +135,106 @@
                 </div>
             </div>
         </div>
+        <!-- END OF TAMBAH PEGAWAI -->
+        <!-- EDIT PEGAWAI -->
+        <div class="modal fade" id="Edit_Pegawai" tabindex="-1" role="dialog" aria-labelledby="Edit_Pegawai" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Edit Pegawai</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form @submit.prevent="updatepegawai(handledpegawai.Id_Pegawai)">
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Nama</span>
+                            </div>
+                                <input type="text" class="form-control" v-model="handledpegawai.Nama_Pegawai" placeholder="Masukkan Nama Pegawai" aria-label="Nama_Pegawai" aria-describedby="basic-addon2" id="Nama_Pegawai" name="Nama_Pegawai">
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Alamat</span>
+                                </div>
+                                <input type="text" class="form-control" v-model="handledpegawai.Alamat_Pegawai" placeholder="Masukkan Alamat Pegawai" aria-label="Nama_Lengkap" aria-describedby="basic-addon2" id="Alamat" name="Alamat">
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Telepon</span>
+                                </div>
+                                <input type="text" class="form-control" v-model="handledpegawai.Telepon_Pegawai" placeholder="Masukkan Nomor Telepon Pegawai" aria-label="Telepon_Pegawai" aria-describedby="basic-addon2" id="Telepon_Pegawai" name="Telepon_Pegawai">
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Gaji</span>
+                                </div>
+                                <input type="text" class="form-control" v-model="handledpegawai.Gaji_Pegawai" placeholder="Masukkan Gaji" aria-label="Gaji_Pegawai" aria-describedby="basic-addon2" id="Gaji_Pegawai" name="Gaji_Pegawai">
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Username</span>
+                                </div>
+                                <input type="text" class="form-control" v-model="handledpegawai.Username" placeholder="Masukkan Username" aria-label="Username" aria-describedby="basic-addon2" id="Username" name="Username">
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Password</span>
+                                </div>
+                                <input type="text" class="form-control" v-model="handledpegawai.Password" placeholder="Masukkan Password" aria-label="Password" aria-describedby="basic-addon2" id="Password" name="Password">
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Cabang</span>
+                                </div>
+                                <select class="form-control" v-model="handledpegawai.Id_Cabang">
+                                    <option disabled="disabled" selected="selected">-- Pilih Cabang --</option>
+                                    <option v-bind:key="cabang['Id_Cabang']" v-for="cabang in cabangdata" :value="cabang.Id_Cabang">{{cabang.Nama_Cabang}} </option>
+                                </select>
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Jabatan</span>
+                                </div>
+                                <select class="form-control" v-model="handledpegawai.Id_Role">
+                                    <option disabled="disabled" selected="selected">-- Pilih Jabatan --</option>
+                                    <option v-bind:key="role['Id_Role']" v-for="role in roledata" :value="role.Id_Role">{{role.Nama_Role}} </option>
+                                </select>
+                            </div>
+                            <div class="modal-footer ">
+                                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Simpan Perubahan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END OF EDIT PEGAWAI -->
+        <!-- DELETE PEGAWAI -->
+        <div class="modal fade" id="Delete_Pegawai" tabindex="-1" role="dialog" aria-labelledby="Delete_Pegawai" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Hapus Data Pegawai</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Apakah Anda Yakin Ingin Menghapus Data Pegawai Ini ?</div>
+                    </div>
+                    <div class="modal-footer ">
+                        <a id="delete_btn" class="float-left w-100">
+                            <button type="button" @click="deletepegawai(handledpegawai.Id_Pegawai)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
+                        </a>
+                        <button type="button" class="btn btn-secondary float-right w-50" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        <!-- END OF DELETE JASA SERVICE -->
+        <!-- END OF MY MODALS -->
     </body>
 </template>
 <script>
@@ -236,6 +304,37 @@ export default {
                 console.log(err)
             }
         },
+        async updatepegawai (id) {
+            try {
+                const payload = {
+                    Id_Cabang           : this.handledpegawai.Id_Cabang,
+                    Id_Role             : this.handledpegawai.Id_Role,
+                    Nama_Pegawai        : this.handledpegawai.Nama_Pegawai,
+                    Alamat_Pegawai      : this.handledpegawai.Alamat_Pegawai,
+                    Telepon_Pegawai     : this.handledpegawai.Telepon_Pegawai,
+                    Gaji_Pegawai        : this.handledpegawai.Gaji_Pegawai,
+                    Username            : this.handledpegawai.Username,
+                    Password            : this.handledpegawai.Password,
+                }
+                await Controller.updatepegawai(payload,id)
+                this.getallpegawai()
+                // console.log()
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async deletepegawai (id) {
+            try {
+                await Controller.deletepegawai(id)
+                this.getallpegawai()
+                // console.log()
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        datapegawaihandler(pegawai){
+            this.handledpegawai = pegawai
+        }
     },
     computed:{
         filteredpegawai:function(){
