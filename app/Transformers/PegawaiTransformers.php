@@ -20,7 +20,7 @@ class PegawaiTransformers extends TransformerAbstract
             'Cabang'                => $pegawai->cabangs->Nama_Cabang,
             'Id_Pegawai'            => $pegawai->Id_Pegawai,
             'Nama_Pegawai'          => $pegawai->Nama_Pegawai,
-            'Alamat_Pegawai'        => $pegawai->Alamat_Pegawai,
+            'Alamat_Pegawai'        => $pegawai->Alamat,
             'Telepon_Pegawai'       => $pegawai->Telepon_Pegawai,
             'Gaji_Pegawai'          => $pegawai->Gaji_Pegawai,
             'Username'              => $pegawai->Username,
