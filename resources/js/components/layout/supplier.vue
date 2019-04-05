@@ -26,7 +26,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-bind:key="supplier['id']" v-for="supplier in filteredsupplier">
+                        <tr v-bind:key="supplier['Id_Supplier']" v-for="supplier in filteredsupplier">
                             <td>{{supplier.Nama_Supplier}} </td>
                             <td>{{supplier.Alamat_Supplier}} </td>
                             <td>{{supplier.Telepon_Supplier}} </td>
@@ -118,7 +118,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="updatesupplier(handledsupplier.id)">
+                    <form @submit.prevent="updatesupplier(handledsupplier.Id_Supplier)">
                         <div class="modal-body">
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
@@ -179,7 +179,7 @@
                     </div>
                     <div class="modal-footer ">
                         <a id="delete_btn" class="float-left w-100">
-                            <button type="button" @click="deletesupplier(handledsupplier.id)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
+                            <button type="button" @click="deletesupplier(handledsupplier.Id_Supplier)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
                         </a>
                         <button type="button" class="btn btn-secondary float-right w-50" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
                     </div>

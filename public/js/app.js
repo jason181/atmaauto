@@ -1858,6 +1858,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
@@ -2494,6 +2509,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -39252,9 +39268,67 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("body", [
-      _c("div", { staticClass: "content main", attrs: { id: "homeLayout" } }, [
-        _c("p", [_vm._v(" cek 123 ")])
-      ])
+      _c(
+        "div",
+        { staticClass: "contenter-fluid", attrs: { id: "homeLayout" } },
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-sm-3 mx-auto mb-5" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "card border-primary mx-auto",
+                  staticStyle: { width: "18rem" }
+                },
+                [
+                  _c("div", { staticClass: "card-header" }, [
+                    _c(
+                      "h4",
+                      {
+                        staticClass: "card-title mb-0",
+                        staticStyle: { "text-align": "center" }
+                      },
+                      [_vm._v("'.$data[\"Nama_Sparepart\"].'")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "card-body",
+                      staticStyle: { "text-align": "center" }
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "card-img-top",
+                        staticStyle: { height: "250px", width: "auto" },
+                        attrs: { alt: "Card image cap" }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "card-footer",
+                      staticStyle: { "text-align": "center" }
+                    },
+                    [
+                      _c("p", {
+                        staticClass: "card-text mb-2",
+                        staticStyle: { color: "black" }
+                      }),
+                      _vm._v(
+                        "\r\n                        Detail\r\n                    "
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          ])
+        ]
+      )
     ])
   }
 ]
@@ -39340,7 +39414,7 @@ var render = function() {
               _c(
                 "tbody",
                 _vm._l(_vm.filteredjasaservice, function(jasa) {
-                  return _c("tr", { key: jasa["id"] }, [
+                  return _c("tr", { key: jasa["Id_Jasa"] }, [
                     _c("td", [_vm._v(_vm._s(jasa.Nama_Jasa) + " ")]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(jasa.Harga_Jasa) + " ")]),
@@ -39546,7 +39620,9 @@ var render = function() {
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
-                      return _vm.updatejasaservice(_vm.handledjasaservice.id)
+                      return _vm.updatejasaservice(
+                        _vm.handledjasaservice.Id_Jasa
+                      )
                     }
                   }
                 },
@@ -39669,7 +39745,7 @@ var render = function() {
                       on: {
                         click: function($event) {
                           return _vm.deletejasaservice(
-                            _vm.handledjasaservice.id
+                            _vm.handledjasaservice.Id_Jasa
                           )
                         }
                       }
@@ -40584,7 +40660,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(sparepart.Harga_Jual) + " ")]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sparepart.Gambar) + " ")]),
+                  _c("td", [_vm._v(_vm._s(sparepart.Gambar))]),
                   _vm._v(" "),
                   _c("td", { staticClass: "text-center" }, [
                     _c(
@@ -40797,7 +40873,7 @@ var render = function() {
               _c(
                 "tbody",
                 _vm._l(_vm.filteredsupplier, function(supplier) {
-                  return _c("tr", { key: supplier["id"] }, [
+                  return _c("tr", { key: supplier["Id_Supplier"] }, [
                     _c("td", [_vm._v(_vm._s(supplier.Nama_Supplier) + " ")]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(supplier.Alamat_Supplier) + " ")]),
@@ -41111,7 +41187,7 @@ var render = function() {
                 on: {
                   submit: function($event) {
                     $event.preventDefault()
-                    return _vm.updatesupplier(_vm.handledsupplier.id)
+                    return _vm.updatesupplier(_vm.handledsupplier.Id_Supplier)
                   }
                 }
               },
@@ -41349,7 +41425,9 @@ var render = function() {
                       attrs: { type: "button", "data-dismiss": "modal" },
                       on: {
                         click: function($event) {
-                          return _vm.deletesupplier(_vm.handledsupplier.id)
+                          return _vm.deletesupplier(
+                            _vm.handledsupplier.Id_Supplier
+                          )
                         }
                       }
                     },
@@ -57383,8 +57461,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\atmaauto\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\JASON\atmaauto\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\JASON\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
