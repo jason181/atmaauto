@@ -1,6 +1,6 @@
 <template>
     <body>
-        <div class="container mt-3" style="">
+        <div class="container-fluid mt-3" style="">
             <div class="clearfix my-2">
                 <button class="btn btn-success float-left mb-2" data-title="Tambah_Jasa_Service" data-toggle="modal" data-target="#Tambah_Jasa_Service">
                     <i class="fas fa-plus mr-2"></i>Tambah

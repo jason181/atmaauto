@@ -2419,14 +2419,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       pegawaidata: [],
-      editedegawai: [],
+      cabangdata: [],
+      roledata: [],
+      handledpegawai: [],
+      Id_Cabang: 0,
+      Id_Role: 0,
       Nama_Pegawai: '',
       Alamat_Pegawai: '',
       Telepon_Pegawai: '',
@@ -2437,7 +2439,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   mounted: function mounted() {
-    this.getallpegawai();
+    this.getallpegawai(), this.getallcabang(), this.getallrole();
   },
   methods: {
     getallpegawai: function () {
@@ -2476,6 +2478,128 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return getallpegawai;
+    }(),
+    getallcabang: function () {
+      var _getallcabang = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallcabang();
+
+              case 3:
+                this.cabangdata = _context2.sent.data;
+                console.log(this.cabangdata);
+                _context2.next = 10;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 7]]);
+      }));
+
+      function getallcabang() {
+        return _getallcabang.apply(this, arguments);
+      }
+
+      return getallcabang;
+    }(),
+    getallrole: function () {
+      var _getallrole = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallrole();
+
+              case 3:
+                this.roledata = _context3.sent.data;
+                console.log(this.roledata);
+                _context3.next = 10;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 7]]);
+      }));
+
+      function getallrole() {
+        return _getallrole.apply(this, arguments);
+      }
+
+      return getallrole;
+    }(),
+    addpegawai: function () {
+      var _addpegawai = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                payload = {
+                  Id_Cabang: this.Id_Cabang,
+                  Id_Role: this.Id_Role,
+                  Nama_Pegawai: this.Nama_Pegawai,
+                  Alamat_Pegawai: this.Alamat_Pegawai,
+                  Telepon_Pegawai: this.Telepon_Pegawai,
+                  Gaji_Pegawai: this.Gaji_Pegawai,
+                  Username: this.Username,
+                  Password: this.Password
+                };
+                _context4.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addpegawai(payload);
+
+              case 4:
+                this.getallpegawai(); // console.log()
+
+                _context4.next = 10;
+                break;
+
+              case 7:
+                _context4.prev = 7;
+                _context4.t0 = _context4["catch"](0);
+                console.log(_context4.t0);
+
+              case 10:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[0, 7]]);
+      }));
+
+      function addpegawai() {
+        return _addpegawai.apply(this, arguments);
+      }
+
+      return addpegawai;
     }()
   },
   computed: {
@@ -40106,9 +40230,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(pegawai.Telepon_Pegawai) + " ")]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(pegawai.Cabang))]),
+                _c("td", [_vm._v(_vm._s(pegawai.Nama_Cabang))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(pegawai.Role) + " ")]),
+                _c("td", [_vm._v(_vm._s(pegawai.Nama_Role) + " ")]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(pegawai.Gaji_Pegawai) + " ")]),
                 _vm._v(" "),
@@ -40183,7 +40307,357 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(2)
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Tambah_Pegawai",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Tambah_Pegawai",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.addpegawai()
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Nama_Pegawai,
+                          expression: "Nama_Pegawai"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Nama Pegawai",
+                        "aria-label": "Nama_Pegawai",
+                        "aria-describedby": "basic-addon2",
+                        id: "Nama_Pegawai",
+                        name: "Nama_Pegawai"
+                      },
+                      domProps: { value: _vm.Nama_Pegawai },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Nama_Pegawai = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(4),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Alamat_Pegawai,
+                          expression: "Alamat_Pegawai"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Alamat Pegawai",
+                        "aria-label": "Nama_Lengkap",
+                        "aria-describedby": "basic-addon2",
+                        id: "Alamat",
+                        name: "Alamat"
+                      },
+                      domProps: { value: _vm.Alamat_Pegawai },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Alamat_Pegawai = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(5),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Telepon_Pegawai,
+                          expression: "Telepon_Pegawai"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Nomor Telepon Pegawai",
+                        "aria-label": "Telepon_Pegawai",
+                        "aria-describedby": "basic-addon2",
+                        id: "Telepon_Pegawai",
+                        name: "Telepon_Pegawai"
+                      },
+                      domProps: { value: _vm.Telepon_Pegawai },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Telepon_Pegawai = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(6),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Gaji_Pegawai,
+                          expression: "Gaji_Pegawai"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Gaji",
+                        "aria-label": "Gaji_Pegawai",
+                        "aria-describedby": "basic-addon2",
+                        id: "Gaji_Pegawai",
+                        name: "Gaji_Pegawai"
+                      },
+                      domProps: { value: _vm.Gaji_Pegawai },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Gaji_Pegawai = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(7),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Username,
+                          expression: "Username"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Username",
+                        "aria-label": "Username",
+                        "aria-describedby": "basic-addon2",
+                        id: "Username",
+                        name: "Username"
+                      },
+                      domProps: { value: _vm.Username },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Username = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(8),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Password,
+                          expression: "Password"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Password",
+                        "aria-label": "Password",
+                        "aria-describedby": "basic-addon2",
+                        id: "Password",
+                        name: "Password"
+                      },
+                      domProps: { value: _vm.Password },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.Password = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(9),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.Id_Cabang,
+                            expression: "Id_Cabang"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.Id_Cabang = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              disabled: "disabled",
+                              selected: "selected"
+                            }
+                          },
+                          [_vm._v("-- Pilih Cabang --")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.cabangdata, function(cabang) {
+                          return _c(
+                            "option",
+                            {
+                              key: cabang["Id_Cabang"],
+                              domProps: { value: cabang.Id_Cabang }
+                            },
+                            [_vm._v(_vm._s(cabang.Nama_Cabang) + " ")]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-4" }, [
+                    _vm._m(10),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.Id_Role,
+                            expression: "Id_Role"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.Id_Role = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              disabled: "disabled",
+                              selected: "selected"
+                            }
+                          },
+                          [_vm._v("-- Pilih Jabatan --")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.roledata, function(role) {
+                          return _c(
+                            "option",
+                            {
+                              key: role["Id_Role"],
+                              domProps: { value: role.Id_Role }
+                            },
+                            [_vm._v(_vm._s(role.Nama_Role) + " ")]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(11)
+                ]
+              )
+            ])
+          ])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -40239,326 +40713,196 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Tambah Pegawai")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "div",
       {
-        staticClass: "modal fade",
-        attrs: {
-          id: "Tambah_Pegawai",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "Tambah_Pegawai",
-          "aria-hidden": "true"
-        }
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
       },
       [
-        _c("div", { staticClass: "modal-dialog" }, [
-          _c("div", { staticClass: "modal-content" }, [
-            _c("div", { staticClass: "modal-header" }, [
-              _c(
-                "h4",
-                {
-                  staticClass: "modal-title mx-auto",
-                  attrs: { id: "Heading" }
-                },
-                [_vm._v("Tambah Pegawai")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "close",
-                  staticStyle: { "margin-left": "-30px" },
-                  attrs: {
-                    type: "button",
-                    "data-dismiss": "modal",
-                    "aria-hidden": "true",
-                    "aria-label": "Close"
-                  }
-                },
-                [
-                  _c("span", { attrs: { "aria-hidden": "true" } }, [
-                    _vm._v("×")
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c("form", { attrs: { action: "pegawai.php", method: "POST" } }, [
-                _c("div", { staticClass: "input-group mb-4" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "input-group-prepend d-block",
-                      staticStyle: { width: "100px" }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "input-group-text",
-                          attrs: { id: "basic-addon2" }
-                        },
-                        [_vm._v("Nama")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Masukkan Nama Pegawai",
-                      "aria-label": "Nama_Pegawai",
-                      "aria-describedby": "basic-addon2",
-                      id: "Nama_Pegawai",
-                      name: "Nama_Pegawai"
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-group mb-4" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "input-group-prepend d-block",
-                      staticStyle: { width: "100px" }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "input-group-text",
-                          attrs: { id: "basic-addon2" }
-                        },
-                        [_vm._v("Alamat")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Masukkan Alamat",
-                      "aria-label": "Nama_Lengkap",
-                      "aria-describedby": "basic-addon2",
-                      id: "Alamat",
-                      name: "Alamat"
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-group mb-4" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "input-group-prepend d-block",
-                      staticStyle: { width: "100px" }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "input-group-text",
-                          attrs: { id: "basic-addon2" }
-                        },
-                        [_vm._v("Telepon")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Masukkan Nomor Telepon",
-                      "aria-label": "Telepon_Pegawai",
-                      "aria-describedby": "basic-addon2",
-                      id: "Telepon_Pegawai",
-                      name: "Telepon_Pegawai"
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-group mb-4" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "input-group-prepend d-block",
-                      staticStyle: { width: "100px" }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "input-group-text",
-                          attrs: { id: "basic-addon2" }
-                        },
-                        [_vm._v("Email")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Masukkan Gaji",
-                      "aria-label": "Gaji_Pegawai",
-                      "aria-describedby": "basic-addon2",
-                      id: "Gaji_Pegawai",
-                      name: "Gaji_Pegawai"
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-group mb-4" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "input-group-prepend d-block",
-                      staticStyle: { width: "100px" }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "input-group-text",
-                          attrs: { id: "basic-addon2" }
-                        },
-                        [_vm._v("Username")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Masukkan Username",
-                      "aria-label": "Username",
-                      "aria-describedby": "basic-addon2",
-                      id: "Username",
-                      name: "Username"
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-group mb-4" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "input-group-prepend d-block",
-                      staticStyle: { width: "100px" }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "input-group-text",
-                          attrs: { id: "basic-addon2" }
-                        },
-                        [_vm._v("Password")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Masukkan Password",
-                      "aria-label": "Password",
-                      "aria-describedby": "basic-addon2",
-                      id: "Password",
-                      name: "Password"
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-group mb-4" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "input-group-prepend d-block",
-                      staticStyle: { width: "100px" }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "input-group-text",
-                          attrs: { id: "basic-addon2" }
-                        },
-                        [_vm._v("Cabang")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("select", { staticClass: "form-control" }, [
-                    _c(
-                      "option",
-                      { attrs: { disabled: "disabled", selected: "selected" } },
-                      [_vm._v("-- Pilih Cabang --")]
-                    ),
-                    _vm._v(" "),
-                    _c("option", [_vm._v("CABANG 1")]),
-                    _vm._v(" "),
-                    _c("option", [_vm._v("CABANG 2")])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-group mb-4" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "input-group-prepend d-block",
-                      staticStyle: { width: "100px" }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "input-group-text",
-                          attrs: { id: "basic-addon2" }
-                        },
-                        [_vm._v("Jabatan")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("select", { staticClass: "form-control" }, [
-                    _c(
-                      "option",
-                      { attrs: { disabled: "disabled", selected: "selected" } },
-                      [_vm._v("-- Pilih Jabatan --")]
-                    ),
-                    _vm._v(" "),
-                    _c("option", [_vm._v("Jabatan 1")]),
-                    _vm._v(" "),
-                    _c("option", [_vm._v("Jabatan 2")])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "modal-footer " }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success btn-lg",
-                      staticStyle: { width: "100%" },
-                      attrs: { type: "submit" }
-                    },
-                    [_vm._v("Tambahkan Pegawai")]
-                  )
-                ])
-              ])
-            ])
-          ])
-        ])
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Nama")]
+        )
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Alamat")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Telepon")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Gaji")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Username")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Password")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Cabang")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Jabatan")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer " }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success btn-lg",
+          staticStyle: { width: "100%" },
+          attrs: { type: "submit" }
+        },
+        [_vm._v("Tambahkan Pegawai")]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -40583,7 +40927,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("body", [
-    _c("div", { staticClass: "container mt-3" }, [
+    _c("div", { staticClass: "container-fluid mt-3" }, [
       _c("div", { staticClass: "clearfix my-2" }, [
         _vm._m(0),
         _vm._v(" "),
@@ -57437,6 +57781,34 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].delete('/api/spareparts/delete/' + id, successCallback, errorCallback);
+    });
+  },
+  getallcabang: function getallcabang() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/cabangs', successCallback, errorCallback);
+    });
+  },
+  getallrole: function getallrole() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/roles', successCallback, errorCallback);
     });
   }
 });

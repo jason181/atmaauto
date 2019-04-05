@@ -239,6 +239,35 @@ export default {
             Http.delete('/api/spareparts/delete/'+id, successCallback, errorCallback)
         })
     },
+    getallcabang(){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
 
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.get('/api/cabangs', successCallback, errorCallback)
+        })
+    },
+    getallrole(){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.get('/api/roles', successCallback, errorCallback)
+        })
+    },
 
 }
