@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Transformers\PegawaiTransformers;
 use App\Pegawai;
 use App\Exceptions\InvalidCredentialException;
+use Validator;
 
 class PegawaiController extends RestController
 {
@@ -18,7 +19,36 @@ class PegawaiController extends RestController
         return $this->sendResponse($response,201);
     }
 
-    public function store(Request $request)
+    /*public function store(Request $request){
+        $validator = Validator::make($request->all(),[
+            'Id_Role' => 'required',
+            'Id_Cabang' => 'required',
+            'Nama_Pegawai' => 'required',
+            'Alamat_Pegawai' => 'required',
+            'Telepon_Pegawai' => 'required',
+            'Gaji_Pegawai' => 'required',
+            'Username' => 'required',
+            'Password' =>'required|min:8',
+        ]);
+
+        if ($validator->fails()){
+            return response()->json(['error' => $validator->errors(),401]);
+        }
+
+        $data = $request->only(['Id_Role', 'Id_Cabang', 'Nama_Pegawai','Alamat_Pegawai','Telepon_Pegawai',
+                                'Gaji_Pegawai','Username','Password']);
+        $data['Password'] = bcrypt($data['Password']);
+
+        $pegawai = Pegawai::create($data);
+
+        return response()->json([
+            'status' => (bool) $pegawai,
+            'data' => $pegawai,
+            'message' => $pegawai ? 'Success' : 'Error Pegawai'
+        ]);
+    }*/
+
+   public function store(Request $request)
     {
         $pegawai = Pegawai::create([
             'Id_Role'           => $request->Id_Role,
@@ -30,7 +60,7 @@ class PegawaiController extends RestController
             'Username'          => $request->Username,
             'Password'          => bcrypt($request->Password),
         ]);
-
+       
         return response()->json([
             'status' => (bool) $pegawai,
             'data' => $pegawai,

@@ -18,11 +18,11 @@ class CreatePegawaisTable extends Migration
             $table->unsignedInteger('Id_Role');
             $table->unsignedInteger('Id_Cabang');
             $table->string('Nama_Pegawai',50);
-            $table->string('Alamat',255);
+            $table->string('Alamat_Pegawai',255);
             $table->string('Telepon_Pegawai',15);
             $table->double('Gaji_Pegawai');
             $table->string('Username',20);
-            $table->string('Password',255);
+            $table->string('Password');
             $table->timestamps();
 
             $table->foreign('Id_Role')->references('Id_Role')->on('roles');

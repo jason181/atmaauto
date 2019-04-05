@@ -14,7 +14,7 @@ class Pegawai extends Model
         'Id_Role',
         'Id_Cabang',
         'Nama_Pegawai',
-        'Alamat',
+        'Alamat_Pegawai',
         'Telepon_Pegawai',
         'Gaji_Pegawai',
         'Username',
