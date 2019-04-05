@@ -15,9 +15,9 @@ class JasaTransformers extends TransformerAbstract
     public function transform(Jasa $jasa)
     {
         return [
-            'id'                  => $jasa->Id_Jasa,
+            'Id_Jasa'           => $jasa->Id_Jasa,
             'Nama_Jasa'         => $jasa->Nama_Jasa,
-            'Harga_Jasa'       => $jasa->Harga_Jasa,
+            'Harga_Jasa'        => $jasa->Harga_Jasa,
         ];
     }
 }

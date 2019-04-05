@@ -41,7 +41,8 @@
                             <td>{{sparepart.Stok_Minimum_Sparepart}} </td>
                             <td>{{sparepart.Harga_Beli}} </td>
                             <td>{{sparepart.Harga_Jual}} </td>
-                            <td>{{sparepart.Gambar}} </td>
+                            <!-- image/sparepart/Bohlam_Depan.jpg -->
+                            <td><img src="../../../{{sparepart.Gambar}}" alt="" style="max-width:250px;max-height:250px;"></td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Edit">
                                     <button class="btn btn-primary" @click="dataspareparthandler(sparepart)" data-title="Edit_Jasa_Service" data-toggle="modal" data-target="#Edit_Jasa_Service">

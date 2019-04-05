@@ -1858,6 +1858,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
@@ -2494,6 +2509,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -39252,9 +39268,67 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("body", [
-      _c("div", { staticClass: "content main", attrs: { id: "homeLayout" } }, [
-        _c("p", [_vm._v(" cek 123 ")])
-      ])
+      _c(
+        "div",
+        { staticClass: "contenter-fluid", attrs: { id: "homeLayout" } },
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-sm-3 mx-auto mb-5" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "card border-primary mx-auto",
+                  staticStyle: { width: "18rem" }
+                },
+                [
+                  _c("div", { staticClass: "card-header" }, [
+                    _c(
+                      "h4",
+                      {
+                        staticClass: "card-title mb-0",
+                        staticStyle: { "text-align": "center" }
+                      },
+                      [_vm._v("'.$data[\"Nama_Sparepart\"].'")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "card-body",
+                      staticStyle: { "text-align": "center" }
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "card-img-top",
+                        staticStyle: { height: "250px", width: "auto" },
+                        attrs: { alt: "Card image cap" }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "card-footer",
+                      staticStyle: { "text-align": "center" }
+                    },
+                    [
+                      _c("p", {
+                        staticClass: "card-text mb-2",
+                        staticStyle: { color: "black" }
+                      }),
+                      _vm._v(
+                        "\r\n                        Detail\r\n                    "
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          ])
+        ]
+      )
     ])
   }
 ]
@@ -40502,216 +40576,8 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("body", [
-    _c("div", { staticClass: "container mt-3" }, [
-      _c("div", { staticClass: "clearfix my-2" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "navbar navbar-light bg-light float-right p-0" },
-          [
-            _c("form", { staticClass: "form-inline" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.Cari_Sparepart,
-                    expression: "Cari_Sparepart"
-                  }
-                ],
-                staticClass: "form-control mr-sm-2",
-                attrs: {
-                  type: "search",
-                  placeholder: "Search",
-                  "aria-label": "Search"
-                },
-                domProps: { value: _vm.Cari_Sparepart },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.Cari_Sparepart = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-primary my-2 my-sm-0",
-                  attrs: { type: "submit" }
-                },
-                [_vm._v("Search")]
-              )
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "table-responsive", staticStyle: { margin: "auto" } },
-        [
-          _c("table", { staticClass: "table table-striped table-hover" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.filteredsparepart, function(sparepart, index) {
-                return _c("tr", { key: index }, [
-                  _c("td", [_vm._v(_vm._s(sparepart.Kode_Sparepart) + " ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sparepart.Nama_Sparepart) + " ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sparepart.Merk_Sparepart) + " ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sparepart.Rak_Sparepart) + " ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sparepart.Jumlah_Sparepart) + " ")]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _vm._v(_vm._s(sparepart.Stok_Minimum_Sparepart) + " ")
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sparepart.Harga_Beli) + " ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sparepart.Harga_Jual) + " ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sparepart.Gambar) + " ")]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c(
-                      "p",
-                      {
-                        attrs: {
-                          "data-placement": "top",
-                          "data-toggle": "tooltip",
-                          title: "Edit"
-                        }
-                      },
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary",
-                            attrs: {
-                              "data-title": "Edit_Jasa_Service",
-                              "data-toggle": "modal",
-                              "data-target": "#Edit_Jasa_Service"
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.dataspareparthandler(sparepart)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fas fa-edit" })]
-                        )
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c(
-                      "p",
-                      {
-                        attrs: {
-                          "data-placement": "top",
-                          "data-toggle": "tooltip",
-                          title: "Delete"
-                        }
-                      },
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-danger",
-                            attrs: {
-                              "data-title": "Delete_Jasa_Service",
-                              "data-toggle": "modal",
-                              "data-target": "#Delete_Jasa_Service"
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.dataspareparthandler(sparepart)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fas fa-trash-alt" })]
-                        )
-                      ]
-                    )
-                  ])
-                ])
-              }),
-              0
-            )
-          ])
-        ]
-      )
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-success float-left mb-2",
-        attrs: {
-          "data-title": "Tambah_Jasa_Service",
-          "data-toggle": "modal",
-          "data-target": "#Tambah_Jasa_Service"
-        }
-      },
-      [
-        _c("i", { staticClass: "fas fa-plus mr-2" }),
-        _vm._v("Tambah\n                ")
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "table-primary text-center" }, [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Kode")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Merk")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Rak")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Jumlah")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Stok Minimum")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Harga Beli")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Harga Jual")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Gambar")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
+var render = function () {}
+var staticRenderFns = []
 
 
 
@@ -57383,8 +57249,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\atmaauto\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\JASON\atmaauto\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\JASON\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
