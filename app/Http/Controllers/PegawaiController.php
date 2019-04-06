@@ -58,7 +58,7 @@ class PegawaiController extends RestController
             'Telepon_Pegawai'   => $request->Telepon_Pegawai,
             'Gaji_Pegawai'      => $request->Gaji_Pegawai,
             'Username'          => $request->Username,
-            'Password'          => ($request->Password),
+            'Password'          => bcrypt($request->Password),
         ]);
        
         return response()->json([
