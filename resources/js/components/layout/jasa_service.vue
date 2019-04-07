@@ -63,7 +63,7 @@
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Nama</span>
                                 </div>
-                                <input type="text" v-model="Nama_Jasa" class="form-control" placeholder="Masukkan Nama Jasa Service" aria-label="Nama_Jasa_Service" aria-describedby="basic-addon2" id="Nama_Jasa_Service" name="Nama_Pegawai">
+                                <input type="text" v-model="jasaservice.Nama_Jasa" class="form-control" :placeholder="nameErrors" :error="nameErrors" aria-label="Nama_Jasa_Service" aria-describedby="basic-addon2" id="Nama_Jasa_Service" name="Nama_Pegawai" @input="$v.jasaservice.Nama_Jasa.$touch()" @blur="$v.jasaservice.Nama_Jasa.$touch()">
                             </div>
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
@@ -72,7 +72,7 @@
                                 <input type="number" v-model="Harga_Jasa" class="form-control" placeholder="Masukkan Harga Jasa Service" aria-label="Harga_Jasa_Service" aria-describedby="basic-addon2" id="Harga_Jasa_Service" name="Harga_Jasa_Service">
                             </div>
                             <div class="modal-footer ">
-                                <button type="submit" class="btn btn-success btn-lg" style="width: 100%;">Tambahkan Jasa Service</button>
+                                <button type="submit" class="btn btn-success btn-lg" style="width: 100%;" :disabled="$v.jasaservice.$invalid">Tambahkan Jasa Service</button>
                             </div>
                         </form>
                     </div>
@@ -141,13 +141,24 @@
 </template>
 <script>
 import Controller from '../../httpController'
+import { required, maxLength, numeric } from 'vuelidate/lib/validators'
 export default {
+     validations: {
+       jasaservice: {
+        Nama_Jasa: { required, maxLength: maxLength(25) },
+        Harga_Jasa: { required, numeric, maxLength: maxLength(12) },
+       },   
+    },
     data: () => ({
         jasaservicedata:[],
         handledjasaservice:[],
         Nama_Jasa:'',
         Harga_Jasa:0,
         Cari_Jasa_Service:'',
+        jasaservice:{
+            Nama_Jasa:'',
+            Harga_Jasa:0,
+        }
     }),
     mounted(){
         this.getalljasaservice()
@@ -206,7 +217,14 @@ export default {
             return this.jasaservicedata.filter((jasa)=>{
                 return jasa.Nama_Jasa.match(this.Cari_Jasa_Service);
             });
-        }
+        },
+        nameErrors () {
+        const errors = []
+        if (!this.$v.jasaservice.Nama_Jasa.$dirty) return errors
+        !this.$v.jasaservice.Nama_Jasa.maxLength && errors.push('Name must be at most 25 characters long')
+        !this.$v.jasaservice.Nama_Jasa.required && errors.push('Name is required.')
+        return errors
+      },
     }
 }
 </script>

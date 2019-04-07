@@ -55,6 +55,13 @@
                                     </button>
                                 </p>
                             </td>
+                            <td class="text-center">
+                                <p data-placement="top" data-toggle="tooltip" title="Tambah">
+                                    <button @click="datasupplierhandler(supplier)" class="btn btn-danger" data-title="Delete_Sales" data-toggle="modal" data-target="#Delete_Sales">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </p>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -131,7 +138,7 @@
                                 <input type="text" v-model="handledsupplier.Telepon_Supplier" class="form-control" placeholder="Masukkan Telepon Supplier" aria-label="Telepon_Supplier" aria-describedby="basic-addon2" id="Telepon_Supplier" name="Telepon_Supplier">
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;" data-dismiss="modal">Simpan Perubahan</button>
+                                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Simpan Perubahan</button>
                             </div>
                         </form>
                     </div>
@@ -160,8 +167,8 @@
                     </div>
                 </div>
             </div>
-            </div>
-        <!-- END OF DELETE JASA SERVICE -->
+        </div>
+        <!-- END OF DELETE SUPPLIER -->
         <!-- TAMBAH SALES -->
         <div class="modal fade" id="Tambah_Sales" tabindex="-1" role="dialog" aria-labelledby="Tambah_Sales" aria-hidden="true">
             <div class="modal-dialog">
@@ -173,7 +180,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form @submit.prevent="addsales(handledsupplier.Id_Supplier)">
+                        <form @submit.prevent="updatesales(handledsupplier.Id_Supplier)">
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Nama</span>
@@ -195,11 +202,68 @@
             </div>
         </div>
         <!-- END OF TAMBAH SALES -->
+        <!-- EDIT SALES -->
+        <div class="modal fade" id="Edit_Sales" tabindex="-1" role="dialog" aria-labelledby="Edit_Sales" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Edit Sales</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form @submit.prevent="updatesales(handledsupplier.Id_Supplier)">
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Nama</span>
+                                </div>
+                                <input type="text" v-model="handledsupplier.Nama_Sales" class="form-control" placeholder="Masukkan Nama Sales" aria-label="Nama_Sales" aria-describedby="basic-addon2" id="Nama_Sales" name="Nama_Sales">
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Telepon</span>
+                                </div>
+                                <input type="text" v-model="handledsupplier.Telepon_Sales" class="form-control" placeholder="Masukkan Telepon Sales" aria-label="Telepon_Sales" aria-describedby="basic-addon2" id="Telepon_Sales" name="Telepon_Sales">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Simpan Perubahan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END OF EDIT SALES -->
+        <!-- DELETE SALES -->
+        <div class="modal fade" id="Delete_Sales" tabindex="-1" role="dialog" aria-labelledby="Delete_Sales" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Hapus Data Sales</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Apakah Anda Yakin Ingin Menghapus Data Sales Ini ?</div>
+                    </div>
+                    <div class="modal-footer ">
+                        <a id="delete_btn" class="float-left w-100">
+                            <button type="button" @click="delsales(handledsupplier.Id_Supplier)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
+                        </a>
+                        <button type="button" class="btn btn-secondary float-right w-50" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END OF DELETE SALES -->
         <!-- END OF MY MODALS -->
     </body>
 </template>
 <script>
 import Controller from '../../httpController'
+import { required, maxLength, numeric } from 'vuelidate/lib/validators'
 export default {
     data: () => ({
         supplierdata:[],
@@ -210,6 +274,13 @@ export default {
         Nama_Sales:'',
         Telepon_Sales:'',
         Cari_Supplier:'',
+        Supplier:{
+            Nama_Supplier:'',
+            Alamat_Supplier:'',
+            Telepon_Supplier:'',
+            Nama_Sales:'',
+            Telepon_Sales:'',
+        }
     }),
     mounted(){
         this.getallsupplier()

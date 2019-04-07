@@ -1,5 +1,8 @@
 require('./bootstrap');
 // import Buefy from 'buefy';
+import Vue from 'vue';
+import Vuelidate from 'vuelidate';
+Vue.use(Vuelidate);
 
 window.Vue = require('vue');
 window.VueRouter = require('vue-router').default;

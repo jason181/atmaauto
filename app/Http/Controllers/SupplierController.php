@@ -42,17 +42,17 @@ class SupplierController extends RestController
             $supplier->Nama_Supplier = $request->Nama_Supplier;
         }
         if(!is_null($request->Alamat_Supplier)){
-            $supplier->Alamat_Supplier = $request->Harga_Supplier;
+            $supplier->Alamat_Supplier = $request->Alamat_Supplier;
         }
         if(!is_null($request->Telepon_Supplier)){
             $supplier->Telepon_Supplier = $request->Telepon_Supplier;
         }
-        if(!is_null($request->Nama_Sales)){
-            $supplier->Nama_Sales = $request->Nama_Sales;
-        }
-        if(!is_null($request->Telepon_Sales)){
-            $supplier->Telepon_Sales = $request->Telepon_Sales;
-        }
+        // if(!is_null($request->Nama_Sales)){
+        //     $supplier->Nama_Sales = $request->Nama_Sales;
+        // }
+        // if(!is_null($request->Telepon_Sales)){
+        //     $supplier->Telepon_Sales = $request->Telepon_Sales;
+        // }
 
         $success = $supplier->save();
         if(!$success){
@@ -97,12 +97,9 @@ class SupplierController extends RestController
     public function delSales($id)
     {
         $supplier = Supplier::find($id);
-        if(!is_null($request->Nama_Sales)){
-            $supplier->Nama_Sales = null;
-        }
-        if(!is_null($request->Telepon_Sales)){
-            $supplier->Telepon_Sales = null;
-        }
+
+        $supplier->Nama_Sales = null;
+        $supplier->Telepon_Sales = null;
 
         $success = $supplier->save();
         if(!$success){
