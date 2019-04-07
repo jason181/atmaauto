@@ -73,16 +73,16 @@ class PegawaiController extends RestController
         $pegawai = Pegawai::find($id);
 
         if(!is_null($request->Nama_Pegawai)){
-            $cabang->Nama_Pegawai = $request->Nama_Pegawai;
+            $pegawai->Nama_Pegawai = $request->Nama_Pegawai;
         }
         if(!is_null($request->Alamat_Pegawai)){
-            $cabang->Alamat_Pegawai = $request->Alamat_Pegawai;
+            $pegawai->Alamat_Pegawai = $request->Alamat_Pegawai;
         }
         if(!is_null($request->Telepon_Pegawai)){
-            $cabang->Telepon_Pegawai = $request->Telepon_Pegawai;
+            $pegawai->Telepon_Pegawai = $request->Telepon_Pegawai;
         }
         if(!is_null($request->Gaji_Pegawai)){
-            $cabang->Gaji_Pegawai = $request->Gaji_Pegawai;
+            $pegawai->Gaji_Pegawai = $request->Gaji_Pegawai;
         }
 
         $success = $pegawai->save();
