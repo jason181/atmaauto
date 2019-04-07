@@ -3367,6 +3367,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3480,9 +3488,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 payload = {
                   Nama_Supplier: this.handledsupplier.Nama_Supplier,
                   Alamat_Supplier: this.handledsupplier.Alamat_Supplier,
-                  Telepon_Supplier: this.handledsupplier.Telepon_Supplier,
-                  Nama_Sales: this.handledsupplier.Nama_Sales,
-                  Telepon_Sales: this.handledsupplier.Telepon_Sales
+                  Telepon_Supplier: this.handledsupplier.Telepon_Supplier
                 };
                 _context3.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatesupplier(payload, id);
@@ -3551,7 +3557,91 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     datasupplierhandler: function datasupplierhandler(supplier) {
       this.handledsupplier = supplier;
-    }
+    },
+    updatesales: function () {
+      var _updatesales = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(id) {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                payload = {
+                  Nama_Sales: this.handledsupplier.Nama_Sales,
+                  Telepon_Sales: this.handledsupplier.Telepon_Sales
+                };
+                _context5.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatesales(payload, id);
+
+              case 4:
+                this.getallsupplier(); // console.log()
+
+                _context5.next = 10;
+                break;
+
+              case 7:
+                _context5.prev = 7;
+                _context5.t0 = _context5["catch"](0);
+                console.log(_context5.t0);
+
+              case 10:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this, [[0, 7]]);
+      }));
+
+      function updatesales(_x3) {
+        return _updatesales.apply(this, arguments);
+      }
+
+      return updatesales;
+    }(),
+    delsales: function () {
+      var _delsales = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(id) {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.prev = 0;
+                payload = {
+                  Nama_Sales: null,
+                  Telepon_Sales: null
+                };
+                _context6.next = 4;
+                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].delsales(payload, id);
+
+              case 4:
+                this.getallsupplier(); // console.log()
+
+                _context6.next = 10;
+                break;
+
+              case 7:
+                _context6.prev = 7;
+                _context6.t0 = _context6["catch"](0);
+                console.log(_context6.t0);
+
+              case 10:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, this, [[0, 7]]);
+      }));
+
+      function delsales(_x4) {
+        return _delsales.apply(this, arguments);
+      }
+
+      return delsales;
+    }()
   },
   computed: {
     filteredsupplier: function filteredsupplier() {
@@ -42003,153 +42093,178 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("body", [
-    _c(
-      "div",
-      { staticClass: "container mt-3", staticStyle: { "max-width": "800px" } },
-      [
-        _c("div", { staticClass: "clearfix my-2" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "navbar navbar-light bg-light float-right p-0" },
-            [
-              _c("form", { staticClass: "form-inline" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.Cari_Supplier,
-                      expression: "Cari_Supplier"
-                    }
-                  ],
-                  staticClass: "form-control mr-sm-2",
-                  attrs: {
-                    type: "search",
-                    placeholder: "Search",
-                    "aria-label": "Search"
-                  },
-                  domProps: { value: _vm.Cari_Supplier },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.Cari_Supplier = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-outline-primary my-2 my-sm-0",
-                    attrs: { type: "submit" }
-                  },
-                  [_vm._v("Search")]
-                )
-              ])
-            ]
-          )
-        ]),
+    _c("div", { staticClass: "container-fluid mt-3" }, [
+      _c("div", { staticClass: "clearfix my-2" }, [
+        _vm._m(0),
         _vm._v(" "),
         _c(
           "div",
-          {
-            staticClass: "table-responsive",
-            staticStyle: { "max-width": "1200px", margin: "auto" }
-          },
+          { staticClass: "navbar navbar-light bg-light float-right p-0" },
           [
-            _c("table", { staticClass: "table table-striped table-hover" }, [
-              _vm._m(1),
+            _c("form", { staticClass: "form-inline" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.Cari_Supplier,
+                    expression: "Cari_Supplier"
+                  }
+                ],
+                staticClass: "form-control mr-sm-2",
+                attrs: {
+                  type: "search",
+                  placeholder: "Search",
+                  "aria-label": "Search"
+                },
+                domProps: { value: _vm.Cari_Supplier },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.Cari_Supplier = $event.target.value
+                  }
+                }
+              }),
               _vm._v(" "),
               _c(
-                "tbody",
-                _vm._l(_vm.filteredsupplier, function(supplier) {
-                  return _c("tr", { key: supplier["Id_Supplier"] }, [
-                    _c("td", [_vm._v(_vm._s(supplier.Nama_Supplier) + " ")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(supplier.Alamat_Supplier) + " ")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(supplier.Telepon_Supplier) + " ")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(supplier.Nama_Sales) + " ")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(supplier.Telepon_Sales) + " ")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "text-center" }, [
-                      _c(
-                        "p",
-                        {
-                          attrs: {
-                            "data-placement": "top",
-                            "data-toggle": "tooltip",
-                            title: "Edit"
-                          }
-                        },
-                        [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-primary",
-                              attrs: {
-                                "data-title": "Edit_Supplier",
-                                "data-toggle": "modal",
-                                "data-target": "#Edit_Supplier"
-                              },
-                              on: {
-                                click: function($event) {
-                                  return _vm.datasupplierhandler(supplier)
-                                }
-                              }
-                            },
-                            [_c("i", { staticClass: "fas fa-edit" })]
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "text-center" }, [
-                      _c(
-                        "p",
-                        {
-                          attrs: {
-                            "data-placement": "top",
-                            "data-toggle": "tooltip",
-                            title: "Delete"
-                          }
-                        },
-                        [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-danger",
-                              attrs: {
-                                "data-title": "Delete_Supplier",
-                                "data-toggle": "modal",
-                                "data-target": "#Delete_Supplier"
-                              },
-                              on: {
-                                click: function($event) {
-                                  return _vm.datasupplierhandler(supplier)
-                                }
-                              }
-                            },
-                            [_c("i", { staticClass: "fas fa-trash-alt" })]
-                          )
-                        ]
-                      )
-                    ])
-                  ])
-                }),
-                0
+                "button",
+                {
+                  staticClass: "btn btn-outline-primary my-2 my-sm-0",
+                  attrs: { type: "submit" }
+                },
+                [_vm._v("Search")]
               )
             ])
           ]
         )
-      ]
-    ),
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "table-responsive", staticStyle: { margin: "auto" } },
+        [
+          _c("table", { staticClass: "table table-striped table-hover" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.filteredsupplier, function(supplier) {
+                return _c("tr", { key: supplier["Id_Supplier"] }, [
+                  _c("td", [_vm._v(_vm._s(supplier.Nama_Supplier) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(supplier.Alamat_Supplier) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(supplier.Telepon_Supplier) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(supplier.Nama_Sales) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(supplier.Telepon_Sales) + " ")]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "p",
+                      {
+                        attrs: {
+                          "data-placement": "top",
+                          "data-toggle": "tooltip",
+                          title: "Edit"
+                        }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: {
+                              "data-title": "Edit_Supplier",
+                              "data-toggle": "modal",
+                              "data-target": "#Edit_Supplier"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.datasupplierhandler(supplier)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-edit" })]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "p",
+                      {
+                        attrs: {
+                          "data-placement": "top",
+                          "data-toggle": "tooltip",
+                          title: "Delete"
+                        }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            attrs: {
+                              "data-title": "Delete_Supplier",
+                              "data-toggle": "modal",
+                              "data-target": "#Delete_Supplier"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.datasupplierhandler(supplier)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-trash-alt" })]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "p",
+                      {
+                        attrs: {
+                          "data-placement": "top",
+                          "data-toggle": "tooltip",
+                          title: "Tambah"
+                        }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success",
+                            attrs: {
+                              "data-title": "Tambah_Sales",
+                              "data-toggle": "modal",
+                              "data-target": "#Tambah_Sales"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.datasupplierhandler(supplier)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-plus" })]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              }),
+              0
+            )
+          ])
+        ]
+      )
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -42168,18 +42283,18 @@ var render = function() {
           _c("div", { staticClass: "modal-content" }, [
             _vm._m(2),
             _vm._v(" "),
-            _c(
-              "form",
-              {
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.addsupplier()
+            _c("div", { staticClass: "modal-body" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.addsupplier()
+                    }
                   }
-                }
-              },
-              [
-                _c("div", { staticClass: "modal-body" }, [
+                },
+                [
                   _c("div", { staticClass: "input-group mb-4" }, [
                     _vm._m(3),
                     _vm._v(" "),
@@ -42277,82 +42392,12 @@ var render = function() {
                         }
                       }
                     })
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(6),
-                _vm._v(" "),
-                _c("div", { staticClass: "modal-body" }, [
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(7),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.Nama_Sales,
-                          expression: "Nama_Sales"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Nama Sales",
-                        "aria-label": "Nama_Sales",
-                        "aria-describedby": "basic-addon2",
-                        id: "Nama_Sales",
-                        name: "Nama_Sales"
-                      },
-                      domProps: { value: _vm.Nama_Sales },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.Nama_Sales = $event.target.value
-                        }
-                      }
-                    })
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(8),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.Telepon_Sales,
-                          expression: "Telepon_Sales"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Telepon Sales",
-                        "aria-label": "Telepon_Sales",
-                        "aria-describedby": "basic-addon2",
-                        id: "Telepon_Sales",
-                        name: "Telepon_Sales"
-                      },
-                      domProps: { value: _vm.Telepon_Sales },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.Telepon_Sales = $event.target.value
-                        }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(9)
-              ]
-            )
+                  _vm._m(6)
+                ]
+              )
+            ])
           ])
         ])
       ]
@@ -42373,22 +42418,22 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(10),
+            _vm._m(7),
             _vm._v(" "),
-            _c(
-              "form",
-              {
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.updatesupplier(_vm.handledsupplier.Id_Supplier)
+            _c("div", { staticClass: "modal-body" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.updatesupplier(_vm.handledsupplier.Id_Supplier)
+                    }
                   }
-                }
-              },
-              [
-                _c("div", { staticClass: "modal-body" }, [
+                },
+                [
                   _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(11),
+                    _vm._m(8),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -42425,7 +42470,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(12),
+                    _vm._m(9),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -42462,7 +42507,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(13),
+                    _vm._m(10),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -42496,14 +42541,105 @@ var render = function() {
                         }
                       }
                     })
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(14),
-                _vm._v(" "),
-                _c("div", { staticClass: "modal-body" }, [
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(11)
+                ]
+              )
+            ])
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Delete_Supplier",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Delete_Supplier",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(12),
+            _vm._v(" "),
+            _vm._m(13),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer " }, [
+              _c(
+                "a",
+                {
+                  staticClass: "float-left w-100",
+                  attrs: { id: "delete_btn" }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger float-left w-50",
+                      attrs: { type: "button", "data-dismiss": "modal" },
+                      on: {
+                        click: function($event) {
+                          return _vm.deletesupplier(
+                            _vm.handledsupplier.Id_Supplier
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("span", {
+                        staticClass: "glyphicon glyphicon-ok-sign"
+                      }),
+                      _vm._v("Ya")
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(14)
+            ])
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Tambah_Sales",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Tambah_Sales",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(15),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.addsales(_vm.handledsupplier.Id_Supplier)
+                    }
+                  }
+                },
+                [
                   _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(15),
+                    _vm._m(16),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -42540,7 +42676,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(16),
+                    _vm._m(17),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -42574,68 +42710,11 @@ var render = function() {
                         }
                       }
                     })
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(17)
-              ]
-            )
-          ])
-        ])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "Delete_Supplier",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "Delete_Supplier",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c("div", { staticClass: "modal-dialog" }, [
-          _c("div", { staticClass: "modal-content" }, [
-            _vm._m(18),
-            _vm._v(" "),
-            _vm._m(19),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-footer " }, [
-              _c(
-                "a",
-                {
-                  staticClass: "float-left w-100",
-                  attrs: { id: "delete_btn" }
-                },
-                [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger float-left w-50",
-                      attrs: { type: "button", "data-dismiss": "modal" },
-                      on: {
-                        click: function($event) {
-                          return _vm.deletesupplier(
-                            _vm.handledsupplier.Id_Supplier
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("span", {
-                        staticClass: "glyphicon glyphicon-ok-sign"
-                      }),
-                      _vm._v("Ya")
-                    ]
-                  )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(18)
                 ]
-              ),
-              _vm._v(" "),
-              _vm._m(20)
+              )
             ])
           ])
         ])
@@ -42680,9 +42759,13 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Telepon Sales")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit Supplier")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete Supplier")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Tambah / Edit Sales")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete Sales")])
       ])
     ])
   },
@@ -42747,56 +42830,6 @@ var staticRenderFns = [
           "span",
           { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
           [_vm._v("Alamat")]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "input-group-prepend d-block",
-        staticStyle: { width: "100px" }
-      },
-      [
-        _c(
-          "span",
-          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
-          [_vm._v("Telepon")]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h4",
-        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
-        [_vm._v("Tambah Sales")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "input-group-prepend d-block",
-        staticStyle: { width: "100px" }
-      },
-      [
-        _c(
-          "span",
-          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
-          [_vm._v("Nama")]
         )
       ]
     )
@@ -42924,56 +42957,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h4",
-        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
-        [_vm._v("Edit Sales")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "input-group-prepend d-block",
-        staticStyle: { width: "100px" }
-      },
-      [
-        _c(
-          "span",
-          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
-          [_vm._v("Nama")]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "input-group-prepend d-block",
-        staticStyle: { width: "100px" }
-      },
-      [
-        _c(
-          "span",
-          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
-          [_vm._v("Telepon")]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-footer" }, [
       _c(
         "button",
@@ -43039,6 +43022,87 @@ var staticRenderFns = [
         _vm._v("Tidak")
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Tambah Sales")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Nama")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Telepon")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success btn-lg",
+          staticStyle: { width: "100%" },
+          attrs: { type: "submit" }
+        },
+        [_vm._v("Tambahkan Sales")]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -58575,6 +58639,34 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].delete('/api/suppliers/delete/' + id, successCallback, errorCallback);
+    });
+  },
+  updatesales: function updatesales(payload, id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/suppliers/upSales/' + id, payload, successCallback, errorCallback);
+    });
+  },
+  delsales: function delsales(payload, id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/suppliers/delSales/' + id, payload, successCallback, errorCallback);
     });
   },
   getallsparepart: function getallsparepart() {

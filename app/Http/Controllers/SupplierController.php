@@ -33,39 +33,6 @@ class SupplierController extends RestController
             'message' => $supplier ? 'Success' : 'Error Supplier'
         ]);
     }
-    public function upSales(Request $request, $id)
-    {
-        $supplier= Supplier::find($id);
-        if(!is_null($request->Nama_Sales)){
-            $supplier->Nama_Sales = $request->Nama_Sales;
-        }
-        if(!is_null($request->Telepon_Sales)){
-            $supplier->Telepon_Sales = $request->Telepon_Sales;
-        }
-
-        $success = $supplier->save();
-        if(!$success){
-            return response()->json('Error Update',500);
-        }else   
-            return response()->json('Success',200);
-    }
-
-    public function delSales($id)
-    {
-        $supplier = Supplier::find($id);
-        if(!is_null($request->Nama_Sales)){
-            $supplier->Nama_Sales = null;
-        }
-        if(!is_null($request->Telepon_Sales)){
-            $supplier->Telepon_Sales = null;
-        }
-
-        $success = $supplier->save();
-        if(!$success){
-            return response()->json('Error Update',500);
-        }else   
-            return response()->json('Success',200);
-    }
 
     public function update(Request $request, $id)
     {   
@@ -108,5 +75,39 @@ class SupplierController extends RestController
             'status' => $status,
             'message' => $status ? 'Deleted' : 'Error Delete'
         ]);
+    }
+
+    public function upSales(Request $request, $id)
+    {
+        $supplier= Supplier::find($id);
+        if(!is_null($request->Nama_Sales)){
+            $supplier->Nama_Sales = $request->Nama_Sales;
+        }
+        if(!is_null($request->Telepon_Sales)){
+            $supplier->Telepon_Sales = $request->Telepon_Sales;
+        }
+
+        $success = $supplier->save();
+        if(!$success){
+            return response()->json('Error Update',500);
+        }else   
+            return response()->json('Success',200);
+    }
+
+    public function delSales($id)
+    {
+        $supplier = Supplier::find($id);
+        if(!is_null($request->Nama_Sales)){
+            $supplier->Nama_Sales = null;
+        }
+        if(!is_null($request->Telepon_Sales)){
+            $supplier->Telepon_Sales = null;
+        }
+
+        $success = $supplier->save();
+        if(!$success){
+            return response()->json('Error Update',500);
+        }else   
+            return response()->json('Success',200);
     }
 }

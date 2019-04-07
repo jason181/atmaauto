@@ -179,6 +179,34 @@ export default {
             Http.delete('/api/suppliers/delete/'+id, successCallback, errorCallback)
         })
     },
+    updatesales(payload,id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.patch('/api/suppliers/upSales/'+id, payload, successCallback, errorCallback)
+        })
+    },
+    delsales(payload,id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.patch('/api/suppliers/delSales/'+id, payload, successCallback, errorCallback)
+        })
+    },
     getallsparepart(){
         return new Promise((resolve, reject) => {
             
