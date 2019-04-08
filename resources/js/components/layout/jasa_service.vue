@@ -59,18 +59,25 @@
                     </div>
                     <div class="modal-body">
                         <form @submit.prevent="addjasaservice()">
-                            <div class="input-group mb-4">
+                            <div class="input-group">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Nama</span>
                                 </div>
-                                <input type="text" v-model="jasaservice.Nama_Jasa" class="form-control" :placeholder="nameErrors" :error="nameErrors" aria-label="Nama_Jasa_Service" aria-describedby="basic-addon2" id="Nama_Jasa_Service" name="Nama_Pegawai" @input="$v.jasaservice.Nama_Jasa.$touch()" @blur="$v.jasaservice.Nama_Jasa.$touch()">
+                                <input type="text" v-model="jasaservice.Nama_Jasa" class="form-control" placeholder="Masukkan Nama Jasa Service" :error="nameErrors" aria-label="Nama_Jasa_Service" aria-describedby="basic-addon2" id="Nama_Jasa_Service" name="Nama_Jasa_Service" @input="$v.jasaservice.Nama_Jasa.$touch()" @blur="$v.jasaservice.Nama_Jasa.$touch()" required>
                             </div>
-                            <div class="input-group mb-4">
+                            <div class="text-center">
+                                <p class="mb-3" style="color:red;" v-if="$v.jasaservice.Nama_Jasa.$invalid">{{nameErrors}}</p>
+                            </div>
+                            <div class="input-group mt-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Harga</span>
                                 </div>
-                                <input type="number" v-model="Harga_Jasa" class="form-control" placeholder="Masukkan Harga Jasa Service" aria-label="Harga_Jasa_Service" aria-describedby="basic-addon2" id="Harga_Jasa_Service" name="Harga_Jasa_Service">
+                                <input type="number" v-model="jasaservice.Harga_Jasa" class="form-control" placeholder="Masukkan Harga Jasa Service" aria-label="Harga_Jasa_Service" aria-describedby="basic-addon2" id="Harga_Jasa_Service" name="Harga_Jasa_Service" @input="$v.jasaservice.Harga_Jasa.$touch()" @blur="$v.jasaservice.Harga_Jasa.$touch()" required>
                             </div>
+                            <div class="text-center">
+                                <div style="color:red;" v-if="$v.jasaservice.Harga_Jasa.$invalid">{{priceErrors}}</div>
+                            </div>
+                            
                             <div class="modal-footer ">
                                 <button type="submit" class="btn btn-success btn-lg" style="width: 100%;" :disabled="$v.jasaservice.$invalid">Tambahkan Jasa Service</button>
                             </div>
@@ -141,12 +148,13 @@
 </template>
 <script>
 import Controller from '../../httpController'
-import { required, maxLength, numeric } from 'vuelidate/lib/validators'
+import { required,minLength, maxLength, numeric } from 'vuelidate/lib/validators'
+
 export default {
      validations: {
        jasaservice: {
-        Nama_Jasa: { required, maxLength: maxLength(25) },
-        Harga_Jasa: { required, numeric, maxLength: maxLength(12) },
+        Nama_Jasa: { required, minLength: minLength(5), maxLength: maxLength(25) },
+        Harga_Jasa: { required, numeric, minLength: minLength(3), maxLength: maxLength(12) },
        },   
     },
     data: () => ({
@@ -219,12 +227,21 @@ export default {
             });
         },
         nameErrors () {
-        const errors = []
-        if (!this.$v.jasaservice.Nama_Jasa.$dirty) return errors
-        !this.$v.jasaservice.Nama_Jasa.maxLength && errors.push('Name must be at most 25 characters long')
-        !this.$v.jasaservice.Nama_Jasa.required && errors.push('Name is required.')
-        return errors
-      },
+            const errors = []
+            if (!this.$v.jasaservice.Nama_Jasa.$dirty) return errors
+            !this.$v.jasaservice.Nama_Jasa.minLength && errors.push('Name must be at least 5 characters long')
+            !this.$v.jasaservice.Nama_Jasa.maxLength && errors.push('Name must be at most 25 characters long')
+            !this.$v.jasaservice.Nama_Jasa.required && errors.push('Name is required.')
+            return errors
+        },
+        priceErrors () {
+            const errors = []
+            if (!this.$v.jasaservice.Harga_Jasa.$dirty) return errors
+            !this.$v.jasaservice.Harga_Jasa.maxLength && errors.push('Price must be at most 12 characters long')
+            !this.$v.jasaservice.Harga_Jasa.numeric && errors.push('Price must be numeric')
+            !this.$v.jasaservice.Harga_Jasa.required && errors.push('Price is required.')
+            return errors
+        },
     }
 }
 </script>
