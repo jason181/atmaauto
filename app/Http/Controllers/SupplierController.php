@@ -69,16 +69,13 @@ class SupplierController extends RestController
 
     public function destroy($id)
     {
-
-        try{
-            $supplier = Supplier::find($id);
-            $status = $supplier->delete();
-            return response()->json('success',200);
-        }catch(ModelNotFoundException $e){
-            return $this->sendNotFoundResponse('supplier not found');
-        }catch(\Exception $e){
-            return $this->sendIseResponse($e->getMessage());
-        }        
+        
+        $supplier = Supplier::find($id);
+        $status = $supplier->delete();
+        return response()->json([
+            'status' => $status,
+            'message' => $status ? 'Deleted' : 'Error Delete'
+        ]);
     }
 
     public function upSales(Request $request, $id)
