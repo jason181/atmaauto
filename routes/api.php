@@ -66,3 +66,8 @@ Route::post('/spareparts/store', 'SparepartController@store');
 Route::get('/spareparts/{id}', 'SparepartController@showbyID');
 Route::patch('/spareparts/update/{id}', 'SparepartController@update'); 
 Route::delete('/spareparts/delete/{id}', 'SparepartController@destroy');
+
+//Token
+Route::post('/authenticate', 'TokenController@authenticate');
+Route::post('/mobileauthenticate', 'TokenController@mobileauthenticate');
+Route::get('/session', 'TokenController@validateToken');

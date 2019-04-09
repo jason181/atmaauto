@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
+    const owner    = 1;
+    const cs       = 2;
+    const kasir    = 3;
+
     protected $table = 'roles';
     protected $primaryKey = 'Id_Role';
     public $timestamp = true;
