@@ -32,7 +32,7 @@ export default {
       return res.data.data
     } catch (err) {
       if (err.response.status === 401) {
-        routes.push({ name: 'HomeLayout' })
+        routes.push({ name: 'Pegawai' })
       } else {
         throw new Error('Failed fetch authenticated user')
       }

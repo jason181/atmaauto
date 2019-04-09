@@ -4,7 +4,7 @@ namespace App\Events;
 
 use App\Token;
 
-class SessionRefresh
+class TokenRefresh
 {
     /**
      * Session attributes.

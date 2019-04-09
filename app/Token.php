@@ -10,7 +10,7 @@ use JWTAuth;
 
 class Token extends Model
 {
-    protected $table = 'tokens';
+    protected $table = 'token';
     protected $primaryKey = 'Id_Token';
     public $timestamps = true;
     protected $fillable = [

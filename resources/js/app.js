@@ -5,6 +5,7 @@ import Vuelidate from 'vuelidate';
 import store from './store' 
 import auth from './service/Auth'
 import middleware from './middleware'
+import { routes } from './routes'
 Vue.use(Vuelidate);
 
 window.Vue = require('vue');
@@ -12,19 +13,41 @@ window.VueRouter = require('vue-router').default;
 // Vue.use(Buefy,{defaultIconPack: 'fa'}, VueRouter, axios);
 
 import AppLayout from './components/appLayout.vue';
+import App from './components/App.vue';
 
 Vue.config.productionTip = false;
 
-const app = new Vue({
-    el: '#app',
-    components: {AppLayout},
-    router,
-    store,
-    created() {
-        try {
+Vue.router = router
+
+const router = new VueRouter({
+  mode: 'history',
+  routes,
+})
+
+new Vue({
+  el: '#app',
+  router,
+  store,
+  render: h => h(App),
+  created() {
+      try {
           auth.refresh()
-        } catch (err) {
+      } catch (err) {
           // Do nothing :))
-        }
       }
-});
+  }
+}).$mount('#app');
+
+// const app = new Vue({
+//     el: '#app',
+//     components: {AppLayout},
+//     router,
+//     store,
+//     created() {
+//         try {
+//           auth.refresh()
+//         } catch (err) {
+//           // Do nothing :))
+//         }
+//       }
+// });

@@ -11,8 +11,17 @@
 |
 */
 
-Route::get('/', function () {return view('app');});
-Route::get('/pegawai', function () {return view('app');});
-Route::get('/jasa_service', function () {return view('app');});
-Route::get('/supplier',function () {return view('app');});
-Route::get('/sparepart',function () {return view('app');});
+// Route::get('/', function () {return view('app');});
+// Route::get('/pegawai', function () {return view('app');});
+// Route::get('/jasa_service', function () {return view('app');});
+// Route::get('/supplier',function () {return view('app');});
+// Route::get('/sparepart',function () {return view('app');});
+// Route::get('/appLayout',function () {return view('app');});
+
+Route::get('/', function () {
+    return view('app');
+});
+
+Route::get('/{any}',function(){
+    return view('app');
+})->where('any','[\/\w\.-]*');

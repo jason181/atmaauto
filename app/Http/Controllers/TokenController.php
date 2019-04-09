@@ -29,7 +29,7 @@ class TokenController extends RestController
     public function authenticate(Request $request)
     {
         try {
-            $user = $this->validateUser($request->get('Username'), $request->get('Password'));
+            $user = $this->validateUser($request->get('username'), $request->get('password'));
             $now = Carbon::now();
             $token = new Token;
             $token->Id_Pegawai=$user->Id_Pegawai;
@@ -69,7 +69,7 @@ class TokenController extends RestController
             $token = Token::where('Token_Username', $username)->first();
             $pegawai = Pegawai::find($token->Id_Pegawai);
             event(new TokenRefresh($token));
-            $item = $this->generateItem($pegawai,PegawaiTransformer::class);
+            $item = $this->generateItem($pegawai,'App\Transformers\PegawaiTransformers');
             return $this->sendResponse($item);
         } catch (\Exception $e) {
             return $this->sendNotAuthorizeResponse($e->getMessage());
