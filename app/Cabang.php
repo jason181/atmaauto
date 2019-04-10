@@ -21,3 +21,5 @@ class Cabang extends Model
         return $this->hasMany('App\Pegawai','Id_Cabang');
     }
 }
+
+//cek
