@@ -28,7 +28,7 @@ new Vue({
   el: '#app',
   router,
   store,
-  render: h => h(App),
+  render: h => h(AppLayout),
   created() {
       try {
           auth.refresh()

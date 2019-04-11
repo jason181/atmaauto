@@ -2117,7 +2117,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2201,8 +2200,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 payload = {
-                  Nama_Jasa: this.Nama_Jasa,
-                  Harga_Jasa: this.Harga_Jasa
+                  Nama_Jasa: this.jasaservice.Nama_Jasa,
+                  Harga_Jasa: this.jasaservice.Harga_Jasa
                 };
                 _context2.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addjasaservice(payload);
@@ -3554,6 +3553,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3570,9 +3579,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       Supplier: {
         Nama_Supplier: '',
         Alamat_Supplier: '',
-        Telepon_Supplier: '',
-        Nama_Sales: '',
-        Telepon_Sales: ''
+        Telepon_Supplier: ''
       }
     };
   },
@@ -3837,6 +3844,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.supplierdata.filter(function (supplier) {
         return supplier.Nama_Supplier.match(_this.Cari_Supplier);
       });
+    },
+    nameErrors: function nameErrors() {
+      var errors = [];
+      if (!this.$v.supplier.Nama_Supplier.$dirty) return errors;
+      !this.$v.supplier.Nama_Supplier.minLength && errors.push('Name must be at least 5 characters long');
+      !this.$v.supplier.Nama_Supplier.maxLength && errors.push('Name must be at most 25 characters long');
+      !this.$v.supplier.Nama_Supplier.required && errors.push('Name is required.');
+      return errors;
     }
   }
 });
@@ -39827,104 +39842,112 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content", attrs: { id: "homeLayout" } }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "collapse navbar-collapse show",
-        attrs: { id: "navbarSupportedContent" }
-      },
-      [
-        _c(
+    this.$route.meta.page != "login"
+      ? _c(
           "nav",
+          { staticClass: "navbar navbar-expand-lg navbar-light bg-light" },
+          [_vm._m(0), _vm._v(" "), _vm._m(1)]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    this.$route.meta.page != "login"
+      ? _c(
+          "div",
           {
-            staticClass: "nav nav-pills nav-justified",
-            staticStyle: { "background-color": "#e3f2fd" }
+            staticClass: "collapse navbar-collapse show",
+            attrs: { id: "navbarSupportedContent" }
           },
           [
-            _c("router-link", { attrs: { to: { name: "Pegawai" } } }, [
-              _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
-                _vm._v("Pegawai")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("router-link", { attrs: { to: { name: "Jasa_Service" } } }, [
-              _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
-                _vm._v("Jasa Service")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("router-link", { attrs: { to: { name: "Sparepart" } } }, [
-              _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
-                _vm._v("Sparepart")
-              ])
-            ]),
-            _vm._v(" "),
             _c(
-              "a",
+              "nav",
               {
-                staticClass: "nav-tabs nav-item nav-link",
-                attrs: { href: "motor.php" }
+                staticClass: "nav nav-pills nav-justified",
+                staticStyle: { "background-color": "#e3f2fd" }
               },
-              [_vm._v("Motor")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "nav-tabs nav-item nav-link",
-                attrs: { href: "konsumen.php" }
-              },
-              [_vm._v("Konsumen")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "nav-tabs nav-item nav-link",
-                attrs: { href: "sales.php" }
-              },
-              [_vm._v("Sales")]
-            ),
-            _vm._v(" "),
-            _c("router-link", { attrs: { to: { name: "Supplier" } } }, [
-              _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
-                _vm._v("Supplier")
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "nav-tabs nav-item nav-link",
-                attrs: { href: "cabang.php" }
-              },
-              [_vm._v("Cabang")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "nav-tabs nav-item nav-link",
-                attrs: { href: "pengadaan.php" }
-              },
-              [_vm._v("Pengadaan")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "nav-tabs nav-item nav-link",
-                attrs: { href: "laporan.php" }
-              },
-              [_vm._v("Laporan")]
+              [
+                _c("router-link", { attrs: { to: { name: "Pegawai" } } }, [
+                  _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                    _vm._v("Pegawai")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("router-link", { attrs: { to: { name: "Jasa_Service" } } }, [
+                  _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                    _vm._v("Jasa Service")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("router-link", { attrs: { to: { name: "Sparepart" } } }, [
+                  _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                    _vm._v("Sparepart")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { href: "motor.php" }
+                  },
+                  [_vm._v("Motor")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { href: "konsumen.php" }
+                  },
+                  [_vm._v("Konsumen")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { href: "sales.php" }
+                  },
+                  [_vm._v("Sales")]
+                ),
+                _vm._v(" "),
+                _c("router-link", { attrs: { to: { name: "Supplier" } } }, [
+                  _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                    _vm._v("Supplier")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { href: "cabang.php" }
+                  },
+                  [_vm._v("Cabang")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { href: "pengadaan.php" }
+                  },
+                  [_vm._v("Pengadaan")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { href: "laporan.php" }
+                  },
+                  [_vm._v("Laporan")]
+                )
+              ],
+              1
             )
-          ],
-          1
+          ]
         )
-      ]
-    ),
+      : _vm._e(),
     _vm._v(" "),
     _c("div", { attrs: { id: "appPage" } }, [
       _c(
@@ -39942,62 +39965,60 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "nav",
-      { staticClass: "navbar navbar-expand-lg navbar-light bg-light" },
-      [
+      "button",
+      {
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarSupportedContent",
+          "aria-controls": "navbarSupportedContent",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }
+      },
+      [_c("span", { staticClass: "navbar-toggler-icon" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "collapse navbar-collapse" }, [
+      _c(
+        "div",
+        {
+          staticClass: "collapse navbar-collapse justify-content-md-center",
+          attrs: { id: "navbarsExample08" }
+        },
+        [
+          _c("ul", { staticClass: "navbar-nav" }, [
+            _c("li", { staticClass: "nav-item active" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link disabled py-2",
+                  staticStyle: { "font-size": "20pt" },
+                  attrs: { href: "#" }
+                },
+                [_vm._v("SELAMAT DATANG OWNER")]
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("form", { staticClass: "form-inline my-2 my-lg-0" }, [
         _c(
           "button",
           {
-            staticClass: "navbar-toggler",
-            attrs: {
-              type: "button",
-              "data-toggle": "collapse",
-              "data-target": "#navbarSupportedContent",
-              "aria-controls": "navbarSupportedContent",
-              "aria-expanded": "false",
-              "aria-label": "Toggle navigation"
-            }
+            staticClass: "btn btn-outline-danger my-2 my-sm-0",
+            attrs: { type: "submit" }
           },
-          [_c("span", { staticClass: "navbar-toggler-icon" })]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "collapse navbar-collapse" }, [
-          _c(
-            "div",
-            {
-              staticClass: "collapse navbar-collapse justify-content-md-center",
-              attrs: { id: "navbarsExample08" }
-            },
-            [
-              _c("ul", { staticClass: "navbar-nav" }, [
-                _c("li", { staticClass: "nav-item active" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link disabled py-2",
-                      staticStyle: { "font-size": "20pt" },
-                      attrs: { href: "#" }
-                    },
-                    [_vm._v("SELAMAT DATANG OWNER")]
-                  )
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c("form", { staticClass: "form-inline my-2 my-lg-0" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-outline-danger my-2 my-sm-0",
-                attrs: { type: "submit" }
-              },
-              [_vm._v("Logout")]
-            )
-          ])
-        ])
-      ]
-    )
+          [_vm._v("Logout")]
+        )
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -40419,7 +40440,7 @@ var render = function() {
                             staticClass: "mb-3",
                             staticStyle: { color: "red" }
                           },
-                          [_vm._v(_vm._s(_vm.nameErrors))]
+                          [_vm._v(_vm._s(_vm.nameErrors[0]))]
                         )
                       : _vm._e()
                   ]),
@@ -40473,7 +40494,7 @@ var render = function() {
                   _c("div", { staticClass: "text-center" }, [
                     _vm.$v.jasaservice.Harga_Jasa.$invalid
                       ? _c("div", { staticStyle: { color: "red" } }, [
-                          _vm._v(_vm._s(_vm.priceErrors))
+                          _vm._v(_vm._s(_vm.priceErrors[0]))
                         ])
                       : _vm._e()
                   ]),
@@ -42744,37 +42765,69 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c(
-                      "p",
-                      {
-                        attrs: {
-                          "data-placement": "top",
-                          "data-toggle": "tooltip",
-                          title: "Tambah"
-                        }
-                      },
-                      [
+                  supplier.Nama_Sales == null
+                    ? _c("td", { staticClass: "text-center" }, [
                         _c(
-                          "button",
+                          "p",
                           {
-                            staticClass: "btn btn-success",
                             attrs: {
-                              "data-title": "Tambah_Sales",
-                              "data-toggle": "modal",
-                              "data-target": "#Tambah_Sales"
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.datasupplierhandler(supplier)
-                              }
+                              "data-placement": "top",
+                              "data-toggle": "tooltip",
+                              title: "Tambah"
                             }
                           },
-                          [_c("i", { staticClass: "fas fa-plus" })]
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-success",
+                                attrs: {
+                                  "data-title": "Tambah_Sales",
+                                  "data-toggle": "modal",
+                                  "data-target": "#Tambah_Sales"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.datasupplierhandler(supplier)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-plus" })]
+                            )
+                          ]
                         )
-                      ]
-                    )
-                  ]),
+                      ])
+                    : _c("td", { staticClass: "text-center" }, [
+                        _c(
+                          "p",
+                          {
+                            attrs: {
+                              "data-placement": "top",
+                              "data-toggle": "tooltip",
+                              title: "Edit"
+                            }
+                          },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-primary",
+                                attrs: {
+                                  "data-title": "Edit_Sales",
+                                  "data-toggle": "modal",
+                                  "data-target": "#Edit_Sales"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.datasupplierhandler(supplier)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-edit" })]
+                            )
+                          ]
+                        )
+                      ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "text-center" }, [
                     _c(
@@ -42783,7 +42836,7 @@ var render = function() {
                         attrs: {
                           "data-placement": "top",
                           "data-toggle": "tooltip",
-                          title: "Tambah"
+                          title: "Delete"
                         }
                       },
                       [
@@ -42853,8 +42906,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.Nama_Supplier,
-                          expression: "Nama_Supplier"
+                          value: _vm.supplier.Nama_Supplier,
+                          expression: "supplier.Nama_Supplier"
                         }
                       ],
                       staticClass: "form-control",
@@ -42866,16 +42919,33 @@ var render = function() {
                         id: "Nama_Supplier",
                         name: "Nama_Supplier"
                       },
-                      domProps: { value: _vm.Nama_Supplier },
+                      domProps: { value: _vm.supplier.Nama_Supplier },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.Nama_Supplier = $event.target.value
+                          _vm.$set(
+                            _vm.supplier,
+                            "Nama_Supplier",
+                            $event.target.value
+                          )
                         }
                       }
                     })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-center" }, [
+                    _vm.$v.supplier.Nama_Supplier.$invalid
+                      ? _c(
+                          "p",
+                          {
+                            staticClass: "mb-3",
+                            staticStyle: { color: "red" }
+                          },
+                          [_vm._v(_vm._s(_vm.nameErrors[0]))]
+                        )
+                      : _vm._e()
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group mb-4" }, [
@@ -42886,8 +42956,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.Alamat_Supplier,
-                          expression: "Alamat_Supplier"
+                          value: _vm.supplier.Alamat_Supplier,
+                          expression: "supplier.Alamat_Supplier"
                         }
                       ],
                       staticClass: "form-control",
@@ -42899,13 +42969,17 @@ var render = function() {
                         id: "Alamat_Supplier",
                         name: "Alamat_Supplier"
                       },
-                      domProps: { value: _vm.Alamat_Supplier },
+                      domProps: { value: _vm.supplier.Alamat_Supplier },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.Alamat_Supplier = $event.target.value
+                          _vm.$set(
+                            _vm.supplier,
+                            "Alamat_Supplier",
+                            $event.target.value
+                          )
                         }
                       }
                     })
@@ -42919,8 +42993,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.Telepon_Supplier,
-                          expression: "Telepon_Supplier"
+                          value: _vm.supplier.Telepon_Supplier,
+                          expression: "supplier.Telepon_Supplier"
                         }
                       ],
                       staticClass: "form-control",
@@ -42932,13 +43006,17 @@ var render = function() {
                         id: "Telepon_Supplier",
                         name: "Telepon_Supplier"
                       },
-                      domProps: { value: _vm.Telepon_Supplier },
+                      domProps: { value: _vm.supplier.Telepon_Supplier },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.Telepon_Supplier = $event.target.value
+                          _vm.$set(
+                            _vm.supplier,
+                            "Telepon_Supplier",
+                            $event.target.value
+                          )
                         }
                       }
                     })
@@ -61719,7 +61797,7 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   router: router,
   store: _store__WEBPACK_IMPORTED_MODULE_2__["default"],
   render: function render(h) {
-    return h(_components_App_vue__WEBPACK_IMPORTED_MODULE_7__["default"]);
+    return h(_components_appLayout_vue__WEBPACK_IMPORTED_MODULE_6__["default"]);
   },
   created: function created() {
     try {
@@ -62754,7 +62832,10 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [{
   name: 'HomeLayout',
   path: '/',
-  component: _components_layout_HomeLayout_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  component: _components_layout_HomeLayout_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+  meta: {
+    page: 'login'
+  }
 }, {
   name: 'Pegawai',
   path: '/pegawai',
@@ -62766,15 +62847,27 @@ var routes = [{
 }, {
   name: 'Jasa_Service',
   path: '/jasa_service',
-  component: _components_layout_jasa_service_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  component: _components_layout_jasa_service_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+  meta: {
+    role: ['Admin']
+  },
+  beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
 }, {
   name: 'Supplier',
   path: '/supplier',
-  component: _components_layout_supplier_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+  component: _components_layout_supplier_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+  meta: {
+    role: ['Admin']
+  },
+  beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
 }, {
   name: 'Sparepart',
   path: '/sparepart',
-  component: _components_layout_sparepart_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+  component: _components_layout_sparepart_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+  meta: {
+    role: ['Admin']
+  },
+  beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
 }];
 
 /***/ }),
@@ -63145,8 +63238,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\atmaauto\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\JASON\atmaauto\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\JASON\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

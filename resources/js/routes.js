@@ -11,6 +11,9 @@ export const routes = [
         name: 'HomeLayout',
         path: '/',
         component: HomeLayout,
+        meta:{
+            page : 'login'
+        }
     },
     {
         name: 'Pegawai',
@@ -26,16 +29,34 @@ export const routes = [
     {
         name: 'Jasa_Service',
         path: '/jasa_service',
-        component: Jasa_Service
+        component: Jasa_Service,
+        meta: { role: [
+            'Admin'
+        ]},
+        beforeEnter: middleware([
+            auth
+        ]) 
     },
     {
         name: 'Supplier',
         path: '/supplier',
-        component: Supplier
+        component: Supplier,
+        meta: { role: [
+            'Admin'
+        ]},
+        beforeEnter: middleware([
+            auth
+        ]) 
     },
     {
         name: 'Sparepart',
         path: '/sparepart',
-        component: Sparepart
+        component: Sparepart,
+        meta: { role: [
+            'Admin'
+        ]},
+        beforeEnter: middleware([
+            auth
+        ]) 
     },
 ]

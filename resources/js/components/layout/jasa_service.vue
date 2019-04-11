@@ -66,7 +66,7 @@
                                 <input type="text" v-model="jasaservice.Nama_Jasa" class="form-control" placeholder="Masukkan Nama Jasa Service" :error="nameErrors" aria-label="Nama_Jasa_Service" aria-describedby="basic-addon2" id="Nama_Jasa_Service" name="Nama_Jasa_Service" @input="$v.jasaservice.Nama_Jasa.$touch()" @blur="$v.jasaservice.Nama_Jasa.$touch()" required>
                             </div>
                             <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.jasaservice.Nama_Jasa.$invalid">{{nameErrors}}</p>
+                                <p class="mb-3" style="color:red;" v-if="$v.jasaservice.Nama_Jasa.$invalid">{{nameErrors[0]}}</p>
                             </div>
                             <div class="input-group mt-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
@@ -75,9 +75,8 @@
                                 <input type="number" v-model="jasaservice.Harga_Jasa" class="form-control" placeholder="Masukkan Harga Jasa Service" aria-label="Harga_Jasa_Service" aria-describedby="basic-addon2" id="Harga_Jasa_Service" name="Harga_Jasa_Service" @input="$v.jasaservice.Harga_Jasa.$touch()" @blur="$v.jasaservice.Harga_Jasa.$touch()" required>
                             </div>
                             <div class="text-center">
-                                <div style="color:red;" v-if="$v.jasaservice.Harga_Jasa.$invalid">{{priceErrors}}</div>
+                                <div style="color:red;" v-if="$v.jasaservice.Harga_Jasa.$invalid">{{priceErrors[0]}}</div>
                             </div>
-                            
                             <div class="modal-footer ">
                                 <button type="submit" class="btn btn-success btn-lg" style="width: 100%;" :disabled="$v.jasaservice.$invalid">Tambahkan Jasa Service</button>
                             </div>
@@ -148,7 +147,7 @@
 </template>
 <script>
 import Controller from '../../httpController'
-import { required,minLength, maxLength, numeric } from 'vuelidate/lib/validators'
+import { required, minLength, maxLength, numeric } from 'vuelidate/lib/validators'
 
 export default {
      validations: {
@@ -183,8 +182,8 @@ export default {
         async addjasaservice () {
             try {
                 const payload = {
-                    Nama_Jasa : this.Nama_Jasa,
-                    Harga_Jasa : this.Harga_Jasa,
+                    Nama_Jasa : this.jasaservice.Nama_Jasa,
+                    Harga_Jasa : this.jasaservice.Harga_Jasa,
                 }
                 await Controller.addjasaservice(payload)
                 this.getalljasaservice()
