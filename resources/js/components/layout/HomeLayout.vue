@@ -43,14 +43,7 @@ import auth from '../../service/Auth'
         error:''
       }
     },
-    // watch: {
-    //   form: {
-    //     deep: true,
-    //     handler (val) {
-    //       this.$refs.errorAlert.reset()
-    //     }
-    //   }
-    // },
+
     methods: {
       async loginHandler(){
         try {
