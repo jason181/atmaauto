@@ -19,17 +19,17 @@ class Detail_Jasa extends Model
 
     public function jasas()
     {
-        return $this->belongsTo('App\Jasa');
+        return $this->belongsTo('App\Jasa','Id_Jasa');
     }
     
     public function transaksi_penjualan()
     {
-        return $this->belongsTo('App\Transaksi_Penjualan');
+        return $this->belongsTo('App\Transaksi_Penjualan','Id_Transaksi');
     }
 
     public function montirs()
     {
-        return $this->belongsTo('App\Montir');
+        return $this->belongsTo('App\Montir','Id_Jasa_Montir');
     }
 }
 

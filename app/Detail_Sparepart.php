@@ -22,16 +22,16 @@ class Detail_Sparepart extends Model
 
     public function spareparts()
     {
-        return $this->belongsTo('App\Sparepart');
+        return $this->belongsTo('App\Sparepart','Id_Sparepart');
     }
     
     public function transaksi_penjualan()
     {
-        return $this->belongsTo('App\Transaksi_Penjualan');
+        return $this->belongsTo('App\Transaksi_Penjualan','Id_Transaksi');
     }
 
     public function montirs()
     {
-        return $this->belongsTo('App\Montir');
+        return $this->belongsTo('App\Montir','Id_Jasa_Montir');
     }
 }

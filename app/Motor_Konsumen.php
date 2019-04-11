@@ -19,16 +19,16 @@ class Motor_Konsumen extends Model
 
     public function montirs()
     {
-        return $this->hasMany('App\Montir');
+        return $this->hasMany('App\Montir','Id_Jasa_Montir');
     }
 
     public function konsumens()
     {
-        return $this->belongsTo('App\Konsumen');
+        return $this->belongsTo('App\Konsumen','Id_Konsmen');
     }
 
     public function motors()
     {
-        return $this->belongsTo('App\Motor');
+        return $this->belongsTo('App\Motor','Id_Motor');
     }
 }

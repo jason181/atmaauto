@@ -20,7 +20,7 @@ class Supplier extends Model
 
     public function transaksi_pengadaans()
     {
-        return $this->hasMany('App\Transaksi_Pengadaan');
+        return $this->hasMany('App\Transaksi_Pengadaan','Id_Pengadaan');
     }
 
 }
