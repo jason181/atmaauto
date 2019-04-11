@@ -1770,19 +1770,8 @@ module.exports = {
 /*!********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/appLayout.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _service_Auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../service/Auth */ "./resources/js/service/Auth.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+/*! no static exports found */
+/***/ (function(module, exports) {
 
 //
 //
@@ -1845,54 +1834,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'appLayout',
-  data: function data() {
-    return {
-      err: ''
-    };
-  },
-  methods: {
-    logoutHandler: function () {
-      var _logoutHandler = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return _service_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].logout();
-
-              case 3:
-                this.router.push({
-                  name: 'HomeLayout'
-                });
-                _context.next = 8;
-                break;
-
-              case 6:
-                _context.prev = 6;
-                _context.t0 = _context["catch"](0);
-
-              case 8:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this, [[0, 6]]);
-      }));
-
-      function logoutHandler() {
-        return _logoutHandler.apply(this, arguments);
-      }
-
-      return logoutHandler;
-    }()
-  }
-});
+// import auth from './../service/Auth'
+// export default {
+//     name: 'appLayout',
+//     data () {
+//       return {
+// 		err: ''
+//       }
+// 	},
+// 	methods:{
+// 		async logoutHandler(){
+// 			try{
+// 				await auth.logout()
+// 				this.router.push({name : 'HomeLayout'})
+// 			}
+// 			catch(err){
+// 			}
+// 		}
+// 	}
+// }
 
 /***/ }),
 
@@ -2168,7 +2128,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2252,8 +2211,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 payload = {
-                  Nama_Jasa: this.Nama_Jasa,
-                  Harga_Jasa: this.Harga_Jasa
+                  Nama_Jasa: this.jasaservice.Nama_Jasa,
+                  Harga_Jasa: this.jasaservice.Harga_Jasa
                 };
                 _context2.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addjasaservice(payload);
@@ -3605,6 +3564,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3621,9 +3590,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       Supplier: {
         Nama_Supplier: '',
         Alamat_Supplier: '',
-        Telepon_Supplier: '',
-        Nama_Sales: '',
-        Telepon_Sales: ''
+        Telepon_Supplier: ''
       }
     };
   },
@@ -3888,6 +3855,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.supplierdata.filter(function (supplier) {
         return supplier.Nama_Supplier.match(_this.Cari_Supplier);
       });
+    },
+    nameErrors: function nameErrors() {
+      var errors = [];
+      if (!this.$v.supplier.Nama_Supplier.$dirty) return errors;
+      !this.$v.supplier.Nama_Supplier.minLength && errors.push('Name must be at least 5 characters long');
+      !this.$v.supplier.Nama_Supplier.maxLength && errors.push('Name must be at most 25 characters long');
+      !this.$v.supplier.Nama_Supplier.required && errors.push('Name is required.');
+      return errors;
     }
   }
 });
@@ -39878,137 +39853,112 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content", attrs: { id: "homeLayout" } }, [
-    _c(
-      "nav",
-      { staticClass: "navbar navbar-expand-lg navbar-light bg-light" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "collapse navbar-collapse" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c(
-            "form",
-            {
-              staticClass: "form-inline my-2 my-lg-0",
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.logoutHandler($event)
-                }
-              }
-            },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-danger my-2 my-sm-0",
-                  attrs: { type: "submit" }
-                },
-                [_vm._v("Logout")]
-              )
-            ]
-          )
-        ])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "collapse navbar-collapse show",
-        attrs: { id: "navbarSupportedContent" }
-      },
-      [
-        _c(
+    this.$route.meta.page != "login"
+      ? _c(
           "nav",
+          { staticClass: "navbar navbar-expand-lg navbar-light bg-light" },
+          [_vm._m(0), _vm._v(" "), _vm._m(1)]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    this.$route.meta.page != "login"
+      ? _c(
+          "div",
           {
-            staticClass: "nav nav-pills nav-justified",
-            staticStyle: { "background-color": "#e3f2fd" }
+            staticClass: "collapse navbar-collapse show",
+            attrs: { id: "navbarSupportedContent" }
           },
           [
-            _c("router-link", { attrs: { to: { name: "Pegawai" } } }, [
-              _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
-                _vm._v("Pegawai")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("router-link", { attrs: { to: { name: "Jasa_Service" } } }, [
-              _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
-                _vm._v("Jasa Service")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("router-link", { attrs: { to: { name: "Sparepart" } } }, [
-              _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
-                _vm._v("Sparepart")
-              ])
-            ]),
-            _vm._v(" "),
             _c(
-              "a",
+              "nav",
               {
-                staticClass: "nav-tabs nav-item nav-link",
-                attrs: { href: "motor.php" }
+                staticClass: "nav nav-pills nav-justified",
+                staticStyle: { "background-color": "#e3f2fd" }
               },
-              [_vm._v("Motor")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "nav-tabs nav-item nav-link",
-                attrs: { href: "konsumen.php" }
-              },
-              [_vm._v("Konsumen")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "nav-tabs nav-item nav-link",
-                attrs: { href: "sales.php" }
-              },
-              [_vm._v("Sales")]
-            ),
-            _vm._v(" "),
-            _c("router-link", { attrs: { to: { name: "Supplier" } } }, [
-              _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
-                _vm._v("Supplier")
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "nav-tabs nav-item nav-link",
-                attrs: { href: "cabang.php" }
-              },
-              [_vm._v("Cabang")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "nav-tabs nav-item nav-link",
-                attrs: { href: "pengadaan.php" }
-              },
-              [_vm._v("Pengadaan")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "nav-tabs nav-item nav-link",
-                attrs: { href: "laporan.php" }
-              },
-              [_vm._v("Laporan")]
+              [
+                _c("router-link", { attrs: { to: { name: "Pegawai" } } }, [
+                  _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                    _vm._v("Pegawai")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("router-link", { attrs: { to: { name: "Jasa_Service" } } }, [
+                  _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                    _vm._v("Jasa Service")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("router-link", { attrs: { to: { name: "Sparepart" } } }, [
+                  _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                    _vm._v("Sparepart")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { href: "motor.php" }
+                  },
+                  [_vm._v("Motor")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { href: "konsumen.php" }
+                  },
+                  [_vm._v("Konsumen")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { href: "sales.php" }
+                  },
+                  [_vm._v("Sales")]
+                ),
+                _vm._v(" "),
+                _c("router-link", { attrs: { to: { name: "Supplier" } } }, [
+                  _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                    _vm._v("Supplier")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { href: "cabang.php" }
+                  },
+                  [_vm._v("Cabang")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { href: "pengadaan.php" }
+                  },
+                  [_vm._v("Pengadaan")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { href: "laporan.php" }
+                  },
+                  [_vm._v("Laporan")]
+                )
+              ],
+              1
             )
-          ],
-          1
+          ]
         )
-      ]
-    ),
+      : _vm._e(),
     _vm._v(" "),
     _c("div", { attrs: { id: "appPage" } }, [
       _c(
@@ -40045,28 +39995,41 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "collapse navbar-collapse justify-content-md-center",
-        attrs: { id: "navbarsExample08" }
-      },
-      [
-        _c("ul", { staticClass: "navbar-nav" }, [
-          _c("li", { staticClass: "nav-item active" }, [
-            _c(
-              "a",
-              {
-                staticClass: "nav-link disabled py-2",
-                staticStyle: { "font-size": "20pt" },
-                attrs: { href: "#" }
-              },
-              [_vm._v("SELAMAT DATANG OWNER")]
-            )
+    return _c("div", { staticClass: "collapse navbar-collapse" }, [
+      _c(
+        "div",
+        {
+          staticClass: "collapse navbar-collapse justify-content-md-center",
+          attrs: { id: "navbarsExample08" }
+        },
+        [
+          _c("ul", { staticClass: "navbar-nav" }, [
+            _c("li", { staticClass: "nav-item active" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link disabled py-2",
+                  staticStyle: { "font-size": "20pt" },
+                  attrs: { href: "#" }
+                },
+                [_vm._v("SELAMAT DATANG OWNER")]
+              )
+            ])
           ])
-        ])
-      ]
-    )
+        ]
+      ),
+      _vm._v(" "),
+      _c("form", { staticClass: "form-inline my-2 my-lg-0" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-outline-danger my-2 my-sm-0",
+            attrs: { type: "submit" }
+          },
+          [_vm._v("Logout")]
+        )
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -40488,7 +40451,7 @@ var render = function() {
                             staticClass: "mb-3",
                             staticStyle: { color: "red" }
                           },
-                          [_vm._v(_vm._s(_vm.nameErrors))]
+                          [_vm._v(_vm._s(_vm.nameErrors[0]))]
                         )
                       : _vm._e()
                   ]),
@@ -40542,7 +40505,7 @@ var render = function() {
                   _c("div", { staticClass: "text-center" }, [
                     _vm.$v.jasaservice.Harga_Jasa.$invalid
                       ? _c("div", { staticStyle: { color: "red" } }, [
-                          _vm._v(_vm._s(_vm.priceErrors))
+                          _vm._v(_vm._s(_vm.priceErrors[0]))
                         ])
                       : _vm._e()
                   ]),
@@ -42813,37 +42776,69 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c(
-                      "p",
-                      {
-                        attrs: {
-                          "data-placement": "top",
-                          "data-toggle": "tooltip",
-                          title: "Tambah"
-                        }
-                      },
-                      [
+                  supplier.Nama_Sales == null
+                    ? _c("td", { staticClass: "text-center" }, [
                         _c(
-                          "button",
+                          "p",
                           {
-                            staticClass: "btn btn-success",
                             attrs: {
-                              "data-title": "Tambah_Sales",
-                              "data-toggle": "modal",
-                              "data-target": "#Tambah_Sales"
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.datasupplierhandler(supplier)
-                              }
+                              "data-placement": "top",
+                              "data-toggle": "tooltip",
+                              title: "Tambah"
                             }
                           },
-                          [_c("i", { staticClass: "fas fa-plus" })]
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-success",
+                                attrs: {
+                                  "data-title": "Tambah_Sales",
+                                  "data-toggle": "modal",
+                                  "data-target": "#Tambah_Sales"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.datasupplierhandler(supplier)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-plus" })]
+                            )
+                          ]
                         )
-                      ]
-                    )
-                  ]),
+                      ])
+                    : _c("td", { staticClass: "text-center" }, [
+                        _c(
+                          "p",
+                          {
+                            attrs: {
+                              "data-placement": "top",
+                              "data-toggle": "tooltip",
+                              title: "Edit"
+                            }
+                          },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-primary",
+                                attrs: {
+                                  "data-title": "Edit_Sales",
+                                  "data-toggle": "modal",
+                                  "data-target": "#Edit_Sales"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.datasupplierhandler(supplier)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-edit" })]
+                            )
+                          ]
+                        )
+                      ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "text-center" }, [
                     _c(
@@ -42852,7 +42847,7 @@ var render = function() {
                         attrs: {
                           "data-placement": "top",
                           "data-toggle": "tooltip",
-                          title: "Tambah"
+                          title: "Delete"
                         }
                       },
                       [
@@ -42922,8 +42917,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.Nama_Supplier,
-                          expression: "Nama_Supplier"
+                          value: _vm.supplier.Nama_Supplier,
+                          expression: "supplier.Nama_Supplier"
                         }
                       ],
                       staticClass: "form-control",
@@ -42935,16 +42930,33 @@ var render = function() {
                         id: "Nama_Supplier",
                         name: "Nama_Supplier"
                       },
-                      domProps: { value: _vm.Nama_Supplier },
+                      domProps: { value: _vm.supplier.Nama_Supplier },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.Nama_Supplier = $event.target.value
+                          _vm.$set(
+                            _vm.supplier,
+                            "Nama_Supplier",
+                            $event.target.value
+                          )
                         }
                       }
                     })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-center" }, [
+                    _vm.$v.supplier.Nama_Supplier.$invalid
+                      ? _c(
+                          "p",
+                          {
+                            staticClass: "mb-3",
+                            staticStyle: { color: "red" }
+                          },
+                          [_vm._v(_vm._s(_vm.nameErrors[0]))]
+                        )
+                      : _vm._e()
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group mb-4" }, [
@@ -42955,8 +42967,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.Alamat_Supplier,
-                          expression: "Alamat_Supplier"
+                          value: _vm.supplier.Alamat_Supplier,
+                          expression: "supplier.Alamat_Supplier"
                         }
                       ],
                       staticClass: "form-control",
@@ -42968,13 +42980,17 @@ var render = function() {
                         id: "Alamat_Supplier",
                         name: "Alamat_Supplier"
                       },
-                      domProps: { value: _vm.Alamat_Supplier },
+                      domProps: { value: _vm.supplier.Alamat_Supplier },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.Alamat_Supplier = $event.target.value
+                          _vm.$set(
+                            _vm.supplier,
+                            "Alamat_Supplier",
+                            $event.target.value
+                          )
                         }
                       }
                     })
@@ -42988,8 +43004,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.Telepon_Supplier,
-                          expression: "Telepon_Supplier"
+                          value: _vm.supplier.Telepon_Supplier,
+                          expression: "supplier.Telepon_Supplier"
                         }
                       ],
                       staticClass: "form-control",
@@ -43001,13 +43017,17 @@ var render = function() {
                         id: "Telepon_Supplier",
                         name: "Telepon_Supplier"
                       },
-                      domProps: { value: _vm.Telepon_Supplier },
+                      domProps: { value: _vm.supplier.Telepon_Supplier },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.Telepon_Supplier = $event.target.value
+                          _vm.$set(
+                            _vm.supplier,
+                            "Telepon_Supplier",
+                            $event.target.value
+                          )
                         }
                       }
                     })
@@ -61959,7 +61979,9 @@ component.options.__file = "resources/js/components/appLayout.vue"
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_appLayout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./appLayout.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/appLayout.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_appLayout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_appLayout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_appLayout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_appLayout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_appLayout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_appLayout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -62811,7 +62833,10 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [{
   name: 'HomeLayout',
   path: '/',
-  component: _components_layout_HomeLayout_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  component: _components_layout_HomeLayout_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+  meta: {
+    page: 'login'
+  }
 }, {
   name: 'Pegawai',
   path: '/pegawai',

@@ -32,3 +32,4 @@ class Detail_Jasa extends Model
         return $this->belongsTo('App\Montir');
     }
 }
+

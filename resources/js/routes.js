@@ -12,6 +12,9 @@ export const routes = [
         name: 'HomeLayout',
         path: '/',
         component: HomeLayout,
+        meta:{
+            page : 'login'
+        }
     },
     {
         name: 'Pegawai',
@@ -33,7 +36,7 @@ export const routes = [
         ]},
         beforeEnter: middleware([
             auth
-        ])
+        ]) 
     },
     {
         name: 'Supplier',
@@ -44,7 +47,7 @@ export const routes = [
         ]},
         beforeEnter: middleware([
             auth
-        ])
+        ]) 
     },
     {
         name: 'Sparepart',
@@ -55,6 +58,6 @@ export const routes = [
         ]},
         beforeEnter: middleware([
             auth
-        ])
+        ]) 
     },
 ]

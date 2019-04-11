@@ -1,6 +1,6 @@
 <template>
    <div class="content" id="homeLayout">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" v-if="this.$route.meta.page!='login'">
 		  	<!-- <a class="navbar-brand" href="#"><img src="../img/Logo_AtmaAuto.jpg" width="50px"> SIAUTO</a> -->
 		  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
@@ -20,7 +20,7 @@
 		  	</div>
 		</nav>
 
-		<div class="collapse navbar-collapse show" id=navbarSupportedContent>
+		<div v-if="this.$route.meta.page!='login' " class="collapse navbar-collapse show" id=navbarSupportedContent>
 			<nav class="nav nav-pills nav-justified" style="background-color: #e3f2fd;">
                 <router-link :to="{name:'Pegawai'}" class="">
                     <a class="nav-tabs nav-item nav-link">Pegawai</a>

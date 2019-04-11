@@ -48,15 +48,22 @@
                                     </button>
                                 </p>
                             </td>
-                            <td class="text-center">
+                            <td class="text-center" v-if="supplier.Nama_Sales==null">
                                 <p data-placement="top" data-toggle="tooltip" title="Tambah">
                                     <button @click="datasupplierhandler(supplier)" class="btn btn-success" data-title="Tambah_Sales" data-toggle="modal" data-target="#Tambah_Sales">
                                         <i class="fas fa-plus"></i>
                                     </button>
                                 </p>
                             </td>
+                            <td class="text-center" v-else>
+                                <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                    <button @click="datasupplierhandler(supplier)" class="btn btn-primary" data-title="Edit_Sales" data-toggle="modal" data-target="#Edit_Sales">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </p>
+                            </td>
                             <td class="text-center">
-                                <p data-placement="top" data-toggle="tooltip" title="Tambah">
+                                <p data-placement="top" data-toggle="tooltip" title="Delete">
                                     <button @click="datasupplierhandler(supplier)" class="btn btn-danger" data-title="Delete_Sales" data-toggle="modal" data-target="#Delete_Sales">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
@@ -84,19 +91,22 @@
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Nama</span>
                                 </div>
-                                <input type="text" v-model="Nama_Supplier" class="form-control" placeholder="Masukkan Nama Supplier" aria-label="Nama_Supplier" aria-describedby="basic-addon2" id="Nama_Supplier" name="Nama_Supplier">
+                                <input type="text" v-model="supplier.Nama_Supplier" class="form-control" placeholder="Masukkan Nama Supplier" aria-label="Nama_Supplier" aria-describedby="basic-addon2" id="Nama_Supplier" name="Nama_Supplier">
+                            </div>
+                            <div class="text-center">
+                                <p class="mb-3" style="color:red;" v-if="$v.supplier.Nama_Supplier.$invalid">{{nameErrors[0]}}</p>
                             </div>
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Alamat</span>
                                 </div>
-                                <input type="text" v-model="Alamat_Supplier" class="form-control" placeholder="Masukkan Alamat Supplier" aria-label="Alamat_Supplier" aria-describedby="basic-addon2" id="Alamat_Supplier" name="Alamat_Supplier">
+                                <input type="text" v-model="supplier.Alamat_Supplier" class="form-control" placeholder="Masukkan Alamat Supplier" aria-label="Alamat_Supplier" aria-describedby="basic-addon2" id="Alamat_Supplier" name="Alamat_Supplier">
                             </div>
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Telepon</span>
                                 </div>
-                                <input type="text" v-model="Telepon_Supplier" class="form-control" placeholder="Masukkan Telepon Supplier" aria-label="Telepon_Supplier" aria-describedby="basic-addon2" id="Telepon_Supplier" name="Telepon_Supplier">
+                                <input type="text" v-model="supplier.Telepon_Supplier" class="form-control" placeholder="Masukkan Telepon Supplier" aria-label="Telepon_Supplier" aria-describedby="basic-addon2" id="Telepon_Supplier" name="Telepon_Supplier">
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-success btn-lg" style="width: 100%;">Tambahkan Supplier</button>
@@ -278,8 +288,6 @@ export default {
             Nama_Supplier:'',
             Alamat_Supplier:'',
             Telepon_Supplier:'',
-            Nama_Sales:'',
-            Telepon_Sales:'',
         }
     }),
     mounted(){
@@ -368,7 +376,16 @@ export default {
             return this.supplierdata.filter((supplier)=>{
                 return supplier.Nama_Supplier.match(this.Cari_Supplier);
             });
+        },
+        nameErrors(){
+            const errors = []
+            if (!this.$v.supplier.Nama_Supplier.$dirty) return errors
+            !this.$v.supplier.Nama_Supplier.minLength && errors.push('Name must be at least 5 characters long')
+            !this.$v.supplier.Nama_Supplier.maxLength && errors.push('Name must be at most 25 characters long')
+            !this.$v.supplier.Nama_Supplier.required && errors.push('Name is required.')
+            return errors
         }
+
     }
 }
 </script>
