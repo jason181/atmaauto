@@ -22,24 +22,33 @@
 
 		<div v-if="this.$route.meta.page!='login' " class="collapse navbar-collapse show" id=navbarSupportedContent>
 			<nav class="nav nav-pills nav-justified" style="background-color: #e3f2fd;">
-                <router-link :to="{name:'Pegawai'}" class="">
+                <router-link :to="{name:'Pegawai'}" class="nav-tabs nav-item nav-link">
                     <a class="nav-tabs nav-item nav-link">Pegawai</a>
                 </router-link>
-			  	<router-link :to="{name:'Jasa_Service'}" class="">
+			  	<router-link :to="{name:'Jasa_Service'}" class="nav-tabs nav-item nav-link">
                     <a class="nav-tabs nav-item nav-link">Jasa Service</a>
                 </router-link>
-				<router-link :to="{name:'Sparepart'}" class="">
+				<router-link :to="{name:'Sparepart'}" class="nav-tabs nav-item nav-link">
                     <a class="nav-tabs nav-item nav-link">Sparepart</a>
                 </router-link>
-			  	<a class="nav-tabs nav-item nav-link" href="motor.php">Motor</a>
-			  	<a class="nav-tabs nav-item nav-link" href="konsumen.php">Konsumen</a>
-			  	<a class="nav-tabs nav-item nav-link" href="sales.php">Sales</a>
-				<router-link :to="{name:'Supplier'}" class="">
+				<router-link :to="{name:'Motor'}" class="nav-tabs nav-item nav-link">
+                    <a class="nav-tabs nav-item nav-link">Motor</a>
+                </router-link>
+				<router-link :to="{name:'Konsumen'}" class="nav-tabs nav-item nav-link">
+                    <a class="nav-tabs nav-item nav-link">Konsumen</a>
+                </router-link>
+				<router-link :to="{name:'Supplier'}" class="nav-tabs nav-item nav-link">
                     <a class="nav-tabs nav-item nav-link">Supplier</a>
                 </router-link>
-			  	<a class="nav-tabs nav-item nav-link" href="cabang.php">Cabang</a>
-			  	<a class="nav-tabs nav-item nav-link" href="pengadaan.php">Pengadaan</a>
-			  	<a class="nav-tabs nav-item nav-link" href="laporan.php">Laporan</a>
+				<router-link :to="{name:'Cabang'}" class="nav-tabs nav-item nav-link">
+                    <a class="nav-tabs nav-item nav-link">Cabang</a>
+                </router-link>
+				<router-link :to="{name:'Pengadaan'}" class="nav-tabs nav-item nav-link">
+                    <a class="nav-tabs nav-item nav-link">Pengadaan</a>
+                </router-link>
+				<router-link :to="{name:'Laporan'}" class="nav-tabs nav-item nav-link">
+                    <a class="nav-tabs nav-item nav-link">Laporan</a>
+                </router-link>
 			</nav>
 		</div>
 
