@@ -1,7 +1,7 @@
 import { required, minLength, maxLength, numeric, alpha } from 'vuelidate/lib/validators'
 
 export default {
-    jasaservice: {
+    Jasaservice: {
         Nama_Jasa: { 
             required, 
             minLength: minLength(5), 

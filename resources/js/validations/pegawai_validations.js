@@ -1,7 +1,7 @@
 import { required, minLength, maxLength, numeric, alpha, alphaNum } from 'vuelidate/lib/validators'
 
 export default {
-    pegawai:{
+    Pegawai:{
         Id_Cabang : { 
             required 
         },

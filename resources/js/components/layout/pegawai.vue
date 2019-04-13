@@ -77,82 +77,82 @@
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Nama</span>
                                 </div>
-                                <input type="text" class="form-control" v-model="pegawai.Nama_Pegawai" placeholder="Masukkan Nama Pegawai" aria-label="Nama_Pegawai" aria-describedby="basic-addon2" id="Nama_Pegawai" name="Nama_Pegawai" @input="$v.pegawai.Nama_Pegawai.$touch()" @blur="$v.pegawai.Nama_Pegawai.$touch()" required>
+                                <input type="text" class="form-control" v-model="Pegawai.Nama_Pegawai" placeholder="Masukkan Nama Pegawai" aria-label="Nama_Pegawai" aria-describedby="basic-addon2" id="Nama_Pegawai" name="Nama_Pegawai" @input="$v.Pegawai.Nama_Pegawai.$touch()" @blur="$v.Pegawai.Nama_Pegawai.$touch()" required>
                             </div>
                             <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.pegawai.Nama_Pegawai.$invalid">{{nameErrors[0]}}</p>
+                                <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Nama_Pegawai.$invalid">{{nameErrors[0]}}</p>
                             </div>
                             <div class="input-group mt-3">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Alamat</span>
                                 </div>
-                                <input type="text" class="form-control" v-model="pegawai.Alamat_Pegawai" placeholder="Masukkan Alamat Pegawai" aria-label="Nama_Lengkap" aria-describedby="basic-addon2" id="Alamat_Pegawai" name="Alamat_Pegawai" @input="$v.pegawai.Alamat_Pegawai.$touch()" @blur="$v.pegawai.Alamat_Pegawai.$touch()" required>
+                                <input type="text" class="form-control" v-model="Pegawai.Alamat_Pegawai" placeholder="Masukkan Alamat Pegawai" aria-label="Nama_Lengkap" aria-describedby="basic-addon2" id="Alamat_Pegawai" name="Alamat_Pegawai" @input="$v.Pegawai.Alamat_Pegawai.$touch()" @blur="$v.Pegawai.Alamat_Pegawai.$touch()" required>
                             </div>
                             <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.pegawai.Alamat_Pegawai.$invalid">{{addressErrors[0]}}</p>
+                                <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Alamat_Pegawai.$invalid">{{addressErrors[0]}}</p>
                             </div>
                             <div class="input-group mt-3">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Telepon</span>
                                 </div>
-                                <input type="text" class="form-control" v-model="pegawai.Telepon_Pegawai" placeholder="Masukkan Nomor Telepon Pegawai" aria-label="Telepon_Pegawai" aria-describedby="basic-addon2" id="Telepon_Pegawai" name="Telepon_Pegawai" @input="$v.pegawai.Telepon_Pegawai.$touch()" @blur="$v.pegawai.Telepon_Pegawai.$touch()" require>
+                                <input type="text" class="form-control" v-model="Pegawai.Telepon_Pegawai" placeholder="Masukkan Nomor Telepon Pegawai" aria-label="Telepon_Pegawai" aria-describedby="basic-addon2" id="Telepon_Pegawai" name="Telepon_Pegawai" @input="$v.Pegawai.Telepon_Pegawai.$touch()" @blur="$v.Pegawai.Telepon_Pegawai.$touch()" require>
                             </div>
                             <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.pegawai.Telepon_Pegawai.$invalid">{{phoneErrors[0]}}</p>
+                                <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Telepon_Pegawai.$invalid">{{phoneErrors[0]}}</p>
                             </div>
                             <div class="input-group mt-3">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Gaji</span>
                                 </div>
-                                <input type="text" class="form-control" v-model="pegawai.Gaji_Pegawai" placeholder="Masukkan Gaji" aria-label="Gaji_Pegawai" aria-describedby="basic-addon2" id="Gaji_Pegawai" name="Gaji_Pegawai" @input="$v.pegawai.Gaji_Pegawai.$touch()" @blur="$v.pegawai.Gaji_Pegawai.$touch()" require>
+                                <input type="text" class="form-control" v-model="Pegawai.Gaji_Pegawai" placeholder="Masukkan Gaji" aria-label="Gaji_Pegawai" aria-describedby="basic-addon2" id="Gaji_Pegawai" name="Gaji_Pegawai" @input="$v.Pegawai.Gaji_Pegawai.$touch()" @blur="$v.Pegawai.Gaji_Pegawai.$touch()" require>
                             </div>
                             <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.pegawai.Gaji_Pegawai.$invalid">{{salaryErrors[0]}}</p>
+                                <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Gaji_Pegawai.$invalid">{{salaryErrors[0]}}</p>
                             </div>
                             <div class="input-group mt-3">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Username</span>
                                 </div>
-                                <input type="text" class="form-control" v-model="pegawai.Username" placeholder="Masukkan Username" aria-label="Username" aria-describedby="basic-addon2" id="Username" name="Username" @input="$v.pegawai.Username.$touch()" @blur="$v.pegawai.Username.$touch()" require>
+                                <input type="text" class="form-control" v-model="Pegawai.Username" placeholder="Masukkan Username" aria-label="Username" aria-describedby="basic-addon2" id="Username" name="Username" @input="$v.Pegawai.Username.$touch()" @blur="$v.Pegawai.Username.$touch()" require>
                             </div>
                             <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.pegawai.Username.$invalid">{{usernameErrors[0]}}</p>
+                                <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Username.$invalid">{{usernameErrors[0]}}</p>
                             </div>
                             <div class="input-group mt-3">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Password</span>
                                 </div>
-                                <input type="password" class="form-control" v-model="pegawai.Password" placeholder="Masukkan Password" aria-label="Password" aria-describedby="basic-addon2" id="Password" name="Password" @input="$v.pegawai.Password.$touch()" @blur="$v.pegawai.Password.$touch()" require>
+                                <input type="password" class="form-control" v-model="Pegawai.Password" placeholder="Masukkan Password" aria-label="Password" aria-describedby="basic-addon2" id="Password" name="Password" @input="$v.Pegawai.Password.$touch()" @blur="$v.Pegawai.Password.$touch()" require>
                             </div>
                             <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.pegawai.Password.$invalid">{{passwordErrors[0]}}</p>
+                                <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Password.$invalid">{{passwordErrors[0]}}</p>
                             </div>
                             <div class="input-group mt-3">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Cabang</span>
                                 </div>
-                                <select class="form-control" v-model="pegawai.Id_Cabang" @input="$v.pegawai.Id_Cabang.$touch()" @blur="$v.pegawai.Id_Cabang.$touch()" require>
+                                <select class="form-control" v-model="Pegawai.Id_Cabang" @input="$v.Pegawai.Id_Cabang.$touch()" @blur="$v.Pegawai.Id_Cabang.$touch()" require>
                                     <option disabled="disabled" selected="selected">-- Pilih Cabang --</option>
                                     <option v-bind:key="cabang['Id_Cabang']" v-for="cabang in cabangdata" :value="cabang.Id_Cabang">{{cabang.Nama_Cabang}} </option>
                                 </select>
                             </div>
                             <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.pegawai.Id_Cabang.$invalid">{{cabangErrors[0]}}</p>
+                                <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Id_Cabang.$invalid">{{cabangErrors[0]}}</p>
                             </div>
                             <div class="input-group mt-3">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Jabatan</span>
                                 </div>
-                                <select class="form-control" v-model="pegawai.Id_Role" @input="$v.pegawai.Id_Role.$touch()" @blur="$v.pegawai.Id_Role.$touch()" require>
+                                <select class="form-control" v-model="Pegawai.Id_Role" @input="$v.Pegawai.Id_Role.$touch()" @blur="$v.Pegawai.Id_Role.$touch()" require>
                                     <option disabled="disabled" selected="selected">-- Pilih Jabatan --</option>
                                     <option v-bind:key="role['Id_Role']" v-for="role in roledata" :value="role.Id_Role">{{role.Nama_Role}} </option>
                                 </select>
                             </div>
                             <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.pegawai.Id_Role.$invalid">{{roleErrors[0]}}</p>
+                                <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Id_Role.$invalid">{{roleErrors[0]}}</p>
                             </div>
                             <div class="modal-footer mt-3">
-                                <button type="submit" class="btn btn-success btn-lg" style="width: 100%;" :disabled="$v.pegawai.$invalid">Tambahkan Pegawai</button>
+                                <button type="submit" class="btn btn-success btn-lg" style="width: 100%;" :disabled="$v.Pegawai.$invalid">Tambahkan Pegawai</button>
                             </div>
                         </form>
                     </div>
@@ -176,37 +176,37 @@
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Nama</span>
                             </div>
-                                <input type="text" class="form-control" v-model="handledpegawai.Nama_Pegawai" placeholder="Masukkan Nama Pegawai" aria-label="Nama_Pegawai" aria-describedby="basic-addon2" id="Nama_Pegawai" name="Nama_Pegawai">
+                                <input type="text" class="form-control" v-model="handledpegawai.Nama_Pegawai" placeholder="Masukkan Nama Pegawai" aria-label="Nama_Pegawai" aria-describedby="basic-addon2">
                             </div>
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Alamat</span>
                                 </div>
-                                <input type="text" class="form-control" v-model="handledpegawai.Alamat_Pegawai" placeholder="Masukkan Alamat Pegawai" aria-label="Nama_Lengkap" aria-describedby="basic-addon2" id="Alamat" name="Alamat">
+                                <input type="text" class="form-control" v-model="handledpegawai.Alamat_Pegawai" placeholder="Masukkan Alamat Pegawai" aria-label="Nama_Lengkap" aria-describedby="basic-addon2">
                             </div>
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Telepon</span>
                                 </div>
-                                <input type="text" class="form-control" v-model="handledpegawai.Telepon_Pegawai" placeholder="Masukkan Nomor Telepon Pegawai" aria-label="Telepon_Pegawai" aria-describedby="basic-addon2" id="Telepon_Pegawai" name="Telepon_Pegawai">
+                                <input type="text" class="form-control" v-model="handledpegawai.Telepon_Pegawai" placeholder="Masukkan Nomor Telepon Pegawai" aria-label="Telepon_Pegawai" aria-describedby="basic-addon2">
                             </div>
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Gaji</span>
                                 </div>
-                                <input type="text" class="form-control" v-model="handledpegawai.Gaji_Pegawai" placeholder="Masukkan Gaji" aria-label="Gaji_Pegawai" aria-describedby="basic-addon2" id="Gaji_Pegawai" name="Gaji_Pegawai">
+                                <input type="text" class="form-control" v-model="handledpegawai.Gaji_Pegawai" placeholder="Masukkan Gaji" aria-label="Gaji_Pegawai" aria-describedby="basic-addon2">
                             </div>
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Username</span>
                                 </div>
-                                <input type="text" class="form-control" v-model="handledpegawai.Username" placeholder="Masukkan Username" aria-label="Username" aria-describedby="basic-addon2" id="Username" name="Username">
+                                <input type="text" class="form-control" v-model="handledpegawai.Username" placeholder="Masukkan Username" aria-label="Username" aria-describedby="basic-addon2">
                             </div>
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Password</span>
                                 </div>
-                                <input type="text" class="form-control" v-model="handledpegawai.Password" placeholder="Masukkan Password" aria-label="Password" aria-describedby="basic-addon2" id="Password" name="Password">
+                                <input type="text" class="form-control" v-model="handledpegawai.Password" placeholder="Masukkan Password" aria-label="Password" aria-describedby="basic-addon2">
                             </div>
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
@@ -272,21 +272,21 @@ export default {
         cabangdata:[],
         roledata:[],
         handledpegawai:[],
-        Id_Cabang:0,
-        Id_Role:0,
+        Id_Cabang:'',
+        Id_Role:'',
         Nama_Pegawai:'',
         Alamat_Pegawai:'',
         Telepon_Pegawai:'',
-        Gaji_Pegawai:0,
+        Gaji_Pegawai:'',
         Username:'',
         Password:'',
-        pegawai:{
-            Id_Cabang:0,
-            Id_Role:0,
+        Pegawai:{
+            Id_Cabang:'',
+            Id_Role:'',
             Nama_Pegawai:'',
             Alamat_Pegawai:'',
             Telepon_Pegawai:'',
-            Gaji_Pegawai:0,
+            Gaji_Pegawai:'',
             Username:'',
             Password:'',
         },
@@ -325,14 +325,14 @@ export default {
         async addpegawai () {
             try {
                 const payload = {
-                    Id_Cabang           : this.pegawai.Id_Cabang,
-                    Id_Role             : this.pegawai.Id_Role,
-                    Nama_Pegawai        : this.pegawai.Nama_Pegawai,
-                    Alamat_Pegawai      : this.pegawai.Alamat_Pegawai,
-                    Telepon_Pegawai     : this.pegawai.Telepon_Pegawai,
-                    Gaji_Pegawai        : this.pegawai.Gaji_Pegawai,
-                    Username            : this.pegawai.Username,
-                    Password            : this.pegawai.Password,
+                    Id_Cabang           : this.Pegawai.Id_Cabang,
+                    Id_Role             : this.Pegawai.Id_Role,
+                    Nama_Pegawai        : this.Pegawai.Nama_Pegawai,
+                    Alamat_Pegawai      : this.Pegawai.Alamat_Pegawai,
+                    Telepon_Pegawai     : this.Pegawai.Telepon_Pegawai,
+                    Gaji_Pegawai        : this.Pegawai.Gaji_Pegawai,
+                    Username            : this.Pegawai.Username,
+                    Password            : this.Pegawai.Password,
                 }
                 await Controller.addpegawai(payload)
                 this.getallpegawai()
@@ -381,64 +381,65 @@ export default {
         },
         cabangErrors(){
             const errors = []
-            if(this.$v.pegawai.Id_Cabang.$dirty) return errors
-            !this.$v.pegawai.Id_Cabang.required && errors.push('Id cabang is required')
+            if(this.$v.Pegawai.Id_Cabang.$dirty) return errors
+            !this.$v.Pegawai.Id_Cabang.required && errors.push('Id cabang is required')
             return errors
         },
         roleErrors(){
             const errors = []
-            if(this.$v.pegawai.Id_Role.$dirty) return errors
-            !this.$v.pegawai.Id_Role.required && errors.push('Id role is required')
+            if(this.$v.Pegawai.Id_Role.$dirty) return errors
+            !this.$v.Pegawai.Id_Role.required && errors.push('Id role is required')
             return errors
         },
         nameErrors(){
             const errors = []
-            if (!this.$v.pegawai.Nama_Pegawai.$dirty) return errors
-            !this.$v.pegawai.Nama_Pegawai.minLength && errors.push('Name must be at least 5 characters long')
-            !this.$v.pegawai.Nama_Pegawai.maxLength && errors.push('Name must be at most 25 characters long')
-            !this.$v.pegawai.Nama_Pegawai.required && errors.push('Name is required')
-            // !this.$v.pegawai.Nama_Pegawai.alpha && errors.push('Name must be alphabetic')
+            if (!this.$v.Pegawai.Nama_Pegawai.$dirty) return errors
+            !this.$v.Pegawai.Nama_Pegawai.minLength && errors.push('Name must be at least 5 characters long')
+            !this.$v.Pegawai.Nama_Pegawai.maxLength && errors.push('Name must be at most 25 characters long')
+            !this.$v.Pegawai.Nama_Pegawai.required && errors.push('Name is required')
+            // !this.$v.Pegawai.Nama_Pegawai.alpha && errors.push('Name must be alphabetic')
             return errors
         },
         addressErrors(){
             const errors = []
-            if (!this.$v.pegawai.Alamat_Pegawai.$dirty) return errors
-            !this.$v.pegawai.Alamat_Pegawai.minLength && errors.push('Address must be at least 5 characters long')
-            !this.$v.pegawai.Alamat_Pegawai.maxLength && errors.push('Address must be at most 255 characters long')
-            !this.$v.pegawai.Alamat_Pegawai.required && errors.push('Address is required')
+            if (!this.$v.Pegawai.Alamat_Pegawai.$dirty) return errors
+            !this.$v.Pegawai.Alamat_Pegawai.minLength && errors.push('Address must be at least 5 characters long')
+            !this.$v.Pegawai.Alamat_Pegawai.maxLength && errors.push('Address must be at most 255 characters long')
+            !this.$v.Pegawai.Alamat_Pegawai.required && errors.push('Address is required')
             return errors
         },
         phoneErrors(){
             const errors = []
-            if (!this.$v.pegawai.Telepon_Pegawai.$dirty) return errors
-            !this.$v.pegawai.Telepon_Pegawai.minLength && errors.push('Phone Number must be at least 10 characters long')
-            !this.$v.pegawai.Telepon_Pegawai.maxLength && errors.push('Phone Number must be at most 15 characters long')
-            !this.$v.pegawai.Telepon_Pegawai.required && errors.push('Phone Number is required')
-            !this.$v.pegawai.Telepon_Pegawai.numeric && errors.push('Phone Number must be numeric')
+            if (!this.$v.Pegawai.Telepon_Pegawai.$dirty) return errors
+            !this.$v.Pegawai.Telepon_Pegawai.minLength && errors.push('Phone Number must be at least 10 characters long')
+            !this.$v.Pegawai.Telepon_Pegawai.maxLength && errors.push('Phone Number must be at most 15 characters long')
+            !this.$v.Pegawai.Telepon_Pegawai.required && errors.push('Phone Number is required')
+            !this.$v.Pegawai.Telepon_Pegawai.numeric && errors.push('Phone Number must be numeric')
             return errors
         },
         salaryErrors(){
             const errors = []
-            if (!this.$v.pegawai.Gaji_Pegawai.$dirty) return errors
-            !this.$v.pegawai.Gaji_Pegawai.maxLength && errors.push('Salary must be at most 10 characters long')
-            !this.$v.pegawai.Gaji_Pegawai.required && errors.push('Salary is required')
-            !this.$v.pegawai.Gaji_Pegawai.numeric && errors.push('Salary must be numeric')
+            if (!this.$v.Pegawai.Gaji_Pegawai.$dirty) return errors
+            !this.$v.Pegawai.Gaji_Pegawai.maxLength && errors.push('Salary must be at most 10 characters long')
+            !this.$v.Pegawai.Gaji_Pegawai.required && errors.push('Salary is required')
+            !this.$v.Pegawai.Gaji_Pegawai.numeric && errors.push('Salary must be numeric')
             return errors
         },
         usernameErrors(){
             const errors = []
-            if (!this.$v.pegawai.Username.$dirty) return errors
-            !this.$v.pegawai.Username.minLength && errors.push('Username must be at least 10 characters long')
-            !this.$v.pegawai.Username.maxLength && errors.push('Username must be at most 30 characters long')
-            !this.$v.pegawai.Username.required && errors.push('Username is required')
-            // !this.$v.pegawai.Username.alphaNum && errors.push('Username must be alphabetic or numeric')
+            if (!this.$v.Pegawai.Username.$dirty) return errors
+            !this.$v.Pegawai.Username.minLength && errors.push('Username must be at least 10 characters long')
+            !this.$v.Pegawai.Username.maxLength && errors.push('Username must be at most 30 characters long')
+            !this.$v.Pegawai.Username.required && errors.push('Username is required')
+            // !this.$v.Pegawai.Username.alphaNum && errors.push('Username must be alphabetic or numeric')
+            return errors
         },
         passwordErrors(){
             const errors = []
-            if (!this.$v.pegawai.Password.$dirty) return errors
-            !this.$v.pegawai.Password.minLength && errors.push('Password must be at least 10 characters long')
-            !this.$v.pegawai.Password.maxLength && errors.push('Password must be at most 30 characters long')
-            !this.$v.pegawai.Password.required && errors.push('Password is required')
+            if (!this.$v.Pegawai.Password.$dirty) return errors
+            !this.$v.Pegawai.Password.minLength && errors.push('Password must be at least 10 characters long')
+            !this.$v.Pegawai.Password.maxLength && errors.push('Password must be at most 30 characters long')
+            !this.$v.Pegawai.Password.required && errors.push('Password is required')
             return errors
         },
     }

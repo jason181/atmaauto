@@ -63,22 +63,22 @@
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Nama</span>
                                 </div>
-                                <input type="text" v-model="jasaservice.Nama_Jasa" class="form-control" placeholder="Masukkan Nama Jasa Service" :error="nameErrors" aria-label="Nama_Jasa_Service" aria-describedby="basic-addon2" id="Nama_Jasa_Service" name="Nama_Jasa_Service" @input="$v.jasaservice.Nama_Jasa.$touch()" @blur="$v.jasaservice.Nama_Jasa.$touch()" required>
+                                <input type="text" v-model="Jasaservice.Nama_Jasa" class="form-control" placeholder="Masukkan Nama Jasa Service" :error="nameErrors" aria-label="Nama_Jasa_Service" aria-describedby="basic-addon2" id="Nama_Jasa_Service" name="Nama_Jasa_Service" @input="$v.Jasaservice.Nama_Jasa.$touch()" @blur="$v.Jasaservice.Nama_Jasa.$touch()" required>
                             </div>
                             <div class="text-center">
-                                <div class="mb-3" style="color:red;" v-if="$v.jasaservice.Nama_Jasa.$invalid">{{nameErrors[0]}}</div>
+                                <div class="mb-3" style="color:red;" v-if="$v.Jasaservice.Nama_Jasa.$invalid">{{nameErrors[0]}}</div>
                             </div>
                             <div class="input-group mt-3">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Harga</span>
                                 </div>
-                                <input type="number" v-model="jasaservice.Harga_Jasa" class="form-control" placeholder="Masukkan Harga Jasa Service" aria-label="Harga_Jasa_Service" aria-describedby="basic-addon2" id="Harga_Jasa_Service" name="Harga_Jasa_Service" @input="$v.jasaservice.Harga_Jasa.$touch()" @blur="$v.jasaservice.Harga_Jasa.$touch()" required>
+                                <input type="number" v-model="Jasaservice.Harga_Jasa" class="form-control" placeholder="Masukkan Harga Jasa Service" aria-label="Harga_Jasa_Service" aria-describedby="basic-addon2" id="Harga_Jasa_Service" name="Harga_Jasa_Service" @input="$v.Jasaservice.Harga_Jasa.$touch()" @blur="$v.Jasaservice.Harga_Jasa.$touch()" required>
                             </div>
                             <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.jasaservice.Harga_Jasa.$invalid">{{priceErrors[0]}}</p>
+                                <p class="mb-3" style="color:red;" v-if="$v.Jasaservice.Harga_Jasa.$invalid">{{priceErrors[0]}}</p>
                             </div>
                             <div class="modal-footer mt-3">
-                                <button type="submit" class="btn btn-success btn-lg" style="width: 100%;" :disabled="$v.jasaservice.$invalid">Tambahkan Jasa Service</button>
+                                <button type="submit" class="btn btn-success btn-lg" style="width: 100%;" :disabled="$v.Jasaservice.$invalid">Tambahkan Jasa Service</button>
                             </div>
                         </form>
                     </div>
@@ -157,7 +157,7 @@ export default {
         Nama_Jasa:'',
         Harga_Jasa:0,
         Cari_Jasa_Service:'',
-        jasaservice:{
+        Jasaservice:{
             Nama_Jasa:'',
             Harga_Jasa:0,
         }
@@ -222,19 +222,19 @@ export default {
         },
         nameErrors () {
             const errors = []
-            if (!this.$v.jasaservice.Nama_Jasa.$dirty) return errors
-            !this.$v.jasaservice.Nama_Jasa.minLength && errors.push('Name must be at least 5 characters long')
-            !this.$v.jasaservice.Nama_Jasa.maxLength && errors.push('Name must be at most 25 characters long')
-            !this.$v.jasaservice.Nama_Jasa.required && errors.push('Name is required.')
+            if (!this.$v.Jasaservice.Nama_Jasa.$dirty) return errors
+            !this.$v.Jasaservice.Nama_Jasa.minLength && errors.push('Name must be at least 5 characters long')
+            !this.$v.Jasaservice.Nama_Jasa.maxLength && errors.push('Name must be at most 25 characters long')
+            !this.$v.Jasaservice.Nama_Jasa.required && errors.push('Name is required.')
             // !this.$v.jasaservice.Nama_Jasa.alpha && errors.push('Name must be alphabetic')
             return errors
         },
         priceErrors () {
             const errors = []
-            if (!this.$v.jasaservice.Harga_Jasa.$dirty) return errors
-            !this.$v.jasaservice.Harga_Jasa.maxLength && errors.push('Price must be at most 12 characters long')
-            !this.$v.jasaservice.Harga_Jasa.numeric && errors.push('Price must be numeric')
-            !this.$v.jasaservice.Harga_Jasa.required && errors.push('Price is required')
+            if (!this.$v.Jasaservice.Harga_Jasa.$dirty) return errors
+            !this.$v.Jasaservice.Harga_Jasa.maxLength && errors.push('Price must be at most 12 characters long')
+            !this.$v.Jasaservice.Harga_Jasa.numeric && errors.push('Price must be numeric')
+            !this.$v.Jasaservice.Harga_Jasa.required && errors.push('Price is required')
             return errors
         },
     }
