@@ -10,6 +10,7 @@ import Home from './components/layout/home.vue';
 import Katalog from './components/layout/katalog.vue';
 import Status from './components/layout/status.vue';
 import { homedir } from 'os';
+import Cabang from './components/layout/Cabang.vue';
 
 export const routes = [
     {
@@ -92,5 +93,16 @@ export const routes = [
                 'User'
             ]
         }
-    }
+    },
+    {
+        name: 'Cabang',
+        path: '/cabang',
+        component: Cabang,
+        meta: { role: [
+            'Admin'
+        ]},
+        beforeEnter: middleware([
+            auth
+        ]) 
+    },
 ]
