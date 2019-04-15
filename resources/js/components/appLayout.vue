@@ -37,7 +37,9 @@
 				<router-link :to="{name:'Supplier'}" class="">
                     <a class="nav-tabs nav-item nav-link">Supplier</a>
                 </router-link>
-			  	<a class="nav-tabs nav-item nav-link" href="cabang.php">Cabang</a>
+			  	<router-link :to="{name:'Cabang'}" class="">
+                    <a class="nav-tabs nav-item nav-link">Cabang</a>
+                </router-link>
 			  	<a class="nav-tabs nav-item nav-link" href="pengadaan.php">Pengadaan</a>
 			  	<a class="nav-tabs nav-item nav-link" href="laporan.php">Laporan</a>
 			</nav>

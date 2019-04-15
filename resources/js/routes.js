@@ -6,6 +6,7 @@ import Pegawai from './components/layout/pegawai.vue';
 import Jasa_Service from './components/layout/jasa_service.vue';
 import Supplier from './components/layout/supplier.vue';
 import Sparepart from './components/layout/sparepart.vue';
+import Cabang from './components/layout/Cabang.vue';
 
 export const routes = [
     {
@@ -53,6 +54,17 @@ export const routes = [
         name: 'Sparepart',
         path: '/sparepart',
         component: Sparepart,
+        meta: { role: [
+            'Admin'
+        ]},
+        beforeEnter: middleware([
+            auth
+        ]) 
+    },
+    {
+        name: 'Cabang',
+        path: '/cabang',
+        component: Cabang,
         meta: { role: [
             'Admin'
         ]},
