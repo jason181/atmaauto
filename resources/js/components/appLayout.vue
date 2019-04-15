@@ -1,6 +1,6 @@
 <template>
    <div class="content" id="homeLayout">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light" v-if="this.$route.meta.page!='login'">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" v-if="this.$route.meta.role=='Admin'">
 		  	<!-- <a class="navbar-brand" href="#"><img src="../img/Logo_AtmaAuto.jpg" width="50px"> SIAUTO</a> -->
 		  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
@@ -15,12 +15,12 @@
 			        </ul>
 			    </div>
 			    <form class="form-inline my-2 my-lg-0" > 
-			      	<button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+			      	<button class="btn btn-outline-danger my-2 my-sm-0" type="submit" @click="logoutHandler()">Logout</button>
 			    </form>
 		  	</div>
 		</nav>
 
-		<div v-if="this.$route.meta.page!='login' " class="collapse navbar-collapse show" id=navbarSupportedContent>
+		<div v-if="this.$route.meta.role=='Admin' " class="collapse navbar-collapse show" id=navbarSupportedContent>
 			<nav class="nav nav-pills nav-justified" style="background-color: #e3f2fd;">
                 <router-link :to="{name:'Pegawai'}" class="nav-tabs nav-item nav-link">
                     <a class="nav-tabs nav-item nav-link">Pegawai</a>
@@ -51,8 +51,36 @@
                 </router-link>
 			</nav>
 		</div>
+        <nav v-if="$route.meta.role=='User'" class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#"><img src="/images/Logo_AtmaAuto.jpg" width="50px"> SIAUTO</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
 
-         <div id="appPage">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-collapse collapse w-100" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <router-link :to="{name:'HomeLayout'}">
+                                <a class="nav-link">Home</a>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link :to="{name:'Katalog'}">
+                                <a class="nav-link">Katalog</a>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link :to="{name:'Status'}">
+                                <a class="nav-link">Cek Status</a>
+                            </router-link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+         <div id="app">
             <main class="pageContent">
             <transition name="fade">
                 <router-view></router-view>
@@ -69,24 +97,24 @@
 
 
 <script>
-// import auth from './../service/Auth'
-// export default {
-//     name: 'appLayout',
-//     data () {
-//       return {
-// 		err: ''
-//       }
-// 	},
-// 	methods:{
-// 		async logoutHandler(){
-// 			try{
-// 				await auth.logout()
-// 				this.router.push({name : 'HomeLayout'})
-// 			}
-// 			catch(err){
+import auth from './../service/Auth'
+export default {
+    name: 'appLayout',
+    data () {
+      return {
+		err: ''
+      }
+	},
+	methods:{
+		async logoutHandler(){
+			try{
+				await auth.logout()
+				this.router.push({name : 'Login'})
+			}
+			catch(err){
 				
-// 			}
-// 		}
-// 	}
-// }
+			}
+		}
+	}
+}
 </script>

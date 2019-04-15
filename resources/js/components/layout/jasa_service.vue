@@ -58,29 +58,27 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form @submit.prevent="addjasaservice()">
-                            <div class="input-group">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Nama</span>
-                                </div>
-                                <input type="text" v-model="Jasaservice.Nama_Jasa" class="form-control" placeholder="Masukkan Nama Jasa Service" :error="nameErrors" aria-label="Nama_Jasa_Service" aria-describedby="basic-addon2" id="Nama_Jasa_Service" name="Nama_Jasa_Service" @input="$v.Jasaservice.Nama_Jasa.$touch()" @blur="$v.Jasaservice.Nama_Jasa.$touch()" required>
+                        <div class="input-group">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Nama</span>
                             </div>
-                            <div class="text-center">
-                                <div class="mb-3" style="color:red;" v-if="$v.Jasaservice.Nama_Jasa.$invalid">{{nameErrors[0]}}</div>
+                            <input type="text" v-model="Jasaservice.Nama_Jasa" class="form-control" placeholder="Masukkan Nama Jasa Service" :error="nameErrors" aria-label="Nama_Jasa_Service" aria-describedby="basic-addon2" id="Nama_Jasa_Service" name="Nama_Jasa_Service" @input="$v.Jasaservice.Nama_Jasa.$touch()" @blur="$v.Jasaservice.Nama_Jasa.$touch()" required>
+                        </div>
+                        <div class="text-center">
+                            <div class="mb-3" style="color:red;" v-if="$v.Jasaservice.Nama_Jasa.$invalid">{{nameErrors[0]}}</div>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Harga</span>
                             </div>
-                            <div class="input-group mt-3">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Harga</span>
-                                </div>
-                                <input type="number" v-model="Jasaservice.Harga_Jasa" class="form-control" placeholder="Masukkan Harga Jasa Service" aria-label="Harga_Jasa_Service" aria-describedby="basic-addon2" id="Harga_Jasa_Service" name="Harga_Jasa_Service" @input="$v.Jasaservice.Harga_Jasa.$touch()" @blur="$v.Jasaservice.Harga_Jasa.$touch()" required>
-                            </div>
-                            <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.Jasaservice.Harga_Jasa.$invalid">{{priceErrors[0]}}</p>
-                            </div>
-                            <div class="modal-footer mt-3">
-                                <button type="submit" class="btn btn-success btn-lg" style="width: 100%;" :disabled="$v.Jasaservice.$invalid">Tambahkan Jasa Service</button>
-                            </div>
-                        </form>
+                            <input type="number" v-model="Jasaservice.Harga_Jasa" class="form-control" placeholder="Masukkan Harga Jasa Service" aria-label="Harga_Jasa_Service" aria-describedby="basic-addon2" id="Harga_Jasa_Service" name="Harga_Jasa_Service" @input="$v.Jasaservice.Harga_Jasa.$touch()" @blur="$v.Jasaservice.Harga_Jasa.$touch()" required>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Jasaservice.Harga_Jasa.$invalid">{{priceErrors[0]}}</p>
+                        </div>
+                        <div class="modal-footer mt-3">
+                            <button type="submit" class="btn btn-success btn-lg w-100" :disabled="$v.Jasaservice.$invalid" data-dismiss="modal" @click="addjasaservice()">Tambahkan Jasa Service</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -97,23 +95,27 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form @submit.prevent="updatejasaservice(handledjasaservice.Id_Jasa)">
-                            <div class="input-group mb-4">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Nama</span>
-                                </div>
-                                <input type="text" v-model="handledjasaservice.Nama_Jasa" class="form-control" placeholder="Masukkan Nama Jasa Service" aria-label="Nama_Jasa_Service" aria-describedby="basic-addon2" id="Nama_Jasa_Service" name="Nama_Jasa_Service" >
+                        <div class="input-group">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Nama</span>
                             </div>
-                            <div class="input-group mb-4">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Harga</span>
-                                </div>
-                                <input type="number" v-model="handledjasaservice.Harga_Jasa" class="form-control" placeholder="Masukkan Harga Jasa Service" aria-label="Harga_Jasa_Service" aria-describedby="basic-addon2" id="Harga_Jasa_Service" name="Harga_Jasa_Service">
+                            <input type="text" v-model="Jasaservice.Nama_Jasa" class="form-control" placeholder="Masukkan Nama Jasa Service" :error="nameErrors" aria-label="Nama_Jasa_Service" aria-describedby="basic-addon2" id="Nama_Jasa_Service" name="Nama_Jasa_Service" @input="$v.Jasaservice.Nama_Jasa.$touch()" @blur="$v.Jasaservice.Nama_Jasa.$touch()" required>
+                        </div>
+                        <div class="text-center">
+                            <div class="mb-3" style="color:red;" v-if="$v.Jasaservice.Nama_Jasa.$invalid">{{nameErrors[0]}}</div>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Harga</span>
                             </div>
-                            <div class="modal-footer ">
-                                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Simpan Perubahan</button>
-                            </div>
-                        </form>
+                            <input type="number" v-model="Jasaservice.Harga_Jasa" class="form-control" placeholder="Masukkan Harga Jasa Service" aria-label="Harga_Jasa_Service" aria-describedby="basic-addon2" id="Harga_Jasa_Service" name="Harga_Jasa_Service" @input="$v.Jasaservice.Harga_Jasa.$touch()" @blur="$v.Jasaservice.Harga_Jasa.$touch()" required>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Jasaservice.Harga_Jasa.$invalid">{{priceErrors[0]}}</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer mt-3">
+                        <button type="submit" class="btn btn-primary btn-lg w-100" @click="updatejasaservice(Jasaservice.Id_Jasa)" :disabled="$v.Jasaservice.$invalid" data-dismiss="modal">Simpan Perubahan</button>
                     </div>
                 </div>
             </div>
@@ -134,7 +136,7 @@
                     </div>
                     <div class="modal-footer ">
                         <a id="delete_btn" class="float-left w-100">
-                            <button type="button" @click="deletejasaservice(handledjasaservice.Id_Jasa)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
+                            <button type="button" @click="deletejasaservice(Jasaservice.Id_Jasa)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
                         </a>
                         <button type="button" class="btn btn-secondary float-right w-50" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
                     </div>
@@ -155,11 +157,11 @@ export default {
         jasaservicedata:[],
         handledjasaservice:[],
         Nama_Jasa:'',
-        Harga_Jasa:0,
+        Harga_Jasa:'',
         Cari_Jasa_Service:'',
         Jasaservice:{
             Nama_Jasa:'',
-            Harga_Jasa:0,
+            Harga_Jasa:'',
         }
     }),
     mounted(){
@@ -177,11 +179,13 @@ export default {
         async addjasaservice () {
             try {
                 const payload = {
-                    Nama_Jasa : this.jasaservice.Nama_Jasa,
-                    Harga_Jasa : this.jasaservice.Harga_Jasa,
+                    Nama_Jasa : this.Jasaservice.Nama_Jasa,
+                    Harga_Jasa : this.Jasaservice.Harga_Jasa,
                 }
                 await Controller.addjasaservice(payload)
                 this.getalljasaservice()
+                this.refresh()
+                //this.$router.go()
                 // console.log()
             } catch (err) {
                 console.log(err)
@@ -190,11 +194,12 @@ export default {
         async updatejasaservice (id) {
             try {
                 const payload = {
-                    Nama_Jasa : this.jasaservice.Nama_Jasa,
-                    Harga_Jasa : this.jasaservice.Harga_Jasa,
+                    Nama_Jasa : this.Jasaservice.Nama_Jasa,
+                    Harga_Jasa : this.Jasaservice.Harga_Jasa,
                 }
                 await Controller.updatejasaservice(payload,id)
                 this.getalljasaservice()
+                this.refresh()
                 // console.log()
             } catch (err) {
                 console.log(err)
@@ -210,9 +215,12 @@ export default {
             }
         },
         datajasaservicehandler(jasa){
-            this.handledjasaservice = jasa
+            this.Jasaservice = jasa
+        },
+        refresh(){
+            this.Jasaservice.Nama_Jasa = '';
+            this.Jasaservice.Harga_Jasa= '';
         }
-
     },
     computed:{
         filteredjasaservice:function(){
