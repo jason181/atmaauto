@@ -1836,6 +1836,13 @@ module.exports = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 // import auth from './../service/Auth'
 // export default {
 //     name: 'appLayout',
@@ -1872,6 +1879,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _service_Cabang__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/Cabang */ "./resources/js/service/Cabang.js");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _validations_cabang_validations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../validations/cabang_validations */ "./resources/js/validations/cabang_validations.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2046,27 +2054,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  validations: {
-    cabang: {
-      Nama_Cabang: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"],
-        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["minLength"])(5),
-        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["maxLength"])(25)
-      },
-      Alamat_Cabang: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"],
-        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["minLength"])(5),
-        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["maxLength"])(25)
-      },
-      Telepon_Cabang: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"],
-        numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["numeric"],
-        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["minLength"])(11),
-        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["maxLength"])(12)
-      }
-    }
-  },
+  validations: _validations_cabang_validations__WEBPACK_IMPORTED_MODULE_3__["default"],
   data: function data() {
     return {
       cabangData: [],
@@ -2277,7 +2267,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     phoneErrors: function phoneErrors() {
       var errors = [];
       if (!this.$v.cabang.Telepon_Cabang.$dirty) return errors;
-      !this.$v.cabang.Telepon_Cabang.maxLength && errors.push('Address must be at most 25 characters long');
+      !this.$v.cabang.Telepon_Cabang.maxLength && errors.push('Phone Number must be at most 12 characters long');
+      !this.$v.cabang.Telepon_Cabang.minLength && errors.push('Phone Number be at leats 12 characters long');
       !this.$v.cabang.Telepon_Cabang.numeric && errors.push('Phone Number must be numeric');
       !this.$v.cabang.Telepon_Cabang.required && errors.push('Phone Number is required.');
       return errors;
@@ -2305,6 +2296,13 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2389,6 +2387,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }()
   }
 });
+var passwordField = document.querySelector('#Passowrd');
+
+function togglePassword() {
+  if (passwordField.getAttribute('type') === 'password') {
+    passwordField.setAttribute('text');
+  } else {
+    passwordField.setAttribute('password');
+  }
+}
 
 /***/ }),
 
@@ -2404,8 +2411,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../httpController */ "./resources/js/httpController.js");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _validations_jasa_service_validation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../validations/jasa_service_validation */ "./resources/js/validations/jasa_service_validation.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2562,21 +2568,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  validations: {
-    jasaservice: {
-      Nama_Jasa: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"],
-        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["minLength"])(5),
-        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["maxLength"])(25)
-      },
-      Harga_Jasa: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"],
-        numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["numeric"],
-        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["minLength"])(3),
-        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["maxLength"])(12)
-      }
-    }
-  },
+  validations: _validations_jasa_service_validation__WEBPACK_IMPORTED_MODULE_2__["default"],
   data: function data() {
     return {
       jasaservicedata: [],
@@ -2584,7 +2576,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       Nama_Jasa: '',
       Harga_Jasa: 0,
       Cari_Jasa_Service: '',
-      jasaservice: {
+      Jasaservice: {
         Nama_Jasa: '',
         Harga_Jasa: 0
       }
@@ -2684,8 +2676,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
                 payload = {
-                  Nama_Jasa: this.handledjasaservice.Nama_Jasa,
-                  Harga_Jasa: this.handledjasaservice.Harga_Jasa
+                  Nama_Jasa: this.jasaservice.Nama_Jasa,
+                  Harga_Jasa: this.jasaservice.Harga_Jasa
                 };
                 _context3.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatejasaservice(payload, id);
@@ -2766,18 +2758,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     nameErrors: function nameErrors() {
       var errors = [];
-      if (!this.$v.jasaservice.Nama_Jasa.$dirty) return errors;
-      !this.$v.jasaservice.Nama_Jasa.minLength && errors.push('Name must be at least 5 characters long');
-      !this.$v.jasaservice.Nama_Jasa.maxLength && errors.push('Name must be at most 25 characters long');
-      !this.$v.jasaservice.Nama_Jasa.required && errors.push('Name is required.');
+      if (!this.$v.Jasaservice.Nama_Jasa.$dirty) return errors;
+      !this.$v.Jasaservice.Nama_Jasa.minLength && errors.push('Name must be at least 5 characters long');
+      !this.$v.Jasaservice.Nama_Jasa.maxLength && errors.push('Name must be at most 25 characters long');
+      !this.$v.Jasaservice.Nama_Jasa.required && errors.push('Name is required.'); // !this.$v.jasaservice.Nama_Jasa.alpha && errors.push('Name must be alphabetic')
+
       return errors;
     },
     priceErrors: function priceErrors() {
       var errors = [];
-      if (!this.$v.jasaservice.Harga_Jasa.$dirty) return errors;
-      !this.$v.jasaservice.Harga_Jasa.maxLength && errors.push('Price must be at most 12 characters long');
-      !this.$v.jasaservice.Harga_Jasa.numeric && errors.push('Price must be numeric');
-      !this.$v.jasaservice.Harga_Jasa.required && errors.push('Price is required.');
+      if (!this.$v.Jasaservice.Harga_Jasa.$dirty) return errors;
+      !this.$v.Jasaservice.Harga_Jasa.maxLength && errors.push('Price must be at most 12 characters long');
+      !this.$v.Jasaservice.Harga_Jasa.numeric && errors.push('Price must be numeric');
+      !this.$v.Jasaservice.Harga_Jasa.required && errors.push('Price is required');
       return errors;
     }
   }
@@ -2797,6 +2790,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../httpController */ "./resources/js/httpController.js");
+/* harmony import */ var _validations_pegawai_validations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../validations/pegawai_validations */ "./resources/js/validations/pegawai_validations.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -3042,22 +3036,58 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  validations: _validations_pegawai_validations__WEBPACK_IMPORTED_MODULE_2__["default"],
   data: function data() {
     return {
       pegawaidata: [],
       cabangdata: [],
       roledata: [],
       handledpegawai: [],
-      Id_Cabang: 0,
-      Id_Role: 0,
+      Id_Cabang: '',
+      Id_Role: '',
       Nama_Pegawai: '',
       Alamat_Pegawai: '',
       Telepon_Pegawai: '',
-      Gaji_Pegawai: 0,
+      Gaji_Pegawai: '',
       Username: '',
       Password: '',
+      Pegawai: {
+        Id_Cabang: '',
+        Id_Role: '',
+        Nama_Pegawai: '',
+        Alamat_Pegawai: '',
+        Telepon_Pegawai: '',
+        Gaji_Pegawai: '',
+        Username: '',
+        Password: ''
+      },
       Cari_Pegawai: ''
     };
   },
@@ -3187,14 +3217,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context4.prev = 0;
                 payload = {
-                  Id_Cabang: this.Id_Cabang,
-                  Id_Role: this.Id_Role,
-                  Nama_Pegawai: this.Nama_Pegawai,
-                  Alamat_Pegawai: this.Alamat_Pegawai,
-                  Telepon_Pegawai: this.Telepon_Pegawai,
-                  Gaji_Pegawai: this.Gaji_Pegawai,
-                  Username: this.Username,
-                  Password: this.Password
+                  Id_Cabang: this.Pegawai.Id_Cabang,
+                  Id_Role: this.Pegawai.Id_Role,
+                  Nama_Pegawai: this.Pegawai.Nama_Pegawai,
+                  Alamat_Pegawai: this.Pegawai.Alamat_Pegawai,
+                  Telepon_Pegawai: this.Pegawai.Telepon_Pegawai,
+                  Gaji_Pegawai: this.Pegawai.Gaji_Pegawai,
+                  Username: this.Pegawai.Username,
+                  Password: this.Pegawai.Password
                 };
                 _context4.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addpegawai(payload);
@@ -3320,6 +3350,69 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.pegawaidata.filter(function (pegawai) {
         return pegawai.Nama_Pegawai.match(_this.Cari_Pegawai);
       });
+    },
+    cabangErrors: function cabangErrors() {
+      var errors = [];
+      if (this.$v.Pegawai.Id_Cabang.$dirty) return errors;
+      !this.$v.Pegawai.Id_Cabang.required && errors.push('Id cabang is required');
+      return errors;
+    },
+    roleErrors: function roleErrors() {
+      var errors = [];
+      if (this.$v.Pegawai.Id_Role.$dirty) return errors;
+      !this.$v.Pegawai.Id_Role.required && errors.push('Id role is required');
+      return errors;
+    },
+    nameErrors: function nameErrors() {
+      var errors = [];
+      if (!this.$v.Pegawai.Nama_Pegawai.$dirty) return errors;
+      !this.$v.Pegawai.Nama_Pegawai.minLength && errors.push('Name must be at least 5 characters long');
+      !this.$v.Pegawai.Nama_Pegawai.maxLength && errors.push('Name must be at most 25 characters long');
+      !this.$v.Pegawai.Nama_Pegawai.required && errors.push('Name is required'); // !this.$v.Pegawai.Nama_Pegawai.alpha && errors.push('Name must be alphabetic')
+
+      return errors;
+    },
+    addressErrors: function addressErrors() {
+      var errors = [];
+      if (!this.$v.Pegawai.Alamat_Pegawai.$dirty) return errors;
+      !this.$v.Pegawai.Alamat_Pegawai.minLength && errors.push('Address must be at least 5 characters long');
+      !this.$v.Pegawai.Alamat_Pegawai.maxLength && errors.push('Address must be at most 255 characters long');
+      !this.$v.Pegawai.Alamat_Pegawai.required && errors.push('Address is required');
+      return errors;
+    },
+    phoneErrors: function phoneErrors() {
+      var errors = [];
+      if (!this.$v.Pegawai.Telepon_Pegawai.$dirty) return errors;
+      !this.$v.Pegawai.Telepon_Pegawai.minLength && errors.push('Phone Number must be at least 10 characters long');
+      !this.$v.Pegawai.Telepon_Pegawai.maxLength && errors.push('Phone Number must be at most 15 characters long');
+      !this.$v.Pegawai.Telepon_Pegawai.required && errors.push('Phone Number is required');
+      !this.$v.Pegawai.Telepon_Pegawai.numeric && errors.push('Phone Number must be numeric');
+      return errors;
+    },
+    salaryErrors: function salaryErrors() {
+      var errors = [];
+      if (!this.$v.Pegawai.Gaji_Pegawai.$dirty) return errors;
+      !this.$v.Pegawai.Gaji_Pegawai.maxLength && errors.push('Salary must be at most 10 characters long');
+      !this.$v.Pegawai.Gaji_Pegawai.required && errors.push('Salary is required');
+      !this.$v.Pegawai.Gaji_Pegawai.numeric && errors.push('Salary must be numeric');
+      return errors;
+    },
+    usernameErrors: function usernameErrors() {
+      var errors = [];
+      if (!this.$v.Pegawai.Username.$dirty) return errors;
+      !this.$v.Pegawai.Username.minLength && errors.push('Username must be at least 10 characters long');
+      !this.$v.Pegawai.Username.maxLength && errors.push('Username must be at most 30 characters long');
+      !this.$v.Pegawai.Username.required && errors.push('Username is required'); // !this.$v.Pegawai.Username.alphaNum && errors.push('Username must be alphabetic or numeric')
+
+      return errors;
+    },
+    passwordErrors: function passwordErrors() {
+      var errors = [];
+      if (!this.$v.Pegawai.Password.$dirty) return errors;
+      !this.$v.Pegawai.Password.minLength && errors.push('Password must be at least 10 characters long');
+      !this.$v.Pegawai.Password.maxLength && errors.push('Password must be at most 30 characters long');
+      !this.$v.Pegawai.Password.required && errors.push('Password is required');
+      return errors;
     }
   }
 });
@@ -3724,8 +3817,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../httpController */ "./resources/js/httpController.js");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _validations_supplier_validation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../validations/supplier_validation */ "./resources/js/validations/supplier_validation.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -4008,6 +4100,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  validations: _validations_supplier_validation__WEBPACK_IMPORTED_MODULE_2__["default"],
   data: function data() {
     return {
       supplierdata: [],
@@ -4021,7 +4114,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       Supplier: {
         Nama_Supplier: '',
         Alamat_Supplier: '',
-        Telepon_Supplier: ''
+        Telepon_Supplier: '',
+        Nama_Sales: '',
+        Telepon_Sales: ''
       }
     };
   },
@@ -4077,11 +4172,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 payload = {
-                  Nama_Supplier: this.Nama_Supplier,
-                  Alamat_Supplier: this.Alamat_Supplier,
-                  Telepon_Supplier: this.Telepon_Supplier,
-                  Nama_Sales: this.Nama_Sales,
-                  Telepon_Sales: this.Telepon_Sales
+                  Nama_Supplier: this.Supplier.Nama_Supplier,
+                  Alamat_Supplier: this.Supplier.Alamat_Supplier,
+                  Telepon_Supplier: this.Supplier.Telepon_Supplier,
+                  Nama_Sales: this.Supplier.Nama_Sales,
+                  Telepon_Sales: this.Supplier.Telepon_Sales
                 };
                 _context2.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addsupplier(payload);
@@ -4289,10 +4384,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     nameErrors: function nameErrors() {
       var errors = [];
-      if (!this.$v.supplier.Nama_Supplier.$dirty) return errors;
-      !this.$v.supplier.Nama_Supplier.minLength && errors.push('Name must be at least 5 characters long');
-      !this.$v.supplier.Nama_Supplier.maxLength && errors.push('Name must be at most 25 characters long');
-      !this.$v.supplier.Nama_Supplier.required && errors.push('Name is required.');
+      if (!this.$v.Supplier.Nama_Supplier.$dirty) return errors;
+      !this.$v.Supplier.Nama_Supplier.minLength && errors.push('Name must be at least 5 characters long');
+      !this.$v.Supplier.Nama_Supplier.maxLength && errors.push('Name must be at most 25 characters long');
+      !this.$v.Supplier.Nama_Supplier.required && errors.push('Name is required.');
       return errors;
     }
   }
@@ -40307,79 +40402,121 @@ var render = function() {
                 staticStyle: { "background-color": "#e3f2fd" }
               },
               [
-                _c("router-link", { attrs: { to: { name: "Pegawai" } } }, [
-                  _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
-                    _vm._v("Pegawai")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("router-link", { attrs: { to: { name: "Jasa_Service" } } }, [
-                  _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
-                    _vm._v("Jasa Service")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("router-link", { attrs: { to: { name: "Sparepart" } } }, [
-                  _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
-                    _vm._v("Sparepart")
-                  ])
-                ]),
-                _vm._v(" "),
                 _c(
-                  "a",
+                  "router-link",
                   {
                     staticClass: "nav-tabs nav-item nav-link",
-                    attrs: { href: "motor.php" }
+                    attrs: { to: { name: "Pegawai" } }
                   },
-                  [_vm._v("Motor")]
+                  [
+                    _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                      _vm._v("Pegawai")
+                    ])
+                  ]
                 ),
                 _vm._v(" "),
                 _c(
-                  "a",
+                  "router-link",
                   {
                     staticClass: "nav-tabs nav-item nav-link",
-                    attrs: { href: "konsumen.php" }
+                    attrs: { to: { name: "Jasa_Service" } }
                   },
-                  [_vm._v("Konsumen")]
+                  [
+                    _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                      _vm._v("Jasa Service")
+                    ])
+                  ]
                 ),
                 _vm._v(" "),
                 _c(
-                  "a",
+                  "router-link",
                   {
                     staticClass: "nav-tabs nav-item nav-link",
-                    attrs: { href: "sales.php" }
+                    attrs: { to: { name: "Sparepart" } }
                   },
-                  [_vm._v("Sales")]
-                ),
-                _vm._v(" "),
-                _c("router-link", { attrs: { to: { name: "Supplier" } } }, [
-                  _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
-                    _vm._v("Supplier")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("router-link", { attrs: { to: { name: "Cabang" } } }, [
-                  _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
-                    _vm._v("Cabang")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "nav-tabs nav-item nav-link",
-                    attrs: { href: "pengadaan.php" }
-                  },
-                  [_vm._v("Pengadaan")]
+                  [
+                    _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                      _vm._v("Sparepart")
+                    ])
+                  ]
                 ),
                 _vm._v(" "),
                 _c(
-                  "a",
+                  "router-link",
                   {
                     staticClass: "nav-tabs nav-item nav-link",
-                    attrs: { href: "laporan.php" }
+                    attrs: { to: { name: "Motor" } }
                   },
-                  [_vm._v("Laporan")]
+                  [
+                    _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                      _vm._v("Motor")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { to: { name: "Konsumen" } }
+                  },
+                  [
+                    _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                      _vm._v("Konsumen")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { to: { name: "Supplier" } }
+                  },
+                  [
+                    _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                      _vm._v("Supplier")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { to: { name: "Cabang" } }
+                  },
+                  [
+                    _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                      _vm._v("Cabang")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { to: { name: "Pengadaan" } }
+                  },
+                  [
+                    _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                      _vm._v("Pengadaan")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { to: { name: "Laporan" } }
+                  },
+                  [
+                    _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                      _vm._v("Laporan")
+                    ])
+                  ]
                 )
               ],
               1
@@ -41348,8 +41485,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("body", [
-    _c("div", { staticClass: "container w-25 mt-5" }, [
-      _c("h1", { staticStyle: { "text-align": "center" } }, [_vm._v("LOGIN")]),
+    _c("div", { staticClass: "container mt-5" }, [
+      _c(
+        "h1",
+        { staticClass: "mb-3", staticStyle: { "text-align": "center" } },
+        [_vm._v("LOGIN")]
+      ),
       _vm._v(" "),
       _vm.error
         ? _c("div", { staticClass: "alert alert-danger" }, [
@@ -41436,10 +41577,12 @@ var render = function() {
                   _vm.$set(_vm.form, "password", $event.target.value)
                 }
               }
-            })
+            }),
+            _vm._v(" "),
+            _vm._m(2)
           ]),
           _vm._v(" "),
-          _vm._m(2)
+          _vm._m(3)
         ]
       )
     ])
@@ -41483,6 +41626,22 @@ var staticRenderFns = [
         )
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c(
+        "span",
+        { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+        [
+          _c("a", { attrs: { onclick: "togglePassword()" } }, [
+            _c("i", { staticClass: "fas fa-eye-slash" })
+          ])
+        ]
+      )
+    ])
   },
   function() {
     var _vm = this
@@ -41698,8 +41857,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.jasaservice.Nama_Jasa,
-                          expression: "jasaservice.Nama_Jasa"
+                          value: _vm.Jasaservice.Nama_Jasa,
+                          expression: "Jasaservice.Nama_Jasa"
                         }
                       ],
                       staticClass: "form-control",
@@ -41713,7 +41872,7 @@ var render = function() {
                         name: "Nama_Jasa_Service",
                         required: ""
                       },
-                      domProps: { value: _vm.jasaservice.Nama_Jasa },
+                      domProps: { value: _vm.Jasaservice.Nama_Jasa },
                       on: {
                         input: [
                           function($event) {
@@ -41721,26 +41880,26 @@ var render = function() {
                               return
                             }
                             _vm.$set(
-                              _vm.jasaservice,
+                              _vm.Jasaservice,
                               "Nama_Jasa",
                               $event.target.value
                             )
                           },
                           function($event) {
-                            return _vm.$v.jasaservice.Nama_Jasa.$touch()
+                            return _vm.$v.Jasaservice.Nama_Jasa.$touch()
                           }
                         ],
                         blur: function($event) {
-                          return _vm.$v.jasaservice.Nama_Jasa.$touch()
+                          return _vm.$v.Jasaservice.Nama_Jasa.$touch()
                         }
                       }
                     })
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "text-center" }, [
-                    _vm.$v.jasaservice.Nama_Jasa.$invalid
+                    _vm.$v.Jasaservice.Nama_Jasa.$invalid
                       ? _c(
-                          "p",
+                          "div",
                           {
                             staticClass: "mb-3",
                             staticStyle: { color: "red" }
@@ -41750,7 +41909,7 @@ var render = function() {
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "input-group mt-4" }, [
+                  _c("div", { staticClass: "input-group mt-3" }, [
                     _vm._m(4),
                     _vm._v(" "),
                     _c("input", {
@@ -41758,8 +41917,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.jasaservice.Harga_Jasa,
-                          expression: "jasaservice.Harga_Jasa"
+                          value: _vm.Jasaservice.Harga_Jasa,
+                          expression: "Jasaservice.Harga_Jasa"
                         }
                       ],
                       staticClass: "form-control",
@@ -41772,7 +41931,7 @@ var render = function() {
                         name: "Harga_Jasa_Service",
                         required: ""
                       },
-                      domProps: { value: _vm.jasaservice.Harga_Jasa },
+                      domProps: { value: _vm.Jasaservice.Harga_Jasa },
                       on: {
                         input: [
                           function($event) {
@@ -41780,31 +41939,36 @@ var render = function() {
                               return
                             }
                             _vm.$set(
-                              _vm.jasaservice,
+                              _vm.Jasaservice,
                               "Harga_Jasa",
                               $event.target.value
                             )
                           },
                           function($event) {
-                            return _vm.$v.jasaservice.Harga_Jasa.$touch()
+                            return _vm.$v.Jasaservice.Harga_Jasa.$touch()
                           }
                         ],
                         blur: function($event) {
-                          return _vm.$v.jasaservice.Harga_Jasa.$touch()
+                          return _vm.$v.Jasaservice.Harga_Jasa.$touch()
                         }
                       }
                     })
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "text-center" }, [
-                    _vm.$v.jasaservice.Harga_Jasa.$invalid
-                      ? _c("div", { staticStyle: { color: "red" } }, [
-                          _vm._v(_vm._s(_vm.priceErrors[0]))
-                        ])
+                    _vm.$v.Jasaservice.Harga_Jasa.$invalid
+                      ? _c(
+                          "p",
+                          {
+                            staticClass: "mb-3",
+                            staticStyle: { color: "red" }
+                          },
+                          [_vm._v(_vm._s(_vm.priceErrors[0]))]
+                        )
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "modal-footer " }, [
+                  _c("div", { staticClass: "modal-footer mt-3" }, [
                     _c(
                       "button",
                       {
@@ -41812,7 +41976,7 @@ var render = function() {
                         staticStyle: { width: "100%" },
                         attrs: {
                           type: "submit",
-                          disabled: _vm.$v.jasaservice.$invalid
+                          disabled: _vm.$v.Jasaservice.$invalid
                         }
                       },
                       [_vm._v("Tambahkan Jasa Service")]
@@ -41876,7 +42040,7 @@ var render = function() {
                         "aria-label": "Nama_Jasa_Service",
                         "aria-describedby": "basic-addon2",
                         id: "Nama_Jasa_Service",
-                        name: "Nama_Pegawai"
+                        name: "Nama_Jasa_Service"
                       },
                       domProps: { value: _vm.handledjasaservice.Nama_Jasa },
                       on: {
@@ -42430,7 +42594,7 @@ var render = function() {
                   }
                 },
                 [
-                  _c("div", { staticClass: "input-group mb-4" }, [
+                  _c("div", { staticClass: "input-group" }, [
                     _vm._m(3),
                     _vm._v(" "),
                     _c("input", {
@@ -42438,8 +42602,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.Nama_Pegawai,
-                          expression: "Nama_Pegawai"
+                          value: _vm.Pegawai.Nama_Pegawai,
+                          expression: "Pegawai.Nama_Pegawai"
                         }
                       ],
                       staticClass: "form-control",
@@ -42449,21 +42613,47 @@ var render = function() {
                         "aria-label": "Nama_Pegawai",
                         "aria-describedby": "basic-addon2",
                         id: "Nama_Pegawai",
-                        name: "Nama_Pegawai"
+                        name: "Nama_Pegawai",
+                        required: ""
                       },
-                      domProps: { value: _vm.Nama_Pegawai },
+                      domProps: { value: _vm.Pegawai.Nama_Pegawai },
                       on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        input: [
+                          function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.Pegawai,
+                              "Nama_Pegawai",
+                              $event.target.value
+                            )
+                          },
+                          function($event) {
+                            return _vm.$v.Pegawai.Nama_Pegawai.$touch()
                           }
-                          _vm.Nama_Pegawai = $event.target.value
+                        ],
+                        blur: function($event) {
+                          return _vm.$v.Pegawai.Nama_Pegawai.$touch()
                         }
                       }
                     })
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
+                  _c("div", { staticClass: "text-center" }, [
+                    _vm.$v.Pegawai.Nama_Pegawai.$invalid
+                      ? _c(
+                          "p",
+                          {
+                            staticClass: "mb-3",
+                            staticStyle: { color: "red" }
+                          },
+                          [_vm._v(_vm._s(_vm.nameErrors[0]))]
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mt-3" }, [
                     _vm._m(4),
                     _vm._v(" "),
                     _c("input", {
@@ -42471,8 +42661,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.Alamat_Pegawai,
-                          expression: "Alamat_Pegawai"
+                          value: _vm.Pegawai.Alamat_Pegawai,
+                          expression: "Pegawai.Alamat_Pegawai"
                         }
                       ],
                       staticClass: "form-control",
@@ -42481,22 +42671,48 @@ var render = function() {
                         placeholder: "Masukkan Alamat Pegawai",
                         "aria-label": "Nama_Lengkap",
                         "aria-describedby": "basic-addon2",
-                        id: "Alamat",
-                        name: "Alamat"
+                        id: "Alamat_Pegawai",
+                        name: "Alamat_Pegawai",
+                        required: ""
                       },
-                      domProps: { value: _vm.Alamat_Pegawai },
+                      domProps: { value: _vm.Pegawai.Alamat_Pegawai },
                       on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        input: [
+                          function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.Pegawai,
+                              "Alamat_Pegawai",
+                              $event.target.value
+                            )
+                          },
+                          function($event) {
+                            return _vm.$v.Pegawai.Alamat_Pegawai.$touch()
                           }
-                          _vm.Alamat_Pegawai = $event.target.value
+                        ],
+                        blur: function($event) {
+                          return _vm.$v.Pegawai.Alamat_Pegawai.$touch()
                         }
                       }
                     })
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
+                  _c("div", { staticClass: "text-center" }, [
+                    _vm.$v.Pegawai.Alamat_Pegawai.$invalid
+                      ? _c(
+                          "p",
+                          {
+                            staticClass: "mb-3",
+                            staticStyle: { color: "red" }
+                          },
+                          [_vm._v(_vm._s(_vm.addressErrors[0]))]
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mt-3" }, [
                     _vm._m(5),
                     _vm._v(" "),
                     _c("input", {
@@ -42504,8 +42720,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.Telepon_Pegawai,
-                          expression: "Telepon_Pegawai"
+                          value: _vm.Pegawai.Telepon_Pegawai,
+                          expression: "Pegawai.Telepon_Pegawai"
                         }
                       ],
                       staticClass: "form-control",
@@ -42515,21 +42731,47 @@ var render = function() {
                         "aria-label": "Telepon_Pegawai",
                         "aria-describedby": "basic-addon2",
                         id: "Telepon_Pegawai",
-                        name: "Telepon_Pegawai"
+                        name: "Telepon_Pegawai",
+                        require: ""
                       },
-                      domProps: { value: _vm.Telepon_Pegawai },
+                      domProps: { value: _vm.Pegawai.Telepon_Pegawai },
                       on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        input: [
+                          function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.Pegawai,
+                              "Telepon_Pegawai",
+                              $event.target.value
+                            )
+                          },
+                          function($event) {
+                            return _vm.$v.Pegawai.Telepon_Pegawai.$touch()
                           }
-                          _vm.Telepon_Pegawai = $event.target.value
+                        ],
+                        blur: function($event) {
+                          return _vm.$v.Pegawai.Telepon_Pegawai.$touch()
                         }
                       }
                     })
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
+                  _c("div", { staticClass: "text-center" }, [
+                    _vm.$v.Pegawai.Telepon_Pegawai.$invalid
+                      ? _c(
+                          "p",
+                          {
+                            staticClass: "mb-3",
+                            staticStyle: { color: "red" }
+                          },
+                          [_vm._v(_vm._s(_vm.phoneErrors[0]))]
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mt-3" }, [
                     _vm._m(6),
                     _vm._v(" "),
                     _c("input", {
@@ -42537,8 +42779,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.Gaji_Pegawai,
-                          expression: "Gaji_Pegawai"
+                          value: _vm.Pegawai.Gaji_Pegawai,
+                          expression: "Pegawai.Gaji_Pegawai"
                         }
                       ],
                       staticClass: "form-control",
@@ -42548,21 +42790,47 @@ var render = function() {
                         "aria-label": "Gaji_Pegawai",
                         "aria-describedby": "basic-addon2",
                         id: "Gaji_Pegawai",
-                        name: "Gaji_Pegawai"
+                        name: "Gaji_Pegawai",
+                        require: ""
                       },
-                      domProps: { value: _vm.Gaji_Pegawai },
+                      domProps: { value: _vm.Pegawai.Gaji_Pegawai },
                       on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        input: [
+                          function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.Pegawai,
+                              "Gaji_Pegawai",
+                              $event.target.value
+                            )
+                          },
+                          function($event) {
+                            return _vm.$v.Pegawai.Gaji_Pegawai.$touch()
                           }
-                          _vm.Gaji_Pegawai = $event.target.value
+                        ],
+                        blur: function($event) {
+                          return _vm.$v.Pegawai.Gaji_Pegawai.$touch()
                         }
                       }
                     })
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
+                  _c("div", { staticClass: "text-center" }, [
+                    _vm.$v.Pegawai.Gaji_Pegawai.$invalid
+                      ? _c(
+                          "p",
+                          {
+                            staticClass: "mb-3",
+                            staticStyle: { color: "red" }
+                          },
+                          [_vm._v(_vm._s(_vm.salaryErrors[0]))]
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mt-3" }, [
                     _vm._m(7),
                     _vm._v(" "),
                     _c("input", {
@@ -42570,8 +42838,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.Username,
-                          expression: "Username"
+                          value: _vm.Pegawai.Username,
+                          expression: "Pegawai.Username"
                         }
                       ],
                       staticClass: "form-control",
@@ -42581,21 +42849,47 @@ var render = function() {
                         "aria-label": "Username",
                         "aria-describedby": "basic-addon2",
                         id: "Username",
-                        name: "Username"
+                        name: "Username",
+                        require: ""
                       },
-                      domProps: { value: _vm.Username },
+                      domProps: { value: _vm.Pegawai.Username },
                       on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        input: [
+                          function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.Pegawai,
+                              "Username",
+                              $event.target.value
+                            )
+                          },
+                          function($event) {
+                            return _vm.$v.Pegawai.Username.$touch()
                           }
-                          _vm.Username = $event.target.value
+                        ],
+                        blur: function($event) {
+                          return _vm.$v.Pegawai.Username.$touch()
                         }
                       }
                     })
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
+                  _c("div", { staticClass: "text-center" }, [
+                    _vm.$v.Pegawai.Username.$invalid
+                      ? _c(
+                          "p",
+                          {
+                            staticClass: "mb-3",
+                            staticStyle: { color: "red" }
+                          },
+                          [_vm._v(_vm._s(_vm.usernameErrors[0]))]
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mt-3" }, [
                     _vm._m(8),
                     _vm._v(" "),
                     _c("input", {
@@ -42603,32 +42897,58 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.Password,
-                          expression: "Password"
+                          value: _vm.Pegawai.Password,
+                          expression: "Pegawai.Password"
                         }
                       ],
                       staticClass: "form-control",
                       attrs: {
-                        type: "text",
+                        type: "password",
                         placeholder: "Masukkan Password",
                         "aria-label": "Password",
                         "aria-describedby": "basic-addon2",
                         id: "Password",
-                        name: "Password"
+                        name: "Password",
+                        require: ""
                       },
-                      domProps: { value: _vm.Password },
+                      domProps: { value: _vm.Pegawai.Password },
                       on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        input: [
+                          function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.Pegawai,
+                              "Password",
+                              $event.target.value
+                            )
+                          },
+                          function($event) {
+                            return _vm.$v.Pegawai.Password.$touch()
                           }
-                          _vm.Password = $event.target.value
+                        ],
+                        blur: function($event) {
+                          return _vm.$v.Pegawai.Password.$touch()
                         }
                       }
                     })
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
+                  _c("div", { staticClass: "text-center" }, [
+                    _vm.$v.Pegawai.Password.$invalid
+                      ? _c(
+                          "p",
+                          {
+                            staticClass: "mb-3",
+                            staticStyle: { color: "red" }
+                          },
+                          [_vm._v(_vm._s(_vm.passwordErrors[0]))]
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mt-3" }, [
                     _vm._m(9),
                     _vm._v(" "),
                     _c(
@@ -42638,12 +42958,19 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.Id_Cabang,
-                            expression: "Id_Cabang"
+                            value: _vm.Pegawai.Id_Cabang,
+                            expression: "Pegawai.Id_Cabang"
                           }
                         ],
                         staticClass: "form-control",
+                        attrs: { require: "" },
                         on: {
+                          input: function($event) {
+                            return _vm.$v.Pegawai.Id_Cabang.$touch()
+                          },
+                          blur: function($event) {
+                            return _vm.$v.Pegawai.Id_Cabang.$touch()
+                          },
                           change: function($event) {
                             var $$selectedVal = Array.prototype.filter
                               .call($event.target.options, function(o) {
@@ -42653,9 +42980,13 @@ var render = function() {
                                 var val = "_value" in o ? o._value : o.value
                                 return val
                               })
-                            _vm.Id_Cabang = $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
+                            _vm.$set(
+                              _vm.Pegawai,
+                              "Id_Cabang",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
                           }
                         }
                       },
@@ -42686,7 +43017,20 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
+                  _c("div", { staticClass: "text-center" }, [
+                    _vm.$v.Pegawai.Id_Cabang.$invalid
+                      ? _c(
+                          "p",
+                          {
+                            staticClass: "mb-3",
+                            staticStyle: { color: "red" }
+                          },
+                          [_vm._v(_vm._s(_vm.cabangErrors[0]))]
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mt-3" }, [
                     _vm._m(10),
                     _vm._v(" "),
                     _c(
@@ -42696,12 +43040,19 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.Id_Role,
-                            expression: "Id_Role"
+                            value: _vm.Pegawai.Id_Role,
+                            expression: "Pegawai.Id_Role"
                           }
                         ],
                         staticClass: "form-control",
+                        attrs: { require: "" },
                         on: {
+                          input: function($event) {
+                            return _vm.$v.Pegawai.Id_Role.$touch()
+                          },
+                          blur: function($event) {
+                            return _vm.$v.Pegawai.Id_Role.$touch()
+                          },
                           change: function($event) {
                             var $$selectedVal = Array.prototype.filter
                               .call($event.target.options, function(o) {
@@ -42711,9 +43062,13 @@ var render = function() {
                                 var val = "_value" in o ? o._value : o.value
                                 return val
                               })
-                            _vm.Id_Role = $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
+                            _vm.$set(
+                              _vm.Pegawai,
+                              "Id_Role",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
                           }
                         }
                       },
@@ -42744,7 +43099,33 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(11)
+                  _c("div", { staticClass: "text-center" }, [
+                    _vm.$v.Pegawai.Id_Role.$invalid
+                      ? _c(
+                          "p",
+                          {
+                            staticClass: "mb-3",
+                            staticStyle: { color: "red" }
+                          },
+                          [_vm._v(_vm._s(_vm.roleErrors[0]))]
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer mt-3" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success btn-lg",
+                        staticStyle: { width: "100%" },
+                        attrs: {
+                          type: "submit",
+                          disabled: _vm.$v.Pegawai.$invalid
+                        }
+                      },
+                      [_vm._v("Tambahkan Pegawai")]
+                    )
+                  ])
                 ]
               )
             ])
@@ -42768,7 +43149,7 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(12),
+            _vm._m(11),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
               _c(
@@ -42783,7 +43164,7 @@ var render = function() {
                 },
                 [
                   _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(13),
+                    _vm._m(12),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -42799,9 +43180,7 @@ var render = function() {
                         type: "text",
                         placeholder: "Masukkan Nama Pegawai",
                         "aria-label": "Nama_Pegawai",
-                        "aria-describedby": "basic-addon2",
-                        id: "Nama_Pegawai",
-                        name: "Nama_Pegawai"
+                        "aria-describedby": "basic-addon2"
                       },
                       domProps: { value: _vm.handledpegawai.Nama_Pegawai },
                       on: {
@@ -42820,7 +43199,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(14),
+                    _vm._m(13),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -42836,9 +43215,7 @@ var render = function() {
                         type: "text",
                         placeholder: "Masukkan Alamat Pegawai",
                         "aria-label": "Nama_Lengkap",
-                        "aria-describedby": "basic-addon2",
-                        id: "Alamat",
-                        name: "Alamat"
+                        "aria-describedby": "basic-addon2"
                       },
                       domProps: { value: _vm.handledpegawai.Alamat_Pegawai },
                       on: {
@@ -42857,7 +43234,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(15),
+                    _vm._m(14),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -42873,9 +43250,7 @@ var render = function() {
                         type: "text",
                         placeholder: "Masukkan Nomor Telepon Pegawai",
                         "aria-label": "Telepon_Pegawai",
-                        "aria-describedby": "basic-addon2",
-                        id: "Telepon_Pegawai",
-                        name: "Telepon_Pegawai"
+                        "aria-describedby": "basic-addon2"
                       },
                       domProps: { value: _vm.handledpegawai.Telepon_Pegawai },
                       on: {
@@ -42894,7 +43269,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(16),
+                    _vm._m(15),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -42910,9 +43285,7 @@ var render = function() {
                         type: "text",
                         placeholder: "Masukkan Gaji",
                         "aria-label": "Gaji_Pegawai",
-                        "aria-describedby": "basic-addon2",
-                        id: "Gaji_Pegawai",
-                        name: "Gaji_Pegawai"
+                        "aria-describedby": "basic-addon2"
                       },
                       domProps: { value: _vm.handledpegawai.Gaji_Pegawai },
                       on: {
@@ -42931,7 +43304,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(17),
+                    _vm._m(16),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -42947,9 +43320,7 @@ var render = function() {
                         type: "text",
                         placeholder: "Masukkan Username",
                         "aria-label": "Username",
-                        "aria-describedby": "basic-addon2",
-                        id: "Username",
-                        name: "Username"
+                        "aria-describedby": "basic-addon2"
                       },
                       domProps: { value: _vm.handledpegawai.Username },
                       on: {
@@ -42968,7 +43339,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(18),
+                    _vm._m(17),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -42984,9 +43355,7 @@ var render = function() {
                         type: "text",
                         placeholder: "Masukkan Password",
                         "aria-label": "Password",
-                        "aria-describedby": "basic-addon2",
-                        id: "Password",
-                        name: "Password"
+                        "aria-describedby": "basic-addon2"
                       },
                       domProps: { value: _vm.handledpegawai.Password },
                       on: {
@@ -43005,7 +43374,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(19),
+                    _vm._m(18),
                     _vm._v(" "),
                     _c(
                       "select",
@@ -43067,7 +43436,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(20),
+                    _vm._m(19),
                     _vm._v(" "),
                     _c(
                       "select",
@@ -43128,7 +43497,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(21)
+                  _vm._m(20)
                 ]
               )
             ])
@@ -43152,9 +43521,9 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(22),
+            _vm._m(21),
             _vm._v(" "),
-            _vm._m(23),
+            _vm._m(22),
             _vm._v(" "),
             _c("div", { staticClass: "modal-footer " }, [
               _c(
@@ -43187,7 +43556,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(24)
+              _vm._m(23)
             ])
           ])
         ])
@@ -43422,22 +43791,6 @@ var staticRenderFns = [
         )
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer " }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-success btn-lg",
-          staticStyle: { width: "100%" },
-          attrs: { type: "submit" }
-        },
-        [_vm._v("Tambahkan Pegawai")]
-      )
-    ])
   },
   function() {
     var _vm = this
@@ -44203,7 +44556,7 @@ var render = function() {
                   }
                 },
                 [
-                  _c("div", { staticClass: "input-group mb-4" }, [
+                  _c("div", { staticClass: "input-group" }, [
                     _vm._m(3),
                     _vm._v(" "),
                     _c("input", {
@@ -44211,8 +44564,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.supplier.Nama_Supplier,
-                          expression: "supplier.Nama_Supplier"
+                          value: _vm.Supplier.Nama_Supplier,
+                          expression: "Supplier.Nama_Supplier"
                         }
                       ],
                       staticClass: "form-control",
@@ -44222,26 +44575,35 @@ var render = function() {
                         "aria-label": "Nama_Supplier",
                         "aria-describedby": "basic-addon2",
                         id: "Nama_Supplier",
-                        name: "Nama_Supplier"
+                        name: "Nama_Supplier",
+                        require: ""
                       },
-                      domProps: { value: _vm.supplier.Nama_Supplier },
+                      domProps: { value: _vm.Supplier.Nama_Supplier },
                       on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        input: [
+                          function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.Supplier,
+                              "Nama_Supplier",
+                              $event.target.value
+                            )
+                          },
+                          function($event) {
+                            return _vm.$v.Supplier.Nama_Supplier.$touch()
                           }
-                          _vm.$set(
-                            _vm.supplier,
-                            "Nama_Supplier",
-                            $event.target.value
-                          )
+                        ],
+                        blur: function($event) {
+                          return _vm.$v.Supplier.Nama_Supplier.$touch()
                         }
                       }
                     })
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "text-center" }, [
-                    _vm.$v.supplier.Nama_Supplier.$invalid
+                    _vm.$v.Supplier.Nama_Supplier.$invalid
                       ? _c(
                           "p",
                           {
@@ -44261,8 +44623,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.supplier.Alamat_Supplier,
-                          expression: "supplier.Alamat_Supplier"
+                          value: _vm.Supplier.Alamat_Supplier,
+                          expression: "Supplier.Alamat_Supplier"
                         }
                       ],
                       staticClass: "form-control",
@@ -44274,14 +44636,14 @@ var render = function() {
                         id: "Alamat_Supplier",
                         name: "Alamat_Supplier"
                       },
-                      domProps: { value: _vm.supplier.Alamat_Supplier },
+                      domProps: { value: _vm.Supplier.Alamat_Supplier },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.supplier,
+                            _vm.Supplier,
                             "Alamat_Supplier",
                             $event.target.value
                           )
@@ -44298,8 +44660,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.supplier.Telepon_Supplier,
-                          expression: "supplier.Telepon_Supplier"
+                          value: _vm.Supplier.Telepon_Supplier,
+                          expression: "Supplier.Telepon_Supplier"
                         }
                       ],
                       staticClass: "form-control",
@@ -44311,14 +44673,14 @@ var render = function() {
                         id: "Telepon_Supplier",
                         name: "Telepon_Supplier"
                       },
-                      domProps: { value: _vm.supplier.Telepon_Supplier },
+                      domProps: { value: _vm.Supplier.Telepon_Supplier },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.supplier,
+                            _vm.Supplier,
                             "Telepon_Supplier",
                             $event.target.value
                           )
@@ -64662,6 +65024,177 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   LoggedUser: _LoggedUser__WEBPACK_IMPORTED_MODULE_0__["default"]
+});
+
+/***/ }),
+
+/***/ "./resources/js/validations/cabang_validations.js":
+/*!********************************************************!*\
+  !*** ./resources/js/validations/cabang_validations.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  cabang: {
+    Nama_Cabang: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25)
+    },
+    Alamat_Cabang: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25)
+    },
+    Telepon_Cabang: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(12),
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(12),
+      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/validations/jasa_service_validation.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/validations/jasa_service_validation.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  Jasaservice: {
+    Nama_Jasa: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25) // alpha 
+
+    },
+    Harga_Jasa: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(12),
+      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/validations/pegawai_validations.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/validations/pegawai_validations.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  Pegawai: {
+    Id_Cabang: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"]
+    },
+    Id_Role: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"]
+    },
+    Nama_Pegawai: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25) // alpha,
+
+    },
+    Alamat_Pegawai: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(255)
+    },
+    Telepon_Pegawai: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(10),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(15),
+      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
+    },
+    Gaji_Pegawai: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(10),
+      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
+    },
+    Username: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(10),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(30) // alphaNum,
+
+    },
+    Password: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(15)
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/validations/supplier_validation.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/validations/supplier_validation.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  Supplier: {
+    Nama_Supplier: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25) // alpha 
+
+    },
+    Alamat_Supplier: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(255),
+      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
+    },
+    Telepon_Supplier: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(10),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(15),
+      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
+    },
+    Nama_Sales: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25)
+    },
+    Telepon_Sales: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(10),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(15),
+      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
+    }
+  }
 });
 
 /***/ }),

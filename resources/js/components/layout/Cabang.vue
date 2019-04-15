@@ -167,15 +167,10 @@
 <script>
 import Controller from '../../service/Cabang'
 import { required, minLength, maxLength, numeric } from 'vuelidate/lib/validators'
+import validators from '../../validations/cabang_validations' 
 
 export default {
-     validations: {
-       cabang: {
-        Nama_Cabang: { required, minLength: minLength(5), maxLength: maxLength(25) },
-        Alamat_Cabang: { required, minLength: minLength(5), maxLength: maxLength(25) },
-        Telepon_Cabang: { required, numeric, minLength: minLength(11), maxLength: maxLength(12) },
-       },   
-    },
+     validations: validators,
     data: () => ({
         cabangData:[],
         handledCabang:[],
@@ -268,7 +263,8 @@ export default {
         phoneErrors () {
             const errors = []
             if (!this.$v.cabang.Telepon_Cabang.$dirty) return errors
-            !this.$v.cabang.Telepon_Cabang.maxLength && errors.push('Address must be at most 25 characters long')
+            !this.$v.cabang.Telepon_Cabang.maxLength && errors.push('Phone Number must be at most 12 characters long')
+            !this.$v.cabang.Telepon_Cabang.minLength && errors.push('Phone Number be at leats 12 characters long')
             !this.$v.cabang.Telepon_Cabang.numeric && errors.push('Phone Number must be numeric')
             !this.$v.cabang.Telepon_Cabang.required && errors.push('Phone Number is required.')
             return errors

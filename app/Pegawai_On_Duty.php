@@ -17,11 +17,11 @@ class Pegawai_On_Duty extends Model
 
     public function pegawais()
     {
-        return $this->belongsTo('App\Pegawai');
+        return $this->belongsTo('App\Pegawai','Id_Pegawai');
     }
 
     public function transaksi_penjualans()
     {
-        return $this->belongsTo('App\Transaksi_Penjualan');
+        return $this->belongsTo('App\Transaksi_Penjualan','Id_Transaksi');
     }
 }

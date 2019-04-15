@@ -26,17 +26,17 @@ class Sparepart extends Model
 
     public function detail_pengadaans()
     {
-        return $this->hasMany('App\Detail_Pengadaan');
+        return $this->hasMany('App\Detail_Pengadaan','Id_Detail_Pengadaan');
     }
 
     public function motors()
     {
-        return $this->hasMany('App\Motor');
+        return $this->hasMany('App\Motor','Id_Motor');
     }
 
     public function detail_spareparts()
     {
-        return $this->hasMany('App\Detail_Sparepart');
+        return $this->hasMany('App\Detail_Sparepart','Id_Detail_Sparepart');
     }
     
 }

@@ -19,12 +19,12 @@ class Konsumen extends Model
 
     public function transaksi_penjualans()
     {
-        return $this->hasMany('App\Transaksi_Penjualan');
+        return $this->hasMany('App\Transaksi_Penjualan','Id_Transaksi');
     }
 
     public function motor_konsumens()
     {
-        return $this->hasMany('App\Motor_Konsumen');
+        return $this->hasMany('App\Motor_Konsumen','Id_Motor_Konsumen');
     }
 
 }

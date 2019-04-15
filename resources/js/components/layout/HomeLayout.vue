@@ -1,7 +1,7 @@
 <template>
 <body>
-    <div class="container w-25 mt-5">
-        <h1 style="text-align:center;">LOGIN</h1>
+    <div class="container mt-5">
+        <h1 style="text-align:center;" class="mb-3">LOGIN</h1>
         <div class="alert alert-danger" v-if="error">
             <p>There was an error, unable to sign in with those credentials.</p>
         </div>
@@ -17,6 +17,13 @@
                     <span class="input-group-text" id="basic-addon2">Password</span>
                 </div>
                 <input type="password" class="form-control" v-model="form.password" placeholder="Masukkan Password" aria-label="Password" aria-describedby="basic-addon2" id="Password" name="Password">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">
+                      <a onclick="togglePassword()">
+                        <i class="fas fa-eye-slash" ></i>
+                      </a>
+                    </span>
+                </div>
             </div>
             <div class="modal-footer ">
                 <button type="submit" class="btn btn-success btn-lg" style="width: 100%;">LOGIN</button>
@@ -43,7 +50,6 @@ import auth from '../../service/Auth'
         error:''
       }
     },
-
     methods: {
       async loginHandler(){
         try {
@@ -52,7 +58,19 @@ import auth from '../../service/Auth'
         } catch (err) {
           //this.$refs.errorAlert.trigger({ message: 'Terjadi Kesalahan Login!' })
         }
-      }
+      },
     } 
   }
+  const passwordField = document.querySelector('#Passowrd');
+  
+  function togglePassword(){
+    if(passwordField.getAttribute('type') === 'password'){
+      passwordField.setAttribute('text');
+    }
+    else{
+      passwordField.setAttribute('password');
+    }
+  }
+
 </script>
+

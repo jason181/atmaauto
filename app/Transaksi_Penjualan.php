@@ -23,21 +23,21 @@ class Transaksi_Penjualan extends Model
 
     public function detail_spareparts()
     {
-        return $this->hasMany('App\Detail_Sparepart');
+        return $this->hasMany('App\Detail_Sparepart','Id_Detail_Sparepart');
     }
     
     public function detail_jasas()
     {
-        return $this->hasMany('App\Detail_Jasa');
+        return $this->hasMany('App\Detail_Jasa','Id_Detail_Jasa');
     }
 
     public function pegawai_on_duties()
     {
-        return $this->hasMany('App\Pegawai_On_Duty');
+        return $this->hasMany('App\Pegawai_On_Duty','Id_Duty');
     }
 
     public function konsumens()
     {
-        return $this->belongsTo('App\Konsumen');
+        return $this->belongsTo('App\Konsumen','Id_Konsumen');
     }
 }
