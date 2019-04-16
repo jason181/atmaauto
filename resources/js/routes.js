@@ -5,7 +5,7 @@ import HomeLayout from './components/layout/HomeLayout.vue';
 import Pegawai from './components/layout/pegawai.vue';
 import Jasa_Service from './components/layout/jasa_service.vue';
 import Supplier from './components/layout/supplier.vue';
-import Sparepart from './components/layout/sparepart.vue';
+import Sparepart from './components/layout/Sparepart.vue';
 import Cabang from './components/layout/Cabang.vue';
 
 export const routes = [

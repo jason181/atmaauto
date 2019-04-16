@@ -2399,6 +2399,423 @@ function togglePassword() {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Sparepart.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/Sparepart.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/Sparepart */ "./resources/js/service/Sparepart.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      sparepartdata: [],
+      handledsparepart: [],
+      Kode_Sparepart: '',
+      Tipe_Barang: '',
+      Nama_Sparepart: '',
+      Merk_Sparepart: '',
+      Rak_Sparepart: '',
+      Jumlah_Sparepart: '',
+      Stok_Minimum_Sparepart: '',
+      Harga_Beli: 0,
+      Harga_Jual: 0,
+      Gambar: '',
+      Cari_Sparepart: ''
+    };
+  },
+  mounted: function mounted() {
+    this.getallsparepart();
+  },
+  methods: {
+    getallsparepart: function () {
+      var _getallsparepart = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].getallsparepart();
+
+              case 3:
+                this.sparepartdata = _context.sent.data;
+                console.log(this.sparepartdata);
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 7]]);
+      }));
+
+      function getallsparepart() {
+        return _getallsparepart.apply(this, arguments);
+      }
+
+      return getallsparepart;
+    }(),
+    addsparepart: function () {
+      var _addsparepart = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                payload = {
+                  Kode_Sparepart: this.Kode_Sparepart,
+                  Nama_Sparepart: this.Nama_Sparepart,
+                  Merk_Sparepart: this.Merk_Sparepart,
+                  Rak_Sparepart: this.Rak_Sparepart,
+                  Jumlah_Sparepart: this.Jumlah_Sparepart,
+                  Stok_Minimum_Sparepart: this.Stok_Minimum_Sparepart,
+                  Harga_Beli: this.Harga_Beli,
+                  Harga_Jual: this.Harga_Jual,
+                  Gambar: this.Gambar
+                };
+                _context2.next = 4;
+                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].addsparepart(payload);
+
+              case 4:
+                this.getallsparepart(); // console.log()
+
+                _context2.next = 10;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 7]]);
+      }));
+
+      function addsparepart() {
+        return _addsparepart.apply(this, arguments);
+      }
+
+      return addsparepart;
+    }(),
+    updatesparepart: function () {
+      var _updatesparepart = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(id) {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                payload = {
+                  Kode_Sparepart: this.handledsparepart.Kode_Sparepart,
+                  Nama_Sparepart: this.handledsparepart.Nama_Sparepart,
+                  Merk_Sparepart: this.handledsparepart.Merk_Sparepart,
+                  Rak_Sparepart: this.handledsparepart.Rak_Sparepart,
+                  Jumlah_Sparepart: this.handledsparepart.Jumlah_Sparepart,
+                  Stok_Minimum_Sparepart: this.handledsparepart.Stok_Minimum_Sparepart,
+                  Harga_Beli: this.handledsparepart.Harga_Beli,
+                  Harga_Jual: this.handledsparepart.Harga_Jual,
+                  Gambar: this.handledsparepart.Gambar
+                };
+                _context3.next = 4;
+                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].updatesparepart(payload, id);
+
+              case 4:
+                this.getallsparepart(); // console.log()
+
+                _context3.next = 10;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 7]]);
+      }));
+
+      function updatesparepart(_x) {
+        return _updatesparepart.apply(this, arguments);
+      }
+
+      return updatesparepart;
+    }(),
+    deletesparepart: function () {
+      var _deletesparepart = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].deletesparepart(id);
+
+              case 3:
+                this.getallsparepart(); // console.log()
+
+                _context4.next = 9;
+                break;
+
+              case 6:
+                _context4.prev = 6;
+                _context4.t0 = _context4["catch"](0);
+                console.log(_context4.t0);
+
+              case 9:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[0, 6]]);
+      }));
+
+      function deletesparepart(_x2) {
+        return _deletesparepart.apply(this, arguments);
+      }
+
+      return deletesparepart;
+    }(),
+    dataspareparthandler: function dataspareparthandler(sparepart) {
+      this.handledsparepart = sparepart;
+    }
+  },
+  computed: {
+    filteredsparepart: function filteredsparepart() {
+      var _this = this;
+
+      return this.sparepartdata.filter(function (sparepart) {
+        return sparepart.Nama_Sparepart.toLowerCase().match(_this.Cari_Sparepart.toLowerCase()) || sparepart.Kode_Sparepart.toLowerCase().match(_this.Cari_Sparepart.toLowerCase()) || sparepart.Merk_Sparepart.toLowerCase().match(_this.Cari_Sparepart.toLowerCase());
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/jasa_service.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/jasa_service.vue?vue&type=script&lang=js& ***!
@@ -3413,392 +3830,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       !this.$v.Pegawai.Password.maxLength && errors.push('Password must be at most 30 characters long');
       !this.$v.Pegawai.Password.required && errors.push('Password is required');
       return errors;
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/sparepart.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/sparepart.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../httpController */ "./resources/js/httpController.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      sparepartdata: [],
-      handledsparepart: [],
-      Kode_Sparepart: '',
-      Nama_Sparepart: '',
-      Merk_Sparepart: '',
-      Rak_Sparepart: '',
-      Jumlah_Sparepart: '',
-      Stok_Minimum_Sparepart: '',
-      Harga_Beli: 0,
-      Harga_Jual: 0,
-      Gambar: '',
-      Cari_Sparepart: ''
-    };
-  },
-  mounted: function mounted() {
-    this.getallsparepart();
-  },
-  methods: {
-    getallsparepart: function () {
-      var _getallsparepart = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].getallsparepart();
-
-              case 3:
-                this.sparepartdata = _context.sent.data;
-                console.log(this.sparepartdata);
-                _context.next = 10;
-                break;
-
-              case 7:
-                _context.prev = 7;
-                _context.t0 = _context["catch"](0);
-                console.log(_context.t0);
-
-              case 10:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this, [[0, 7]]);
-      }));
-
-      function getallsparepart() {
-        return _getallsparepart.apply(this, arguments);
-      }
-
-      return getallsparepart;
-    }(),
-    addsparepart: function () {
-      var _addsparepart = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var payload;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.prev = 0;
-                payload = {
-                  Kode_Sparepart: this.Kode_Sparepart,
-                  Nama_Sparepart: this.Nama_Sparepart,
-                  Merk_Sparepart: this.Merk_Sparepart,
-                  Rak_Sparepart: this.Rak_Sparepart,
-                  Jumlah_Sparepart: this.Jumlah_Sparepart,
-                  Stok_Minimum_Sparepart: this.Stok_Minimum_Sparepart,
-                  Harga_Beli: this.Harga_Beli,
-                  Harga_Jual: this.Harga_Jual,
-                  Gambar: this.Gambar
-                };
-                _context2.next = 4;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addsparepart(payload);
-
-              case 4:
-                this.getallsparepart(); // console.log()
-
-                _context2.next = 10;
-                break;
-
-              case 7:
-                _context2.prev = 7;
-                _context2.t0 = _context2["catch"](0);
-                console.log(_context2.t0);
-
-              case 10:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2, this, [[0, 7]]);
-      }));
-
-      function addsparepart() {
-        return _addsparepart.apply(this, arguments);
-      }
-
-      return addsparepart;
-    }(),
-    updatesparepart: function () {
-      var _updatesparepart = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(id) {
-        var payload;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.prev = 0;
-                payload = {
-                  Kode_Sparepart: this.handledsparepart.Kode_Sparepart,
-                  Nama_Sparepart: this.handledsparepart.Nama_Sparepart,
-                  Merk_Sparepart: this.handledsparepart.Merk_Sparepart,
-                  Rak_Sparepart: this.handledsparepart.Rak_Sparepart,
-                  Jumlah_Sparepart: this.handledsparepart.Jumlah_Sparepart,
-                  Stok_Minimum_Sparepart: this.handledsparepart.Stok_Minimum_Sparepart,
-                  Harga_Beli: this.handledsparepart.Harga_Beli,
-                  Harga_Jual: this.handledsparepart.Harga_Jual,
-                  Gambar: this.handledsparepart.Gambar
-                };
-                _context3.next = 4;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatesparepart(payload, id);
-
-              case 4:
-                this.getallsparepart(); // console.log()
-
-                _context3.next = 10;
-                break;
-
-              case 7:
-                _context3.prev = 7;
-                _context3.t0 = _context3["catch"](0);
-                console.log(_context3.t0);
-
-              case 10:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3, this, [[0, 7]]);
-      }));
-
-      function updatesparepart(_x) {
-        return _updatesparepart.apply(this, arguments);
-      }
-
-      return updatesparepart;
-    }(),
-    deletesparepart: function () {
-      var _deletesparepart = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                _context4.prev = 0;
-                _context4.next = 3;
-                return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].deletesparepart(id);
-
-              case 3:
-                this.getallsparepart(); // console.log()
-
-                _context4.next = 9;
-                break;
-
-              case 6:
-                _context4.prev = 6;
-                _context4.t0 = _context4["catch"](0);
-                console.log(_context4.t0);
-
-              case 9:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4, this, [[0, 6]]);
-      }));
-
-      function deletesparepart(_x2) {
-        return _deletesparepart.apply(this, arguments);
-      }
-
-      return deletesparepart;
-    }(),
-    dataspareparthandler: function dataspareparthandler(sparepart) {
-      this.handledsparepart = sparepart;
-    }
-  },
-  computed: {
-    filteredsparepart: function filteredsparepart() {
-      var _this = this;
-
-      return this.sparepartdata.filter(function (sparepart) {
-        return sparepart.Nama_Sparepart.toLowerCase().match(_this.Cari_Sparepart.toLowerCase()) || sparepart.Kode_Sparepart.toLowerCase().match(_this.Cari_Sparepart.toLowerCase()) || sparepart.Merk_Sparepart.toLowerCase().match(_this.Cari_Sparepart.toLowerCase());
-      });
     }
   }
 });
@@ -41666,6 +41697,611 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Sparepart.vue?vue&type=template&id=a01dcb60&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/Sparepart.vue?vue&type=template&id=a01dcb60& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("body", [
+    _c("div", { staticClass: "container-fluid mt-3" }, [
+      _c("div", { staticClass: "clearfix my-2" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "navbar navbar-light bg-light float-right p-0" },
+          [
+            _c("form", { staticClass: "form-inline" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.Cari_Sparepart,
+                    expression: "Cari_Sparepart"
+                  }
+                ],
+                staticClass: "form-control mr-sm-2",
+                attrs: {
+                  type: "search",
+                  placeholder: "Search",
+                  "aria-label": "Search"
+                },
+                domProps: { value: _vm.Cari_Sparepart },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.Cari_Sparepart = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-outline-primary my-2 my-sm-0",
+                  attrs: { type: "submit" }
+                },
+                [_vm._v("Search")]
+              )
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "table-responsive", staticStyle: { margin: "auto" } },
+        [
+          _c("table", { staticClass: "table table-striped table-hover" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.filteredsparepart, function(sparepart, index) {
+                return _c("tr", { key: index }, [
+                  _c("td", [_vm._v(_vm._s(sparepart.Kode_Sparepart) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Nama_Sparepart) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Merk_Sparepart) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Rak_Sparepart) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Jumlah_Sparepart) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(_vm._s(sparepart.Stok_Minimum_Sparepart) + " ")
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Harga_Beli) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Harga_Jual) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sparepart.Gambar))]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "p",
+                      {
+                        attrs: {
+                          "data-placement": "top",
+                          "data-toggle": "tooltip",
+                          title: "Edit"
+                        }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: {
+                              "data-title": "Edit_Sparepart",
+                              "data-toggle": "modal",
+                              "data-target": "#Edit_Sparepart"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.dataspareparthandler(sparepart)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-edit" })]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "p",
+                      {
+                        attrs: {
+                          "data-placement": "top",
+                          "data-toggle": "tooltip",
+                          title: "Delete"
+                        }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            attrs: {
+                              "data-title": "Delete_Sparepart",
+                              "data-toggle": "modal",
+                              "data-target": "#Delete_Sparepart"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.dataspareparthandler(sparepart)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-trash-alt" })]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              }),
+              0
+            )
+          ])
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Tambah_Sparepart",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Tambah_Sparepart",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.addsparepart()
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "input-group" }, [
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.sparepart.Tipe_Barang,
+                          expression: "sparepart.Tipe_Barang"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Tipe Barang",
+                        error: _vm.phoneErrors,
+                        "aria-label": "Tipe_Barang",
+                        "aria-describedby": "basic-addon2",
+                        id: "Tipe_Barang",
+                        name: "Tipe_Barang",
+                        required: ""
+                      },
+                      domProps: { value: _vm.sparepart.Tipe_Barang },
+                      on: {
+                        input: [
+                          function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.sparepart,
+                              "Tipe_Barang",
+                              $event.target.value
+                            )
+                          },
+                          function($event) {
+                            return _vm.$v.sparepart.Tipe_Barang.$touch()
+                          }
+                        ],
+                        blur: function($event) {
+                          return _vm.$v.sparepart.Tipe_Barang.$touch()
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-center" }, [
+                    _vm.$v.sparepart.Tipe_Barang.$invalid
+                      ? _c("div", { staticStyle: { color: "red" } }, [
+                          _vm._v(_vm._s(_vm.phoneErrors[0]))
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mt-4" }, [
+                    _vm._m(4),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.sparepart.Nama_Sparepart,
+                          expression: "sparepart.Nama_Sparepart"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Nama Sparepart",
+                        error: _vm.nameErrors,
+                        "aria-label": "Nama_Cabang",
+                        "aria-describedby": "basic-addon2",
+                        id: "Nama_Sparepart",
+                        name: "Nama_Sparepart",
+                        required: ""
+                      },
+                      domProps: { value: _vm.sparepart.Nama_Sparepart },
+                      on: {
+                        input: [
+                          function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.sparepart,
+                              "Nama_Sparepart",
+                              $event.target.value
+                            )
+                          },
+                          function($event) {
+                            return _vm.$v.sparepart.Nama_Sparepart.$touch()
+                          }
+                        ],
+                        blur: function($event) {
+                          return _vm.$v.sparepart.Nama_Sparepart.$touch()
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-center" }, [
+                    _vm.$v.sparepart.Nama_Sparepart.$invalid
+                      ? _c(
+                          "p",
+                          {
+                            staticClass: "mb-3",
+                            staticStyle: { color: "red" }
+                          },
+                          [_vm._v(_vm._s(_vm.nameErrors[0]))]
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mt-4" }, [
+                    _vm._m(5),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.sparepart.Merk_Sparepart,
+                          expression: "sparepart.Merk_Sparepart"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Merek Sparepart",
+                        error: _vm.addressErrors,
+                        "aria-label": "Merk_Sparepart",
+                        "aria-describedby": "basic-addon2",
+                        id: "Merk_Sparepart",
+                        name: "Merk_Sparepart",
+                        required: ""
+                      },
+                      domProps: { value: _vm.sparepart.Merk_Sparepart },
+                      on: {
+                        input: [
+                          function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.sparepart,
+                              "Merk_Sparepart",
+                              $event.target.value
+                            )
+                          },
+                          function($event) {
+                            return _vm.$v.sparepart.Merk_Sparepart.$touch()
+                          }
+                        ],
+                        blur: function($event) {
+                          return _vm.$v.sparepart.Merk_Sparepart.$touch()
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-center" }, [
+                    _vm.$v.sparepart.Merk_Sparepart.$invalid
+                      ? _c("div", { staticStyle: { color: "red" } }, [
+                          _vm._v(_vm._s(_vm.addressErrors[0]))
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mt-4" }, [
+                    _vm._m(6),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.sparepart.Merk_Sparepart,
+                          expression: "sparepart.Merk_Sparepart"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Merek Sparepart",
+                        error: _vm.addressErrors,
+                        "aria-label": "Merk_Sparepart",
+                        "aria-describedby": "basic-addon2",
+                        id: "Merk_Sparepart",
+                        name: "Merk_Sparepart",
+                        required: ""
+                      },
+                      domProps: { value: _vm.sparepart.Merk_Sparepart },
+                      on: {
+                        input: [
+                          function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.sparepart,
+                              "Merk_Sparepart",
+                              $event.target.value
+                            )
+                          },
+                          function($event) {
+                            return _vm.$v.sparepart.Merk_Sparepart.$touch()
+                          }
+                        ],
+                        blur: function($event) {
+                          return _vm.$v.sparepart.Merk_Sparepart.$touch()
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-center" }, [
+                    _vm.$v.sparepart.Merk_Sparepart.$invalid
+                      ? _c("div", { staticStyle: { color: "red" } }, [
+                          _vm._v(_vm._s(_vm.addressErrors[0]))
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer " }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success btn-lg",
+                        staticStyle: { width: "100%" },
+                        attrs: {
+                          type: "submit",
+                          disabled: _vm.$v.cabang.$invalid
+                        }
+                      },
+                      [_vm._v("Tambahkan Cabang")]
+                    )
+                  ])
+                ]
+              )
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-success float-left mb-2",
+        attrs: {
+          "data-title": "Tambah_Jasa_Service",
+          "data-toggle": "modal",
+          "data-target": "#Tambah_Jasa_Service"
+        }
+      },
+      [
+        _c("i", { staticClass: "fas fa-plus mr-2" }),
+        _vm._v("Tambah\n                ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "table-primary text-center" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Kode")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Merk")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Rak")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Jumlah")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Stok Minimum")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Harga Beli")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Harga Jual")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Gambar")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Tambah Sparepart")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Tipe Barang")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Nama")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Merk")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Merk")]
+        )
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/jasa_service.vue?vue&type=template&id=52be99f6&":
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/jasa_service.vue?vue&type=template&id=52be99f6& ***!
@@ -44040,232 +44676,6 @@ var staticRenderFns = [
         _vm._v("Tidak")
       ]
     )
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/sparepart.vue?vue&type=template&id=ff5c2b20&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/sparepart.vue?vue&type=template&id=ff5c2b20& ***!
-  \*******************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("body", [
-    _c("div", { staticClass: "container-fluid mt-3" }, [
-      _c("div", { staticClass: "clearfix my-2" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "navbar navbar-light bg-light float-right p-0" },
-          [
-            _c("form", { staticClass: "form-inline" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.Cari_Sparepart,
-                    expression: "Cari_Sparepart"
-                  }
-                ],
-                staticClass: "form-control mr-sm-2",
-                attrs: {
-                  type: "search",
-                  placeholder: "Search",
-                  "aria-label": "Search"
-                },
-                domProps: { value: _vm.Cari_Sparepart },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.Cari_Sparepart = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-primary my-2 my-sm-0",
-                  attrs: { type: "submit" }
-                },
-                [_vm._v("Search")]
-              )
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "table-responsive", staticStyle: { margin: "auto" } },
-        [
-          _c("table", { staticClass: "table table-striped table-hover" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.filteredsparepart, function(sparepart, index) {
-                return _c("tr", { key: index }, [
-                  _c("td", [_vm._v(_vm._s(sparepart.Kode_Sparepart) + " ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sparepart.Nama_Sparepart) + " ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sparepart.Merk_Sparepart) + " ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sparepart.Rak_Sparepart) + " ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sparepart.Jumlah_Sparepart) + " ")]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _vm._v(_vm._s(sparepart.Stok_Minimum_Sparepart) + " ")
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sparepart.Harga_Beli) + " ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sparepart.Harga_Jual) + " ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sparepart.Gambar))]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c(
-                      "p",
-                      {
-                        attrs: {
-                          "data-placement": "top",
-                          "data-toggle": "tooltip",
-                          title: "Edit"
-                        }
-                      },
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary",
-                            attrs: {
-                              "data-title": "Edit_Jasa_Service",
-                              "data-toggle": "modal",
-                              "data-target": "#Edit_Jasa_Service"
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.dataspareparthandler(sparepart)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fas fa-edit" })]
-                        )
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c(
-                      "p",
-                      {
-                        attrs: {
-                          "data-placement": "top",
-                          "data-toggle": "tooltip",
-                          title: "Delete"
-                        }
-                      },
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-danger",
-                            attrs: {
-                              "data-title": "Delete_Jasa_Service",
-                              "data-toggle": "modal",
-                              "data-target": "#Delete_Jasa_Service"
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.dataspareparthandler(sparepart)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fas fa-trash-alt" })]
-                        )
-                      ]
-                    )
-                  ])
-                ])
-              }),
-              0
-            )
-          ])
-        ]
-      )
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-success float-left mb-2",
-        attrs: {
-          "data-title": "Tambah_Jasa_Service",
-          "data-toggle": "modal",
-          "data-target": "#Tambah_Jasa_Service"
-        }
-      },
-      [
-        _c("i", { staticClass: "fas fa-plus mr-2" }),
-        _vm._v("Tambah\n                ")
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "table-primary text-center" }, [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Kode")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Merk")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Rak")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Jumlah")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Stok Minimum")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Harga Beli")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Harga Jual")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Gambar")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -63797,6 +64207,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/layout/Sparepart.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/layout/Sparepart.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Sparepart_vue_vue_type_template_id_a01dcb60___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Sparepart.vue?vue&type=template&id=a01dcb60& */ "./resources/js/components/layout/Sparepart.vue?vue&type=template&id=a01dcb60&");
+/* harmony import */ var _Sparepart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Sparepart.vue?vue&type=script&lang=js& */ "./resources/js/components/layout/Sparepart.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Sparepart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Sparepart_vue_vue_type_template_id_a01dcb60___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Sparepart_vue_vue_type_template_id_a01dcb60___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/layout/Sparepart.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/Sparepart.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/layout/Sparepart.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Sparepart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Sparepart.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Sparepart.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Sparepart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/Sparepart.vue?vue&type=template&id=a01dcb60&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/layout/Sparepart.vue?vue&type=template&id=a01dcb60& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Sparepart_vue_vue_type_template_id_a01dcb60___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Sparepart.vue?vue&type=template&id=a01dcb60& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Sparepart.vue?vue&type=template&id=a01dcb60&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Sparepart_vue_vue_type_template_id_a01dcb60___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Sparepart_vue_vue_type_template_id_a01dcb60___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/layout/jasa_service.vue":
 /*!*********************************************************!*\
   !*** ./resources/js/components/layout/jasa_service.vue ***!
@@ -63930,75 +64409,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pegawai_vue_vue_type_template_id_4d915a96___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pegawai_vue_vue_type_template_id_4d915a96___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/layout/sparepart.vue":
-/*!******************************************************!*\
-  !*** ./resources/js/components/layout/sparepart.vue ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _sparepart_vue_vue_type_template_id_ff5c2b20___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sparepart.vue?vue&type=template&id=ff5c2b20& */ "./resources/js/components/layout/sparepart.vue?vue&type=template&id=ff5c2b20&");
-/* harmony import */ var _sparepart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sparepart.vue?vue&type=script&lang=js& */ "./resources/js/components/layout/sparepart.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _sparepart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _sparepart_vue_vue_type_template_id_ff5c2b20___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _sparepart_vue_vue_type_template_id_ff5c2b20___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/layout/sparepart.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/layout/sparepart.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/layout/sparepart.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_sparepart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./sparepart.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/sparepart.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_sparepart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/layout/sparepart.vue?vue&type=template&id=ff5c2b20&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/layout/sparepart.vue?vue&type=template&id=ff5c2b20& ***!
-  \*************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_sparepart_vue_vue_type_template_id_ff5c2b20___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./sparepart.vue?vue&type=template&id=ff5c2b20& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/sparepart.vue?vue&type=template&id=ff5c2b20&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_sparepart_vue_vue_type_template_id_ff5c2b20___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_sparepart_vue_vue_type_template_id_ff5c2b20___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -64327,76 +64737,6 @@ __webpack_require__.r(__webpack_exports__);
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/suppliers/delSales/' + id, payload, successCallback, errorCallback);
     });
   },
-  getallsparepart: function getallsparepart() {
-    return new Promise(function (resolve, reject) {
-      var successCallback = function successCallback(res) {
-        var data = res.data;
-        resolve(data);
-      };
-
-      var errorCallback = function errorCallback(err) {
-        reject(err);
-      };
-
-      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/spareparts', successCallback, errorCallback);
-    });
-  },
-  addsparepart: function addsparepart(payload) {
-    return new Promise(function (resolve, reject) {
-      var successCallback = function successCallback(res) {
-        var data = res.data;
-        resolve(data);
-      };
-
-      var errorCallback = function errorCallback(err) {
-        reject(err);
-      };
-
-      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/spareparts/store', payload, successCallback, errorCallback);
-    });
-  },
-  updatesparepart: function updatesparepart(payload, id) {
-    return new Promise(function (resolve, reject) {
-      var successCallback = function successCallback(res) {
-        var data = res.data;
-        resolve(data);
-      };
-
-      var errorCallback = function errorCallback(err) {
-        reject(err);
-      };
-
-      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/sparepart/update/' + id, payload, successCallback, errorCallback);
-    });
-  },
-  deletesparepart: function deletesparepart(id) {
-    return new Promise(function (resolve, reject) {
-      var successCallback = function successCallback(res) {
-        var data = res.data;
-        resolve(data);
-      };
-
-      var errorCallback = function errorCallback(err) {
-        reject(err);
-      };
-
-      _http__WEBPACK_IMPORTED_MODULE_0__["default"].delete('/api/spareparts/delete/' + id, successCallback, errorCallback);
-    });
-  },
-  getallcabang: function getallcabang() {
-    return new Promise(function (resolve, reject) {
-      var successCallback = function successCallback(res) {
-        var data = res.data;
-        resolve(data);
-      };
-
-      var errorCallback = function errorCallback(err) {
-        reject(err);
-      };
-
-      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/cabangs', successCallback, errorCallback);
-    });
-  },
   getallrole: function getallrole() {
     return new Promise(function (resolve, reject) {
       var successCallback = function successCallback(res) {
@@ -64547,7 +64887,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_layout_pegawai_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/layout/pegawai.vue */ "./resources/js/components/layout/pegawai.vue");
 /* harmony import */ var _components_layout_jasa_service_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/layout/jasa_service.vue */ "./resources/js/components/layout/jasa_service.vue");
 /* harmony import */ var _components_layout_supplier_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/layout/supplier.vue */ "./resources/js/components/layout/supplier.vue");
-/* harmony import */ var _components_layout_sparepart_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/layout/sparepart.vue */ "./resources/js/components/layout/sparepart.vue");
+/* harmony import */ var _components_layout_Sparepart_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/layout/Sparepart.vue */ "./resources/js/components/layout/Sparepart.vue");
 /* harmony import */ var _components_layout_Cabang_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/layout/Cabang.vue */ "./resources/js/components/layout/Cabang.vue");
 
 
@@ -64591,7 +64931,7 @@ var routes = [{
 }, {
   name: 'Sparepart',
   path: '/sparepart',
-  component: _components_layout_sparepart_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+  component: _components_layout_Sparepart_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
   meta: {
     role: ['Admin']
   },
@@ -64930,6 +65270,78 @@ __webpack_require__.r(__webpack_exports__);
     } catch (err) {
       throw err;
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/service/Sparepart.js":
+/*!*******************************************!*\
+  !*** ./resources/js/service/Sparepart.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../http */ "./resources/js/http.js");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  getallsparepart: function getallsparepart() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/spareparts', successCallback, errorCallback);
+    });
+  },
+  addsparepart: function addsparepart(payload) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/spareparts/store', payload, successCallback, errorCallback);
+    });
+  },
+  updatesparepart: function updatesparepart(payload, id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/sparepart/update/' + id, payload, successCallback, errorCallback);
+    });
+  },
+  deletesparepart: function deletesparepart(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].delete('/api/spareparts/delete/' + id, successCallback, errorCallback);
+    });
   }
 });
 

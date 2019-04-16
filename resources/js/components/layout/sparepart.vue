@@ -2,13 +2,16 @@
     <body>
         <div class="container-fluid mt-3" style="">
             <div class="clearfix my-2">
-                <button class="btn btn-success float-left mb-2" data-title="Tambah_Jasa_Service" data-toggle="modal" data-target="#Tambah_Jasa_Service">
+                <button class="btn btn-success float-left mb-2" data-title="Tambah_Sparepart"
+                 data-toggle="modal" data-target="#Tambah_Sparepart">
                     <i class="fas fa-plus mr-2"></i>Tambah
                 </button>
                 <div class="navbar navbar-light bg-light float-right p-0">
 				  	<form class="form-inline">
-				    	<input class="form-control mr-sm-2" type="search" v-model="Cari_Sparepart" placeholder="Search" aria-label="Search">
-				    	<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+				    	<input class="form-control mr-sm-2" type="search" 
+                        v-model="Cari_Sparepart" placeholder="Search" aria-label="Search">
+				    	<button class="btn btn-outline-primary my-2 my-sm-0" 
+                        type="submit">Search</button>
 				  	</form>
 				</div>
             </div>
@@ -31,7 +34,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <tr v-bind:key="index" v-for="sparepart in sparepartdata"> -->
                         <tr v-bind:key="index" v-for="(sparepart,index) in filteredsparepart">
                             <td>{{sparepart.Kode_Sparepart}} </td>
                             <td>{{sparepart.Nama_Sparepart}} </td>
@@ -45,14 +47,18 @@
                             <td>{{sparepart.Gambar}}</td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                    <button class="btn btn-primary" @click="dataspareparthandler(sparepart)" data-title="Edit_Jasa_Service" data-toggle="modal" data-target="#Edit_Jasa_Service">
+                                    <button class="btn btn-primary" @click="dataspareparthandler(sparepart)" 
+                                    data-title="Edit_Sparepart" data-toggle="modal" 
+                                    data-target="#Edit_Sparepart">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </p>
                             </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                    <button @click="dataspareparthandler(sparepart)" class="btn btn-danger"  data-title="Delete_Jasa_Service" data-toggle="modal" data-target="#Delete_Jasa_Service">
+                                    <button @click="dataspareparthandler(sparepart)" 
+                                    class="btn btn-danger"  data-title="Delete_Sparepart" 
+                                    data-toggle="modal" data-target="#Delete_Sparepart">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </p>
@@ -63,39 +69,98 @@
             </div>
         </div>
         <!-- MY MODALS -->
-        <!-- TAMBAH JASA SERVICE -->
-        <!-- <div class="modal fade" id="Tambah_Jasa_Service" tabindex="-1" role="dialog" aria-labelledby="Tambah_Jasa_Service" aria-hidden="true">
+        <!-- TAMBAH SPAREPART -->
+        <div class="modal fade" id="Tambah_Sparepart" tabindex="-1" role="dialog" 
+            aria-labelledby="Tambah_Sparepart" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title mx-auto" id="Heading">Tambah Jasa Service</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                        <h4 class="modal-title mx-auto" id="Heading">Tambah Sparepart</h4>
+                        <button type="button" class="close" data-dismiss="modal" 
+                        aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form @submit.prevent="addjasaservice()">
-                            <div class="input-group mb-4">
+                        <form @submit.prevent="addsparepart()">
+                            <div class="input-group">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Tipe Barang</span>
+                                </div>
+                                <input type="text" v-model="sparepart.Tipe_Barang" class="form-control" 
+                                placeholder="Masukkan Tipe Barang" :error="phoneErrors" 
+                                aria-label="Tipe_Barang" aria-describedby="basic-addon2"
+                                id="Tipe_Barang" name="Tipe_Barang" 
+                                @input="$v.sparepart.Tipe_Barang.$touch()" 
+                                @blur="$v.sparepart.Tipe_Barang.$touch()" required>
+                            </div>
+
+                            <div class="text-center">
+                                <div style="color:red;" 
+                                v-if="$v.sparepart.Tipe_Barang.$invalid">{{phoneErrors[0]}}
+                                </div>
+                            </div>
+
+                            <div class="input-group mt-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Nama</span>
                                 </div>
-                                <input type="text" v-model="Nama_Jasa" class="form-control" placeholder="Masukkan Nama Jasa Service" aria-label="Nama_Jasa_Service" aria-describedby="basic-addon2" id="Nama_Jasa_Service" name="Nama_Pegawai">
+                                <input type="text" v-model="sparepart.Nama_Sparepart" class="form-control" 
+                                placeholder="Masukkan Nama Sparepart" :error="nameErrors" 
+                                aria-label="Nama_Sparepart" aria-describedby="basic-addon2" 
+                                id="Nama_Sparepart" name="Nama_Sparepart" 
+                                @input="$v.sparepart.Nama_Sparepart.$touch()" 
+                                @blur="$v.sparepart.Nama_Sparepart.$touch()" required>
                             </div>
-                            <div class="input-group mb-4">
+                            <div class="text-center">
+                                <p class="mb-3" style="color:red;" 
+                                v-if="$v.sparepart.Nama_Sparepart.$invalid">{{nameErrors[0]}}</p>
+                            </div>
+
+                            <div class="input-group mt-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Harga</span>
+                                    <span class="input-group-text" id="basic-addon2">Merk</span>
                                 </div>
-                                <input type="number" v-model="Harga_Jasa" class="form-control" placeholder="Masukkan Harga Jasa Service" aria-label="Harga_Jasa_Service" aria-describedby="basic-addon2" id="Harga_Jasa_Service" name="Harga_Jasa_Service">
+                                <input type="text" v-model="sparepart.Merk_Sparepart" 
+                                class="form-control" placeholder="Masukkan Merek Sparepart" 
+                                :error="addressErrors" aria-label="Merk_Sparepart" 
+                                aria-describedby="basic-addon2" id="Merk_Sparepart"
+                                name="Merk_Sparepart" @input="$v.sparepart.Merk_Sparepart.$touch()" 
+                                @blur="$v.sparepart.Merk_Sparepart.$touch()" required>
                             </div>
+                            <div class="text-center">
+                                <div style="color:red;" 
+                                v-if="$v.sparepart.Merk_Sparepart.$invalid">{{addressErrors[0]}}</div>
+                            </div>
+
+                            <div class="input-group mt-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Merk</span>
+                                </div>
+                                <input type="text" v-model="sparepart.Merk_Sparepart" 
+                                class="form-control" placeholder="Masukkan Merek Sparepart" 
+                                :error="addressErrors" aria-label="Merk_Sparepart" 
+                                aria-describedby="basic-addon2" id="Merk_Sparepart" 
+                                name="Merk_Sparepart" @input="$v.sparepart.Merk_Sparepart.$touch()" 
+                                @blur="$v.sparepart.Merk_Sparepart.$touch()" required>
+                            </div>
+                            <div class="text-center">
+                                <div style="color:red;" 
+                                v-if="$v.sparepart.Merk_Sparepart.$invalid">{{addressErrors[0]}}</div>
+                            </div>
+
                             <div class="modal-footer ">
-                                <button type="submit" class="btn btn-success btn-lg" style="width: 100%;">Tambahkan Jasa Service</button>
+                                <button type="submit" class="btn btn-success btn-lg" 
+                                style="width: 100%;" :disabled="$v.cabang.$invalid">
+                                Tambahkan Cabang</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-        </div> -->
-        <!-- END OF TAMBAH JASA SERVICE -->
+        </div>
+        <!-- END OF TAMBAH SPAREPART-->
+
         <!-- EDIT JASA SERVICE -->
         <!-- <div class="modal fade" id="Edit_Jasa_Service" tabindex="-1" role="dialog" aria-labelledby="Edit_Jasa_Service" aria-hidden="true">
             <div class="modal-dialog">
@@ -155,13 +220,16 @@
         <!-- END OF MY MODALS -->
     </body>
 </template>
+
 <script>
-import Controller from '../../httpController'
+import Controller from '../../service/Sparepart'
+
 export default {
     data: () => ({
         sparepartdata:[],
         handledsparepart:[],
         Kode_Sparepart:'',
+        Tipe_Barang:'',
         Nama_Sparepart:'',
         Merk_Sparepart:'',
         Rak_Sparepart:'',
