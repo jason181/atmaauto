@@ -21,14 +21,14 @@ class Pegawai extends Model
         'Password'
     ];
 
-    public function duties()
+    public function pegawai_on_duties()
     {
-        return $this->hasMany('App\Duty');
+        return $this->hasMany('App\Pegawai_On_Duty','Id_Duty');
     }
     
     public function montirs()
     {
-        return $this->hasMany('App\Montir');
+        return $this->hasMany('App\Montir','Id_Jasa_Montir');
     }
 
     public function cabangs()
@@ -39,5 +39,10 @@ class Pegawai extends Model
     public function roles()
     {
         return $this->belongsTo('App\Role','Id_Role');
+    }
+
+    public function tokens()
+    {
+        return $this->hasMany('App\Token','Id_Token');
     }
 }

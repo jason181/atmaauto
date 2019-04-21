@@ -28,7 +28,7 @@ new Vue({
   el: '#app',
   router,
   store,
-  render: h => h(App),
+  render: h => h(AppLayout),
   created() {
       try {
           auth.refresh()
@@ -38,16 +38,3 @@ new Vue({
   }
 }).$mount('#app');
 
-// const app = new Vue({
-//     el: '#app',
-//     components: {AppLayout},
-//     router,
-//     store,
-//     created() {
-//         try {
-//           auth.refresh()
-//         } catch (err) {
-//           // Do nothing :))
-//         }
-//       }
-// });

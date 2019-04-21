@@ -19,12 +19,12 @@ class Transaksi_Pengadaan extends Model
 
     public function detail_pengadaans()
     {
-        return $this->hasMany('App\Detail_Pengadaan');
+        return $this->hasMany('App\Detail_Pengadaan','Id_Detail_Pengadaan');
     }
 
     public function suppliers()
     {
-        return $this->belongsTo('App\Supplier');
+        return $this->belongsTo('App\Supplier','Id_Supplier');
     }
 
 }

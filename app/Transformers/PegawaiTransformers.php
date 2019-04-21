@@ -19,6 +19,7 @@ class PegawaiTransformers extends TransformerAbstract
             'Id_Role'               => $pegawai->Id_Role,
             'Nama_Role'             => $pegawai->roles->Nama_Role,
             'Id_Cabang'             => $pegawai->Id_Cabang,
+            'Nama_Cabang'           => $pegawai->cabangs->Nama_Cabang,
             'Id_Pegawai'            => $pegawai->Id_Pegawai,
             'Nama_Pegawai'          => $pegawai->Nama_Pegawai,
             'Alamat_Pegawai'        => $pegawai->Alamat_Pegawai,
