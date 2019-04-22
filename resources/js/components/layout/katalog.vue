@@ -37,9 +37,6 @@
                 <p style="float:left">Rp.1000</p><p style="float:right">Rp 1000000</p>
             </div>
         </div>
-        
-        
-        
     </div>
     <div class="container-fluid">
         <div class="row">

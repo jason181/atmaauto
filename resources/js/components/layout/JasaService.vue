@@ -1,18 +1,26 @@
 <template>
     <body>
         <div class="container mt-3" style="max-width: 800px;">
-            <div class="clearfix my-2">
-                <button class="btn btn-success float-left mb-2" data-title="Tambah_Jasa_Service" data-toggle="modal" data-target="#Tambah_Jasa_Service">
-                    <i class="fas fa-plus mr-2"></i>Tambah
-                </button>
-                <div class="navbar navbar-light bg-light float-right p-0">
-				  	<form class="form-inline">
-				    	<input class="form-control mr-sm-2" v-model="Cari_Jasa_Service" type="search" placeholder="Cari Jasa Service">
-				    	<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-				  	</form>
-				</div>
+            <div class="row mb-2">
+                <div class="col-sm-2">
+                    <button class="btn btn-success float-left mb-2 btn-block" @click="getalljasaservice(),refresh()" data-title="Tambah_Jasa_Service" data-toggle="modal" data-target="#Tambah_Jasa_Service">
+                        <i class="fas fa-plus mr-2"></i>Tambah
+                    </button>
+                </div>
+                <div class="col-sm-6">
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <input class="form-control" v-model="Cari_Jasa_Service" type="search" placeholder="Cari Jasa Service">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
             <div class="table-responsive" style="max-width: 800px; margin: auto;">
                 <table class="table table-striped table-hover">
                     <thead class="table-primary text-center">
@@ -36,7 +44,7 @@
                             </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                    <button @click="datajasaservicehandler(jasa)" class="btn btn-danger"  data-title="Delete_Jasa_Service" data-toggle="modal" data-target="#Delete_Jasa_Service">
+                                    <button class="btn btn-danger" @click="datajasaservicehandler(jasa)" data-title="Delete_Jasa_Service" data-toggle="modal" data-target="#Delete_Jasa_Service">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </p>
@@ -149,7 +157,7 @@
 </template>
 <script>
 import Controller from '../../httpController'
-import validators from '../../validations/jasa_service_validation'
+import validators from '../../validations/jasa_service_validations'
 
 export default {
     validations: validators,

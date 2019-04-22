@@ -55,6 +55,9 @@ class PegawaiController extends RestController
         if(!is_null($request->Gaji_Pegawai)){
             $pegawai->Gaji_Pegawai = $request->Gaji_Pegawai;
         }
+        if(!is_null($request->Username)){
+            $pegawai->Username = $request->Username;
+        }
 
         $success = $pegawai->save();
         if(!$success){

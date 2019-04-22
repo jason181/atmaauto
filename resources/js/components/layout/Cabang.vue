@@ -2,12 +2,14 @@
     <body>
         <div class="container mt-3" style="max-width: 800px;">
             <div class="clearfix my-2">
-                <button class="btn btn-success float-left mb-2" data-title="Tambah_Cabang" data-toggle="modal" data-target="#Tambah_Cabang">
+                <button class="btn btn-success float-left mb-2" data-title="Tambah_Cabang" 
+                data-toggle="modal" data-target="#Tambah_Cabang">
                     <i class="fas fa-plus mr-2"></i>Tambah
                 </button>
                 <div class="navbar navbar-light bg-light float-right p-0">
 				  	<form class="form-inline">
-				    	<input class="form-control mr-sm-2" v-model="Cari_Cabang" type="search" placeholder="Cari Cabang">
+				    	<input class="form-control mr-sm-2" v-model="Cari_Cabang" type="search" 
+                        placeholder="Cari Cabang">
 				    	<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
 				  	</form>
 				</div>
@@ -24,7 +26,6 @@
                             <th scope="col">Delete</th>
                         </tr>
                     </thead>
-       
                     <tbody>
                         <tr v-bind:key="cabang['Id_Cabang']" v-for="cabang in filteredCabang">
                             <td>{{cabang.Nama_Cabang}} </td>
@@ -32,14 +33,16 @@
                             <td>{{cabang.Telepon_Cabang}} </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                    <button class="btn btn-primary" @click="dataCabangHandler(cabang)" data-title="Edit_Cabang" data-toggle="modal" data-target="#Edit_Cabang">
+                                    <button class="btn btn-primary" @click="dataCabangHandler(cabang)" 
+                                    data-title="Edit_Cabang" data-toggle="modal" data-target="#Edit_Cabang">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </p>
                             </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                    <button @click="dataCabangHandler(cabang)" class="btn btn-danger"  data-title="Delete_Cabang" data-toggle="modal" data-target="#Delete_Cabang">
+                                    <button @click="dataCabangHandler(cabang)" class="btn btn-danger"  
+                                    data-title="Delete_Cabang" data-toggle="modal" data-target="#Delete_Cabang">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </p>
@@ -51,12 +54,14 @@
         </div>
         <!-- MY MODALS -->
         <!-- TAMBAH CABANG -->
-        <div class="modal fade" id="Tambah_Cabang" tabindex="-1" role="dialog" aria-labelledby="Tambah_Cabang" aria-hidden="true">
+        <div class="modal fade" id="Tambah_Cabang" tabindex="-1" role="dialog" 
+        aria-labelledby="Tambah_Cabang" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title mx-auto" id="Heading">Tambah Cabang</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                        <button type="button" class="close" data-dismiss="modal" 
+                        aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -66,31 +71,50 @@
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Nama</span>
                                 </div>
-                                <input type="text" v-model="cabang.Nama_Cabang" class="form-control" placeholder="Masukkan Nama Cabang" :error="nameErrors" aria-label="Nama_Cabang" aria-describedby="basic-addon2" id="Nama_Cabang" name="Nama_Cabang" @input="$v.cabang.Nama_Cabang.$touch()" @blur="$v.cabang.Nama_Cabang.$touch()" required>
+                                <input type="text" v-model="cabang.Nama_Cabang" class="form-control" 
+                                placeholder="Masukkan Nama Cabang" :error="nameErrors" 
+                                aria-label="Nama_Cabang" aria-describedby="basic-addon2" 
+                                id="Nama_Cabang" name="Nama_Cabang" 
+                                @input="$v.cabang.Nama_Cabang.$touch()" 
+                                @blur="$v.cabang.Nama_Cabang.$touch()" required>
                             </div>
                             <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.cabang.Nama_Cabang.$invalid">{{nameErrors[0]}}</p>
+                                <p class="mb-3" style="color:red;" 
+                                v-if="$v.cabang.Nama_Cabang.$invalid">{{nameErrors[0]}}</p>
                             </div>
                             <div class="input-group mt-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Alamat</span>
                                 </div>
-                                <input type="text" v-model="cabang.Alamat_Cabang" class="form-control" placeholder="Masukkan Alamat Cabang" :error="addressErrors" aria-label="Alamat_Cabang" aria-describedby="basic-addon2" id="Alamat_Cabang" name="Alamat_Cabang" @input="$v.cabang.Alamat_Cabang.$touch()" @blur="$v.cabang.Alamat_Cabang.$touch()" required>
+                                <input type="text" v-model="cabang.Alamat_Cabang" 
+                                class="form-control" placeholder="Masukkan Alamat Cabang" 
+                                :error="addressErrors" aria-label="Alamat_Cabang" 
+                                aria-describedby="basic-addon2" id="Alamat_Cabang" 
+                                name="Alamat_Cabang" @input="$v.cabang.Alamat_Cabang.$touch()" 
+                                @blur="$v.cabang.Alamat_Cabang.$touch()" required>
                             </div>
                             <div class="text-center">
-                                <div style="color:red;" v-if="$v.cabang.Alamat_Cabang.$invalid">{{addressErrors[0]}}</div>
+                                <div style="color:red;" 
+                                v-if="$v.cabang.Alamat_Cabang.$invalid">{{addressErrors[0]}}</div>
                             </div>
                             <div class="input-group mt-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Telepon</span>
                                 </div>
-                                <input type="text" v-model="cabang.Telepon_Cabang" class="form-control" placeholder="Masukkan Nomor Telepon Cabang" :error="phoneErrors" aria-label="Telepon_Cabang" aria-describedby="basic-addon2" id="Telepon_Cabang" name="Telepon_Cabang" @input="$v.cabang.Telepon_Cabang.$touch()" @blur="$v.cabang.Telepon_Cabang.$touch()" required>
+                                <input type="text" v-model="cabang.Telepon_Cabang" 
+                                class="form-control" placeholder="Masukkan Nomor Telepon Cabang" 
+                                :error="phoneErrors" aria-label="Telepon_Cabang"
+                                 aria-describedby="basic-addon2" id="Telepon_Cabang" 
+                                 name="Telepon_Cabang" @input="$v.cabang.Telepon_Cabang.$touch()" 
+                                 @blur="$v.cabang.Telepon_Cabang.$touch()" required>
                             </div>
                             <div class="text-center">
-                                <div style="color:red;" v-if="$v.cabang.Telepon_Cabang.$invalid">{{phoneErrors[0]}}</div>
+                                <div style="color:red;" 
+                                v-if="$v.cabang.Telepon_Cabang.$invalid">{{phoneErrors[0]}}</div>
                             </div>
                             <div class="modal-footer ">
-                                <button type="submit" class="btn btn-success btn-lg" style="width: 100%;" :disabled="$v.cabang.$invalid">Tambahkan Cabang</button>
+                                <button type="submit" class="btn btn-success btn-lg" 
+                                style="width: 100%;" :disabled="$v.cabang.$invalid" data-dismiss="modal">Tambahkan Cabang</button>
                             </div>
                         </form>
                     </div>
@@ -99,12 +123,14 @@
         </div>
         <!-- END OF TAMBAH CABANG-->
         <!-- EDIT CABANG -->
-        <div class="modal fade" id="Edit_Cabang" tabindex="-1" role="dialog" aria-labelledby="Edit_Cabang" aria-hidden="true">
+        <div class="modal fade" id="Edit_Cabang" tabindex="-1" role="dialog" 
+             aria-labelledby="Edit_Cabang" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title mx-auto" id="Heading">Edit Cabang</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                        <button type="button" class="close" data-dismiss="modal" 
+                        aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -114,22 +140,32 @@
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Nama</span>
                                 </div>
-                                <input type="text" v-model="handledCabang.Nama_Cabang" class="form-control" placeholder="Masukkan Nama Cabang" aria-label="Nama_Cabang" aria-describedby="basic-addon2" id="Nama_Cabang" name="Nama_Cabang">
+                                <input type="text" v-model="handledCabang.Nama_Cabang" 
+                                class="form-control" placeholder="Masukkan Nama Cabang" 
+                                aria-label="Nama_Cabang" aria-describedby="basic-addon2" 
+                                id="Nama_Cabang" name="Nama_Cabang">
                             </div>
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Alamat</span>
                                 </div>
-                                <input type="text" v-model="handledCabang.Alamat_Cabang" class="form-control" placeholder="Masukkan Alamat Cabang" aria-label="Alamat_Cabang" aria-describedby="basic-addon2" id="Alamat_Cabang" name="Alamat_Cabang">
+                                <input type="text" v-model="handledCabang.Alamat_Cabang" 
+                                class="form-control" placeholder="Masukkan Alamat Cabang" 
+                                aria-label="Alamat_Cabang" aria-describedby="basic-addon2" 
+                                id="Alamat_Cabang" name="Alamat_Cabang">
                             </div>
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Telepon</span>
                                 </div>
-                                <input type="number" v-model="handledCabang.Telepon_Cabang" class="form-control" placeholder="Masukkan Telepon Cabang" aria-label="Telepon_Cabang" aria-describedby="basic-addon2" id="Telepon_Cabang" name="Telepon_Cabang">
+                                <input type="number" v-model="handledCabang.Telepon_Cabang" 
+                                class="form-control" placeholder="Masukkan Telepon Cabang" 
+                                aria-label="Telepon_Cabang" aria-describedby="basic-addon2" 
+                                id="Telepon_Cabang" name="Telepon_Cabang">
                             </div>
                             <div class="modal-footer ">
-                                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Simpan Perubahan</button>
+                                <button type="submit" class="btn btn-primary btn-lg" 
+                                style="width: 100%;">Simpan Perubahan</button>
                             </div>
                         </form>
                     </div>
@@ -166,11 +202,10 @@
 
 <script>
 import Controller from '../../service/Cabang'
-import { required, minLength, maxLength, numeric } from 'vuelidate/lib/validators'
 import validators from '../../validations/cabang_validations' 
 
 export default {
-     validations: validators,
+    validations: validators,
     data: () => ({
         cabangData:[],
         handledCabang:[],

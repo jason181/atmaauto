@@ -47,64 +47,78 @@ class SparepartController extends RestController
 
     public function store(Request $request)
     {
-        $sparepart = Sparepart::create([
-            'Kode_Sparepart'         =>$request->Kode_Sparepart,
-            'Nama_Sparepart'         =>$request->Nama_Sparepart,
-            'Merk_Sparepart'         =>$request->Merk_Sparepart,
-            'Rak_Sparepart'          =>$request->Rak_Sparepart,
-            'Jumlah_Sparepart'       =>$request->Jumlah_Sparepart,
-            'Stok_Minimum_Sparepart' =>$request->Stok_Minimum_Sparepart,
-            'Harga_Beli'             =>$request->Harga_Beli,
-            'Harga_Jual'             =>$request->Harga_Jual,
-            'Gambar'                 =>$request->Gambar,
-        ]);
+        try{
+            $sparepart = new Sparepart;
 
-        return response()->json([
-            'status' => (bool) $sparepart,
-            'data' => $sparepart,
-            'message' => $sparepart ? 'Success' : 'Error Sparepart'
-        ]);
+            // if($request->hasfile('Gambar'))
+            // {
+            //     $file = $request->file('Gambar');
+            //     $name= time().$file->getClientOriginalName();
+            //     $file->move(public_path().'/images/', $name);
+            //     //return response()->json(['uploaded' => '/images/'.$name]);
+            //     $sparepart->Gambar=$name;
+            // }
+
+            if($request->get('Gambar'))
+            {
+                $image = $request->get('Gambar');
+                $name = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+                \Image::make($request->get('Gambar'))->save(public_path('images/').$name);
+                $sparepart->Gambar = $name;
+            }
+
+            $sparepart->Kode_Sparepart=$request->get('Kode_Sparepart');
+            $sparepart->Tipe_Barang=$request->get('Tipe_Barang');
+            $sparepart->Nama_Sparepart=$request->get('Nama_Sparepart');
+            $sparepart->Merk_Sparepart=$request->get('Merk_Sparepart');
+            $sparepart->Rak_Sparepart=$request->get('Rak_Sparepart');
+            $sparepart->Jumlah_Sparepart=$request->get('Jumlah_Sparepart');
+            $sparepart->Stok_Minimum_Sparepart=$request->get('Stok_Minimum_Sparepart');
+            $sparepart->Harga_Beli=$request->get('Harga_Beli');
+            $sparepart->Harga_Jual=$request->get('Harga_Jual');
+            $sparepart->save();
+
+            $response = $this->generateItem($sparepart);
+            return $this->sendResponse($response, 201);
+            
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
     }
 
     public function update(Request $request, $id)
     {   
-        $sparepart = Sparepart::find($id);
+        try{
 
-        if(!is_null($request->Kode_Sparepart)){
-            $sparepart->Kode_Sparepart = $request->Kode_Sparepart;
-        }
-        if(!is_null($request->Nama_Sparepart)){
-            $sparepart->Nama_Sparepart = $request->Nama_Sparepart;
-        }
-        if(!is_null($request->Merk_Sparepart)){
-            $sparepart->Merk_Sparepart = $request->Merk_Sparepart;
-        }
-        if(!is_null($request->Rak_Sparepart)){
-            $sparepart->Rak_Sparepart = $request->Rak_Sparepart;
-        }
-        if(!is_null($request->Jumlah_Sparepart)){
-            $sparepart->Jumlah_Sparepart = $request->Jumlah_Sparepart;
-        }
-        if(!is_null($request->Stok_Minimum_Sparepart)){
-            $sparepart->Stok_Minimum_Sparepart = $request->Stok_Minimum_Sparepart;
-        }
-        if(!is_null($request->Harga_Beli)){
-            $sparepart->Harga_Beli = $request->Harga_Beli;
-        }
-        if(!is_null($request->Harga_Jual)){
-            $sparepart->Harga_Jual = $request->Harga_Jual;
-        }
-        if(!is_null($request->Gambar)){
-            $sparepart->Gambar = $request->Gambar;
-        }
+            $sparepart = Sparepart::find($id);
 
-        $success = $sparepart->save();
-        if(!$success){
-            return response()->json('Error Update',500);
-        }else   
-            return response()->json('Success',200);
+            if($request->get('Gambar'))
+            {
+                $image = $request->get('Gambar');
+                $name = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+                \Image::make($request->get('Gambar'))->save(public_path('images/').$name);
+                $sparepart->Gambar = $name;
+            }
+
+            //$sparepart->Kode_Sparepart=$request->get('Kode_Sparepart');
+            $sparepart->Tipe_Barang=$request->get('Tipe_Barang');
+            $sparepart->Nama_Sparepart=$request->get('Nama_Sparepart');
+            $sparepart->Merk_Sparepart=$request->get('Merk_Sparepart');
+            $sparepart->Rak_Sparepart=$request->get('Rak_Sparepart');
+            $sparepart->Jumlah_Sparepart=$request->get('Jumlah_Sparepart');
+            $sparepart->Stok_Minimum_Sparepart=$request->get('Stok_Minimum_Sparepart');
+            $sparepart->Harga_Beli=$request->get('Harga_Beli');
+            $sparepart->Harga_Jual=$request->get('Harga_Jual');
+            $sparepart->save();
+
+            $response = $this->generateItem($sparepart);
+            return $this->sendResponse($response, 201);
+            
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
     }
-
+    
     public function showbyID($id)
     {
         $sparepart = Sparepart::find($id);
