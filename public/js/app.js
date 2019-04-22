@@ -4688,8 +4688,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       sparepartdata: [],
-      posisi: '',
-      ruang: '',
       nomor: '',
       Kode_Sparepart: '',
       Tipe_Barang: '',
@@ -4714,25 +4712,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         Harga_Jual: 0,
         Gambar: ''
       },
+      posisi: 'Pilih Posisi',
+      ruang: 'Pilih Tempat',
       positions: [{
-        id: "DPN",
-        value: 'Depan'
+        value: "DPN",
+        id: 'Depan'
       }, {
-        id: "TGH",
-        value: 'Tengah'
+        value: "TGH",
+        id: 'Tengah'
       }, {
-        id: "BLK",
-        value: 'Belakang'
+        value: "BLK",
+        id: 'Belakang'
       }],
       ruangs: [{
-        id: "KACA",
-        value: 'Rak Kaca'
+        value: "KACA",
+        id: 'Rak Kaca'
       }, {
-        id: "DUS",
-        value: 'Tumpukan Dus'
+        value: "DUS",
+        id: 'Tumpukan Dus'
       }, {
-        id: "KAYU",
-        value: 'Lemari Kayu'
+        value: "KAYU",
+        id: 'Lemari Kayu'
       }]
     };
   },
@@ -4740,6 +4740,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     this.getallsparepart();
   },
   methods: {
+    setDefaults: function setDefaults() {
+      Sparepart.Rak_Sparepart = this.posisi + this.ruang + this.nomor;
+    },
     onFileChange: function onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
@@ -4812,32 +4815,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   Nama_Sparepart: this.Sparepart.Nama_Sparepart,
                   Tipe_Barang: this.Sparepart.Tipe_Barang,
                   Merk_Sparepart: this.Sparepart.Merk_Sparepart,
-                  Rak_Sparepart: this.Sparepart.Rak_Sparepart,
+                  // Rak_Sparepart           : this.setDefaults,
                   Jumlah_Sparepart: this.Sparepart.Jumlah_Sparepart,
                   Stok_Minimum_Sparepart: this.Sparepart.Stok_Minimum_Sparepart,
                   Harga_Beli: this.Sparepart.Harga_Beli,
                   Harga_Jual: this.Sparepart.Harga_Jual,
                   Gambar: this.Gambar
                 };
-                _context2.next = 4;
+                this.setDefaults();
+                _context2.next = 5;
                 return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].addsparepart(payload);
 
-              case 4:
+              case 5:
                 this.getallsparepart();
-                _context2.next = 10;
+                _context2.next = 11;
                 break;
 
-              case 7:
-                _context2.prev = 7;
+              case 8:
+                _context2.prev = 8;
                 _context2.t0 = _context2["catch"](0);
                 console.log(_context2.t0);
 
-              case 10:
+              case 11:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 7]]);
+        }, _callee2, this, [[0, 8]]);
       }));
 
       function addsparepart() {
@@ -48045,8 +48049,14 @@ var render = function() {
                   [
                     _c(
                       "option",
-                      { attrs: { disabled: "disabled", selected: "selected" } },
-                      [_vm._v("-- Pilih Posisi --")]
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Posisi"
+                        }
+                      },
+                      [_vm._v("Pilih Posisi")]
                     ),
                     _vm._v(" "),
                     _vm._l(_vm.positions, function(posisi, index) {
@@ -48089,8 +48099,14 @@ var render = function() {
                   [
                     _c(
                       "option",
-                      { attrs: { disabled: "disabled", selected: "selected" } },
-                      [_vm._v("-- Pilih Tempat --")]
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Tempat"
+                        }
+                      },
+                      [_vm._v("Pilih Tempat")]
                     ),
                     _vm._v(" "),
                     _vm._l(_vm.ruangs, function(ruang, index) {
