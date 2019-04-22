@@ -150,7 +150,7 @@
                                 v-if="$v.Sparepart.Merk_Sparepart.$invalid">{{merkErrors[0]}}</div>
                             </div>
 
-                            <div class="input-group mt-4">
+                            <!-- <div class="input-group mt-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="fieldBox input-group-text" id="basic-addon2">Rak</span>
                                 </div>
@@ -164,36 +164,25 @@
                             <div class="text-center">
                                 <div style="color:red;" 
                                 v-if="$v.Sparepart.Rak_Sparepart.$invalid">{{rakErrors[0]}}</div>
-                            </div>
-
-                            <!-- <div class="input-group mt-4">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Posisi</span>
-                                </div>
-                                <select class="form-control" v-model="posisi">
-                                    <option disabled="disabled" selected="selected">-- Pilih Posisi --</option>
-                                    <option v-for="(posisi,index) in positions" :key="index">{{posisi.value}}</option>
-                                </select>
-
-                            </div>
-
-                            <div class="input-group mt-4">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Tempat</span>
-                                </div>
-                                <select class="form-control" v-model="ruang">
-                                    <option disabled="disabled" selected="selected">-- Pilih Tempat --</option>
-                                    <option v-for="(ruang,index) in ruangs" :key="index">{{ruang.value}}</option>
-                                </select>
-                            </div>
-
-                            <div class="input-group mt-4">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Nomor Urut</span>
-                                </div>
-                                <input type="number" v-model="nomor" 
-                                class="form-control" placeholder="Masukkan Nomor Urut" required>
                             </div> -->
+
+                            <div class="input-group mt-4">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Rak</span>
+                                </div>
+                                <select class="form-control mr-2" v-model="posisi">
+                                    <option disabled="disabled" selected="selected" value="Pilih Posisi">Pilih Posisi</option>
+                                    <option v-for="(posisi,index) in positions" :key="index">{{posisi.id}}</option>
+                                </select>
+
+                                <select class="form-control mr-2" v-model="ruang">
+                                    <option disabled="disabled" selected="selected" value="Pilih Tempat">Pilih Tempat</option>
+                                    <option v-for="(ruang,index) in ruangs" :key="index">{{ruang.id}}</option>
+                                </select>
+
+                                <input type="number" v-model="nomor" 
+                                class="form-control" required>
+                            </div>
 
                             <div class="input-group mt-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
@@ -405,7 +394,8 @@
                         <div class="modal-footer ">
                             <button type="submit" class="btn btn-primary btn-lg" 
                             style="width: 100%;" 
-                            @click="updatesparepart(Sparepart.Kode_Sparepart)" data-dismiss="modal">Simpan Perubahan</button>
+                            @click="updatesparepart(Sparepart.Kode_Sparepart)" 
+                            data-dismiss="modal">Simpan Perubahan</button>
                         </div>
                     </div>
                 </div>
@@ -453,8 +443,6 @@ export default {
     validations: validators,
     data: () => ({
         sparepartdata:[],
-        posisi: '',
-        ruang: '',
         nomor: '',
         Kode_Sparepart:'',
         Tipe_Barang:'',
@@ -462,7 +450,7 @@ export default {
         Merk_Sparepart:'',
         Rak_Sparepart: '',
         Jumlah_Sparepart:'',
-        Stok_Minimum_Sparepart:'',
+        Stok_Minimum_Sparepart:0,
         Harga_Beli:0,
         Harga_Jual:0,
         Gambar:'',
@@ -474,26 +462,31 @@ export default {
             Merk_Sparepart:'',
             Rak_Sparepart: '',
             Jumlah_Sparepart:'',
-            Stok_Minimum_Sparepart:'',
+            Stok_Minimum_Sparepart:0,
             Harga_Beli:0,
             Harga_Jual:0,
             Gambar:'',
         },
+        posisi: 'Pilih Posisi',
+        ruang: 'Pilih Tempat',
         positions: [
-            { id: "DPN", value: 'Depan' },
-            { id: "TGH", value: 'Tengah' },
-            { id: "BLK", value: 'Belakang' }
+            { value: "DPN", id: 'Depan' },
+            { value: "TGH", id: 'Tengah' },
+            { value: "BLK", id: 'Belakang' }
         ],
         ruangs: [
-            { id: "KACA", value: 'Rak Kaca' },
-            { id: "DUS", value: 'Tumpukan Dus' },
-            { id: "KAYU", value: 'Lemari Kayu' }
+            { value: "KACA", id: 'Rak Kaca' },
+            { value: "DUS", id: 'Tumpukan Dus' },
+            { value: "KAYU", id: 'Lemari Kayu' }
         ],
     }),
     mounted(){
         this.getallsparepart()
     },
     methods:{
+        setDefaults(){
+            Sparepart.Rak_Sparepart = this.posisi + this.ruang + this.nomor
+        },
         onFileChange(e) {
             let files = e.target.files || e.dataTransfer.files;
             if (!files.length)
@@ -527,16 +520,16 @@ export default {
                     Nama_Sparepart          : this.Sparepart.Nama_Sparepart,
                     Tipe_Barang             : this.Sparepart.Tipe_Barang,
                     Merk_Sparepart          : this.Sparepart.Merk_Sparepart,
-                    Rak_Sparepart           : this.Sparepart.Rak_Sparepart,
+                    // Rak_Sparepart           : this.setDefaults,
                     Jumlah_Sparepart        : this.Sparepart.Jumlah_Sparepart,
                     Stok_Minimum_Sparepart  : this.Sparepart.Stok_Minimum_Sparepart,
                     Harga_Beli              : this.Sparepart.Harga_Beli,
                     Harga_Jual              : this.Sparepart.Harga_Jual,
                     Gambar                  : this.Gambar,
                }
+               this.setDefaults()
                await Controller.addsparepart(payload)
                this.getallsparepart()
-                console.log()
             } catch (err) {
                 console.log(err)
             }
