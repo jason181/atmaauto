@@ -101,7 +101,7 @@
                                 v-if="$v.Sparepart.Kode_Sparepart.$invalid">{{kodeErrors[0]}}</p>
                             </div>
 
-                            <div class="input-group">
+                            <div class="input-group mt-3">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Tipe Barang</span>
                                 </div>
@@ -305,7 +305,7 @@
                             id="Kode_Sparepart" name="Kode_Sparepart" disabled >
                         </div>
                     
-                        <div class="input-group">
+                        <div class="input-group mt-3">
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Tipe Barang</span>
                             </div>
@@ -535,6 +535,7 @@ export default {
                     Gambar                  : this.Gambar,
                }
                await Controller.addsparepart(payload)
+               this.getallsparepart()
                 console.log()
             } catch (err) {
                 console.log(err)

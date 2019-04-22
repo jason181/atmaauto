@@ -228,7 +228,7 @@
                         <div class="text-center">
                             <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Username.$invalid">{{usernameErrors[0]}}</p>
                         </div>
-                        <div class="input-group mt-3">
+                        <!-- <div class="input-group mt-3">
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Password</span>
                             </div>
@@ -236,7 +236,7 @@
                         </div>
                         <div class="text-center">
                             <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Password.$invalid">{{passwordErrors[0]}}</p>
-                        </div>
+                        </div> -->
                         <div class="input-group mt-3">
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Cabang</span>
@@ -403,7 +403,8 @@ export default {
             }
         },
         datapegawaihandler(pegawai){
-            this.Pegawai = pegawai
+            this.Pegawai = pegawai;
+            this.Pegawai.Password = 'filler';
         },
         refresh(){
             this.Pegawai.Id_Cabang      = 'Pilih Cabang';

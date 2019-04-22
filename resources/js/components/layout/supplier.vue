@@ -2,7 +2,7 @@
     <body>
         <div class="container-fluid mt-3" style="">
             <div class="clearfix my-2">
-                <button class="btn btn-success float-left mb-2" data-title="Tambah_Supplier" data-toggle="modal" data-target="#Tambah_Supplier">
+                <button class="btn btn-success float-left mb-2" @click="getallsupplier(),refreshSupplier()" data-title="Tambah_Supplier" data-toggle="modal" data-target="#Tambah_Supplier">
                     <i class="fas fa-plus mr-2"></i>Tambah
                 </button>
                 <div class="navbar navbar-light bg-light float-right p-0">
@@ -62,9 +62,16 @@
                                     </button>
                                 </p>
                             </td>
-                            <td class="text-center">
+                            <td class="text-center" v-if="supplier.Nama_Sales!=null">
                                 <p data-placement="top" data-toggle="tooltip" title="Delete">
                                     <button @click="datasupplierhandler(supplier)" class="btn btn-danger" data-title="Delete_Sales" data-toggle="modal" data-target="#Delete_Sales">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </p>
+                            </td>
+                            <td class="text-center" v-else>
+                                <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                    <button @click="datasupplierhandler(supplier)" class="btn btn-danger" data-title="Delete_Sales" data-toggle="modal" data-target="#Delete_Sales" disabled>
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </p>
@@ -221,7 +228,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary btn-lg w-100" @click="updatesales(Supplier.Id_Supplier)" data-dismiss="modal">Simpan Perubahan</button>
+                        <button type="submit" class="btn btn-success btn-lg w-100" @click="updatesales(Supplier.Id_Supplier)" data-dismiss="modal">Tambah Sales</button>
                     </div>
                 </div>
             </div>

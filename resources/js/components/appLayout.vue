@@ -1,7 +1,7 @@
 <template>
    <div class="content" id="homeLayout">
             <nav class="navbar navbar-expand-lg navbar-light bg-light" v-if="this.$route.meta.role=='Admin'">
-		  	<!-- <a class="navbar-brand" href="#"><img src="../img/Logo_AtmaAuto.jpg" width="50px"> SIAUTO</a> -->
+		  	<a class="navbar-brand" href="../"><img src="../../image/Logo_Transparan.png" width="50px"> SIAUTO</a>
 		  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  	</button>
@@ -52,7 +52,7 @@
 			</nav>
 		</div>
         <nav v-if="$route.meta.role=='User'" class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#"><img src="/images/Logo_AtmaAuto.jpg" width="50px"> SIAUTO</a>
+            <a class="navbar-brand" href="../"><img src="../../image/Logo_Transparan.png" width="50px"> SIAUTO</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
