@@ -172,12 +172,12 @@
                                 </div>
                                 <select class="form-control mr-2" v-model="posisi">
                                     <option disabled="disabled" selected="selected" value="Pilih Posisi">Pilih Posisi</option>
-                                    <option v-for="(posisi,index) in positions" :key="index">{{posisi.id}}</option>
+                                    <option v-for="(posisi,index) in positions" :key="index">{{posisi.value}}</option>
                                 </select>
 
                                 <select class="form-control mr-2" v-model="ruang">
                                     <option disabled="disabled" selected="selected" value="Pilih Tempat">Pilih Tempat</option>
-                                    <option v-for="(ruang,index) in ruangs" :key="index">{{ruang.id}}</option>
+                                    <option v-for="(ruang,index) in ruangs" :key="index">{{ruang.value}}</option>
                                 </select>
 
                                 <input type="number" v-model="nomor" 
@@ -327,14 +327,22 @@
 
                         <div class="input-group mt-4">
                             <div class="input-group-prepend d-block" style="width: 100px;">
-                                <span class="fieldBox input-group-text" id="basic-addon2">Rak</span>
+                                <span class="input-group-text" id="basic-addon2">Rak</span>
                             </div>
-                            <input type="text" v-model="Sparepart.Rak_Sparepart" 
-                            class="form-control" placeholder="Masukkan Rak Sparepart" 
-                            :error="rakErrors" aria-label="Rak_Sparepart" 
-                            aria-describedby="basic-addon2" id="Rak_Sparepart"
-                            name="Rak_Sparepart"  required>
+                            <select class="form-control mr-2" v-model="posisi">
+                                <option disabled="disabled" selected="selected" value="Pilih Posisi">Pilih Posisi</option>
+                                <option v-for="(posisi,index) in positions" :key="index">{{posisi.value}}</option>
+                            </select>
+
+                            <select class="form-control mr-2" v-model="ruang">
+                                <option disabled="disabled" selected="selected" value="Pilih Tempat">Pilih Tempat</option>
+                                <option v-for="(ruang,index) in ruangs" :key="index">{{ruang.value}}</option>
+                            </select>
+
+                            <input type="number" v-model="nomor" 
+                            class="form-control" required>
                         </div>
+
 
                         <div class="input-group mt-4">
                             <div class="input-group-prepend d-block" style="width: 100px;">
@@ -484,9 +492,6 @@ export default {
         this.getallsparepart()
     },
     methods:{
-        setDefaults(){
-            Sparepart.Rak_Sparepart = this.posisi + this.ruang + this.nomor
-        },
         onFileChange(e) {
             let files = e.target.files || e.dataTransfer.files;
             if (!files.length)
@@ -520,14 +525,14 @@ export default {
                     Nama_Sparepart          : this.Sparepart.Nama_Sparepart,
                     Tipe_Barang             : this.Sparepart.Tipe_Barang,
                     Merk_Sparepart          : this.Sparepart.Merk_Sparepart,
-                    // Rak_Sparepart           : this.setDefaults,
+                    Rak_Sparepart           : this.posisi +'-'+ this.ruang+'-'+this.nomor,
                     Jumlah_Sparepart        : this.Sparepart.Jumlah_Sparepart,
                     Stok_Minimum_Sparepart  : this.Sparepart.Stok_Minimum_Sparepart,
                     Harga_Beli              : this.Sparepart.Harga_Beli,
                     Harga_Jual              : this.Sparepart.Harga_Jual,
                     Gambar                  : this.Gambar,
                }
-               this.setDefaults()
+            //    this.setDefaults()
                await Controller.addsparepart(payload)
                this.getallsparepart()
             } catch (err) {
@@ -537,11 +542,10 @@ export default {
         async updatesparepart (id) {
             try {
                 const payload = {
-                    //Kode_Sparepart      : this.handledsparepart.Kode_Sparepart,
                     Nama_Sparepart      : this.Sparepart.Nama_Sparepart,
                     Tipe_Barang         : this.Sparepart.Tipe_Barang,
                     Merk_Sparepart      : this.Sparepart.Merk_Sparepart,
-                    Rak_Sparepart       : this.Sparepart.Rak_Sparepart,
+                    Rak_Sparepart       : this.posisi +'-'+ this.ruang+'-'+this.nomor,
                     Jumlah_Sparepart    : this.Sparepart.Jumlah_Sparepart,
                     Stok_Minimum_Sparepart:this.Sparepart.Stok_Minimum_Sparepart,
                     Harga_Beli          : this.Sparepart.Harga_Beli,
@@ -646,6 +650,11 @@ export default {
             !this.$v.Sparepart.Harga_Jual.maxLength && errors.push('Price must be at most 12 characters long')
             !this.$v.Sparepart.Harga_Jual.numeric && errors.push('Price must be numeric')
             !this.$v.Sparepart.Harga_Jual.required && errors.push('Price is required')
+
+            if (!this.$v.Sparepart.Harga_Jual) return errors
+            !this.$v.Sparepart.Harga_Jual.maxLength && errors.push('Price must be at most 12 characters long')
+            
+
             return errors
         },
         // GambarErrors() {
