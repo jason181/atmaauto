@@ -21,7 +21,7 @@ class CreatePegawaisTable extends Migration
             $table->string('Alamat_Pegawai',255);
             $table->string('Telepon_Pegawai',15);
             $table->double('Gaji_Pegawai');
-            $table->string('Username',20);
+            $table->string('Username',20)->unique();
             $table->string('Password');
             $table->timestamps();
 

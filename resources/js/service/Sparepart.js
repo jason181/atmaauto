@@ -42,7 +42,7 @@ export default {
                 reject(err)
             }
 
-            Http.patch('/api/sparepart/update/'+id, payload, successCallback, errorCallback)
+            Http.patch('/api/spareparts/update/'+id, payload, successCallback, errorCallback)
         })
     },
     deletesparepart(id){
@@ -50,14 +50,11 @@ export default {
             const successCallback = (res) => {
                 const data = res.data
                 resolve(data)
-
             }
 
             const errorCallback = (err) => {
                 reject(err)
-
             }
-
             Http.delete('/api/spareparts/delete/'+id, successCallback, errorCallback)
         })
     }

@@ -71,3 +71,7 @@ Route::delete('/spareparts/delete/{id}', 'SparepartController@destroy');
 Route::post('/authenticate', 'TokenController@authenticate');
 Route::post('/mobileauthenticate', 'TokenController@mobileauthenticate');
 Route::get('/session', 'TokenController@validateToken');
+
+//Ruang
+Route::get('/ruangs','RuangController@index');
+Route::post('/ruangs/store', 'RuangController@store');

@@ -133,7 +133,7 @@
                                 </div>
                                 <select class="form-control" v-model="Pegawai.Id_Cabang" @input="$v.Pegawai.Id_Cabang.$touch()" @blur="$v.Pegawai.Id_Cabang.$touch()" require>
                                     <option disabled="disabled" selected="selected">-- Pilih Cabang --</option>
-                                    <option v-bind:key="cabang['Id_Cabang']" v-for="cabang in cabangdata" :value="cabang.Id_Cabang">{{cabang.Nama_Cabang}} </option>
+                                    <option v-bind:key="cabang['Id_Cabang']" v-for="cabang in cabangData" :value="cabang.Id_Cabang">{{cabang.Nama_Cabang}} </option>
                                 </select>
                             </div>
                             <div class="text-center">
@@ -214,7 +214,7 @@
                                 </div>
                                 <select class="form-control" v-model="handledpegawai.Id_Cabang">
                                     <option disabled="disabled" selected="selected">-- Pilih Cabang --</option>
-                                    <option v-bind:key="cabang['Id_Cabang']" v-for="cabang in cabangdata" :value="cabang.Id_Cabang">{{cabang.Nama_Cabang}} </option>
+                                    <option v-bind:key="cabang['Id_Cabang']" v-for="cabang in cabangData" :value="cabang.Id_Cabang">{{cabang.Nama_Cabang}} </option>
                                 </select>
                             </div>
                             <div class="input-group mb-4">
@@ -227,7 +227,7 @@
                                 </select>
                             </div>
                             <div class="modal-footer ">
-                                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Simpan Perubahan</button>
+                                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; " >Simpan Perubahan</button>
                             </div>
                         </form>
                     </div>
@@ -264,12 +264,13 @@
 <script>
 import Controller from '../../httpController'
 import validators from '../../validations/pegawai_validations'
+import controller from '../../service/Cabang'
 
 export default {
     validations:validators,
     data:()=>({
         pegawaidata:[],
-        cabangdata:[],
+        cabangData:[],
         roledata:[],
         handledpegawai:[],
         Id_Cabang:'',
@@ -294,7 +295,7 @@ export default {
     }),
     mounted(){
         this.getallpegawai(),
-        this.getallcabang(),
+        this.getallCabang(),
         this.getallrole()
     },
     methods:{
@@ -306,10 +307,10 @@ export default {
                 console.log(err)
             }
         },
-        async getallcabang () {
+        async getallCabang () {
             try {
-                this.cabangdata = (await Controller.getallcabang()).data
-                console.log(this.cabangdata)
+                this.cabangData = (await controller.getallCabang()).data
+                console.log(this.cabangData)
             } catch (err) {
                 console.log(err)
             }
