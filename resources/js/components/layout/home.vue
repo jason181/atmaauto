@@ -2,7 +2,7 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-lg-6">
-                <div class="container">
+                <div class="container text-center mb-3">
                     <img src="/images/item-cart-04.jpg">
                 </div>
             </div>

@@ -2119,7 +2119,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 
@@ -2365,6 +2364,14 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3067,6 +3074,42 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3335,11 +3378,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   validations: _validations_pegawai_validations__WEBPACK_IMPORTED_MODULE_2__["default"],
   data: function data() {
-    return {
+    var _ref;
+
+    return _ref = {
       pegawaidata: [],
       cabangdata: [],
       roledata: [],
-      handledpegawai: [],
+      Pegawai: [],
       Id_Cabang: '',
       Id_Role: '',
       Nama_Pegawai: '',
@@ -3347,19 +3392,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       Telepon_Pegawai: '',
       Gaji_Pegawai: '',
       Username: '',
-      Password: '',
-      Pegawai: {
-        Id_Cabang: '',
-        Id_Role: '',
-        Nama_Pegawai: '',
-        Alamat_Pegawai: '',
-        Telepon_Pegawai: '',
-        Gaji_Pegawai: '',
-        Username: '',
-        Password: ''
-      },
-      Cari_Pegawai: ''
-    };
+      Password: ''
+    }, _defineProperty(_ref, "Pegawai", {
+      Id_Cabang: 'Pilih Cabang',
+      Id_Role: ' Pilih Jabatan',
+      Nama_Pegawai: '',
+      Alamat_Pegawai: '',
+      Telepon_Pegawai: '',
+      Gaji_Pegawai: '',
+      Username: '',
+      Password: ''
+    }), _defineProperty(_ref, "Cari_Pegawai", ''), _ref;
   },
   mounted: function mounted() {
     this.getallpegawai(), this.getallcabang(), this.getallrole();
@@ -3500,8 +3543,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addpegawai(payload);
 
               case 4:
-                this.getallpegawai(); // console.log()
-
+                this.getallpegawai();
                 _context4.next = 10;
                 break;
 
@@ -3535,21 +3577,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context5.prev = 0;
                 payload = {
-                  Id_Cabang: this.handledpegawai.Id_Cabang,
-                  Id_Role: this.handledpegawai.Id_Role,
-                  Nama_Pegawai: this.handledpegawai.Nama_Pegawai,
-                  Alamat_Pegawai: this.handledpegawai.Alamat_Pegawai,
-                  Telepon_Pegawai: this.handledpegawai.Telepon_Pegawai,
-                  Gaji_Pegawai: this.handledpegawai.Gaji_Pegawai,
-                  Username: this.handledpegawai.Username,
-                  Password: this.handledpegawai.Password
+                  Id_Cabang: this.Pegawai.Id_Cabang,
+                  Id_Role: this.Pegawai.Id_Role,
+                  Nama_Pegawai: this.Pegawai.Nama_Pegawai,
+                  Alamat_Pegawai: this.Pegawai.Alamat_Pegawai,
+                  Telepon_Pegawai: this.Pegawai.Telepon_Pegawai,
+                  Gaji_Pegawai: this.Pegawai.Gaji_Pegawai,
+                  Username: this.Pegawai.Username,
+                  Password: this.Pegawai.Password
                 };
                 _context5.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatepegawai(payload, id);
 
               case 4:
-                this.getallpegawai(); // console.log()
-
+                this.getallpegawai();
                 _context5.next = 10;
                 break;
 
@@ -3610,7 +3651,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return deletepegawai;
     }(),
     datapegawaihandler: function datapegawaihandler(pegawai) {
-      this.handledpegawai = pegawai;
+      this.Pegawai = pegawai;
+    },
+    refresh: function refresh() {
+      this.Pegawai.Id_Cabang = 'Pilih Cabang';
+      this.Pegawai.Id_Role = 'Pilih Jabatan';
+      this.Pegawai.Nama_Pegawai = '';
+      this.Pegawai.Alamat_Pegawai = '';
+      this.Pegawai.Telepon_Pegawai = '';
+      this.Pegawai.Gaji_Pegawai = '';
+      this.Pegawai.Username = '';
+      this.Pegawai.Password = '';
     }
   },
   computed: {
@@ -4367,6 +4418,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4374,7 +4444,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       supplierdata: [],
-      handledsupplier: [],
       Nama_Supplier: '',
       Alamat_Supplier: '',
       Telepon_Supplier: '',
@@ -4444,30 +4513,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 payload = {
                   Nama_Supplier: this.Supplier.Nama_Supplier,
                   Alamat_Supplier: this.Supplier.Alamat_Supplier,
-                  Telepon_Supplier: this.Supplier.Telepon_Supplier,
-                  Nama_Sales: this.Supplier.Nama_Sales,
-                  Telepon_Sales: this.Supplier.Telepon_Sales
+                  Telepon_Supplier: this.Supplier.Telepon_Supplier
                 };
                 _context2.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].addsupplier(payload);
 
               case 4:
-                this.getallsupplier(); // console.log()
+                this.getallsupplier();
+                this.refreshSupplier(); // console.log()
 
-                _context2.next = 10;
+                _context2.next = 11;
                 break;
 
-              case 7:
-                _context2.prev = 7;
+              case 8:
+                _context2.prev = 8;
                 _context2.t0 = _context2["catch"](0);
                 console.log(_context2.t0);
 
-              case 10:
+              case 11:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 7]]);
+        }, _callee2, this, [[0, 8]]);
       }));
 
       function addsupplier() {
@@ -4487,30 +4555,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
                 payload = {
-                  Nama_Supplier: this.handledsupplier.Nama_Supplier,
-                  Alamat_Supplier: this.handledsupplier.Alamat_Supplier,
-                  Telepon_Supplier: this.handledsupplier.Telepon_Supplier
+                  Nama_Supplier: this.Supplier.Nama_Supplier,
+                  Alamat_Supplier: this.Supplier.Alamat_Supplier,
+                  Telepon_Supplier: this.Supplier.Telepon_Supplier
                 };
                 _context3.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatesupplier(payload, id);
 
               case 4:
-                this.getallsupplier(); // console.log()
+                this.getallsupplier();
+                this.refreshSupplier(); // console.log()
 
-                _context3.next = 10;
+                _context3.next = 11;
                 break;
 
-              case 7:
-                _context3.prev = 7;
+              case 8:
+                _context3.prev = 8;
                 _context3.t0 = _context3["catch"](0);
                 console.log(_context3.t0);
 
-              case 10:
+              case 11:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, this, [[0, 7]]);
+        }, _callee3, this, [[0, 8]]);
       }));
 
       function updatesupplier(_x) {
@@ -4557,7 +4626,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return deletesupplier;
     }(),
     datasupplierhandler: function datasupplierhandler(supplier) {
-      this.handledsupplier = supplier;
+      this.Supplier = supplier;
     },
     updatesales: function () {
       var _updatesales = _asyncToGenerator(
@@ -4570,8 +4639,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context5.prev = 0;
                 payload = {
-                  Nama_Sales: this.handledsupplier.Nama_Sales,
-                  Telepon_Sales: this.handledsupplier.Telepon_Sales
+                  Nama_Sales: this.Supplier.Nama_Sales,
+                  Telepon_Sales: this.Supplier.Telepon_Sales
                 };
                 _context5.next = 4;
                 return _httpController__WEBPACK_IMPORTED_MODULE_1__["default"].updatesales(payload, id);
@@ -4642,14 +4711,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return delsales;
-    }()
+    }(),
+    refreshSupplier: function refreshSupplier() {
+      this.Nama_Supplier = '';
+      this.Alamat_Supplier = '';
+      this.Telepon_Supplier = '';
+    },
+    refreshSales: function refreshSales() {
+      this.Nama_Sales = '';
+      this.Telepon_Sales = '';
+    }
   },
   computed: {
     filteredsupplier: function filteredsupplier() {
       var _this = this;
 
-      return this.supplierdata.filter(function (supplier) {
-        return supplier.Nama_Supplier.match(_this.Cari_Supplier);
+      return this.supplierdata.filter(function (Supplier) {
+        return Supplier.Nama_Supplier.match(_this.Cari_Supplier);
       });
     },
     nameErrors: function nameErrors() {
@@ -4658,6 +4736,40 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       !this.$v.Supplier.Nama_Supplier.minLength && errors.push('Name must be at least 5 characters long');
       !this.$v.Supplier.Nama_Supplier.maxLength && errors.push('Name must be at most 25 characters long');
       !this.$v.Supplier.Nama_Supplier.required && errors.push('Name is required.');
+      return errors;
+    },
+    addressErrors: function addressErrors() {
+      var errors = [];
+      if (!this.$v.Supplier.Alamat_Supplier.$dirty) return errors;
+      !this.$v.Supplier.Alamat_Supplier.minLength && errors.push('Address must be at least 5 characters long');
+      !this.$v.Supplier.Alamat_Supplier.maxLength && errors.push('Address must be at most 255 characters long');
+      !this.$v.Supplier.Alamat_Supplier.required && errors.push('Address is required.');
+      return errors;
+    },
+    phoneErrors: function phoneErrors() {
+      var errors = [];
+      if (!this.$v.Supplier.Telepon_Supplier.$dirty) return errors;
+      !this.$v.Supplier.Telepon_Supplier.minLength && errors.push('Phone Number must be at least 10 characters long');
+      !this.$v.Supplier.Telepon_Supplier.maxLength && errors.push('Phone Number must be at most 15 characters long');
+      !this.$v.Supplier.Telepon_Supplier.required && errors.push('Phone Number is required.');
+      !this.$v.Supplier.Telepon_Supplier.numeric && errors.push('Phone Number must be numeric.');
+      return errors;
+    },
+    salesNameErrors: function salesNameErrors() {
+      var errors = [];
+      if (!this.$v.Supplier.Nama_Sales.$dirty) return errors;
+      !this.$v.Supplier.Nama_Sales.minLength && errors.push('Name must be at least 5 characters long');
+      !this.$v.Supplier.Nama_Sales.maxLength && errors.push('Name must be at most 25 characters long');
+      !this.$v.Supplier.Nama_Sales.required && errors.push('Name is required.');
+      return errors;
+    },
+    salesPhoneErrors: function salesPhoneErrors() {
+      var errors = [];
+      if (!this.$v.Supplier.Telepon_Sales.$dirty) return errors;
+      !this.$v.Supplier.Telepon_Sales.minLength && errors.push('Phone Number must be at least 10 characters long');
+      !this.$v.Supplier.Telepon_Sales.maxLength && errors.push('Phone Number must be at most 15 characters long');
+      !this.$v.Supplier.Telepon_Sales.required && errors.push('Phone Number is required.');
+      !this.$v.Supplier.Telepon_Sales.numeric && errors.push('Phone Number must be numeric.');
       return errors;
     }
   }
@@ -42590,7 +42702,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "container my-5" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-lg-6" }, [
-          _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "container text-center mb-3" }, [
             _c("img", { attrs: { src: "/images/item-cart-04.jpg" } })
           ])
         ]),
@@ -42640,47 +42752,59 @@ var render = function() {
       "div",
       { staticClass: "container mt-3", staticStyle: { "max-width": "800px" } },
       [
-        _c("div", { staticClass: "clearfix my-2" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "navbar navbar-light bg-light float-right p-0" },
-            [
-              _c("form", { staticClass: "form-inline" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.Cari_Jasa_Service,
-                      expression: "Cari_Jasa_Service"
-                    }
-                  ],
-                  staticClass: "form-control mr-sm-2",
-                  attrs: { type: "search", placeholder: "Cari Jasa Service" },
-                  domProps: { value: _vm.Cari_Jasa_Service },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.Cari_Jasa_Service = $event.target.value
-                    }
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-2" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success float-left mb-2 btn-block",
+                attrs: {
+                  "data-title": "Tambah_Jasa_Service",
+                  "data-toggle": "modal",
+                  "data-target": "#Tambah_Jasa_Service"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.getalljasaservice(), _vm.refresh()
                   }
-                }),
-                _vm._v(" "),
-                _c(
-                  "button",
+                }
+              },
+              [
+                _c("i", { staticClass: "fas fa-plus mr-2" }),
+                _vm._v("Tambah\n                ")
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-4" }, [
+            _c("div", { staticClass: "input-group" }, [
+              _c("input", {
+                directives: [
                   {
-                    staticClass: "btn btn-outline-primary my-2 my-sm-0",
-                    attrs: { type: "submit" }
-                  },
-                  [_vm._v("Search")]
-                )
-              ])
-            ]
-          )
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.Cari_Jasa_Service,
+                    expression: "Cari_Jasa_Service"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "search", placeholder: "Cari Jasa Service" },
+                domProps: { value: _vm.Cari_Jasa_Service },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.Cari_Jasa_Service = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(0)
+            ])
+          ])
         ]),
         _vm._v(" "),
         _c(
@@ -43147,21 +43271,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-success float-left mb-2",
-        attrs: {
-          "data-title": "Tambah_Jasa_Service",
-          "data-toggle": "modal",
-          "data-target": "#Tambah_Jasa_Service"
-        }
-      },
-      [
-        _c("i", { staticClass: "fas fa-plus mr-2" }),
-        _vm._v("Tambah\n                ")
-      ]
-    )
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text" }, [
+        _c("i", { staticClass: "fas fa-search" })
+      ])
+    ])
   },
   function() {
     var _vm = this
@@ -44065,51 +44179,63 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("body", [
     _c("div", { staticClass: "container-fluid mt-3" }, [
-      _c("div", { staticClass: "clearfix my-2" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "navbar navbar-light bg-light float-right p-0" },
-          [
-            _c("form", { staticClass: "form-inline" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.Cari_Pegawai,
-                    expression: "Cari_Pegawai"
-                  }
-                ],
-                staticClass: "form-control mr-sm-2",
+      _c("div", { staticClass: "row mb-2" }, [
+        _c("div", { staticClass: "col-sm-2" }, [
+          _c("div", { staticClass: "col-sm-7 p-0" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success mb-2 btn-block",
                 attrs: {
-                  type: "search",
-                  placeholder: "Search",
-                  "aria-label": "Search"
+                  "data-title": "Tambah_Pegawai",
+                  "data-toggle": "modal",
+                  "data-target": "#Tambah_Pegawai"
                 },
-                domProps: { value: _vm.Cari_Pegawai },
                 on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.Cari_Pegawai = $event.target.value
+                  click: function($event) {
+                    _vm.getallpegawai(), _vm.refresh()
                   }
                 }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
+              },
+              [
+                _c("i", { staticClass: "fas fa-plus mr-2" }),
+                _vm._v("Tambah\n                    ")
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-5" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-7" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-3" }, [
+          _c("div", { staticClass: "input-group" }, [
+            _c("input", {
+              directives: [
                 {
-                  staticClass: "btn btn-outline-primary my-2 my-sm-0",
-                  attrs: { type: "submit" }
-                },
-                [_vm._v("Search")]
-              )
-            ])
-          ]
-        )
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.Cari_Pegawai,
+                  expression: "Cari_Pegawai"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "search", placeholder: "Cari Pegawai" },
+              domProps: { value: _vm.Cari_Pegawai },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.Cari_Pegawai = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(0)
+          ])
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "table-responsive" }, [
@@ -44133,8 +44259,6 @@ var render = function() {
                 _c("td", [_vm._v(_vm._s(pegawai.Gaji_Pegawai) + " ")]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(pegawai.Username) + " ")]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(pegawai.Password) + " ")]),
                 _vm._v(" "),
                 _c("td", { staticClass: "text-center" }, [
                   _c(
@@ -44225,550 +44349,508 @@ var render = function() {
             _vm._m(2),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
-              _c(
-                "form",
-                {
+              _c("div", { staticClass: "input-group" }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Pegawai.Nama_Pegawai,
+                      expression: "Pegawai.Nama_Pegawai"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Nama Pegawai",
+                    "aria-label": "Nama_Pegawai",
+                    "aria-describedby": "basic-addon2",
+                    id: "Nama_Pegawai",
+                    name: "Nama_Pegawai",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Pegawai.Nama_Pegawai },
                   on: {
-                    submit: function($event) {
-                      $event.preventDefault()
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Pegawai,
+                          "Nama_Pegawai",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Pegawai.Nama_Pegawai.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Pegawai.Nama_Pegawai.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pegawai.Nama_Pegawai.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.nameErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(4),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Pegawai.Alamat_Pegawai,
+                      expression: "Pegawai.Alamat_Pegawai"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Alamat Pegawai",
+                    "aria-label": "Nama_Lengkap",
+                    "aria-describedby": "basic-addon2",
+                    id: "Alamat_Pegawai",
+                    name: "Alamat_Pegawai",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Pegawai.Alamat_Pegawai },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Pegawai,
+                          "Alamat_Pegawai",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Pegawai.Alamat_Pegawai.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Pegawai.Alamat_Pegawai.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pegawai.Alamat_Pegawai.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.addressErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(5),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Pegawai.Telepon_Pegawai,
+                      expression: "Pegawai.Telepon_Pegawai"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Nomor Telepon Pegawai",
+                    "aria-label": "Telepon_Pegawai",
+                    "aria-describedby": "basic-addon2",
+                    id: "Telepon_Pegawai",
+                    name: "Telepon_Pegawai",
+                    require: ""
+                  },
+                  domProps: { value: _vm.Pegawai.Telepon_Pegawai },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Pegawai,
+                          "Telepon_Pegawai",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Pegawai.Telepon_Pegawai.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Pegawai.Telepon_Pegawai.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pegawai.Telepon_Pegawai.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.phoneErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(6),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Pegawai.Gaji_Pegawai,
+                      expression: "Pegawai.Gaji_Pegawai"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Gaji",
+                    "aria-label": "Gaji_Pegawai",
+                    "aria-describedby": "basic-addon2",
+                    id: "Gaji_Pegawai",
+                    name: "Gaji_Pegawai",
+                    require: ""
+                  },
+                  domProps: { value: _vm.Pegawai.Gaji_Pegawai },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Pegawai,
+                          "Gaji_Pegawai",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Pegawai.Gaji_Pegawai.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Pegawai.Gaji_Pegawai.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pegawai.Gaji_Pegawai.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.salaryErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(7),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Pegawai.Username,
+                      expression: "Pegawai.Username"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Username",
+                    "aria-label": "Username",
+                    "aria-describedby": "basic-addon2",
+                    id: "Username",
+                    name: "Username",
+                    require: ""
+                  },
+                  domProps: { value: _vm.Pegawai.Username },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.Pegawai, "Username", $event.target.value)
+                      },
+                      function($event) {
+                        return _vm.$v.Pegawai.Username.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Pegawai.Username.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pegawai.Username.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.usernameErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(8),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Pegawai.Password,
+                      expression: "Pegawai.Password"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "password",
+                    placeholder: "Masukkan Password",
+                    "aria-label": "Password",
+                    "aria-describedby": "basic-addon2",
+                    id: "Password",
+                    name: "Password",
+                    require: ""
+                  },
+                  domProps: { value: _vm.Pegawai.Password },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.Pegawai, "Password", $event.target.value)
+                      },
+                      function($event) {
+                        return _vm.$v.Pegawai.Password.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Pegawai.Password.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pegawai.Password.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.passwordErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(9),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Pegawai.Id_Cabang,
+                        expression: "Pegawai.Id_Cabang"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { require: "" },
+                    on: {
+                      input: function($event) {
+                        return _vm.$v.Pegawai.Id_Cabang.$touch()
+                      },
+                      blur: function($event) {
+                        return _vm.$v.Pegawai.Id_Cabang.$touch()
+                      },
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.Pegawai,
+                          "Id_Cabang",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Cabang"
+                        }
+                      },
+                      [_vm._v("-- Pilih Cabang --")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.cabangdata, function(cabang) {
+                      return _c(
+                        "option",
+                        {
+                          key: cabang["Id_Cabang"],
+                          domProps: { value: cabang.Id_Cabang }
+                        },
+                        [_vm._v(_vm._s(cabang.Nama_Cabang) + " ")]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pegawai.Id_Cabang.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.cabangErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(10),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Pegawai.Id_Role,
+                        expression: "Pegawai.Id_Role"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { require: "" },
+                    on: {
+                      input: function($event) {
+                        return _vm.$v.Pegawai.Id_Role.$touch()
+                      },
+                      blur: function($event) {
+                        return _vm.$v.Pegawai.Id_Role.$touch()
+                      },
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.Pegawai,
+                          "Id_Role",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Jabatan"
+                        }
+                      },
+                      [_vm._v("-- Pilih Jabatan --")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.roledata, function(role) {
+                      return _c(
+                        "option",
+                        {
+                          key: role["Id_Role"],
+                          domProps: { value: role.Id_Role }
+                        },
+                        [_vm._v(_vm._s(role.Nama_Role) + " ")]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pegawai.Id_Role.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.roleErrors[0]))]
+                    )
+                  : _vm._e()
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer mt-3" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success btn-lg w-100",
+                  attrs: { type: "submit", disabled: _vm.$v.Pegawai.$invalid },
+                  on: {
+                    click: function($event) {
                       return _vm.addpegawai()
                     }
                   }
                 },
-                [
-                  _c("div", { staticClass: "input-group" }, [
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.Pegawai.Nama_Pegawai,
-                          expression: "Pegawai.Nama_Pegawai"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Nama Pegawai",
-                        "aria-label": "Nama_Pegawai",
-                        "aria-describedby": "basic-addon2",
-                        id: "Nama_Pegawai",
-                        name: "Nama_Pegawai",
-                        required: ""
-                      },
-                      domProps: { value: _vm.Pegawai.Nama_Pegawai },
-                      on: {
-                        input: [
-                          function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.Pegawai,
-                              "Nama_Pegawai",
-                              $event.target.value
-                            )
-                          },
-                          function($event) {
-                            return _vm.$v.Pegawai.Nama_Pegawai.$touch()
-                          }
-                        ],
-                        blur: function($event) {
-                          return _vm.$v.Pegawai.Nama_Pegawai.$touch()
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-center" }, [
-                    _vm.$v.Pegawai.Nama_Pegawai.$invalid
-                      ? _c(
-                          "p",
-                          {
-                            staticClass: "mb-3",
-                            staticStyle: { color: "red" }
-                          },
-                          [_vm._v(_vm._s(_vm.nameErrors[0]))]
-                        )
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mt-3" }, [
-                    _vm._m(4),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.Pegawai.Alamat_Pegawai,
-                          expression: "Pegawai.Alamat_Pegawai"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Alamat Pegawai",
-                        "aria-label": "Nama_Lengkap",
-                        "aria-describedby": "basic-addon2",
-                        id: "Alamat_Pegawai",
-                        name: "Alamat_Pegawai",
-                        required: ""
-                      },
-                      domProps: { value: _vm.Pegawai.Alamat_Pegawai },
-                      on: {
-                        input: [
-                          function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.Pegawai,
-                              "Alamat_Pegawai",
-                              $event.target.value
-                            )
-                          },
-                          function($event) {
-                            return _vm.$v.Pegawai.Alamat_Pegawai.$touch()
-                          }
-                        ],
-                        blur: function($event) {
-                          return _vm.$v.Pegawai.Alamat_Pegawai.$touch()
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-center" }, [
-                    _vm.$v.Pegawai.Alamat_Pegawai.$invalid
-                      ? _c(
-                          "p",
-                          {
-                            staticClass: "mb-3",
-                            staticStyle: { color: "red" }
-                          },
-                          [_vm._v(_vm._s(_vm.addressErrors[0]))]
-                        )
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mt-3" }, [
-                    _vm._m(5),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.Pegawai.Telepon_Pegawai,
-                          expression: "Pegawai.Telepon_Pegawai"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Nomor Telepon Pegawai",
-                        "aria-label": "Telepon_Pegawai",
-                        "aria-describedby": "basic-addon2",
-                        id: "Telepon_Pegawai",
-                        name: "Telepon_Pegawai",
-                        require: ""
-                      },
-                      domProps: { value: _vm.Pegawai.Telepon_Pegawai },
-                      on: {
-                        input: [
-                          function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.Pegawai,
-                              "Telepon_Pegawai",
-                              $event.target.value
-                            )
-                          },
-                          function($event) {
-                            return _vm.$v.Pegawai.Telepon_Pegawai.$touch()
-                          }
-                        ],
-                        blur: function($event) {
-                          return _vm.$v.Pegawai.Telepon_Pegawai.$touch()
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-center" }, [
-                    _vm.$v.Pegawai.Telepon_Pegawai.$invalid
-                      ? _c(
-                          "p",
-                          {
-                            staticClass: "mb-3",
-                            staticStyle: { color: "red" }
-                          },
-                          [_vm._v(_vm._s(_vm.phoneErrors[0]))]
-                        )
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mt-3" }, [
-                    _vm._m(6),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.Pegawai.Gaji_Pegawai,
-                          expression: "Pegawai.Gaji_Pegawai"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Gaji",
-                        "aria-label": "Gaji_Pegawai",
-                        "aria-describedby": "basic-addon2",
-                        id: "Gaji_Pegawai",
-                        name: "Gaji_Pegawai",
-                        require: ""
-                      },
-                      domProps: { value: _vm.Pegawai.Gaji_Pegawai },
-                      on: {
-                        input: [
-                          function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.Pegawai,
-                              "Gaji_Pegawai",
-                              $event.target.value
-                            )
-                          },
-                          function($event) {
-                            return _vm.$v.Pegawai.Gaji_Pegawai.$touch()
-                          }
-                        ],
-                        blur: function($event) {
-                          return _vm.$v.Pegawai.Gaji_Pegawai.$touch()
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-center" }, [
-                    _vm.$v.Pegawai.Gaji_Pegawai.$invalid
-                      ? _c(
-                          "p",
-                          {
-                            staticClass: "mb-3",
-                            staticStyle: { color: "red" }
-                          },
-                          [_vm._v(_vm._s(_vm.salaryErrors[0]))]
-                        )
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mt-3" }, [
-                    _vm._m(7),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.Pegawai.Username,
-                          expression: "Pegawai.Username"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Username",
-                        "aria-label": "Username",
-                        "aria-describedby": "basic-addon2",
-                        id: "Username",
-                        name: "Username",
-                        require: ""
-                      },
-                      domProps: { value: _vm.Pegawai.Username },
-                      on: {
-                        input: [
-                          function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.Pegawai,
-                              "Username",
-                              $event.target.value
-                            )
-                          },
-                          function($event) {
-                            return _vm.$v.Pegawai.Username.$touch()
-                          }
-                        ],
-                        blur: function($event) {
-                          return _vm.$v.Pegawai.Username.$touch()
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-center" }, [
-                    _vm.$v.Pegawai.Username.$invalid
-                      ? _c(
-                          "p",
-                          {
-                            staticClass: "mb-3",
-                            staticStyle: { color: "red" }
-                          },
-                          [_vm._v(_vm._s(_vm.usernameErrors[0]))]
-                        )
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mt-3" }, [
-                    _vm._m(8),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.Pegawai.Password,
-                          expression: "Pegawai.Password"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "password",
-                        placeholder: "Masukkan Password",
-                        "aria-label": "Password",
-                        "aria-describedby": "basic-addon2",
-                        id: "Password",
-                        name: "Password",
-                        require: ""
-                      },
-                      domProps: { value: _vm.Pegawai.Password },
-                      on: {
-                        input: [
-                          function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.Pegawai,
-                              "Password",
-                              $event.target.value
-                            )
-                          },
-                          function($event) {
-                            return _vm.$v.Pegawai.Password.$touch()
-                          }
-                        ],
-                        blur: function($event) {
-                          return _vm.$v.Pegawai.Password.$touch()
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-center" }, [
-                    _vm.$v.Pegawai.Password.$invalid
-                      ? _c(
-                          "p",
-                          {
-                            staticClass: "mb-3",
-                            staticStyle: { color: "red" }
-                          },
-                          [_vm._v(_vm._s(_vm.passwordErrors[0]))]
-                        )
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mt-3" }, [
-                    _vm._m(9),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.Pegawai.Id_Cabang,
-                            expression: "Pegawai.Id_Cabang"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { require: "" },
-                        on: {
-                          input: function($event) {
-                            return _vm.$v.Pegawai.Id_Cabang.$touch()
-                          },
-                          blur: function($event) {
-                            return _vm.$v.Pegawai.Id_Cabang.$touch()
-                          },
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.Pegawai,
-                              "Id_Cabang",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      [
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              disabled: "disabled",
-                              selected: "selected"
-                            }
-                          },
-                          [_vm._v("-- Pilih Cabang --")]
-                        ),
-                        _vm._v(" "),
-                        _vm._l(_vm.cabangdata, function(cabang) {
-                          return _c(
-                            "option",
-                            {
-                              key: cabang["Id_Cabang"],
-                              domProps: { value: cabang.Id_Cabang }
-                            },
-                            [_vm._v(_vm._s(cabang.Nama_Cabang) + " ")]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-center" }, [
-                    _vm.$v.Pegawai.Id_Cabang.$invalid
-                      ? _c(
-                          "p",
-                          {
-                            staticClass: "mb-3",
-                            staticStyle: { color: "red" }
-                          },
-                          [_vm._v(_vm._s(_vm.cabangErrors[0]))]
-                        )
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mt-3" }, [
-                    _vm._m(10),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.Pegawai.Id_Role,
-                            expression: "Pegawai.Id_Role"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { require: "" },
-                        on: {
-                          input: function($event) {
-                            return _vm.$v.Pegawai.Id_Role.$touch()
-                          },
-                          blur: function($event) {
-                            return _vm.$v.Pegawai.Id_Role.$touch()
-                          },
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.Pegawai,
-                              "Id_Role",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      [
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              disabled: "disabled",
-                              selected: "selected"
-                            }
-                          },
-                          [_vm._v("-- Pilih Jabatan --")]
-                        ),
-                        _vm._v(" "),
-                        _vm._l(_vm.roledata, function(role) {
-                          return _c(
-                            "option",
-                            {
-                              key: role["Id_Role"],
-                              domProps: { value: role.Id_Role }
-                            },
-                            [_vm._v(_vm._s(role.Nama_Role) + " ")]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-center" }, [
-                    _vm.$v.Pegawai.Id_Role.$invalid
-                      ? _c(
-                          "p",
-                          {
-                            staticClass: "mb-3",
-                            staticStyle: { color: "red" }
-                          },
-                          [_vm._v(_vm._s(_vm.roleErrors[0]))]
-                        )
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-footer mt-3" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success btn-lg",
-                        staticStyle: { width: "100%" },
-                        attrs: {
-                          type: "submit",
-                          disabled: _vm.$v.Pegawai.$invalid
-                        }
-                      },
-                      [_vm._v("Tambahkan Pegawai")]
-                    )
-                  ])
-                ]
+                [_vm._v("Tambahkan Pegawai")]
               )
             ])
           ])
@@ -44794,353 +44876,508 @@ var render = function() {
             _vm._m(11),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
-              _c(
-                "form",
-                {
+              _c("div", { staticClass: "input-group" }, [
+                _vm._m(12),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Pegawai.Nama_Pegawai,
+                      expression: "Pegawai.Nama_Pegawai"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Nama Pegawai",
+                    "aria-label": "Nama_Pegawai",
+                    "aria-describedby": "basic-addon2",
+                    id: "Nama_Pegawai",
+                    name: "Nama_Pegawai",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Pegawai.Nama_Pegawai },
                   on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.updatepegawai(_vm.handledpegawai.Id_Pegawai)
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Pegawai,
+                          "Nama_Pegawai",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Pegawai.Nama_Pegawai.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Pegawai.Nama_Pegawai.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pegawai.Nama_Pegawai.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.nameErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(13),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Pegawai.Alamat_Pegawai,
+                      expression: "Pegawai.Alamat_Pegawai"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Alamat Pegawai",
+                    "aria-label": "Nama_Lengkap",
+                    "aria-describedby": "basic-addon2",
+                    id: "Alamat_Pegawai",
+                    name: "Alamat_Pegawai",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Pegawai.Alamat_Pegawai },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Pegawai,
+                          "Alamat_Pegawai",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Pegawai.Alamat_Pegawai.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Pegawai.Alamat_Pegawai.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pegawai.Alamat_Pegawai.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.addressErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(14),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Pegawai.Telepon_Pegawai,
+                      expression: "Pegawai.Telepon_Pegawai"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Nomor Telepon Pegawai",
+                    "aria-label": "Telepon_Pegawai",
+                    "aria-describedby": "basic-addon2",
+                    id: "Telepon_Pegawai",
+                    name: "Telepon_Pegawai",
+                    require: ""
+                  },
+                  domProps: { value: _vm.Pegawai.Telepon_Pegawai },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Pegawai,
+                          "Telepon_Pegawai",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Pegawai.Telepon_Pegawai.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Pegawai.Telepon_Pegawai.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pegawai.Telepon_Pegawai.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.phoneErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(15),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Pegawai.Gaji_Pegawai,
+                      expression: "Pegawai.Gaji_Pegawai"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Gaji",
+                    "aria-label": "Gaji_Pegawai",
+                    "aria-describedby": "basic-addon2",
+                    id: "Gaji_Pegawai",
+                    name: "Gaji_Pegawai",
+                    require: ""
+                  },
+                  domProps: { value: _vm.Pegawai.Gaji_Pegawai },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Pegawai,
+                          "Gaji_Pegawai",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Pegawai.Gaji_Pegawai.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Pegawai.Gaji_Pegawai.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pegawai.Gaji_Pegawai.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.salaryErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(16),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Pegawai.Username,
+                      expression: "Pegawai.Username"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Username",
+                    "aria-label": "Username",
+                    "aria-describedby": "basic-addon2",
+                    id: "Username",
+                    name: "Username",
+                    require: ""
+                  },
+                  domProps: { value: _vm.Pegawai.Username },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.Pegawai, "Username", $event.target.value)
+                      },
+                      function($event) {
+                        return _vm.$v.Pegawai.Username.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Pegawai.Username.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pegawai.Username.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.usernameErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(17),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Pegawai.Password,
+                      expression: "Pegawai.Password"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "password",
+                    placeholder: "Masukkan Password",
+                    "aria-label": "Password",
+                    "aria-describedby": "basic-addon2",
+                    id: "Password",
+                    name: "Password",
+                    require: ""
+                  },
+                  domProps: { value: _vm.Pegawai.Password },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.Pegawai, "Password", $event.target.value)
+                      },
+                      function($event) {
+                        return _vm.$v.Pegawai.Password.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Pegawai.Password.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pegawai.Password.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.passwordErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(18),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Pegawai.Id_Cabang,
+                        expression: "Pegawai.Id_Cabang"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { require: "" },
+                    on: {
+                      input: function($event) {
+                        return _vm.$v.Pegawai.Id_Cabang.$touch()
+                      },
+                      blur: function($event) {
+                        return _vm.$v.Pegawai.Id_Cabang.$touch()
+                      },
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.Pegawai,
+                          "Id_Cabang",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Cabang"
+                        }
+                      },
+                      [_vm._v("-- Pilih Cabang --")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.cabangdata, function(cabang) {
+                      return _c(
+                        "option",
+                        {
+                          key: cabang["Id_Cabang"],
+                          domProps: { value: cabang.Id_Cabang }
+                        },
+                        [_vm._v(_vm._s(cabang.Nama_Cabang) + " ")]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pegawai.Id_Cabang.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.cabangErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(19),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Pegawai.Id_Role,
+                        expression: "Pegawai.Id_Role"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { require: "" },
+                    on: {
+                      input: function($event) {
+                        return _vm.$v.Pegawai.Id_Role.$touch()
+                      },
+                      blur: function($event) {
+                        return _vm.$v.Pegawai.Id_Role.$touch()
+                      },
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.Pegawai,
+                          "Id_Role",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Jabatan"
+                        }
+                      },
+                      [_vm._v("-- Pilih Jabatan --")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.roledata, function(role) {
+                      return _c(
+                        "option",
+                        {
+                          key: role["Id_Role"],
+                          domProps: { value: role.Id_Role }
+                        },
+                        [_vm._v(_vm._s(role.Nama_Role) + " ")]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pegawai.Id_Role.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.roleErrors[0]))]
+                    )
+                  : _vm._e()
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer mt-3" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary btn-lg w-100",
+                  attrs: { type: "submit", disabled: _vm.$v.Pegawai.$invalid },
+                  on: {
+                    click: function($event) {
+                      return _vm.updatepegawai(_vm.Pegawai.Id_Pegawai)
                     }
                   }
                 },
-                [
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(12),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.handledpegawai.Nama_Pegawai,
-                          expression: "handledpegawai.Nama_Pegawai"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Nama Pegawai",
-                        "aria-label": "Nama_Pegawai",
-                        "aria-describedby": "basic-addon2"
-                      },
-                      domProps: { value: _vm.handledpegawai.Nama_Pegawai },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.handledpegawai,
-                            "Nama_Pegawai",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(13),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.handledpegawai.Alamat_Pegawai,
-                          expression: "handledpegawai.Alamat_Pegawai"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Alamat Pegawai",
-                        "aria-label": "Nama_Lengkap",
-                        "aria-describedby": "basic-addon2"
-                      },
-                      domProps: { value: _vm.handledpegawai.Alamat_Pegawai },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.handledpegawai,
-                            "Alamat_Pegawai",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(14),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.handledpegawai.Telepon_Pegawai,
-                          expression: "handledpegawai.Telepon_Pegawai"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Nomor Telepon Pegawai",
-                        "aria-label": "Telepon_Pegawai",
-                        "aria-describedby": "basic-addon2"
-                      },
-                      domProps: { value: _vm.handledpegawai.Telepon_Pegawai },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.handledpegawai,
-                            "Telepon_Pegawai",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(15),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.handledpegawai.Gaji_Pegawai,
-                          expression: "handledpegawai.Gaji_Pegawai"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Gaji",
-                        "aria-label": "Gaji_Pegawai",
-                        "aria-describedby": "basic-addon2"
-                      },
-                      domProps: { value: _vm.handledpegawai.Gaji_Pegawai },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.handledpegawai,
-                            "Gaji_Pegawai",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(16),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.handledpegawai.Username,
-                          expression: "handledpegawai.Username"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Username",
-                        "aria-label": "Username",
-                        "aria-describedby": "basic-addon2"
-                      },
-                      domProps: { value: _vm.handledpegawai.Username },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.handledpegawai,
-                            "Username",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(17),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.handledpegawai.Password,
-                          expression: "handledpegawai.Password"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Password",
-                        "aria-label": "Password",
-                        "aria-describedby": "basic-addon2"
-                      },
-                      domProps: { value: _vm.handledpegawai.Password },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.handledpegawai,
-                            "Password",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(18),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.handledpegawai.Id_Cabang,
-                            expression: "handledpegawai.Id_Cabang"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.handledpegawai,
-                              "Id_Cabang",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      [
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              disabled: "disabled",
-                              selected: "selected"
-                            }
-                          },
-                          [_vm._v("-- Pilih Cabang --")]
-                        ),
-                        _vm._v(" "),
-                        _vm._l(_vm.cabangdata, function(cabang) {
-                          return _c(
-                            "option",
-                            {
-                              key: cabang["Id_Cabang"],
-                              domProps: { value: cabang.Id_Cabang }
-                            },
-                            [_vm._v(_vm._s(cabang.Nama_Cabang) + " ")]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(19),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.handledpegawai.Id_Role,
-                            expression: "handledpegawai.Id_Role"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.handledpegawai,
-                              "Id_Role",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      [
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              disabled: "disabled",
-                              selected: "selected"
-                            }
-                          },
-                          [_vm._v("-- Pilih Jabatan --")]
-                        ),
-                        _vm._v(" "),
-                        _vm._l(_vm.roledata, function(role) {
-                          return _c(
-                            "option",
-                            {
-                              key: role["Id_Role"],
-                              domProps: { value: role.Id_Role }
-                            },
-                            [_vm._v(_vm._s(role.Nama_Role) + " ")]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(20)
-                ]
+                [_vm._v("Simpan Perubahan")]
               )
             ])
           ])
@@ -45163,9 +45400,9 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(21),
+            _vm._m(20),
             _vm._v(" "),
-            _vm._m(22),
+            _vm._m(21),
             _vm._v(" "),
             _c("div", { staticClass: "modal-footer " }, [
               _c(
@@ -45182,9 +45419,7 @@ var render = function() {
                       attrs: { type: "button", "data-dismiss": "modal" },
                       on: {
                         click: function($event) {
-                          return _vm.deletepegawai(
-                            _vm.handledpegawai.Id_Pegawai
-                          )
+                          return _vm.deletepegawai(_vm.Pegawai.Id_Pegawai)
                         }
                       }
                     },
@@ -45198,7 +45433,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(23)
+              _vm._m(22)
             ])
           ])
         ])
@@ -45211,21 +45446,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-success float-left mb-2",
-        attrs: {
-          "data-title": "Tambah_Pegawai",
-          "data-toggle": "modal",
-          "data-target": "#Tambah_Pegawai"
-        }
-      },
-      [
-        _c("i", { staticClass: "fas fa-plus mr-2" }),
-        _vm._v("Tambah\n                ")
-      ]
-    )
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text" }, [
+        _c("i", { staticClass: "fas fa-search" })
+      ])
+    ])
   },
   function() {
     var _vm = this
@@ -45246,8 +45471,6 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Gaji")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Username")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Password")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
         _vm._v(" "),
@@ -45612,22 +45835,6 @@ var staticRenderFns = [
         )
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer " }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary btn-lg",
-          staticStyle: { width: "100%" },
-          attrs: { type: "submit" }
-        },
-        [_vm._v("Simpan Perubahan")]
-      )
-    ])
   },
   function() {
     var _vm = this
@@ -46211,153 +46418,189 @@ var render = function() {
             _vm._m(2),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
-              _c(
-                "form",
-                {
+              _c("div", { staticClass: "input-group" }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Supplier.Nama_Supplier,
+                      expression: "Supplier.Nama_Supplier"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Nama Supplier",
+                    "aria-label": "Nama_Supplier",
+                    "aria-describedby": "basic-addon2",
+                    id: "Nama_Supplier",
+                    name: "Nama_Supplier",
+                    require: ""
+                  },
+                  domProps: { value: _vm.Supplier.Nama_Supplier },
                   on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.addsupplier()
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Supplier,
+                          "Nama_Supplier",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Supplier.Nama_Supplier.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Supplier.Nama_Supplier.$touch()
                     }
                   }
-                },
-                [
-                  _c("div", { staticClass: "input-group" }, [
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.Supplier.Nama_Supplier,
-                          expression: "Supplier.Nama_Supplier"
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Supplier.Nama_Supplier.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.nameErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(4),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Supplier.Alamat_Supplier,
+                      expression: "Supplier.Alamat_Supplier"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Alamat Supplier",
+                    "aria-label": "Alamat_Supplier",
+                    "aria-describedby": "basic-addon2",
+                    id: "Alamat_Supplier",
+                    name: "Alamat_Supplier",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Supplier.Alamat_Supplier },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
                         }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Nama Supplier",
-                        "aria-label": "Nama_Supplier",
-                        "aria-describedby": "basic-addon2",
-                        id: "Nama_Supplier",
-                        name: "Nama_Supplier",
-                        require: ""
-                      },
-                      domProps: { value: _vm.Supplier.Nama_Supplier },
-                      on: {
-                        input: [
-                          function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.Supplier,
-                              "Nama_Supplier",
-                              $event.target.value
-                            )
-                          },
-                          function($event) {
-                            return _vm.$v.Supplier.Nama_Supplier.$touch()
-                          }
-                        ],
-                        blur: function($event) {
-                          return _vm.$v.Supplier.Nama_Supplier.$touch()
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-center" }, [
-                    _vm.$v.Supplier.Nama_Supplier.$invalid
-                      ? _c(
-                          "p",
-                          {
-                            staticClass: "mb-3",
-                            staticStyle: { color: "red" }
-                          },
-                          [_vm._v(_vm._s(_vm.nameErrors[0]))]
+                        _vm.$set(
+                          _vm.Supplier,
+                          "Alamat_Supplier",
+                          $event.target.value
                         )
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(4),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.Supplier.Alamat_Supplier,
-                          expression: "Supplier.Alamat_Supplier"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Alamat Supplier",
-                        "aria-label": "Alamat_Supplier",
-                        "aria-describedby": "basic-addon2",
-                        id: "Alamat_Supplier",
-                        name: "Alamat_Supplier"
                       },
-                      domProps: { value: _vm.Supplier.Alamat_Supplier },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.Supplier,
-                            "Alamat_Supplier",
-                            $event.target.value
-                          )
-                        }
+                      function($event) {
+                        return _vm.$v.Supplier.Alamat_Supplier.$touch()
                       }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(5),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.Supplier.Telepon_Supplier,
-                          expression: "Supplier.Telepon_Supplier"
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Supplier.Alamat_Supplier.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Supplier.Alamat_Supplier.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.addressErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(5),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Supplier.Telepon_Supplier,
+                      expression: "Supplier.Telepon_Supplier"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Telepon Supplier",
+                    "aria-label": "Telepon_Supplier",
+                    "aria-describedby": "basic-addon2",
+                    id: "Telepon_Supplier",
+                    name: "Telepon_Supplier",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Supplier.Telepon_Supplier },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
                         }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Telepon Supplier",
-                        "aria-label": "Telepon_Supplier",
-                        "aria-describedby": "basic-addon2",
-                        id: "Telepon_Supplier",
-                        name: "Telepon_Supplier"
+                        _vm.$set(
+                          _vm.Supplier,
+                          "Telepon_Supplier",
+                          $event.target.value
+                        )
                       },
-                      domProps: { value: _vm.Supplier.Telepon_Supplier },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.Supplier,
-                            "Telepon_Supplier",
-                            $event.target.value
-                          )
-                        }
+                      function($event) {
+                        return _vm.$v.Supplier.Telepon_Supplier.$touch()
                       }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(6)
-                ]
-              )
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Supplier.Telepon_Supplier.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Supplier.Telepon_Supplier.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.phoneErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success btn-lg w-100",
+                    attrs: { type: "submit", "data-dismiss": "modal" },
+                    on: {
+                      click: function($event) {
+                        return _vm.addsupplier()
+                      }
+                    }
+                  },
+                  [_vm._v("Tambahkan Supplier")]
+                )
+              ])
             ])
           ])
         ])
@@ -46379,134 +46622,199 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(7),
+            _vm._m(6),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
-              _c(
-                "form",
-                {
+              _c("div", { staticClass: "input-group" }, [
+                _vm._m(7),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Supplier.Nama_Supplier,
+                      expression: "Supplier.Nama_Supplier"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Nama Supplier",
+                    "aria-label": "Nama_Supplier",
+                    "aria-describedby": "basic-addon2",
+                    id: "Nama_Supplier",
+                    name: "Nama_Supplier",
+                    require: ""
+                  },
+                  domProps: { value: _vm.Supplier.Nama_Supplier },
                   on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.updatesupplier(_vm.handledsupplier.Id_Supplier)
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Supplier,
+                          "Nama_Supplier",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Supplier.Nama_Supplier.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Supplier.Nama_Supplier.$touch()
                     }
                   }
-                },
-                [
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(8),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.handledsupplier.Nama_Supplier,
-                          expression: "handledsupplier.Nama_Supplier"
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Supplier.Nama_Supplier.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.nameErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(8),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Supplier.Alamat_Supplier,
+                      expression: "Supplier.Alamat_Supplier"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Alamat Supplier",
+                    "aria-label": "Alamat_Supplier",
+                    "aria-describedby": "basic-addon2",
+                    id: "Alamat_Supplier",
+                    name: "Alamat_Supplier",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Supplier.Alamat_Supplier },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
                         }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Nama Supplier",
-                        "aria-label": "Nama_Supplier",
-                        "aria-describedby": "basic-addon2",
-                        id: "Nama_Supplier",
-                        name: "Nama_Supplier"
+                        _vm.$set(
+                          _vm.Supplier,
+                          "Alamat_Supplier",
+                          $event.target.value
+                        )
                       },
-                      domProps: { value: _vm.handledsupplier.Nama_Supplier },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.handledsupplier,
-                            "Nama_Supplier",
-                            $event.target.value
-                          )
-                        }
+                      function($event) {
+                        return _vm.$v.Supplier.Alamat_Supplier.$touch()
                       }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(9),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.handledsupplier.Alamat_Supplier,
-                          expression: "handledsupplier.Alamat_Supplier"
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Supplier.Alamat_Supplier.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Supplier.Alamat_Supplier.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.addressErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(9),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Supplier.Telepon_Supplier,
+                      expression: "Supplier.Telepon_Supplier"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Telepon Supplier",
+                    "aria-label": "Telepon_Supplier",
+                    "aria-describedby": "basic-addon2",
+                    id: "Telepon_Supplier",
+                    name: "Telepon_Supplier",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Supplier.Telepon_Supplier },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
                         }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Alamat Supplier",
-                        "aria-label": "Alamat_Supplier",
-                        "aria-describedby": "basic-addon2",
-                        id: "Alamat_Supplier",
-                        name: "Alamat_Supplier"
+                        _vm.$set(
+                          _vm.Supplier,
+                          "Telepon_Supplier",
+                          $event.target.value
+                        )
                       },
-                      domProps: { value: _vm.handledsupplier.Alamat_Supplier },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.handledsupplier,
-                            "Alamat_Supplier",
-                            $event.target.value
-                          )
-                        }
+                      function($event) {
+                        return _vm.$v.Supplier.Telepon_Supplier.$touch()
                       }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(10),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.handledsupplier.Telepon_Supplier,
-                          expression: "handledsupplier.Telepon_Supplier"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Telepon Supplier",
-                        "aria-label": "Telepon_Supplier",
-                        "aria-describedby": "basic-addon2",
-                        id: "Telepon_Supplier",
-                        name: "Telepon_Supplier"
-                      },
-                      domProps: { value: _vm.handledsupplier.Telepon_Supplier },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.handledsupplier,
-                            "Telepon_Supplier",
-                            $event.target.value
-                          )
-                        }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Supplier.Telepon_Supplier.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Supplier.Telepon_Supplier.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.phoneErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary btn-lg w-100",
+                    attrs: {
+                      type: "submit",
+                      "data-dismiss": "modal",
+                      disabled:
+                        _vm.$v.Supplier.Nama_Supplier.$invalid ||
+                        _vm.$v.Supplier.Alamat_Supplier.$invalid ||
+                        _vm.$v.Supplier.Telepon_Supplier.$invalid
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.updatesupplier(_vm.Supplier.Id_Supplier)
                       }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(11)
-                ]
-              )
+                    }
+                  },
+                  [_vm._v("Simpan Perubahan")]
+                )
+              ])
             ])
           ])
         ])
@@ -46528,9 +46836,9 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(12),
+            _vm._m(10),
             _vm._v(" "),
-            _vm._m(13),
+            _vm._m(11),
             _vm._v(" "),
             _c("div", { staticClass: "modal-footer " }, [
               _c(
@@ -46547,9 +46855,7 @@ var render = function() {
                       attrs: { type: "button", "data-dismiss": "modal" },
                       on: {
                         click: function($event) {
-                          return _vm.deletesupplier(
-                            _vm.handledsupplier.Id_Supplier
-                          )
+                          return _vm.deletesupplier(_vm.Supplier.Id_Supplier)
                         }
                       }
                     },
@@ -46563,7 +46869,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(14)
+              _vm._m(12)
             ])
           ])
         ])
@@ -46585,96 +46891,133 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(15),
+            _vm._m(13),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
-              _c(
-                "form",
-                {
+              _c("div", { staticClass: "input-group" }, [
+                _vm._m(14),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Supplier.Nama_Sales,
+                      expression: "Supplier.Nama_Sales"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Nama Sales",
+                    "aria-label": "Nama_Sales",
+                    "aria-describedby": "basic-addon2",
+                    id: "Nama_Sales",
+                    name: "Nama_Sales",
+                    require: ""
+                  },
+                  domProps: { value: _vm.Supplier.Nama_Sales },
                   on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.updatesales(_vm.handledsupplier.Id_Supplier)
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Supplier,
+                          "Nama_Sales",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Supplier.Nama_Sales.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Supplier.Nama_Sales.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Supplier.Nama_Sales.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.salesNameErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(15),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Supplier.Telepon_Sales,
+                      expression: "Supplier.Telepon_Sales"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Telepon Sales",
+                    "aria-label": "Telepon_Sales",
+                    "aria-describedby": "basic-addon2",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Supplier.Telepon_Sales },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Supplier,
+                          "Telepon_Sales",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Supplier.Telepon_Sales.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Supplier.Telepon_Sales.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Supplier.Telepon_Sales.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.salesPhoneErrors[0]))]
+                    )
+                  : _vm._e()
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary btn-lg w-100",
+                  attrs: { type: "submit", "data-dismiss": "modal" },
+                  on: {
+                    click: function($event) {
+                      return _vm.updatesales(_vm.Supplier.Id_Supplier)
                     }
                   }
                 },
-                [
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(16),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.handledsupplier.Nama_Sales,
-                          expression: "handledsupplier.Nama_Sales"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Nama Sales",
-                        "aria-label": "Nama_Sales",
-                        "aria-describedby": "basic-addon2",
-                        id: "Nama_Sales",
-                        name: "Nama_Sales"
-                      },
-                      domProps: { value: _vm.handledsupplier.Nama_Sales },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.handledsupplier,
-                            "Nama_Sales",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(17),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.handledsupplier.Telepon_Sales,
-                          expression: "handledsupplier.Telepon_Sales"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Telepon Sales",
-                        "aria-label": "Telepon_Sales",
-                        "aria-describedby": "basic-addon2",
-                        id: "Telepon_Sales",
-                        name: "Telepon_Sales"
-                      },
-                      domProps: { value: _vm.handledsupplier.Telepon_Sales },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.handledsupplier,
-                            "Telepon_Sales",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(18)
-                ]
+                [_vm._v("Simpan Perubahan")]
               )
             ])
           ])
@@ -46697,96 +47040,133 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(19),
+            _vm._m(16),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
-              _c(
-                "form",
-                {
+              _c("div", { staticClass: "input-group" }, [
+                _vm._m(17),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Supplier.Nama_Sales,
+                      expression: "Supplier.Nama_Sales"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Nama Sales",
+                    "aria-label": "Nama_Supplier",
+                    "aria-describedby": "basic-addon2",
+                    id: "Nama_Supplier",
+                    name: "Nama_Supplier",
+                    require: ""
+                  },
+                  domProps: { value: _vm.Supplier.Nama_Sales },
                   on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.updatesales(_vm.handledsupplier.Id_Supplier)
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Supplier,
+                          "Nama_Sales",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Supplier.Nama_Sales.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Supplier.Nama_Sales.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Supplier.Nama_Sales.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.salesNameErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(18),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Supplier.Telepon_Sales,
+                      expression: "Supplier.Telepon_Sales"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Telepon Sales",
+                    "aria-label": "Telepon_Sales",
+                    "aria-describedby": "basic-addon2",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Supplier.Telepon_Sales },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Supplier,
+                          "Telepon_Sales",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Supplier.Telepon_Sales.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Supplier.Telepon_Sales.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Supplier.Telepon_Sales.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.salesPhoneErrors[0]))]
+                    )
+                  : _vm._e()
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary btn-lg w-100",
+                  attrs: { type: "submit", "data-dismiss": "modal" },
+                  on: {
+                    click: function($event) {
+                      return _vm.updatesales(_vm.Supplier.Id_Supplier)
                     }
                   }
                 },
-                [
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(20),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.handledsupplier.Nama_Sales,
-                          expression: "handledsupplier.Nama_Sales"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Nama Sales",
-                        "aria-label": "Nama_Sales",
-                        "aria-describedby": "basic-addon2",
-                        id: "Nama_Sales",
-                        name: "Nama_Sales"
-                      },
-                      domProps: { value: _vm.handledsupplier.Nama_Sales },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.handledsupplier,
-                            "Nama_Sales",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-4" }, [
-                    _vm._m(21),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.handledsupplier.Telepon_Sales,
-                          expression: "handledsupplier.Telepon_Sales"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukkan Telepon Sales",
-                        "aria-label": "Telepon_Sales",
-                        "aria-describedby": "basic-addon2",
-                        id: "Telepon_Sales",
-                        name: "Telepon_Sales"
-                      },
-                      domProps: { value: _vm.handledsupplier.Telepon_Sales },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.handledsupplier,
-                            "Telepon_Sales",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(22)
-                ]
+                [_vm._v("Simpan Perubahan")]
               )
             ])
           ])
@@ -46809,9 +47189,9 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(23),
+            _vm._m(19),
             _vm._v(" "),
-            _vm._m(24),
+            _vm._m(20),
             _vm._v(" "),
             _c("div", { staticClass: "modal-footer " }, [
               _c(
@@ -46828,7 +47208,7 @@ var render = function() {
                       attrs: { type: "button", "data-dismiss": "modal" },
                       on: {
                         click: function($event) {
-                          return _vm.delsales(_vm.handledsupplier.Id_Supplier)
+                          return _vm.delsales(_vm.Supplier.Id_Supplier)
                         }
                       }
                     },
@@ -46842,7 +47222,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(25)
+              _vm._m(21)
             ])
           ])
         ])
@@ -46985,22 +47365,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-success btn-lg",
-          staticStyle: { width: "100%" },
-          attrs: { type: "submit" }
-        },
-        [_vm._v("Tambahkan Supplier")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
       _c(
         "h4",
@@ -47080,22 +47444,6 @@ var staticRenderFns = [
         )
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary btn-lg",
-          staticStyle: { width: "100%" },
-          attrs: { type: "submit" }
-        },
-        [_vm._v("Simpan Perubahan")]
-      )
-    ])
   },
   function() {
     var _vm = this
@@ -47220,22 +47568,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-success btn-lg",
-          staticStyle: { width: "100%" },
-          attrs: { type: "submit" }
-        },
-        [_vm._v("Tambahkan Sales")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
       _c(
         "h4",
@@ -47296,22 +47628,6 @@ var staticRenderFns = [
         )
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary btn-lg",
-          staticStyle: { width: "100%" },
-          attrs: { type: "submit" }
-        },
-        [_vm._v("Simpan Perubahan")]
-      )
-    ])
   },
   function() {
     var _vm = this
@@ -67057,8 +67373,7 @@ __webpack_require__.r(__webpack_exports__);
     Alamat_Supplier: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
       minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
-      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(255),
-      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(255)
     },
     Telepon_Supplier: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],

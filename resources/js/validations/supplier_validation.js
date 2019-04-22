@@ -12,7 +12,6 @@ export default {
             required,
             minLength: minLength(5),
             maxLength: maxLength(255),
-            numeric, 
         },
         Telepon_Supplier: {
             required,

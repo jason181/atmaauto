@@ -24,7 +24,6 @@
                             <th scope="col">Delete</th>
                         </tr>
                     </thead>
-       
                     <tbody>
                         <tr v-bind:key="cabang['Id_Cabang']" v-for="cabang in filteredCabang">
                             <td>{{cabang.Nama_Cabang}} </td>
