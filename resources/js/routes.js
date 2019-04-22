@@ -6,6 +6,7 @@ import Jasa_Service from './components/layout/JasaService.vue';
 import Supplier from './components/layout/Supplier.vue';
 import Sparepart from './components/layout/Sparepart.vue';
 import Cabang from './components/layout/Cabang.vue';
+import Konsumen from './components/layout/Konsumen.vue';
 import Home from './components/layout/Home.vue';
 import Katalog from './components/layout/Katalog.vue';
 import Status from './components/layout/Status.vue';
@@ -97,6 +98,17 @@ export const routes = [
         name: 'Cabang',
         path: '/cabang',
         component: Cabang,
+        meta: { role: [
+            'Admin'
+        ]},
+        beforeEnter: middleware([
+            auth
+        ]) 
+    },
+    {
+        name: 'Konsumen',
+        path: '/konsumen',
+        component: Konsumen,
         meta: { role: [
             'Admin'
         ]},
