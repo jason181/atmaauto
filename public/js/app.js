@@ -2857,9 +2857,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4137,6 +4134,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }(),
     datapegawaihandler: function datapegawaihandler(pegawai) {
       this.Pegawai = pegawai;
+      this.Pegawai.Password = 'filler';
     },
     refresh: function refresh() {
       this.Pegawai.Id_Cabang = 'Pilih Cabang';
@@ -5051,6 +5049,13 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -42428,8 +42433,10 @@ var render = function() {
           [
             _vm._m(0),
             _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
             _c("div", { staticClass: "collapse navbar-collapse" }, [
-              _vm._m(1),
+              _vm._m(2),
               _vm._v(" "),
               _c("form", { staticClass: "form-inline my-2 my-lg-0" }, [
                 _c(
@@ -42594,9 +42601,9 @@ var render = function() {
           "nav",
           { staticClass: "navbar navbar-expand-lg navbar-light bg-light" },
           [
-            _vm._m(2),
-            _vm._v(" "),
             _vm._m(3),
+            _vm._v(" "),
+            _vm._m(4),
             _vm._v(" "),
             _c(
               "div",
@@ -42687,6 +42694,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "navbar-brand", attrs: { href: "../" } }, [
+      _c("img", {
+        attrs: {
+          src: __webpack_require__(/*! ../../image/Logo_Transparan.png */ "./resources/image/Logo_Transparan.png"),
+          width: "50px"
+        }
+      }),
+      _vm._v(" SIAUTO")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "button",
       {
@@ -42734,8 +42755,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
-      _c("img", { attrs: { src: "/images/Logo_AtmaAuto.jpg", width: "50px" } }),
+    return _c("a", { staticClass: "navbar-brand", attrs: { href: "../" } }, [
+      _c("img", {
+        attrs: {
+          src: __webpack_require__(/*! ../../image/Logo_Transparan.png */ "./resources/image/Logo_Transparan.png"),
+          width: "50px"
+        }
+      }),
       _vm._v(" SIAUTO")
     ])
   },
@@ -46865,58 +46891,6 @@ var render = function() {
               _c("div", { staticClass: "input-group mt-3" }, [
                 _vm._m(17),
                 _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.Pegawai.Password,
-                      expression: "Pegawai.Password"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "password",
-                    placeholder: "Masukkan Password",
-                    "aria-label": "Password",
-                    "aria-describedby": "basic-addon2",
-                    id: "Password",
-                    name: "Password",
-                    require: ""
-                  },
-                  domProps: { value: _vm.Pegawai.Password },
-                  on: {
-                    input: [
-                      function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.Pegawai, "Password", $event.target.value)
-                      },
-                      function($event) {
-                        return _vm.$v.Pegawai.Password.$touch()
-                      }
-                    ],
-                    blur: function($event) {
-                      return _vm.$v.Pegawai.Password.$touch()
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-center" }, [
-                _vm.$v.Pegawai.Password.$invalid
-                  ? _c(
-                      "p",
-                      { staticClass: "mb-3", staticStyle: { color: "red" } },
-                      [_vm._v(_vm._s(_vm.passwordErrors[0]))]
-                    )
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-group mt-3" }, [
-                _vm._m(18),
-                _vm._v(" "),
                 _c(
                   "select",
                   {
@@ -46995,7 +46969,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-3" }, [
-                _vm._m(19),
+                _vm._m(18),
                 _vm._v(" "),
                 _c(
                   "select",
@@ -47110,9 +47084,9 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(20),
+            _vm._m(19),
             _vm._v(" "),
-            _vm._m(21),
+            _vm._m(20),
             _vm._v(" "),
             _c("div", { staticClass: "modal-footer " }, [
               _c(
@@ -47143,7 +47117,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(22)
+              _vm._m(21)
             ])
           ])
         ])
@@ -47485,25 +47459,6 @@ var staticRenderFns = [
           "span",
           { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
           [_vm._v("Username")]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "input-group-prepend d-block",
-        staticStyle: { width: "100px" }
-      },
-      [
-        _c(
-          "span",
-          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
-          [_vm._v("Password")]
         )
       ]
     )
@@ -49536,7 +49491,26 @@ var render = function() {
   return _c("body", [
     _c("div", { staticClass: "container-fluid mt-3" }, [
       _c("div", { staticClass: "clearfix my-2" }, [
-        _vm._m(0),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success float-left mb-2",
+            attrs: {
+              "data-title": "Tambah_Supplier",
+              "data-toggle": "modal",
+              "data-target": "#Tambah_Supplier"
+            },
+            on: {
+              click: function($event) {
+                _vm.getallsupplier(), _vm.refreshSupplier()
+              }
+            }
+          },
+          [
+            _c("i", { staticClass: "fas fa-plus mr-2" }),
+            _vm._v("Tambah\n                ")
+          ]
+        ),
         _vm._v(" "),
         _c(
           "div",
@@ -49587,7 +49561,7 @@ var render = function() {
         { staticClass: "table-responsive", staticStyle: { margin: "auto" } },
         [
           _c("table", { staticClass: "table table-striped table-hover" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c(
               "tbody",
@@ -49731,37 +49705,70 @@ var render = function() {
                         )
                       ]),
                   _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c(
-                      "p",
-                      {
-                        attrs: {
-                          "data-placement": "top",
-                          "data-toggle": "tooltip",
-                          title: "Delete"
-                        }
-                      },
-                      [
+                  supplier.Nama_Sales != null
+                    ? _c("td", { staticClass: "text-center" }, [
                         _c(
-                          "button",
+                          "p",
                           {
-                            staticClass: "btn btn-danger",
                             attrs: {
-                              "data-title": "Delete_Sales",
-                              "data-toggle": "modal",
-                              "data-target": "#Delete_Sales"
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.datasupplierhandler(supplier)
-                              }
+                              "data-placement": "top",
+                              "data-toggle": "tooltip",
+                              title: "Delete"
                             }
                           },
-                          [_c("i", { staticClass: "fas fa-trash-alt" })]
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-danger",
+                                attrs: {
+                                  "data-title": "Delete_Sales",
+                                  "data-toggle": "modal",
+                                  "data-target": "#Delete_Sales"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.datasupplierhandler(supplier)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-trash-alt" })]
+                            )
+                          ]
                         )
-                      ]
-                    )
-                  ])
+                      ])
+                    : _c("td", { staticClass: "text-center" }, [
+                        _c(
+                          "p",
+                          {
+                            attrs: {
+                              "data-placement": "top",
+                              "data-toggle": "tooltip",
+                              title: "Delete"
+                            }
+                          },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-danger",
+                                attrs: {
+                                  "data-title": "Delete_Sales",
+                                  "data-toggle": "modal",
+                                  "data-target": "#Delete_Sales",
+                                  disabled: ""
+                                },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.datasupplierhandler(supplier)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-trash-alt" })]
+                            )
+                          ]
+                        )
+                      ])
                 ])
               }),
               0
@@ -49786,11 +49793,11 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(2),
+            _vm._m(1),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
               _c("div", { staticClass: "input-group" }, [
-                _vm._m(3),
+                _vm._m(2),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -49846,7 +49853,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-3" }, [
-                _vm._m(4),
+                _vm._m(3),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -49902,7 +49909,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-3" }, [
-                _vm._m(5),
+                _vm._m(4),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -49993,11 +50000,11 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(6),
+            _vm._m(5),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
               _c("div", { staticClass: "input-group" }, [
-                _vm._m(7),
+                _vm._m(6),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -50053,7 +50060,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-3" }, [
-                _vm._m(8),
+                _vm._m(7),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -50109,7 +50116,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-3" }, [
-                _vm._m(9),
+                _vm._m(8),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -50207,9 +50214,9 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(10),
+            _vm._m(9),
             _vm._v(" "),
-            _vm._m(11),
+            _vm._m(10),
             _vm._v(" "),
             _c("div", { staticClass: "modal-footer " }, [
               _c(
@@ -50240,7 +50247,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(12)
+              _vm._m(11)
             ])
           ])
         ])
@@ -50262,11 +50269,11 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(13),
+            _vm._m(12),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
               _c("div", { staticClass: "input-group" }, [
-                _vm._m(14),
+                _vm._m(13),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -50322,7 +50329,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-3" }, [
-                _vm._m(15),
+                _vm._m(14),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -50380,7 +50387,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-primary btn-lg w-100",
+                  staticClass: "btn btn-success btn-lg w-100",
                   attrs: { type: "submit", "data-dismiss": "modal" },
                   on: {
                     click: function($event) {
@@ -50388,7 +50395,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Simpan Perubahan")]
+                [_vm._v("Tambah Sales")]
               )
             ])
           ])
@@ -50411,11 +50418,11 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(16),
+            _vm._m(15),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
               _c("div", { staticClass: "input-group" }, [
-                _vm._m(17),
+                _vm._m(16),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -50471,7 +50478,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-3" }, [
-                _vm._m(18),
+                _vm._m(17),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -50560,9 +50567,9 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(19),
+            _vm._m(18),
             _vm._v(" "),
-            _vm._m(20),
+            _vm._m(19),
             _vm._v(" "),
             _c("div", { staticClass: "modal-footer " }, [
               _c(
@@ -50593,7 +50600,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(21)
+              _vm._m(20)
             ])
           ])
         ])
@@ -50602,26 +50609,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-success float-left mb-2",
-        attrs: {
-          "data-title": "Tambah_Supplier",
-          "data-toggle": "modal",
-          "data-target": "#Tambah_Supplier"
-        }
-      },
-      [
-        _c("i", { staticClass: "fas fa-plus mr-2" }),
-        _vm._v("Tambah\n                ")
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -68769,6 +68756,17 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+
+/***/ "./resources/image/Logo_Transparan.png":
+/*!*********************************************!*\
+  !*** ./resources/image/Logo_Transparan.png ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/Logo_Transparan.png?4af192e4a1cf42a39de8fff0358e6024";
 
 /***/ }),
 
