@@ -441,7 +441,6 @@ export default {
             !this.$v.Pegawai.Nama_Pegawai.required && errors.push('Name is required')
             // !this.$v.Pegawai.Nama_Pegawai.alpha && errors.push('Name must be alphabetic')
             return errors
-            //appjs
         },
         addressErrors(){
             const errors = []
