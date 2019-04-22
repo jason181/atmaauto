@@ -18,6 +18,7 @@ class SparepartTransformers extends TransformerAbstract
             'Kode_Sparepart'         =>$sparepart->Kode_Sparepart,
             'Nama_Sparepart'         =>$sparepart->Nama_Sparepart,
             'Merk_Sparepart'         =>$sparepart->Merk_Sparepart,
+            'Tipe_Barang'            =>$sparepart->Tipe_Barang,
             'Rak_Sparepart'          =>$sparepart->Rak_Sparepart,
             'Jumlah_Sparepart'       =>$sparepart->Jumlah_Sparepart,
             'Stok_Minimum_Sparepart' =>$sparepart->Stok_Minimum_Sparepart,

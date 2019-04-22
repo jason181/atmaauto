@@ -292,7 +292,7 @@
 </template>
 <script>
 import Controller from '../../httpController'
-import validators from '../../validations/supplier_validation' 
+import validators from '../../validations/supplier_validations' 
 
 export default {
     validations:validators,

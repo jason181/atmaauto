@@ -1,16 +1,15 @@
 import middleware, { auth } from './middleware'
 
-import AppLayout from './components/appLayout.vue';
-import Login from './components/layout/login.vue';
-import Pegawai from './components/layout/pegawai.vue';
-import Jasa_Service from './components/layout/jasa_service.vue';
-import Supplier from './components/layout/supplier.vue';
-import Sparepart from './components/layout/sparepart.vue';
-import Home from './components/layout/home.vue';
-import Katalog from './components/layout/katalog.vue';
-import Status from './components/layout/status.vue';
-import { homedir } from 'os';
+import Login from './components/layout/Login.vue';
+import Pegawai from './components/layout/Pegawai.vue';
+import Jasa_Service from './components/layout/JasaService.vue';
+import Supplier from './components/layout/Supplier.vue';
+import Sparepart from './components/layout/Sparepart.vue';
 import Cabang from './components/layout/Cabang.vue';
+import Home from './components/layout/Home.vue';
+import Katalog from './components/layout/Katalog.vue';
+import Status from './components/layout/Status.vue';
+import { homedir } from 'os';
 
 export const routes = [
     {

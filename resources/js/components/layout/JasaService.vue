@@ -157,7 +157,7 @@
 </template>
 <script>
 import Controller from '../../httpController'
-import validators from '../../validations/jasa_service_validation'
+import validators from '../../validations/jasa_service_validations'
 
 export default {
     validations: validators,

@@ -23,7 +23,7 @@ class CreateSparepartsTable extends Migration
             $table->integer('Stok_Minimum_Sparepart');
             $table->double('Harga_Beli');
             $table->double('Harga_Jual');
-            $table->string('Gambar',255);
+            $table->string('Gambar');
             $table->timestamps();
         });
     }

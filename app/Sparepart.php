@@ -38,5 +38,9 @@ class Sparepart extends Model
     {
         return $this->hasMany('App\Detail_Sparepart','Id_Detail_Sparepart');
     }
+    public function ruangs()
+    {
+        return $this->belongsTo('App\Ruang','Id_Ruang');
+    }
     
 }
