@@ -1,23 +1,37 @@
 <template>
     <body>
         <div class="container-fluid mt-3">
-            <div class="clearfix my-2">
-                <button class="btn btn-success float-left mb-2" data-title="Tambah_Pegawai" data-toggle="modal" data-target="#Tambah_Pegawai">
-                    <i class="fas fa-plus mr-2"></i>Tambah
-                </button>
-                <div class="navbar navbar-light bg-light float-right p-0">
-				  	<form class="form-inline">
-				    	<input class="form-control mr-sm-2" type="search" v-model="Cari_Pegawai" placeholder="Search" aria-label="Search">
-				    	<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-				  	</form>
-				</div>
+            <div class="row mb-2">
+                <div class="col-sm-2">
+                    <div class="col-sm-7 p-0">
+                        <button class="btn btn-success mb-2 btn-block" @click="getallpegawai(),refresh()" data-title="Tambah_Pegawai" data-toggle="modal" data-target="#Tambah_Pegawai">
+                            <i class="fas fa-plus mr-2"></i>Tambah
+                        </button>
+                    </div>
+                    <div class="col-sm-5">
+
+                    </div>
+                </div>
+                <div class="col-sm-7">
+
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <input class="form-control" v-model="Cari_Pegawai" type="search" placeholder="Cari Pegawai">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
+                
             
             <div class="table-responsive">
                 <table class="table table-striped table-hover">
                     <thead class="table-primary text-center">
                         <tr>
-                            <!-- <th scope="col">Id</th> -->
                             <th scope="col">Nama</th>
                             <th scope="col">Alamat</th>
                             <th scope="col">Telepon</th>
@@ -25,7 +39,7 @@
                             <th scope="col">Jabatan</th>
                             <th scope="col">Gaji</th>
                             <th scope="col">Username</th>
-                            <th scope="col">Password</th>
+                            <!-- <th scope="col">Password</th> -->
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                         </tr>
@@ -39,7 +53,7 @@
                             <td>{{pegawai.Nama_Role}} </td>     
                             <td>{{pegawai.Gaji_Pegawai}} </td>
                             <td>{{pegawai.Username}} </td>
-                            <td>{{pegawai.Password}} </td>
+                            <!-- <td>{{pegawai.Password}} </td> -->
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Edit">
                                     <button class="btn btn-primary" @click="datapegawaihandler(pegawai)" data-title="Edit_Pegawai" data-toggle="modal" data-target="#Edit_Pegawai">
@@ -72,89 +86,87 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form @submit.prevent="addpegawai()">
-                            <div class="input-group">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Nama</span>
-                                </div>
-                                <input type="text" class="form-control" v-model="Pegawai.Nama_Pegawai" placeholder="Masukkan Nama Pegawai" aria-label="Nama_Pegawai" aria-describedby="basic-addon2" id="Nama_Pegawai" name="Nama_Pegawai" @input="$v.Pegawai.Nama_Pegawai.$touch()" @blur="$v.Pegawai.Nama_Pegawai.$touch()" required>
+                        <div class="input-group">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Nama</span>
                             </div>
-                            <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Nama_Pegawai.$invalid">{{nameErrors[0]}}</p>
+                            <input type="text" class="form-control" v-model="Pegawai.Nama_Pegawai" placeholder="Masukkan Nama Pegawai" aria-label="Nama_Pegawai" aria-describedby="basic-addon2" id="Nama_Pegawai" name="Nama_Pegawai" @input="$v.Pegawai.Nama_Pegawai.$touch()" @blur="$v.Pegawai.Nama_Pegawai.$touch()" required>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Nama_Pegawai.$invalid">{{nameErrors[0]}}</p>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Alamat</span>
                             </div>
-                            <div class="input-group mt-3">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Alamat</span>
-                                </div>
-                                <input type="text" class="form-control" v-model="Pegawai.Alamat_Pegawai" placeholder="Masukkan Alamat Pegawai" aria-label="Nama_Lengkap" aria-describedby="basic-addon2" id="Alamat_Pegawai" name="Alamat_Pegawai" @input="$v.Pegawai.Alamat_Pegawai.$touch()" @blur="$v.Pegawai.Alamat_Pegawai.$touch()" required>
+                            <input type="text" class="form-control" v-model="Pegawai.Alamat_Pegawai" placeholder="Masukkan Alamat Pegawai" aria-label="Nama_Lengkap" aria-describedby="basic-addon2" id="Alamat_Pegawai" name="Alamat_Pegawai" @input="$v.Pegawai.Alamat_Pegawai.$touch()" @blur="$v.Pegawai.Alamat_Pegawai.$touch()" required>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Alamat_Pegawai.$invalid">{{addressErrors[0]}}</p>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Telepon</span>
                             </div>
-                            <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Alamat_Pegawai.$invalid">{{addressErrors[0]}}</p>
+                            <input type="text" class="form-control" v-model="Pegawai.Telepon_Pegawai" placeholder="Masukkan Nomor Telepon Pegawai" aria-label="Telepon_Pegawai" aria-describedby="basic-addon2" id="Telepon_Pegawai" name="Telepon_Pegawai" @input="$v.Pegawai.Telepon_Pegawai.$touch()" @blur="$v.Pegawai.Telepon_Pegawai.$touch()" require>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Telepon_Pegawai.$invalid">{{phoneErrors[0]}}</p>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Gaji</span>
                             </div>
-                            <div class="input-group mt-3">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Telepon</span>
-                                </div>
-                                <input type="text" class="form-control" v-model="Pegawai.Telepon_Pegawai" placeholder="Masukkan Nomor Telepon Pegawai" aria-label="Telepon_Pegawai" aria-describedby="basic-addon2" id="Telepon_Pegawai" name="Telepon_Pegawai" @input="$v.Pegawai.Telepon_Pegawai.$touch()" @blur="$v.Pegawai.Telepon_Pegawai.$touch()" require>
+                            <input type="text" class="form-control" v-model="Pegawai.Gaji_Pegawai" placeholder="Masukkan Gaji" aria-label="Gaji_Pegawai" aria-describedby="basic-addon2" id="Gaji_Pegawai" name="Gaji_Pegawai" @input="$v.Pegawai.Gaji_Pegawai.$touch()" @blur="$v.Pegawai.Gaji_Pegawai.$touch()" require>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Gaji_Pegawai.$invalid">{{salaryErrors[0]}}</p>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Username</span>
                             </div>
-                            <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Telepon_Pegawai.$invalid">{{phoneErrors[0]}}</p>
+                            <input type="text" class="form-control" v-model="Pegawai.Username" placeholder="Masukkan Username" aria-label="Username" aria-describedby="basic-addon2" id="Username" name="Username" @input="$v.Pegawai.Username.$touch()" @blur="$v.Pegawai.Username.$touch()" require>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Username.$invalid">{{usernameErrors[0]}}</p>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Password</span>
                             </div>
-                            <div class="input-group mt-3">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Gaji</span>
-                                </div>
-                                <input type="text" class="form-control" v-model="Pegawai.Gaji_Pegawai" placeholder="Masukkan Gaji" aria-label="Gaji_Pegawai" aria-describedby="basic-addon2" id="Gaji_Pegawai" name="Gaji_Pegawai" @input="$v.Pegawai.Gaji_Pegawai.$touch()" @blur="$v.Pegawai.Gaji_Pegawai.$touch()" require>
+                            <input type="password" class="form-control" v-model="Pegawai.Password" placeholder="Masukkan Password" aria-label="Password" aria-describedby="basic-addon2" id="Password" name="Password" @input="$v.Pegawai.Password.$touch()" @blur="$v.Pegawai.Password.$touch()" require>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Password.$invalid">{{passwordErrors[0]}}</p>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Cabang</span>
                             </div>
-                            <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Gaji_Pegawai.$invalid">{{salaryErrors[0]}}</p>
+                            <select class="form-control" v-model="Pegawai.Id_Cabang" @input="$v.Pegawai.Id_Cabang.$touch()" @blur="$v.Pegawai.Id_Cabang.$touch()" require>
+                                <option disabled="disabled" selected="selected" value="Pilih Cabang">-- Pilih Cabang --</option>
+                                <option v-bind:key="cabang['Id_Cabang']" v-for="cabang in cabangdata" :value="cabang.Id_Cabang">{{cabang.Nama_Cabang}} </option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Id_Cabang.$invalid">{{cabangErrors[0]}}</p>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Jabatan</span>
                             </div>
-                            <div class="input-group mt-3">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Username</span>
-                                </div>
-                                <input type="text" class="form-control" v-model="Pegawai.Username" placeholder="Masukkan Username" aria-label="Username" aria-describedby="basic-addon2" id="Username" name="Username" @input="$v.Pegawai.Username.$touch()" @blur="$v.Pegawai.Username.$touch()" require>
-                            </div>
-                            <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Username.$invalid">{{usernameErrors[0]}}</p>
-                            </div>
-                            <div class="input-group mt-3">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Password</span>
-                                </div>
-                                <input type="password" class="form-control" v-model="Pegawai.Password" placeholder="Masukkan Password" aria-label="Password" aria-describedby="basic-addon2" id="Password" name="Password" @input="$v.Pegawai.Password.$touch()" @blur="$v.Pegawai.Password.$touch()" require>
-                            </div>
-                            <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Password.$invalid">{{passwordErrors[0]}}</p>
-                            </div>
-                            <div class="input-group mt-3">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Cabang</span>
-                                </div>
-                                <select class="form-control" v-model="Pegawai.Id_Cabang" @input="$v.Pegawai.Id_Cabang.$touch()" @blur="$v.Pegawai.Id_Cabang.$touch()" require>
-                                    <option disabled="disabled" selected="selected">-- Pilih Cabang --</option>
-                                    <option v-bind:key="cabang['Id_Cabang']" v-for="cabang in cabangData" :value="cabang.Id_Cabang">{{cabang.Nama_Cabang}} </option>
-                                </select>
-                            </div>
-                            <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Id_Cabang.$invalid">{{cabangErrors[0]}}</p>
-                            </div>
-                            <div class="input-group mt-3">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Jabatan</span>
-                                </div>
-                                <select class="form-control" v-model="Pegawai.Id_Role" @input="$v.Pegawai.Id_Role.$touch()" @blur="$v.Pegawai.Id_Role.$touch()" require>
-                                    <option disabled="disabled" selected="selected">-- Pilih Jabatan --</option>
-                                    <option v-bind:key="role['Id_Role']" v-for="role in roledata" :value="role.Id_Role">{{role.Nama_Role}} </option>
-                                </select>
-                            </div>
-                            <div class="text-center">
-                                <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Id_Role.$invalid">{{roleErrors[0]}}</p>
-                            </div>
-                            <div class="modal-footer mt-3">
-                                <button type="submit" class="btn btn-success btn-lg" style="width: 100%;" :disabled="$v.Pegawai.$invalid">Tambahkan Pegawai</button>
-                            </div>
-                        </form>
+                            <select class="form-control" v-model="Pegawai.Id_Role" @input="$v.Pegawai.Id_Role.$touch()" @blur="$v.Pegawai.Id_Role.$touch()" require>
+                                <option disabled="disabled" selected="selected" value="Pilih Jabatan">-- Pilih Jabatan --</option>
+                                <option v-bind:key="role['Id_Role']" v-for="role in roledata" :value="role.Id_Role">{{role.Nama_Role}} </option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Id_Role.$invalid">{{roleErrors[0]}}</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer mt-3">
+                        <button type="submit" class="btn btn-success btn-lg w-100" @click="addpegawai()" :disabled="$v.Pegawai.$invalid">Tambahkan Pegawai</button>
                     </div>
                 </div>
             </div>
@@ -171,65 +183,87 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form @submit.prevent="updatepegawai(handledpegawai.Id_Pegawai)">
-                            <div class="input-group mb-4">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
+                        <div class="input-group">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Nama</span>
                             </div>
-                                <input type="text" class="form-control" v-model="handledpegawai.Nama_Pegawai" placeholder="Masukkan Nama Pegawai" aria-label="Nama_Pegawai" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control" v-model="Pegawai.Nama_Pegawai" placeholder="Masukkan Nama Pegawai" aria-label="Nama_Pegawai" aria-describedby="basic-addon2" id="Nama_Pegawai" name="Nama_Pegawai" @input="$v.Pegawai.Nama_Pegawai.$touch()" @blur="$v.Pegawai.Nama_Pegawai.$touch()" required>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Nama_Pegawai.$invalid">{{nameErrors[0]}}</p>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Alamat</span>
                             </div>
-                            <div class="input-group mb-4">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Alamat</span>
-                                </div>
-                                <input type="text" class="form-control" v-model="handledpegawai.Alamat_Pegawai" placeholder="Masukkan Alamat Pegawai" aria-label="Nama_Lengkap" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control" v-model="Pegawai.Alamat_Pegawai" placeholder="Masukkan Alamat Pegawai" aria-label="Nama_Lengkap" aria-describedby="basic-addon2" id="Alamat_Pegawai" name="Alamat_Pegawai" @input="$v.Pegawai.Alamat_Pegawai.$touch()" @blur="$v.Pegawai.Alamat_Pegawai.$touch()" required>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Alamat_Pegawai.$invalid">{{addressErrors[0]}}</p>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Telepon</span>
                             </div>
-                            <div class="input-group mb-4">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Telepon</span>
-                                </div>
-                                <input type="text" class="form-control" v-model="handledpegawai.Telepon_Pegawai" placeholder="Masukkan Nomor Telepon Pegawai" aria-label="Telepon_Pegawai" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control" v-model="Pegawai.Telepon_Pegawai" placeholder="Masukkan Nomor Telepon Pegawai" aria-label="Telepon_Pegawai" aria-describedby="basic-addon2" id="Telepon_Pegawai" name="Telepon_Pegawai" @input="$v.Pegawai.Telepon_Pegawai.$touch()" @blur="$v.Pegawai.Telepon_Pegawai.$touch()" require>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Telepon_Pegawai.$invalid">{{phoneErrors[0]}}</p>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Gaji</span>
                             </div>
-                            <div class="input-group mb-4">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Gaji</span>
-                                </div>
-                                <input type="text" class="form-control" v-model="handledpegawai.Gaji_Pegawai" placeholder="Masukkan Gaji" aria-label="Gaji_Pegawai" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control" v-model="Pegawai.Gaji_Pegawai" placeholder="Masukkan Gaji" aria-label="Gaji_Pegawai" aria-describedby="basic-addon2" id="Gaji_Pegawai" name="Gaji_Pegawai" @input="$v.Pegawai.Gaji_Pegawai.$touch()" @blur="$v.Pegawai.Gaji_Pegawai.$touch()" require>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Gaji_Pegawai.$invalid">{{salaryErrors[0]}}</p>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Username</span>
                             </div>
-                            <div class="input-group mb-4">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Username</span>
-                                </div>
-                                <input type="text" class="form-control" v-model="handledpegawai.Username" placeholder="Masukkan Username" aria-label="Username" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control" v-model="Pegawai.Username" placeholder="Masukkan Username" aria-label="Username" aria-describedby="basic-addon2" id="Username" name="Username" @input="$v.Pegawai.Username.$touch()" @blur="$v.Pegawai.Username.$touch()" require>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Username.$invalid">{{usernameErrors[0]}}</p>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Password</span>
                             </div>
-                            <div class="input-group mb-4">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Password</span>
-                                </div>
-                                <input type="text" class="form-control" v-model="handledpegawai.Password" placeholder="Masukkan Password" aria-label="Password" aria-describedby="basic-addon2">
+                            <input type="password" class="form-control" v-model="Pegawai.Password" placeholder="Masukkan Password" aria-label="Password" aria-describedby="basic-addon2" id="Password" name="Password" @input="$v.Pegawai.Password.$touch()" @blur="$v.Pegawai.Password.$touch()" require>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Password.$invalid">{{passwordErrors[0]}}</p>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Cabang</span>
                             </div>
-                            <div class="input-group mb-4">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Cabang</span>
-                                </div>
-                                <select class="form-control" v-model="handledpegawai.Id_Cabang">
-                                    <option disabled="disabled" selected="selected">-- Pilih Cabang --</option>
-                                    <option v-bind:key="cabang['Id_Cabang']" v-for="cabang in cabangData" :value="cabang.Id_Cabang">{{cabang.Nama_Cabang}} </option>
-                                </select>
+                            <select class="form-control" v-model="Pegawai.Id_Cabang" @input="$v.Pegawai.Id_Cabang.$touch()" @blur="$v.Pegawai.Id_Cabang.$touch()" require>
+                                <option disabled="disabled" selected="selected" value="Pilih Cabang">-- Pilih Cabang --</option>
+                                <option v-bind:key="cabang['Id_Cabang']" v-for="cabang in cabangData" :value="cabang.Id_Cabang">{{cabang.Nama_Cabang}} </option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Id_Cabang.$invalid">{{cabangErrors[0]}}</p>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Jabatan</span>
                             </div>
-                            <div class="input-group mb-4">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Jabatan</span>
-                                </div>
-                                <select class="form-control" v-model="handledpegawai.Id_Role">
-                                    <option disabled="disabled" selected="selected">-- Pilih Jabatan --</option>
-                                    <option v-bind:key="role['Id_Role']" v-for="role in roledata" :value="role.Id_Role">{{role.Nama_Role}} </option>
-                                </select>
-                            </div>
-                            <div class="modal-footer ">
-                                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; " >Simpan Perubahan</button>
-                            </div>
-                        </form>
+                            <select class="form-control" v-model="Pegawai.Id_Role" @input="$v.Pegawai.Id_Role.$touch()" @blur="$v.Pegawai.Id_Role.$touch()" require>
+                                <option disabled="disabled" selected="selected" value="Pilih Jabatan">-- Pilih Jabatan --</option>
+                                <option v-bind:key="role['Id_Role']" v-for="role in roledata" :value="role.Id_Role">{{role.Nama_Role}} </option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" v-if="$v.Pegawai.Id_Role.$invalid">{{roleErrors[0]}}</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer mt-3">
+                        <button type="submit" class="btn btn-primary btn-lg w-100" @click="updatepegawai(Pegawai.Id_Pegawai)" :disabled="$v.Pegawai.$invalid">Simpan Perubahan</button>
                     </div>
                 </div>
             </div>
@@ -250,7 +284,7 @@
                     </div>
                     <div class="modal-footer ">
                         <a id="delete_btn" class="float-left w-100">
-                            <button type="button" @click="deletepegawai(handledpegawai.Id_Pegawai)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
+                            <button type="button" @click="deletepegawai(Pegawai.Id_Pegawai)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
                         </a>
                         <button type="button" class="btn btn-secondary float-right w-50" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
                     </div>
@@ -272,7 +306,7 @@ export default {
         pegawaidata:[],
         cabangData:[],
         roledata:[],
-        handledpegawai:[],
+        Pegawai:[],
         Id_Cabang:'',
         Id_Role:'',
         Nama_Pegawai:'',
@@ -282,8 +316,8 @@ export default {
         Username:'',
         Password:'',
         Pegawai:{
-            Id_Cabang:'',
-            Id_Role:'',
+            Id_Cabang:'Pilih Cabang',
+            Id_Role:' Pilih Jabatan',
             Nama_Pegawai:'',
             Alamat_Pegawai:'',
             Telepon_Pegawai:'',
@@ -337,7 +371,6 @@ export default {
                 }
                 await Controller.addpegawai(payload)
                 this.getallpegawai()
-                // console.log()
             } catch (err) {
                 console.log(err)
             }
@@ -345,18 +378,17 @@ export default {
         async updatepegawai (id) {
             try {
                 const payload = {
-                    Id_Cabang           : this.handledpegawai.Id_Cabang,
-                    Id_Role             : this.handledpegawai.Id_Role,
-                    Nama_Pegawai        : this.handledpegawai.Nama_Pegawai,
-                    Alamat_Pegawai      : this.handledpegawai.Alamat_Pegawai,
-                    Telepon_Pegawai     : this.handledpegawai.Telepon_Pegawai,
-                    Gaji_Pegawai        : this.handledpegawai.Gaji_Pegawai,
-                    Username            : this.handledpegawai.Username,
-                    Password            : this.handledpegawai.Password,
+                    Id_Cabang           : this.Pegawai.Id_Cabang,
+                    Id_Role             : this.Pegawai.Id_Role,
+                    Nama_Pegawai        : this.Pegawai.Nama_Pegawai,
+                    Alamat_Pegawai      : this.Pegawai.Alamat_Pegawai,
+                    Telepon_Pegawai     : this.Pegawai.Telepon_Pegawai,
+                    Gaji_Pegawai        : this.Pegawai.Gaji_Pegawai,
+                    Username            : this.Pegawai.Username,
+                    Password            : this.Pegawai.Password,
                 }
                 await Controller.updatepegawai(payload,id)
                 this.getallpegawai()
-                // console.log()
             } catch (err) {
                 console.log(err)
             }
@@ -371,7 +403,17 @@ export default {
             }
         },
         datapegawaihandler(pegawai){
-            this.handledpegawai = pegawai
+            this.Pegawai = pegawai
+        },
+        refresh(){
+            this.Pegawai.Id_Cabang      = 'Pilih Cabang';
+            this.Pegawai.Id_Role        = 'Pilih Jabatan';
+            this.Pegawai.Nama_Pegawai   = '';
+            this.Pegawai.Alamat_Pegawai = '';
+            this.Pegawai.Telepon_Pegawai= '';
+            this.Pegawai.Gaji_Pegawai   = '';
+            this.Pegawai.Username       = '';
+            this.Pegawai.Password       = '';
         }
     },
     computed:{
