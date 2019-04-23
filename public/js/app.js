@@ -4678,943 +4678,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Sparepart.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/Sparepart.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/Sparepart */ "./resources/js/service/Sparepart.js");
-/* harmony import */ var _service_Motor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../service/Motor */ "./resources/js/service/Motor.js");
-/* harmony import */ var _validations_sparepart_validations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../validations/sparepart_validations */ "./resources/js/validations/sparepart_validations.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  validations: _validations_sparepart_validations__WEBPACK_IMPORTED_MODULE_3__["default"],
-  data: function data() {
-    return {
-      sparepartdata: [],
-      motorcycletypes: [],
-      motorcycle: [],
-      motorcycleTypes: [],
-      Kode_Sparepart: '',
-      Kode1: '',
-      Kode2: '',
-      Kode3: '',
-      Tipe_Barang: '',
-      Nama_Sparepart: '',
-      Merk_Sparepart: '',
-      Rak_Sparepart: '',
-      Jumlah_Sparepart: '',
-      Stok_Minimum_Sparepart: 0,
-      Harga_Beli: 0,
-      Harga_Jual: 0,
-      Gambar: '',
-      Cari_Sparepart: '',
-      Id_Motor: '',
-      err: '',
-      index: '',
-      Sparepart: {
-        Kode_Sparepart: '',
-        Kode1: '',
-        Kode2: '',
-        Kode3: '',
-        Tipe_Barang: '',
-        Nama_Sparepart: '',
-        Merk_Sparepart: '',
-        Rak_Sparepart: '',
-        Jumlah_Sparepart: '',
-        Stok_Minimum_Sparepart: 0,
-        Harga_Beli: 0,
-        Harga_Jual: 0,
-        Gambar: ''
-      },
-      Motor: {
-        Merk: '',
-        Tipe: '',
-        Id_Motor: ''
-      },
-      posisi: 'Pilih Posisi',
-      ruang: 'Pilih Tempat',
-      nomor: '',
-      positions: [{
-        value: "DPN",
-        id: 'Depan'
-      }, {
-        value: "TGH",
-        id: 'Tengah'
-      }, {
-        value: "BLK",
-        id: 'Belakang'
-      }],
-      ruangs: [{
-        value: "KACA",
-        id: 'Rak Kaca'
-      }, {
-        value: "DUS",
-        id: 'Tumpukan Dus'
-      }, {
-        value: "KAYU",
-        id: 'Lemari Kayu'
-      }]
-    };
-  },
-  mounted: function mounted() {
-    this.getallsparepart();
-    this.getallmotor();
-  },
-  methods: {
-    compatibilityHandler: function compatibilityHandler(motorcycle) {
-      var i = 0;
-      var object = motorcycle[this.index];
-      this.err = false;
-
-      for (var data in this.motorcycletypes) {
-        if (this.motorcycletypes[i].Id_Motor == object.Id_Motor) {
-          this.err = true;
-        }
-
-        i++;
-      }
-
-      if (!this.err) {
-        this.motorcycletypes.push(JSON.parse(JSON.stringify(object)));
-        this.motorcycleTypes.push(this.Motor.Id_Motor);
-      }
-    },
-    getSelectedIndex: function getSelectedIndex() {
-      this.index = this.motorcycle.map(function (e) {
-        return e.Id_Motor;
-      }).indexOf(this.Motor.Id_Motor);
-      console.log(this.index);
-    },
-    onFileChange: function onFileChange(e) {
-      var files = e.target.files || e.dataTransfer.files;
-      if (!files.length) return;
-      this.createImage(files[0]);
-      console.log(this.Gambar);
-    },
-    createImage: function createImage(file) {
-      var _this = this;
-
-      var reader = new FileReader();
-
-      reader.onload = function (e) {
-        _this.Gambar = e.target.result;
-      };
-
-      reader.readAsDataURL(file);
-    },
-    pickFile: function pickFile() {
-      this.$refs.Gambar.click();
-    },
-    getallmotor: function () {
-      var _getallmotor = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return _service_Motor__WEBPACK_IMPORTED_MODULE_2__["default"].getallmotor();
-
-              case 3:
-                this.motorcycle = _context.sent.data;
-                console.log(this.motorcycle);
-                _context.next = 10;
-                break;
-
-              case 7:
-                _context.prev = 7;
-                _context.t0 = _context["catch"](0);
-                console.log(_context.t0);
-
-              case 10:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this, [[0, 7]]);
-      }));
-
-      function getallmotor() {
-        return _getallmotor.apply(this, arguments);
-      }
-
-      return getallmotor;
-    }(),
-    getallsparepart: function () {
-      var _getallsparepart = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.prev = 0;
-                _context2.next = 3;
-                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].getallsparepart();
-
-              case 3:
-                this.sparepartdata = _context2.sent.data;
-                console.log(this.sparepartdata);
-                _context2.next = 10;
-                break;
-
-              case 7:
-                _context2.prev = 7;
-                _context2.t0 = _context2["catch"](0);
-                console.log(_context2.t0);
-
-              case 10:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2, this, [[0, 7]]);
-      }));
-
-      function getallsparepart() {
-        return _getallsparepart.apply(this, arguments);
-      }
-
-      return getallsparepart;
-    }(),
-    addsparepart: function () {
-      var _addsparepart = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var payload;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.prev = 0;
-                payload = {
-                  Kode_Sparepart: this.Sparepart.Kode_Sparepart,
-                  Nama_Sparepart: this.Sparepart.Nama_Sparepart,
-                  Tipe_Barang: this.Sparepart.Tipe_Barang,
-                  Merk_Sparepart: this.Sparepart.Merk_Sparepart,
-                  Rak_Sparepart: this.posisi + '-' + this.ruang + '-' + this.nomor,
-                  Jumlah_Sparepart: this.Sparepart.Jumlah_Sparepart,
-                  Stok_Minimum_Sparepart: this.Sparepart.Stok_Minimum_Sparepart,
-                  Harga_Beli: this.Sparepart.Harga_Beli,
-                  Harga_Jual: this.Sparepart.Harga_Jual,
-                  Gambar: this.Gambar,
-                  motorcycleTypes: this.motorcycleTypes
-                };
-                _context3.next = 4;
-                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].addsparepart(payload);
-
-              case 4:
-                this.getallsparepart();
-                _context3.next = 10;
-                break;
-
-              case 7:
-                _context3.prev = 7;
-                _context3.t0 = _context3["catch"](0);
-                console.log(_context3.t0);
-
-              case 10:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3, this, [[0, 7]]);
-      }));
-
-      function addsparepart() {
-        return _addsparepart.apply(this, arguments);
-      }
-
-      return addsparepart;
-    }(),
-    updatesparepart: function () {
-      var _updatesparepart = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
-        var payload;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                _context4.prev = 0;
-                payload = {
-                  Nama_Sparepart: this.Sparepart.Nama_Sparepart,
-                  Tipe_Barang: this.Sparepart.Tipe_Barang,
-                  Merk_Sparepart: this.Sparepart.Merk_Sparepart,
-                  Rak_Sparepart: this.posisi + '-' + this.ruang + '-' + this.nomor,
-                  Jumlah_Sparepart: this.Sparepart.Jumlah_Sparepart,
-                  Stok_Minimum_Sparepart: this.Sparepart.Stok_Minimum_Sparepart,
-                  Harga_Beli: this.Sparepart.Harga_Beli,
-                  Harga_Jual: this.Sparepart.Harga_Jual,
-                  Gambar: this.Gambar
-                };
-                _context4.next = 4;
-                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].updatesparepart(payload, id);
-
-              case 4:
-                this.getallsparepart(); // console.log()
-
-                _context4.next = 10;
-                break;
-
-              case 7:
-                _context4.prev = 7;
-                _context4.t0 = _context4["catch"](0);
-                console.log(_context4.t0);
-
-              case 10:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4, this, [[0, 7]]);
-      }));
-
-      function updatesparepart(_x) {
-        return _updatesparepart.apply(this, arguments);
-      }
-
-      return updatesparepart;
-    }(),
-    deletesparepart: function () {
-      var _deletesparepart = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(id) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                _context5.prev = 0;
-                _context5.next = 3;
-                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].deletesparepart(id);
-
-              case 3:
-                this.getallsparepart(); // console.log()
-
-                _context5.next = 9;
-                break;
-
-              case 6:
-                _context5.prev = 6;
-                _context5.t0 = _context5["catch"](0);
-                console.log(_context5.t0);
-
-              case 9:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5, this, [[0, 6]]);
-      }));
-
-      function deletesparepart(_x2) {
-        return _deletesparepart.apply(this, arguments);
-      }
-
-      return deletesparepart;
-    }(),
-    dataspareparthandler: function dataspareparthandler(sparepart) {
-      this.Sparepart = sparepart;
-    },
-    refresh: function refresh() {
-      this.Sparepart.Kode_Sparepart = '';
-      this.Sparepart.Kode1 = '';
-      this.Sparepart.Kode2 = '';
-      this.Sparepart.Kode3 = '';
-      this.Sparepart.Tipe_Barang = '';
-      this.Sparepart.Nama_Sparepart = '';
-      this.Sparepart.Merk_Sparepart = '';
-      this.Sparepart.Rak_Sparepart = '';
-      this.Sparepart.Jumlah_Sparepart = '';
-      this.Sparepart.Stok_Minimum_Sparepart = 0;
-      this.Sparepart.Harga_Beli = 0;
-      this.Sparepart.Harga_Jual = 0;
-    }
-  },
-  computed: {
-    filteredsparepart: function filteredsparepart() {
-      var _this2 = this;
-
-      return this.sparepartdata.filter(function (sparepart) {
-        return sparepart.Nama_Sparepart.toLowerCase().match(_this2.Cari_Sparepart.toLowerCase()) || sparepart.Kode_Sparepart.toLowerCase().match(_this2.Cari_Sparepart.toLowerCase()) || sparepart.Merk_Sparepart.toLowerCase().match(_this2.Cari_Sparepart.toLowerCase());
-      });
-    },
-    kodeErrors: function kodeErrors() {
-      var errors = [];
-      if (!this.$v.Sparepart.Kode_Sparepart.$dirty) return errors;
-      !this.$v.Sparepart.Kode_Sparepart.required && errors.push('Kode is required');
-      !this.$v.Sparepart.Kode_Sparepart.maxLength && errors.push('Kode must be at most 25 characters long');
-      !this.$v.Sparepart.Kode_Sparepart.minLength && errors.push('Kode must be at least 5 characters long');
-      return errors;
-    },
-    nameErrors: function nameErrors() {
-      var errors = [];
-      if (!this.$v.Sparepart.Nama_Sparepart.$dirty) return errors;
-      !this.$v.Sparepart.Nama_Sparepart.minLength && errors.push('Name must be at least 5 characters long');
-      !this.$v.Sparepart.Nama_Sparepart.maxLength && errors.push('Name must be at most 25 characters long');
-      !this.$v.Sparepart.Nama_Sparepart.required && errors.push('Name is required.');
-      return errors;
-    },
-    merkErrors: function merkErrors() {
-      var errors = [];
-      if (!this.$v.Sparepart.Merk_Sparepart.$dirty) return errors;
-      !this.$v.Sparepart.Merk_Sparepart.minLength && errors.push('Merk must be at least 5 characters long');
-      !this.$v.Sparepart.Merk_Sparepart.maxLength && errors.push('Merk must be at most 25 characters long');
-      !this.$v.Sparepart.Merk_Sparepart.required && errors.push('Merk is required.');
-      return errors;
-    },
-    typeErrors: function typeErrors() {
-      var errors = [];
-      if (!this.$v.Sparepart.Tipe_Barang.$dirty) return errors;
-      !this.$v.Sparepart.Tipe_Barang.minLength && errors.push('Type must be at least 5 characters long');
-      !this.$v.Sparepart.Tipe_Barang.maxLength && errors.push('Type must be at most 25 characters long');
-      !this.$v.Sparepart.Tipe_Barang.required && errors.push('Type is required.');
-      return errors;
-    },
-    rakErrors: function rakErrors() {// const errors = []
-      // if (!this.$v.Sparepart.Rak_Sparepart.$dirty) return errors
-      // !this.$v.Sparepart.Rak_Sparepart.minLength && errors.push('Rak must be at least 5 characters long')
-      // !this.$v.Sparepart.Rak_Sparepart.maxLength && errors.push('Rak must be at most 25 characters long')
-      // !this.$v.Sparepart.Rak_Sparepart.required && errors.push('Rak is required.')
-      // return errors
-    },
-    sumErrors: function sumErrors() {
-      var errors = [];
-      if (!this.$v.Sparepart.Jumlah_Sparepart.$dirty) return errors;
-      !this.$v.Sparepart.Jumlah_Sparepart.required && errors.push('Jumlah is required.');
-      !this.$v.Sparepart.Jumlah_Sparepart.maxLength && errors.push('Jumlah must be at most 25 characters long');
-      !this.$v.Sparepart.Jumlah_Sparepart.numeric && errors.push('Jumlah must be numeric');
-      return errors;
-    },
-    stokErrors: function stokErrors() {
-      var errors = [];
-      if (!this.$v.Sparepart.Stok_Minimum_Sparepart.$dirty) return errors;
-      !this.$v.Sparepart.Stok_Minimum_Sparepart.maxLength && errors.push('Stok must be at most 12 characters long');
-      !this.$v.Sparepart.Stok_Minimum_Sparepart.numeric && errors.push('Stok must be numeric');
-      !this.$v.Sparepart.Stok_Minimum_Sparepart.required && errors.push('Stok is required');
-      return errors;
-    },
-    priceBErrors: function priceBErrors() {
-      var errors = [];
-      if (!this.$v.Sparepart.Harga_Beli.$dirty) return errors;
-      !this.$v.Sparepart.Harga_Beli.maxLength && errors.push('Price must be at most 12 characters long');
-      !this.$v.Sparepart.Harga_Beli.numeric && errors.push('Price must be numeric');
-      !this.$v.Sparepart.Harga_Beli.required && errors.push('Price is required');
-      return errors;
-    },
-    priceJErrors: function priceJErrors() {
-      var errors = [];
-      if (!this.$v.Sparepart.Harga_Jual.$dirty) return errors;
-      !this.$v.Sparepart.Harga_Jual.maxLength && errors.push('Price must be at most 12 characters long');
-      !this.$v.Sparepart.Harga_Jual.numeric && errors.push('Price must be numeric');
-      !this.$v.Sparepart.Harga_Jual.required && errors.push('Price is required');
-      return errors;
-    }
-  }
-});
-
-/***/ }),
-
->>>>>>> 0e9a2f460b7320b9b80d31b3cb63e02ad933c548
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Supplier.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/Supplier.vue?vue&type=script&lang=js& ***!
@@ -6765,6 +5828,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -7099,6 +6173,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     dataspareparthandler: function dataspareparthandler(sparepart) {
       this.Sparepart = sparepart;
+    },
+    refresh: function refresh() {
+      this.Sparepart.Kode_Sparepart = '';
+      this.Sparepart.Kode1 = '';
+      this.Sparepart.Kode2 = '';
+      this.Sparepart.Kode3 = '';
+      this.Sparepart.Tipe_Barang = '';
+      this.Sparepart.Nama_Sparepart = '';
+      this.Sparepart.Merk_Sparepart = '';
+      this.Sparepart.Rak_Sparepart = '';
+      this.Sparepart.Jumlah_Sparepart = '';
+      this.Sparepart.Stok_Minimum_Sparepart = 0;
+      this.Sparepart.Harga_Beli = 0;
+      this.Sparepart.Harga_Jual = 0;
     }
   },
   computed: {
@@ -7141,28 +6229,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       !this.$v.Sparepart.Tipe_Barang.required && errors.push('Type is required.');
       return errors;
     },
-    rakErrors: function rakErrors() {
-      var errors = [];
-      if (!this.$v.Sparepart.Rak_Sparepart.$dirty) return errors;
-      !this.$v.Sparepart.Rak_Sparepart.minLength && errors.push('Rak must be at least 5 characters long');
-      !this.$v.Sparepart.Rak_Sparepart.maxLength && errors.push('Rak must be at most 25 characters long');
-      !this.$v.Sparepart.Rak_Sparepart.required && errors.push('Rak is required.');
-      return errors;
+    rakErrors: function rakErrors() {// const errors = []
+      // if (!this.$v.Sparepart.Rak_Sparepart.$dirty) return errors
+      // !this.$v.Sparepart.Rak_Sparepart.minLength && errors.push('Rak must be at least 5 characters long')
+      // !this.$v.Sparepart.Rak_Sparepart.maxLength && errors.push('Rak must be at most 25 characters long')
+      // !this.$v.Sparepart.Rak_Sparepart.required && errors.push('Rak is required.')
+      // return errors
     },
     sumErrors: function sumErrors() {
       var errors = [];
       if (!this.$v.Sparepart.Jumlah_Sparepart.$dirty) return errors;
       !this.$v.Sparepart.Jumlah_Sparepart.required && errors.push('Jumlah is required.');
-      !this.$v.Sparepart.Jumlah_Sparepart.minLength && errors.push('Jumlah must be at least 5 characters long');
       !this.$v.Sparepart.Jumlah_Sparepart.maxLength && errors.push('Jumlah must be at most 25 characters long');
+      !this.$v.Sparepart.Jumlah_Sparepart.numeric && errors.push('Jumlah must be numeric');
       return errors;
     },
     stokErrors: function stokErrors() {
       var errors = [];
-      if (!this.$v.Sparepart.Harga_Beli.$dirty) return errors;
-      !this.$v.Sparepart.Harga_Beli.maxLength && errors.push('Price must be at most 12 characters long');
-      !this.$v.Sparepart.Harga_Beli.numeric && errors.push('Price must be numeric');
-      !this.$v.Sparepart.Harga_Beli.required && errors.push('Price is required');
+      if (!this.$v.Sparepart.Stok_Minimum_Sparepart.$dirty) return errors;
+      !this.$v.Sparepart.Stok_Minimum_Sparepart.maxLength && errors.push('Stok must be at most 12 characters long');
+      !this.$v.Sparepart.Stok_Minimum_Sparepart.numeric && errors.push('Stok must be numeric');
+      !this.$v.Sparepart.Stok_Minimum_Sparepart.required && errors.push('Stok is required');
       return errors;
     },
     priceBErrors: function priceBErrors() {
@@ -7179,8 +6266,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       !this.$v.Sparepart.Harga_Jual.maxLength && errors.push('Price must be at most 12 characters long');
       !this.$v.Sparepart.Harga_Jual.numeric && errors.push('Price must be numeric');
       !this.$v.Sparepart.Harga_Jual.required && errors.push('Price is required');
-      if (!this.$v.Sparepart.Harga_Jual) return errors;
-      !this.$v.Sparepart.Harga_Jual.maxLength && errors.push('Price must be at most 12 characters long');
       return errors;
     }
   }
@@ -49826,7 +48911,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("body", [
     _c("div", { staticClass: "container-fluid mt-3" }, [
-<<<<<<< HEAD
       _c("div", { staticClass: "clearfix my-2" }, [
         _c(
           "button",
@@ -49864,21 +48948,11 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control mr-sm-2",
-=======
-      _c("div", { staticClass: "row mb-2" }, [
-        _c("div", { staticClass: "col-sm-2" }, [
-          _c("div", { staticClass: "col-sm-7 p-0" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-success mb-2 btn-block",
->>>>>>> 0e9a2f460b7320b9b80d31b3cb63e02ad933c548
                 attrs: {
-                  "data-title": "Tambah_Sparepart",
-                  "data-toggle": "modal",
-                  "data-target": "#Tambah_Sparepart"
+                  type: "search",
+                  placeholder: "Search",
+                  "aria-label": "Search"
                 },
-<<<<<<< HEAD
                 domProps: { value: _vm.Cari_Supplier },
                 on: {
                   input: function($event) {
@@ -49886,53 +48960,21 @@ var render = function() {
                       return
                     }
                     _vm.Cari_Supplier = $event.target.value
-=======
-                on: {
-                  click: function($event) {
-                    _vm.getallsparepart(), _vm.refresh()
->>>>>>> 0e9a2f460b7320b9b80d31b3cb63e02ad933c548
                   }
                 }
-              },
-              [
-                _c("i", { staticClass: "fas fa-plus mr-2" }),
-                _vm._v("Tambah\n                    ")
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-5" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-7" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-3" }, [
-          _c("div", { staticClass: "input-group" }, [
-            _c("input", {
-              directives: [
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
                 {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.Cari_Sparepart,
-                  expression: "Cari_Sparepart"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "search", placeholder: "Cari Sparepart" },
-              domProps: { value: _vm.Cari_Sparepart },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.Cari_Sparepart = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _vm._m(0)
-          ])
-        ])
+                  staticClass: "btn btn-outline-primary my-2 my-sm-0",
+                  attrs: { type: "submit" }
+                },
+                [_vm._v("Search")]
+              )
+            ])
+          ]
+        )
       ]),
       _vm._v(" "),
       _c(
@@ -49954,19 +48996,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(supplier.Nama_Sales) + " ")]),
                   _vm._v(" "),
-<<<<<<< HEAD
                   _c("td", [_vm._v(_vm._s(supplier.Telepon_Sales) + " ")]),
-=======
-                  _c("td", [
-                    _c("img", {
-                      staticStyle: {
-                        "max-width": "75px",
-                        "max-height": "75px"
-                      },
-                      attrs: { src: "images/" + sparepart.Gambar, alt: "" }
-                    })
-                  ]),
->>>>>>> 0e9a2f460b7320b9b80d31b3cb63e02ad933c548
                   _vm._v(" "),
                   _c("td", { staticClass: "text-center" }, [
                     _c(
@@ -50030,7 +49060,6 @@ var render = function() {
                         )
                       ]
                     )
-<<<<<<< HEAD
                   ]),
                   _vm._v(" "),
                   supplier.Nama_Sales == null
@@ -50063,185 +49092,6 @@ var render = function() {
                               [_c("i", { staticClass: "fas fa-plus" })]
                             )
                           ]
-=======
-                  ])
-                ])
-              }),
-              0
-            )
-          ])
-        ]
-      )
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "Tambah_Sparepart",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "Tambah_Sparepart",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c("div", { staticClass: "modal-dialog" }, [
-          _c("div", { staticClass: "modal-content" }, [
-            _vm._m(2),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c("div", { staticClass: "input-group" }, [
-                _vm._m(3),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.Sparepart.Kode_Sparepart,
-                      expression: "Sparepart.Kode_Sparepart"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Masukkan Kode Sparepart",
-                    error: _vm.kodeErrors,
-                    "aria-label": "Kode_Sparepart",
-                    "aria-describedby": "basic-addon2",
-                    id: "Kode_Sparepart",
-                    name: "Kode_Sparepart",
-                    required: ""
-                  },
-                  domProps: { value: _vm.Sparepart.Kode_Sparepart },
-                  on: {
-                    input: [
-                      function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.Sparepart,
-                          "Kode_Sparepart",
-                          $event.target.value
-                        )
-                      },
-                      function($event) {
-                        return _vm.$v.Sparepart.Kode_Sparepart.$touch()
-                      }
-                    ],
-                    blur: function($event) {
-                      return _vm.$v.Sparepart.Kode_Sparepart.$touch()
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-center" }, [
-                _vm.$v.Sparepart.Kode_Sparepart.$invalid
-                  ? _c(
-                      "p",
-                      { staticClass: "mb-3", staticStyle: { color: "red" } },
-                      [_vm._v(_vm._s(_vm.kodeErrors[0]))]
-                    )
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-group mt-3" }, [
-                _vm._m(4),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.Sparepart.Tipe_Barang,
-                      expression: "Sparepart.Tipe_Barang"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Masukkan Tipe Barang",
-                    error: _vm.typeErrors,
-                    "aria-label": "Tipe_Barang",
-                    "aria-describedby": "basic-addon2",
-                    id: "Tipe_Barang",
-                    name: "Tipe_Barang",
-                    required: ""
-                  },
-                  domProps: { value: _vm.Sparepart.Tipe_Barang },
-                  on: {
-                    input: [
-                      function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.Sparepart,
-                          "Tipe_Barang",
-                          $event.target.value
-                        )
-                      },
-                      function($event) {
-                        return _vm.$v.Sparepart.Tipe_Barang.$touch()
-                      }
-                    ],
-                    blur: function($event) {
-                      return _vm.$v.Sparepart.Tipe_Barang.$touch()
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-center" }, [
-                _vm.$v.Sparepart.Tipe_Barang.$invalid
-                  ? _c("div", { staticStyle: { color: "red" } }, [
-                      _vm._v(
-                        _vm._s(_vm.typeErrors[0]) +
-                          "\n                            "
-                      )
-                    ])
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-group mt-4" }, [
-                _vm._m(5),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.Sparepart.Nama_Sparepart,
-                      expression: "Sparepart.Nama_Sparepart"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Masukkan Nama Sparepart",
-                    error: _vm.nameErrors,
-                    "aria-label": "Nama_Sparepart",
-                    "aria-describedby": "basic-addon2",
-                    id: "Nama_Sparepart",
-                    name: "Nama_Sparepart",
-                    required: ""
-                  },
-                  domProps: { value: _vm.Sparepart.Nama_Sparepart },
-                  on: {
-                    input: [
-                      function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.Sparepart,
-                          "Nama_Sparepart",
-                          $event.target.value
->>>>>>> 0e9a2f460b7320b9b80d31b3cb63e02ad933c548
                         )
                       ])
                     : _c("td", { staticClass: "text-center" }, [
@@ -50525,7 +49375,6 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-<<<<<<< HEAD
               _c("div", { staticClass: "text-center" }, [
                 _vm.$v.Supplier.Telepon_Supplier.$invalid
                   ? _c(
@@ -50535,35 +49384,6 @@ var render = function() {
                     )
                   : _vm._e()
               ]),
-=======
-              _c(
-                "div",
-                { staticClass: "input-group mt-3" },
-                _vm._l(_vm.motorcycletypes, function(motor) {
-                  return _c(
-                    "div",
-                    { key: motor.Id_Motor, staticClass: "list-group" },
-                    [
-                      _c(
-                        "a",
-                        {
-                          staticClass:
-                            "list-group-item list-group-item-action list-group-item-info",
-                          attrs: { href: "#" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    " +
-                              _vm._s(motor.Merk + "-" + motor.Tipe)
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                }),
-                0
-              ),
->>>>>>> 0e9a2f460b7320b9b80d31b3cb63e02ad933c548
               _vm._v(" "),
               _c("div", { staticClass: "modal-footer" }, [
                 _c(
@@ -51214,19 +50034,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-<<<<<<< HEAD
-=======
-    return _c("div", { staticClass: "input-group-append" }, [
-      _c("span", { staticClass: "input-group-text" }, [
-        _c("i", { staticClass: "fas fa-search" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
->>>>>>> 0e9a2f460b7320b9b80d31b3cb63e02ad933c548
     return _c("thead", { staticClass: "table-primary text-center" }, [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama Supplier")]),
@@ -51679,51 +50486,63 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("body", [
     _c("div", { staticClass: "container-fluid mt-3" }, [
-      _c("div", { staticClass: "clearfix my-2" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "navbar navbar-light bg-light float-right p-0" },
-          [
-            _c("form", { staticClass: "form-inline" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.Cari_Sparepart,
-                    expression: "Cari_Sparepart"
-                  }
-                ],
-                staticClass: "form-control mr-sm-2",
+      _c("div", { staticClass: "row mb-2" }, [
+        _c("div", { staticClass: "col-sm-2" }, [
+          _c("div", { staticClass: "col-sm-7 p-0" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success mb-2 btn-block",
                 attrs: {
-                  type: "search",
-                  placeholder: "Search",
-                  "aria-label": "Search"
+                  "data-title": "Tambah_Sparepart",
+                  "data-toggle": "modal",
+                  "data-target": "#Tambah_Sparepart"
                 },
-                domProps: { value: _vm.Cari_Sparepart },
                 on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.Cari_Sparepart = $event.target.value
+                  click: function($event) {
+                    _vm.getallsparepart(), _vm.refresh()
                   }
                 }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
+              },
+              [
+                _c("i", { staticClass: "fas fa-plus mr-2" }),
+                _vm._v("Tambah\n                    ")
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-5" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-7" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-3" }, [
+          _c("div", { staticClass: "input-group" }, [
+            _c("input", {
+              directives: [
                 {
-                  staticClass: "btn btn-outline-primary my-2 my-sm-0",
-                  attrs: { type: "submit" }
-                },
-                [_vm._v("Search")]
-              )
-            ])
-          ]
-        )
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.Cari_Sparepart,
+                  expression: "Cari_Sparepart"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "search", placeholder: "Cari Sparepart" },
+              domProps: { value: _vm.Cari_Sparepart },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.Cari_Sparepart = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(0)
+          ])
+        ])
       ]),
       _vm._v(" "),
       _c(
@@ -51757,7 +50576,15 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(sparepart.Harga_Jual) + " ")]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sparepart.Gambar))]),
+                  _c("td", [
+                    _c("img", {
+                      staticStyle: {
+                        "max-width": "75px",
+                        "max-height": "75px"
+                      },
+                      attrs: { src: "images/" + sparepart.Gambar, alt: "" }
+                    })
+                  ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "text-center" }, [
                     _c(
@@ -51958,7 +50785,7 @@ var render = function() {
                   ? _c("div", { staticStyle: { color: "red" } }, [
                       _vm._v(
                         _vm._s(_vm.typeErrors[0]) +
-                          "\n                                "
+                          "\n                            "
                       )
                     ])
                   : _vm._e()
@@ -52625,7 +51452,7 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                                                " +
+                                "\n                                            " +
                                   _vm._s(motor.Merk + "-" + motor.Tipe)
                               )
                             ]
@@ -53223,21 +52050,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-success float-left mb-2",
-        attrs: {
-          "data-title": "Tambah_Sparepart",
-          "data-toggle": "modal",
-          "data-target": "#Tambah_Sparepart"
-        }
-      },
-      [
-        _c("i", { staticClass: "fas fa-plus mr-2" }),
-        _vm._v("Tambah\n                ")
-      ]
-    )
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text" }, [
+        _c("i", { staticClass: "fas fa-search" })
+      ])
+    ])
   },
   function() {
     var _vm = this
@@ -73812,117 +72629,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./resources/js/validations/sparepart_validations.js ***!
   \***********************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__);
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  Sparepart: {
-    Kode_Sparepart: {
-<<<<<<< HEAD
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // minLength: minLength(5), 
-      // maxLength: maxLength(25), 
-
-    },
-    Tipe_Barang: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // minLength: minLength(5),
-      // maxLength: maxLength(25),
-      // numeric, 
-
-    },
-    Nama_Sparepart: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // minLength: minLength(5), 
-      // maxLength: maxLength(25), 
-
-    },
-    Merk_Sparepart: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // minLength: minLength(5), 
-      // maxLength: maxLength(25), 
-
-    },
-    Rak_Sparepart: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // minLength: minLength(5),
-      // maxLength: maxLength(25),
-      // numeric,
-
-    },
-    Jumlah_Sparepart: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // maxLength: maxLength(12),
-      // numeric,  
-
-    },
-    Stok_Minimum_Sparepart: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // maxLength: maxLength(12),
-      // numeric, 
-
-    },
-    Harga_Beli: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // minLength: minLength(10),
-      // maxLength: maxLength(12),
-      // numeric, 
-
-    },
-    Harga_Jual: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // minLength: minLength(10),
-      // maxLength: maxLength(12),
-      // numeric, 
-      // minValue:  minValue(10),
-
-    },
-    Gambar: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // minLength: minLength(10),
-      // maxLength: maxLength(15),
-      // numeric,
-
-=======
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
-      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
-      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25)
-    },
-    Tipe_Barang: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
-      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
-      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25)
-    },
-    Nama_Sparepart: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
-      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
-      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25)
-    },
-    Merk_Sparepart: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
-      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
-      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25)
-    },
-    Rak_Sparepart: {},
-    Jumlah_Sparepart: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
-      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(12),
-      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
-    },
-    Stok_Minimum_Sparepart: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
-      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(12),
-      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
-    },
-    Harga_Beli: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
-      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(12),
-      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
-    },
-    Harga_Jual: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
-      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(12),
-      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
-    },
-    Gambar: {// required,
->>>>>>> 0e9a2f460b7320b9b80d31b3cb63e02ad933c548
-    }
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: E:\\atmaauto\\resources\\js\\validations\\sparepart_validations.js: Unexpected token (11:0)\n\n\u001b[0m \u001b[90m  9 | \u001b[39m        }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 10 | \u001b[39m        \u001b[33mTipe_Barang\u001b[39m\u001b[33m:\u001b[39m { \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 12 | \u001b[39m             required\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 13 | \u001b[39m            \u001b[90m// minLength: minLength(5),\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 14 | \u001b[39m            \u001b[90m// maxLength: maxLength(25),\u001b[39m\u001b[0m\n    at Parser.raise (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:3851:17)\n    at Parser.unexpected (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5165:16)\n    at Parser.parseIdentifierName (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:7009:18)\n    at Parser.parseIdentifier (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6987:23)\n    at Parser.parseMaybePrivateName (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6352:19)\n    at Parser.parsePropertyName (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6808:98)\n    at Parser.parseObjectMember (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6709:10)\n    at Parser.parseObj (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6643:25)\n    at Parser.parseExprAtom (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6276:21)\n    at Parser.parseExprSubscripts (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5916:23)\n    at Parser.parseMaybeUnary (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5896:21)\n    at Parser.parseExprOps (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5783:23)\n    at Parser.parseMaybeConditional (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5756:23)\n    at Parser.parseMaybeAssign (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5703:21)\n    at Parser.parseObjectProperty (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6770:101)\n    at Parser.parseObjPropValue (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6795:101)\n    at Parser.parseObjectMember (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6719:10)\n    at Parser.parseObj (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6643:25)\n    at Parser.parseExprAtom (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6276:21)\n    at Parser.parseExprSubscripts (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5916:23)\n    at Parser.parseMaybeUnary (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5896:21)\n    at Parser.parseExprOps (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5783:23)\n    at Parser.parseMaybeConditional (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5756:23)\n    at Parser.parseMaybeAssign (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5703:21)\n    at Parser.parseObjectProperty (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6770:101)\n    at Parser.parseObjPropValue (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6795:101)\n    at Parser.parseObjectMember (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6719:10)\n    at Parser.parseObj (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6643:25)\n    at Parser.parseExprAtom (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6276:21)\n    at Parser.parseExprSubscripts (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5916:23)\n    at Parser.parseMaybeUnary (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5896:21)\n    at Parser.parseExprOps (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5783:23)\n    at Parser.parseMaybeConditional (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5756:23)\n    at Parser.parseMaybeAssign (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5703:21)\n    at Parser.parseExportDefaultExpression (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:8478:24)\n    at Parser.parseExport (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:8373:31)");
 
 /***/ }),
 
@@ -73991,8 +72700,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\JASON\atmaauto\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\JASON\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\atmaauto\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
