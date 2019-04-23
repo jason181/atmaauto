@@ -4684,6 +4684,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4749,9 +4752,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     this.getallsparepart();
   },
   methods: {
-    setDefaults: function setDefaults() {
-      Sparepart.Rak_Sparepart = this.posisi + this.ruang + this.nomor;
-    },
     onFileChange: function onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
@@ -4824,33 +4824,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   Nama_Sparepart: this.Sparepart.Nama_Sparepart,
                   Tipe_Barang: this.Sparepart.Tipe_Barang,
                   Merk_Sparepart: this.Sparepart.Merk_Sparepart,
-                  // Rak_Sparepart           : this.setDefaults,
+                  Rak_Sparepart: this.posisi + '-' + this.ruang + '-' + this.nomor,
                   Jumlah_Sparepart: this.Sparepart.Jumlah_Sparepart,
                   Stok_Minimum_Sparepart: this.Sparepart.Stok_Minimum_Sparepart,
                   Harga_Beli: this.Sparepart.Harga_Beli,
                   Harga_Jual: this.Sparepart.Harga_Jual,
-                  Gambar: this.Gambar
+                  Gambar: this.Gambar //    this.setDefaults()
+
                 };
-                this.setDefaults();
-                _context2.next = 5;
+                _context2.next = 4;
                 return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].addsparepart(payload);
 
-              case 5:
+              case 4:
                 this.getallsparepart();
-                _context2.next = 11;
+                _context2.next = 10;
                 break;
 
-              case 8:
-                _context2.prev = 8;
+              case 7:
+                _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
                 console.log(_context2.t0);
 
-              case 11:
+              case 10:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 8]]);
+        }, _callee2, this, [[0, 7]]);
       }));
 
       function addsparepart() {
@@ -4870,11 +4870,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
                 payload = {
-                  //Kode_Sparepart      : this.handledsparepart.Kode_Sparepart,
                   Nama_Sparepart: this.Sparepart.Nama_Sparepart,
                   Tipe_Barang: this.Sparepart.Tipe_Barang,
                   Merk_Sparepart: this.Sparepart.Merk_Sparepart,
-                  Rak_Sparepart: this.Sparepart.Rak_Sparepart,
+                  Rak_Sparepart: this.posisi + '-' + this.ruang + '-' + this.nomor,
                   Jumlah_Sparepart: this.Sparepart.Jumlah_Sparepart,
                   Stok_Minimum_Sparepart: this.Sparepart.Stok_Minimum_Sparepart,
                   Harga_Beli: this.Sparepart.Harga_Beli,
@@ -5028,6 +5027,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       !this.$v.Sparepart.Harga_Jual.maxLength && errors.push('Price must be at most 12 characters long');
       !this.$v.Sparepart.Harga_Jual.numeric && errors.push('Price must be numeric');
       !this.$v.Sparepart.Harga_Jual.required && errors.push('Price is required');
+      if (!this.$v.Sparepart.Harga_Jual) return errors;
+      !this.$v.Sparepart.Harga_Jual.maxLength && errors.push('Price must be at most 12 characters long');
       return errors;
     },
     next: function next() {
@@ -48063,7 +48064,7 @@ var render = function() {
                     _vm._v(" "),
                     _vm._l(_vm.positions, function(posisi, index) {
                       return _c("option", { key: index }, [
-                        _vm._v(_vm._s(posisi.id))
+                        _vm._v(_vm._s(posisi.value))
                       ])
                     })
                   ],
@@ -48113,7 +48114,7 @@ var render = function() {
                     _vm._v(" "),
                     _vm._l(_vm.ruangs, function(ruang, index) {
                       return _c("option", { key: index }, [
-                        _vm._v(_vm._s(ruang.id))
+                        _vm._v(_vm._s(ruang.value))
                       ])
                     })
                   ],
@@ -48592,37 +48593,124 @@ var render = function() {
               _c("div", { staticClass: "input-group mt-4" }, [
                 _vm._m(17),
                 _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.posisi,
+                        expression: "posisi"
+                      }
+                    ],
+                    staticClass: "form-control mr-2",
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.posisi = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Posisi"
+                        }
+                      },
+                      [_vm._v("Pilih Posisi")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.positions, function(posisi, index) {
+                      return _c("option", { key: index }, [
+                        _vm._v(_vm._s(posisi.value))
+                      ])
+                    })
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.ruang,
+                        expression: "ruang"
+                      }
+                    ],
+                    staticClass: "form-control mr-2",
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.ruang = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Tempat"
+                        }
+                      },
+                      [_vm._v("Pilih Tempat")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.ruangs, function(ruang, index) {
+                      return _c("option", { key: index }, [
+                        _vm._v(_vm._s(ruang.value))
+                      ])
+                    })
+                  ],
+                  2
+                ),
+                _vm._v(" "),
                 _c("input", {
                   directives: [
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.Sparepart.Rak_Sparepart,
-                      expression: "Sparepart.Rak_Sparepart"
+                      value: _vm.nomor,
+                      expression: "nomor"
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Masukkan Rak Sparepart",
-                    error: _vm.rakErrors,
-                    "aria-label": "Rak_Sparepart",
-                    "aria-describedby": "basic-addon2",
-                    id: "Rak_Sparepart",
-                    name: "Rak_Sparepart",
-                    required: ""
-                  },
-                  domProps: { value: _vm.Sparepart.Rak_Sparepart },
+                  attrs: { type: "number", required: "" },
+                  domProps: { value: _vm.nomor },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(
-                        _vm.Sparepart,
-                        "Rak_Sparepart",
-                        $event.target.value
-                      )
+                      _vm.nomor = $event.target.value
                     }
                   }
                 })
@@ -49260,10 +49348,7 @@ var staticRenderFns = [
       [
         _c(
           "span",
-          {
-            staticClass: "fieldBox input-group-text",
-            attrs: { id: "basic-addon2" }
-          },
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
           [_vm._v("Rak")]
         )
       ]
@@ -71019,8 +71104,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\JASON\atmaauto\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\JASON\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\atmaauto\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
