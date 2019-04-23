@@ -1,7 +1,7 @@
 import { required, minLength, maxLength, numeric } from 'vuelidate/lib/validators'
 
 export default {
-    cabang: {
+    Cabang: {
         Nama_Cabang: { 
             required, 
             minLength: minLength(5), 
