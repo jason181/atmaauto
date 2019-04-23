@@ -3195,6 +3195,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3255,8 +3285,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return getallkonsumen;
     }(),
-    addjasaservice: function () {
-      var _addjasaservice = _asyncToGenerator(
+    addkonsumen: function () {
+      var _addkonsumen = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var payload;
@@ -3271,13 +3301,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   Telepon_Konsumen: this.Konsumen.Telepon_Konsumen
                 };
                 _context2.next = 4;
-                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_1__["default"].addjasaservice(payload);
+                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_1__["default"].addkonsumen(payload);
 
               case 4:
                 this.getallkonsumen();
-                this.refresh(); //this.$router.go()
-                // console.log()
-
+                this.refresh();
                 _context2.next = 11;
                 break;
 
@@ -3294,11 +3322,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2, this, [[0, 8]]);
       }));
 
-      function addjasaservice() {
-        return _addjasaservice.apply(this, arguments);
+      function addkonsumen() {
+        return _addkonsumen.apply(this, arguments);
       }
 
-      return addjasaservice;
+      return addkonsumen;
     }(),
     updatekonsumen: function () {
       var _updatekonsumen = _asyncToGenerator(
@@ -3319,9 +3347,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _service_Konsumen__WEBPACK_IMPORTED_MODULE_1__["default"].updatekonsumen(payload, id);
 
               case 4:
-                this.getalljasaservice();
-                this.refresh(); // console.log()
-
+                this.getallkonsumen();
+                this.refresh();
                 _context3.next = 11;
                 break;
 
@@ -3357,8 +3384,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _service_Konsumen__WEBPACK_IMPORTED_MODULE_1__["default"].deletekonsumen(id);
 
               case 3:
-                this.getalljasaservice(); // console.log()
-
+                this.getallkonsumen();
                 _context4.next = 9;
                 break;
 
@@ -3403,8 +3429,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       if (!this.$v.Konsumen.Nama_Konsumen.$dirty) return errors;
       !this.$v.Konsumen.Nama_Konsumen.minLength && errors.push('Name must be at least 5 characters long');
       !this.$v.Konsumen.Nama_Konsumen.maxLength && errors.push('Name must be at most 25 characters long');
-      !this.$v.Konsumen.Nama_Konsumen.required && errors.push('Name is required.'); // !this.$v.jasaservice.Nama_Jasa.alpha && errors.push('Name must be alphabetic')
-
+      !this.$v.Konsumen.Nama_Konsumen.required && errors.push('Name is required.');
       return errors;
     },
     addressErrors: function addressErrors() {
@@ -45682,12 +45707,12 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
-                    type: "number",
+                    type: "text",
                     placeholder: "Masukkan Alamat Konsumen",
                     "aria-label": "Alamat_Konsumen",
                     "aria-describedby": "basic-addon2",
                     id: "Alamat_Konsumen",
-                    name: "Harga_Jasa_Service",
+                    name: "Alamat_Konsumen",
                     required: ""
                   },
                   domProps: { value: _vm.Konsumen.Alamat_Konsumen },
@@ -45720,6 +45745,62 @@ var render = function() {
                       "p",
                       { staticClass: "mb-3", staticStyle: { color: "red" } },
                       [_vm._v(_vm._s(_vm.addressErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(5),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Konsumen.Telepon_Konsumen,
+                      expression: "Konsumen.Telepon_Konsumen"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "number",
+                    placeholder: "Masukkan Nomor Telepon Konsumen",
+                    "aria-label": "Telepon_Konsumen",
+                    "aria-describedby": "basic-addon2",
+                    id: "Telepon_Konsumen",
+                    name: "Telepon_Konsumen",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Konsumen.Telepon_Konsumen },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Konsumen,
+                          "Telepon_Konsumen",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Konsumen.Telepon_Konsumen.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Konsumen.Telepon_Konsumen.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Konsumen.Telepon_Konsumen.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.phoneErrors[0]))]
                     )
                   : _vm._e()
               ]),
@@ -45764,11 +45845,11 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(5),
+            _vm._m(6),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
               _c("div", { staticClass: "input-group" }, [
-                _vm._m(6),
+                _vm._m(7),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -45825,7 +45906,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-3" }, [
-                _vm._m(7),
+                _vm._m(8),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -45878,6 +45959,62 @@ var render = function() {
                       [_vm._v(_vm._s(_vm.addressErrors[0]))]
                     )
                   : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(9),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Konsumen.Telepon_Konsumen,
+                      expression: "Konsumen.Telepon_Konsumen"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "number",
+                    placeholder: "Masukkan Nomor Telepon Konsumen",
+                    "aria-label": "Telepon_Konsumen",
+                    "aria-describedby": "basic-addon2",
+                    id: "Telepon_Konsumen",
+                    name: "Telepon_Konsumen",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Konsumen.Telepon_Konsumen },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Konsumen,
+                          "Telepon_Konsumen",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Konsumen.Telepon_Konsumen.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Konsumen.Telepon_Konsumen.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Konsumen.Telepon_Konsumen.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.phoneErrors[0]))]
+                    )
+                  : _vm._e()
               ])
             ]),
             _vm._v(" "),
@@ -45920,9 +46057,9 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(8),
+            _vm._m(10),
             _vm._v(" "),
-            _vm._m(9),
+            _vm._m(11),
             _vm._v(" "),
             _c("div", { staticClass: "modal-footer " }, [
               _c(
@@ -45939,7 +46076,7 @@ var render = function() {
                       attrs: { type: "button", "data-dismiss": "modal" },
                       on: {
                         click: function($event) {
-                          return _vm.deletekonsumen(_vm.Konsumen.Id_Konsumne)
+                          return _vm.deletekonsumen(_vm.Konsumen.Id_Konsumen)
                         }
                       }
                     },
@@ -45953,7 +46090,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(10)
+              _vm._m(12)
             ])
           ])
         ])
@@ -46059,6 +46196,25 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Telepon")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
       _c(
         "h4",
@@ -46116,6 +46272,25 @@ var staticRenderFns = [
           "span",
           { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
           [_vm._v("Alamat")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Nomor Telepon")]
         )
       ]
     )
