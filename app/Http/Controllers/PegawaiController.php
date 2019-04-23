@@ -25,7 +25,7 @@ class PegawaiController extends RestController
             'Id_Role'           => $request->Id_Role,
             'Id_Cabang'         => $request->Id_Cabang,
             'Nama_Pegawai'      => $request->Nama_Pegawai,
-            'Alamat_Pegawai'    => $request->Alamat_Pegawai,
+            'Alamat'    => $request->Alamat,
             'Telepon_Pegawai'   => $request->Telepon_Pegawai,
             'Gaji_Pegawai'      => $request->Gaji_Pegawai,
             'Username'          => $request->Username,

@@ -47,6 +47,7 @@ class SparepartController extends RestController
 
     public function store(Request $request)
     {
+        //return $request;
         try{
             $sparepart = new Sparepart;
 
@@ -82,6 +83,51 @@ class SparepartController extends RestController
             return $this->sendResponse($response, 201);
             
         } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+    }
+
+    public function storemobile(Request $request)
+    {
+        //return $request;
+        try{
+            $sparepart = new Sparepart;
+
+            // if($request->hasfile('Gambar'))
+            // {
+            //     $file = $request->file('Gambar');
+            //     $name= time().$file->getClientOriginalName();
+            //     $file->move(public_path().'/images/', $name);
+            //     //return response()->json(['uploaded' => '/images/'.$name]);
+            //     $sparepart->Gambar=$name;
+            // }
+
+            // dd($request->file('Gambar'));
+            if($request->file('Gambar'))
+            {
+                $image = $request->file('Gambar');
+                $name = time(). '.' . $image->getClientOriginalName();
+                // dd($name);
+                \Image::make($request->file('Gambar'))->save(public_path('images/') . $name);
+                $sparepart->Gambar = $name;
+            }
+
+            $sparepart->Kode_Sparepart=$request->get('Kode_Sparepart');
+            $sparepart->Tipe_Barang=$request->get('Tipe_Barang');
+            $sparepart->Nama_Sparepart=$request->get('Nama_Sparepart');
+            $sparepart->Merk_Sparepart=$request->get('Merk_Sparepart');
+            $sparepart->Rak_Sparepart=$request->get('Rak_Sparepart');
+            $sparepart->Jumlah_Sparepart=$request->get('Jumlah_Sparepart');
+            $sparepart->Stok_Minimum_Sparepart=$request->get('Stok_Minimum_Sparepart');
+            $sparepart->Harga_Beli=$request->get('Harga_Beli');
+            $sparepart->Harga_Jual=$request->get('Harga_Jual');
+            $sparepart->save();
+
+            $response = $this->generateItem($sparepart);
+            return $this->sendResponse($response, 201);
+            
+        } catch (\Exception $e) {
+            throw $e;
             return $this->sendIseResponse($e->getMessage());
         }
     }
