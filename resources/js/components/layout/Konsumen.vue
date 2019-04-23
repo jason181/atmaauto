@@ -95,16 +95,31 @@
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Alamat</span>
                             </div>
-                            <input type="number" v-model="Konsumen.Alamat_Konsumen" 
+                            <input type="text" v-model="Konsumen.Alamat_Konsumen" 
                                 class="form-control" placeholder="Masukkan Alamat Konsumen" 
                                 aria-label="Alamat_Konsumen" aria-describedby="basic-addon2" 
-                                id="Alamat_Konsumen" name="Harga_Jasa_Service" 
+                                id="Alamat_Konsumen" name="Alamat_Konsumen" 
                                 @input="$v.Konsumen.Alamat_Konsumen.$touch()" 
                                 @blur="$v.Konsumen.Alamat_Konsumen.$touch()" required>
                         </div>
                         <div class="text-center">
                             <p class="mb-3" style="color:red;" 
                                 v-if="$v.Konsumen.Alamat_Konsumen.$invalid">{{addressErrors[0]}}</p>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Telepon</span>
+                            </div>
+                            <input type="number" v-model="Konsumen.Telepon_Konsumen" 
+                                class="form-control" placeholder="Masukkan Nomor Telepon Konsumen" 
+                                aria-label="Telepon_Konsumen" aria-describedby="basic-addon2" 
+                                id="Telepon_Konsumen" name="Telepon_Konsumen" 
+                                @input="$v.Konsumen.Telepon_Konsumen.$touch()" 
+                                @blur="$v.Konsumen.Telepon_Konsumen.$touch()" required>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" 
+                                v-if="$v.Konsumen.Telepon_Konsumen.$invalid">{{phoneErrors[0]}}</p>
                         </div>
                         <div class="modal-footer mt-3">
                             <button type="submit" class="btn btn-success btn-lg w-100" 
@@ -159,7 +174,22 @@
                                 <p class="mb-3" style="color:red;" 
                                     v-if="$v.Konsumen.Alamat_Konsumen.$invalid">{{addressErrors[0]}}</p>
                             </div>
-                    </div>
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Nomor Telepon</span>
+                                </div>
+                                <input type="number" v-model="Konsumen.Telepon_Konsumen" 
+                                    class="form-control" placeholder="Masukkan Nomor Telepon Konsumen" 
+                                    aria-label="Telepon_Konsumen" aria-describedby="basic-addon2" 
+                                    id="Telepon_Konsumen" name="Telepon_Konsumen" 
+                                    @input="$v.Konsumen.Telepon_Konsumen.$touch()" 
+                                    @blur="$v.Konsumen.Telepon_Konsumen.$touch()" required>
+                            </div>
+                            <div class="text-center">
+                                <p class="mb-3" style="color:red;" 
+                                    v-if="$v.Konsumen.Telepon_Konsumen.$invalid">{{phoneErrors[0]}}</p>
+                            </div>
+                            </div>
 
                     <div class="modal-footer mt-3">
                         <button type="submit" class="btn btn-primary btn-lg w-100" 
@@ -188,7 +218,7 @@
                     </div>
                     <div class="modal-footer ">
                         <a id="delete_btn" class="float-left w-100">
-                            <button type="button" @click="deletekonsumen(Konsumen.Id_Konsumne)" 
+                            <button type="button" @click="deletekonsumen(Konsumen.Id_Konsumen)" 
                             class="btn btn-danger float-left w-50" data-dismiss="modal">
                             <span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
                         </a>
@@ -233,18 +263,16 @@ export default {
                 console.log(err)
             }
         },
-        async addjasaservice () {
+        async addkonsumen () {
             try {
                 const payload = {
-                    Nama_Konsumen : this.Konsumen.Nama_Konsumen,
-                    Alamat_Konsumen : this.Konsumen.Alamat_Konsumen,
-                    Telepon_Konsumen : this.Konsumen.Telepon_Konsumen,
+                    Nama_Konsumen       : this.Konsumen.Nama_Konsumen,
+                    Alamat_Konsumen     : this.Konsumen.Alamat_Konsumen,
+                    Telepon_Konsumen    : this.Konsumen.Telepon_Konsumen,
                 }
-                await Controller.addjasaservice(payload)
+                await Controller.addkonsumen(payload)
                 this.getallkonsumen()
                 this.refresh()
-                //this.$router.go()
-                // console.log()
             } catch (err) {
                 console.log(err)
             }
@@ -257,9 +285,8 @@ export default {
                     Telepon_Konsumen : this.Konsumen.Telepon_Konsumen,
                 }
                 await Controller.updatekonsumen(payload,id)
-                this.getalljasaservice()
+                this.getallkonsumen()
                 this.refresh()
-                // console.log()
             } catch (err) {
                 console.log(err)
             }
@@ -267,8 +294,7 @@ export default {
         async deletekonsumen(id) {
             try {
                 await Controller.deletekonsumen(id)
-                this.getalljasaservice()
-                // console.log()
+                this.getallkonsumen()
             } catch (err) {
                 console.log(err)
             }
@@ -294,7 +320,6 @@ export default {
             !this.$v.Konsumen.Nama_Konsumen.minLength && errors.push('Name must be at least 5 characters long')
             !this.$v.Konsumen.Nama_Konsumen.maxLength && errors.push('Name must be at most 25 characters long')
             !this.$v.Konsumen.Nama_Konsumen.required && errors.push('Name is required.')
-            // !this.$v.jasaservice.Nama_Jasa.alpha && errors.push('Name must be alphabetic')
             return errors
         },
         addressErrors () {

@@ -71,50 +71,53 @@
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Nama</span>
                                 </div>
-                                <input type="text" v-model="cabang.Nama_Cabang" class="form-control" 
+                                <input type="text" v-model="Cabang.Nama_Cabang" class="form-control" 
                                 placeholder="Masukkan Nama Cabang" :error="nameErrors" 
                                 aria-label="Nama_Cabang" aria-describedby="basic-addon2" 
                                 id="Nama_Cabang" name="Nama_Cabang" 
-                                @input="$v.cabang.Nama_Cabang.$touch()" 
-                                @blur="$v.cabang.Nama_Cabang.$touch()" required>
+                                @input="$v.Cabang.Nama_Cabang.$touch()" 
+                                @blur="$v.Cabang.Nama_Cabang.$touch()" required>
                             </div>
                             <div class="text-center">
                                 <p class="mb-3" style="color:red;" 
-                                v-if="$v.cabang.Nama_Cabang.$invalid">{{nameErrors[0]}}</p>
+                                v-if="$v.Cabang.Nama_Cabang.$invalid">{{nameErrors[0]}}</p>
                             </div>
                             <div class="input-group mt-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Alamat</span>
                                 </div>
-                                <input type="text" v-model="cabang.Alamat_Cabang" 
+                                <input type="text" v-model="Cabang.Alamat_Cabang" 
                                 class="form-control" placeholder="Masukkan Alamat Cabang" 
                                 :error="addressErrors" aria-label="Alamat_Cabang" 
                                 aria-describedby="basic-addon2" id="Alamat_Cabang" 
                                 name="Alamat_Cabang" @input="$v.cabang.Alamat_Cabang.$touch()" 
-                                @blur="$v.cabang.Alamat_Cabang.$touch()" required>
+                                @blur="$v.Cabang.Alamat_Cabang.$touch()" required>
                             </div>
                             <div class="text-center">
                                 <div style="color:red;" 
-                                v-if="$v.cabang.Alamat_Cabang.$invalid">{{addressErrors[0]}}</div>
+                                v-if="$v.Cabang.Alamat_Cabang.$invalid">{{addressErrors[0]}}</div>
                             </div>
                             <div class="input-group mt-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Telepon</span>
                                 </div>
-                                <input type="text" v-model="cabang.Telepon_Cabang" 
+                                <input type="text" v-model="Cabang.Telepon_Cabang" 
                                 class="form-control" placeholder="Masukkan Nomor Telepon Cabang" 
                                 :error="phoneErrors" aria-label="Telepon_Cabang"
                                  aria-describedby="basic-addon2" id="Telepon_Cabang" 
-                                 name="Telepon_Cabang" @input="$v.cabang.Telepon_Cabang.$touch()" 
-                                 @blur="$v.cabang.Telepon_Cabang.$touch()" required>
+                                 name="Telepon_Cabang" @input="$v.Cabang.Telepon_Cabang.$touch()" 
+                                 @blur="$v.Cabang.Telepon_Cabang.$touch()" required>
                             </div>
                             <div class="text-center">
                                 <div style="color:red;" 
-                                v-if="$v.cabang.Telepon_Cabang.$invalid">{{phoneErrors[0]}}</div>
+                                v-if="$v.Cabang.Telepon_Cabang.$invalid">{{phoneErrors[0]}}</div>
                             </div>
                             <div class="modal-footer ">
                                 <button type="submit" class="btn btn-success btn-lg" 
-                                style="width: 100%;" :disabled="$v.cabang.$invalid" data-dismiss="modal">Tambahkan Cabang</button>
+                                style="width: 100%;" 
+                                :disabled="$v.Cabang.$invalid"
+                                @click="addCabang(Cabang.Id_Cabang)" 
+                                data-dismiss="modal">Tambahkan Cabang</button>
                             </div>
                         </form>
                     </div>
@@ -135,12 +138,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form @submit.prevent="updateCabang(handledCabang.Id_Cabang)">
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Nama</span>
                                 </div>
-                                <input type="text" v-model="handledCabang.Nama_Cabang" 
+                                <input type="text" v-model="Cabang.Nama_Cabang" 
                                 class="form-control" placeholder="Masukkan Nama Cabang" 
                                 aria-label="Nama_Cabang" aria-describedby="basic-addon2" 
                                 id="Nama_Cabang" name="Nama_Cabang">
@@ -149,7 +151,7 @@
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Alamat</span>
                                 </div>
-                                <input type="text" v-model="handledCabang.Alamat_Cabang" 
+                                <input type="text" v-model="Cabang.Alamat_Cabang" 
                                 class="form-control" placeholder="Masukkan Alamat Cabang" 
                                 aria-label="Alamat_Cabang" aria-describedby="basic-addon2" 
                                 id="Alamat_Cabang" name="Alamat_Cabang">
@@ -158,16 +160,16 @@
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Telepon</span>
                                 </div>
-                                <input type="number" v-model="handledCabang.Telepon_Cabang" 
+                                <input type="number" v-model="Cabang.Telepon_Cabang" 
                                 class="form-control" placeholder="Masukkan Telepon Cabang" 
                                 aria-label="Telepon_Cabang" aria-describedby="basic-addon2" 
                                 id="Telepon_Cabang" name="Telepon_Cabang">
                             </div>
                             <div class="modal-footer ">
                                 <button type="submit" class="btn btn-primary btn-lg" 
-                                style="width: 100%;">Simpan Perubahan</button>
+                                style="width: 100%;" data-dismiss="modal"
+                                @click="updateCabang(Cabang.Id_Cabang)">Simpan Perubahan</button>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -188,7 +190,7 @@
                     </div>
                     <div class="modal-footer ">
                         <a id="delete_btn" class="float-left w-100">
-                            <button type="button" @click="deleteCabang(handledCabang.Id_Cabang)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
+                            <button type="button" @click="deleteCabang(Cabang.Id_Cabang)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
                         </a>
                         <button type="button" class="btn btn-secondary float-right w-50" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
                     </div>
@@ -213,7 +215,7 @@ export default {
         Alamat_Cabang:'',
         Telepon_Cabang: '',
         Cari_Cabang:'',
-        cabang:{
+        Cabang:{
             Nama_Cabang:'',
             Alamat_Cabang:'',
             Telepon_Cabang: '',
@@ -234,13 +236,13 @@ export default {
         async addCabang () {
             try {
                 const payload = {
-                    Nama_Cabang : this.cabang.Nama_Cabang,
-                    Alamat_Cabang : this.cabang.Alamat_Cabang,
-                    Telepon_Cabang : this.cabang.Telepon_Cabang
+                    Nama_Cabang     : this.Cabang.Nama_Cabang,
+                    Alamat_Cabang   : this.Cabang.Alamat_Cabang,
+                    Telepon_Cabang  : this.Cabang.Telepon_Cabang
                 }
                 await Controller.addCabang(payload)
                 this.getallCabang()
-                // console.log()
+                this.refresh()
             } catch (err) {
                 console.log(err)
             }
@@ -248,13 +250,13 @@ export default {
         async updateCabang (id) {
             try {
                 const payload = {
-                    Nama_Cabang : this.handledCabang.Nama_Cabang,
-                    Alamat_Cabang : this.handledCabang.Alamat_Cabang,
-                    Telepon_Cabang : this.handledCabang.Telepon_Cabang,
+                    Nama_Cabang     : this.Cabang.Nama_Cabang,
+                    Alamat_Cabang   : this.Cabang.Alamat_Cabang,
+                    Telepon_Cabang  : this.Cabang.Telepon_Cabang,
                 }
                 await Controller.updateCabang(payload,id)
                 this.getallCabang();
-                // console.log()
+                this.refresh()
             } catch (err) {
                 console.log(err)
             }
@@ -263,15 +265,18 @@ export default {
             try {
                 await Controller.deleteCabang(id)
                 this.getallCabang()
-                // console.log()
             } catch (err) {
                 console.log(err)
             }
         },
         dataCabangHandler(cabang){
-            this.handledCabang = cabang
+            this.Cabang = cabang
+        },
+        refresh(){
+            this.Cabang.Nama_Cabang = '';
+            this.Cabang.Alamat_Cabang= '';
+            this.Cabang.Telepon_Cabang= '';
         }
-
     },
     computed:{
         filteredCabang:function(){
@@ -281,27 +286,27 @@ export default {
         },
         nameErrors () {
             const errors = []
-            if (!this.$v.cabang.Nama_Cabang.$dirty) return errors
-            !this.$v.cabang.Nama_Cabang.minLength && errors.push('Name must be at least 5 characters long')
-            !this.$v.cabang.Nama_Cabang.maxLength && errors.push('Name must be at most 25 characters long')
-            !this.$v.cabang.Nama_Cabang.required && errors.push('Name is required.')
+            if (!this.$v.Cabang.Nama_Cabang.$dirty) return errors
+            !this.$v.Cabang.Nama_Cabang.minLength && errors.push('Name must be at least 5 characters long')
+            !this.$v.Cabang.Nama_Cabang.maxLength && errors.push('Name must be at most 25 characters long')
+            !this.$v.Cabang.Nama_Cabang.required && errors.push('Name is required.')
             return errors
         },
         addressErrors () {
             const errors = []
-            if (!this.$v.cabang.Alamat_Cabang.$dirty) return errors
-            !this.$v.cabang.Alamat_Cabang.maxLength && errors.push('Address must be at most 25 characters long')
-            !this.$v.cabang.Alamat_Cabang.minLength && errors.push('Address must be at least 5 characters long')
-            !this.$v.cabang.Alamat_Cabang.required && errors.push('Address is required.')
+            if (!this.$v.Cabang.Alamat_Cabang.$dirty) return errors
+            !this.$v.Cabang.Alamat_Cabang.maxLength && errors.push('Address must be at most 25 characters long')
+            !this.$v.Cabang.Alamat_Cabang.minLength && errors.push('Address must be at least 5 characters long')
+            !this.$v.Cabang.Alamat_Cabang.required && errors.push('Address is required.')
             return errors
         },
         phoneErrors () {
             const errors = []
-            if (!this.$v.cabang.Telepon_Cabang.$dirty) return errors
-            !this.$v.cabang.Telepon_Cabang.maxLength && errors.push('Phone Number must be at most 12 characters long')
-            !this.$v.cabang.Telepon_Cabang.minLength && errors.push('Phone Number be at leats 12 characters long')
-            !this.$v.cabang.Telepon_Cabang.numeric && errors.push('Phone Number must be numeric')
-            !this.$v.cabang.Telepon_Cabang.required && errors.push('Phone Number is required.')
+            if (!this.$v.Cabang.Telepon_Cabang.$dirty) return errors
+            !this.$v.Cabang.Telepon_Cabang.maxLength && errors.push('Phone Number must be at most 12 characters long')
+            !this.$v.Cabang.Telepon_Cabang.minLength && errors.push('Phone Number be at leats 12 characters long')
+            !this.$v.Cabang.Telepon_Cabang.numeric && errors.push('Phone Number must be numeric')
+            !this.$v.Cabang.Telepon_Cabang.required && errors.push('Phone Number is required.')
             return errors
         },
     }

@@ -251,7 +251,6 @@
                              <div class="input-group mt-4">
                                 <img :src="Gambar" class="box img-responsive">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <!-- <span class="input-group-text" id="basic-addon2">Gambar</span> -->
                                     <input type="file" name="Gambar" id="Gambar" class="button" 
                                     aria-label="Gambar" 
                                     aria-describedby="basic-addon2"
@@ -266,7 +265,7 @@
                                     <span class="input-group-text" id="basic-addon2">Merk</span>
                                 </div>
                                     
-                                <select class="form-control" v-model="Motor.Id_Motor" v-on:change="getSelectedIndex" >
+                                <select class="form-control mr-2" v-model="Motor.Id_Motor" v-on:change="getSelectedIndex" >
                                     <option disabled="disabled" selected="selected" 
                                     value="Pilih Merk">-- Pilih Merk Motor --</option>
                                     <option v-bind:key="motor['Id_Motor']" 
@@ -276,7 +275,7 @@
                                 </select>
                                 
                                 <span class="input-group-text" id="basic-addon2">Tipe</span>
-                                <select class="form-control" v-model="Motor.Id_Motor" v-on:change="getSelectedIndex">
+                                <select class="form-control mr-2" v-model="Motor.Id_Motor" v-on:change="getSelectedIndex">
                                     <option disabled="disabled" selected="selected" 
                                     value="Pilih Merk">-- Pilih Tipe Motor --</option>
                                     <option v-bind:key="motor['Id_Motor']"
@@ -287,17 +286,21 @@
                                 <button type="submit" class="btn btn-warning btn"  
                                     @click="compatibilityHandler(motorcycle)">Add Motor</button>
                             </div>
-
-                            <div class="input-group mt-3">
-                                <div class="list-group" v-for="motor in motorcycletypes" :key="motor.Id_Motor">
-                                    <a href="#" class="list-group-item list-group-item-action list-group-item-info">
-                                        {{motor.Merk + '-' + motor.Tipe}}</a>
+                            
+                            <div class="input-group mt-3 w-400">
+                                <div class="row">
+                                    <div class="col-12">
+                                    <div class="list-group mr-2" v-for="motor in motorcycletypes" :key="motor.Id_Motor">
+                                            <a href="#" class="list-group-item list-group-item-action list-group-item-info mr-2">
+                                                {{motor.Merk + '-' + motor.Tipe}}</a>
+                                    </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="modal-footer ">
                                 <button type="submit" class="btn btn-success btn-lg w-100" 
-                                    data-dismiss="modal" :disabled="$v.Sparepart.$invalid"
+                                    data-dismiss="modal" 
                                     @click="addsparepart()">Tambahkan Sparepart</button>
                             </div>
                     </div>
