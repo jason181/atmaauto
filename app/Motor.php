@@ -14,7 +14,7 @@ class Motor extends Model
         'Id_Motor',
         'Merk',
         'Tipe',
-        'Kode_Sparepart'
+        //'Kode_Sparepart'
     ];
 
     public function motor_konsumens()
@@ -22,8 +22,8 @@ class Motor extends Model
         return $this->hasMany('App\Motor_Konsumen','Id_Motor_Konsumen');
     }
 
-    public function spareparts()
-    {
-        return $this->belongsTo('App\Sparepart','Id_Sparepart');
-    }
+    // public function spareparts()
+    // {
+    //     return $this->belongsTo('App\Sparepart','Id_Sparepart');
+    // }
 }

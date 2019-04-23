@@ -13,7 +13,7 @@ class Motor_Konsumen extends Model
     protected $fillable = [
         'Id_Motor_Konsumen',
         'Id_Konsumen',
-        'Id_Motor',
+        'Id_Motor', 
         'Plat_Kendaraan'
     ];
 

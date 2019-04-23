@@ -72,6 +72,8 @@ Route::post('/authenticate', 'TokenController@authenticate');
 Route::post('/mobileauthenticate', 'TokenController@mobileauthenticate');
 Route::get('/session', 'TokenController@validateToken');
 
-//Ruang
-Route::get('/ruangs','RuangController@index');
-Route::post('/ruangs/store', 'RuangController@store');
+//Motor
+Route::get('/motors','MotorController@index');
+Route::post('/motors/store', 'MotorController@store');
+Route::patch('/motors/update/{id}', 'MotorController@update'); 
+Route::delete('/motors/delete/{id}', 'MotorController@destroy');

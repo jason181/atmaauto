@@ -150,22 +150,6 @@
                                 v-if="$v.Sparepart.Merk_Sparepart.$invalid">{{merkErrors[0]}}</div>
                             </div>
 
-                            <!-- <div class="input-group mt-4">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="fieldBox input-group-text" id="basic-addon2">Rak</span>
-                                </div>
-                                <input type="text" v-model="Sparepart.Rak_Sparepart" 
-                                class="form-control" placeholder="Masukkan Rak Sparepart" 
-                                :error="rakErrors" aria-label="Rak_Sparepart" 
-                                aria-describedby="basic-addon2" id="Rak_Sparepart"
-                                name="Rak_Sparepart" @input="$v.Sparepart.Rak_Sparepart.$touch()" 
-                                @blur="$v.Sparepart.Rak_Sparepart.$touch()" required>
-                            </div>
-                            <div class="text-center">
-                                <div style="color:red;" 
-                                v-if="$v.Sparepart.Rak_Sparepart.$invalid">{{rakErrors[0]}}</div>
-                            </div> -->
-
                             <div class="input-group mt-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Rak</span>
@@ -260,9 +244,44 @@
                                     ref="Gambar" accept="image/*">
                                     </div>
                             </div>
+
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Merk</span>
+                                </div>
+                                    
+                                <select class="form-control" v-model="Motor.Id_Motor" v-on:change="getSelectedIndex" >
+                                    <option disabled="disabled" selected="selected" 
+                                    value="Pilih Merk">-- Pilih Merk Motor --</option>
+                                    <option v-bind:key="motor['Id_Motor']" 
+                                    v-on:change="getSelectedIndex"
+                                    v-for="motor in motorcycle" 
+                                    :value="motor.Id_Motor">{{motor.Merk}}</option>
+                                </select>
+                                
+                                <span class="input-group-text" id="basic-addon2">Tipe</span>
+                                <select class="form-control" v-model="Motor.Id_Motor" v-on:change="getSelectedIndex">
+                                    <option disabled="disabled" selected="selected" 
+                                    value="Pilih Merk">-- Pilih Tipe Motor --</option>
+                                    <option v-bind:key="motor['Id_Motor']"
+                                    v-on:change="getSelectedIndex" 
+                                    v-for="motor in motorcycle" 
+                                    :value="motor.Id_Motor">{{motor.Tipe}}</option>
+                                </select>
+                                <button type="submit" class="btn btn-warning btn"  
+                                    @click="compatibilityHandler(motorcycle)">Add Motor</button>
+                            </div>
+
+                            <div class="input-group mt-3">
+                                <div class="list-group" v-for="motor in motorcycletypes" :key="motor.Id_Motor">
+                                    <a href="#" class="list-group-item list-group-item-action list-group-item-info">
+                                        {{motor.Merk + '-' + motor.Tipe}}</a>
+                                </div>
+                            </div>
+
                             <div class="modal-footer ">
                                 <button type="submit" class="btn btn-success btn-lg w-100" 
-                                    data-dismiss="modal" 
+                                    data-dismiss="modal" :disabled="$v.Sparepart.$invalid"
                                     @click="addsparepart()">Tambahkan Sparepart</button>
                             </div>
                     </div>
@@ -445,13 +464,15 @@
 
 <script>
 import Controller from '../../service/Sparepart'
+import controller from '../../service/Motor'
 import validators from '../../validations/sparepart_validations'
-
 export default {
     validations: validators,
     data: () => ({
         sparepartdata:[],
-        nomor: '',
+        motorcycletypes:[],
+        motorcycle:[],
+        motorcycleTypes:[],
         Kode_Sparepart:'',
         Tipe_Barang:'',
         Nama_Sparepart:'',
@@ -463,6 +484,9 @@ export default {
         Harga_Jual:0,
         Gambar:'',
         Cari_Sparepart:'',
+        Id_Motor: '',
+        err: '',
+        index: '',
         Sparepart:{
             Kode_Sparepart:'',
             Tipe_Barang:'',
@@ -475,8 +499,14 @@ export default {
             Harga_Jual:0,
             Gambar:'',
         },
+        Motor:{
+            Merk:'',
+            Tipe:'',
+            Id_Motor:''
+        },
         posisi: 'Pilih Posisi',
         ruang: 'Pilih Tempat',
+        nomor:'',
         positions: [
             { value: "DPN", id: 'Depan' },
             { value: "TGH", id: 'Tengah' },
@@ -490,8 +520,30 @@ export default {
     }),
     mounted(){
         this.getallsparepart()
+        this.getallmotor()
     },
     methods:{
+        compatibilityHandler(motorcycle){
+            var i =0
+            var object = motorcycle[this.index]
+            this.err = false
+            for(var data in this.motorcycletypes) {
+                if(this.motorcycletypes[i].Id_Motor==object.Id_Motor)
+                {
+                    this.err = true
+                }
+                i++;
+            }
+            if(!this.err)
+            {
+                this.motorcycletypes.push(JSON.parse(JSON.stringify(object)))
+                this.motorcycleTypes.push(this.Motor.Id_Motor)
+           }
+        },
+        getSelectedIndex(){
+            this.index = this.motorcycle.map(function(e) { return e.Id_Motor; }).indexOf(this.Motor.Id_Motor)
+            console.log(this.index)
+        },
         onFileChange(e) {
             let files = e.target.files || e.dataTransfer.files;
             if (!files.length)
@@ -509,6 +561,14 @@ export default {
         },
         pickFile () {
             this.$refs.Gambar.click ()
+        },
+        async getallmotor () {
+            try {
+                this.motorcycle = (await controller.getallmotor()).data
+                console.log(this.motorcycle)
+            } catch (err) {
+                console.log(err)
+            }
         },
         async getallsparepart () {
             try {
@@ -531,8 +591,8 @@ export default {
                     Harga_Beli              : this.Sparepart.Harga_Beli,
                     Harga_Jual              : this.Sparepart.Harga_Jual,
                     Gambar                  : this.Gambar,
+                    motorcycleTypes         : this.motorcycleTypes
                }
-            //    this.setDefaults()
                await Controller.addsparepart(payload)
                this.getallsparepart()
             } catch (err) {
@@ -650,21 +710,11 @@ export default {
             !this.$v.Sparepart.Harga_Jual.maxLength && errors.push('Price must be at most 12 characters long')
             !this.$v.Sparepart.Harga_Jual.numeric && errors.push('Price must be numeric')
             !this.$v.Sparepart.Harga_Jual.required && errors.push('Price is required')
-
             if (!this.$v.Sparepart.Harga_Jual) return errors
             !this.$v.Sparepart.Harga_Jual.maxLength && errors.push('Price must be at most 12 characters long')
             
-
             return errors
         },
-        // GambarErrors() {
-        //     const errors = []
-        //     if (!this.$v.sparepart.Gambar.$dirty) return errors
-        //     // !this.$v.sparepart.Harga_Jual.maxLength && errors.push('Price must be at most 12 characters long')
-        //     // !this.$v.sparepart.Harga_Jual.numeric && errors.push('Price must be numeric')
-        //     !this.$v.sparepart.Gambar.required && errors.push('Gambar is required')
-        //     return errors
-        // },
     }
 }
 </script>

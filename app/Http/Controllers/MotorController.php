@@ -25,7 +25,7 @@ class MotorController extends RestController
         return response()->json([
             'status' => (bool) $motor,
             'data' => $motor,
-            'message' => $motor ? 'Success' : 'Error Cabang'
+            'message' => $motor ? 'Success' : 'Error Motor'
         ]);
     }
     public function update(Request $request, $id)
@@ -44,5 +44,15 @@ class MotorController extends RestController
             return response()->json('Error Update',500);
         }else   
             return response()->json('Success',200);
+    }
+
+    public function destroy($id)
+    {
+        $motor = Motor::find($id);
+        $status = $motor->delete();
+        return response()->json([
+            'status' => $status,
+            'message' => $status ? 'Deleted' : 'Error Delete'
+        ]);
     }
 }
