@@ -1,18 +1,25 @@
 <template>
     <body>
         <div class="container mt-3" style="max-width: 800px;">
-            <div class="clearfix my-2">
-                <button class="btn btn-success float-left mb-2" data-title="Tambah_Konsumen" 
-                    data-toggle="modal" data-target="#Tambah_Konsumen">
-                    <i class="fas fa-plus mr-2"></i>Tambah
-                </button>
-                <div class="navbar navbar-light bg-light float-right p-0">
-				  	<form class="form-inline">
-				    	<input class="form-control mr-sm-2" v-model="Cari_Konsumen" type="search" 
-                            placeholder="Cari Konsumen">
-				    	<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-				  	</form>
-				</div>
+            <div class="row mb-2">
+                <div class="col-sm-2">
+                    <button class="btn btn-success float-left mb-2 btn-block" @click="getallkonsumen(),refresh()" data-title="Tambah_Konsumen" data-toggle="modal" data-target="#Tambah_Konsumen">
+                        <i class="fas fa-plus mr-2"></i>Tambah
+                    </button>
+                </div>
+                <div class="col-sm-6">
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <input class="form-control" v-model="Cari_Konsumen" type="search" placeholder="Cari Konsumen">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <div class="table-responsive" style="max-width: 800px; margin: auto;">

@@ -11,7 +11,6 @@ export default {
             required,
             minLength: minLength(5),
             maxLength: maxLength(25),
-            numeric, 
         },
         Nama_Sparepart: { 
             required, 
@@ -24,10 +23,6 @@ export default {
             maxLength: maxLength(25), 
         },
         Rak_Sparepart: {
-            required,
-            minLength: minLength(5),
-            maxLength: maxLength(25),
-            numeric,
         },
         Jumlah_Sparepart: {
             required,
@@ -41,22 +36,16 @@ export default {
         },
         Harga_Beli: {
             required,
-            minLength: minLength(10),
             maxLength: maxLength(12),
             numeric, 
         },
         Harga_Jual: {
             required,
-            minLength: minLength(10),
             maxLength: maxLength(12),
             numeric, 
-            minValue:  minValue(10),
         },
         Gambar: {
-            required,
-            // minLength: minLength(10),
-            // maxLength: maxLength(15),
-            // numeric,
+            // required,
         }
     },
 }

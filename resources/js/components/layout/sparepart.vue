@@ -1,19 +1,30 @@
 <template>
     <body>
         <div class="container-fluid mt-3" style="">
-            <div class="clearfix my-2">
-                <button class="btn btn-success float-left mb-2" data-title="Tambah_Sparepart"
-                 data-toggle="modal" data-target="#Tambah_Sparepart">
-                    <i class="fas fa-plus mr-2"></i>Tambah
-                </button>
-                <div class="navbar navbar-light bg-light float-right p-0">
-				  	<form class="form-inline">
-				    	<input class="form-control mr-sm-2" type="search" 
-                        v-model="Cari_Sparepart" placeholder="Search" aria-label="Search">
-				    	<button class="btn btn-outline-primary my-2 my-sm-0" 
-                        type="submit">Search</button>
-				  	</form>
-				</div>
+            <div class="row mb-2">
+                <div class="col-sm-2">
+                    <div class="col-sm-7 p-0">
+                        <button class="btn btn-success mb-2 btn-block" @click="getallsparepart(),refresh()" data-title="Tambah_Sparepart" data-toggle="modal" data-target="#Tambah_Sparepart">
+                            <i class="fas fa-plus mr-2"></i>Tambah
+                        </button>
+                    </div>
+                    <div class="col-sm-5">
+
+                    </div>
+                </div>
+                <div class="col-sm-7">
+
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <input class="form-control" v-model="Cari_Sparepart" type="search" placeholder="Cari Sparepart">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <div class="table-responsive" style="margin: auto;">
@@ -47,7 +58,7 @@
                             <td>{{sparepart.Harga_Beli}} </td>
                             <td>{{sparepart.Harga_Jual}} </td>
                             <!-- image/sparepart/Bohlam_Depan.jpg -->
-                            <td>{{sparepart.Gambar}}</td>
+                            <td> <img :src="'images/'+sparepart.Gambar" alt="" style="max-width:75px; max-height:75px;"> </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Edit">
                                     <button class="btn btn-primary" @click="dataspareparthandler(sparepart)" 
@@ -265,10 +276,12 @@
                                     ref="Gambar" accept="image/*">
                                     </div>
                             </div>
+                            {{ $v.Sparepart.$invalid }}
                             <div class="modal-footer ">
                                 <button type="submit" class="btn btn-success btn-lg w-100" 
                                     data-dismiss="modal" 
-                                    @click="addsparepart()">Tambahkan Sparepart</button>
+                                    @click="addsparepart()"
+                                    :disabled="$v.Sparepart.$invalid">Tambahkan Sparepart</button>
                             </div>
                     </div>
                 </div>
@@ -581,6 +594,20 @@ export default {
         },
         dataspareparthandler(sparepart){
             this.Sparepart = sparepart
+        },
+        refresh(){
+            this.Sparepart.Kode_Sparepart       ='';
+            this.Sparepart.Kode1                ='';
+            this.Sparepart.Kode2                ='';
+            this.Sparepart.Kode3                ='';
+            this.Sparepart.Tipe_Barang          ='';
+            this.Sparepart.Nama_Sparepart       ='';
+            this.Sparepart.Merk_Sparepart       ='';
+            this.Sparepart.Rak_Sparepart        = '';
+            this.Sparepart.Jumlah_Sparepart     ='';
+            this.Sparepart.Stok_Minimum_Sparepart=0;
+            this.Sparepart.Harga_Beli           =0;
+            this.Sparepart.Harga_Jual           =0;
         }
     },
     computed:{
@@ -624,27 +651,27 @@ export default {
             return errors
         },
         rakErrors() {
-            const errors = []
-            if (!this.$v.Sparepart.Rak_Sparepart.$dirty) return errors
-            !this.$v.Sparepart.Rak_Sparepart.minLength && errors.push('Rak must be at least 5 characters long')
-            !this.$v.Sparepart.Rak_Sparepart.maxLength && errors.push('Rak must be at most 25 characters long')
-            !this.$v.Sparepart.Rak_Sparepart.required && errors.push('Rak is required.')
-            return errors
+            // const errors = []
+            // if (!this.$v.Sparepart.Rak_Sparepart.$dirty) return errors
+            // !this.$v.Sparepart.Rak_Sparepart.minLength && errors.push('Rak must be at least 5 characters long')
+            // !this.$v.Sparepart.Rak_Sparepart.maxLength && errors.push('Rak must be at most 25 characters long')
+            // !this.$v.Sparepart.Rak_Sparepart.required && errors.push('Rak is required.')
+            // return errors
         },
         sumErrors() {
             const errors = []
             if (!this.$v.Sparepart.Jumlah_Sparepart.$dirty) return errors
             !this.$v.Sparepart.Jumlah_Sparepart.required && errors.push('Jumlah is required.')
-            !this.$v.Sparepart.Jumlah_Sparepart.minLength && errors.push('Jumlah must be at least 5 characters long')
             !this.$v.Sparepart.Jumlah_Sparepart.maxLength && errors.push('Jumlah must be at most 25 characters long')
+            !this.$v.Sparepart.Jumlah_Sparepart.numeric && errors.push('Jumlah must be numeric')
             return errors
         },
         stokErrors() {
             const errors = []
-            if (!this.$v.Sparepart.Harga_Beli.$dirty) return errors
-            !this.$v.Sparepart.Harga_Beli.maxLength && errors.push('Price must be at most 12 characters long')
-            !this.$v.Sparepart.Harga_Beli.numeric && errors.push('Price must be numeric')
-            !this.$v.Sparepart.Harga_Beli.required && errors.push('Price is required')
+            if (!this.$v.Sparepart.Stok_Minimum_Sparepart.$dirty) return errors
+            !this.$v.Sparepart.Stok_Minimum_Sparepart.maxLength && errors.push('Stok must be at most 12 characters long')
+            !this.$v.Sparepart.Stok_Minimum_Sparepart.numeric && errors.push('Stok must be numeric')
+            !this.$v.Sparepart.Stok_Minimum_Sparepart.required && errors.push('Stok is required')
             return errors
         },
         priceBErrors() {
@@ -661,11 +688,6 @@ export default {
             !this.$v.Sparepart.Harga_Jual.maxLength && errors.push('Price must be at most 12 characters long')
             !this.$v.Sparepart.Harga_Jual.numeric && errors.push('Price must be numeric')
             !this.$v.Sparepart.Harga_Jual.required && errors.push('Price is required')
-
-            if (!this.$v.Sparepart.Harga_Jual) return errors
-            !this.$v.Sparepart.Harga_Jual.maxLength && errors.push('Price must be at most 12 characters long')
-            
-
             return errors
         },
         next(){
