@@ -10,12 +10,12 @@ export default {
         Alamat_Cabang: { 
             required, 
             minLength: minLength(5), 
-            maxLength: maxLength(25), 
+            maxLength: maxLength(255), 
         },
         Telepon_Cabang: { 
             required,
-            maxLength: maxLength(12),
-            minLength: minLength(12),
+            minLength: minLength(10),
+            maxLength: maxLength(15),
             numeric, 
         },
     },

@@ -5,8 +5,7 @@ export default {
         Nama_Jasa: { 
             required, 
             minLength: minLength(5), 
-            maxLength: maxLength(25), 
-            // alpha 
+            maxLength: maxLength(25),
         },
         Harga_Jasa: { 
             required,

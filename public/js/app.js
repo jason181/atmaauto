@@ -4679,6 +4679,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4688,6 +4693,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       sparepartdata: [],
       nomor: '',
       Kode_Sparepart: '',
+      Kode1: '',
+      Kode2: '',
+      Kode3: '',
       Tipe_Barang: '',
       Nama_Sparepart: '',
       Merk_Sparepart: '',
@@ -4700,6 +4708,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       Cari_Sparepart: '',
       Sparepart: {
         Kode_Sparepart: '',
+        Kode1: '',
+        Kode2: '',
+        Kode3: '',
         Tipe_Barang: '',
         Nama_Sparepart: '',
         Merk_Sparepart: '',
@@ -5018,7 +5029,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       !this.$v.Sparepart.Harga_Jual.numeric && errors.push('Price must be numeric');
       !this.$v.Sparepart.Harga_Jual.required && errors.push('Price is required');
       return errors;
-    }
+    },
+    next: function next() {
+      if (this.Kode1.length == 4) this.Kode2.focus();
+    } // GambarErrors() {
+    //     const errors = []
+    //     if (!this.$v.sparepart.Gambar.$dirty) return errors
+    //     // !this.$v.sparepart.Harga_Jual.maxLength && errors.push('Price must be at most 12 characters long')
+    //     // !this.$v.sparepart.Harga_Jual.numeric && errors.push('Price must be numeric')
+    //     !this.$v.sparepart.Gambar.required && errors.push('Gambar is required')
+    //     return errors
+    // },
+
   }
 });
 
@@ -47746,48 +47768,73 @@ var render = function() {
               _c("div", { staticClass: "input-group" }, [
                 _vm._m(3),
                 _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.Sparepart.Kode_Sparepart,
-                      expression: "Sparepart.Kode_Sparepart"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Masukkan Kode Sparepart",
-                    error: _vm.kodeErrors,
-                    "aria-label": "Kode_Sparepart",
-                    "aria-describedby": "basic-addon2",
-                    id: "Kode_Sparepart",
-                    name: "Kode_Sparepart",
-                    required: ""
-                  },
-                  domProps: { value: _vm.Sparepart.Kode_Sparepart },
-                  on: {
-                    input: [
-                      function($event) {
+                _c("fieldset", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Kode1,
+                        expression: "Kode1"
+                      }
+                    ],
+                    attrs: { type: "text", size: "4", maxlength: "4" },
+                    domProps: { value: _vm.Kode1 },
+                    on: {
+                      focus: function($event) {
+                        return _vm.next()
+                      },
+                      input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(
-                          _vm.Sparepart,
-                          "Kode_Sparepart",
-                          $event.target.value
-                        )
-                      },
-                      function($event) {
-                        return _vm.$v.Sparepart.Kode_Sparepart.$touch()
+                        _vm.Kode1 = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" -\n                                    "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Kode2,
+                        expression: "Kode2"
                       }
                     ],
-                    blur: function($event) {
-                      return _vm.$v.Sparepart.Kode_Sparepart.$touch()
+                    attrs: { type: "text", size: "4", maxlength: "4" },
+                    domProps: { value: _vm.Kode2 },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.Kode2 = $event.target.value
+                      }
                     }
-                  }
-                })
+                  }),
+                  _vm._v(" -\n                                    "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Kode3,
+                        expression: "Kode3"
+                      }
+                    ],
+                    attrs: { type: "text", size: "3", maxlength: "3" },
+                    domProps: { value: _vm.Kode3 },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.Kode3 = $event.target.value
+                      }
+                    }
+                  })
+                ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "text-center" }, [
@@ -70697,12 +70744,12 @@ __webpack_require__.r(__webpack_exports__);
     Alamat_Cabang: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
       minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
-      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25)
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(255)
     },
     Telepon_Cabang: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
-      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(12),
-      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(12),
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(10),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(15),
       numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
     }
   }
@@ -70727,8 +70774,7 @@ __webpack_require__.r(__webpack_exports__);
     Nama_Jasa: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
       minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
-      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25) // alpha 
-
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25)
     },
     Harga_Jasa: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
@@ -70894,7 +70940,8 @@ __webpack_require__.r(__webpack_exports__);
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
       minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(10),
       maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(12),
-      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
+      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"],
+      minValue: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minValue"])(10)
     },
     Gambar: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // minLength: minLength(10),
