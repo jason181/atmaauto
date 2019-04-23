@@ -4,7 +4,7 @@ import Login from './components/layout/Login.vue';
 import Pegawai from './components/layout/Pegawai.vue';
 import Jasa_Service from './components/layout/JasaService.vue';
 import Supplier from './components/layout/Supplier.vue';
-import Sparepart from './components/layout/Sparepart.vue';
+import Sparepart from './components/layout/sparepart.vue';
 import Cabang from './components/layout/Cabang.vue';
 import Konsumen from './components/layout/Konsumen.vue';
 import Motor from './components/layout/Motor.vue';
