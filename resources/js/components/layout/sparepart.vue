@@ -89,6 +89,11 @@
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Kode</span>
                                 </div>
+                                <!-- <fieldset>
+                                    <input v-model="Kode1" type="text" size="4" maxlength="4" @focus="next()"> -
+                                    <input v-model="Kode2" type="text" size="4" maxlength="4"> -
+                                    <input v-model="Kode3" type="text" size="3" maxlength="3">
+                                </fieldset> -->
                                 <input type="text" v-model="Sparepart.Kode_Sparepart" class="form-control" 
                                 placeholder="Masukkan Kode Sparepart" :error="kodeErrors" 
                                 aria-label="Kode_Sparepart" aria-describedby="basic-addon2"
@@ -474,6 +479,9 @@ export default {
         motorcycle:[],
         motorcycleTypes:[],
         Kode_Sparepart:'',
+        Kode1:'',
+        Kode2:'',
+        Kode3:'',
         Tipe_Barang:'',
         Nama_Sparepart:'',
         Merk_Sparepart:'',
@@ -489,6 +497,9 @@ export default {
         index: '',
         Sparepart:{
             Kode_Sparepart:'',
+            Kode1:'',
+            Kode2:'',
+            Kode3:'',
             Tipe_Barang:'',
             Nama_Sparepart:'',
             Merk_Sparepart:'',
@@ -715,9 +726,26 @@ export default {
             
             return errors
         },
+<<<<<<< HEAD
+=======
+        next(){
+            if(this.Kode1.length==4)
+                this.Kode2.focus();
+        }
+        // GambarErrors() {
+        //     const errors = []
+        //     if (!this.$v.sparepart.Gambar.$dirty) return errors
+        //     // !this.$v.sparepart.Harga_Jual.maxLength && errors.push('Price must be at most 12 characters long')
+        //     // !this.$v.sparepart.Harga_Jual.numeric && errors.push('Price must be numeric')
+        //     !this.$v.sparepart.Gambar.required && errors.push('Gambar is required')
+        //     return errors
+        // },
+>>>>>>> 6613a43ae17260cb43f4cefd106c82453f5b919a
     }
 }
 </script>
+
+
 
 <style>
 .box{

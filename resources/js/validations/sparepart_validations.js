@@ -1,4 +1,4 @@
-import { required, minLength, maxLength, numeric, alpha } from 'vuelidate/lib/validators'
+import { required, minLength, maxLength, numeric, minValue } from 'vuelidate/lib/validators'
 
 export default {
     Sparepart: {
@@ -50,6 +50,7 @@ export default {
             minLength: minLength(10),
             maxLength: maxLength(12),
             numeric, 
+            minValue:  minValue(10),
         },
         Gambar: {
             required,
