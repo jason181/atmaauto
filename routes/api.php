@@ -63,6 +63,7 @@ Route::patch('/suppliers/delSales/{id}', 'SupplierController@delSales');
 //Sparepart
 Route::get('/spareparts','SparepartController@index');
 Route::post('/spareparts/store', 'SparepartController@store');
+Route::post('/spareparts/storemobile', 'SparepartController@storemobile');
 Route::get('/spareparts/{id}', 'SparepartController@showbyID');
 Route::patch('/spareparts/update/{id}', 'SparepartController@update'); 
 Route::delete('/spareparts/delete/{id}', 'SparepartController@destroy');
@@ -72,6 +73,8 @@ Route::post('/authenticate', 'TokenController@authenticate');
 Route::post('/mobileauthenticate', 'TokenController@mobileauthenticate');
 Route::get('/session', 'TokenController@validateToken');
 
-//Ruang
-Route::get('/ruangs','RuangController@index');
-Route::post('/ruangs/store', 'RuangController@store');
+//Motor
+Route::get('/motors','MotorController@index');
+Route::post('/motors/store', 'MotorController@store');
+Route::patch('/motors/update/{id}', 'MotorController@update'); 
+Route::delete('/motors/delete/{id}', 'MotorController@destroy');

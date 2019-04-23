@@ -31,7 +31,7 @@ class Sparepart extends Model
 
     public function motors()
     {
-        return $this->hasMany('App\Motor','Id_Motor');
+        return $this->belongsToMany('App\Motor','compatibilities','Kode_Sparepart','Id_Motor');
     }
 
     public function detail_spareparts()

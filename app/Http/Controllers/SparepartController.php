@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Transformers\SparepartTransformers;
 use App\Sparepart;
+use Illuminate\Support\Facades\DB;
 
 class SparepartController extends RestController
 {
@@ -47,6 +48,49 @@ class SparepartController extends RestController
 
     public function store(Request $request)
     {
+        //return $request;
+        try{
+            $sparepart = new Sparepart;
+
+            if($request->get('Gambar'))
+            {
+                $image = $request->get('Gambar');
+                $name = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+                \Image::make($request->get('Gambar'))->save(public_path('images/').$name);
+                $sparepart->Gambar = $name;
+            }
+
+            $motorcyle_types = $request->motorcycleTypes;
+
+            $sparepart->Kode_Sparepart=$request->get('Kode_Sparepart');
+            $sparepart->Tipe_Barang=$request->get('Tipe_Barang');
+            $sparepart->Nama_Sparepart=$request->get('Nama_Sparepart');
+            $sparepart->Merk_Sparepart=$request->get('Merk_Sparepart');
+            $sparepart->Rak_Sparepart=$request->get('Rak_Sparepart');
+            $sparepart->Jumlah_Sparepart=$request->get('Jumlah_Sparepart');
+            $sparepart->Stok_Minimum_Sparepart=$request->get('Stok_Minimum_Sparepart');
+            $sparepart->Harga_Beli=$request->get('Harga_Beli');
+            $sparepart->Harga_Jual=$request->get('Harga_Jual');
+            $sparepart->save();
+
+            if($request->has('motorcycleTypes')){
+                $sparepart = DB::transaction(function () use ($sparepart,$motorcyle_types){
+                    $sparepart->motors()->sync($motorcyle_types);
+                    return $sparepart;
+                });
+            }
+
+            $response = $this->generateItem($sparepart);
+            return $this->sendResponse($response, 201);
+            
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+    }
+
+    public function storemobile(Request $request)
+    {
+        //return $request;
         try{
             $sparepart = new Sparepart;
 
@@ -59,11 +103,13 @@ class SparepartController extends RestController
             //     $sparepart->Gambar=$name;
             // }
 
-            if($request->get('Gambar'))
+            // dd($request->file('Gambar'));
+            if($request->file('Gambar'))
             {
-                $image = $request->get('Gambar');
-                $name = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-                \Image::make($request->get('Gambar'))->save(public_path('images/').$name);
+                $image = $request->file('Gambar');
+                $name = time(). '.' . $image->getClientOriginalName();
+                // dd($name);
+                \Image::make($request->file('Gambar'))->save(public_path('images/') . $name);
                 $sparepart->Gambar = $name;
             }
 
@@ -82,6 +128,7 @@ class SparepartController extends RestController
             return $this->sendResponse($response, 201);
             
         } catch (\Exception $e) {
+            throw $e;
             return $this->sendIseResponse($e->getMessage());
         }
     }
@@ -100,7 +147,6 @@ class SparepartController extends RestController
                 $sparepart->Gambar = $name;
             }
 
-            //$sparepart->Kode_Sparepart=$request->get('Kode_Sparepart');
             $sparepart->Tipe_Barang=$request->get('Tipe_Barang');
             $sparepart->Nama_Sparepart=$request->get('Nama_Sparepart');
             $sparepart->Merk_Sparepart=$request->get('Merk_Sparepart');

@@ -146,7 +146,7 @@
                             </div>
                             <select class="form-control" v-model="Pegawai.Id_Cabang" @input="$v.Pegawai.Id_Cabang.$touch()" @blur="$v.Pegawai.Id_Cabang.$touch()" require>
                                 <option disabled="disabled" selected="selected" value="Pilih Cabang">-- Pilih Cabang --</option>
-                                <option v-bind:key="cabang['Id_Cabang']" v-for="cabang in cabangdata" :value="cabang.Id_Cabang">{{cabang.Nama_Cabang}} </option>
+                                <option v-bind:key="cabang['Id_Cabang']" v-for="cabang in cabangData" :value="cabang.Id_Cabang">{{cabang.Nama_Cabang}} </option>
                             </select>
                         </div>
                         <div class="text-center">

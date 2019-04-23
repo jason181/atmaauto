@@ -3542,6 +3542,448 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Motor.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/Motor.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _service_Motor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/Motor */ "./resources/js/service/Motor.js");
+/* harmony import */ var _validations_motor_validations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../validations/motor_validations */ "./resources/js/validations/motor_validations.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  validations: _validations_motor_validations__WEBPACK_IMPORTED_MODULE_2__["default"],
+  data: function data() {
+    return {
+      motordata: [],
+      Merk: '',
+      Tipe: '',
+      Cari_Motor: '',
+      Motor: {
+        Merk: '',
+        Tipe: ''
+      }
+    };
+  },
+  mounted: function mounted() {
+    this.getallmotor();
+  },
+  methods: {
+    getallmotor: function () {
+      var _getallmotor = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _service_Motor__WEBPACK_IMPORTED_MODULE_1__["default"].getallmotor();
+
+              case 3:
+                this.motordata = _context.sent.data;
+                console.log(this.motordata);
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 7]]);
+      }));
+
+      function getallmotor() {
+        return _getallmotor.apply(this, arguments);
+      }
+
+      return getallmotor;
+    }(),
+    addmotor: function () {
+      var _addmotor = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                payload = {
+                  Merk: this.Motor.Merk,
+                  Tipe: this.Motor.Tipe
+                };
+                _context2.next = 4;
+                return _service_Motor__WEBPACK_IMPORTED_MODULE_1__["default"].addmotor(payload);
+
+              case 4:
+                this.getallmotor();
+                this.refresh(); //this.$router.go()
+                // console.log()
+
+                _context2.next = 11;
+                break;
+
+              case 8:
+                _context2.prev = 8;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+
+              case 11:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 8]]);
+      }));
+
+      function addmotor() {
+        return _addmotor.apply(this, arguments);
+      }
+
+      return addmotor;
+    }(),
+    updatemotor: function () {
+      var _updatemotor = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(id) {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                payload = {
+                  Merk: this.Motor.Merk,
+                  Tipe: this.Motor.Tipe
+                };
+                _context3.next = 4;
+                return _service_Motor__WEBPACK_IMPORTED_MODULE_1__["default"].updatemotor(payload, id);
+
+              case 4:
+                this.getallmotor();
+                this.refresh(); // console.log()
+
+                _context3.next = 11;
+                break;
+
+              case 8:
+                _context3.prev = 8;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
+
+              case 11:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 8]]);
+      }));
+
+      function updatemotor(_x) {
+        return _updatemotor.apply(this, arguments);
+      }
+
+      return updatemotor;
+    }(),
+    deletemotor: function () {
+      var _deletemotor = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return _service_Motor__WEBPACK_IMPORTED_MODULE_1__["default"].deletemotor(id);
+
+              case 3:
+                this.getallmotor(); // console.log()
+
+                _context4.next = 9;
+                break;
+
+              case 6:
+                _context4.prev = 6;
+                _context4.t0 = _context4["catch"](0);
+                console.log(_context4.t0);
+
+              case 9:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[0, 6]]);
+      }));
+
+      function deletemotor(_x2) {
+        return _deletemotor.apply(this, arguments);
+      }
+
+      return deletemotor;
+    }(),
+    datamotorhandler: function datamotorhandler(motor) {
+      this.Motor = motor;
+    },
+    refresh: function refresh() {
+      this.Motor.Merk = '';
+      this.Motor.Tipe = '';
+    }
+  },
+  computed: {
+    filteredmotor: function filteredmotor() {
+      var _this = this;
+
+      return this.motordata.filter(function (motor) {
+        return motor.Merk.match(_this.Cari_Motor);
+      });
+    },
+    merkErrors: function merkErrors() {
+      var errors = [];
+      if (!this.$v.Motor.Merk.$dirty) return errors;
+      !this.$v.Motor.Merk.minLength && errors.push('Motorcycle Brand must be at least 5 characters long');
+      !this.$v.Motor.Merk.maxLength && errors.push('Motorcycle Brand must be at most 25 characters long');
+      !this.$v.Motor.Merk.required && errors.push('Motorcycle Brand is required.');
+      return errors;
+    },
+    typeErrors: function typeErrors() {
+      var errors = [];
+      if (!this.$v.Motor.Tipe.$dirty) return errors;
+      !this.$v.Motor.Tipe.maxLength && errors.push('Type must be at most 25 characters long');
+      !this.$v.Motor.Tipe.minLength && errors.push('Type must be at least 5 characters long');
+      !this.$v.Motor.Tipe.required && errors.push('Type is required');
+      return errors;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Pegawai.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/Pegawai.vue?vue&type=script&lang=js& ***!
@@ -4242,7 +4684,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/Sparepart */ "./resources/js/service/Sparepart.js");
-/* harmony import */ var _validations_sparepart_validations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../validations/sparepart_validations */ "./resources/js/validations/sparepart_validations.js");
+/* harmony import */ var _service_Motor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../service/Motor */ "./resources/js/service/Motor.js");
+/* harmony import */ var _validations_sparepart_validations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../validations/sparepart_validations */ "./resources/js/validations/sparepart_validations.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -4712,14 +5155,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  validations: _validations_sparepart_validations__WEBPACK_IMPORTED_MODULE_2__["default"],
+  validations: _validations_sparepart_validations__WEBPACK_IMPORTED_MODULE_3__["default"],
   data: function data() {
     return {
       sparepartdata: [],
-      nomor: '',
+      motorcycletypes: [],
+      motorcycle: [],
+      motorcycleTypes: [],
       Kode_Sparepart: '',
       Kode1: '',
       Kode2: '',
@@ -4734,6 +5197,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       Harga_Jual: 0,
       Gambar: '',
       Cari_Sparepart: '',
+      Id_Motor: '',
+      err: '',
+      index: '',
       Sparepart: {
         Kode_Sparepart: '',
         Kode1: '',
@@ -4749,8 +5215,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         Harga_Jual: 0,
         Gambar: ''
       },
+      Motor: {
+        Merk: '',
+        Tipe: '',
+        Id_Motor: ''
+      },
       posisi: 'Pilih Posisi',
       ruang: 'Pilih Tempat',
+      nomor: '',
       positions: [{
         value: "DPN",
         id: 'Depan'
@@ -4775,8 +5247,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   mounted: function mounted() {
     this.getallsparepart();
+    this.getallmotor();
   },
   methods: {
+    compatibilityHandler: function compatibilityHandler(motorcycle) {
+      var i = 0;
+      var object = motorcycle[this.index];
+      this.err = false;
+
+      for (var data in this.motorcycletypes) {
+        if (this.motorcycletypes[i].Id_Motor == object.Id_Motor) {
+          this.err = true;
+        }
+
+        i++;
+      }
+
+      if (!this.err) {
+        this.motorcycletypes.push(JSON.parse(JSON.stringify(object)));
+        this.motorcycleTypes.push(this.Motor.Id_Motor);
+      }
+    },
+    getSelectedIndex: function getSelectedIndex() {
+      this.index = this.motorcycle.map(function (e) {
+        return e.Id_Motor;
+      }).indexOf(this.Motor.Id_Motor);
+      console.log(this.index);
+    },
     onFileChange: function onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
@@ -4797,8 +5294,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     pickFile: function pickFile() {
       this.$refs.Gambar.click();
     },
-    getallsparepart: function () {
-      var _getallsparepart = _asyncToGenerator(
+    getallmotor: function () {
+      var _getallmotor = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -4807,11 +5304,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].getallsparepart();
+                return _service_Motor__WEBPACK_IMPORTED_MODULE_2__["default"].getallmotor();
 
               case 3:
-                this.sparepartdata = _context.sent.data;
-                console.log(this.sparepartdata);
+                this.motorcycle = _context.sent.data;
+                console.log(this.motorcycle);
                 _context.next = 10;
                 break;
 
@@ -4828,40 +5325,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, this, [[0, 7]]);
       }));
 
-      function getallsparepart() {
-        return _getallsparepart.apply(this, arguments);
+      function getallmotor() {
+        return _getallmotor.apply(this, arguments);
       }
 
-      return getallsparepart;
+      return getallmotor;
     }(),
-    addsparepart: function () {
-      var _addsparepart = _asyncToGenerator(
+    getallsparepart: function () {
+      var _getallsparepart = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var payload;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
-                payload = {
-                  Kode_Sparepart: this.Sparepart.Kode_Sparepart,
-                  Nama_Sparepart: this.Sparepart.Nama_Sparepart,
-                  Tipe_Barang: this.Sparepart.Tipe_Barang,
-                  Merk_Sparepart: this.Sparepart.Merk_Sparepart,
-                  Rak_Sparepart: this.posisi + '-' + this.ruang + '-' + this.nomor,
-                  Jumlah_Sparepart: this.Sparepart.Jumlah_Sparepart,
-                  Stok_Minimum_Sparepart: this.Sparepart.Stok_Minimum_Sparepart,
-                  Harga_Beli: this.Sparepart.Harga_Beli,
-                  Harga_Jual: this.Sparepart.Harga_Jual,
-                  Gambar: this.Gambar //    this.setDefaults()
+                _context2.next = 3;
+                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].getallsparepart();
 
-                };
-                _context2.next = 4;
-                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].addsparepart(payload);
-
-              case 4:
-                this.getallsparepart();
+              case 3:
+                this.sparepartdata = _context2.sent.data;
+                console.log(this.sparepartdata);
                 _context2.next = 10;
                 break;
 
@@ -4878,16 +5362,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2, this, [[0, 7]]);
       }));
 
-      function addsparepart() {
-        return _addsparepart.apply(this, arguments);
+      function getallsparepart() {
+        return _getallsparepart.apply(this, arguments);
       }
 
-      return addsparepart;
+      return getallsparepart;
     }(),
-    updatesparepart: function () {
-      var _updatesparepart = _asyncToGenerator(
+    addsparepart: function () {
+      var _addsparepart = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(id) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
         var payload;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
@@ -4895,6 +5379,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
                 payload = {
+                  Kode_Sparepart: this.Sparepart.Kode_Sparepart,
                   Nama_Sparepart: this.Sparepart.Nama_Sparepart,
                   Tipe_Barang: this.Sparepart.Tipe_Barang,
                   Merk_Sparepart: this.Sparepart.Merk_Sparepart,
@@ -4903,14 +5388,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   Stok_Minimum_Sparepart: this.Sparepart.Stok_Minimum_Sparepart,
                   Harga_Beli: this.Sparepart.Harga_Beli,
                   Harga_Jual: this.Sparepart.Harga_Jual,
-                  Gambar: this.Gambar
+                  Gambar: this.Gambar,
+                  motorcycleTypes: this.motorcycleTypes
                 };
                 _context3.next = 4;
-                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].updatesparepart(payload, id);
+                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].addsparepart(payload);
 
               case 4:
-                this.getallsparepart(); // console.log()
-
+                this.getallsparepart();
                 _context3.next = 10;
                 break;
 
@@ -4927,6 +5412,55 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3, this, [[0, 7]]);
       }));
 
+      function addsparepart() {
+        return _addsparepart.apply(this, arguments);
+      }
+
+      return addsparepart;
+    }(),
+    updatesparepart: function () {
+      var _updatesparepart = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                payload = {
+                  Nama_Sparepart: this.Sparepart.Nama_Sparepart,
+                  Tipe_Barang: this.Sparepart.Tipe_Barang,
+                  Merk_Sparepart: this.Sparepart.Merk_Sparepart,
+                  Rak_Sparepart: this.posisi + '-' + this.ruang + '-' + this.nomor,
+                  Jumlah_Sparepart: this.Sparepart.Jumlah_Sparepart,
+                  Stok_Minimum_Sparepart: this.Sparepart.Stok_Minimum_Sparepart,
+                  Harga_Beli: this.Sparepart.Harga_Beli,
+                  Harga_Jual: this.Sparepart.Harga_Jual,
+                  Gambar: this.Gambar
+                };
+                _context4.next = 4;
+                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].updatesparepart(payload, id);
+
+              case 4:
+                this.getallsparepart(); // console.log()
+
+                _context4.next = 10;
+                break;
+
+              case 7:
+                _context4.prev = 7;
+                _context4.t0 = _context4["catch"](0);
+                console.log(_context4.t0);
+
+              case 10:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[0, 7]]);
+      }));
+
       function updatesparepart(_x) {
         return _updatesparepart.apply(this, arguments);
       }
@@ -4936,32 +5470,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     deletesparepart: function () {
       var _deletesparepart = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
-                _context4.prev = 0;
-                _context4.next = 3;
+                _context5.prev = 0;
+                _context5.next = 3;
                 return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].deletesparepart(id);
 
               case 3:
                 this.getallsparepart(); // console.log()
 
-                _context4.next = 9;
+                _context5.next = 9;
                 break;
 
               case 6:
-                _context4.prev = 6;
-                _context4.t0 = _context4["catch"](0);
-                console.log(_context4.t0);
+                _context5.prev = 6;
+                _context5.t0 = _context5["catch"](0);
+                console.log(_context5.t0);
 
               case 9:
               case "end":
-                return _context4.stop();
+                return _context5.stop();
             }
           }
-        }, _callee4, this, [[0, 6]]);
+        }, _callee5, this, [[0, 6]]);
       }));
 
       function deletesparepart(_x2) {
@@ -5066,18 +5600,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       !this.$v.Sparepart.Harga_Jual.numeric && errors.push('Price must be numeric');
       !this.$v.Sparepart.Harga_Jual.required && errors.push('Price is required');
       return errors;
-    },
-    next: function next() {
-      if (this.Kode1.length == 4) this.Kode2.focus();
-    } // GambarErrors() {
-    //     const errors = []
-    //     if (!this.$v.sparepart.Gambar.$dirty) return errors
-    //     // !this.$v.sparepart.Harga_Jual.maxLength && errors.push('Price must be at most 12 characters long')
-    //     // !this.$v.sparepart.Harga_Jual.numeric && errors.push('Price must be numeric')
-    //     !this.$v.sparepart.Gambar.required && errors.push('Gambar is required')
-    //     return errors
-    // },
-
+    }
   }
 });
 
@@ -45953,6 +46476,744 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Motor.vue?vue&type=template&id=340898fb&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/Motor.vue?vue&type=template&id=340898fb& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("body", [
+    _c(
+      "div",
+      { staticClass: "container mt-3", staticStyle: { "max-width": "800px" } },
+      [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-2" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success float-left mb-2 btn-block",
+                attrs: {
+                  "data-title": "Tambah_Motor",
+                  "data-toggle": "modal",
+                  "data-target": "#Tambah_Motor"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.getallmotor(), _vm.refresh()
+                  }
+                }
+              },
+              [
+                _c("i", { staticClass: "fas fa-plus mr-2" }),
+                _vm._v("Tambah\n                ")
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-4" }, [
+            _c("div", { staticClass: "input-group" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.Cari_Motor,
+                    expression: "Cari_Motor"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "search", placeholder: "Cari Motor" },
+                domProps: { value: _vm.Cari_Motor },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.Cari_Motor = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(0)
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "table-responsive",
+            staticStyle: { "max-width": "800px", margin: "auto" }
+          },
+          [
+            _c("table", { staticClass: "table table-striped table-hover" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.filteredmotor, function(motor) {
+                  return _c("tr", { key: motor["Id_Motor"] }, [
+                    _c("td", [_vm._v(_vm._s(motor.Tipe) + " ")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(motor.Merk) + " ")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _c(
+                        "p",
+                        {
+                          attrs: {
+                            "data-placement": "top",
+                            "data-toggle": "tooltip",
+                            title: "Edit"
+                          }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: {
+                                "data-title": "Edit_Motor",
+                                "data-toggle": "modal",
+                                "data-target": "#Edit_Motor"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.datamotorhandler(motor)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-edit" })]
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _c(
+                        "p",
+                        {
+                          attrs: {
+                            "data-placement": "top",
+                            "data-toggle": "tooltip",
+                            title: "Delete"
+                          }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-danger",
+                              attrs: {
+                                "data-title": "Delete_Motor",
+                                "data-toggle": "modal",
+                                "data-target": "#Delete_Motor"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.datamotorhandler(motor)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-trash-alt" })]
+                          )
+                        ]
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Tambah_Motor",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Tambah_Motor",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "input-group" }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Motor.Merk,
+                      expression: "Motor.Merk"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Merk Motor",
+                    error: _vm.merkErrors,
+                    "aria-label": "Merk_Motor",
+                    "aria-describedby": "basic-addon2",
+                    id: "Merk_Motor",
+                    name: "Merk_Motor",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Motor.Merk },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.Motor, "Merk", $event.target.value)
+                      },
+                      function($event) {
+                        return _vm.$v.Motor.Merk.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Motor.Merk.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Motor.Merk.$invalid
+                  ? _c(
+                      "div",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.merkErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(4),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Motor.Tipe,
+                      expression: "Motor.Tipe"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Tipe Motor",
+                    "aria-label": "Motor_Tipe",
+                    "aria-describedby": "basic-addon2",
+                    id: "Motor_Tipe",
+                    name: "Motor_Tipe",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Motor.Tipe },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.Motor, "Tipe", $event.target.value)
+                      },
+                      function($event) {
+                        return _vm.$v.Motor.Tipe.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Motor.Tipe.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Motor.Tipe.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.typeErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer mt-3" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success btn-lg w-100",
+                    attrs: {
+                      type: "submit",
+                      disabled: _vm.$v.Motor.$invalid,
+                      "data-dismiss": "modal"
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.addmotor()
+                      }
+                    }
+                  },
+                  [_vm._v("Tambahkan Motor")]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Edit_Motor",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Edit_Motor",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(5),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "input-group" }, [
+                _vm._m(6),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Motor.Merk,
+                      expression: "Motor.Merk"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Merk Motor",
+                    error: _vm.merkErrors,
+                    "aria-label": "Merk_Motor",
+                    "aria-describedby": "basic-addon2",
+                    id: "Merk_Motor",
+                    name: "Merk_Motor",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Motor.Merk },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.Motor, "Merk", $event.target.value)
+                      },
+                      function($event) {
+                        return _vm.$v.Motor.Merk.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Motor.Merk.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Motor.Merk.$invalid
+                  ? _c(
+                      "div",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.merkErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(7),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Motor.Tipe,
+                      expression: "Motor.Tipe"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Masukkan Tipe Motor",
+                    "aria-label": "Motor_Tipe",
+                    "aria-describedby": "basic-addon2",
+                    id: "Motor_Tipe",
+                    name: "Motor_Tipe",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Motor.Tipe },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.Motor, "Tipe", $event.target.value)
+                      },
+                      function($event) {
+                        return _vm.$v.Motor.Tipe.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Motor.Tipe.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Motor.Tipe.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.typeErrors[0]))]
+                    )
+                  : _vm._e()
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer mt-3" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary btn-lg w-100",
+                  attrs: {
+                    type: "submit",
+                    disabled: _vm.$v.Motor.$invalid,
+                    "data-dismiss": "modal"
+                  },
+                  on: {
+                    click: function($event) {
+                      return _vm.updatemotor(_vm.Motor.Id_Motor)
+                    }
+                  }
+                },
+                [_vm._v("Simpan Perubahan")]
+              )
+            ])
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Delete_Motor",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Delete_Motor",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(8),
+            _vm._v(" "),
+            _vm._m(9),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer " }, [
+              _c(
+                "a",
+                {
+                  staticClass: "float-left w-100",
+                  attrs: { id: "delete_btn" }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger float-left w-50",
+                      attrs: { type: "button", "data-dismiss": "modal" },
+                      on: {
+                        click: function($event) {
+                          return _vm.deletemotor(_vm.Motor.Id_Motor)
+                        }
+                      }
+                    },
+                    [
+                      _c("span", {
+                        staticClass: "glyphicon glyphicon-ok-sign"
+                      }),
+                      _vm._v("Ya")
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(10)
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text" }, [
+        _c("i", { staticClass: "fas fa-search" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "table-primary text-center" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Tipe")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Merk")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Tambah Motor")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Merk")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Tipe")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Edit Motor")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Merk")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Tipe")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Hapus Data Motor")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("div", { staticClass: "alert alert-danger" }, [
+        _c("span", { staticClass: "glyphicon glyphicon-warning-sign" }),
+        _vm._v(
+          " \n                    Apakah Anda Yakin Ingin Menghapus Data Jasa Service Ini ?"
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-secondary float-right w-50",
+        attrs: { type: "button", "data-dismiss": "modal" }
+      },
+      [
+        _c("span", { staticClass: "glyphicon glyphicon-remove" }),
+        _vm._v("Tidak")
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Pegawai.vue?vue&type=template&id=9e09fb14&":
 /*!*****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/Pegawai.vue?vue&type=template&id=9e09fb14& ***!
@@ -46523,7 +47784,7 @@ var render = function() {
                       [_vm._v("-- Pilih Cabang --")]
                     ),
                     _vm._v(" "),
-                    _vm._l(_vm.cabangdata, function(cabang) {
+                    _vm._l(_vm.cabangData, function(cabang) {
                       return _c(
                         "option",
                         {
@@ -48427,11 +49688,188 @@ var render = function() {
                   ]
                 )
               ]),
-              _vm._v(
-                "\n                        " +
-                  _vm._s(_vm.$v.Sparepart.$invalid) +
-                  "\n                        "
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(12),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Motor.Id_Motor,
+                        expression: "Motor.Id_Motor"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.Motor,
+                            "Id_Motor",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        },
+                        _vm.getSelectedIndex
+                      ]
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Merk"
+                        }
+                      },
+                      [_vm._v("-- Pilih Merk Motor --")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.motorcycle, function(motor) {
+                      return _c(
+                        "option",
+                        {
+                          key: motor["Id_Motor"],
+                          domProps: { value: motor.Id_Motor },
+                          on: { change: _vm.getSelectedIndex }
+                        },
+                        [_vm._v(_vm._s(motor.Merk))]
+                      )
+                    })
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass: "input-group-text",
+                    attrs: { id: "basic-addon2" }
+                  },
+                  [_vm._v("Tipe")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Motor.Id_Motor,
+                        expression: "Motor.Id_Motor"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.Motor,
+                            "Id_Motor",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        },
+                        _vm.getSelectedIndex
+                      ]
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Merk"
+                        }
+                      },
+                      [_vm._v("-- Pilih Tipe Motor --")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.motorcycle, function(motor) {
+                      return _c(
+                        "option",
+                        {
+                          key: motor["Id_Motor"],
+                          domProps: { value: motor.Id_Motor },
+                          on: { change: _vm.getSelectedIndex }
+                        },
+                        [_vm._v(_vm._s(motor.Tipe))]
+                      )
+                    })
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-warning btn",
+                    attrs: { type: "submit" },
+                    on: {
+                      click: function($event) {
+                        return _vm.compatibilityHandler(_vm.motorcycle)
+                      }
+                    }
+                  },
+                  [_vm._v("Add Motor")]
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "input-group mt-3" },
+                _vm._l(_vm.motorcycletypes, function(motor) {
+                  return _c(
+                    "div",
+                    { key: motor.Id_Motor, staticClass: "list-group" },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "list-group-item list-group-item-action list-group-item-info",
+                          attrs: { href: "#" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(motor.Merk + "-" + motor.Tipe)
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                }),
+                0
               ),
+              _vm._v(" "),
               _c("div", { staticClass: "modal-footer " }, [
                 _c(
                   "button",
@@ -48472,11 +49910,11 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(12),
+            _vm._m(13),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
               _c("div", { staticClass: "input-group" }, [
-                _vm._m(13),
+                _vm._m(14),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -48515,7 +49953,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-3" }, [
-                _vm._m(14),
+                _vm._m(15),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -48554,7 +49992,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-4" }, [
-                _vm._m(15),
+                _vm._m(16),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -48593,7 +50031,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-4" }, [
-                _vm._m(16),
+                _vm._m(17),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -48632,7 +50070,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-4" }, [
-                _vm._m(17),
+                _vm._m(18),
                 _vm._v(" "),
                 _c(
                   "select",
@@ -48758,7 +50196,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-4" }, [
-                _vm._m(18),
+                _vm._m(19),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -48797,7 +50235,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-4" }, [
-                _vm._m(19),
+                _vm._m(20),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -48836,7 +50274,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-4" }, [
-                _vm._m(20),
+                _vm._m(21),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -48871,7 +50309,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-4" }, [
-                _vm._m(21),
+                _vm._m(22),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -48973,9 +50411,9 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(22),
-            _vm._v(" "),
             _vm._m(23),
+            _vm._v(" "),
+            _vm._m(24),
             _vm._v(" "),
             _c("div", { staticClass: "modal-footer " }, [
               _c(
@@ -49008,7 +50446,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(24)
+              _vm._m(25)
             ])
           ])
         ])
@@ -49256,6 +50694,25 @@ var staticRenderFns = [
           "span",
           { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
           [_vm._v("Harga Jual")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Merk")]
         )
       ]
     )
@@ -69496,6 +70953,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/layout/Motor.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/layout/Motor.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Motor_vue_vue_type_template_id_340898fb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Motor.vue?vue&type=template&id=340898fb& */ "./resources/js/components/layout/Motor.vue?vue&type=template&id=340898fb&");
+/* harmony import */ var _Motor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Motor.vue?vue&type=script&lang=js& */ "./resources/js/components/layout/Motor.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Motor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Motor_vue_vue_type_template_id_340898fb___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Motor_vue_vue_type_template_id_340898fb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/layout/Motor.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/Motor.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/layout/Motor.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Motor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Motor.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Motor.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Motor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/Motor.vue?vue&type=template&id=340898fb&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/layout/Motor.vue?vue&type=template&id=340898fb& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Motor_vue_vue_type_template_id_340898fb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Motor.vue?vue&type=template&id=340898fb& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Motor.vue?vue&type=template&id=340898fb&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Motor_vue_vue_type_template_id_340898fb___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Motor_vue_vue_type_template_id_340898fb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/layout/Pegawai.vue":
 /*!****************************************************!*\
   !*** ./resources/js/components/layout/Pegawai.vue ***!
@@ -70180,11 +71706,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_layout_Sparepart_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/layout/Sparepart.vue */ "./resources/js/components/layout/Sparepart.vue");
 /* harmony import */ var _components_layout_Cabang_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/layout/Cabang.vue */ "./resources/js/components/layout/Cabang.vue");
 /* harmony import */ var _components_layout_Konsumen_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/layout/Konsumen.vue */ "./resources/js/components/layout/Konsumen.vue");
-/* harmony import */ var _components_layout_Home_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/layout/Home.vue */ "./resources/js/components/layout/Home.vue");
-/* harmony import */ var _components_layout_Katalog_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/layout/Katalog.vue */ "./resources/js/components/layout/Katalog.vue");
-/* harmony import */ var _components_layout_Status_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/layout/Status.vue */ "./resources/js/components/layout/Status.vue");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _components_layout_Motor_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/layout/Motor.vue */ "./resources/js/components/layout/Motor.vue");
+/* harmony import */ var _components_layout_Home_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/layout/Home.vue */ "./resources/js/components/layout/Home.vue");
+/* harmony import */ var _components_layout_Katalog_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/layout/Katalog.vue */ "./resources/js/components/layout/Katalog.vue");
+/* harmony import */ var _components_layout_Status_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/layout/Status.vue */ "./resources/js/components/layout/Status.vue");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_12__);
+
 
 
 
@@ -70236,21 +71764,21 @@ var routes = [{
 }, {
   name: 'HomeLayout',
   path: '/',
-  component: _components_layout_Home_vue__WEBPACK_IMPORTED_MODULE_8__["default"],
+  component: _components_layout_Home_vue__WEBPACK_IMPORTED_MODULE_9__["default"],
   meta: {
     role: ['User']
   }
 }, {
   name: 'Katalog',
   path: '/katalog',
-  component: _components_layout_Katalog_vue__WEBPACK_IMPORTED_MODULE_9__["default"],
+  component: _components_layout_Katalog_vue__WEBPACK_IMPORTED_MODULE_10__["default"],
   meta: {
     role: ['User']
   }
 }, {
   name: 'Status',
   path: '/status',
-  component: _components_layout_Status_vue__WEBPACK_IMPORTED_MODULE_10__["default"],
+  component: _components_layout_Status_vue__WEBPACK_IMPORTED_MODULE_11__["default"],
   meta: {
     role: ['User']
   }
@@ -70266,6 +71794,14 @@ var routes = [{
   name: 'Konsumen',
   path: '/konsumen',
   component: _components_layout_Konsumen_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
+  meta: {
+    role: ['Admin']
+  },
+  beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
+}, {
+  name: 'Motor',
+  path: '/motor',
+  component: _components_layout_Motor_vue__WEBPACK_IMPORTED_MODULE_8__["default"],
   meta: {
     role: ['Admin']
   },
@@ -70673,6 +72209,78 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/service/Motor.js":
+/*!***************************************!*\
+  !*** ./resources/js/service/Motor.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../http */ "./resources/js/http.js");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  getallmotor: function getallmotor() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/motors', successCallback, errorCallback);
+    });
+  },
+  addmotor: function addmotor(payload) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/motors/store', payload, successCallback, errorCallback);
+    });
+  },
+  updatemotor: function updatemotor(payload, id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/motors/update/' + id, payload, successCallback, errorCallback);
+    });
+  },
+  deletemotor: function deletemotor(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].delete('/api/motors/delete/' + id, successCallback, errorCallback);
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/service/Sparepart.js":
 /*!*******************************************!*\
   !*** ./resources/js/service/Sparepart.js ***!
@@ -70931,6 +72539,35 @@ __webpack_require__.r(__webpack_exports__);
       maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(12),
       minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(12),
       numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/validations/motor_validations.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/validations/motor_validations.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  Motor: {
+    Merk: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25)
+    },
+    Tipe: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25)
     }
   }
 });
