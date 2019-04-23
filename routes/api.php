@@ -66,7 +66,8 @@ Route::post('/spareparts/store', 'SparepartController@store');
 Route::post('/spareparts/storemobile', 'SparepartController@storemobile');
 Route::post('/spareparts/updatepicmobile', 'SparepartController@updatepicmobile');
 Route::get('/spareparts/{id}', 'SparepartController@showbyID');
-Route::patch('/spareparts/update/{id}', 'SparepartController@update'); 
+Route::patch('/spareparts/update/{id}', 'SparepartController@update');
+Route::patch('/spareparts/updatemobile/{id}', 'SparepartController@updatemobile'); 
 Route::delete('/spareparts/delete/{id}', 'SparepartController@destroy');
 
 //Token
