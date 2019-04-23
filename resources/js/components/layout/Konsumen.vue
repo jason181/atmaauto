@@ -106,6 +106,7 @@
                             <p class="mb-3" style="color:red;" 
                                 v-if="$v.Konsumen.Alamat_Konsumen.$invalid">{{addressErrors[0]}}</p>
                         </div>
+
                         <div class="input-group mt-3">
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Telepon</span>
@@ -163,10 +164,10 @@
                                 <div class="input-group-prepend d-block" style="width: 100px;">
                                     <span class="input-group-text" id="basic-addon2">Alamat</span>
                                 </div>
-                                <input type="number" v-model="Konsumen.Alamat_Konsumen" 
+                                <input type="text" v-model="Konsumen.Alamat_Konsumen" 
                                     class="form-control" placeholder="Masukkan Alamat Konsumen" 
                                     aria-label="Alamat_Konsumen" aria-describedby="basic-addon2" 
-                                    id="Alamat_Konsumen" name="Harga_Jasa_Service" 
+                                    id="Alamat_Konsumen" name="Alamat_Konsumen" 
                                     @input="$v.Konsumen.Alamat_Konsumen.$touch()" 
                                     @blur="$v.Konsumen.Alamat_Konsumen.$touch()" required>
                             </div>
@@ -176,7 +177,7 @@
                             </div>
                             <div class="input-group mt-3">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Nomor Telepon</span>
+                                    <span class="input-group-text" id="basic-addon2">Telepon</span>
                                 </div>
                                 <input type="number" v-model="Konsumen.Telepon_Konsumen" 
                                     class="form-control" placeholder="Masukkan Nomor Telepon Konsumen" 
@@ -280,9 +281,9 @@ export default {
         async updatekonsumen (id) {
             try {
                 const payload = {
-                    Nama_Konsumen : this.Konsumen.Nama_Konsumen,
-                    Alamat_Konsumen : this.Konsumen.Alamat_Konsumen,
-                    Telepon_Konsumen : this.Konsumen.Telepon_Konsumen,
+                    Nama_Konsumen       : this.Konsumen.Nama_Konsumen,
+                    Alamat_Konsumen     : this.Konsumen.Alamat_Konsumen,
+                    Telepon_Konsumen    : this.Konsumen.Telepon_Konsumen,
                 }
                 await Controller.updatekonsumen(payload,id)
                 this.getallkonsumen()

@@ -3225,6 +3225,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -45919,12 +45920,12 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
-                    type: "number",
+                    type: "text",
                     placeholder: "Masukkan Alamat Konsumen",
                     "aria-label": "Alamat_Konsumen",
                     "aria-describedby": "basic-addon2",
                     id: "Alamat_Konsumen",
-                    name: "Harga_Jasa_Service",
+                    name: "Alamat_Konsumen",
                     required: ""
                   },
                   domProps: { value: _vm.Konsumen.Alamat_Konsumen },
@@ -46290,7 +46291,7 @@ var staticRenderFns = [
         _c(
           "span",
           { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
-          [_vm._v("Nomor Telepon")]
+          [_vm._v("Telepon")]
         )
       ]
     )
