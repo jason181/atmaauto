@@ -72629,9 +72629,60 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./resources/js/validations/sparepart_validations.js ***!
   \***********************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: E:\\atmaauto\\resources\\js\\validations\\sparepart_validations.js: Unexpected token (11:0)\n\n\u001b[0m \u001b[90m  9 | \u001b[39m        }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 10 | \u001b[39m        \u001b[33mTipe_Barang\u001b[39m\u001b[33m:\u001b[39m { \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 12 | \u001b[39m             required\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 13 | \u001b[39m            \u001b[90m// minLength: minLength(5),\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 14 | \u001b[39m            \u001b[90m// maxLength: maxLength(25),\u001b[39m\u001b[0m\n    at Parser.raise (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:3851:17)\n    at Parser.unexpected (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5165:16)\n    at Parser.parseIdentifierName (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:7009:18)\n    at Parser.parseIdentifier (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6987:23)\n    at Parser.parseMaybePrivateName (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6352:19)\n    at Parser.parsePropertyName (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6808:98)\n    at Parser.parseObjectMember (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6709:10)\n    at Parser.parseObj (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6643:25)\n    at Parser.parseExprAtom (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6276:21)\n    at Parser.parseExprSubscripts (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5916:23)\n    at Parser.parseMaybeUnary (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5896:21)\n    at Parser.parseExprOps (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5783:23)\n    at Parser.parseMaybeConditional (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5756:23)\n    at Parser.parseMaybeAssign (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5703:21)\n    at Parser.parseObjectProperty (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6770:101)\n    at Parser.parseObjPropValue (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6795:101)\n    at Parser.parseObjectMember (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6719:10)\n    at Parser.parseObj (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6643:25)\n    at Parser.parseExprAtom (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6276:21)\n    at Parser.parseExprSubscripts (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5916:23)\n    at Parser.parseMaybeUnary (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5896:21)\n    at Parser.parseExprOps (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5783:23)\n    at Parser.parseMaybeConditional (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5756:23)\n    at Parser.parseMaybeAssign (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5703:21)\n    at Parser.parseObjectProperty (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6770:101)\n    at Parser.parseObjPropValue (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6795:101)\n    at Parser.parseObjectMember (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6719:10)\n    at Parser.parseObj (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6643:25)\n    at Parser.parseExprAtom (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:6276:21)\n    at Parser.parseExprSubscripts (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5916:23)\n    at Parser.parseMaybeUnary (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5896:21)\n    at Parser.parseExprOps (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5783:23)\n    at Parser.parseMaybeConditional (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5756:23)\n    at Parser.parseMaybeAssign (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:5703:21)\n    at Parser.parseExportDefaultExpression (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:8478:24)\n    at Parser.parseExport (E:\\atmaauto\\node_modules\\@babel\\parser\\lib\\index.js:8373:31)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  Sparepart: {
+    Kode_Sparepart: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // minLength: minLength(5), 
+      // maxLength: maxLength(25), 
+
+    },
+    Tipe_Barang: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25)
+    },
+    Nama_Sparepart: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // minLength: minLength(5), 
+      // maxLength: maxLength(25), 
+
+    },
+    Merk_Sparepart: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // minLength: minLength(5), 
+      // maxLength: maxLength(25), 
+
+    },
+    Rak_Sparepart: {},
+    Jumlah_Sparepart: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // maxLength: maxLength(12),
+      // numeric,  
+
+    },
+    Stok_Minimum_Sparepart: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // maxLength: maxLength(12),
+      // numeric, 
+
+    },
+    Harga_Beli: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(12),
+      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
+    },
+    Harga_Jual: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(12),
+      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
+    },
+    Gambar: {// required,
+    }
+  }
+});
 
 /***/ }),
 
