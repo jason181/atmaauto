@@ -7,6 +7,7 @@ import Supplier from './components/layout/Supplier.vue';
 import Sparepart from './components/layout/Sparepart.vue';
 import Cabang from './components/layout/Cabang.vue';
 import Konsumen from './components/layout/Konsumen.vue';
+import Motor from './components/layout/Motor.vue';
 import Home from './components/layout/Home.vue';
 import Katalog from './components/layout/Katalog.vue';
 import Status from './components/layout/Status.vue';
@@ -109,6 +110,17 @@ export const routes = [
         name: 'Konsumen',
         path: '/konsumen',
         component: Konsumen,
+        meta: { role: [
+            'Admin'
+        ]},
+        beforeEnter: middleware([
+            auth
+        ]) 
+    },
+    {
+        name: 'Motor',
+        path: '/motor',
+        component: Motor,
         meta: { role: [
             'Admin'
         ]},

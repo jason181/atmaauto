@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Transformers\SparepartTransformers;
 use App\Sparepart;
+use Illuminate\Support\Facades\DB;
 
 class SparepartController extends RestController
 {
@@ -51,15 +52,6 @@ class SparepartController extends RestController
         try{
             $sparepart = new Sparepart;
 
-            // if($request->hasfile('Gambar'))
-            // {
-            //     $file = $request->file('Gambar');
-            //     $name= time().$file->getClientOriginalName();
-            //     $file->move(public_path().'/images/', $name);
-            //     //return response()->json(['uploaded' => '/images/'.$name]);
-            //     $sparepart->Gambar=$name;
-            // }
-
             if($request->get('Gambar'))
             {
                 $image = $request->get('Gambar');
@@ -67,6 +59,8 @@ class SparepartController extends RestController
                 \Image::make($request->get('Gambar'))->save(public_path('images/').$name);
                 $sparepart->Gambar = $name;
             }
+
+            $motorcyle_types = $request->motorcycleTypes;
 
             $sparepart->Kode_Sparepart=$request->get('Kode_Sparepart');
             $sparepart->Tipe_Barang=$request->get('Tipe_Barang');
@@ -78,6 +72,13 @@ class SparepartController extends RestController
             $sparepart->Harga_Beli=$request->get('Harga_Beli');
             $sparepart->Harga_Jual=$request->get('Harga_Jual');
             $sparepart->save();
+
+            if($request->has('motorcycleTypes')){
+                $sparepart = DB::transaction(function () use ($sparepart,$motorcyle_types){
+                    $sparepart->motors()->sync($motorcyle_types);
+                    return $sparepart;
+                });
+            }
 
             $response = $this->generateItem($sparepart);
             return $this->sendResponse($response, 201);
@@ -146,7 +147,6 @@ class SparepartController extends RestController
                 $sparepart->Gambar = $name;
             }
 
-            //$sparepart->Kode_Sparepart=$request->get('Kode_Sparepart');
             $sparepart->Tipe_Barang=$request->get('Tipe_Barang');
             $sparepart->Nama_Sparepart=$request->get('Nama_Sparepart');
             $sparepart->Merk_Sparepart=$request->get('Merk_Sparepart');

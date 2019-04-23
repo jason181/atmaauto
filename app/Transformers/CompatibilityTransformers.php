@@ -5,8 +5,7 @@ namespace App\Transformers;
 use League\Fractal\TransformerAbstract;
 use App\Motor;
 
-
-class MotorTransformers extends TransformerAbstract
+class CompatibilityTransformers extends TransformerAbstract
 {
     /**
      * Transform Branch.
@@ -16,10 +15,9 @@ class MotorTransformers extends TransformerAbstract
     public function transform(Motor $motor)
     {
         return [
-            'Id_Motor'       => $motor->Id_Motor,
-            'Merk'           => $motor->Merk,
-            'Tipe'           => $motor->Tipe
-            
+            'Id_Motor'     => $motor->Id_Motor,
+            'Merk'         => $motor->Merk,
+            'Tipe'         => $motor->Tipe,
         ];
     }
 }
