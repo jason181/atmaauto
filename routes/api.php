@@ -64,6 +64,7 @@ Route::patch('/suppliers/delSales/{id}', 'SupplierController@delSales');
 Route::get('/spareparts','SparepartController@index');
 Route::post('/spareparts/store', 'SparepartController@store');
 Route::post('/spareparts/storemobile', 'SparepartController@storemobile');
+Route::post('/spareparts/updatepicmobile', 'SparepartController@updatepicmobile');
 Route::get('/spareparts/{id}', 'SparepartController@showbyID');
 Route::patch('/spareparts/update/{id}', 'SparepartController@update'); 
 Route::delete('/spareparts/delete/{id}', 'SparepartController@destroy');
