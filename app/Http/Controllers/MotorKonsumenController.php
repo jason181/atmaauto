@@ -52,6 +52,18 @@ class MotorKonsumenController extends RestController
             return response()->json('Success',200);
     }
 
+    public function showbyCustomer($id){
+        try {
+            $motor_konsumen=Motor_Konsumen::where('Id_Konsumen',$id)->get();
+                $response = $this->generateCollection($motor_konsumen);
+                return $this->sendResponse($response);
+        } catch (ModelNotFoundException $e) {
+            return $this->sendNotFoundResponse('Motor Tidak Ditemukan');
+        } catch (\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+    }
+
     public function destroy($id)
     {
         $motor_konsumen = Motor_Konsumen::find($id);

@@ -86,3 +86,4 @@ Route::get('/motor_konsumens','MotorKonsumenController@index');
 Route::post('/motor_konsumens/store', 'MotorKonsumenController@store');
 Route::patch('/motor_konsumens/update/{id}', 'MotorKonsumenController@update'); 
 Route::delete('/motor_konsumens/delete/{id}', 'MotorKonsumenController@destroy');
+Route::get('/motor_konsumens/show/{id}', 'MotorKonsumenController@showbyCustomer');
