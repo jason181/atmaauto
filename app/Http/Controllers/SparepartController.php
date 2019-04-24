@@ -146,7 +146,7 @@ class SparepartController extends RestController
                 \Image::make($request->get('Gambar'))->save(public_path('images/').$name);
                 $sparepart->Gambar = $name;
             }
-
+            
             $sparepart->Tipe_Barang=$request->get('Tipe_Barang');
             $sparepart->Nama_Sparepart=$request->get('Nama_Sparepart');
             $sparepart->Merk_Sparepart=$request->get('Merk_Sparepart');
