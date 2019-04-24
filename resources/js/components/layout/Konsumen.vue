@@ -732,12 +732,12 @@ export default {
     computed:{
         filteredkonsumen:function(){
             return this.konsumendata.filter((konsumen)=>{
-                return konsumen.Nama_Konsumen.match(this.Cari_Konsumen);
+                return konsumen.Nama_Konsumen.toLowerCase().match(this.Cari_Konsumen.toLowerCase());
             });
         },
         filteredmotorkonsumen:function(){
             return this.motorkonsumendata.filter((motorkonsumen)=>{
-                return motorkonsumen.Plat_Kendaraan.match(this.Cari_Motor_Konsumen);
+                return motorkonsumen.Plat_Kendaraan.toLowerCase().match(this.Cari_Motor_Konsumen.toLowerCase());
             });
         },
         nameErrors () {
@@ -751,8 +751,8 @@ export default {
         addressErrors () {
             const errors = []
             if (!this.$v.Konsumen.Alamat_Konsumen.$dirty) return errors
-            !this.$v.Konsumen.Alamat_Konsumen.maxLength && errors.push('Address must be at most 12 characters long')
-            !this.$v.Konsumen.Alamat_Konsumen.minLength && errors.push('Address must be numeric')
+            !this.$v.Konsumen.Alamat_Konsumen.maxLength && errors.push('Address must be at most 255 characters long')
+            !this.$v.Konsumen.Alamat_Konsumen.minLength && errors.push('Address must be at least 5 characters long')
             !this.$v.Konsumen.Alamat_Konsumen.required && errors.push('Address is required')
             return errors
         },
