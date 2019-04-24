@@ -3444,7 +3444,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     phoneErrors: function phoneErrors() {
       var errors = [];
       if (!this.$v.Konsumen.Telepon_Konsumen.$dirty) return errors;
-      !this.$v.Konsumen.Telepon_Konsumen.maxLength && errors.push('Phone must be at most 12 characters long');
+      !this.$v.Konsumen.Telepon_Konsumen.maxLength && errors.push('Phone must be at most 15 characters long');
+      !this.$v.Konsumen.Telepon_Konsumen.minLength && errors.push('Phone must be at least 10 characters long');
       !this.$v.Konsumen.Telepon_Konsumen.numeric && errors.push('Phone must be numeric');
       !this.$v.Konsumen.Telepon_Konsumen.required && errors.push('Phone is required');
       return errors;
@@ -4633,7 +4634,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       return this.pegawaidata.filter(function (pegawai) {
-        return pegawai.Nama_Pegawai.match(_this.Cari_Pegawai);
+        return pegawai.Nama_Pegawai.toLowerCase().match(_this.Cari_Pegawai.toLowerCase());
       });
     },
     cabangErrors: function cabangErrors() {
@@ -4694,7 +4695,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     passwordErrors: function passwordErrors() {
       var errors = [];
       if (!this.$v.Pegawai.Password.$dirty) return errors;
-      !this.$v.Pegawai.Password.minLength && errors.push('Password must be at least 10 characters long');
+      !this.$v.Pegawai.Password.minLength && errors.push('Password must be at least 5 characters long');
       !this.$v.Pegawai.Password.maxLength && errors.push('Password must be at most 30 characters long');
       !this.$v.Pegawai.Password.required && errors.push('Password is required');
       return errors;
@@ -5382,6 +5383,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -48063,7 +48065,11 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-success btn-lg w-100",
-                  attrs: { type: "submit", disabled: _vm.$v.Pegawai.$invalid },
+                  attrs: {
+                    type: "submit",
+                    disabled: _vm.$v.Pegawai.$invalid,
+                    "data-dismiss": "modal"
+                  },
                   on: {
                     click: function($event) {
                       return _vm.addpegawai()
@@ -48538,7 +48544,11 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-primary btn-lg w-100",
-                  attrs: { type: "submit", disabled: _vm.$v.Pegawai.$invalid },
+                  attrs: {
+                    type: "submit",
+                    disabled: _vm.$v.Pegawai.$invalid,
+                    "data-dismiss": "modal"
+                  },
                   on: {
                     click: function($event) {
                       return _vm.updatepegawai(_vm.Pegawai.Id_Pegawai)
@@ -51646,7 +51656,11 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-success btn-lg w-100",
-                    attrs: { type: "submit", "data-dismiss": "modal" },
+                    attrs: {
+                      type: "submit",
+                      "data-dismiss": "modal",
+                      disabled: _vm.$v.Sparepart.$invalid
+                    },
                     on: {
                       click: function($event) {
                         return _vm.addsparepart()
@@ -72704,8 +72718,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     Telepon_Konsumen: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
-      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(12),
-      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(12),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(15),
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(10),
       numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
     }
   }
@@ -72815,9 +72829,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   Sparepart: {
     Kode_Sparepart: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // minLength: minLength(5), 
-      // maxLength: maxLength(25), 
-
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25)
     },
     Tipe_Barang: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
@@ -72825,25 +72839,25 @@ __webpack_require__.r(__webpack_exports__);
       maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25)
     },
     Nama_Sparepart: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // minLength: minLength(5), 
-      // maxLength: maxLength(25), 
-
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25)
     },
     Merk_Sparepart: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // minLength: minLength(5), 
-      // maxLength: maxLength(25), 
-
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(25)
     },
     Rak_Sparepart: {},
     Jumlah_Sparepart: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // maxLength: maxLength(12),
-      // numeric,  
-
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(12),
+      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
     },
     Stok_Minimum_Sparepart: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"] // maxLength: maxLength(12),
-      // numeric, 
-
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(12),
+      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
     },
     Harga_Beli: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],

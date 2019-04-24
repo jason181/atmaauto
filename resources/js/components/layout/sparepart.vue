@@ -301,7 +301,8 @@
                             <div class="modal-footer ">
                                 <button type="submit" class="btn btn-success btn-lg w-100" 
                                     data-dismiss="modal" 
-                                    @click="addsparepart()">Tambahkan Sparepart</button>
+                                    @click="addsparepart()"
+                                    :disabled="$v.Sparepart.$invalid">Tambahkan Sparepart</button>
                             </div>
                     </div>
                 </div>
