@@ -1881,7 +1881,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'appLayout',
@@ -2799,6 +2798,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -5921,7 +5921,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return this.supplierdata.filter(function (Supplier) {
-        return Supplier.Nama_Supplier.match(_this.Cari_Supplier);
+        return Supplier.Nama_Supplier.toLowerCase().match(_this.Cari_Supplier.toLowerCase());
       });
     },
     nameErrors: function nameErrors() {
@@ -43713,25 +43713,23 @@ var render = function() {
             _vm._v(" "),
             _vm._m(1),
             _vm._v(" "),
-            _c("div", { staticClass: "collapse navbar-collapse" }, [
-              _vm._m(2),
-              _vm._v(" "),
-              _c("form", { staticClass: "form-inline my-2 my-lg-0" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-outline-danger my-2 my-sm-0",
-                    attrs: { type: "submit" },
-                    on: {
-                      click: function($event) {
-                        return _vm.logoutHandler()
-                      }
+            _c("form", { staticClass: "form-inline my-2 my-lg-0" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-outline-danger my-2 my-sm-0",
+                  attrs: { type: "submit" },
+                  on: {
+                    click: function($event) {
+                      return _vm.logoutHandler()
                     }
-                  },
-                  [_vm._v("Logout")]
-                )
-              ])
-            ])
+                  }
+                },
+                [_vm._v("Logout")]
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(2)
           ]
         )
       : _vm._e(),
@@ -43986,6 +43984,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "collapse navbar-collapse" }, [
+      _c(
+        "div",
+        {
+          staticClass: "collapse navbar-collapse justify-content-md-center",
+          attrs: { id: "navbarsExample08" }
+        },
+        [
+          _c("ul", { staticClass: "navbar-nav" }, [
+            _c("li", { staticClass: "nav-item active" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link disabled py-2",
+                  staticStyle: { "font-size": "20pt" },
+                  attrs: { href: "#" }
+                },
+                [_vm._v("SELAMAT DATANG OWNER")]
+              )
+            ])
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "button",
       {
@@ -44000,33 +44027,6 @@ var staticRenderFns = [
         }
       },
       [_c("span", { staticClass: "navbar-toggler-icon" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "collapse navbar-collapse justify-content-md-center",
-        attrs: { id: "navbarsExample08" }
-      },
-      [
-        _c("ul", { staticClass: "navbar-nav" }, [
-          _c("li", { staticClass: "nav-item active" }, [
-            _c(
-              "a",
-              {
-                staticClass: "nav-link disabled py-2",
-                staticStyle: { "font-size": "20pt" },
-                attrs: { href: "#" }
-              },
-              [_vm._v("SELAMAT DATANG OWNER")]
-            )
-          ])
-        ])
-      ]
     )
   },
   function() {
@@ -46060,7 +46060,12 @@ var render = function() {
                       [
                         _c("img", {
                           staticClass: "card-img-top",
-                          staticStyle: { height: "250px", width: "auto" },
+                          staticStyle: {
+                            height: "250px",
+                            width: "auto",
+                            "max-height": "250px",
+                            "max-width": "250px"
+                          },
                           attrs: {
                             src: "/images/" + sparepart.Gambar,
                             alt: sparepart.Nama_Sparepart
@@ -46086,6 +46091,21 @@ var render = function() {
                             _vm._v(
                               "Rp " +
                                 _vm._s(_vm.formatPrice(sparepart.Harga_Jual))
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            staticClass: "card-text mb-2",
+                            staticStyle: { color: "black" }
+                          },
+                          [
+                            _vm._v(
+                              "Stok : " +
+                                _vm._s(sparepart.Jumlah_Sparepart) +
+                                " "
                             )
                           ]
                         ),
