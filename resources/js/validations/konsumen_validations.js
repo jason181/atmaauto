@@ -14,8 +14,8 @@ export default {
         },
         Telepon_Konsumen: { 
             required,
-            maxLength: maxLength(12),
-            minLength: minLength(12),
+            maxLength: maxLength(15),
+            minLength: minLength(10),
             numeric, 
         },
     },

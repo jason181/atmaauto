@@ -304,7 +304,8 @@
                             <div class="modal-footer ">
                                 <button type="submit" class="btn btn-success btn-lg w-100" 
                                     data-dismiss="modal" 
-                                    @click="addsparepart()">Tambahkan Sparepart</button>
+                                    @click="addsparepart()"
+                                    :disabled="$v.Sparepart.$invalid">Tambahkan Sparepart</button>
                             </div>
                     </div>
                 </div>
@@ -486,7 +487,8 @@
                             <button type="submit" class="btn btn-primary btn-lg" 
                             style="width: 100%;" 
                             @click="updatesparepart(Sparepart.Kode_Sparepart)" 
-                            data-dismiss="modal">Simpan Perubahan</button>
+                            data-dismiss="modal"
+                            :disabled="$v.Sparepart.$invalid">Simpan Perubahan</button>
                         </div>
                     </div>
                 </div>

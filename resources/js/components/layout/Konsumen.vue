@@ -242,7 +242,7 @@
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
         <!-- END OF DELETE KONSUMEN -->
         <!-- END OF MY MODALS -->
 
@@ -613,7 +613,8 @@ export default {
         phoneErrors () {
             const errors = []
             if (!this.$v.Konsumen.Telepon_Konsumen.$dirty) return errors
-            !this.$v.Konsumen.Telepon_Konsumen.maxLength && errors.push('Phone must be at most 12 characters long')
+            !this.$v.Konsumen.Telepon_Konsumen.maxLength && errors.push('Phone must be at most 15 characters long')
+            !this.$v.Konsumen.Telepon_Konsumen.minLength && errors.push('Phone must be at least 10 characters long')
             !this.$v.Konsumen.Telepon_Konsumen.numeric && errors.push('Phone must be numeric')
             !this.$v.Konsumen.Telepon_Konsumen.required && errors.push('Phone is required')
             return errors

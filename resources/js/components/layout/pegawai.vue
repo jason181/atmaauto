@@ -166,7 +166,7 @@
                         </div>
                     </div>
                     <div class="modal-footer mt-3">
-                        <button type="submit" class="btn btn-success btn-lg w-100" @click="addpegawai()" :disabled="$v.Pegawai.$invalid">Tambahkan Pegawai</button>
+                        <button type="submit" class="btn btn-success btn-lg w-100" @click="addpegawai()" :disabled="$v.Pegawai.$invalid" data-dismiss="modal">Tambahkan Pegawai</button>
                     </div>
                 </div>
             </div>
@@ -263,7 +263,7 @@
                         </div>
                     </div>
                     <div class="modal-footer mt-3">
-                        <button type="submit" class="btn btn-primary btn-lg w-100" @click="updatepegawai(Pegawai.Id_Pegawai)" :disabled="$v.Pegawai.$invalid">Simpan Perubahan</button>
+                        <button type="submit" class="btn btn-primary btn-lg w-100" @click="updatepegawai(Pegawai.Id_Pegawai)" :disabled="$v.Pegawai.$invalid" data-dismiss="modal">Simpan Perubahan</button>
                     </div>
                 </div>
             </div>
@@ -420,7 +420,7 @@ export default {
     computed:{
         filteredpegawai:function(){
             return this.pegawaidata.filter((pegawai)=>{
-                return pegawai.Nama_Pegawai.match(this.Cari_Pegawai);
+                return pegawai.Nama_Pegawai.toLowerCase().match(this.Cari_Pegawai.toLowerCase());
             });
         },
         cabangErrors(){
@@ -481,7 +481,7 @@ export default {
         passwordErrors(){
             const errors = []
             if (!this.$v.Pegawai.Password.$dirty) return errors
-            !this.$v.Pegawai.Password.minLength && errors.push('Password must be at least 10 characters long')
+            !this.$v.Pegawai.Password.minLength && errors.push('Password must be at least 5 characters long')
             !this.$v.Pegawai.Password.maxLength && errors.push('Password must be at most 30 characters long')
             !this.$v.Pegawai.Password.required && errors.push('Password is required')
             return errors
