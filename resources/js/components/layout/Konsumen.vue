@@ -265,9 +265,10 @@
                                 <button class="btn btn-success float-left mb-2 btn-block" 
                                 @click="getallmotorkonsumen(),refresh()" 
                                 data-title="Tambah_MotorKonsumen" data-toggle="modal" 
-                                data-target="#Tambah_MotorKonsumen" data-dismiss="modal">
+                                data-target="#Tambah_MotorKonsumen">
                                     <i class="fas fa-plus mr-2"></i>Tambah
                                 </button>
+
                             </div>
                             <div class="col-sm-6">
 
@@ -294,22 +295,26 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">Nama Konsumen</th>
                                     <th scope="col">ID Motor</th>
+                                    <th scope="col">Merk</th>
+                                    <th scope="col">Tipe</th>
+                                    <th scope="col">Plat</th>
                                     <th scope="col">Edit</th>
                                     <th scope="col">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-bind:key="motorkonsumen['Id_Motor_Konsumen']" v-for="motorkonsumen in filteredmotorkonsumen">
+                               <tr v-bind:key="motorkonsumen['Id_Motor_Konsumen']" v-for="motorkonsumen in filteredmotorkonsumen">
                                     <td>{{motorkonsumen.Id_Konsumen}} </td>
                                     <td>{{motorkonsumen.Nama_Konsumen}} </td>
                                     <td>{{motorkonsumen.Id_Motor}} </td>
+                                    <td>{{motorkonsumen.Merk}} </td>
+                                    <td>{{motorkonsumen.Tipe}} </td>
+                                    <td>{{motorkonsumen.Plat_Kendaraan}} </td>
                                     <td class="text-center">
                                         <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                            <button class="btn btn-primary" 
-                                                data-dismiss="modal"
-                                                @click="datamotorkonsumenhandler(motorkonsumen)" 
-                                                data-title="Edit_Konsumen" data-toggle="modal" 
-                                                data-target="#Edit_Konsumen">
+                                            <button @click="datamotorkonsumenhandler(motorkonsumen)" 
+                                            class="btn btn-primary" data-title="Edit_Motor_Konsumen"
+                                            data-toggle="modal" data-target="#Edit_Motor_Konsumen">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                         </p>
@@ -317,9 +322,8 @@
                                     <td class="text-center">
                                         <p data-placement="top" data-toggle="tooltip" title="Delete">
                                             <button @click="datamotorkonsumenhandler(motorkonsumen)"
-                                                data-dismiss="modal" 
-                                                class="btn btn-danger"  data-title="Delete_Konsumen" 
-                                                data-toggle="modal" data-target="#Delete_Konsumen">
+                                                class="btn btn-danger"  data-title="Delete_Motor_Konsumen" 
+                                                data-toggle="modal" data-target="#Delete_Motor_Konsumen">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </p>
@@ -345,47 +349,26 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <!-- <div class="input-group">
+                        <div class="input-group">
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">ID</span>
                             </div>
                             <input type="text" v-model="Konsumen.Id_Konsumen" class="form-control" 
-                                placeholder="Masukkan Nama Konsumen" :error="nameErrors" 
-                                aria-label="Nama_Konsumen" aria-describedby="basic-addon2" 
-                                id="Nama_Konsumen" name="Nama_Konsumen" 
-                                @input="$v.Konsumen.Nama_Konsumen.$touch()" 
-                                @blur="$v.Konsumen.Nama_Konsumen.$touch()" required>
-                        </div> -->
-
-                        <!-- <div class="input-group mt-3">
-                            <div class="input-group-prepend d-block" style="width: 100px;">
-                                <span class="input-group-text" id="basic-addon2">ID Konsumen</span>
-                            </div>
-                            <input type="text" v-model="Motor_Konsumen.Id_Konsumen" 
-                                class="form-control" placeholder="Masukkan Plat Kendaraan" 
-                                aria-label="Motor_Konsumen_Plat_Kendaraan" aria-describedby="basic-addon2" 
-                                id="Motor_Konsumen_Plat_Kendaraan" name="Motor_Konsumen_Plat_Kendaraan" 
-                                @input="$v.Motor_Konsumen.Id_Konsumen.$touch()" 
-                                @blur="$v.Motor_Konsumen.Id_Konsumen.$touch()" required>
-                        </div> -->
-
-
-                        <div class="input-group mt-3">
-                            <div class="input-group-prepend d-block" style="width: 100px;">
-                                <span class="input-group-text" id="basic-addon2">ID Konsumen</span>
-                            </div>
-                            <input type="text" v-model="Konsumen.Id_Konsumen" 
                                 aria-label="Id_Konsumen" aria-describedby="basic-addon2" 
-                                id="Id_Konsumen" name="Id_Konsumen" disabled>{{Konsumen.Id_Konsumen}}
+                                id="Id_Konsumen" name="Id_Konsumen" 
+                                @input="$v.Konsumen.Id_Konsumen.$touch()" 
+                                @blur="$v.Konsumen.Id_Konsumen.$touch()" disabled>
                         </div>
 
                         <div class="input-group mt-3">
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Nama</span>
                             </div>
-                            <input type="text" v-model="Konsumen.Nama_Konsumen" 
+                            <input type="text" v-model="Konsumen.Nama_Konsumen" class="form-control" 
                                 aria-label="Nama_Konsumen" aria-describedby="basic-addon2" 
-                                id="Nama_Konsumen" name="Nama_Konsumen" disabled>{{Konsumen.Nama_Konsumen}}
+                                id="Nama_Konsumen" name="Nama_Konsumen" 
+                                @input="$v.Konsumen.Nama_Konsumen.$touch()" 
+                                @blur="$v.Konsumen.Nama_Konsumen.$touch()" disabled>
                         </div>
 
                         <div class="input-group mt-3">
@@ -393,15 +376,40 @@
                                 <span class="input-group-text" id="basic-addon2">Id_Motor</span>
                             </div>
                                 
-                            <select class="form-control mr-2" v-model="Motor_Konsumen.Id_Motor">
+                            <select class="form-control mr-2" v-model="Motor.Id_Motor" v-on:change="getSelectedIndex">
                                 <option disabled="disabled" selected="selected" 
                                 value="Pilih Merk">-- Pilih Merk Motor --</option>
                                 <option v-bind:key="motor['Id_Motor']" 
-                                v-on:change="getSelectedIndex"
                                 v-for="motor in motorcycle" 
+                                v-on:change="getSelectedIndex"
                                 :value="motor.Id_Motor">{{motor.Id_Motor}}</option>
                             </select>
                         </div>
+
+                        <div class="input-group mt-3">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Merk</span>
+                                </div>
+                                    
+                                <select class="form-control mr-2" v-model="Motor.Id_Motor" v-on:change="getSelectedIndex" >
+                                    <option disabled="disabled" selected="selected" 
+                                    value="Pilih Merk">-- Pilih Merk Motor --</option>
+                                    <option v-bind:key="motor['Id_Motor']" 
+                                    v-on:change="getSelectedIndex"
+                                    v-for="motor in motorcycle" 
+                                    :value="motor.Id_Motor">{{motor.Merk}}</option>
+                                </select>
+                                
+                                <span class="input-group-text" id="basic-addon2">Tipe</span>
+                                <select class="form-control mr-2" v-model="Motor.Id_Motor" v-on:change="getSelectedIndex">
+                                    <option disabled="disabled" selected="selected" 
+                                    value="Pilih Merk">-- Pilih Tipe Motor --</option>
+                                    <option v-bind:key="motor['Id_Motor']"
+                                    v-on:change="getSelectedIndex" 
+                                    v-for="motor in motorcycle" 
+                                    :value="motor.Id_Motor">{{motor.Tipe}}</option>
+                                </select>
+                            </div>
 
                         <div class="input-group mt-3">
                             <div class="input-group-prepend d-block" style="width: 100px;">
@@ -411,20 +419,144 @@
                                 class="form-control" placeholder="Masukkan Plat Kendaraan" 
                                 aria-label="Motor_Konsumen_Plat_Kendaraan" aria-describedby="basic-addon2" 
                                 id="Motor_Konsumen_Plat_Kendaraan" name="Motor_Konsumen_Plat_Kendaraan" 
-                                @input="$v.Motor_Konsumen.Plat_Kendaraan.$touch()" 
-                                @blur="$v.Motor_Konsumen.Plat_Kendaraan.$touch()" required>
+                                required>
                         </div>
 
                         <div class="modal-footer mt-3">
                             <button type="submit" class="btn btn-success btn-lg w-100" 
                             data-dismiss="modal" 
-                            @click="addmotorkonsumen()"  >Tambahkan Motor Konsumen</button>
+                            @click="addmotorkonsumen()">Tambahkan Motor Konsumen</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- END OF TAMBAH MOTOR KONSUMEN -->
+        <!-- EDIT MOTOR KONSUMEN -->
+        <div class="modal fade" id="Edit_Motor_Konsumen" tabindex="-1" role="dialog" 
+            aria-labelledby="Edit_Motor_Konsumen" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Edit Motor Konsumen</h4>
+                        <button type="button" class="close" data-dismiss="modal" 
+                            aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">ID</span>
+                            </div>
+                            <input type="text" v-model="Konsumen.Id_Konsumen" class="form-control" 
+                                aria-label="Id_Konsumen" aria-describedby="basic-addon2" 
+                                id="Id_Konsumen" name="Id_Konsumen" 
+                                @input="$v.Konsumen.Id_Konsumen.$touch()" 
+                                @blur="$v.Konsumen.Id_Konsumen.$touch()" disabled>
+                        </div>
+
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Nama</span>
+                            </div>
+                            <input type="text" v-model="Konsumen.Nama_Konsumen" class="form-control" 
+                                aria-label="Nama_Konsumen" aria-describedby="basic-addon2" 
+                                id="Nama_Konsumen" name="Nama_Konsumen" 
+                                @input="$v.Konsumen.Nama_Konsumen.$touch()" 
+                                @blur="$v.Konsumen.Nama_Konsumen.$touch()" disabled>
+                        </div>
+
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Id_Motor</span>
+                            </div>
+                                
+                            <select class="form-control mr-2" v-model="Motor.Id_Motor" v-on:change="getSelectedIndex">
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih Merk">-- Pilih Merk Motor --</option>
+                                <option v-bind:key="motor['Id_Motor']" 
+                                v-for="motor in motorcycle" 
+                                v-on:change="getSelectedIndex"
+                                :value="motor.Id_Motor">{{motor.Id_Motor}}</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group mt-3">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Merk</span>
+                                </div>
+                                    
+                                <select class="form-control mr-2" v-model="Motor.Id_Motor" v-on:change="getSelectedIndex" >
+                                    <option disabled="disabled" selected="selected" 
+                                    value="Pilih Merk">-- Pilih Merk Motor --</option>
+                                    <option v-bind:key="motor['Id_Motor']" 
+                                    v-on:change="getSelectedIndex"
+                                    v-for="motor in motorcycle" 
+                                    :value="motor.Id_Motor">{{motor.Merk}}</option>
+                                </select>
+                                
+                                <span class="input-group-text" id="basic-addon2">Tipe</span>
+                                <select class="form-control mr-2" v-model="Motor.Id_Motor" v-on:change="getSelectedIndex">
+                                    <option disabled="disabled" selected="selected" 
+                                    value="Pilih Merk">-- Pilih Tipe Motor --</option>
+                                    <option v-bind:key="motor['Id_Motor']"
+                                    v-on:change="getSelectedIndex" 
+                                    v-for="motor in motorcycle" 
+                                    :value="motor.Id_Motor">{{motor.Tipe}}</option>
+                                </select>
+                            </div>
+
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Plat</span>
+                            </div>
+                            <input type="text" v-model="Motor_Konsumen.Plat_Kendaraan" 
+                                class="form-control" placeholder="Masukkan Plat Kendaraan" 
+                                aria-label="Motor_Konsumen_Plat_Kendaraan" aria-describedby="basic-addon2" 
+                                id="Motor_Konsumen_Plat_Kendaraan" name="Motor_Konsumen_Plat_Kendaraan" 
+                                required>
+                        </div>
+
+                        <div class="modal-footer mt-3">
+                            <button type="submit" class="btn btn-primary btn-lg w-100" 
+                            data-dismiss="modal" 
+                            @click="updatemotorkonsumen(Motor_Konsumen.Id_Motor_Konsumen)">Simpan Perubahan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END OF EDIT MOTOR KONSUMEN -->
+        <!-- DELETE MOTOR KONSUMEN -->
+        <div class="modal fade" id="Delete_Motor_Konsumen" tabindex="-1" role="dialog" 
+            aria-labelledby="Delete_Motor_Konsumen" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Hapus Data Motor Konsumen</h4>
+                        <button type="button" class="close" data-dismiss="modal" 
+                            aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign">
+                            </span> Apakah Anda Yakin Ingin Menghapus Data Motor Konsumen Ini ?</div>
+                    </div>
+                    <div class="modal-footer ">
+                        <a id="delete_btn" class="float-left w-100">
+                            <button type="button" @click="deletemotorkonsumen(Motor_Konsumen.Id_Motor_Konsumen)" 
+                            class="btn btn-danger float-left w-50" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
+                        </a>
+                        <button type="button" class="btn btn-secondary float-right w-50" 
+                        data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END OF DELETE MOTOR KONSUMEN -->
     </body>
 
 </template>
@@ -444,19 +576,23 @@ export default {
         Nama_Konsumen:'',
         Alamat_Konsumen:'',
         Telepon_Konsumen:'',
-        Cari_Konsumen:'',
         Cari_Motor_Konsumen: '',
-        Konsumen:{
-            Nama_Konsumen:'',
-            Alamat_Konsumen:'',
-            Telepon_Konsumen:'',
-        },
+        Cari_Konsumen:'',
+        Id_Konsumen: '',
+        Id_Motor_Konsumen: '',
+        Plat_Kendaraan:'',
+
         Motor_Konsumen:{
             Id_Motor_Konsumen : '',
             Id_Konsumen: '',
             Nama_Konsumen:'',
             Id_Motor: '',
             Plat_Kendaraan:'',
+        },
+        Konsumen:{
+            Nama_Konsumen:'',
+            Alamat_Konsumen:'',
+            Telepon_Konsumen:'',
         },
         Motor:{
             Merk:'',
@@ -465,11 +601,15 @@ export default {
         },
     }),
     mounted(){
+        this.getallmotor()
         this.getallkonsumen()
         this.getallmotorkonsumen()
-        this.getallmotor()
     },
     methods:{
+        getSelectedIndex(){
+            this.index = this.motorcycle.map(function(e) { return e.Id_Motor; }).indexOf(this.Motor.Id_Motor)
+            console.log(this.index)
+        },
         async getallmotor () {
             try {
                 this.motorcycle = (await motorController.getallmotor()).data
@@ -492,12 +632,12 @@ export default {
                     Id_Motor_Konsumen     : this.Motor_Konsumen.Id_Motor_Konsumen,
                     Id_Konsumen           : this.Konsumen.Id_Konsumen,
                     Nama_Konsumen         : this.Konsumen.Nama_Konsumen,
-                    Id_Motor              : this.Motor_Konsumen.Id_Motor,
+                    Id_Motor              : this.Motor.Id_Motor,
                     Plat_Kendaraan        : this.Motor_Konsumen.Plat_Kendaraan,
                 }
                 await controller.addmotorkonsumen(payload)
                 this.getallmotorkonsumen()
-                //this.refresh()
+                this.refreshMotorKonsumen()
             } catch (err) {
                 console.log(err)
             }
@@ -508,12 +648,12 @@ export default {
                     Id_Motor_Konsumen     : this.Motor_Konsumen.Id_Motor_Konsumen,
                     Id_Konsumen           : this.Konsumen.Id_Konsumen,
                     Nama_Konsumen         : this.Konsumen.Nama_Konsumen,
-                    Id_Motor              : this.Motor_Konsumen.Id_Motor,
+                    Id_Motor              : this.Motor.Id_Motor,
                     Plat_Kendaraan        : this.Motor_Konsumen.Plat_Kendaraan,
                 }
                 await controller.updatemotorkonsumen(payload,id)
                 this.getallmotorkonsumen()
-                //this.refresh()
+                this.refreshMotorKonsumen()
             } catch (err) {
                 console.log(err)
             }
@@ -529,7 +669,7 @@ export default {
         datamotorkonsumenhandler(motorkonsumen){
             this.Motor_Konsumen = motorkonsumen
         },
-        //Method Motor
+        //Method konsumen
         async getallkonsumen () {
             try {
                 this.konsumendata = (await Controller.getallkonsumen()).data
@@ -581,6 +721,12 @@ export default {
             this.Konsumen.Nama_Konsumen = '';
             this.Konsumen.Alamat_Konsumen= '';
             this.Konsumen.Telepon_Konsumen= '';
+        },
+        refreshMotorKonsumen(){
+            this.Motor_Konsumen.Plat_Kendaraan = '';
+            this.Motor.Id_Motor = -1;
+            // this.Motor.Merk = -1;
+            // this.Motor.Tipe = -1;
         }
     },
     computed:{
@@ -591,7 +737,7 @@ export default {
         },
         filteredmotorkonsumen:function(){
             return this.motorkonsumendata.filter((motorkonsumen)=>{
-                return motorkonsumen.Id_Konsumen.match(this.Cari_Motor_Konsumen);
+                return motorkonsumen.Plat_Kendaraan.match(this.Cari_Motor_Konsumen);
             });
         },
         nameErrors () {
