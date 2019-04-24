@@ -442,7 +442,8 @@
                             <button type="submit" class="btn btn-primary btn-lg" 
                             style="width: 100%;" 
                             @click="updatesparepart(Sparepart.Kode_Sparepart)" 
-                            data-dismiss="modal">Simpan Perubahan</button>
+                            data-dismiss="modal"
+                            :disabled="$v.Sparepart.$invalid">Simpan Perubahan</button>
                         </div>
                     </div>
                 </div>

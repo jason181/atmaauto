@@ -5867,6 +5867,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -52161,7 +52162,11 @@ var render = function() {
                   {
                     staticClass: "btn btn-primary btn-lg",
                     staticStyle: { width: "100%" },
-                    attrs: { type: "submit", "data-dismiss": "modal" },
+                    attrs: {
+                      type: "submit",
+                      "data-dismiss": "modal",
+                      disabled: _vm.$v.Sparepart.$invalid
+                    },
                     on: {
                       click: function($event) {
                         return _vm.updatesparepart(_vm.Sparepart.Kode_Sparepart)
