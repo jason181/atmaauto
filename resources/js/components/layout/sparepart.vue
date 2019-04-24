@@ -289,11 +289,14 @@
                             
                             <div class="input-group mt-3 w-400">
                                 <div class="row">
-                                    <div class="col-12">
-                                    <div class="list-group mr-2" v-for="motor in motorcycletypes" :key="motor.Id_Motor">
-                                            <a href="#" class="list-group-item list-group-item-action list-group-item-info mr-2">
-                                                {{motor.Merk + '-' + motor.Tipe}}</a>
-                                    </div>
+                                    <div class="col-12 mr-2">
+                                        <div class="list-group mr-2" v-for="motor in motorcycletypes" :key="motor.Id_Motor">
+                                            <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+                                                {{motor.Merk + '-' + motor.Tipe}}          
+                                            <button type="submit" class="btn btn-danger" style="margin-left: 200px"
+                                                @click="deleteList(motor.Id_Motor)">Delete</button><br>     
+                                            </a>
+                                        </div>  
                                     </div>
                                 </div>
                             </div>
@@ -437,6 +440,48 @@
                                 ref="Gambar" accept="image/*">
                             </div>
                         </div>
+
+                        <div class="input-group mt-3">
+                                <div class="input-group-prepend d-block" style="width: 100px;">
+                                    <span class="input-group-text" id="basic-addon2">Merk</span>
+                                </div>
+                                    
+                                <select class="form-control mr-2" v-model="Motor.Id_Motor" v-on:change="getSelectedIndex" >
+                                    <option disabled="disabled" selected="selected" 
+                                    value="Pilih Merk">-- Pilih Merk Motor --</option>
+                                    <option v-bind:key="motor['Id_Motor']" 
+                                    v-on:change="getSelectedIndex"
+                                    v-for="motor in motorcycle" 
+                                    :value="motor.Id_Motor">{{motor.Merk}}</option>
+                                </select>
+                                
+                                <span class="input-group-text" id="basic-addon2">Tipe</span>
+                                <select class="form-control mr-2" v-model="Motor.Id_Motor" v-on:change="getSelectedIndex">
+                                    <option disabled="disabled" selected="selected" 
+                                    value="Pilih Merk">-- Pilih Tipe Motor --</option>
+                                    <option v-bind:key="motor['Id_Motor']"
+                                    v-on:change="getSelectedIndex" 
+                                    v-for="motor in motorcycle" 
+                                    :value="motor.Id_Motor">{{motor.Tipe}}</option>
+                                </select>
+                                <button type="submit" class="btn btn-warning btn"  
+                                    @click="compatibilityHandler(motorcycle)">Add Motor</button>
+                            </div>
+                            
+                            <div class="input-group mt-3 w-400">
+                                <div class="row">
+                                    <div class="col-12 mr-2">
+                                        <div class="list-group mr-2" v-for="motor in motorcycletypes" :key="motor.Id_Motor">
+                                            <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+                                                {{motor.Merk + '-' + motor.Tipe}}          
+                                            <button type="submit" class="btn btn-danger" style="margin-left: 200px"
+                                                @click="deleteList(motor.Id_Motor)">Delete</button><br>     
+                                            </a>
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
+                            
                         <div class="modal-footer ">
                             <button type="submit" class="btn btn-primary btn-lg" 
                             style="width: 100%;" 
@@ -509,6 +554,7 @@ export default {
         Id_Motor: '',
         err: '',
         index: '',
+        filter: '',
         Sparepart:{
             Kode_Sparepart:'',
             Kode1:'',
@@ -564,6 +610,17 @@ export default {
                 this.motorcycletypes.push(JSON.parse(JSON.stringify(object)))
                 this.motorcycleTypes.push(this.Motor.Id_Motor)
            }
+        },
+        deleteList(id)
+        {
+            let filter = this.motorcycletypes.filter(function( obj ) {
+                return obj.Id_Motor !== id;
+            });
+            this.motorcycletypes=filter
+            let filter2 = this.motorcycleTypes.filter(function( obj ) {
+                return obj !== id;
+            });
+            this.motorcycleTypes=filter2
         },
         getSelectedIndex(){
             this.index = this.motorcycle.map(function(e) { return e.Id_Motor; }).indexOf(this.Motor.Id_Motor)
@@ -627,19 +684,20 @@ export default {
         async updatesparepart (id) {
             try {
                 const payload = {
-                    Nama_Sparepart      : this.Sparepart.Nama_Sparepart,
-                    Tipe_Barang         : this.Sparepart.Tipe_Barang,
-                    Merk_Sparepart      : this.Sparepart.Merk_Sparepart,
-                    Rak_Sparepart       : this.posisi +'-'+ this.ruang+'-'+this.nomor,
-                    Jumlah_Sparepart    : this.Sparepart.Jumlah_Sparepart,
-                    Stok_Minimum_Sparepart:this.Sparepart.Stok_Minimum_Sparepart,
-                    Harga_Beli          : this.Sparepart.Harga_Beli,
-                    Harga_Jual          : this.Sparepart.Harga_Jual,
-                    Gambar              : this.Gambar,
+                    Kode_Sparepart          : this.Sparepart.Kode_Sparepart,
+                    Nama_Sparepart          : this.Sparepart.Nama_Sparepart,
+                    Tipe_Barang             : this.Sparepart.Tipe_Barang,
+                    Merk_Sparepart          : this.Sparepart.Merk_Sparepart,
+                    Rak_Sparepart           : this.posisi +'-'+ this.ruang+'-'+this.nomor,
+                    Jumlah_Sparepart        : this.Sparepart.Jumlah_Sparepart,
+                    Stok_Minimum_Sparepart  :this.Sparepart.Stok_Minimum_Sparepart,
+                    Harga_Beli              : this.Sparepart.Harga_Beli,
+                    Harga_Jual              : this.Sparepart.Harga_Jual,
+                    Gambar                  : this.Gambar,
+                    motorcycleTypes         : this.motorcycleTypes
                 }
                 await Controller.updatesparepart(payload,id)
                 this.getallsparepart()
-                // console.log()
             } catch (err) {
                 console.log(err)
             }
@@ -648,7 +706,6 @@ export default {
             try {
                 await Controller.deletesparepart(id)
                 this.getallsparepart()
-                // console.log()
             } catch (err) {
                 console.log(err)
             }

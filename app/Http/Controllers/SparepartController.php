@@ -147,6 +147,9 @@ class SparepartController extends RestController
                 $sparepart->Gambar = $name;
             }
 
+            $motorcyle_types = $request->motorcycleTypes;
+
+            $sparepart->Kode_Sparepart=$request->get('Kode_Sparepart');
             $sparepart->Tipe_Barang=$request->get('Tipe_Barang');
             $sparepart->Nama_Sparepart=$request->get('Nama_Sparepart');
             $sparepart->Merk_Sparepart=$request->get('Merk_Sparepart');
@@ -157,6 +160,12 @@ class SparepartController extends RestController
             $sparepart->Harga_Jual=$request->get('Harga_Jual');
             $sparepart->save();
 
+            if($request->has('motorcycleTypes')){
+                $sparepart = DB::transaction(function () use ($sparepart,$motorcyle_types){
+                    $sparepart->motors()->sync($motorcyle_types);
+                    return $sparepart;
+                });
+            }
             $response = $this->generateItem($sparepart);
             return $this->sendResponse($response, 201);
             
