@@ -23,8 +23,8 @@ class SupplierController extends RestController
             'Nama_Supplier' => $request->Nama_Supplier,
             'Alamat_Supplier' => $request->Alamat_Supplier,
             'Telepon_Supplier' =>$request->Telepon_Supplier,
-            'Nama_Sales' =>$request->Nama_Sales,
-            'Telepon_Sales' =>$request->Telepon_Sales
+            // 'Nama_Sales' =>$request->Nama_Sales,
+            // 'Telepon_Sales' =>$request->Telepon_Sales
         ]);
 
         return response()->json([
