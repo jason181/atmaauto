@@ -249,7 +249,7 @@
         <!-- MODAL OF MOTOR KONSUMEN -->
         <div class="modal fade" id="Tambah_Motor_Konsumen" tabindex="-1" role="dialog" 
             aria-labelledby="Tambah_Motor_Konsumen" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog" style="max-width: 800px;">
                 <div class="modal-content" style="width: 800px;">
                     <div class="modal-header">
                         <h4 class="modal-title mx-auto" id="Heading">Tambah Motor Konsumen</h4>
@@ -263,7 +263,7 @@
                         <div class="row mb-2">
                             <div class="col-sm-2">
                                 <button class="btn btn-success float-left mb-2 btn-block" 
-                                @click="getallmotorkonsumen(),refresh()" 
+                                @click="getallmotorkonsumen()" 
                                 data-title="Tambah_MotorKonsumen" data-toggle="modal" 
                                 data-target="#Tambah_MotorKonsumen">
                                     <i class="fas fa-plus mr-2"></i>Tambah
