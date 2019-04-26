@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Transformers\TransaksiPengadaanTransformers;
-use App\Transaksi_Pengadaan;
-
 // use Illuminate\Http\Request;
-// use App\Http\Controllers\Controller;
-// use App\Transaksi_Pengadaan;
-// use Illuminate\Support\Facades\Redirect;
-// use Illuminate\Support\Facades\Input;
-// use Illuminate\Support\Facades\Session;
-// use Illuminate\Database\Eloquent\ModelNotFoundException;
-// use Illuminate\Support\Facades\DB;
 // use App\Transformers\TransaksiPengadaanTransformers;
+// use App\Transaksi_Pengadaan;
 
-class TransaksiPengadaanController extends Controller
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Transaksi_Pengadaan;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\DB;
+use App\Transformers\TransaksiPengadaanTransformers;
+
+class TransaksiPengadaanController extends RestController
 {
     //
     protected $transformer = TransaksiPengadaanTransformers::Class;
@@ -24,7 +24,6 @@ class TransaksiPengadaanController extends Controller
     public function index()
     {
         $pengadaan=Transaksi_Pengadaan::get();
-        //dd($pengadaan);
         $response=$this->generateCollection($pengadaan);
         return $this->sendResponse($response,201);
     }

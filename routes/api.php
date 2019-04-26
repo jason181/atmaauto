@@ -89,7 +89,7 @@ Route::delete('/motor_konsumens/delete/{id}', 'MotorKonsumenController@destroy')
 Route::get('/motor_konsumens/show/{id}', 'MotorKonsumenController@showbyCustomer');
 
 //Transaksi Pengadaan
-Route::get('/transaksi_pengadaan','TransaksiPengadaanController@index');
-Route::post('/transaksi_pengadaan/store', 'TransaksiPengadaanController@store');
-Route::patch('/transaksi_pengadaan/update/{id}', 'TransaksiPengadaanController@update'); 
-Route::delete('/transaksi_pengadaan/delete/{id}', 'TransaksiPengadaanController@destroy');
+Route::get('/transaksi_pengadaans','TransaksiPengadaanController@index');
+Route::post('/transaksi_pengadaans/store', 'TransaksiPengadaanController@store');
+Route::patch('/transaksi_pengadaans/update/{id}', 'TransaksiPengadaanController@update'); 
+Route::delete('/transaksi_pengadaans/delete/{id}', 'TransaksiPengadaanController@destroy');
