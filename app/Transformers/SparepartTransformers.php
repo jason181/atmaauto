@@ -12,9 +12,9 @@ class SparepartTransformers extends TransformerAbstract
      *
      * @param Branch $branch
      */
-    // protected $defaultIncludes = [
-    //     'compatibility'
-    // ];
+    protected $defaultIncludes = [
+        'compatibility'
+    ];
 
     public function transform(Sparepart $sparepart)
     {
@@ -31,8 +31,8 @@ class SparepartTransformers extends TransformerAbstract
             'Gambar'                 =>$sparepart->Gambar,    
         ];
     }
-    // public function includeCompatibility(Sparepart $sparepart)
-    // {
-    //     return $this->collection($sparepart->motors, new CompatibilityTransformers);
-    // }
+    public function includeCompatibility(Sparepart $sparepart)
+    {
+        return $this->collection($sparepart->motors, new CompatibilityTransformers);
+    }
 }

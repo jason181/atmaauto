@@ -250,7 +250,7 @@
         <div class="modal fade" id="Tambah_Motor_Konsumen" tabindex="-1" role="dialog" 
             aria-labelledby="Tambah_Motor_Konsumen" aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content" style="width: 800px;">
+                <div class="modal-content m-auto" style="width: 800px;" >
                     <div class="modal-header">
                         <h4 class="modal-title mx-auto" id="Heading">Tambah Motor Konsumen</h4>
                         <button type="button" class="close" data-dismiss="modal" 
@@ -263,7 +263,7 @@
                         <div class="row mb-2">
                             <div class="col-sm-2">
                                 <button class="btn btn-success float-left mb-2 btn-block" 
-                                @click="getallmotorkonsumen(),refresh()" 
+                                @click="getallmotorkonsumen()" 
                                 data-title="Tambah_MotorKonsumen" data-toggle="modal" 
                                 data-target="#Tambah_MotorKonsumen">
                                     <i class="fas fa-plus mr-2"></i>Tambah
@@ -292,7 +292,7 @@
                         <table class="table table-striped table-hover">
                             <thead class="table-primary text-center">
                                 <tr>
-                                    <th scope="col">ID</th>
+                                    <th scope="col">ID Konsumen</th>
                                     <th scope="col">Nama Konsumen</th>
                                     <th scope="col">ID Motor</th>
                                     <th scope="col">Merk</th>
@@ -421,11 +421,17 @@
                                 id="Motor_Konsumen_Plat_Kendaraan" name="Motor_Konsumen_Plat_Kendaraan" 
                                 required>
                         </div>
+                        <div class="text-center">
+                            <p class="mb-3" style="color:red;" 
+                                v-if="$v.Motor_Konsumen.Plat_Kendaraan.$invalid">{{platErrors[0]}}</p>
+                        </div>
 
                         <div class="modal-footer mt-3">
                             <button type="submit" class="btn btn-success btn-lg w-100" 
                             data-dismiss="modal" 
-                            @click="addmotorkonsumen()">Tambahkan Motor Konsumen</button>
+                            @click="addmotorkonsumen()"
+                            :disabled="$v.Motor_Konsumen.$invalid"
+                            >Tambahkan Motor Konsumen</button>
                         </div>
                     </div>
                 </div>
@@ -763,6 +769,14 @@ export default {
             !this.$v.Konsumen.Telepon_Konsumen.minLength && errors.push('Phone must be at least 10 characters long')
             !this.$v.Konsumen.Telepon_Konsumen.numeric && errors.push('Phone must be numeric')
             !this.$v.Konsumen.Telepon_Konsumen.required && errors.push('Phone is required')
+            return errors
+        },
+        platErrors () {
+            const errors = []
+            if (!this.$v.Motor_Konsumen.Plat_Kendaraan.$dirty) return errors
+            !this.$v.Motor_Konsumen.Plat_Kendaraan.maxLength && errors.push('Plat must be at most 15 characters long')
+            !this.$v.Motor_Konsumen.Plat_Kendaraan.minLength && errors.push('Plat must be at least 10 characters long')
+            !this.$v.Motor_Konsumen.Plat_Kendaraan.required && errors.push('Plat is required')
             return errors
         },
     }

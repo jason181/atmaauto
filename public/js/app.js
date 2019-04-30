@@ -3555,6 +3555,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4021,6 +4027,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       !this.$v.Konsumen.Telepon_Konsumen.minLength && errors.push('Phone must be at least 10 characters long');
       !this.$v.Konsumen.Telepon_Konsumen.numeric && errors.push('Phone must be numeric');
       !this.$v.Konsumen.Telepon_Konsumen.required && errors.push('Phone is required');
+      return errors;
+    },
+    platErrors: function platErrors() {
+      var errors = [];
+      if (!this.$v.Motor_Konsumen.Plat_Kendaraan.$dirty) return errors;
+      !this.$v.Motor_Konsumen.Plat_Kendaraan.maxLength && errors.push('Plat must be at most 15 characters long');
+      !this.$v.Motor_Konsumen.Plat_Kendaraan.minLength && errors.push('Plat must be at least 10 characters long');
+      !this.$v.Motor_Konsumen.Plat_Kendaraan.required && errors.push('Plat is required');
       return errors;
     }
   }
@@ -46778,7 +46792,10 @@ var render = function() {
         _c("div", { staticClass: "modal-dialog" }, [
           _c(
             "div",
-            { staticClass: "modal-content", staticStyle: { width: "800px" } },
+            {
+              staticClass: "modal-content m-auto",
+              staticStyle: { width: "800px" }
+            },
             [
               _vm._m(13),
               _vm._v(" "),
@@ -46804,7 +46821,7 @@ var render = function() {
                             },
                             on: {
                               click: function($event) {
-                                _vm.getallmotorkonsumen(), _vm.refresh()
+                                return _vm.getallmotorkonsumen()
                               }
                             }
                           },
@@ -47349,12 +47366,26 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Motor_Konsumen.Plat_Kendaraan.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.platErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
               _c("div", { staticClass: "modal-footer mt-3" }, [
                 _c(
                   "button",
                   {
                     staticClass: "btn btn-success btn-lg w-100",
-                    attrs: { type: "submit", "data-dismiss": "modal" },
+                    attrs: {
+                      type: "submit",
+                      "data-dismiss": "modal",
+                      disabled: _vm.$v.Motor_Konsumen.$invalid
+                    },
                     on: {
                       click: function($event) {
                         return _vm.addmotorkonsumen()
@@ -48099,7 +48130,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "table-primary text-center" }, [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("ID")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("ID Konsumen")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama Konsumen")]),
         _vm._v(" "),
@@ -75096,6 +75127,13 @@ __webpack_require__.r(__webpack_exports__);
       maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(15),
       minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(10),
       numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
+    }
+  },
+  Motor_Konsumen: {
+    Plat_Kendaraan: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(10),
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(15)
     }
   }
 });

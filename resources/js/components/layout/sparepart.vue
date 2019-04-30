@@ -373,7 +373,7 @@
                             </div>
                             <select class="form-control mr-2" v-model="posisi">
                                 <option disabled="disabled" selected="selected" value="Pilih Posisi">Pilih Posisi</option>
-                                <option v-for="(posisi,index) in positions" :key="index">{{posisi.value}}</option>
+                                <option v-for="(posisi,index) in positions" :key="index" >{{posisi.value}}</option>
                             </select>
 
                             <select class="form-control mr-2" v-model="ruang">
