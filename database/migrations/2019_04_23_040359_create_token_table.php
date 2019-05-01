@@ -18,6 +18,7 @@ class CreateTokenTable extends Migration
             $table->string('Token_Username',255);
             $table->string('Token_Password',255);
             $table->unsignedInteger('Id_Pegawai');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('Id_Pegawai')->references('Id_Pegawai')->on('pegawais');

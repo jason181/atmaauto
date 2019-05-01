@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Montir extends Model
 {
-    //
+    use SoftDeletes;
+
     protected $table = 'montirs';
     protected $primaryKey = 'Id_Jasa_Montir';
     public $timestamp = true;

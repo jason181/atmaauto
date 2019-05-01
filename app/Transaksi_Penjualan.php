@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Transaksi_Penjualan extends Model
 {
-    //
+    use SoftDeletes;
+    
     protected $table = 'transaksi_penjualans';
     protected $primaryKey = 'Id_Transaksi';
     public $timestamp = true;

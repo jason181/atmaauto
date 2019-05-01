@@ -19,6 +19,7 @@ class CreateTransaksiPengadaansTable extends Migration
             $table->date('Tanggal_Pengadaan');
             $table->double('Total_Harga');
             $table->integer('Status_Pengadaan');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('Id_Supplier')->references('Id_Supplier')->on('suppliers');
