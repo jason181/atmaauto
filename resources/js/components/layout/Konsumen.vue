@@ -249,7 +249,7 @@
         <!-- MODAL OF MOTOR KONSUMEN -->
         <div class="modal fade" id="Tambah_Motor_Konsumen" tabindex="-1" role="dialog" 
             aria-labelledby="Tambah_Motor_Konsumen" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog" style="max-width: 800px;">
                 <div class="modal-content" style="width: 800px;">
                     <div class="modal-header">
                         <h4 class="modal-title mx-auto" id="Heading">Tambah Motor Konsumen</h4>
@@ -263,7 +263,7 @@
                         <div class="row mb-2">
                             <div class="col-sm-2">
                                 <button class="btn btn-success float-left mb-2 btn-block" 
-                                @click="getallmotorkonsumen(),refresh()" 
+                                @click="getallmotorkonsumen()" 
                                 data-title="Tambah_MotorKonsumen" data-toggle="modal" 
                                 data-target="#Tambah_MotorKonsumen">
                                     <i class="fas fa-plus mr-2"></i>Tambah
@@ -732,12 +732,12 @@ export default {
     computed:{
         filteredkonsumen:function(){
             return this.konsumendata.filter((konsumen)=>{
-                return konsumen.Nama_Konsumen.match(this.Cari_Konsumen);
+                return konsumen.Nama_Konsumen.toLowerCase().match(this.Cari_Konsumen.toLowerCase());
             });
         },
         filteredmotorkonsumen:function(){
             return this.motorkonsumendata.filter((motorkonsumen)=>{
-                return motorkonsumen.Plat_Kendaraan.match(this.Cari_Motor_Konsumen);
+                return motorkonsumen.Plat_Kendaraan.toLowerCase().match(this.Cari_Motor_Konsumen.toLowerCase());
             });
         },
         nameErrors () {
@@ -751,8 +751,8 @@ export default {
         addressErrors () {
             const errors = []
             if (!this.$v.Konsumen.Alamat_Konsumen.$dirty) return errors
-            !this.$v.Konsumen.Alamat_Konsumen.maxLength && errors.push('Address must be at most 12 characters long')
-            !this.$v.Konsumen.Alamat_Konsumen.minLength && errors.push('Address must be numeric')
+            !this.$v.Konsumen.Alamat_Konsumen.maxLength && errors.push('Address must be at most 255 characters long')
+            !this.$v.Konsumen.Alamat_Konsumen.minLength && errors.push('Address must be at least 5 characters long')
             !this.$v.Konsumen.Alamat_Konsumen.required && errors.push('Address is required')
             return errors
         },
