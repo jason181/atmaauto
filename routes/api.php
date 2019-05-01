@@ -62,6 +62,10 @@ Route::patch('/suppliers/delSales/{id}', 'SupplierController@delSales');
 
 //Sparepart
 Route::get('/spareparts','SparepartController@index');
+Route::get('/spareparts/hargaasc','SparepartController@sorthargaasc');
+Route::get('/spareparts/hargadesc','SparepartController@sorthargadesc');
+Route::get('/spareparts/jumlahasc','SparepartController@sortjumlahasc');
+Route::get('/spareparts/jumlahdesc','SparepartController@sortjumlahdesc');
 Route::post('/spareparts/store', 'SparepartController@store');
 Route::post('/spareparts/storemobile', 'SparepartController@storemobile');
 Route::post('/spareparts/updatepicmobile', 'SparepartController@updatepicmobile');
@@ -83,6 +87,7 @@ Route::delete('/motors/delete/{id}', 'MotorController@destroy');
 
 //Motor Konsumen
 Route::get('/motor_konsumens','MotorKonsumenController@index');
+//Route::get('/motor_konsumens/showmotorkonsumen/{id}', 'MotorKonsumenController@showmotorkonsumen'); 
 Route::post('/motor_konsumens/store', 'MotorKonsumenController@store');
 Route::patch('/motor_konsumens/update/{id}', 'MotorKonsumenController@update'); 
 Route::delete('/motor_konsumens/delete/{id}', 'MotorKonsumenController@destroy');
