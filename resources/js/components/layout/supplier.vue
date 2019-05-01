@@ -1,6 +1,32 @@
 <template>
     <body>
         <div class="container-fluid mt-3" style="">
+            <div class="row mb-2">
+                <div class="col-sm-2">
+                    <div class="col-sm-7 p-0">
+                        <button class="btn btn-success mb-2 btn-block" @click="getallsupplier(),refreshSupplier()" data-title="Tambah_Supplier" data-toggle="modal" data-target="#Tambah_Supplier">
+                            <i class="fas fa-plus mr-2"></i>Tambah
+                        </button>
+                    </div>
+                    <div class="col-sm-5">
+
+                    </div>
+                </div>
+                <div class="col-sm-7">
+
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <input class="form-control" v-model="Cari_Supplier" type="search" placeholder="Cari Supplier">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!-- 
             <div class="clearfix my-2">
                 <button class="btn btn-success float-left mb-2" @click="getallsupplier(),refreshSupplier()" data-title="Tambah_Supplier" data-toggle="modal" data-target="#Tambah_Supplier">
                     <i class="fas fa-plus mr-2"></i>Tambah
@@ -11,7 +37,7 @@
 				    	<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
 				  	</form>
 				</div>
-            </div>
+            </div> -->
             <div class="table-responsive" style="margin: auto;">
                 <table class="table table-striped table-hover">
                     <thead class="table-primary text-center">
@@ -412,7 +438,7 @@ export default {
     computed:{
         filteredsupplier:function(){
             return this.supplierdata.filter((Supplier)=>{
-                return Supplier.Nama_Supplier.match(this.Cari_Supplier);
+                return Supplier.Nama_Supplier.toLowerCase().match(this.Cari_Supplier.toLowerCase());
             });
         },
         nameErrors(){

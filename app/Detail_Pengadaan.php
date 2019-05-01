@@ -13,7 +13,6 @@ class Detail_Pengadaan extends Model
     protected $primaryKey = 'Id_Detail_Pengadaan';
     public $timestamp = true;
     protected $fillable = [
-        'Id_Detail_Pengadaan',
         'Id_Pengadaan',
         'Kode_Sparepart',
         'Harga_Satuan',
