@@ -19,7 +19,7 @@ class Transaksi_Pengadaan extends Model
 
     public function detail_pengadaans()
     {
-        return $this->hasMany('App\Detail_Pengadaan','Id_Detail_Pengadaan');
+        return $this->hasMany('App\Detail_Pengadaan','Id_Pengadaan');
     }
 
     public function suppliers()

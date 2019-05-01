@@ -51,5 +51,20 @@ export default {
     //         }
     //         Http.delete('/api/cabangs/delete/'+id, successCallback, errorCallback)
     //     })
-    // }
+    // },
+    getallsupplier(){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.get('/api/suppliers', successCallback, errorCallback)
+        })
+    },
 }

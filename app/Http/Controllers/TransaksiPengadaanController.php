@@ -34,12 +34,15 @@ class TransaksiPengadaanController extends RestController
             date_default_timezone_set('Asia/Jakarta');
             $detail = $request->get('Detail_Pengadaan');
             $pengadaan = new Transaksi_Pengadaan;
-            $pengadaan->Tanggal_Pengadaan   = $request->get('Tanggal_Pengadaan').' '.date('H:i:s');
-            $pengadaan->Status_Pengadaan    = $request->get('Status_Pengadaan');
             $pengadaan->Id_Supplier         = $request->get('Id_Supplier');
+            $pengadaan->Tanggal_Pengadaan   = $request->get('Tanggal_Pengadaan').' '.date('H:i:s');
+            $pengadaan->Total_Harga         = $request->get('Total_Harga');
+            $pengadaan->Status_Pengadaan    = $request->get('Status_Pengadaan');
+            
+            
             $pengadaan->save();
             $pengadaan = DB::transaction(function () use ($pengadaan,$detail) {
-                $pengadaan->detail_pengadaans()->createMany($detail);
+                $pengadaan->detail_pengadaans()->createMany($detail);   
                 return $pengadaan;
             });
             $response = $this->generateItem($pengadaan);

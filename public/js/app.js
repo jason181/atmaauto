@@ -5299,109 +5299,162 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/Pengadaan */ "./resources/js/service/Pengadaan.js");
+/* harmony import */ var _validations_pengadaan_validations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../validations/pengadaan_validations */ "./resources/js/validations/pengadaan_validations.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  validations: _validations_pengadaan_validations__WEBPACK_IMPORTED_MODULE_2__["default"],
   data: function data() {
-    var _ref;
-
-    return _ref = {
+    return {
       pengadaandata: [],
-      Pengadaan: [],
+      supplierdata: [],
+      // Pengadaan:[],
       Id_Supplier: '',
-      Id_Sales: '',
       Tanggal_Pengadaan: '',
       Total_Harga: '',
-      Status_Pengadaan: ''
-    }, _defineProperty(_ref, "Pengadaan", {
-      Id_Supplier: '',
-      Id_Sales: '',
-      Tanggal_Pengadaan: '',
-      Total_Harga: '',
-      Status_Pengadaan: ''
-    }), _defineProperty(_ref, "Cari_Pengadaan", ''), _ref;
+      Status_Pengadaan: '',
+      Pengadaan: {
+        Id_Supplier: 'Pilih Supplier',
+        Tanggal_Pengadaan: '',
+        Total_Harga: '',
+        Status_Pengadaan: ''
+      },
+      Cari_Pengadaan: ''
+    };
   },
   mounted: function mounted() {
-    this.getallpengadaan();
+    this.getallpengadaan(), this.getallsupplier();
   },
   methods: {
     getallpengadaan: function () {
@@ -5441,15 +5494,94 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return getallpengadaan;
     }(),
+    getallsupplier: function () {
+      var _getallsupplier = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].getallsupplier();
+
+              case 3:
+                this.supplierdata = _context2.sent.data;
+                console.log(this.supplierdata);
+                _context2.next = 10;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 7]]);
+      }));
+
+      function getallsupplier() {
+        return _getallsupplier.apply(this, arguments);
+      }
+
+      return getallsupplier;
+    }(),
+    addpengadaan: function () {
+      var _addpengadaan = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                payload = {
+                  Id_Supplier: this.Pengadaan.Id_Supplier,
+                  Tanggal_Pengadaan: this.Pengadaan.Tanggal_Pengadaan,
+                  Total_Harga: this.Pengadaan.Total_Harga,
+                  Status_Pengadaan: '1'
+                };
+                _context3.next = 4;
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].addpengadaan(payload);
+
+              case 4:
+                this.getallpengadaan();
+                _context3.next = 10;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 7]]);
+      }));
+
+      function addpengadaan() {
+        return _addpengadaan.apply(this, arguments);
+      }
+
+      return addpengadaan;
+    }(),
     datapengadaanhandler: function datapengadaanhandler(pengadaan) {
       this.Pengadaan = pengadaan;
     },
     refresh: function refresh() {
-      this.Pengadaan.Id_Supplier = '';
-      this.Pengadaan.Id_Sales = '';
+      this.Pengadaan.Id_Supplier = 'Pilih Supplier';
       this.Pengadaan.Tanggal_Pengadaan = '';
       this.Pengadaan.Total_Harga = '';
-      this.Pengadaan.Status_Pengadaan = '';
+      this.Pengadaan.Status_Pengadaan = '1';
     }
   },
   computed: {
@@ -5459,6 +5591,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return this.pengadaandata.filter(function (pengadaan) {
         return pengadaan.Nama_Supplier.toLowerCase().match(_this.Cari_Pengadaan.toLowerCase());
       });
+    },
+    supplierErrors: function supplierErrors() {
+      var errors = [];
+      if (this.$v.Pengadaan.Id_Supplier.$dirty) return errors;
+      !this.$v.Pengadaan.Id_Supplier.required && errors.push('Supplier is required');
+      return errors;
+    },
+    dateErrors: function dateErrors() {
+      var errors = [];
+      if (this.$v.Pengadaan.Tanggal_Pengadaan.$dirty) return errors;
+      !this.$v.Pengadaan.Tanggal_Pengadaan.required && errors.push('Transaction date is required');
+      return errors;
     }
   }
 });
@@ -51454,7 +51598,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "tbody",
-            _vm._l(_vm.pengadaandata, function(pengadaan) {
+            _vm._l(_vm.filteredpengadaan, function(pengadaan) {
               return _c("tr", { key: pengadaan["id"] }, [
                 _c("td", [_vm._v(_vm._s(pengadaan.Nama_Supplier) + " ")]),
                 _vm._v(" "),
@@ -51535,7 +51679,196 @@ var render = function() {
           )
         ])
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Tambah_Pengadaan",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Tambah_Pengadaan",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "input-group" }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Pengadaan.Id_Supplier,
+                        expression: "Pengadaan.Id_Supplier"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { require: "" },
+                    on: {
+                      input: function($event) {
+                        return _vm.$v.Pengadaan.Id_Supplier.$touch()
+                      },
+                      blur: function($event) {
+                        return _vm.$v.Pengadaan.Id_Supplier.$touch()
+                      },
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.Pengadaan,
+                          "Id_Supplier",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Supplier"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                -- Pilih Supplier / Sales --\n                            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.supplierdata, function(supplier) {
+                      return _c(
+                        "option",
+                        {
+                          key: supplier["Id_Supplier"],
+                          domProps: { value: supplier.Id_Supplier }
+                        },
+                        [
+                          _vm._v(
+                            _vm._s(supplier.Nama_Supplier) +
+                              " - " +
+                              _vm._s(supplier.Nama_Sales) +
+                              " "
+                          )
+                        ]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pengadaan.Id_Supplier.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.supplierErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(4),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Pengadaan.Tanggal_Pengadaan,
+                      expression: "Pengadaan.Tanggal_Pengadaan"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "date",
+                    "aria-label": "Tanggal_Pengadaan",
+                    "aria-describedby": "basic-addon2",
+                    id: "Tanggal_Pengadaan",
+                    name: "Tanggal_Pengadaan",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Pengadaan.Tanggal_Pengadaan },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Pengadaan,
+                          "Tanggal_Pengadaan",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Pengadaan.Tanggal_Pengadaan.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Pengadaan.Tanggal_Pengadaan.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pengadaan.Tanggal_Pengadaan
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.dateErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer mt-3" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success btn-lg w-100",
+                    attrs: {
+                      type: "submit",
+                      disabled: _vm.$v.Pengadaan.$invalid,
+                      "data-dismiss": "modal"
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.addpengadaan()
+                      }
+                    }
+                  },
+                  [_vm._v("Tambahkan Transaksi Pengadaan")]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -51570,6 +51903,71 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Tambah Pengadaan")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Supplier")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Tanggal")]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -75404,6 +75802,56 @@ __webpack_require__.r(__webpack_exports__);
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/transaksi_pengadaans', successCallback, errorCallback);
     });
+  },
+  // addCabang(payload) {
+  //     return new Promise((resolve, reject) => {
+  //         const successCallback = (res) => {
+  //             const data = res.data
+  //             resolve(data)
+  //         }
+  //         const errorCallback = (err) => {
+  //             reject(err)
+  //         }
+  //         Http.post('/api/cabangs/store', payload, successCallback, errorCallback)
+  //     })
+  // },
+  // updateCabang(payload,id){
+  //     return new Promise((resolve, reject) => {
+  //         const successCallback = (res) => {
+  //             const data = res.data
+  //             resolve(data)
+  //         }
+  //         const errorCallback = (err) => {
+  //             reject(err)
+  //         }
+  //         Http.patch('/api/cabangs/update/'+id, payload, successCallback, errorCallback)
+  //     })
+  // },
+  // deleteCabang(id){
+  //     return new Promise((resolve, reject) => {
+  //         const successCallback = (res) => {
+  //             const data = res.data
+  //             resolve(data)
+  //         }
+  //         const errorCallback = (err) => {
+  //             reject(err)
+  //         }
+  //         Http.delete('/api/cabangs/delete/'+id, successCallback, errorCallback)
+  //     })
+  // },
+  getallsupplier: function getallsupplier() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/suppliers', successCallback, errorCallback);
+    });
   }
 });
 
@@ -75754,6 +76202,43 @@ __webpack_require__.r(__webpack_exports__);
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
       minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
       maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(15)
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/validations/pengadaan_validations.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/validations/pengadaan_validations.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  Pengadaan: {
+    Id_Supplier: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
+    },
+    Tanggal_Pengadaan: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      date: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["date"]
+    },
+    Total_Harga: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(12),
+      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
+    },
+    Status_Pembayaran: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      maxValue: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxValue"])(3),
+      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"]
     }
   }
 });
