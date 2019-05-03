@@ -7202,6 +7202,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     dataspareparthandler: function dataspareparthandler(sparepart) {
       this.Sparepart = sparepart;
+      var rak = sparepart.Rak_Sparepart.split("-");
+      this.posisi = rak[0];
+      this.ruang = rak[1];
+      this.nomor = rak[2];
+      this.motorcycletypes = sparepart.compatibility.data;
     },
     refresh: function refresh() {
       this.Sparepart.Kode_Sparepart = '';
@@ -47175,14 +47180,7 @@ var render = function() {
           [
             _c(
               "div",
-<<<<<<< HEAD
-              {
-                staticClass: "modal-content m-auto",
-                staticStyle: { width: "800px" }
-              },
-=======
               { staticClass: "modal-content", staticStyle: { width: "800px" } },
->>>>>>> 924e69dd201417062d22bb38b8842dc37594f23b
               [
                 _vm._m(13),
                 _vm._v(" "),
@@ -55101,7 +55099,7 @@ var render = function() {
               _c("div", { staticClass: "input-group mt-4" }, [
                 _c("img", {
                   staticClass: "box img-responsive",
-                  attrs: { src: _vm.Gambar }
+                  attrs: { src: "images/" + _vm.Sparepart.Gambar }
                 }),
                 _vm._v(" "),
                 _c(
@@ -76414,8 +76412,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\JASON\atmaauto\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\JASON\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\atmaauto\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
