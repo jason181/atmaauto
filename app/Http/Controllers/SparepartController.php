@@ -46,6 +46,35 @@ class SparepartController extends RestController
         return $this->sendResponse($response,201);
     }
 
+    public function sorthargaascjumlahasc()
+    {
+        $sparepart = Sparepart::orderBy('Harga_Jual','ASC')->orderBy('Jumlah_Sparepart','ASC')->get();
+        $response=$this->generateCollection($sparepart);
+        return $this->sendResponse($response,201);
+    }
+
+    public function sorthargaascjumlahdesc()
+    {
+        $sparepart = Sparepart::orderBy('Harga_Jual','ASC')->orderBy('Jumlah_Sparepart','DESC')->get();
+        $response=$this->generateCollection($sparepart);
+        return $this->sendResponse($response,201);
+    }
+
+    public function sorthargadescjumlahasc()
+    {
+        $sparepart = Sparepart::orderBy('Harga_Jual','DESC')->orderBy('Jumlah_Sparepart','ASC')->get();
+        $response=$this->generateCollection($sparepart);
+        return $this->sendResponse($response,201);
+    }
+
+    public function sorthargadescjumlahdesc()
+    {
+        $sparepart = Sparepart::orderBy('Harga_Jual','DESC')->orderBy('Jumlah_Sparepart','DESC')->get();
+        $response=$this->generateCollection($sparepart);
+        return $this->sendResponse($response,201);
+    }
+
+
     public function store(Request $request)
     {
         //return $request;
