@@ -729,7 +729,7 @@ export default {
             this.Sparepart.Tipe_Barang          ='';
             this.Sparepart.Nama_Sparepart       ='';
             this.Sparepart.Merk_Sparepart       ='';
-            this.Sparepart.Rak_Sparepart        = '';
+            this.Sparepart.Rak_Sparepart        ='';
             this.Sparepart.Jumlah_Sparepart     ='';
             this.Sparepart.Stok_Minimum_Sparepart=0;
             this.Sparepart.Harga_Beli           =0;
