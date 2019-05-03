@@ -431,7 +431,7 @@
                         </div>
 
                             <div class="input-group mt-4">
-                            <img :src="Gambar" class="box img-responsive">
+                            <img :src="'images/'+Sparepart.Gambar" class="box img-responsive">
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <input type="file" name="Gambar" id="Gambar" class="button" 
                                 aria-label="Gambar" 
@@ -714,6 +714,12 @@ export default {
         },
         dataspareparthandler(sparepart){
             this.Sparepart = sparepart
+            var rak =sparepart.Rak_Sparepart.split("-")
+            this.posisi=rak[0]
+            this.ruang=rak[1]
+            this.nomor=rak[2]
+            this.motorcycletypes = sparepart.compatibility.data
+
         },
         refresh(){
             this.Sparepart.Kode_Sparepart       ='';

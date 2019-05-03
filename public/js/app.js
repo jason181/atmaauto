@@ -7166,6 +7166,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     dataspareparthandler: function dataspareparthandler(sparepart) {
       this.Sparepart = sparepart;
+      var rak = sparepart.Rak_Sparepart.split("-");
+      this.posisi = rak[0];
+      this.ruang = rak[1];
+      this.nomor = rak[2];
+      this.motorcycletypes = sparepart.compatibility.data;
     },
     refresh: function refresh() {
       this.Sparepart.Kode_Sparepart = '';
@@ -55026,7 +55031,7 @@ var render = function() {
               _c("div", { staticClass: "input-group mt-4" }, [
                 _c("img", {
                   staticClass: "box img-responsive",
-                  attrs: { src: _vm.Gambar }
+                  attrs: { src: "images/" + _vm.Sparepart.Gambar }
                 }),
                 _vm._v(" "),
                 _c(

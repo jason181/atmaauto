@@ -62,6 +62,10 @@ Route::patch('/suppliers/delSales/{id}', 'SupplierController@delSales');
 
 //Sparepart
 Route::get('/spareparts','SparepartController@index');
+Route::get('/spareparts/sorthargaasc','SparepartController@sorthargaasc');
+Route::get('/spareparts/sorthargadesc','SparepartController@sorthargadesc');
+Route::get('/spareparts/sortjumlahasc','SparepartController@sortjumlahasc');
+Route::get('/spareparts/sortjumlahdesc','SparepartController@sortjumlahdesc');
 Route::post('/spareparts/store', 'SparepartController@store');
 Route::post('/spareparts/storemobile', 'SparepartController@storemobile');
 Route::post('/spareparts/updatepicmobile', 'SparepartController@updatepicmobile');
