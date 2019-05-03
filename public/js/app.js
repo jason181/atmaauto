@@ -3994,14 +3994,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return this.konsumendata.filter(function (konsumen) {
-        return konsumen.Nama_Konsumen.match(_this.Cari_Konsumen);
+        return konsumen.Nama_Konsumen.toLowerCase().match(_this.Cari_Konsumen.toLowerCase());
       });
     },
     filteredmotorkonsumen: function filteredmotorkonsumen() {
       var _this2 = this;
 
       return this.motorkonsumendata.filter(function (motorkonsumen) {
-        return motorkonsumen.Plat_Kendaraan.match(_this2.Cari_Motor_Konsumen);
+        return motorkonsumen.Plat_Kendaraan.toLowerCase().match(_this2.Cari_Motor_Konsumen.toLowerCase());
       });
     },
     nameErrors: function nameErrors() {
@@ -4015,8 +4015,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     addressErrors: function addressErrors() {
       var errors = [];
       if (!this.$v.Konsumen.Alamat_Konsumen.$dirty) return errors;
-      !this.$v.Konsumen.Alamat_Konsumen.maxLength && errors.push('Address must be at most 12 characters long');
-      !this.$v.Konsumen.Alamat_Konsumen.minLength && errors.push('Address must be numeric');
+      !this.$v.Konsumen.Alamat_Konsumen.maxLength && errors.push('Address must be at most 255 characters long');
+      !this.$v.Konsumen.Alamat_Konsumen.minLength && errors.push('Address must be at least 5 characters long');
       !this.$v.Konsumen.Alamat_Konsumen.required && errors.push('Address is required');
       return errors;
     },
@@ -5285,6 +5285,327 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       !this.$v.Pegawai.Password.minLength && errors.push('Password must be at least 5 characters long');
       !this.$v.Pegawai.Password.maxLength && errors.push('Password must be at most 30 characters long');
       !this.$v.Pegawai.Password.required && errors.push('Password is required');
+      return errors;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Pengadaan.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/Pengadaan.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/Pengadaan */ "./resources/js/service/Pengadaan.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+ // import validators from '../../validations/pengadaan_validations'
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  // validations: validators,
+  data: function data() {
+    return {
+      pengadaandata: [],
+      supplierdata: [],
+      // Pengadaan:[],
+      Id_Supplier: '',
+      Tanggal_Pengadaan: '',
+      Total_Harga: '',
+      Status_Pengadaan: '',
+      Pengadaan: {
+        Id_Supplier: 'Pilih Supplier',
+        Tanggal_Pengadaan: '',
+        Total_Harga: '',
+        Status_Pengadaan: '1'
+      },
+      Cari_Pengadaan: ''
+    };
+  },
+  mounted: function mounted() {
+    this.getallpengadaan(), this.getallsupplier();
+  },
+  methods: {
+    getallpengadaan: function () {
+      var _getallpengadaan = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].getallpengadaan();
+
+              case 3:
+                this.pengadaandata = _context.sent.data;
+                console.log(this.pengadaandata);
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 7]]);
+      }));
+
+      function getallpengadaan() {
+        return _getallpengadaan.apply(this, arguments);
+      }
+
+      return getallpengadaan;
+    }(),
+    getallsupplier: function () {
+      var _getallsupplier = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].getallsupplier();
+
+              case 3:
+                this.supplierdata = _context2.sent.data;
+                console.log(this.supplierdata);
+                _context2.next = 10;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 7]]);
+      }));
+
+      function getallsupplier() {
+        return _getallsupplier.apply(this, arguments);
+      }
+
+      return getallsupplier;
+    }(),
+    addpengadaan: function () {
+      var _addpengadaan = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                payload = {
+                  Id_Supplier: this.Pengadaan.Id_Supplier,
+                  Tanggal_Pengadaan: this.Pengadaan.Tanggal_Pengadaan,
+                  Total_Harga: this.Pengadaan.Total_Harga,
+                  Status_Pengadaan: '1'
+                };
+                _context3.next = 4;
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].addpengadaan(payload);
+
+              case 4:
+                this.getallpengadaan();
+                _context3.next = 10;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 7]]);
+      }));
+
+      function addpengadaan() {
+        return _addpengadaan.apply(this, arguments);
+      }
+
+      return addpengadaan;
+    }(),
+    datapengadaanhandler: function datapengadaanhandler(pengadaan) {
+      this.Pengadaan = pengadaan;
+    },
+    refresh: function refresh() {
+      this.Pengadaan.Id_Supplier = 'Pilih Supplier';
+      this.Pengadaan.Tanggal_Pengadaan = '';
+      this.Pengadaan.Total_Harga = '';
+      this.Pengadaan.Status_Pengadaan = '1';
+    }
+  },
+  computed: {
+    filteredpengadaan: function filteredpengadaan() {
+      var _this = this;
+
+      return this.pengadaandata.filter(function (pengadaan) {
+        return pengadaan.Nama_Supplier.toLowerCase().match(_this.Cari_Pengadaan.toLowerCase());
+      });
+    },
+    supplierErrors: function supplierErrors() {
+      var errors = [];
+      if (this.$v.Pengadaan.Id_Supplier.$dirty) return errors;
+      !this.$v.Pengadaan.Id_Supplier.required && errors.push('Supplier is required');
+      return errors;
+    },
+    dateErrors: function dateErrors() {
+      var errors = [];
+      if (this.$v.Pengadaan.Tanggal_Pengadaan.$dirty) return errors;
+      !this.$v.Pengadaan.Tanggal_Pengadaan.required && errors.push('Transaction date is required');
       return errors;
     }
   }
@@ -46789,228 +47110,233 @@ var render = function() {
         }
       },
       [
-        _c("div", { staticClass: "modal-dialog" }, [
-          _c(
-            "div",
-            {
-              staticClass: "modal-content m-auto",
-              staticStyle: { width: "800px" }
-            },
-            [
-              _vm._m(13),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "container mt-3",
-                    staticStyle: { "max-width": "800px" }
-                  },
-                  [
-                    _c("div", { staticClass: "row mb-2" }, [
-                      _c("div", { staticClass: "col-sm-2" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass:
-                              "btn btn-success float-left mb-2 btn-block",
-                            attrs: {
-                              "data-title": "Tambah_MotorKonsumen",
-                              "data-toggle": "modal",
-                              "data-target": "#Tambah_MotorKonsumen"
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.getallmotorkonsumen()
-                              }
-                            }
-                          },
-                          [
-                            _c("i", { staticClass: "fas fa-plus mr-2" }),
-                            _vm._v("Tambah\n                            ")
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-6" }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-4" }, [
-                        _c("div", { staticClass: "input-group" }, [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.Cari_Motor_Konsumen,
-                                expression: "Cari_Motor_Konsumen"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "search",
-                              placeholder: "Cari Motor Konsumen"
-                            },
-                            domProps: { value: _vm.Cari_Motor_Konsumen },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog",
+            staticStyle: { "max-width": "800px" }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "modal-content", staticStyle: { width: "800px" } },
+              [
+                _vm._m(13),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "container mt-3",
+                      staticStyle: { "max-width": "800px" }
+                    },
+                    [
+                      _c("div", { staticClass: "row mb-2" }, [
+                        _c("div", { staticClass: "col-sm-2" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn btn-success float-left mb-2 btn-block",
+                              attrs: {
+                                "data-title": "Tambah_MotorKonsumen",
+                                "data-toggle": "modal",
+                                "data-target": "#Tambah_MotorKonsumen"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.getallmotorkonsumen()
                                 }
-                                _vm.Cari_Motor_Konsumen = $event.target.value
                               }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm._m(14)
+                            },
+                            [
+                              _c("i", { staticClass: "fas fa-plus mr-2" }),
+                              _vm._v("Tambah\n                            ")
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-sm-6" }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-sm-4" }, [
+                          _c("div", { staticClass: "input-group" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.Cari_Motor_Konsumen,
+                                  expression: "Cari_Motor_Konsumen"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "search",
+                                placeholder: "Cari Motor Konsumen"
+                              },
+                              domProps: { value: _vm.Cari_Motor_Konsumen },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.Cari_Motor_Konsumen = $event.target.value
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _vm._m(14)
+                          ])
                         ])
                       ])
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "table-responsive",
-                    staticStyle: { "max-width": "800px", margin: "auto" }
-                  },
-                  [
-                    _c(
-                      "table",
-                      { staticClass: "table table-striped table-hover" },
-                      [
-                        _vm._m(15),
-                        _vm._v(" "),
-                        _c(
-                          "tbody",
-                          _vm._l(_vm.filteredmotorkonsumen, function(
-                            motorkonsumen
-                          ) {
-                            return _c(
-                              "tr",
-                              { key: motorkonsumen["Id_Motor_Konsumen"] },
-                              [
-                                _c("td", [
-                                  _vm._v(
-                                    _vm._s(motorkonsumen.Id_Konsumen) + " "
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(
-                                    _vm._s(motorkonsumen.Nama_Konsumen) + " "
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(_vm._s(motorkonsumen.Id_Motor) + " ")
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(_vm._s(motorkonsumen.Merk) + " ")
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(_vm._s(motorkonsumen.Tipe) + " ")
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(
-                                    _vm._s(motorkonsumen.Plat_Kendaraan) + " "
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  _c(
-                                    "p",
-                                    {
-                                      attrs: {
-                                        "data-placement": "top",
-                                        "data-toggle": "tooltip",
-                                        title: "Edit"
-                                      }
-                                    },
-                                    [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-primary",
-                                          attrs: {
-                                            "data-title": "Edit_Motor_Konsumen",
-                                            "data-toggle": "modal",
-                                            "data-target":
-                                              "#Edit_Motor_Konsumen"
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.datamotorkonsumenhandler(
-                                                motorkonsumen
-                                              )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "table-responsive",
+                      staticStyle: { "max-width": "800px", margin: "auto" }
+                    },
+                    [
+                      _c(
+                        "table",
+                        { staticClass: "table table-striped table-hover" },
+                        [
+                          _vm._m(15),
+                          _vm._v(" "),
+                          _c(
+                            "tbody",
+                            _vm._l(_vm.filteredmotorkonsumen, function(
+                              motorkonsumen
+                            ) {
+                              return _c(
+                                "tr",
+                                { key: motorkonsumen["Id_Motor_Konsumen"] },
+                                [
+                                  _c("td", [
+                                    _vm._v(
+                                      _vm._s(motorkonsumen.Id_Konsumen) + " "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      _vm._s(motorkonsumen.Nama_Konsumen) + " "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(_vm._s(motorkonsumen.Id_Motor) + " ")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(_vm._s(motorkonsumen.Merk) + " ")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(_vm._s(motorkonsumen.Tipe) + " ")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      _vm._s(motorkonsumen.Plat_Kendaraan) + " "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "text-center" }, [
+                                    _c(
+                                      "p",
+                                      {
+                                        attrs: {
+                                          "data-placement": "top",
+                                          "data-toggle": "tooltip",
+                                          title: "Edit"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn btn-primary",
+                                            attrs: {
+                                              "data-title":
+                                                "Edit_Motor_Konsumen",
+                                              "data-toggle": "modal",
+                                              "data-target":
+                                                "#Edit_Motor_Konsumen"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.datamotorkonsumenhandler(
+                                                  motorkonsumen
+                                                )
+                                              }
                                             }
-                                          }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fas fa-edit"
-                                          })
-                                        ]
-                                      )
-                                    ]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  _c(
-                                    "p",
-                                    {
-                                      attrs: {
-                                        "data-placement": "top",
-                                        "data-toggle": "tooltip",
-                                        title: "Delete"
-                                      }
-                                    },
-                                    [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-danger",
-                                          attrs: {
-                                            "data-title":
-                                              "Delete_Motor_Konsumen",
-                                            "data-toggle": "modal",
-                                            "data-target":
-                                              "#Delete_Motor_Konsumen"
                                           },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.datamotorkonsumenhandler(
-                                                motorkonsumen
-                                              )
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-edit"
+                                            })
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "text-center" }, [
+                                    _c(
+                                      "p",
+                                      {
+                                        attrs: {
+                                          "data-placement": "top",
+                                          "data-toggle": "tooltip",
+                                          title: "Delete"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn btn-danger",
+                                            attrs: {
+                                              "data-title":
+                                                "Delete_Motor_Konsumen",
+                                              "data-toggle": "modal",
+                                              "data-target":
+                                                "#Delete_Motor_Konsumen"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.datamotorkonsumenhandler(
+                                                  motorkonsumen
+                                                )
+                                              }
                                             }
-                                          }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fas fa-trash-alt"
-                                          })
-                                        ]
-                                      )
-                                    ]
-                                  )
-                                ])
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ])
-            ]
-          )
-        ])
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-trash-alt"
+                                            })
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]
+        )
       ]
     ),
     _vm._v(" "),
@@ -51140,6 +51466,469 @@ var staticRenderFns = [
       [
         _c("span", { staticClass: "glyphicon glyphicon-remove" }),
         _vm._v("Tidak")
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Pengadaan.vue?vue&type=template&id=53445d23&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/Pengadaan.vue?vue&type=template&id=53445d23& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("body", [
+    _c("div", { staticClass: "container-fluid mt-3" }, [
+      _c("div", { staticClass: "row mb-2" }, [
+        _c("div", { staticClass: "col-lg-2" }, [
+          _c("div", { staticClass: "col-lg-7 p-0" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success mb-2 btn-block",
+                attrs: {
+                  "data-title": "Tambah_Pengadaan",
+                  "data-toggle": "modal",
+                  "data-target": "#Tambah_Pengadaan"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.getallpengadaan(), _vm.refresh()
+                  }
+                }
+              },
+              [
+                _c("i", { staticClass: "fas fa-plus mr-2" }),
+                _vm._v("Tambah\n                    ")
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-5" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-7" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3" }, [
+          _c("div", { staticClass: "input-group" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.Cari_Pengadaan,
+                  expression: "Cari_Pengadaan"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "search",
+                placeholder: "Cari Transaksi Pengadaan"
+              },
+              domProps: { value: _vm.Cari_Pengadaan },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.Cari_Pengadaan = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(0)
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "table-responsive" }, [
+        _c("table", { staticClass: "table table-striped table-hover" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.filteredpengadaan, function(pengadaan) {
+              return _c("tr", { key: pengadaan["id"] }, [
+                _c("td", [_vm._v(_vm._s(pengadaan.Nama_Supplier) + " ")]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(pengadaan.Nama_Sales) + " ")]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(pengadaan.Tanggal_Pengadaan) + " ")]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(pengadaan.Total_Harga))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(pengadaan.Status_Pengadaan) + " ")]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _c(
+                    "p",
+                    {
+                      attrs: {
+                        "data-placement": "top",
+                        "data-toggle": "tooltip",
+                        title: "Edit"
+                      }
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: {
+                            "data-title": "Edit_Pengadaan",
+                            "data-toggle": "modal",
+                            "data-target": "#Edit_Pengadaan"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.datapengadaanhandler(pengadaan)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fas fa-edit" })]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _c(
+                    "p",
+                    {
+                      attrs: {
+                        "data-placement": "top",
+                        "data-toggle": "tooltip",
+                        title: "Delete"
+                      }
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: {
+                            "data-title": "Delete_Pengadaan",
+                            "data-toggle": "modal",
+                            "data-target": "#Delete_Pengadaan"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.datapengadaanhandler(pengadaan)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fas fa-trash-alt" })]
+                      )
+                    ]
+                  )
+                ])
+              ])
+            }),
+            0
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Tambah_Pengadaan",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Tambah_Pengadaan",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "input-group" }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Pengadaan.Id_Supplier,
+                        expression: "Pengadaan.Id_Supplier"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { require: "" },
+                    on: {
+                      input: function($event) {
+                        return _vm.$v.Pengadaan.Id_Supplier.$touch()
+                      },
+                      blur: function($event) {
+                        return _vm.$v.Pengadaan.Id_Supplier.$touch()
+                      },
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.Pengadaan,
+                          "Id_Supplier",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Supplier"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                -- Pilih Supplier / Sales --\n                            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.supplierdata, function(supplier) {
+                      return _c(
+                        "option",
+                        {
+                          key: supplier["Id_Supplier"],
+                          domProps: { value: supplier.Id_Supplier }
+                        },
+                        [
+                          _vm._v(
+                            _vm._s(supplier.Nama_Supplier) +
+                              " - " +
+                              _vm._s(supplier.Nama_Sales) +
+                              " "
+                          )
+                        ]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pengadaan.Id_Supplier.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.supplierErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(4),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Pengadaan.Tanggal_Pengadaan,
+                      expression: "Pengadaan.Tanggal_Pengadaan"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "date",
+                    "aria-label": "Tanggal_Pengadaan",
+                    "aria-describedby": "basic-addon2",
+                    id: "Tanggal_Pengadaan",
+                    name: "Tanggal_Pengadaan",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Pengadaan.Tanggal_Pengadaan },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Pengadaan,
+                          "Tanggal_Pengadaan",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Pengadaan.Tanggal_Pengadaan.$touch()
+                      }
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Pengadaan.Tanggal_Pengadaan.$touch()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Pengadaan.Tanggal_Pengadaan
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.dateErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer mt-3" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success btn-lg w-100",
+                    attrs: {
+                      type: "submit",
+                      disabled: _vm.$v.Pengadaan.$invalid,
+                      "data-dismiss": "modal"
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.addpengadaan()
+                      }
+                    }
+                  },
+                  [_vm._v("Tambahkan Transaksi Pengadaan")]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text" }, [
+        _c("i", { staticClass: "fas fa-search" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "table-primary text-center" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Supplier")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Sales")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Tanggal")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Total Harga")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Status")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Tambah Pengadaan")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Supplier")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Tanggal")]
+        )
       ]
     )
   }
@@ -73607,6 +74396,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/layout/Pengadaan.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/layout/Pengadaan.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Pengadaan_vue_vue_type_template_id_53445d23___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pengadaan.vue?vue&type=template&id=53445d23& */ "./resources/js/components/layout/Pengadaan.vue?vue&type=template&id=53445d23&");
+/* harmony import */ var _Pengadaan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pengadaan.vue?vue&type=script&lang=js& */ "./resources/js/components/layout/Pengadaan.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Pengadaan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Pengadaan_vue_vue_type_template_id_53445d23___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Pengadaan_vue_vue_type_template_id_53445d23___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/layout/Pengadaan.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/Pengadaan.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/layout/Pengadaan.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Pengadaan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Pengadaan.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Pengadaan.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Pengadaan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/Pengadaan.vue?vue&type=template&id=53445d23&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/layout/Pengadaan.vue?vue&type=template&id=53445d23& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Pengadaan_vue_vue_type_template_id_53445d23___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Pengadaan.vue?vue&type=template&id=53445d23& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Pengadaan.vue?vue&type=template&id=53445d23&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Pengadaan_vue_vue_type_template_id_53445d23___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Pengadaan_vue_vue_type_template_id_53445d23___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/layout/Status.vue":
 /*!***************************************************!*\
   !*** ./resources/js/components/layout/Status.vue ***!
@@ -74226,8 +75084,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_layout_Home_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/layout/Home.vue */ "./resources/js/components/layout/Home.vue");
 /* harmony import */ var _components_layout_Katalog_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/layout/Katalog.vue */ "./resources/js/components/layout/Katalog.vue");
 /* harmony import */ var _components_layout_Status_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/layout/Status.vue */ "./resources/js/components/layout/Status.vue");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _components_layout_Pengadaan_vue__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/layout/Pengadaan.vue */ "./resources/js/components/layout/Pengadaan.vue");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_13__);
+
 
 
 
@@ -74318,6 +75178,14 @@ var routes = [{
   name: 'Motor',
   path: '/motor',
   component: _components_layout_Motor_vue__WEBPACK_IMPORTED_MODULE_8__["default"],
+  meta: {
+    role: ['Admin']
+  },
+  beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
+}, {
+  name: 'Pengadaan',
+  path: '/pengadaan',
+  component: _components_layout_Pengadaan_vue__WEBPACK_IMPORTED_MODULE_12__["default"],
   meta: {
     role: ['Admin']
   },
@@ -74869,6 +75737,86 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/service/Pengadaan.js":
+/*!*******************************************!*\
+  !*** ./resources/js/service/Pengadaan.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../http */ "./resources/js/http.js");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  getallpengadaan: function getallpengadaan() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/transaksi_pengadaans', successCallback, errorCallback);
+    });
+  },
+  // addCabang(payload) {
+  //     return new Promise((resolve, reject) => {
+  //         const successCallback = (res) => {
+  //             const data = res.data
+  //             resolve(data)
+  //         }
+  //         const errorCallback = (err) => {
+  //             reject(err)
+  //         }
+  //         Http.post('/api/cabangs/store', payload, successCallback, errorCallback)
+  //     })
+  // },
+  // updateCabang(payload,id){
+  //     return new Promise((resolve, reject) => {
+  //         const successCallback = (res) => {
+  //             const data = res.data
+  //             resolve(data)
+  //         }
+  //         const errorCallback = (err) => {
+  //             reject(err)
+  //         }
+  //         Http.patch('/api/cabangs/update/'+id, payload, successCallback, errorCallback)
+  //     })
+  // },
+  // deleteCabang(id){
+  //     return new Promise((resolve, reject) => {
+  //         const successCallback = (res) => {
+  //             const data = res.data
+  //             resolve(data)
+  //         }
+  //         const errorCallback = (err) => {
+  //             reject(err)
+  //         }
+  //         Http.delete('/api/cabangs/delete/'+id, successCallback, errorCallback)
+  //     })
+  // },
+  getallsupplier: function getallsupplier() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/suppliers', successCallback, errorCallback);
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/service/Sparepart.js":
 /*!*******************************************!*\
   !*** ./resources/js/service/Sparepart.js ***!
@@ -75354,8 +76302,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\atmaauto\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\JASON\atmaauto\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\JASON\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
