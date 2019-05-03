@@ -29,6 +29,7 @@ class Motor_Konsumen extends Model
         return $this->belongsTo('App\Konsumen','Id_Konsumen');
     }
     
+
     public function motors()
     {
         return $this->belongsTo('App\Motor','Id_Motor');

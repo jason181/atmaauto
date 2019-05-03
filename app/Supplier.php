@@ -24,4 +24,5 @@ class Supplier extends Model
     {
         return $this->hasMany('App\Transaksi_Pengadaan','Id_Pengadaan');
     }
+
 }
