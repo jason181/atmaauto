@@ -3,12 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Konsumen extends Model
 {
-    use SoftDeletes;
-
+    //
     protected $table = 'konsumens';
     protected $primaryKey = 'Id_Konsumen';
     public $timestamp = true;

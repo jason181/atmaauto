@@ -3,12 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Jasa extends Model
 {
-    use SoftDeletes;
-
+    //
     protected $table = 'jasas';
     protected $primaryKey = 'Id_Jasa';
     public $timestamp = true;

@@ -10,7 +10,7 @@ export default {
         Alamat_Konsumen: { 
             required, 
             minLength: minLength(5), 
-            maxLength: maxLength(255), 
+            maxLength: maxLength(25), 
         },
         Telepon_Konsumen: { 
             required,

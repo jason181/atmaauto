@@ -2,21 +2,21 @@
 <body>
     <div class="container-fluid">
         <div class="row my-3">
-            <div class="col-md-4 mb-3" v-if="Select1=='Harga dan Stok'">
+            <div class="col-sm-4" v-if="Select1=='Harga dan Stok'">
                 <select class="form w-100 form-control" v-model="Select1">
                     <option selected="selected" disabled value="Harga dan Stok"> Harga dan Stok</option>
                     <option value="Harga">Harga</option>
                     <option value="Stok">Stok</option>
                 </select>
             </div>
-            <div class="col-md-2 mb-3" v-if="Select1!='Harga dan Stok'">
+            <div class="col-sm-2" v-if="Select1!='Harga dan Stok'">
                 <select class="form w-100 form-control" style="width:250px;" v-model="Select1">
                     <option selected="selected" disabled value="Harga dan Stok"> Harga dan Stok</option>
                     <option value="Harga">Harga</option>
                     <option value="Stok">Stok</option>
                 </select>
             </div>
-            <div class="col-md-2 mb-3" v-if="Select1!='Harga dan Stok'">
+            <div class="col-sm-2" v-if="Select1!='Harga dan Stok'">
                 <select class="form form-control w-100" v-model="SelectHarga" v-if="Select1=='Harga'" @click="sort('Harga_Jual',SelectHarga)"  >
                     <option selected disabled value="Pilih Berdasarkan Harga">Pilih Berdasarkan Harga</option>
                     <option value="desc" >Termahal</option>
@@ -28,7 +28,7 @@
                     <option value="asc">Tersedikit</option>
                 </select>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-sm-4">
                 <input class="form-control mr-sm-2" type="search" v-model="Cari_Sparepart" placeholder="Cari Sparepart..." aria-label="Search">
             </div>
             <div class="col-sm-4">
@@ -40,18 +40,17 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 mx-auto mb-5" v-bind:key="index" v-for="(sparepart,index) in filteredspareparts">
+            <div class="col-sm-3 mx-auto mb-5" v-bind:key="index" v-for="(sparepart,index) in filteredspareparts">
                 <a>
-                    <div class="card border-primary mx-auto" style="width: 12rem;">
+                    <div class="card border-primary mx-auto" style="width: 18rem;">
                         <div class="card-header">
-                            <h6 class="card-title mb-0" style="text-align: center;">{{sparepart.Nama_Sparepart}}</h6>
+                            <h4 class="card-title mb-0" style="text-align: center;">{{sparepart.Nama_Sparepart}}</h4>
                         </div>
                         <div class="card-body" style="text-align:center;">
-                            <img class="card-img-top" :src="'/images/'+sparepart.Gambar" :alt="sparepart.Nama_Sparepart" style="height:150px;width:auto;max-height:150px;max-width:150px;">
+                            <img class="card-img-top" :src="'/images/'+sparepart.Gambar" :alt="sparepart.Nama_Sparepart" style="height:250px;width:auto;">
                         </div>
                         <div class="card-footer" style="text-align: center;">
                             <p class="card-text mb-2" style="color: black">Rp {{formatPrice(sparepart.Harga_Jual)}}</p>
-                            <p class="card-text mb-2" style="color: black">Stok : {{sparepart.Jumlah_Sparepart}} </p>
                             <a href="" class="btn btn-primary">Detail</a>
                         </div>
                     </div>

@@ -17,14 +17,6 @@ class MotorKonsumenController extends RestController
         $response=$this->generateCollection($motor_konsumen);
         return $this->sendResponse($response,201);
     }
-
-    // public function showmotorkonsumen($id)
-    // {
-    //     $motor_konsumen=Motor_Konsumen::find($id);
-    //     $response=$this->generateCollection($motor_konsumen);
-    //     return $this->sendResponse($response,201);
-    // }
-    
     public function store(Request $request)
     {
         $motor_konsumen = Motor_Konsumen::create([
@@ -43,9 +35,9 @@ class MotorKonsumenController extends RestController
     {   
         $motor_konsumen = Motor_Konsumen::find($id);
 
-        // if(!is_null($request->Id_Konsumen)){
-        //     $motor_konsumen->Id_Konsumen = $request->Id_Konsumen;
-        // }
+        if(!is_null($request->Id_Konsumen)){
+            $motor_konsumen->Id_Konsumen = $request->Id_Konsumen;
+        }
         if(!is_null($request->Id_Motor)){
             $motor_konsumen->Id_Motor = $request->Id_Motor;
         }

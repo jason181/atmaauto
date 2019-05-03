@@ -22,7 +22,6 @@ class CreateTransaksiPenjualansTable extends Migration
             $table->double('Diskon');
             $table->double('Total');
             $table->integer('Status');
-            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('Id_Konsumen')->references('Id_Konsumen')->on('konsumens');

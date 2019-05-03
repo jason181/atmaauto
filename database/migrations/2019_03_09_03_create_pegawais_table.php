@@ -23,7 +23,6 @@ class CreatePegawaisTable extends Migration
             $table->double('Gaji_Pegawai');
             $table->string('Username',20)->unique();
             $table->string('Password');
-            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('Id_Role')->references('Id_Role')->on('roles');

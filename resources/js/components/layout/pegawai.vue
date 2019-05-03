@@ -2,20 +2,20 @@
     <body>
         <div class="container-fluid mt-3">
             <div class="row mb-2">
-                <div class="col-lg-2">
-                    <div class="col-lg-7 p-0">
+                <div class="col-sm-2">
+                    <div class="col-sm-7 p-0">
                         <button class="btn btn-success mb-2 btn-block" @click="getallpegawai(),refresh()" data-title="Tambah_Pegawai" data-toggle="modal" data-target="#Tambah_Pegawai">
                             <i class="fas fa-plus mr-2"></i>Tambah
                         </button>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-sm-5">
 
                     </div>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-sm-7">
 
                 </div>
-                <div class="col-lg-3">
+                <div class="col-sm-3">
                     <div class="input-group">
                         <input class="form-control" v-model="Cari_Pegawai" type="search" placeholder="Cari Pegawai">
                         <div class="input-group-append">

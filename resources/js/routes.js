@@ -11,7 +11,6 @@ import Motor from './components/layout/Motor.vue';
 import Home from './components/layout/Home.vue';
 import Katalog from './components/layout/Katalog.vue';
 import Status from './components/layout/Status.vue';
-import Pengadaan from './components/layout/Pengadaan.vue';
 import { homedir } from 'os';
 
 export const routes = [
@@ -128,16 +127,5 @@ export const routes = [
         beforeEnter: middleware([
             auth
         ]) 
-    },
-    {
-        name: 'Pengadaan',
-        path: '/pengadaan',
-        component: Pengadaan,
-        meta: { role: [
-            'Admin'
-        ]},
-        beforeEnter: middleware([
-            auth
-        ])
     },
 ]

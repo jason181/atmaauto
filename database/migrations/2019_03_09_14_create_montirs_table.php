@@ -17,7 +17,6 @@ class CreateMontirsTable extends Migration
             $table->increments('Id_Jasa_Montir');
             $table->unsignedInteger('Id_Pegawai');
             $table->unsignedInteger('Id_Motor_Konsumen');
-            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('Id_Pegawai')->references('Id_Pegawai')->on('pegawais');

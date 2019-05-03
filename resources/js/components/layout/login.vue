@@ -23,14 +23,9 @@
                 </span>
             </div>
         </div>
-        <div class="text-center">
-            <div style="color:red;" v-if="myalert!=null">
-              Username atau Password salah !
-            </div>
-        </div>
       </div>
       <div class="card-footer">
-        <button type="submit" class="btn btn-success btn-lg" style="width: 100%;" @click="alert()">LOGIN</button>
+        <button type="submit" class="btn btn-success btn-lg" style="width: 100%;">LOGIN</button>
       </div>
     </form>
   </div>
@@ -55,17 +50,14 @@ import auth from '../../service/Auth'
           password: '',
         },
         error:'',
-        myalert:null,
         type:'password',
       }
     },
     methods: {
       async loginHandler(){
-       
         try {
           await auth.authenticate(this.form)
           this.$router.push({ name: 'Pegawai' })
-
         } catch (err) {
           //this.$refs.errorAlert.trigger({ message: 'Terjadi Kesalahan Login!' })
         }
@@ -76,9 +68,6 @@ import auth from '../../service/Auth'
         else{
           this.type='password';
         }
-      },
-      alert(){
-        this.myalert='Username atau Password SALAH !';
       }
     }
   }
