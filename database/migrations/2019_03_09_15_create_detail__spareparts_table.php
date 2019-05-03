@@ -21,7 +21,6 @@ class CreateDetailSparepartsTable extends Migration
             $table->double('Harga_Satuan');
             $table->integer('Jumlah');
             $table->double('Subtotal_Detail_Sparepart');
-            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('Id_Transaksi')->references('Id_Transaksi')->on('transaksi_penjualans');

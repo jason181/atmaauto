@@ -18,7 +18,6 @@ class CreateCabangsTable extends Migration
             $table->string('Nama_Cabang',50);
             $table->string('Alamat_Cabang',50);
             $table->string('Telepon_Cabang',15);
-            $table->softDeletes();
             $table->timestamps();
         });
 

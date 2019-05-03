@@ -18,7 +18,6 @@ class CreateKonsumensTable extends Migration
             $table->string('Nama_Konsumen',50);
             $table->string('Telepon_Konsumen',15);
             $table->string('Alamat_Konsumen',255);
-            $table->softDeletes();
             $table->timestamps();
         });
     }

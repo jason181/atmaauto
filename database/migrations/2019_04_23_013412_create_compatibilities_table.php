@@ -17,7 +17,6 @@ class CreateCompatibilitiesTable extends Migration
             $table->increments('Id_Compatibility');
             $table->unsignedInteger('Id_Motor');
             $table->string('Kode_Sparepart',15);
-            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('Kode_Sparepart')->references('Kode_Sparepart')->on('spareparts');

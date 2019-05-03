@@ -249,7 +249,7 @@
         <!-- MODAL OF MOTOR KONSUMEN -->
         <div class="modal fade" id="Tambah_Motor_Konsumen" tabindex="-1" role="dialog" 
             aria-labelledby="Tambah_Motor_Konsumen" aria-hidden="true">
-            <div class="modal-dialog" style="max-width: 800px;">
+            <div class="modal-dialog">
                 <div class="modal-content m-auto" style="width: 800px;" >
                     <div class="modal-header">
                         <h4 class="modal-title mx-auto" id="Heading">Tambah Motor Konsumen</h4>
