@@ -5481,9 +5481,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5498,14 +5495,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       // Pengadaan:[],
       Id_Supplier: '',
       Tanggal_Pengadaan: '',
-      Total_Harga: '',
+      Total_Harga: 0,
       Status_Pengadaan: '',
       index: '',
       err: '',
       Pengadaan: {
         Id_Supplier: 'Pilih Supplier',
         Tanggal_Pengadaan: '',
-        Total_Harga: '',
+        Total_Harga: 0,
         Status_Pengadaan: '1'
       },
       Cari_Pengadaan: '',
@@ -5515,18 +5512,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         Nama_Sparepart: '',
         Merk_Sparepart: '',
         Rak_Sparepart: '',
-        Jumlah_Sparepart: '',
+        Jumlah_Sparepart: 0,
         Stok_Minimum_Sparepart: 0,
         Harga_Beli: 0,
         Harga_Jual: 0,
         Gambar: ''
       },
       temp: {
-        Id_Pengadaan: '2',
         Kode_Sparepart: '',
-        Harga_Satuan: '',
-        Jumlah: '',
-        Subtotal_Pengadaan: ''
+        Nama_Sparepart: '',
+        Harga_Satuan: 0,
+        Jumlah: 0,
+        Subtotal_Pengadaan: 0
       }
     };
   },
@@ -5541,20 +5538,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       console.log(this.index);
     },
     sparepartHandler: function sparepartHandler(sparepart) {
-      var object = sparepart[this.index];
-      console.log(object);
+      var _this = this;
+
+      var object = sparepart[this.index]; // console.log(object);
+
       this.temp.Kode_Sparepart = this.Sparepart.Kode_Sparepart;
-      this.temp.Harga_Satuan = 12000;
+      var data = this.sparepart.find(function (obj) {
+        return obj.Kode_Sparepart == _this.Sparepart.Kode_Sparepart;
+      }); // console.log(data)
+
+      this.temp.Nama_Sparepart = data.Nama_Sparepart;
+      this.temp.Harga_Satuan = data.Harga_Beli;
       this.temp.Jumlah = this.Sparepart.Jumlah_Sparepart;
-      this.temp.Subtotal_Pengadaan = 12000;
+      this.temp.Subtotal_Pengadaan = data.Harga_Beli * this.Sparepart.Jumlah_Sparepart;
+      this.Pengadaan.Total_Harga = parseInt(this.temp.Subtotal_Pengadaan + this.Pengadaan.Total_Harga, 10);
+      console.log("a" + this.Pengadaan.Total_Harga);
+      console.log("b" + this.temp.Subtotal_Pengadaan);
       this.sparepartdata.push(JSON.parse(JSON.stringify(this.temp)));
       this.sparepartData.push(this.Sparepart.Kode_Sparepart);
     },
     deleteList: function deleteList(id) {
-      var filter = this.sparepart.filter(function (obj) {
+      var filter = this.sparepartdata.filter(function (obj) {
         return obj.Kode_Sparepart !== id;
       });
-      this.sparepart = filter;
+      this.sparepartdata = filter;
       var filter2 = this.sparepartData.filter(function (obj) {
         return obj !== id;
       });
@@ -5684,7 +5691,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 payload = {
                   Id_Supplier: this.Pengadaan.Id_Supplier,
                   Tanggal_Pengadaan: this.Pengadaan.Tanggal_Pengadaan,
-                  Total_Harga: 15000,
+                  Total_Harga: this.Pengadaan.Total_Harga,
                   Status_Pengadaan: '1',
                   Detail_Pengadaan: this.sparepartdata
                 };
@@ -5728,10 +5735,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   computed: {
     filteredpengadaan: function filteredpengadaan() {
-      var _this = this;
+      var _this2 = this;
 
       return this.pengadaandata.filter(function (pengadaan) {
-        return pengadaan.Nama_Supplier.toLowerCase().match(_this.Cari_Pengadaan.toLowerCase());
+        return pengadaan.Nama_Supplier.toLowerCase().match(_this2.Cari_Pengadaan.toLowerCase());
       });
     },
     supplierErrors: function supplierErrors() {
@@ -45385,30 +45392,36 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container-fluid my-5" }, [
+    return _c("div", { staticClass: "container my-5" }, [
       _c("div", { staticClass: "row mx-1" }, [
-        _c("div", { staticClass: "col-lg-6" }, [
+        _c("div", { staticClass: "col-lg-8" }, [
           _c("div", { staticClass: "container text-center mb-3" }, [
             _c("img", {
-              staticStyle: { "max-width": "550px" },
+              staticStyle: { "max-width": "600px" },
               attrs: { src: "/images/motor_home.png" }
             })
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-lg-6" }, [
+        _c("div", { staticClass: "col-lg-4" }, [
           _c("div", { staticClass: "container" }, [
-            _c("h1", [_vm._v("Selamat Datang di ATMA AUTO")]),
-            _vm._v(" "),
-            _c("p", { staticStyle: { "text-align": "justify" } }, [
-              _vm._v(
-                "\n                Atma Auto merupakan salah satu Bengkel yang berada di provinsi Daerah Istimewa Yogyakarta. \n                Bengkel ini melayani segala hal yang berhubungan dengan sparepart motor yang dimulai dari penjualan sparepart sampai servis motor.\n                "
-              )
+            _c("h2", { staticStyle: { "text-align": "center" } }, [
+              _vm._v("Selamat Datang di Bengkel Atma Auto")
             ]),
             _vm._v(" "),
+            _c(
+              "p",
+              { staticStyle: { "text-align": "justify", "font-size": "16px" } },
+              [
+                _vm._v(
+                  "\n                Atma Auto merupakan salah satu Bengkel yang berada di provinsi Daerah Istimewa Yogyakarta. \n                Bengkel ini melayani segala hal yang berhubungan dengan sparepart motor yang dimulai dari \n                penjualan sparepart sampai servis motor.\n                "
+                )
+              ]
+            ),
+            _vm._v(" "),
             _c("p", { staticStyle: { "text-align": "justify" } }, [
               _vm._v(
-                "\n                Aliquam erat volutpat. Cras quis libero porta, malesuada dui consequat, viverra orci. Pellentesque iaculis ut enim vel aliquam. Quisque tempus, massa ac euismod tincidunt, diam mi pharetra velit, venenatis finibus metus lorem a eros. Aenean accumsan orci eget tortor dapibus dictum. Fusce sit amet velit placerat, imperdiet metus non, dictum mi. Proin iaculis orci libero, sed accumsan enim malesuada eget. Fusce efficitur risus felis, vel venenatis dolor eleifend vitae. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas vehicula nibh ex, eu maximus est congue ut. Nam in nulla non diam condimentum interdum sodales at massa. Sed a semper erat. Ut vitae ante lacinia nisl dapibus pretium vitae vel leo.\n                "
+                "\n                Bengkel ini berada di jalan Babarsari No.44, \n                Janti, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281. \n                Atau anda dapat menghubungi kami di (0274)-487711\n                "
               )
             ])
           ])

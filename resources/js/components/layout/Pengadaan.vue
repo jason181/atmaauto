@@ -150,12 +150,10 @@
                             </div>
                             
                         </div>
-                        
+
                         <div class="input-group mt-3 w-400">
                             <div class="row">
                                 <div class="col-12 mr-2">
-                                    <!-- <tr v-bind:key="sparepart['Kode_Sparepart']" v-for="sparepart in filteredsparepart"> -->
-                                        <!-- <div class="list-group mr-2" v-for="motor in motorcycletypes" :key="motor.Id_Motor"> -->
                                     <div class="list-group mr-2" v-for="spareparts in sparepartdata" :key="spareparts['Kode_Sparepart']">
                                         <a href="#" class="list-group-item list-group-item-action list-group-item-success">
                                             {{spareparts.Kode_Sparepart + '-' + spareparts.Nama_Sparepart}}          
@@ -164,7 +162,6 @@
                                             <br>     
                                         </a>
                                     </div>
-                                    <!-- </tr> -->
                                 </div>
                             </div>
                         </div>
@@ -194,14 +191,14 @@ export default {
         // Pengadaan:[],
         Id_Supplier:'',
         Tanggal_Pengadaan:'',
-        Total_Harga:'',
+        Total_Harga:0,
         Status_Pengadaan:'',
         index:'',
         err: '',
         Pengadaan:{
             Id_Supplier:'Pilih Supplier',
             Tanggal_Pengadaan:'',
-            Total_Harga:'',
+            Total_Harga:0,
             Status_Pengadaan:'1',
         },
         Cari_Pengadaan:'',
@@ -211,18 +208,18 @@ export default {
             Nama_Sparepart:'',
             Merk_Sparepart:'',
             Rak_Sparepart: '',
-            Jumlah_Sparepart:'',
+            Jumlah_Sparepart:0,
             Stok_Minimum_Sparepart:0,
             Harga_Beli:0,
             Harga_Jual:0,
             Gambar:'',
         },
         temp:{
-            Id_Pengadaan:'2',
             Kode_Sparepart:'',
-            Harga_Satuan:'',
-            Jumlah:'',
-            Subtotal_Pengadaan:'',
+            Nama_Sparepart:'',
+            Harga_Satuan:0,
+            Jumlah:0,
+            Subtotal_Pengadaan:0,
         }
     }),
     mounted(){
@@ -237,20 +234,26 @@ export default {
         },
         sparepartHandler(sparepart){
             var object = sparepart[this.index]
-            console.log(object);
+            // console.log(object);
             this.temp.Kode_Sparepart    = this.Sparepart.Kode_Sparepart;
-            this.temp.Harga_Satuan      = this.Sparepart.Harga_Beli;
+            let data = this.sparepart.find(obj=>obj.Kode_Sparepart == this.Sparepart.Kode_Sparepart)
+            // console.log(data)
+            this.temp.Nama_Sparepart    = data.Nama_Sparepart
+            this.temp.Harga_Satuan      = data.Harga_Beli;
             this.temp.Jumlah            = this.Sparepart.Jumlah_Sparepart;
-            this.temp.Subtotal_Pengadaan= this.Sparepart.Harga_Beli * this.Sparepart.Jumlah_Sparepart;
+            this.temp.Subtotal_Pengadaan= data.Harga_Beli * this.Sparepart.Jumlah_Sparepart;
+            this.Pengadaan.Total_Harga  = parseInt(this.temp.Subtotal_Pengadaan + this.Pengadaan.Total_Harga ,10);
+            console.log("a"+this.Pengadaan.Total_Harga)
+            console.log("b"+this.temp.Subtotal_Pengadaan)
             this.sparepartdata.push(JSON.parse(JSON.stringify(this.temp)))
             this.sparepartData.push(this.Sparepart.Kode_Sparepart)
         },
         deleteList(id)
         {
-            let filter = this.sparepart.filter(function( obj ) {
+            let filter = this.sparepartdata.filter(function( obj ) {
                 return obj.Kode_Sparepart !== id;
             });
-            this.sparepart=filter
+            this.sparepartdata=filter
             let filter2 = this.sparepartData.filter(function( obj ) {
                 return obj !== id;
             });
@@ -285,7 +288,7 @@ export default {
                 const payload = {
                     Id_Supplier         : this.Pengadaan.Id_Supplier,
                     Tanggal_Pengadaan   : this.Pengadaan.Tanggal_Pengadaan,
-                    Total_Harga         : 15000,
+                    Total_Harga         : this.Pengadaan.Total_Harga,
                     Status_Pengadaan    : '1',
                     Detail_Pengadaan    : this.sparepartdata,
                 }

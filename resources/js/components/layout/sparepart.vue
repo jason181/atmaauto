@@ -522,7 +522,7 @@
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
         <!-- END OF DELETE SPAREPART -->
         <!-- END OF MY MODALS -->
     </body>
