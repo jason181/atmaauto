@@ -17,6 +17,7 @@ class CreatePegawaiOnDutiesTable extends Migration
             $table->increments('Id_Duty');
             $table->unsignedInteger('Id_Pegawai');
             $table->unsignedInteger('Id_Transaksi');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('Id_Pegawai')->references('Id_Pegawai')->on('pegawais');

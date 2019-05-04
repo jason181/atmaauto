@@ -17,6 +17,7 @@ class CreateJasasTable extends Migration
             $table->increments('Id_Jasa');
             $table->string('Nama_Jasa',50);
             $table->double('Harga_Jasa');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

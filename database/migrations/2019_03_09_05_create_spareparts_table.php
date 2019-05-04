@@ -24,6 +24,7 @@ class CreateSparepartsTable extends Migration
             $table->double('Harga_Beli');
             $table->double('Harga_Jual');
             $table->string('Gambar');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
