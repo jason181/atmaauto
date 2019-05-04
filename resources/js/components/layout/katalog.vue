@@ -102,10 +102,6 @@ export default {
             }
         },
         sort:function(s,dir) {
-            //if s == current sort, reverse
-            // if(s === this.currentSort) {
-            // this.currentSortDir = this.currentSortDir==='asc'?'desc':'asc';
-            // }
             if(dir!='asc' && dir!='desc')
                 this.currentSortDir='asc';
             else
@@ -115,13 +111,6 @@ export default {
         
     },
     computed:{
-        // filteredspareparts:function(){
-        //     return this.sparepartdata.filter((sparepart)=>{
-        //         return  sparepart.Nama_Sparepart.toLowerCase().match(this.Cari_Sparepart.toLowerCase()) ||
-        //                 sparepart.Kode_Sparepart.toLowerCase().match(this.Cari_Sparepart.toLowerCase())  ||
-        //                 sparepart.Merk_Sparepart.toLowerCase().match(this.Cari_Sparepart.toLowerCase());
-        //     });
-        // },
         filteredspareparts:function(){
             return this.sortedSpareparts.filter((sparepart)=>{
                 return  sparepart.Nama_Sparepart.toLowerCase().match(this.Cari_Sparepart.toLowerCase()) ||

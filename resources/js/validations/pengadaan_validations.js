@@ -1,24 +1,24 @@
-import { required, minLength, maxLength, numeric, date, maxValue } from 'vuelidate/lib/validators'
+import { required, minLength, maxLength, numeric, maxValue } from 'vuelidate/lib/validators'
 
 export default {
     Pengadaan: {
         Id_Supplier: {
-            required,
-            numeric,
+            required
+            
         },
         Tanggal_Pengadaan: { 
-            required, 
-            date,
+            required
+            
         },
-        Total_Harga: {
-            required,
-            maxLength: maxLength(12),
-            numeric,
-        },
-        Status_Pembayaran: {
-            required,
-            maxValue: maxValue(3),
-            numeric, 
-        },
+        // Total_Harga: {
+        //     required,
+        //     maxLength: maxLength(12),
+        //     numeric,
+        // },
+        // Status_Pengadaan: {
+        //     required,
+        //     maxValue: maxValue(3),
+        //     numeric, 
+        // },
     },
 }

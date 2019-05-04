@@ -412,7 +412,8 @@ export default {
     computed:{
         filteredsupplier:function(){
             return this.supplierdata.filter((Supplier)=>{
-                return Supplier.Nama_Supplier.match(this.Cari_Supplier);
+                return Supplier.Nama_Supplier.toLowerCase().match(this.Cari_Supplier.toLowerCase())||
+                        Supplier.Nama_Sales.toLowerCase().match(this.Cari_Supplier.toLowerCase());
             });
         },
         nameErrors(){
