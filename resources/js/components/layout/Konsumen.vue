@@ -523,13 +523,20 @@
                                 class="form-control" placeholder="Masukkan Plat Kendaraan" 
                                 aria-label="Motor_Konsumen_Plat_Kendaraan" aria-describedby="basic-addon2" 
                                 id="Motor_Konsumen_Plat_Kendaraan" name="Motor_Konsumen_Plat_Kendaraan" 
-                                required>
+                                required 
+                                @input="$v.Motor_Konsumen.Plat_Kendaraan.$touch()" 
+                                @blur="$v.Motor_Konsumen.Plat_Kendaraan.$touch()" >
+                        </div>
+                        <div class="text-center">
+                            <div class="mb-3" style="color:red;" 
+                            v-if="$v.Motor_Konsumen.Plat_Kendaraan.$invalid">{{platErrors[0]}}</div>
                         </div>
 
                         <div class="modal-footer mt-3">
                             <button type="submit" class="btn btn-primary btn-lg w-100" 
                             data-dismiss="modal" 
-                            @click="updatemotorkonsumen(Motor_Konsumen.Id_Motor_Konsumen)">Simpan Perubahan</button>
+                            @click="updatemotorkonsumen(Motor_Konsumen.Id_Motor_Konsumen)"
+                            :disabled="$v.Motor_Konsumen.$invalid">Simpan Perubahan</button>
                         </div>
                     </div>
                 </div>

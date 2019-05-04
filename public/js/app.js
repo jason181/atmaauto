@@ -2156,6 +2156,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2982,6 +3001,15 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -44940,18 +44968,37 @@ var render = function() {
                     "aria-label": "Nama_Cabang",
                     "aria-describedby": "basic-addon2",
                     id: "Nama_Cabang",
-                    name: "Nama_Cabang"
+                    name: "Nama_Cabang",
+                    required: ""
                   },
                   domProps: { value: _vm.Cabang.Nama_Cabang },
                   on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.Cabang, "Nama_Cabang", $event.target.value)
+                      },
+                      function($event) {
+                        return _vm.$v.Cabang.Nama_Cabang.$touch()
                       }
-                      _vm.$set(_vm.Cabang, "Nama_Cabang", $event.target.value)
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Cabang.Nama_Cabang.$touch()
                     }
                   }
                 })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Cabang.Nama_Cabang.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.nameErrors[0]))]
+                    )
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mb-4" }, [
@@ -44973,18 +45020,39 @@ var render = function() {
                     "aria-label": "Alamat_Cabang",
                     "aria-describedby": "basic-addon2",
                     id: "Alamat_Cabang",
-                    name: "Alamat_Cabang"
+                    name: "Alamat_Cabang",
+                    required: ""
                   },
                   domProps: { value: _vm.Cabang.Alamat_Cabang },
                   on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Cabang,
+                          "Alamat_Cabang",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.cabang.Alamat_Cabang.$touch()
                       }
-                      _vm.$set(_vm.Cabang, "Alamat_Cabang", $event.target.value)
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Cabang.Alamat_Cabang.$touch()
                     }
                   }
                 })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Cabang.Alamat_Cabang.$invalid
+                  ? _c("div", { staticStyle: { color: "red" } }, [
+                      _vm._v(_vm._s(_vm.addressErrors[0]))
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mb-4" }, [
@@ -45006,22 +45074,39 @@ var render = function() {
                     "aria-label": "Telepon_Cabang",
                     "aria-describedby": "basic-addon2",
                     id: "Telepon_Cabang",
-                    name: "Telepon_Cabang"
+                    name: "Telepon_Cabang",
+                    required: ""
                   },
                   domProps: { value: _vm.Cabang.Telepon_Cabang },
                   on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Cabang,
+                          "Telepon_Cabang",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Cabang.Telepon_Cabang.$touch()
                       }
-                      _vm.$set(
-                        _vm.Cabang,
-                        "Telepon_Cabang",
-                        $event.target.value
-                      )
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Cabang.Telepon_Cabang.$touch()
                     }
                   }
                 })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Cabang.Telepon_Cabang.$invalid
+                  ? _c("div", { staticStyle: { color: "red" } }, [
+                      _vm._v(_vm._s(_vm.phoneErrors[0]))
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-footer " }, [
@@ -45030,7 +45115,11 @@ var render = function() {
                   {
                     staticClass: "btn btn-primary btn-lg",
                     staticStyle: { width: "100%" },
-                    attrs: { type: "submit", "data-dismiss": "modal" },
+                    attrs: {
+                      type: "submit",
+                      "data-dismiss": "modal",
+                      disabled: _vm.$v.Cabang.$invalid
+                    },
                     on: {
                       click: function($event) {
                         return _vm.updateCabang(_vm.Cabang.Id_Cabang)
@@ -48234,18 +48323,36 @@ var render = function() {
                   },
                   domProps: { value: _vm.Motor_Konsumen.Plat_Kendaraan },
                   on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Motor_Konsumen,
+                          "Plat_Kendaraan",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Motor_Konsumen.Plat_Kendaraan.$touch()
                       }
-                      _vm.$set(
-                        _vm.Motor_Konsumen,
-                        "Plat_Kendaraan",
-                        $event.target.value
-                      )
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Motor_Konsumen.Plat_Kendaraan.$touch()
                     }
                   }
                 })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Motor_Konsumen.Plat_Kendaraan.$invalid
+                  ? _c(
+                      "div",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.platErrors[0]))]
+                    )
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-footer mt-3" }, [
@@ -48253,7 +48360,11 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-primary btn-lg w-100",
-                    attrs: { type: "submit", "data-dismiss": "modal" },
+                    attrs: {
+                      type: "submit",
+                      "data-dismiss": "modal",
+                      disabled: _vm.$v.Motor_Konsumen.$invalid
+                    },
                     on: {
                       click: function($event) {
                         return _vm.updatemotorkonsumen(
