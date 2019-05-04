@@ -22,7 +22,7 @@ export default {
     Motor_Konsumen:{
         Plat_Kendaraan:{
             required,
-            minLength: minLength(10),
+            minLength: minLength(5),
             maxLength: maxLength(15),  
         }
     }

@@ -418,12 +418,14 @@
                             <input type="text" v-model="Motor_Konsumen.Plat_Kendaraan" 
                                 class="form-control" placeholder="Masukkan Plat Kendaraan" 
                                 aria-label="Motor_Konsumen_Plat_Kendaraan" aria-describedby="basic-addon2" 
-                                id="Motor_Konsumen_Plat_Kendaraan" name="Motor_Konsumen_Plat_Kendaraan" 
+                                id="Motor_Konsumen_Plat_Kendaraan" name="Motor_Konsumen_Plat_Kendaraan"
+                                @input="$v.Motor_Konsumen.Plat_Kendaraan.$touch()" 
+                                @blur="$v.Motor_Konsumen.Plat_Kendaraan.$touch()" 
                                 required>
                         </div>
                         <div class="text-center">
-                            <p class="mb-3" style="color:red;" 
-                                v-if="$v.Motor_Konsumen.Plat_Kendaraan.$invalid">{{platErrors[0]}}</p>
+                            <div class="mb-3" style="color:red;" 
+                            v-if="$v.Motor_Konsumen.Plat_Kendaraan.$invalid">{{platErrors[0]}}</div>
                         </div>
 
                         <div class="modal-footer mt-3">
@@ -773,7 +775,7 @@ export default {
             const errors = []
             if (!this.$v.Motor_Konsumen.Plat_Kendaraan.$dirty) return errors
             !this.$v.Motor_Konsumen.Plat_Kendaraan.maxLength && errors.push('Plat must be at most 15 characters long')
-            !this.$v.Motor_Konsumen.Plat_Kendaraan.minLength && errors.push('Plat must be at least 10 characters long')
+            !this.$v.Motor_Konsumen.Plat_Kendaraan.minLength && errors.push('Plat must be at least 5 characters long')
             !this.$v.Motor_Konsumen.Plat_Kendaraan.required && errors.push('Plat is required')
             return errors
         },

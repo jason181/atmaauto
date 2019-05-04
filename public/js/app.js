@@ -3561,6 +3561,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 
@@ -4033,7 +4035,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var errors = [];
       if (!this.$v.Motor_Konsumen.Plat_Kendaraan.$dirty) return errors;
       !this.$v.Motor_Konsumen.Plat_Kendaraan.maxLength && errors.push('Plat must be at most 15 characters long');
-      !this.$v.Motor_Konsumen.Plat_Kendaraan.minLength && errors.push('Plat must be at least 10 characters long');
+      !this.$v.Motor_Konsumen.Plat_Kendaraan.minLength && errors.push('Plat must be at least 5 characters long');
       !this.$v.Motor_Konsumen.Plat_Kendaraan.required && errors.push('Plat is required');
       return errors;
     }
@@ -47683,15 +47685,23 @@ var render = function() {
                   },
                   domProps: { value: _vm.Motor_Konsumen.Plat_Kendaraan },
                   on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.Motor_Konsumen,
+                          "Plat_Kendaraan",
+                          $event.target.value
+                        )
+                      },
+                      function($event) {
+                        return _vm.$v.Motor_Konsumen.Plat_Kendaraan.$touch()
                       }
-                      _vm.$set(
-                        _vm.Motor_Konsumen,
-                        "Plat_Kendaraan",
-                        $event.target.value
-                      )
+                    ],
+                    blur: function($event) {
+                      return _vm.$v.Motor_Konsumen.Plat_Kendaraan.$touch()
                     }
                   }
                 })
@@ -47700,7 +47710,7 @@ var render = function() {
               _c("div", { staticClass: "text-center" }, [
                 _vm.$v.Motor_Konsumen.Plat_Kendaraan.$invalid
                   ? _c(
-                      "p",
+                      "div",
                       { staticClass: "mb-3", staticStyle: { color: "red" } },
                       [_vm._v(_vm._s(_vm.platErrors[0]))]
                     )
@@ -76085,7 +76095,7 @@ __webpack_require__.r(__webpack_exports__);
   Motor_Konsumen: {
     Plat_Kendaraan: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
-      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(10),
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
       maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(15)
     }
   }
@@ -76307,8 +76317,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\JASON\atmaauto\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\JASON\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\atmaauto\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
