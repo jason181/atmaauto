@@ -14,18 +14,18 @@ export default {
             Http.get('/api/transaksi_pengadaans', successCallback, errorCallback)
         })
     },
-    // addCabang(payload) {
-    //     return new Promise((resolve, reject) => {
-    //         const successCallback = (res) => {
-    //             const data = res.data
-    //             resolve(data)
-    //         }
-    //         const errorCallback = (err) => {
-    //             reject(err)
-    //         }
-    //         Http.post('/api/cabangs/store', payload, successCallback, errorCallback)
-    //     })
-    // },
+    addpengadaan(payload) {
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.post('/api/transaksi_pengadaans/store', payload, successCallback, errorCallback)
+        })
+    },
     // updateCabang(payload,id){
     //     return new Promise((resolve, reject) => {
     //         const successCallback = (res) => {
@@ -65,6 +65,21 @@ export default {
             }
 
             Http.get('/api/suppliers', successCallback, errorCallback)
+        })
+    },
+    getallsparepart(){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.get('/api/spareparts', successCallback, errorCallback)
         })
     },
 }

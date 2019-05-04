@@ -16,7 +16,6 @@ use App\Transformers\TransaksiPengadaanTransformers;
 
 class TransaksiPengadaanController extends RestController
 {
-    //
     protected $transformer = TransaksiPengadaanTransformers::Class;
     public function index()
     {
@@ -34,7 +33,6 @@ class TransaksiPengadaanController extends RestController
             $pengadaan->Tanggal_Pengadaan   = $request->get('Tanggal_Pengadaan').' '.date('H:i:s');
             $pengadaan->Total_Harga         = $request->get('Total_Harga');
             $pengadaan->Status_Pengadaan    = $request->get('Status_Pengadaan');
-            
             
             $pengadaan->save();
             $pengadaan = DB::transaction(function () use ($pengadaan,$detail) {

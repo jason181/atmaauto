@@ -2933,22 +2933,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return getallsparepart;
     }(),
     sort: function sort(s, dir) {
-      //if s == current sort, reverse
-      // if(s === this.currentSort) {
-      // this.currentSortDir = this.currentSortDir==='asc'?'desc':'asc';
-      // }
       if (dir != 'asc' && dir != 'desc') this.currentSortDir = 'asc';else this.currentSortDir = dir;
       this.currentSort = s;
     }
   },
   computed: {
-    // filteredspareparts:function(){
-    //     return this.sparepartdata.filter((sparepart)=>{
-    //         return  sparepart.Nama_Sparepart.toLowerCase().match(this.Cari_Sparepart.toLowerCase()) ||
-    //                 sparepart.Kode_Sparepart.toLowerCase().match(this.Cari_Sparepart.toLowerCase())  ||
-    //                 sparepart.Merk_Sparepart.toLowerCase().match(this.Cari_Sparepart.toLowerCase());
-    //     });
-    // },
     filteredspareparts: function filteredspareparts() {
       var _this = this;
 
@@ -5306,6 +5295,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/Pengadaan */ "./resources/js/service/Pengadaan.js");
+/* harmony import */ var _validations_pengadaan_validations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../validations/pengadaan_validations */ "./resources/js/validations/pengadaan_validations.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -5437,32 +5427,146 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
- // import validators from '../../validations/pengadaan_validations'
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  // validations: validators,
+  validations: _validations_pengadaan_validations__WEBPACK_IMPORTED_MODULE_2__["default"],
   data: function data() {
     return {
       pengadaandata: [],
       supplierdata: [],
+      sparepart: [],
+      sparepartdata: [],
+      sparepartData: [],
       // Pengadaan:[],
       Id_Supplier: '',
       Tanggal_Pengadaan: '',
-      Total_Harga: '',
+      Total_Harga: 0,
       Status_Pengadaan: '',
+      index: '',
+      err: '',
       Pengadaan: {
         Id_Supplier: 'Pilih Supplier',
         Tanggal_Pengadaan: '',
-        Total_Harga: '',
+        Total_Harga: 0,
         Status_Pengadaan: '1'
       },
-      Cari_Pengadaan: ''
+      Cari_Pengadaan: '',
+      Sparepart: {
+        Kode_Sparepart: '',
+        Tipe_Barang: '',
+        Nama_Sparepart: '',
+        Merk_Sparepart: '',
+        Rak_Sparepart: '',
+        Jumlah_Sparepart: 0,
+        Stok_Minimum_Sparepart: 0,
+        Harga_Beli: 0,
+        Harga_Jual: 0,
+        Gambar: ''
+      },
+      temp: {
+        Kode_Sparepart: '',
+        Nama_Sparepart: '',
+        Harga_Satuan: 0,
+        Jumlah: 0,
+        Subtotal_Pengadaan: 0
+      }
     };
   },
   mounted: function mounted() {
-    this.getallpengadaan(), this.getallsupplier();
+    this.getallpengadaan(), this.getallsupplier(), this.getallsparepart();
   },
   methods: {
+    getSelectedIndex: function getSelectedIndex() {
+      this.index = this.sparepart.map(function (e) {
+        return e.Kode_Sparepart;
+      }).indexOf(this.Sparepart.Kode_Sparepart);
+      console.log(this.index);
+    },
+    sparepartHandler: function sparepartHandler(sparepart) {
+      var _this = this;
+
+      var object = sparepart[this.index]; // console.log(object);
+
+      this.temp.Kode_Sparepart = this.Sparepart.Kode_Sparepart;
+      var data = this.sparepart.find(function (obj) {
+        return obj.Kode_Sparepart == _this.Sparepart.Kode_Sparepart;
+      }); // console.log(data)
+
+      this.temp.Nama_Sparepart = data.Nama_Sparepart;
+      this.temp.Harga_Satuan = data.Harga_Beli;
+      this.temp.Jumlah = this.Sparepart.Jumlah_Sparepart;
+      this.temp.Subtotal_Pengadaan = data.Harga_Beli * this.Sparepart.Jumlah_Sparepart;
+      this.Pengadaan.Total_Harga = parseInt(this.temp.Subtotal_Pengadaan + this.Pengadaan.Total_Harga, 10);
+      console.log("a" + this.Pengadaan.Total_Harga);
+      console.log("b" + this.temp.Subtotal_Pengadaan);
+      this.sparepartdata.push(JSON.parse(JSON.stringify(this.temp)));
+      this.sparepartData.push(this.Sparepart.Kode_Sparepart);
+    },
+    deleteList: function deleteList(id) {
+      var filter = this.sparepartdata.filter(function (obj) {
+        return obj.Kode_Sparepart !== id;
+      });
+      this.sparepartdata = filter;
+      var filter2 = this.sparepartData.filter(function (obj) {
+        return obj !== id;
+      });
+      this.sparepartData = filter2;
+    },
     getallpengadaan: function () {
       var _getallpengadaan = _asyncToGenerator(
       /*#__PURE__*/
@@ -5537,27 +5641,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return getallsupplier;
     }(),
-    addpengadaan: function () {
-      var _addpengadaan = _asyncToGenerator(
+    getallsparepart: function () {
+      var _getallsparepart = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var payload;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.prev = 0;
-                payload = {
-                  Id_Supplier: this.Pengadaan.Id_Supplier,
-                  Tanggal_Pengadaan: this.Pengadaan.Tanggal_Pengadaan,
-                  Total_Harga: this.Pengadaan.Total_Harga,
-                  Status_Pengadaan: '1'
-                };
-                _context3.next = 4;
-                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].addpengadaan(payload);
+                _context3.next = 3;
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].getallsparepart();
 
-              case 4:
-                this.getallpengadaan();
+              case 3:
+                this.sparepart = _context3.sent.data;
+                console.log(this.sparepart);
                 _context3.next = 10;
                 break;
 
@@ -5572,6 +5670,51 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee3, this, [[0, 7]]);
+      }));
+
+      function getallsparepart() {
+        return _getallsparepart.apply(this, arguments);
+      }
+
+      return getallsparepart;
+    }(),
+    addpengadaan: function () {
+      var _addpengadaan = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                payload = {
+                  Id_Supplier: this.Pengadaan.Id_Supplier,
+                  Tanggal_Pengadaan: this.Pengadaan.Tanggal_Pengadaan,
+                  Total_Harga: this.Pengadaan.Total_Harga,
+                  Status_Pengadaan: '1',
+                  Detail_Pengadaan: this.sparepartdata
+                };
+                console.log(payload);
+                _context4.next = 5;
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].addpengadaan(payload);
+
+              case 5:
+                this.getallpengadaan();
+                _context4.next = 11;
+                break;
+
+              case 8:
+                _context4.prev = 8;
+                _context4.t0 = _context4["catch"](0);
+                console.log(_context4.t0);
+
+              case 11:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[0, 8]]);
       }));
 
       function addpengadaan() {
@@ -5592,21 +5735,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   computed: {
     filteredpengadaan: function filteredpengadaan() {
-      var _this = this;
+      var _this2 = this;
 
       return this.pengadaandata.filter(function (pengadaan) {
-        return pengadaan.Nama_Supplier.toLowerCase().match(_this.Cari_Pengadaan.toLowerCase());
+        return pengadaan.Nama_Supplier.toLowerCase().match(_this2.Cari_Pengadaan.toLowerCase());
       });
     },
     supplierErrors: function supplierErrors() {
       var errors = [];
-      if (this.$v.Pengadaan.Id_Supplier.$dirty) return errors;
+      if (!this.$v.Pengadaan.Id_Supplier.$dirty) return errors;
       !this.$v.Pengadaan.Id_Supplier.required && errors.push('Supplier is required');
       return errors;
     },
     dateErrors: function dateErrors() {
       var errors = [];
-      if (this.$v.Pengadaan.Tanggal_Pengadaan.$dirty) return errors;
+      if (!this.$v.Pengadaan.Tanggal_Pengadaan.$dirty) return errors;
       !this.$v.Pengadaan.Tanggal_Pengadaan.required && errors.push('Transaction date is required');
       return errors;
     }
@@ -6223,7 +6366,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return this.supplierdata.filter(function (Supplier) {
-        return Supplier.Nama_Supplier.match(_this.Cari_Supplier);
+        return Supplier.Nama_Supplier.toLowerCase().match(_this.Cari_Supplier.toLowerCase()) || Supplier.Nama_Sales.toLowerCase().match(_this.Cari_Supplier.toLowerCase());
       });
     },
     nameErrors: function nameErrors() {
@@ -45250,24 +45393,35 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container my-5" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-6" }, [
+      _c("div", { staticClass: "row mx-1" }, [
+        _c("div", { staticClass: "col-lg-8" }, [
           _c("div", { staticClass: "container text-center mb-3" }, [
-            _c("img", { attrs: { src: "/images/item-cart-04.jpg" } })
+            _c("img", {
+              staticStyle: { "max-width": "600px" },
+              attrs: { src: "/images/motor_home.png" }
+            })
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-lg-6" }, [
+        _c("div", { staticClass: "col-lg-4" }, [
           _c("div", { staticClass: "container" }, [
-            _c("p", { staticStyle: { "text-align": "justify" } }, [
-              _vm._v(
-                "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer condimentum viverra leo, at rutrum nunc efficitur in. Donec et neque ante. Ut rhoncus sollicitudin sem id scelerisque. Donec a leo elit. Proin sit amet tincidunt nunc, non maximus mauris. Sed quis hendrerit leo. In tempus ex mauris, ac mattis risus vulputate et. Sed dui nulla, hendrerit in eros ac, congue varius augue. Sed vitae felis mollis, efficitur lorem at, tristique quam.\n                "
-              )
+            _c("h2", { staticStyle: { "text-align": "center" } }, [
+              _vm._v("Selamat Datang di Bengkel Atma Auto")
             ]),
+            _vm._v(" "),
+            _c(
+              "p",
+              { staticStyle: { "text-align": "justify", "font-size": "16px" } },
+              [
+                _vm._v(
+                  "\n                Atma Auto merupakan salah satu Bengkel yang berada di provinsi Daerah Istimewa Yogyakarta. \n                Bengkel ini melayani segala hal yang berhubungan dengan sparepart motor yang dimulai dari \n                penjualan sparepart sampai servis motor.\n                "
+                )
+              ]
+            ),
             _vm._v(" "),
             _c("p", { staticStyle: { "text-align": "justify" } }, [
               _vm._v(
-                "\n                Aliquam erat volutpat. Cras quis libero porta, malesuada dui consequat, viverra orci. Pellentesque iaculis ut enim vel aliquam. Quisque tempus, massa ac euismod tincidunt, diam mi pharetra velit, venenatis finibus metus lorem a eros. Aenean accumsan orci eget tortor dapibus dictum. Fusce sit amet velit placerat, imperdiet metus non, dictum mi. Proin iaculis orci libero, sed accumsan enim malesuada eget. Fusce efficitur risus felis, vel venenatis dolor eleifend vitae. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas vehicula nibh ex, eu maximus est congue ut. Nam in nulla non diam condimentum interdum sodales at massa. Sed a semper erat. Ut vitae ante lacinia nisl dapibus pretium vitae vel leo.\n                "
+                "\n                Bengkel ini berada di jalan Babarsari No.44, \n                Janti, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281. \n                Atau anda dapat menghubungi kami di (0274)-487711\n                "
               )
             ])
           ])
@@ -48767,7 +48921,9 @@ var staticRenderFns = [
     return _c("div", { staticClass: "modal-body" }, [
       _c("div", { staticClass: "alert alert-danger" }, [
         _c("span", { staticClass: "glyphicon glyphicon-warning-sign" }),
-        _vm._v(" Apakah Anda Yakin Ingin Menghapus Data Motor Konsumen Ini ?")
+        _vm._v(
+          " \n                        Apakah Anda Yakin Ingin Menghapus Data Motor Konsumen Ini ?\n                    "
+        )
       ])
     ])
   },
@@ -51586,7 +51742,29 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(pengadaan.Total_Harga))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(pengadaan.Status_Pengadaan) + " ")]),
+                pengadaan.Status_Pengadaan == 1
+                  ? _c("td", [
+                      _vm._v(
+                        "\n                            Sudah Dipesan\n                        "
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                pengadaan.Status_Pengadaan == 2
+                  ? _c("td", [
+                      _vm._v(
+                        "\n                            Sudah Dicetak\n                        "
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                pengadaan.Status_Pengadaan == 3
+                  ? _c("td", [
+                      _vm._v(
+                        "\n                            Sudah Datang\n                        "
+                      )
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c("td", { staticClass: "text-center" }, [
                   _c(
@@ -51672,179 +51850,383 @@ var render = function() {
         }
       },
       [
-        _c("div", { staticClass: "modal-dialog" }, [
-          _c("div", { staticClass: "modal-content" }, [
-            _vm._m(2),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c("div", { staticClass: "input-group" }, [
-                _vm._m(3),
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog",
+            staticStyle: { "max-width": "600px" }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "modal-content", staticStyle: { width: "600px" } },
+              [
+                _vm._m(2),
                 _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.Pengadaan.Id_Supplier,
-                        expression: "Pengadaan.Id_Supplier"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { require: "" },
-                    on: {
-                      input: function($event) {
-                        return _vm.$v.Pengadaan.Id_Supplier.$touch()
-                      },
-                      blur: function($event) {
-                        return _vm.$v.Pengadaan.Id_Supplier.$touch()
-                      },
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.Pengadaan,
-                          "Id_Supplier",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      }
-                    }
-                  },
-                  [
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", { staticClass: "input-group" }, [
+                    _vm._m(3),
+                    _vm._v(" "),
                     _c(
-                      "option",
+                      "select",
                       {
-                        attrs: {
-                          disabled: "disabled",
-                          selected: "selected",
-                          value: "Pilih Supplier"
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.Pengadaan.Id_Supplier,
+                            expression: "Pengadaan.Id_Supplier"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { required: "" },
+                        on: {
+                          input: function($event) {
+                            return _vm.$v.Pengadaan.Id_Supplier.$touch()
+                          },
+                          blur: function($event) {
+                            return _vm.$v.Pengadaan.Id_Supplier.$touch()
+                          },
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.Pengadaan,
+                              "Id_Supplier",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
                         }
                       },
                       [
-                        _vm._v(
-                          "\n                                -- Pilih Supplier / Sales --\n                            "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _vm._l(_vm.supplierdata, function(supplier) {
-                      return _c(
-                        "option",
-                        {
-                          key: supplier["Id_Supplier"],
-                          domProps: { value: supplier.Id_Supplier }
-                        },
-                        [
-                          _vm._v(
-                            _vm._s(supplier.Nama_Supplier) +
-                              " - " +
-                              _vm._s(supplier.Nama_Sales) +
-                              " "
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              disabled: "disabled",
+                              selected: "selected",
+                              value: "Pilih Supplier"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                -- Pilih Supplier / Sales --\n                            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.supplierdata, function(supplier) {
+                          return _c(
+                            "option",
+                            {
+                              key: supplier["Id_Supplier"],
+                              domProps: { value: supplier.Id_Supplier }
+                            },
+                            [
+                              _vm._v(
+                                _vm._s(supplier.Nama_Supplier) +
+                                  " - " +
+                                  _vm._s(supplier.Nama_Sales) +
+                                  " "
+                              )
+                            ]
                           )
-                        ]
-                      )
-                    })
-                  ],
-                  2
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-center" }, [
-                _vm.$v.Pengadaan.Id_Supplier.$invalid
-                  ? _c(
-                      "p",
-                      { staticClass: "mb-3", staticStyle: { color: "red" } },
-                      [_vm._v(_vm._s(_vm.supplierErrors[0]))]
+                        })
+                      ],
+                      2
                     )
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-group mt-3" }, [
-                _vm._m(4),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.Pengadaan.Tanggal_Pengadaan,
-                      expression: "Pengadaan.Tanggal_Pengadaan"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "date",
-                    "aria-label": "Tanggal_Pengadaan",
-                    "aria-describedby": "basic-addon2",
-                    id: "Tanggal_Pengadaan",
-                    name: "Tanggal_Pengadaan",
-                    required: ""
-                  },
-                  domProps: { value: _vm.Pengadaan.Tanggal_Pengadaan },
-                  on: {
-                    input: [
-                      function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.Pengadaan,
-                          "Tanggal_Pengadaan",
-                          $event.target.value
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-center" }, [
+                    _vm.$v.Pengadaan.Id_Supplier.$invalid
+                      ? _c(
+                          "p",
+                          {
+                            staticClass: "mb-3",
+                            staticStyle: { color: "red" }
+                          },
+                          [_vm._v(_vm._s(_vm.supplierErrors[0]))]
                         )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mt-3" }, [
+                    _vm._m(4),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Pengadaan.Tanggal_Pengadaan,
+                          expression: "Pengadaan.Tanggal_Pengadaan"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "date",
+                        "aria-label": "Tanggal_Pengadaan",
+                        "aria-describedby": "basic-addon2",
+                        id: "Tanggal_Pengadaan",
+                        name: "Tanggal_Pengadaan",
+                        required: ""
                       },
-                      function($event) {
-                        return _vm.$v.Pengadaan.Tanggal_Pengadaan.$touch()
+                      domProps: { value: _vm.Pengadaan.Tanggal_Pengadaan },
+                      on: {
+                        input: [
+                          function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.Pengadaan,
+                              "Tanggal_Pengadaan",
+                              $event.target.value
+                            )
+                          },
+                          function($event) {
+                            return _vm.$v.Pengadaan.Tanggal_Pengadaan.$touch()
+                          }
+                        ],
+                        blur: function($event) {
+                          return _vm.$v.Pengadaan.Tanggal_Pengadaan.$touch()
+                        }
                       }
-                    ],
-                    blur: function($event) {
-                      return _vm.$v.Pengadaan.Tanggal_Pengadaan.$touch()
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-center" }, [
-                _vm.$v.Pengadaan.Tanggal_Pengadaan
-                  ? _c(
-                      "p",
-                      { staticClass: "mb-3", staticStyle: { color: "red" } },
-                      [_vm._v(_vm._s(_vm.dateErrors[0]))]
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-center" }, [
+                    _vm.$v.Pengadaan.Tanggal_Pengadaan.$invalid
+                      ? _c(
+                          "p",
+                          {
+                            staticClass: "mb-3",
+                            staticStyle: { color: "red" }
+                          },
+                          [_vm._v(_vm._s(_vm.dateErrors[0]))]
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row mt-0" }, [
+                    _c("div", { staticClass: "col-lg-5" }, [
+                      _c("div", { staticClass: "input-group" }, [
+                        _vm._m(5),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.Sparepart.Kode_Sparepart,
+                                expression: "Sparepart.Kode_Sparepart"
+                              }
+                            ],
+                            staticClass: "form-control mr-2",
+                            on: {
+                              change: [
+                                function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.Sparepart,
+                                    "Kode_Sparepart",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                },
+                                _vm.getSelectedIndex
+                              ]
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  disabled: "disabled",
+                                  selected: "selected",
+                                  value: "Pilih "
+                                }
+                              },
+                              [_vm._v("-- Pilih Sparepart --")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.sparepart, function(spareparts) {
+                              return _c(
+                                "option",
+                                {
+                                  key: spareparts["Kode_Sparepart"],
+                                  domProps: {
+                                    value: spareparts.Kode_Sparepart
+                                  },
+                                  on: { change: _vm.getSelectedIndex }
+                                },
+                                [_vm._v(_vm._s(spareparts.Nama_Sparepart))]
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-lg-4" }, [
+                      _c("div", { staticClass: "input-group" }, [
+                        _vm._m(6),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.Sparepart.Jumlah_Sparepart,
+                              expression: "Sparepart.Jumlah_Sparepart"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "number",
+                            "aria-label": "Jumlah_Sparepart",
+                            "aria-describedby": "basic-addon2",
+                            id: "Jumlah_Sparepart",
+                            name: "Jumlah_Sparepart",
+                            required: ""
+                          },
+                          domProps: { value: _vm.Sparepart.Jumlah_Sparepart },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.Sparepart,
+                                "Jumlah_Sparepart",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-lg-3" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success btn",
+                          attrs: { type: "submit" },
+                          on: {
+                            click: function($event) {
+                              return _vm.sparepartHandler(_vm.sparepart)
+                            }
+                          }
+                        },
+                        [_vm._v("Add Sparepart")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mt-3 w-400" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "col-12 mr-2" },
+                        _vm._l(_vm.sparepartdata, function(spareparts) {
+                          return _c(
+                            "div",
+                            {
+                              key: spareparts["Kode_Sparepart"],
+                              staticClass: "list-group mr-2"
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "list-group-item list-group-item-action list-group-item-success",
+                                  attrs: { href: "#" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(
+                                        spareparts.Kode_Sparepart +
+                                          "-" +
+                                          spareparts.Nama_Sparepart
+                                      ) +
+                                      "          \n                                        "
+                                  ),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger",
+                                      staticStyle: { "margin-left": "200px" },
+                                      attrs: { type: "submit" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.deleteList(
+                                            spareparts.Kode_Sparepart
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Delete")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("br")
+                                ]
+                              )
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer mt-3" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success btn-lg w-100",
+                        attrs: {
+                          type: "submit",
+                          disabled: _vm.$v.Pengadaan.$invalid,
+                          "data-dismiss": "modal"
+                        },
+                        on: {
+                          click: function($event) {
+                            return _vm.addpengadaan()
+                          }
+                        }
+                      },
+                      [_vm._v("Tambahkan Transaksi Pengadaan")]
                     )
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer mt-3" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-success btn-lg w-100",
-                    attrs: {
-                      type: "submit",
-                      disabled: _vm.$v.Pengadaan.$invalid,
-                      "data-dismiss": "modal"
-                    },
-                    on: {
-                      click: function($event) {
-                        return _vm.addpengadaan()
-                      }
-                    }
-                  },
-                  [_vm._v("Tambahkan Transaksi Pengadaan")]
-                )
-              ])
-            ])
-          ])
-        ])
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
       ]
     )
   ])
@@ -51943,6 +52325,44 @@ var staticRenderFns = [
           "span",
           { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
           [_vm._v("Tanggal")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Sparepart")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Jumlah")]
         )
       ]
     )
@@ -75778,18 +76198,20 @@ __webpack_require__.r(__webpack_exports__);
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/transaksi_pengadaans', successCallback, errorCallback);
     });
   },
-  // addCabang(payload) {
-  //     return new Promise((resolve, reject) => {
-  //         const successCallback = (res) => {
-  //             const data = res.data
-  //             resolve(data)
-  //         }
-  //         const errorCallback = (err) => {
-  //             reject(err)
-  //         }
-  //         Http.post('/api/cabangs/store', payload, successCallback, errorCallback)
-  //     })
-  // },
+  addpengadaan: function addpengadaan(payload) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/transaksi_pengadaans/store', payload, successCallback, errorCallback);
+    });
+  },
   // updateCabang(payload,id){
   //     return new Promise((resolve, reject) => {
   //         const successCallback = (res) => {
@@ -75826,6 +76248,20 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/suppliers', successCallback, errorCallback);
+    });
+  },
+  getallsparepart: function getallsparepart() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/spareparts', successCallback, errorCallback);
     });
   }
 });
@@ -76185,6 +76621,41 @@ __webpack_require__.r(__webpack_exports__);
       minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
       maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(15)
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/validations/pengadaan_validations.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/validations/pengadaan_validations.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  Pengadaan: {
+    Id_Supplier: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"]
+    },
+    Tanggal_Pengadaan: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"]
+    } // Total_Harga: {
+    //     required,
+    //     maxLength: maxLength(12),
+    //     numeric,
+    // },
+    // Status_Pengadaan: {
+    //     required,
+    //     maxValue: maxValue(3),
+    //     numeric, 
+    // },
+
   }
 });
 

@@ -549,8 +549,10 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign">
-                            </span> Apakah Anda Yakin Ingin Menghapus Data Motor Konsumen Ini ?</div>
+                        <div class="alert alert-danger">
+                            <span class="glyphicon glyphicon-warning-sign"></span> 
+                            Apakah Anda Yakin Ingin Menghapus Data Motor Konsumen Ini ?
+                        </div>
                     </div>
                     <div class="modal-footer ">
                         <a id="delete_btn" class="float-left w-100">
