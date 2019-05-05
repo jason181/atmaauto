@@ -38,7 +38,8 @@
                             <th scope="col">Tanggal</th>
                             <th scope="col">Total Harga</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Edit</th>
+                            <th scope="col">Detail</th>
+                            <th scope="col">Edit/Verify</th>
                             <th scope="col">Delete</th>
                         </tr>
                     </thead>
@@ -48,14 +49,22 @@
                             <td>{{pengadaan.Nama_Sales}} </td>
                             <td>{{pengadaan.Tanggal_Pengadaan}} </td>
                             <td>{{pengadaan.Total_Harga}}</td>
-                            <td v-if="pengadaan.Status_Pengadaan==1">
+                            <td v-if="pengadaan.Status_Pengadaan==0">
                                 Sudah Dipesan
                             </td>
-                            <td v-if="pengadaan.Status_Pengadaan==2">
+                            <td v-if="pengadaan.Status_Pengadaan==1">
                                 Sudah Dicetak
                             </td>
-                            <td v-if="pengadaan.Status_Pengadaan==3">
+                            <td v-if="pengadaan.Status_Pengadaan==2">
                                 Sudah Datang
+                            </td>
+                            <td class="text-center">
+                                <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                    <button class="btn btn-primary" @click="detailhandler(pengadaan)" 
+                                    data-title="Detail_Pengadaan" data-toggle="modal" data-target="#Detail_Pengadaan">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </p>
                             </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Edit">
@@ -102,7 +111,11 @@
                                     -- Pilih Supplier / Sales --
                                 </option>
                                 <option v-bind:key="supplier['Id_Supplier']" v-for="supplier in supplierdata"
-                                :value="supplier.Id_Supplier">{{supplier.Nama_Supplier}} - {{supplier.Nama_Sales}} </option>
+                                :value="supplier.Id_Supplier">
+                                    <p v-if="supplier.Nama_Sales!=null">
+                                        {{supplier.Nama_Supplier}} - {{supplier.Nama_Sales}} 
+                                    </p>
+                                </option>
                             </select>
                         </div>
                         <div class="text-center">
@@ -148,7 +161,6 @@
                             <div class="col-lg-3">
                                 <button type="submit" class="btn btn-success btn" @click="sparepartHandler(sparepart)">Add Sparepart</button>
                             </div>
-                            
                         </div>
 
                         <div class="input-group mt-3 w-400">
@@ -173,7 +185,46 @@
             </div>
         </div>
         <!-- END OF TAMBAH TRANSAKSI PENGADAAN -->
-        
+        <!-- TAMPIL DETAIL PENGADAAN -->
+        <div class="modal fade" id="Detail_Pengadaan" tabindex="-1" role="dialog" aria-labelledby="Detail_Pengadaan" 
+        aria-hidden="true">
+            <div class="modal-dialog" style="max-width:600px;">
+                <div class="modal-content" style="width:600px;">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Detail Pengadaan</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" 
+                        style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead class="table-primary text-center">
+                                    <tr>
+                                        <th scope="col">Kode Sparepart</th>
+                                        <th scope="col">Nama Sparepart</th>
+                                        <th scope="col">Harga Satuan</th>
+                                        <th scope="col">Jumlah Sparepart</th>
+                                        <th scope="col">Subtotal Pengadaan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-bind:key="detail['id']" v-for="detail in filtereddetail">
+                                        <td>{{detail.Kode_Sparepart }} </td>
+                                        <td>{{detail.Nama_Sparepart}} </td>
+                                        <td>{{detail.Harga_Satuan}} </td>
+                                        <td>{{detail.Jumlah_Sparepart}}</td>
+                                        <td>{{detail.Subtotal_Pengadaan}} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END OF TAMPIL DETAIL PENGADAAN -->
         <!-- END OF MY MODALS -->
     </body>
 </template>
@@ -188,18 +239,19 @@ export default {
         sparepart:[],
         sparepartdata:[],
         sparepartData:[],
-        // Pengadaan:[],
+        detailpengadaandata:[],
         Id_Supplier:'',
         Tanggal_Pengadaan:'',
         Total_Harga:0,
-        Status_Pengadaan:'',
+        Status_Pengadaan:0,
         index:'',
         err: '',
+        Id_Detail_Modal:0,
         Pengadaan:{
             Id_Supplier:'Pilih Supplier',
             Tanggal_Pengadaan:'',
             Total_Harga:0,
-            Status_Pengadaan:'1',
+            Status_Pengadaan:0,
         },
         Cari_Pengadaan:'',
         Sparepart:{
@@ -225,7 +277,8 @@ export default {
     mounted(){
         this.getallpengadaan(),
         this.getallsupplier(),
-        this.getallsparepart()
+        this.getallsparepart(),
+        this.getalldetailpengadaan()
     },
     methods:{
         getSelectedIndex(){
@@ -243,8 +296,6 @@ export default {
             this.temp.Jumlah            = this.Sparepart.Jumlah_Sparepart;
             this.temp.Subtotal_Pengadaan= data.Harga_Beli * this.Sparepart.Jumlah_Sparepart;
             this.Pengadaan.Total_Harga  = parseInt(this.temp.Subtotal_Pengadaan + this.Pengadaan.Total_Harga ,10);
-            console.log("a"+this.Pengadaan.Total_Harga)
-            console.log("b"+this.temp.Subtotal_Pengadaan)
             this.sparepartdata.push(JSON.parse(JSON.stringify(this.temp)))
             this.sparepartData.push(this.Sparepart.Kode_Sparepart)
         },
@@ -283,13 +334,21 @@ export default {
                 console.log(err)
             }
         },
+        async getalldetailpengadaan () {
+            try {
+                this.detailpengadaandata = (await Controller.getalldetailpengadaan()).data
+                console.log(this.detailpengadaandata)
+            } catch (err) {
+                console.log(err)
+            }
+        },
         async addpengadaan () {
             try {
                 const payload = {
                     Id_Supplier         : this.Pengadaan.Id_Supplier,
                     Tanggal_Pengadaan   : this.Pengadaan.Tanggal_Pengadaan,
                     Total_Harga         : this.Pengadaan.Total_Harga,
-                    Status_Pengadaan    : '1',
+                    Status_Pengadaan    : '0',
                     Detail_Pengadaan    : this.sparepartdata,
                 }
                 console.log(payload);
@@ -306,7 +365,10 @@ export default {
             this.Pengadaan.Id_Supplier      ='Pilih Supplier';
             this.Pengadaan.Tanggal_Pengadaan='';
             this.Pengadaan.Total_Harga      ='';
-            this.Pengadaan.Status_Pengadaan ='1';
+            this.Pengadaan.Status_Pengadaan ='0';
+        },
+        detailhandler(pengadaan){
+            this.Id_Detail_Modal = pengadaan.Id_Pengadaan
         }
     },
     computed:{
@@ -326,6 +388,11 @@ export default {
             if(!this.$v.Pengadaan.Tanggal_Pengadaan.$dirty) return errors
             !this.$v.Pengadaan.Tanggal_Pengadaan.required && errors.push('Transaction date is required')
             return errors
+        },
+        filtereddetail:function(){
+            return this.detailpengadaandata.filter((detailpengadaan)=>{
+                return detailpengadaan.Nama_Sparepart.match(this.Id_Detail_Modal);
+            });
         }
     }
 }

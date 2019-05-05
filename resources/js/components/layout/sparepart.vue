@@ -692,7 +692,7 @@ export default {
                     Merk_Sparepart          : this.Sparepart.Merk_Sparepart,
                     Rak_Sparepart           : this.posisi +'-'+ this.ruang+'-'+this.nomor,
                     Jumlah_Sparepart        : this.Sparepart.Jumlah_Sparepart,
-                    Stok_Minimum_Sparepart  :this.Sparepart.Stok_Minimum_Sparepart,
+                    Stok_Minimum_Sparepart  : this.Sparepart.Stok_Minimum_Sparepart,
                     Harga_Beli              : this.Sparepart.Harga_Beli,
                     Harga_Jual              : this.Sparepart.Harga_Jual,
                     Gambar                  : this.Gambar,

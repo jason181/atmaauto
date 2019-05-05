@@ -2863,6 +2863,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2982,6 +2983,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
 //
 //
 //
@@ -5481,6 +5484,57 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5492,18 +5546,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       sparepart: [],
       sparepartdata: [],
       sparepartData: [],
-      // Pengadaan:[],
+      detailpengadaandata: [],
       Id_Supplier: '',
       Tanggal_Pengadaan: '',
       Total_Harga: 0,
-      Status_Pengadaan: '',
+      Status_Pengadaan: 0,
       index: '',
       err: '',
+      Id_Detail_Modal: 0,
       Pengadaan: {
         Id_Supplier: 'Pilih Supplier',
         Tanggal_Pengadaan: '',
         Total_Harga: 0,
-        Status_Pengadaan: '1'
+        Status_Pengadaan: 0
       },
       Cari_Pengadaan: '',
       Sparepart: {
@@ -5528,7 +5583,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   mounted: function mounted() {
-    this.getallpengadaan(), this.getallsupplier(), this.getallsparepart();
+    this.getallpengadaan(), this.getallsupplier(), this.getallsparepart(), this.getalldetailpengadaan();
   },
   methods: {
     getSelectedIndex: function getSelectedIndex() {
@@ -5552,8 +5607,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.temp.Jumlah = this.Sparepart.Jumlah_Sparepart;
       this.temp.Subtotal_Pengadaan = data.Harga_Beli * this.Sparepart.Jumlah_Sparepart;
       this.Pengadaan.Total_Harga = parseInt(this.temp.Subtotal_Pengadaan + this.Pengadaan.Total_Harga, 10);
-      console.log("a" + this.Pengadaan.Total_Harga);
-      console.log("b" + this.temp.Subtotal_Pengadaan);
       this.sparepartdata.push(JSON.parse(JSON.stringify(this.temp)));
       this.sparepartData.push(this.Sparepart.Kode_Sparepart);
     },
@@ -5678,43 +5731,80 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return getallsparepart;
     }(),
-    addpengadaan: function () {
-      var _addpengadaan = _asyncToGenerator(
+    getalldetailpengadaan: function () {
+      var _getalldetailpengadaan = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var payload;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.prev = 0;
-                payload = {
-                  Id_Supplier: this.Pengadaan.Id_Supplier,
-                  Tanggal_Pengadaan: this.Pengadaan.Tanggal_Pengadaan,
-                  Total_Harga: this.Pengadaan.Total_Harga,
-                  Status_Pengadaan: '1',
-                  Detail_Pengadaan: this.sparepartdata
-                };
-                console.log(payload);
-                _context4.next = 5;
-                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].addpengadaan(payload);
+                _context4.next = 3;
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].getalldetailpengadaan();
 
-              case 5:
-                this.getallpengadaan();
-                _context4.next = 11;
+              case 3:
+                this.detailpengadaandata = _context4.sent.data;
+                console.log(this.detailpengadaandata);
+                _context4.next = 10;
                 break;
 
-              case 8:
-                _context4.prev = 8;
+              case 7:
+                _context4.prev = 7;
                 _context4.t0 = _context4["catch"](0);
                 console.log(_context4.t0);
 
-              case 11:
+              case 10:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, this, [[0, 8]]);
+        }, _callee4, this, [[0, 7]]);
+      }));
+
+      function getalldetailpengadaan() {
+        return _getalldetailpengadaan.apply(this, arguments);
+      }
+
+      return getalldetailpengadaan;
+    }(),
+    addpengadaan: function () {
+      var _addpengadaan = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                payload = {
+                  Id_Supplier: this.Pengadaan.Id_Supplier,
+                  Tanggal_Pengadaan: this.Pengadaan.Tanggal_Pengadaan,
+                  Total_Harga: this.Pengadaan.Total_Harga,
+                  Status_Pengadaan: '0',
+                  Detail_Pengadaan: this.sparepartdata
+                };
+                console.log(payload);
+                _context5.next = 5;
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].addpengadaan(payload);
+
+              case 5:
+                this.getallpengadaan();
+                _context5.next = 11;
+                break;
+
+              case 8:
+                _context5.prev = 8;
+                _context5.t0 = _context5["catch"](0);
+                console.log(_context5.t0);
+
+              case 11:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this, [[0, 8]]);
       }));
 
       function addpengadaan() {
@@ -5730,7 +5820,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.Pengadaan.Id_Supplier = 'Pilih Supplier';
       this.Pengadaan.Tanggal_Pengadaan = '';
       this.Pengadaan.Total_Harga = '';
-      this.Pengadaan.Status_Pengadaan = '1';
+      this.Pengadaan.Status_Pengadaan = '0';
+    },
+    detailhandler: function detailhandler(pengadaan) {
+      this.Id_Detail_Modal = pengadaan.Id_Pengadaan;
     }
   },
   computed: {
@@ -5752,6 +5845,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       if (!this.$v.Pengadaan.Tanggal_Pengadaan.$dirty) return errors;
       !this.$v.Pengadaan.Tanggal_Pengadaan.required && errors.push('Transaction date is required');
       return errors;
+    },
+    filtereddetail: function filtereddetail() {
+      var _this3 = this;
+
+      return this.detailpengadaandata.filter(function (detailpengadaan) {
+        return detailpengadaan.Nama_Sparepart.match(_this3.Id_Detail_Modal);
+      });
     }
   }
 });
@@ -46521,7 +46621,10 @@ var render = function() {
                       [
                         _c("img", {
                           staticClass: "card-img-top",
-                          staticStyle: { height: "250px", width: "auto" },
+                          staticStyle: {
+                            "max-height": "250px",
+                            "max-width": "250px"
+                          },
                           attrs: {
                             src: "/images/" + sparepart.Gambar,
                             alt: sparepart.Nama_Sparepart
@@ -51742,7 +51845,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(pengadaan.Total_Harga))]),
                 _vm._v(" "),
-                pengadaan.Status_Pengadaan == 1
+                pengadaan.Status_Pengadaan == 0
                   ? _c("td", [
                       _vm._v(
                         "\n                            Sudah Dipesan\n                        "
@@ -51750,7 +51853,7 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                pengadaan.Status_Pengadaan == 2
+                pengadaan.Status_Pengadaan == 1
                   ? _c("td", [
                       _vm._v(
                         "\n                            Sudah Dicetak\n                        "
@@ -51758,13 +51861,45 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                pengadaan.Status_Pengadaan == 3
+                pengadaan.Status_Pengadaan == 2
                   ? _c("td", [
                       _vm._v(
                         "\n                            Sudah Datang\n                        "
                       )
                     ])
                   : _vm._e(),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _c(
+                    "p",
+                    {
+                      attrs: {
+                        "data-placement": "top",
+                        "data-toggle": "tooltip",
+                        title: "Edit"
+                      }
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: {
+                            "data-title": "Detail_Pengadaan",
+                            "data-toggle": "modal",
+                            "data-target": "#Detail_Pengadaan"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.detailhandler(pengadaan)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fas fa-edit" })]
+                      )
+                    ]
+                  )
+                ]),
                 _vm._v(" "),
                 _c("td", { staticClass: "text-center" }, [
                   _c(
@@ -51931,12 +52066,17 @@ var render = function() {
                               domProps: { value: supplier.Id_Supplier }
                             },
                             [
-                              _vm._v(
-                                _vm._s(supplier.Nama_Supplier) +
-                                  " - " +
-                                  _vm._s(supplier.Nama_Sales) +
-                                  " "
-                              )
+                              supplier.Nama_Sales != null
+                                ? _c("p", [
+                                    _vm._v(
+                                      "\n                                    " +
+                                        _vm._s(supplier.Nama_Supplier) +
+                                        " - " +
+                                        _vm._s(supplier.Nama_Sales) +
+                                        " \n                                "
+                                    )
+                                  ])
+                                : _vm._e()
                             ]
                           )
                         })
@@ -52228,6 +52368,78 @@ var render = function() {
           ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Detail_Pengadaan",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Detail_Pengadaan",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog",
+            staticStyle: { "max-width": "600px" }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "modal-content", staticStyle: { width: "600px" } },
+              [
+                _vm._m(7),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c(
+                      "table",
+                      { staticClass: "table table-striped table-hover" },
+                      [
+                        _vm._m(8),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(_vm.filtereddetail, function(detail) {
+                            return _c("tr", { key: detail["id"] }, [
+                              _c("td", [
+                                _vm._v(_vm._s(detail.Kode_Sparepart) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(detail.Nama_Sparepart) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(detail.Harga_Satuan) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(detail.Jumlah_Sparepart))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(detail.Subtotal_Pengadaan) + " ")
+                              ])
+                            ])
+                          }),
+                          0
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      ]
     )
   ])
 }
@@ -52258,7 +52470,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Status")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Detail")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit/Verify")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
       ])
@@ -52366,6 +52580,51 @@ var staticRenderFns = [
         )
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Detail Pengadaan")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "table-primary text-center" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Kode Sparepart")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama Sparepart")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Harga Satuan")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Jumlah Sparepart")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Subtotal Pengadaan")])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -76263,6 +76522,20 @@ __webpack_require__.r(__webpack_exports__);
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/spareparts', successCallback, errorCallback);
     });
+  },
+  getalldetailpengadaan: function getalldetailpengadaan() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/detail_pengadaans', successCallback, errorCallback);
+    });
   }
 });
 
@@ -76788,8 +77061,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\atmaauto\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\JASON\atmaauto\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\JASON\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -82,4 +82,19 @@ export default {
             Http.get('/api/spareparts', successCallback, errorCallback)
         })
     },
+    getalldetailpengadaan(){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.get('/api/detail_pengadaans', successCallback, errorCallback)
+        })
+    },
 }

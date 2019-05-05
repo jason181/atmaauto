@@ -2,18 +2,18 @@
 namespace App\Transformers;
 use League\Fractal\TransformerAbstract;
 use App\Transaksi_Pengadaan;
-// use App\Supplier;
 
 class TransaksiPengadaanTransformers extends TransformerAbstract
 {
-    // protected $defaultIncludes = [
-    //     'detail'
-    // ];
     /**
      * Transform Branch.
      *
      * @param Branch $branch
      */
+    protected $defaultIncludes = [
+        'detail_pengadaan'
+    ];
+
     public function transform(Transaksi_Pengadaan $transaksi_pengadaan)
     {
         return [
@@ -25,6 +25,11 @@ class TransaksiPengadaanTransformers extends TransformerAbstract
             'Total_Harga'           =>$transaksi_pengadaan->Total_Harga,
             'Status_Pengadaan'      =>$transaksi_pengadaan->Status_Pengadaan,
         ];
+    }
+
+    public function includeDetailPengadaan(Transaksi_Pengadaan $transaksi_pengadaan)
+    {
+        return $this->collection($transaksi_pengadaan->detail_pengadaans, new DetailPengadaanTransformers);
     }
  
 }
