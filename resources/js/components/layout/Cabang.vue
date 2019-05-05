@@ -145,7 +145,13 @@
                                 <input type="text" v-model="Cabang.Nama_Cabang" 
                                 class="form-control" placeholder="Masukkan Nama Cabang" 
                                 aria-label="Nama_Cabang" aria-describedby="basic-addon2" 
-                                id="Nama_Cabang" name="Nama_Cabang">
+                                id="Nama_Cabang" name="Nama_Cabang"
+                                @input="$v.Cabang.Nama_Cabang.$touch()" 
+                                @blur="$v.Cabang.Nama_Cabang.$touch()" required>
+                            </div>
+                            <div class="text-center">
+                                <p class="mb-3" style="color:red;" 
+                                v-if="$v.Cabang.Nama_Cabang.$invalid">{{nameErrors[0]}}</p>
                             </div>
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
@@ -154,7 +160,13 @@
                                 <input type="text" v-model="Cabang.Alamat_Cabang" 
                                 class="form-control" placeholder="Masukkan Alamat Cabang" 
                                 aria-label="Alamat_Cabang" aria-describedby="basic-addon2" 
-                                id="Alamat_Cabang" name="Alamat_Cabang">
+                                id="Alamat_Cabang" name="Alamat_Cabang"
+                                @input="$v.cabang.Alamat_Cabang.$touch()" 
+                                @blur="$v.Cabang.Alamat_Cabang.$touch()" required>
+                            </div>
+                            <div class="text-center">
+                                <div style="color:red;" 
+                                v-if="$v.Cabang.Alamat_Cabang.$invalid">{{addressErrors[0]}}</div>
                             </div>
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend d-block" style="width: 100px;">
@@ -163,12 +175,19 @@
                                 <input type="number" v-model="Cabang.Telepon_Cabang" 
                                 class="form-control" placeholder="Masukkan Telepon Cabang" 
                                 aria-label="Telepon_Cabang" aria-describedby="basic-addon2" 
-                                id="Telepon_Cabang" name="Telepon_Cabang">
+                                id="Telepon_Cabang" name="Telepon_Cabang" 
+                                @input="$v.Cabang.Telepon_Cabang.$touch()" 
+                                @blur="$v.Cabang.Telepon_Cabang.$touch()" required>
+                            </div>
+                            <div class="text-center">
+                                <div style="color:red;" 
+                                v-if="$v.Cabang.Telepon_Cabang.$invalid">{{phoneErrors[0]}}</div>
                             </div>
                             <div class="modal-footer ">
                                 <button type="submit" class="btn btn-primary btn-lg" 
                                 style="width: 100%;" data-dismiss="modal"
-                                @click="updateCabang(Cabang.Id_Cabang)">Simpan Perubahan</button>
+                                @click="updateCabang(Cabang.Id_Cabang)"
+                                :disabled="$v.Cabang.$invalid">Simpan Perubahan</button>
                             </div>
                     </div>
                 </div>

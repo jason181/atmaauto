@@ -20,6 +20,7 @@ class CreateDetailPengadaansTable extends Migration
             $table->double('Harga_Satuan');
             $table->integer('Jumlah');
             $table->double('Subtotal_Pengadaan');
+            $table->softDeletes();
             $table->timestamps();
             
             $table->foreign('Id_Pengadaan')->references('Id_Pengadaan')->on('transaksi_pengadaans');

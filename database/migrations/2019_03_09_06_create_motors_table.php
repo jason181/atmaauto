@@ -17,6 +17,7 @@ class CreateMotorsTable extends Migration
             $table->increments('Id_Motor');
             $table->string('Merk',50);
             $table->string('Tipe',50);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

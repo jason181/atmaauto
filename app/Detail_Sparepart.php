@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Detail_Sparepart extends Model
 {
     //
+    use SoftDeletes;
     protected $table = 'detail_spareparts';
     protected $primaryKey = 'Id_Detail_Sparepart';
     public $timestamp = true;
