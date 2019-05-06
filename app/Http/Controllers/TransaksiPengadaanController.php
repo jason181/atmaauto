@@ -1,9 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-// use Illuminate\Http\Request;
-// use App\Transformers\TransaksiPengadaanTransformers;
-// use App\Transaksi_Pengadaan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Transaksi_Pengadaan;
