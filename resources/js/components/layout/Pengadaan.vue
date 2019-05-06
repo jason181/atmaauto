@@ -62,15 +62,23 @@
                                 <p data-placement="top" data-toggle="tooltip" title="Edit">
                                     <button class="btn btn-primary" @click="detailhandler(pengadaan)" 
                                     data-title="Detail_Pengadaan" data-toggle="modal" data-target="#Detail_Pengadaan">
-                                        <i class="fas fa-edit"></i>
+                                        <i class="fas fa-list-ul"></i>
                                     </button>
                                 </p>
                             </td>
-                            <td class="text-center">
+                            <td class="text-center" v-if="pengadaan.Status_Pengadaan == 0">
                                 <p data-placement="top" data-toggle="tooltip" title="Edit">
                                     <button class="btn btn-primary" @click="datapengadaanhandler(pengadaan)" 
                                     data-title="Edit_Pengadaan" data-toggle="modal" data-target="#Edit_Pengadaan">
                                         <i class="fas fa-edit"></i>
+                                    </button>
+                                </p>
+                            </td>
+                            <td class="text-center" v-if="pengadaan.Status_Pengadaan == 1">
+                                <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                    <button class="btn btn-primary" @click="datapengadaanhandler(pengadaan)" 
+                                    data-title="Verify_Pengadaan" data-toggle="modal" data-target="#Verify_Pengadaan">
+                                        <i class="fas fa-check-circle"></i>
                                     </button>
                                 </p>
                             </td>
@@ -185,11 +193,34 @@
             </div>
         </div>
         <!-- END OF TAMBAH TRANSAKSI PENGADAAN -->
+        <!-- DELETE TRANSAKSI PENGADAAN -->
+        <div class="modal fade" id="Delete_Pengadaan" tabindex="-1" role="dialog" aria-labelledby="Delete_Pengadaan" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Hapus Data Transaksi Pengadaan</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Apakah Anda Yakin Ingin Menghapus Data Transaksi Pengadaan Ini ?</div>
+                    </div>
+                    <div class="modal-footer ">
+                        <a id="delete_btn" class="float-left w-100">
+                            <button type="button" @click="deletepengadaan(Pengadaan.Id_Pengadaan)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
+                        </a>
+                        <button type="button" class="btn btn-secondary float-right w-50" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END OF DELETE DELETE TRANSAKSI PENGADAAN -->
         <!-- TAMPIL DETAIL PENGADAAN -->
         <div class="modal fade" id="Detail_Pengadaan" tabindex="-1" role="dialog" aria-labelledby="Detail_Pengadaan" 
         aria-hidden="true">
-            <div class="modal-dialog" style="max-width:600px;">
-                <div class="modal-content" style="width:600px;">
+            <div class="modal-dialog" style="max-width:750px;">
+                <div class="modal-content" style="width:750px;">
                     <div class="modal-header">
                         <h4 class="modal-title mx-auto" id="Heading">Detail Pengadaan</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" 
@@ -214,11 +245,24 @@
                                         <td>{{detail.Kode_Sparepart }} </td>
                                         <td>{{detail.Nama_Sparepart}} </td>
                                         <td>{{detail.Harga_Satuan}} </td>
-                                        <td>{{detail.Jumlah_Sparepart}}</td>
+                                        <td>{{detail.Jumlah}}</td>
                                         <td>{{detail.Subtotal_Pengadaan}} </td>
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+
+                            </div>
+                            <div class="col-sm-4">
+                                <button class="btn btn-success mb-2 btn-block" data-title="Cetak_Nota">
+                                    <i class="far fa-file-pdf"></i> Cetak Nota Pengadaan
+                                </button>
+                            </div>
+                            <div class="col-sm-4">
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -358,8 +402,21 @@ export default {
                 console.log(err)
             }
         },
+        // async updatepengadaan () {
+
+        // },
+        async deletepengadaan(id) {
+            try {
+                await Controller.deletepengadaan(id)
+                this.getallpengadaan()
+                // console.log()
+            } catch (err) {
+                console.log(err)
+            }
+        },
         datapengadaanhandler(pengadaan){
             this.Pengadaan = pengadaan;
+            this.sparepartdata = pengadaan.detail_pengadaan.data;
         },
         refresh(){
             this.Pengadaan.Id_Supplier      ='Pilih Supplier';
@@ -391,7 +448,7 @@ export default {
         },
         filtereddetail:function(){
             return this.detailpengadaandata.filter((detailpengadaan)=>{
-                return detailpengadaan.Nama_Sparepart.match(this.Id_Detail_Modal);
+                return detailpengadaan.Id_Pengadaan == this.Id_Detail_Modal;
             });
         }
     }

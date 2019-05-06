@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
 use App\Transformers\TransaksiPengadaanTransformers;
+use App\Detail_Pengadaan;
 
 class TransaksiPengadaanController extends RestController
 {
@@ -44,5 +45,24 @@ class TransaksiPengadaanController extends RestController
         } catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
         }
+    }
+
+    public function destroy($id)
+    {
+        $details=Detail_Pengadaan::where('Id_Pengadaan',$id)->get();
+        foreach($details as $detail)
+        {
+            if(Detail_Pengadaan::where('Id_Pengadaan',$id)->get() !== null)
+            $delete = Detail_Pengadaan::where('Id_Pengadaan',$id)->delete();
+        }
+        // dd($detail = Detail_Pengadaan::where('Id_Pengadaan',$id)->get());
+        $pengadaan=Transaksi_Pengadaan::find($id);
+        $status = $pengadaan->delete();
+        
+        // $status = $supplier->delete();
+        return response()->json([
+            'status' => $status,
+            'message' => $status ? 'Deleted' : 'Error Delete'
+        ]);
     }
 }

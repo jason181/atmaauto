@@ -12,6 +12,8 @@ import Home from './components/layout/Home.vue';
 import Katalog from './components/layout/Katalog.vue';
 import Status from './components/layout/Status.vue';
 import Pengadaan from './components/layout/Pengadaan.vue';
+import Penjualan from './components/layout/Penjualan.vue';
+
 import { homedir } from 'os';
 
 export const routes = [
@@ -139,5 +141,10 @@ export const routes = [
         beforeEnter: middleware([
             auth
         ])
+    },
+    {
+        name: 'Penjualan',
+        path: '/penjualan',
+        component: Penjualan,
     },
 ]

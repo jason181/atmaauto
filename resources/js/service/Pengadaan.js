@@ -40,18 +40,18 @@ export default {
     //         Http.patch('/api/cabangs/update/'+id, payload, successCallback, errorCallback)
     //     })
     // },
-    // deleteCabang(id){
-    //     return new Promise((resolve, reject) => {
-    //         const successCallback = (res) => {
-    //             const data = res.data
-    //             resolve(data)
-    //         }
-    //         const errorCallback = (err) => {
-    //             reject(err)
-    //         }
-    //         Http.delete('/api/cabangs/delete/'+id, successCallback, errorCallback)
-    //     })
-    // },
+    deletepengadaan(id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.delete('/api/transaksi_pengadaans/delete/'+id, successCallback, errorCallback)
+        })
+    },
     getallsupplier(){
         return new Promise((resolve, reject) => {
             
