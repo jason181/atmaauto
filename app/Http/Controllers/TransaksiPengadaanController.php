@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Transaksi_Pengadaan;
+use App\Detail_Pengadaan;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
 use App\Transformers\TransaksiPengadaanTransformers;
-use App\Detail_Pengadaan;
 
 class TransaksiPengadaanController extends RestController
 {
@@ -33,16 +33,34 @@ class TransaksiPengadaanController extends RestController
             $pengadaan->Status_Pengadaan    = $request->get('Status_Pengadaan');
             
             $pengadaan->save();
-            $pengadaan = DB::transaction(function () use ($pengadaan,$detail) {
-                $pengadaan->detail_pengadaans()->createMany($detail);   
-                return $pengadaan;
-            });
+            if($request->has('detail'))
+            {
+                $pengadaan = DB::transaction(function () use ($pengadaan,$detail) {
+                    $pengadaan->detail_pengadaans()->createMany($detail);   
+                    return $pengadaan;
+                });
+            }
+            
+
             $response = $this->generateItem($pengadaan);
             return $this->sendResponse($response, 201);
         } catch (\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
         }
     }
+    public function storeDetail(Request $request){
+        try{
+            $detail = new Detail_Pengadaan;
+            $detail->Id_Pengadaan         = $request->get('Id_Pengadaan');
+            $detail->Kode_Sparepart         = $request->get('Kode_Sparepart');
+            $detail->Harga_Satuan         = $request->get('Harga_Satuan');
+            $detail->Jumlah         = $request->get('Jumlah');
+            $detail->Subtotal_Pengadaan         = $request->get('Subtotal_Pengadaan');
+        }catch(\Exception $e)
+            {
+                return $this->sendIseResponse($e->getMessage());
+            }
+        }
 
     public function destroy($id)
     {
