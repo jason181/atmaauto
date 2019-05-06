@@ -15,6 +15,7 @@ use App\Transformers\TransaksiPengadaanTransformers;
 class TransaksiPengadaanController extends RestController
 {
     protected $transformer = TransaksiPengadaanTransformers::Class;
+    
     public function index()
     {
         $pengadaan=Transaksi_Pengadaan::get();
@@ -33,13 +34,12 @@ class TransaksiPengadaanController extends RestController
             $pengadaan->Status_Pengadaan    = $request->get('Status_Pengadaan');
             
             $pengadaan->save();
-            if($request->has('detail'))
-            {
-                $pengadaan = DB::transaction(function () use ($pengadaan,$detail) {
-                    $pengadaan->detail_pengadaans()->createMany($detail);   
-                    return $pengadaan;
-                });
-            }
+
+            $pengadaan = DB::transaction(function () use ($pengadaan,$detail) {
+                $pengadaan->detail_pengadaans()->createMany($detail);   
+                return $pengadaan;
+            });
+
             
 
             $response = $this->generateItem($pengadaan);
