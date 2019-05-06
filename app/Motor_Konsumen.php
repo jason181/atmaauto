@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Motor_Konsumen extends Model
 {
     //
+    use SoftDeletes;
     protected $table = 'motor_konsumens';
     protected $primaryKey = 'Id_Motor_Konsumen';
     public $timestamp = true;

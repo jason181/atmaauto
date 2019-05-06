@@ -47,7 +47,8 @@
                             <h4 class="card-title mb-0" style="text-align: center;">{{sparepart.Nama_Sparepart}}</h4>
                         </div>
                         <div class="card-body" style="text-align:center;">
-                            <img class="card-img-top" :src="'/images/'+sparepart.Gambar" :alt="sparepart.Nama_Sparepart" style="height:250px;width:auto;">
+                            <img class="card-img-top" :src="'/images/'+sparepart.Gambar" :alt="sparepart.Nama_Sparepart" 
+                            style="max-height:250px;max-width:250px;">
                         </div>
                         <div class="card-footer" style="text-align: center;">
                             <p class="card-text mb-2" style="color: black">Rp {{formatPrice(sparepart.Harga_Jual)}}</p>

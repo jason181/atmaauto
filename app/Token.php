@@ -7,9 +7,12 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use JWTAuth;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Token extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'token';
     protected $primaryKey = 'Id_Token';
     public $timestamps = true;

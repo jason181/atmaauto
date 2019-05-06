@@ -63,5 +63,24 @@ class TransaksiPengadaanController extends RestController
             {
                 return $this->sendIseResponse($e->getMessage());
             }
+        }
+
+    public function destroy($id)
+    {
+        $details=Detail_Pengadaan::where('Id_Pengadaan',$id)->get();
+        foreach($details as $detail)
+        {
+            if(Detail_Pengadaan::where('Id_Pengadaan',$id)->get() !== null)
+            $delete = Detail_Pengadaan::where('Id_Pengadaan',$id)->delete();
+        }
+        // dd($detail = Detail_Pengadaan::where('Id_Pengadaan',$id)->get());
+        $pengadaan=Transaksi_Pengadaan::find($id);
+        $status = $pengadaan->delete();
+        
+        // $status = $supplier->delete();
+        return response()->json([
+            'status' => $status,
+            'message' => $status ? 'Deleted' : 'Error Delete'
+        ]);
     }
 }

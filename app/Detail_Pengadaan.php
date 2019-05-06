@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Detail_Pengadaan extends Model
 {
     //
+    use SoftDeletes;
     protected $table = 'detail_pengadaans';
     protected $primaryKey = 'Id_Detail_Pengadaan';
     public $timestamp = true;
@@ -20,7 +22,7 @@ class Detail_Pengadaan extends Model
 
     public function spareparts()
     {
-        return $this->belongsTo('App\Sparepart','Id_Sparepart');
+        return $this->belongsTo('App\Sparepart','Kode_Sparepart');
     }
 
     public function transaksi_pengadaans()

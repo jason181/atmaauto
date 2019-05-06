@@ -103,3 +103,6 @@ Route::post('/transaksi_pengadaans/storeDetail','TransaksiPengadaanController@st
 // Route::patch('/transaksi_pengadaans/update/{id}', 'TransaksiPengadaanController@update'); 
 // Route::delete('/transaksi_pengadaans/delete/{id}', 'TransaksiPengadaanController@destroy');
 // Route::get('/transaksi_pengadaans/show/{id}', 'TransaksiPengadaanController@showbyCustomer');
+
+//Detail Pengadaan
+Route::get('/detail_pengadaans','DetailPengadaanController@index');

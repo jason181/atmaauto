@@ -2882,6 +2882,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -5509,6 +5510,101 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5520,18 +5616,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       sparepart: [],
       sparepartdata: [],
       sparepartData: [],
-      // Pengadaan:[],
+      detailpengadaandata: [],
       Id_Supplier: '',
       Tanggal_Pengadaan: '',
       Total_Harga: 0,
-      Status_Pengadaan: '',
+      Status_Pengadaan: 0,
       index: '',
       err: '',
+      Id_Detail_Modal: 0,
       Pengadaan: {
         Id_Supplier: 'Pilih Supplier',
         Tanggal_Pengadaan: '',
         Total_Harga: 0,
-        Status_Pengadaan: '1'
+        Status_Pengadaan: 0
       },
       Cari_Pengadaan: '',
       Sparepart: {
@@ -5556,7 +5653,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   mounted: function mounted() {
-    this.getallpengadaan(), this.getallsupplier(), this.getallsparepart();
+    this.getallpengadaan(), this.getallsupplier(), this.getallsparepart(), this.getalldetailpengadaan();
   },
   methods: {
     getSelectedIndex: function getSelectedIndex() {
@@ -5580,8 +5677,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.temp.Jumlah = this.Sparepart.Jumlah_Sparepart;
       this.temp.Subtotal_Pengadaan = data.Harga_Beli * this.Sparepart.Jumlah_Sparepart;
       this.Pengadaan.Total_Harga = parseInt(this.temp.Subtotal_Pengadaan + this.Pengadaan.Total_Harga, 10);
-      console.log("a" + this.Pengadaan.Total_Harga);
-      console.log("b" + this.temp.Subtotal_Pengadaan);
       this.sparepartdata.push(JSON.parse(JSON.stringify(this.temp)));
       this.sparepartData.push(this.Sparepart.Kode_Sparepart);
     },
@@ -5706,43 +5801,80 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return getallsparepart;
     }(),
-    addpengadaan: function () {
-      var _addpengadaan = _asyncToGenerator(
+    getalldetailpengadaan: function () {
+      var _getalldetailpengadaan = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var payload;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.prev = 0;
-                payload = {
-                  Id_Supplier: this.Pengadaan.Id_Supplier,
-                  Tanggal_Pengadaan: this.Pengadaan.Tanggal_Pengadaan,
-                  Total_Harga: this.Pengadaan.Total_Harga,
-                  Status_Pengadaan: '1',
-                  Detail_Pengadaan: this.sparepartdata
-                };
-                console.log(payload);
-                _context4.next = 5;
-                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].addpengadaan(payload);
+                _context4.next = 3;
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].getalldetailpengadaan();
 
-              case 5:
-                this.getallpengadaan();
-                _context4.next = 11;
+              case 3:
+                this.detailpengadaandata = _context4.sent.data;
+                console.log(this.detailpengadaandata);
+                _context4.next = 10;
                 break;
 
-              case 8:
-                _context4.prev = 8;
+              case 7:
+                _context4.prev = 7;
                 _context4.t0 = _context4["catch"](0);
                 console.log(_context4.t0);
 
-              case 11:
+              case 10:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, this, [[0, 8]]);
+        }, _callee4, this, [[0, 7]]);
+      }));
+
+      function getalldetailpengadaan() {
+        return _getalldetailpengadaan.apply(this, arguments);
+      }
+
+      return getalldetailpengadaan;
+    }(),
+    addpengadaan: function () {
+      var _addpengadaan = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                payload = {
+                  Id_Supplier: this.Pengadaan.Id_Supplier,
+                  Tanggal_Pengadaan: this.Pengadaan.Tanggal_Pengadaan,
+                  Total_Harga: this.Pengadaan.Total_Harga,
+                  Status_Pengadaan: '0',
+                  Detail_Pengadaan: this.sparepartdata
+                };
+                console.log(payload);
+                _context5.next = 5;
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].addpengadaan(payload);
+
+              case 5:
+                this.getallpengadaan();
+                _context5.next = 11;
+                break;
+
+              case 8:
+                _context5.prev = 8;
+                _context5.t0 = _context5["catch"](0);
+                console.log(_context5.t0);
+
+              case 11:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this, [[0, 8]]);
       }));
 
       function addpengadaan() {
@@ -5751,14 +5883,57 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return addpengadaan;
     }(),
+    // async updatepengadaan () {
+    // },
+    deletepengadaan: function () {
+      var _deletepengadaan = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.prev = 0;
+                _context6.next = 3;
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].deletepengadaan(id);
+
+              case 3:
+                this.getallpengadaan(); // console.log()
+
+                _context6.next = 9;
+                break;
+
+              case 6:
+                _context6.prev = 6;
+                _context6.t0 = _context6["catch"](0);
+                console.log(_context6.t0);
+
+              case 9:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, this, [[0, 6]]);
+      }));
+
+      function deletepengadaan(_x) {
+        return _deletepengadaan.apply(this, arguments);
+      }
+
+      return deletepengadaan;
+    }(),
     datapengadaanhandler: function datapengadaanhandler(pengadaan) {
       this.Pengadaan = pengadaan;
+      this.sparepartdata = pengadaan.detail_pengadaan.data;
     },
     refresh: function refresh() {
       this.Pengadaan.Id_Supplier = 'Pilih Supplier';
       this.Pengadaan.Tanggal_Pengadaan = '';
       this.Pengadaan.Total_Harga = '';
-      this.Pengadaan.Status_Pengadaan = '1';
+      this.Pengadaan.Status_Pengadaan = '0';
+    },
+    detailhandler: function detailhandler(pengadaan) {
+      this.Id_Detail_Modal = pengadaan.Id_Pengadaan;
     }
   },
   computed: {
@@ -5779,6 +5954,730 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var errors = [];
       if (!this.$v.Pengadaan.Tanggal_Pengadaan.$dirty) return errors;
       !this.$v.Pengadaan.Tanggal_Pengadaan.required && errors.push('Transaction date is required');
+      return errors;
+    },
+    filtereddetail: function filtereddetail() {
+      var _this3 = this;
+
+      return this.detailpengadaandata.filter(function (detailpengadaan) {
+        return detailpengadaan.Id_Pengadaan == _this3.Id_Detail_Modal;
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Penjualan.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/Penjualan.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _service_Konsumen__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/Konsumen */ "./resources/js/service/Konsumen.js");
+/* harmony import */ var _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../service/MotorKonsumen */ "./resources/js/service/MotorKonsumen.js");
+/* harmony import */ var _service_Motor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../service/Motor */ "./resources/js/service/Motor.js");
+/* harmony import */ var _validations_konsumen_validations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../validations/konsumen_validations */ "./resources/js/validations/konsumen_validations.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  validations: _validations_konsumen_validations__WEBPACK_IMPORTED_MODULE_4__["default"],
+  data: function data() {
+    return {
+      konsumendata: [],
+      motorkonsumendata: [],
+      handledkonsumen: [],
+      motorcycle: [],
+      Nama_Konsumen: '',
+      Alamat_Konsumen: '',
+      Telepon_Konsumen: '',
+      Cari_Motor_Konsumen: '',
+      Cari_Konsumen: '',
+      Id_Konsumen: '',
+      Id_Motor_Konsumen: '',
+      Plat_Kendaraan: '',
+      Motor_Konsumen: {
+        Id_Motor_Konsumen: '',
+        Id_Konsumen: '',
+        Nama_Konsumen: '',
+        Id_Motor: '',
+        Plat_Kendaraan: ''
+      },
+      Konsumen: {
+        Nama_Konsumen: '',
+        Alamat_Konsumen: '',
+        Telepon_Konsumen: ''
+      },
+      Motor: {
+        Merk: '',
+        Tipe: '',
+        Id_Motor: ''
+      },
+      posisi: 'Pilih Status',
+      positions: [{
+        value: "Selesai",
+        id: 'Depan'
+      }, {
+        value: "Belum Diproses",
+        id: 'Tengah'
+      }, {
+        value: "Sedang Diproses",
+        id: 'Belakang'
+      }]
+    };
+  },
+  mounted: function mounted() {
+    this.getallkonsumen();
+    this.getallmotorkonsumen();
+  },
+  methods: {
+    getSelectedIndex: function getSelectedIndex() {
+      this.index = this.konsumen.map(function (e) {
+        return e.Id_Konsumen;
+      }).indexOf(this.Konsumen.Id_Konsumen);
+      console.log(this.index);
+    },
+    getallmotor: function () {
+      var _getallmotor = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _service_Motor__WEBPACK_IMPORTED_MODULE_3__["default"].getallmotor();
+
+              case 3:
+                this.motorcycle = _context.sent.data;
+                console.log(this.motorcycle);
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 7]]);
+      }));
+
+      function getallmotor() {
+        return _getallmotor.apply(this, arguments);
+      }
+
+      return getallmotor;
+    }(),
+    getallmotorkonsumen: function () {
+      var _getallmotorkonsumen = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_2__["default"].getallmotorkonsumen();
+
+              case 3:
+                this.motorkonsumendata = _context2.sent.data;
+                console.log(this.motorkonsumendata);
+                _context2.next = 10;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 7]]);
+      }));
+
+      function getallmotorkonsumen() {
+        return _getallmotorkonsumen.apply(this, arguments);
+      }
+
+      return getallmotorkonsumen;
+    }(),
+    addmotorkonsumen: function () {
+      var _addmotorkonsumen = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                payload = {
+                  Id_Motor_Konsumen: this.Motor_Konsumen.Id_Motor_Konsumen,
+                  Id_Konsumen: this.Konsumen.Id_Konsumen,
+                  Nama_Konsumen: this.Konsumen.Nama_Konsumen,
+                  Id_Motor: this.Motor.Id_Motor,
+                  Plat_Kendaraan: this.Motor_Konsumen.Plat_Kendaraan
+                };
+                _context3.next = 4;
+                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_2__["default"].addmotorkonsumen(payload);
+
+              case 4:
+                this.getallmotorkonsumen();
+                this.refreshMotorKonsumen();
+                _context3.next = 11;
+                break;
+
+              case 8:
+                _context3.prev = 8;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
+
+              case 11:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 8]]);
+      }));
+
+      function addmotorkonsumen() {
+        return _addmotorkonsumen.apply(this, arguments);
+      }
+
+      return addmotorkonsumen;
+    }(),
+    updatemotorkonsumen: function () {
+      var _updatemotorkonsumen = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                payload = {
+                  Id_Motor_Konsumen: this.Motor_Konsumen.Id_Motor_Konsumen,
+                  Id_Konsumen: this.Konsumen.Id_Konsumen,
+                  Nama_Konsumen: this.Konsumen.Nama_Konsumen,
+                  Id_Motor: this.Motor.Id_Motor,
+                  Plat_Kendaraan: this.Motor_Konsumen.Plat_Kendaraan
+                };
+                _context4.next = 4;
+                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_2__["default"].updatemotorkonsumen(payload, id);
+
+              case 4:
+                this.getallmotorkonsumen();
+                this.refreshMotorKonsumen();
+                _context4.next = 11;
+                break;
+
+              case 8:
+                _context4.prev = 8;
+                _context4.t0 = _context4["catch"](0);
+                console.log(_context4.t0);
+
+              case 11:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[0, 8]]);
+      }));
+
+      function updatemotorkonsumen(_x) {
+        return _updatemotorkonsumen.apply(this, arguments);
+      }
+
+      return updatemotorkonsumen;
+    }(),
+    deletemotorkonsumen: function () {
+      var _deletemotorkonsumen = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_2__["default"].deletemotorkonsumen(id);
+
+              case 3:
+                this.getallmotorkonsumen();
+                _context5.next = 9;
+                break;
+
+              case 6:
+                _context5.prev = 6;
+                _context5.t0 = _context5["catch"](0);
+                console.log(_context5.t0);
+
+              case 9:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this, [[0, 6]]);
+      }));
+
+      function deletemotorkonsumen(_x2) {
+        return _deletemotorkonsumen.apply(this, arguments);
+      }
+
+      return deletemotorkonsumen;
+    }(),
+    datamotorkonsumenhandler: function datamotorkonsumenhandler(motorkonsumen) {
+      this.Motor_Konsumen = motorkonsumen;
+    },
+    //Method konsumen
+    getallkonsumen: function () {
+      var _getallkonsumen = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.prev = 0;
+                _context6.next = 3;
+                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_1__["default"].getallkonsumen();
+
+              case 3:
+                this.konsumendata = _context6.sent.data;
+                console.log(this.konsumendata);
+                _context6.next = 10;
+                break;
+
+              case 7:
+                _context6.prev = 7;
+                _context6.t0 = _context6["catch"](0);
+                console.log(_context6.t0);
+
+              case 10:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, this, [[0, 7]]);
+      }));
+
+      function getallkonsumen() {
+        return _getallkonsumen.apply(this, arguments);
+      }
+
+      return getallkonsumen;
+    }(),
+    addkonsumen: function () {
+      var _addkonsumen = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _context7.prev = 0;
+                payload = {
+                  Nama_Konsumen: this.Konsumen.Nama_Konsumen,
+                  Alamat_Konsumen: this.Konsumen.Alamat_Konsumen,
+                  Telepon_Konsumen: this.Konsumen.Telepon_Konsumen
+                };
+                _context7.next = 4;
+                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_1__["default"].addkonsumen(payload);
+
+              case 4:
+                this.getallkonsumen();
+                this.refresh();
+                _context7.next = 11;
+                break;
+
+              case 8:
+                _context7.prev = 8;
+                _context7.t0 = _context7["catch"](0);
+                console.log(_context7.t0);
+
+              case 11:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7, this, [[0, 8]]);
+      }));
+
+      function addkonsumen() {
+        return _addkonsumen.apply(this, arguments);
+      }
+
+      return addkonsumen;
+    }(),
+    updatekonsumen: function () {
+      var _updatekonsumen = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8(id) {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                _context8.prev = 0;
+                payload = {
+                  Nama_Konsumen: this.Konsumen.Nama_Konsumen,
+                  Alamat_Konsumen: this.Konsumen.Alamat_Konsumen,
+                  Telepon_Konsumen: this.Konsumen.Telepon_Konsumen
+                };
+                _context8.next = 4;
+                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_1__["default"].updatekonsumen(payload, id);
+
+              case 4:
+                this.getallkonsumen();
+                this.refresh();
+                _context8.next = 11;
+                break;
+
+              case 8:
+                _context8.prev = 8;
+                _context8.t0 = _context8["catch"](0);
+                console.log(_context8.t0);
+
+              case 11:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, this, [[0, 8]]);
+      }));
+
+      function updatekonsumen(_x3) {
+        return _updatekonsumen.apply(this, arguments);
+      }
+
+      return updatekonsumen;
+    }(),
+    deletekonsumen: function () {
+      var _deletekonsumen = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                _context9.prev = 0;
+                _context9.next = 3;
+                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_1__["default"].deletekonsumen(id);
+
+              case 3:
+                this.getallkonsumen();
+                _context9.next = 9;
+                break;
+
+              case 6:
+                _context9.prev = 6;
+                _context9.t0 = _context9["catch"](0);
+                console.log(_context9.t0);
+
+              case 9:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9, this, [[0, 6]]);
+      }));
+
+      function deletekonsumen(_x4) {
+        return _deletekonsumen.apply(this, arguments);
+      }
+
+      return deletekonsumen;
+    }(),
+    datakonsumenhandler: function datakonsumenhandler(konsumen) {
+      this.Konsumen = konsumen;
+    },
+    refresh: function refresh() {
+      this.Konsumen.Nama_Konsumen = '';
+      this.Konsumen.Alamat_Konsumen = '';
+      this.Konsumen.Telepon_Konsumen = '';
+    },
+    refreshMotorKonsumen: function refreshMotorKonsumen() {
+      this.Motor_Konsumen.Plat_Kendaraan = '';
+      this.Motor.Id_Motor = -1; // this.Motor.Merk = -1;
+      // this.Motor.Tipe = -1;
+    }
+  },
+  computed: {
+    filteredkonsumen: function filteredkonsumen() {
+      var _this = this;
+
+      return this.konsumendata.filter(function (konsumen) {
+        return konsumen.Nama_Konsumen.toLowerCase().match(_this.Cari_Konsumen.toLowerCase());
+      });
+    },
+    filteredmotorkonsumen: function filteredmotorkonsumen() {
+      var _this2 = this;
+
+      return this.motorkonsumendata.filter(function (motorkonsumen) {
+        return motorkonsumen.Plat_Kendaraan.toLowerCase().match(_this2.Cari_Motor_Konsumen.toLowerCase());
+      });
+    },
+    nameErrors: function nameErrors() {
+      var errors = [];
+      if (!this.$v.Konsumen.Nama_Konsumen.$dirty) return errors;
+      !this.$v.Konsumen.Nama_Konsumen.minLength && errors.push('Name must be at least 5 characters long');
+      !this.$v.Konsumen.Nama_Konsumen.maxLength && errors.push('Name must be at most 25 characters long');
+      !this.$v.Konsumen.Nama_Konsumen.required && errors.push('Name is required.');
+      return errors;
+    },
+    addressErrors: function addressErrors() {
+      var errors = [];
+      if (!this.$v.Konsumen.Alamat_Konsumen.$dirty) return errors;
+      !this.$v.Konsumen.Alamat_Konsumen.maxLength && errors.push('Address must be at most 255 characters long');
+      !this.$v.Konsumen.Alamat_Konsumen.minLength && errors.push('Address must be at least 5 characters long');
+      !this.$v.Konsumen.Alamat_Konsumen.required && errors.push('Address is required');
+      return errors;
+    },
+    phoneErrors: function phoneErrors() {
+      var errors = [];
+      if (!this.$v.Konsumen.Telepon_Konsumen.$dirty) return errors;
+      !this.$v.Konsumen.Telepon_Konsumen.maxLength && errors.push('Phone must be at most 15 characters long');
+      !this.$v.Konsumen.Telepon_Konsumen.minLength && errors.push('Phone must be at least 10 characters long');
+      !this.$v.Konsumen.Telepon_Konsumen.numeric && errors.push('Phone must be numeric');
+      !this.$v.Konsumen.Telepon_Konsumen.required && errors.push('Phone is required');
+      return errors;
+    },
+    platErrors: function platErrors() {
+      var errors = [];
+      if (!this.$v.Motor_Konsumen.Plat_Kendaraan.$dirty) return errors;
+      !this.$v.Motor_Konsumen.Plat_Kendaraan.maxLength && errors.push('Plat must be at most 15 characters long');
+      !this.$v.Motor_Konsumen.Plat_Kendaraan.minLength && errors.push('Plat must be at least 5 characters long');
+      !this.$v.Motor_Konsumen.Plat_Kendaraan.required && errors.push('Plat is required');
       return errors;
     }
   }
@@ -46610,7 +47509,10 @@ var render = function() {
                       [
                         _c("img", {
                           staticClass: "card-img-top",
-                          staticStyle: { height: "250px", width: "auto" },
+                          staticStyle: {
+                            "max-height": "250px",
+                            "max-width": "250px"
+                          },
                           attrs: {
                             src: "/images/" + sparepart.Gambar,
                             alt: sparepart.Nama_Sparepart
@@ -51853,7 +52755,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(pengadaan.Total_Harga))]),
                 _vm._v(" "),
-                pengadaan.Status_Pengadaan == 1
+                pengadaan.Status_Pengadaan == 0
                   ? _c("td", [
                       _vm._v(
                         "\n                            Sudah Dipesan\n                        "
@@ -51861,7 +52763,7 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                pengadaan.Status_Pengadaan == 2
+                pengadaan.Status_Pengadaan == 1
                   ? _c("td", [
                       _vm._v(
                         "\n                            Sudah Dicetak\n                        "
@@ -51869,7 +52771,7 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                pengadaan.Status_Pengadaan == 3
+                pengadaan.Status_Pengadaan == 2
                   ? _c("td", [
                       _vm._v(
                         "\n                            Sudah Datang\n                        "
@@ -51893,21 +52795,89 @@ var render = function() {
                         {
                           staticClass: "btn btn-primary",
                           attrs: {
-                            "data-title": "Edit_Pengadaan",
+                            "data-title": "Detail_Pengadaan",
                             "data-toggle": "modal",
-                            "data-target": "#Edit_Pengadaan"
+                            "data-target": "#Detail_Pengadaan"
                           },
                           on: {
                             click: function($event) {
-                              return _vm.datapengadaanhandler(pengadaan)
+                              return _vm.detailhandler(pengadaan)
                             }
                           }
                         },
-                        [_c("i", { staticClass: "fas fa-edit" })]
+                        [_c("i", { staticClass: "fas fa-list-ul" })]
                       )
                     ]
                   )
                 ]),
+                _vm._v(" "),
+                pengadaan.Status_Pengadaan == 0
+                  ? _c("td", { staticClass: "text-center" }, [
+                      _c(
+                        "p",
+                        {
+                          attrs: {
+                            "data-placement": "top",
+                            "data-toggle": "tooltip",
+                            title: "Edit"
+                          }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: {
+                                "data-title": "Edit_Pengadaan",
+                                "data-toggle": "modal",
+                                "data-target": "#Edit_Pengadaan"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.datapengadaanhandler(pengadaan)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-edit" })]
+                          )
+                        ]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                pengadaan.Status_Pengadaan == 1
+                  ? _c("td", { staticClass: "text-center" }, [
+                      _c(
+                        "p",
+                        {
+                          attrs: {
+                            "data-placement": "top",
+                            "data-toggle": "tooltip",
+                            title: "Edit"
+                          }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: {
+                                "data-title": "Verify_Pengadaan",
+                                "data-toggle": "modal",
+                                "data-target": "#Verify_Pengadaan"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.datapengadaanhandler(pengadaan)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-check-circle" })]
+                          )
+                        ]
+                      )
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c("td", { staticClass: "text-center" }, [
                   _c(
@@ -52042,12 +53012,17 @@ var render = function() {
                               domProps: { value: supplier.Id_Supplier }
                             },
                             [
-                              _vm._v(
-                                _vm._s(supplier.Nama_Supplier) +
-                                  " - " +
-                                  _vm._s(supplier.Nama_Sales) +
-                                  " "
-                              )
+                              supplier.Nama_Sales != null
+                                ? _c("p", [
+                                    _vm._v(
+                                      "\n                                    " +
+                                        _vm._s(supplier.Nama_Supplier) +
+                                        " - " +
+                                        _vm._s(supplier.Nama_Sales) +
+                                        " \n                                "
+                                    )
+                                  ])
+                                : _vm._e()
                             ]
                           )
                         })
@@ -52339,6 +53314,133 @@ var render = function() {
           ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Delete_Pengadaan",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Delete_Pengadaan",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(7),
+            _vm._v(" "),
+            _vm._m(8),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer " }, [
+              _c(
+                "a",
+                {
+                  staticClass: "float-left w-100",
+                  attrs: { id: "delete_btn" }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger float-left w-50",
+                      attrs: { type: "button", "data-dismiss": "modal" },
+                      on: {
+                        click: function($event) {
+                          return _vm.deletepengadaan(_vm.Pengadaan.Id_Pengadaan)
+                        }
+                      }
+                    },
+                    [
+                      _c("span", {
+                        staticClass: "glyphicon glyphicon-ok-sign"
+                      }),
+                      _vm._v("Ya")
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(9)
+            ])
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Detail_Pengadaan",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Detail_Pengadaan",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog",
+            staticStyle: { "max-width": "750px" }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "modal-content", staticStyle: { width: "750px" } },
+              [
+                _vm._m(10),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c(
+                      "table",
+                      { staticClass: "table table-striped table-hover" },
+                      [
+                        _vm._m(11),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(_vm.filtereddetail, function(detail) {
+                            return _c("tr", { key: detail["id"] }, [
+                              _c("td", [
+                                _vm._v(_vm._s(detail.Kode_Sparepart) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(detail.Nama_Sparepart) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(detail.Harga_Satuan) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(detail.Jumlah))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(detail.Subtotal_Pengadaan) + " ")
+                              ])
+                            ])
+                          }),
+                          0
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(12)
+                ])
+              ]
+            )
+          ]
+        )
+      ]
     )
   ])
 }
@@ -52369,7 +53471,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Status")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Detail")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit/Verify")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
       ])
@@ -52474,6 +53578,894 @@ var staticRenderFns = [
           "span",
           { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
           [_vm._v("Jumlah")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Hapus Data Transaksi Pengadaan")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("div", { staticClass: "alert alert-danger" }, [
+        _c("span", { staticClass: "glyphicon glyphicon-warning-sign" }),
+        _vm._v(
+          " Apakah Anda Yakin Ingin Menghapus Data Transaksi Pengadaan Ini ?"
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-secondary float-right w-50",
+        attrs: { type: "button", "data-dismiss": "modal" }
+      },
+      [
+        _c("span", { staticClass: "glyphicon glyphicon-remove" }),
+        _vm._v("Tidak")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Detail Pengadaan")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "table-primary text-center" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Kode Sparepart")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama Sparepart")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Harga Satuan")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Jumlah Sparepart")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Subtotal Pengadaan")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-4" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success mb-2 btn-block",
+            attrs: { "data-title": "Cetak_Nota" }
+          },
+          [
+            _c("i", { staticClass: "far fa-file-pdf" }),
+            _vm._v(" Cetak Nota Pengadaan\n                            ")
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-4" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Penjualan.vue?vue&type=template&id=588b3c7c&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/Penjualan.vue?vue&type=template&id=588b3c7c& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "content", attrs: { id: "homeLayout" } }, [
+    _c(
+      "nav",
+      { staticClass: "navbar navbar-expand-lg navbar-light bg-light" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "collapse navbar-collapse" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c("form", { staticClass: "form-inline my-2 my-lg-0" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-danger my-2 my-sm-0",
+                attrs: { type: "submit" },
+                on: {
+                  click: function($event) {
+                    return _vm.logoutHandler()
+                  }
+                }
+              },
+              [_vm._v("Logout")]
+            )
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "collapse navbar-collapse show",
+        attrs: { id: "navbarSupportedContent" }
+      },
+      [
+        _c(
+          "nav",
+          {
+            staticClass: "nav nav-pills nav-justified",
+            staticStyle: { "background-color": "#e3f2fd" }
+          },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "nav-tabs nav-item nav-link",
+                attrs: { to: { name: "Pegawai" } }
+              },
+              [
+                _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                  _vm._v("Transaksi Penjualan")
+                ])
+              ]
+            )
+          ],
+          1
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "container mt-3", staticStyle: { "max-width": "800px" } },
+      [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-2" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success float-left mb-2 btn-block",
+                attrs: {
+                  "data-title": "Tambah_Konsumen",
+                  "data-toggle": "modal",
+                  "data-target": "#Tambah_Konsumen"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.getallkonsumen(), _vm.refresh()
+                  }
+                }
+              },
+              [
+                _c("i", { staticClass: "fas fa-plus mr-2" }),
+                _vm._v("Tambah\n                    ")
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-4" }, [
+            _c("div", { staticClass: "input-group" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.Cari_Konsumen,
+                    expression: "Cari_Konsumen"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "search", placeholder: "Cari Konsumen" },
+                domProps: { value: _vm.Cari_Konsumen },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.Cari_Konsumen = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(3)
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "table-responsive",
+            staticStyle: { "max-width": "800px", margin: "auto" }
+          },
+          [
+            _c("table", { staticClass: "table table-striped table-hover" }, [
+              _vm._m(4),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.filteredkonsumen, function(konsumen) {
+                  return _c("tr", { key: konsumen["Id_Konsumen"] }, [
+                    _c("td", [_vm._v(_vm._s(konsumen.Nama_Konsumen) + " ")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(konsumen.Alamat_Konsumen) + " ")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(konsumen.Telepon_Konsumen) + " ")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _c(
+                        "p",
+                        {
+                          attrs: {
+                            "data-placement": "top",
+                            "data-toggle": "tooltip",
+                            title: "Tambah"
+                          }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-success",
+                              attrs: {
+                                "data-title": "Tambah_Motor_Konsumen",
+                                "data-toggle": "modal",
+                                "data-target": "#Tambah_Motor_Konsumen"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.datakonsumenhandler(konsumen)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-plus" })]
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _c(
+                        "p",
+                        {
+                          attrs: {
+                            "data-placement": "top",
+                            "data-toggle": "tooltip",
+                            title: "Edit"
+                          }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: {
+                                "data-title": "Edit_Konsumen",
+                                "data-toggle": "modal",
+                                "data-target": "#Edit_Konsumen"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.datakonsumenhandler(konsumen)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-edit" })]
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _c(
+                        "p",
+                        {
+                          attrs: {
+                            "data-placement": "top",
+                            "data-toggle": "tooltip",
+                            title: "Delete"
+                          }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-danger",
+                              attrs: {
+                                "data-title": "Delete_Konsumen",
+                                "data-toggle": "modal",
+                                "data-target": "#Delete_Konsumen"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.datakonsumenhandler(konsumen)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-trash-alt" })]
+                          )
+                        ]
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Tambah_Konsumen",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Tambah_Konsumen",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(5),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "input-group" }, [
+                _vm._m(6),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Konsumen.Id_Konsumen,
+                        expression: "Konsumen.Id_Konsumen"
+                      }
+                    ],
+                    staticClass: "form-control mr-2",
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.Konsumen,
+                            "Id_Konsumen",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        },
+                        _vm.getSelectedIndex
+                      ]
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Merk"
+                        }
+                      },
+                      [_vm._v("-- Nama Konsumen --")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.konsumendata, function(konsumen) {
+                      return _c(
+                        "option",
+                        {
+                          key: konsumen["Id_Konsumen"],
+                          domProps: { value: konsumen.Id_Konsumen },
+                          on: { change: _vm.getSelectedIndex }
+                        },
+                        [_vm._v(_vm._s(konsumen.Nama_Konsumen))]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Konsumen.Nama_Konsumen.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.nameErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group" }, [
+                _vm._m(7),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Konsumen.Id_Konsumen,
+                        expression: "Konsumen.Id_Konsumen"
+                      }
+                    ],
+                    staticClass: "form-control mr-2",
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.Konsumen,
+                            "Id_Konsumen",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        },
+                        _vm.getSelectedIndex
+                      ]
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Merk"
+                        }
+                      },
+                      [_vm._v("-- Nama Konsumen --")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.konsumendata, function(konsumen) {
+                      return _c(
+                        "option",
+                        {
+                          key: konsumen["Id_Konsumen"],
+                          domProps: { value: konsumen.Id_Konsumen },
+                          on: { change: _vm.getSelectedIndex }
+                        },
+                        [_vm._v(_vm._s(konsumen.Telepon_Konsumen))]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Konsumen.Nama_Konsumen.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.nameErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(8),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.Konsumen.Telepon_Konsumen,
+                      expression: "Konsumen.Telepon_Konsumen"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "date",
+                    placeholder: "Masukkan Nomor Telepon Konsumen",
+                    "aria-label": "Telepon_Konsumen",
+                    "aria-describedby": "basic-addon2",
+                    id: "Telepon_Konsumen",
+                    name: "Telepon_Konsumen",
+                    required: ""
+                  },
+                  domProps: { value: _vm.Konsumen.Telepon_Konsumen },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.Konsumen,
+                        "Telepon_Konsumen",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _vm.$v.Konsumen.Telepon_Konsumen.$invalid
+                  ? _c(
+                      "p",
+                      { staticClass: "mb-3", staticStyle: { color: "red" } },
+                      [_vm._v(_vm._s(_vm.phoneErrors[0]))]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(9),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.posisi,
+                        expression: "posisi"
+                      }
+                    ],
+                    staticClass: "form-control mr-2",
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.posisi = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Posisi"
+                        }
+                      },
+                      [_vm._v("Pilih Status")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.positions, function(posisi, index) {
+                      return _c("option", { key: index }, [
+                        _vm._v(_vm._s(posisi.value))
+                      ])
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer mt-3" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success btn-lg w-100",
+                    attrs: {
+                      type: "submit",
+                      disabled: _vm.$v.Konsumen.$invalid,
+                      "data-dismiss": "modal"
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.addkonsumen()
+                      }
+                    }
+                  },
+                  [_vm._v("Tambahkan Konsumen")]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "navbar-brand", attrs: { href: "" } }, [
+      _c("img", { attrs: { src: "", width: "50px" } }),
+      _vm._v(" SIAUTO")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarSupportedContent",
+          "aria-controls": "navbarSupportedContent",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }
+      },
+      [_c("span", { staticClass: "navbar-toggler-icon" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "collapse navbar-collapse justify-content-md-center",
+        attrs: { id: "navbarsExample08" }
+      },
+      [
+        _c("ul", { staticClass: "navbar-nav" }, [
+          _c("li", { staticClass: "nav-item active" }, [
+            _c(
+              "a",
+              {
+                staticClass: "nav-link disabled py-2",
+                staticStyle: { "font-size": "20pt" },
+                attrs: { href: "#" }
+              },
+              [_vm._v("SELAMAT DATANG CUSTOMER SERVICE")]
+            )
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text" }, [
+        _c("i", { staticClass: "fas fa-search" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "table-primary text-center" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama Konsumen")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Tanggal")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Status Transaksi")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Detail")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("SPK")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Tambah Transaksi")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Konsumen")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Telepon")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Tanggal")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Status")]
         )
       ]
     )
@@ -75011,6 +77003,76 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/layout/Penjualan.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/layout/Penjualan.vue ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Penjualan_vue_vue_type_template_id_588b3c7c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Penjualan.vue?vue&type=template&id=588b3c7c& */ "./resources/js/components/layout/Penjualan.vue?vue&type=template&id=588b3c7c&");
+/* harmony import */ var _Penjualan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Penjualan.vue?vue&type=script&lang=js& */ "./resources/js/components/layout/Penjualan.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Penjualan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Penjualan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Penjualan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Penjualan_vue_vue_type_template_id_588b3c7c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Penjualan_vue_vue_type_template_id_588b3c7c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/layout/Penjualan.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/Penjualan.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/layout/Penjualan.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Penjualan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Penjualan.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Penjualan.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Penjualan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/Penjualan.vue?vue&type=template&id=588b3c7c&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/layout/Penjualan.vue?vue&type=template&id=588b3c7c& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Penjualan_vue_vue_type_template_id_588b3c7c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Penjualan.vue?vue&type=template&id=588b3c7c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Penjualan.vue?vue&type=template&id=588b3c7c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Penjualan_vue_vue_type_template_id_588b3c7c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Penjualan_vue_vue_type_template_id_588b3c7c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/layout/Status.vue":
 /*!***************************************************!*\
   !*** ./resources/js/components/layout/Status.vue ***!
@@ -75631,8 +77693,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_layout_Katalog_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/layout/Katalog.vue */ "./resources/js/components/layout/Katalog.vue");
 /* harmony import */ var _components_layout_Status_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/layout/Status.vue */ "./resources/js/components/layout/Status.vue");
 /* harmony import */ var _components_layout_Pengadaan_vue__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/layout/Pengadaan.vue */ "./resources/js/components/layout/Pengadaan.vue");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _components_layout_Penjualan_vue__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/layout/Penjualan.vue */ "./resources/js/components/layout/Penjualan.vue");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_14__);
+
 
 
 
@@ -75736,6 +77800,10 @@ var routes = [{
     role: ['Admin']
   },
   beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
+}, {
+  name: 'Penjualan',
+  path: '/penjualan',
+  component: _components_layout_Penjualan_vue__WEBPACK_IMPORTED_MODULE_13__["default"]
 }];
 
 /***/ }),
@@ -76335,18 +78403,20 @@ __webpack_require__.r(__webpack_exports__);
   //         Http.patch('/api/cabangs/update/'+id, payload, successCallback, errorCallback)
   //     })
   // },
-  // deleteCabang(id){
-  //     return new Promise((resolve, reject) => {
-  //         const successCallback = (res) => {
-  //             const data = res.data
-  //             resolve(data)
-  //         }
-  //         const errorCallback = (err) => {
-  //             reject(err)
-  //         }
-  //         Http.delete('/api/cabangs/delete/'+id, successCallback, errorCallback)
-  //     })
-  // },
+  deletepengadaan: function deletepengadaan(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].delete('/api/transaksi_pengadaans/delete/' + id, successCallback, errorCallback);
+    });
+  },
   getallsupplier: function getallsupplier() {
     return new Promise(function (resolve, reject) {
       var successCallback = function successCallback(res) {
@@ -76373,6 +78443,20 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/spareparts', successCallback, errorCallback);
+    });
+  },
+  getalldetailpengadaan: function getalldetailpengadaan() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/detail_pengadaans', successCallback, errorCallback);
     });
   }
 });
