@@ -49,11 +49,11 @@ class TransaksiPengadaanController extends RestController
     public function storeDetail(Request $request){
         try{
             $detail = new Detail_Pengadaan;
-            $detail->Id_Pengadaan       = $request->get('Id_Pengadaan');
-            $detail->Kode_Sparepart     = $request->get('Kode_Sparepart');
-            $detail->Harga_Satuan       = $request->get('Harga_Satuan');
-            $detail->Jumlah             = $request->get('Jumlah');
-            $detail->Subtotal_Pengadaan = $request->get('Subtotal_Pengadaan');
+            $detail->Id_Pengadaan         = $request->get('Id_Pengadaan');
+            $detail->Kode_Sparepart         = $request->get('Kode_Sparepart');
+            $detail->Harga_Satuan         = $request->get('Harga_Satuan');
+            $detail->Jumlah         = $request->get('Jumlah');
+            $detail->Subtotal_Pengadaan         = $request->get('Subtotal_Pengadaan');
         }catch(\Exception $e)
             {
                 return $this->sendIseResponse($e->getMessage());

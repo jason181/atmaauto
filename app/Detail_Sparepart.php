@@ -13,6 +13,7 @@ class Detail_Sparepart extends Model
     protected $primaryKey = 'Id_Detail_Sparepart';
     public $timestamp = true;
     protected $fillable = [
+        'Id_Detail_Sparepart',
         'Id_Transaksi',
         'Id_Jasa_Montir',
         'Kode_Sparepart',

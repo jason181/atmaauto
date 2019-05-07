@@ -13,6 +13,7 @@ class Detail_Jasa extends Model
     protected $primaryKey = 'Id_Detail_Jasa';
     public $timestamp = true;
     protected $fillable = [
+        'Id_Detail_Jasa',
         'Id_Transaksi',
         'Id_Jasa_Montir',
         'Subtotal_Detail_Jasa'
