@@ -27,7 +27,7 @@ class TransaksiPenjualanController extends RestController
         return sendResponse($response);
     }
 
-    public function store()
+    public function store(Request $request)
     {
         try{
             date_default_timezone_set('Asia/Jakarta');
@@ -58,10 +58,7 @@ class TransaksiPenjualanController extends RestController
                     return $penjualan;
                 });
             }
-            $Pegawai=Token::orderBy('Id_Token', 'DESC')->first();
-            // dd($Pegawai->Id_Pegawai);
-            // $response = null;
-
+            $response = $this->generateItem($penjualan);
             return $this->sendResponse($response, 201);
         }
         catch(\Exception $e) {
