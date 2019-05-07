@@ -39,7 +39,7 @@ class TransaksiPenjualanTransformers extends TransformerAbstract
     }
     // public function includePegawaiOnDuty(Transaksi_Penjualan $transaksi_penjualan)
     // {
-    //     return $this->collection($transaksi_penjualan->pegawai_on_duties, new Pegawai_On_Duty);
+    //     return $this->collection($transaksi_penjualan->pegawai_on_duties, new PegawaiOnDutyTransformers);
     // }
 }
 ?>

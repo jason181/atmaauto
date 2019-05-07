@@ -13,7 +13,6 @@ class Konsumen extends Model
     protected $primaryKey = 'Id_Konsumen';
     public $timestamp = true;
     protected $fillable = [
-        'Id_Konsumen',
         'Nama_Konsumen',
         'Alamat_Konsumen',
         'Telepon_Konsumen'

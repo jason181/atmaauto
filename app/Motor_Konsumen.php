@@ -13,7 +13,6 @@ class Motor_Konsumen extends Model
     protected $primaryKey = 'Id_Motor_Konsumen';
     public $timestamp = true;
     protected $fillable = [
-        'Id_Motor_Konsumen',
         'Id_Konsumen',
         'Id_Motor', 
         'Plat_Kendaraan'

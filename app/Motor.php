@@ -13,10 +13,8 @@ class Motor extends Model
     protected $primaryKey = 'Id_Motor';
     public $timestamp = true;
     protected $fillable = [
-        'Id_Motor',
         'Merk',
         'Tipe',
-        //'Kode_Sparepart'
     ];
 
     public function motor_konsumens()
