@@ -34,7 +34,7 @@ class TransaksiPengadaanController extends RestController
             $pengadaan->Status_Pengadaan    = $request->get('Status_Pengadaan');
             
             $pengadaan->save();
-            if($request->has('detail'))
+
             $pengadaan = DB::transaction(function () use ($pengadaan,$detail) {
                 $pengadaan->detail_pengadaans()->createMany($detail);   
                 return $pengadaan;
@@ -49,15 +49,11 @@ class TransaksiPengadaanController extends RestController
     public function storeDetail(Request $request){
         try{
             $detail = new Detail_Pengadaan;
-            $detail->Id_Pengadaan         = $request->get('Id_Pengadaan');
-            $detail->Kode_Sparepart         = $request->get('Kode_Sparepart');
-            $detail->Harga_Satuan         = $request->get('Harga_Satuan');
-            $detail->Jumlah         = $request->get('Jumlah');
-            $detail->Subtotal_Pengadaan         = $request->get('Subtotal_Pengadaan');
-            $detail->save();
-
-            $response = $this->generateItem($detail);
-            return $this->sendResponse($response,201);
+            $detail->Id_Pengadaan       = $request->get('Id_Pengadaan');
+            $detail->Kode_Sparepart     = $request->get('Kode_Sparepart');
+            $detail->Harga_Satuan       = $request->get('Harga_Satuan');
+            $detail->Jumlah             = $request->get('Jumlah');
+            $detail->Subtotal_Pengadaan = $request->get('Subtotal_Pengadaan');
         }catch(\Exception $e)
             {
                 return $this->sendIseResponse($e->getMessage());
