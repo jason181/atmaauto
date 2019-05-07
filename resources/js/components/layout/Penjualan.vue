@@ -73,6 +73,16 @@
                             <td>{{konsumen.Nama_Konsumen}} </td>
                             <td>{{konsumen.Alamat_Konsumen}} </td>
                             <td>{{konsumen.Telepon_Konsumen}} </td>
+                            <td>{{konsumen.Telepon_Konsumen}} </td>
+                            <td v-if="Transaksi.Status==0">
+                                Belum Diproses
+                            </td>
+                            <td v-if="Transaksi.Status==1">
+                                Sedang Diproses
+                            </td>
+                            <td v-if="Transaksi.Status==2">
+                                Selesai
+                            </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Tambah">
                                     <button @click="datakonsumenhandler(konsumen)" 
@@ -139,13 +149,27 @@
                                 v-if="$v.Konsumen.Nama_Konsumen.$invalid">{{nameErrors[0]}}</p>
                         </div>
 
-                        <div class="input-group">
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Alamat</span>
+                            </div>
+                            <select class="form-control mr-2" v-model="Konsumen.Id_Konsumen" v-on:change="getSelectedIndex">
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih Merk">-- Alamat Konsumen --</option>
+                                <option v-bind:key="konsumen['Id_Konsumen']" 
+                                v-for="konsumen in konsumendata" 
+                                v-on:change="getSelectedIndex"
+                                :value="konsumen.Id_Konsumen">{{konsumen.Alamat_Konsumen}}</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group mt-3">
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Telepon</span>
                             </div>
                             <select class="form-control mr-2" v-model="Konsumen.Id_Konsumen" v-on:change="getSelectedIndex">
                                 <option disabled="disabled" selected="selected" 
-                                value="Pilih Merk">-- Nama Konsumen --</option>
+                                value="Pilih Merk">-- Telepon Konsumen --</option>
                                 <option v-bind:key="konsumen['Id_Konsumen']" 
                                 v-for="konsumen in konsumendata" 
                                 v-on:change="getSelectedIndex"
@@ -156,17 +180,6 @@
                             <p class="mb-3" style="color:red;" 
                                 v-if="$v.Konsumen.Nama_Konsumen.$invalid">{{nameErrors[0]}}</p>
                         </div>
-                        
-                        <!-- <div class="input-group mt-3">
-                            <div class="input-group-prepend d-block" style="width: 100px;">
-                                <span class="input-group-text" id="basic-addon2">Telepon</span>
-                            </div>
-                            <input type="number" v-model="Konsumen.Telepon_Konsumen" 
-                                class="form-control" placeholder="Masukkan Nomor Telepon Konsumen" 
-                                aria-label="Telepon_Konsumen" aria-describedby="basic-addon2" 
-                                id="Telepon_Konsumen" name="Telepon_Konsumen" 
-                                v-on:change="getSelectedIndex" required>{{konsumen.Telepon_Konsumen}}
-                        </div> -->
 
                         <div class="input-group mt-3">
                             <div class="input-group-prepend d-block" style="width: 100px;">
@@ -192,10 +205,136 @@
                             </select>
                         </div>
 
-                        <div class="modal-footer mt-3">
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Jenis</span>
+                            </div>
+                            <select class="form-control mr-2" v-model="jenis">
+                                <option disabled="disabled" selected="selected" value="Pilih Posisi">Pilih Jenis Transaksi</option>
+                                <option v-for="(jenis,index) in Jenis" :key="index" >{{jenis.value}}</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group mt-3" v-if="jenis == 'Sparepart'"> 
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Sparepart</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Pilih Sparepart --</option>
+                                <option v-bind:key="spareparts['Kode_Sparepart']" 
+                                v-on:change="getSelectedIndex"
+                                v-for="spareparts in sparepart" 
+                                :value="spareparts.Kode_Sparepart" >{{spareparts.Nama_Sparepart}}</option>
+                            </select>
+
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Tipe</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Tipe Sparepart --</option>
+                                <option v-bind:key="spareparts['Kode_Sparepart']" 
+                                v-on:change="getSelectedIndex"
+                                v-for="spareparts in sparepart" 
+                                :value="spareparts.Kode_Sparepart" disabled>{{spareparts.Tipe_Barang}}</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group mt-3" v-if="jenis == 'Sparepart'"> 
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Jumlah</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Jumlah Sparepart --</option>
+                                <option v-bind:key="spareparts['Kode_Sparepart']" 
+                                v-on:change="getSelectedIndex"
+                                v-for="spareparts in sparepart" 
+                                :value="spareparts.Kode_Sparepart" disabled>{{spareparts.Jumlah_Sparepart}}</option>
+                            </select>
+
+                            <div class="input-group-prepend d-block" style="width: 100px;" v-if="jenis == 'Sparepart'">
+                                <span class="input-group-text" id="basic-addon2" disabled>Harga Jual</span>
+                            </div> 
+                            <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Harga Jual --</option>
+                                <option v-bind:key="spareparts['Kode_Sparepart']" 
+                                v-on:change="getSelectedIndex"
+                                v-for="spareparts in sparepart" 
+                                :value="spareparts.Kode_Sparepart" disabled>{{spareparts.Harga_Jual}}</option>
+                            </select>
+                        </div>
+
+                       <div class="input-group mt-3" v-if="jenis == 'Sparepart'">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Jumlah</span>
+                            </div>
+                            <input type="number" v-model="Transaksi.Jumlah" 
+                            class="form-control" placeholder="Jumlah Sparepart Yang Ingin Dibeli" 
+                            aria-label="Transaksi_Jumlah" aria-describedby="basic-addon2" 
+                            id="Transaksi_Jumlah" name="Transaksi_Jumlah" required>
+                        </div>
+
+                        <div class="input-group mt-3" v-if="jenis == 'Service'"> 
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Jasa</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Jasaservice.Id_Jasa" v-on:change="getSelectedIndexJasa" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Pilih Jasa --</option>
+                                <option v-bind:key="jasaS['Id_Jasa']" 
+                                v-on:change="getSelectedIndexJasa"
+                                v-for="jasaS in jasa" 
+                                :value="jasaS.Id_Jasa" >{{jasaS.Nama_Jasa}}</option>
+                            </select>
+
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Harga</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Jasaservice.Id_Jasa" v-on:change="getSelectedIndexJasa" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Pilih Jasa --</option>
+                                <option v-bind:key="jasaS['Id_Jasa']" 
+                                v-on:change="getSelectedIndexJasa"
+                                v-for="jasaS in jasa" 
+                                :value="jasaS.Id_Jasa" >{{jasaS.Harga_Jasa}}</option>
+                            </select>
+                        </div>
+                        <div class="input-group mt-3" v-if="jenis == 'Service'">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Subtotal</span>
+                            </div>
+                            <input type="text" v-model="Transaksi.Subtotal" 
+                            class="form-control" placeholder="Subtotal" 
+                            aria-label="Transaksi_Subtotal" aria-describedby="basic-addon2" 
+                            id="Transaksi_Subtotal" name="Transaksi_Subtotal" disabled required>
+                        </div>
+
+                        <div class="input-group mt-3" v-if="jenis == 'Service'">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Diskon</span>
+                            </div>
+                            <input type="text" v-model="Transaksi.Diskon" 
+                            class="form-control" placeholder="Masukkan Diskon" 
+                            aria-label="Transaksi_Diskon" aria-describedby="basic-addon2" 
+                            id="Transaksi_Diskon" name="Transaksi_Diskon" required>
+                        </div>
+
+                        <div class="input-group mt-3" v-if="jenis == 'Service'">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Total</span>
+                            </div>
+                            <input type="text" v-model="Transaksi.Total" 
+                            class="form-control" placeholder="Total" 
+                            aria-label="Transaksi_Total" aria-describedby="basic-addon2" 
+                            id="Transaksi_Total" name="Transaksi_Diskon" disabled required>
+                        </div>
+
+                        <div class="modal-footer mt-3" >
                             <button type="submit" class="btn btn-success btn-lg w-100" 
-                            :disabled="$v.Konsumen.$invalid" data-dismiss="modal" 
-                            @click="addkonsumen()">Tambahkan Konsumen</button>
+                            data-dismiss="modal" @click="addkonsumen()">Tambahkan Transaksi Penjualan</button>
                         </div>
                     </div>
                 </div>
@@ -204,13 +343,17 @@
    </div>
 </template>
 <script>
+import sparepartController from '../../service/Sparepart'
 import Controller from '../../service/Konsumen'
 import controller from '../../service/MotorKonsumen'
 import motorController from '../../service/Motor'
+import jasaController from '../../httpController'
 import validators from '../../validations/konsumen_validations'
 export default {
     validations: validators,
     data: () => ({
+        sparepart:[],
+        jasa:[],
         konsumendata:[],
         motorkonsumendata:[],
         handledkonsumen:[],
@@ -242,18 +385,74 @@ export default {
         },
         posisi: 'Pilih Status',
         positions: [
+            { value: "Sedang Diproses", id: 'Belakang' },
             { value: "Selesai", id: 'Depan' },
-            { value: "Belum Diproses", id: 'Tengah' },
-            { value: "Sedang Diproses", id: 'Belakang' }
+            { value: "Belum Diproses", id: 'Tengah' }
         ],
+        jenis: 'Pilih Jenis Transaksi',
+        Jenis: [
+            { value: "Sparepart", id: 'Belakang' },
+            { value: "Service and Sparepart", id: 'Depan' },
+            { value: "Service", id: 'Tengah' }
+        ],
+        Sparepart:{
+            Kode_Sparepart:'',
+            Tipe_Barang:'',
+            Nama_Sparepart:'',
+            Merk_Sparepart:'',
+            Rak_Sparepart: '',
+            Jumlah_Sparepart:0,
+            Stok_Minimum_Sparepart:0,
+            Harga_Beli:0,
+            Harga_Jual:0,
+            Gambar:'',
+        },
+        Transaksi:{
+            Id_Transaksi:'',
+            Id_Konsumen:'',
+            Tanggal_Transaksi:'',
+            Jenis_Transaksi:'',
+            Subtotal:'',
+            Diskon:'',
+            Total:'',
+            Status:0,
+        },
+        Jasaservice:{
+            Id_Jasa:'',
+            Nama_Jasa:'',
+            Harga_Jasa:'',
+        }
     }),
     mounted(){
+        this.getalljasaservice()
         this.getallkonsumen()
         this.getallmotorkonsumen()
+        this.getallmotor()
+        this.getallsparepart()
     },
     methods:{
+         async getalljasaservice () {
+            try {
+                this.jasa = (await jasaController.getalljasaservice()).data
+                console.log(this.jasa)
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async getallsparepart () {
+            try {
+                this.sparepart = (await sparepartController.getallsparepart()).data
+                console.log(this.sparepart)
+            } catch (err) {
+                console.log(err)
+            }
+        },
         getSelectedIndex(){
             this.index = this.konsumen.map(function(e) { return e.Id_Konsumen; }).indexOf(this.Konsumen.Id_Konsumen)
+            console.log(this.index)
+        },
+        getSelectedIndexJasa(){
+            this.index = this.jasa.map(function(e) { return e.Id_Jasa; }).indexOf(this.Jasaservice.Id_Jasa)
             console.log(this.index)
         },
         async getallmotor () {
@@ -324,12 +523,16 @@ export default {
                 console.log(err)
             }
         },
-        async addkonsumen () {
+        async addtransaksi () {
             try {
                 const payload = {
-                    Nama_Konsumen       : this.Konsumen.Nama_Konsumen,
-                    Alamat_Konsumen     : this.Konsumen.Alamat_Konsumen,
-                    Telepon_Konsumen    : this.Konsumen.Telepon_Konsumen,
+                    Id_Konsumen         : this.Konsumen.Id_Konsumen,
+                    Tanggal_Transaksi   : this.Transaksi.Tanggal_Transaksi,
+                    Jenis_Transaksi     : this.Transaksi.Jenis_Transaksi,
+                    Subtotal            : this.Transaksi.Subtotal,
+                    Diskon              : this.Transaksi.Diskon,
+                    Total               : this.Transaksi.Total,
+                    Status              : '0',
                 }
                 await Controller.addkonsumen(payload)
                 this.getallkonsumen()
@@ -376,6 +579,11 @@ export default {
         }
     },
     computed:{
+        filteredmotor:function(){
+            return this.motorcycle.filter((motor)=>{
+                return motor.Merk.match(this.Cari_Motor);
+            });
+        },
         filteredkonsumen:function(){
             return this.konsumendata.filter((konsumen)=>{
                 return konsumen.Nama_Konsumen.toLowerCase().match(this.Cari_Konsumen.toLowerCase());

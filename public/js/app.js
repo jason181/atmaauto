@@ -5861,20 +5861,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
                 this.getallpengadaan();
-                _context5.next = 11;
+                this.getalldetailpengadaan();
+                _context5.next = 12;
                 break;
 
-              case 8:
-                _context5.prev = 8;
+              case 9:
+                _context5.prev = 9;
                 _context5.t0 = _context5["catch"](0);
                 console.log(_context5.t0);
 
-              case 11:
+              case 12:
               case "end":
                 return _context5.stop();
             }
           }
-        }, _callee5, this, [[0, 8]]);
+        }, _callee5, this, [[0, 9]]);
       }));
 
       function addpengadaan() {
@@ -5979,10 +5980,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _service_Konsumen__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/Konsumen */ "./resources/js/service/Konsumen.js");
-/* harmony import */ var _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../service/MotorKonsumen */ "./resources/js/service/MotorKonsumen.js");
-/* harmony import */ var _service_Motor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../service/Motor */ "./resources/js/service/Motor.js");
-/* harmony import */ var _validations_konsumen_validations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../validations/konsumen_validations */ "./resources/js/validations/konsumen_validations.js");
+/* harmony import */ var _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/Sparepart */ "./resources/js/service/Sparepart.js");
+/* harmony import */ var _service_Konsumen__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../service/Konsumen */ "./resources/js/service/Konsumen.js");
+/* harmony import */ var _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../service/MotorKonsumen */ "./resources/js/service/MotorKonsumen.js");
+/* harmony import */ var _service_Motor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../service/Motor */ "./resources/js/service/Motor.js");
+/* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../httpController */ "./resources/js/httpController.js");
+/* harmony import */ var _validations_konsumen_validations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../validations/konsumen_validations */ "./resources/js/validations/konsumen_validations.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -6194,14 +6197,157 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  validations: _validations_konsumen_validations__WEBPACK_IMPORTED_MODULE_4__["default"],
+  validations: _validations_konsumen_validations__WEBPACK_IMPORTED_MODULE_6__["default"],
   data: function data() {
     return {
+      sparepart: [],
+      jasa: [],
       konsumendata: [],
       motorkonsumendata: [],
       handledkonsumen: [],
@@ -6233,30 +6379,65 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       },
       posisi: 'Pilih Status',
       positions: [{
+        value: "Sedang Diproses",
+        id: 'Belakang'
+      }, {
         value: "Selesai",
         id: 'Depan'
       }, {
         value: "Belum Diproses",
         id: 'Tengah'
-      }, {
-        value: "Sedang Diproses",
+      }],
+      jenis: 'Pilih Jenis Transaksi',
+      Jenis: [{
+        value: "Sparepart",
         id: 'Belakang'
-      }]
+      }, {
+        value: "Service and Sparepart",
+        id: 'Depan'
+      }, {
+        value: "Service",
+        id: 'Tengah'
+      }],
+      Sparepart: {
+        Kode_Sparepart: '',
+        Tipe_Barang: '',
+        Nama_Sparepart: '',
+        Merk_Sparepart: '',
+        Rak_Sparepart: '',
+        Jumlah_Sparepart: 0,
+        Stok_Minimum_Sparepart: 0,
+        Harga_Beli: 0,
+        Harga_Jual: 0,
+        Gambar: ''
+      },
+      Transaksi: {
+        Id_Transaksi: '',
+        Id_Konsumen: '',
+        Tanggal_Transaksi: '',
+        Jenis_Transaksi: '',
+        Subtotal: '',
+        Diskon: '',
+        Total: '',
+        Status: 0
+      },
+      Jasaservice: {
+        Id_Jasa: '',
+        Nama_Jasa: '',
+        Harga_Jasa: ''
+      }
     };
   },
   mounted: function mounted() {
+    this.getalljasaservice();
     this.getallkonsumen();
     this.getallmotorkonsumen();
+    this.getallmotor();
+    this.getallsparepart();
   },
   methods: {
-    getSelectedIndex: function getSelectedIndex() {
-      this.index = this.konsumen.map(function (e) {
-        return e.Id_Konsumen;
-      }).indexOf(this.Konsumen.Id_Konsumen);
-      console.log(this.index);
-    },
-    getallmotor: function () {
-      var _getallmotor = _asyncToGenerator(
+    getalljasaservice: function () {
+      var _getalljasaservice = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -6265,11 +6446,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return _service_Motor__WEBPACK_IMPORTED_MODULE_3__["default"].getallmotor();
+                return _httpController__WEBPACK_IMPORTED_MODULE_5__["default"].getalljasaservice();
 
               case 3:
-                this.motorcycle = _context.sent.data;
-                console.log(this.motorcycle);
+                this.jasa = _context.sent.data;
+                console.log(this.jasa);
                 _context.next = 10;
                 break;
 
@@ -6286,14 +6467,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, this, [[0, 7]]);
       }));
 
-      function getallmotor() {
-        return _getallmotor.apply(this, arguments);
+      function getalljasaservice() {
+        return _getalljasaservice.apply(this, arguments);
       }
 
-      return getallmotor;
+      return getalljasaservice;
     }(),
-    getallmotorkonsumen: function () {
-      var _getallmotorkonsumen = _asyncToGenerator(
+    getallsparepart: function () {
+      var _getallsparepart = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
@@ -6302,11 +6483,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_2__["default"].getallmotorkonsumen();
+                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].getallsparepart();
 
               case 3:
-                this.motorkonsumendata = _context2.sent.data;
-                console.log(this.motorkonsumendata);
+                this.sparepart = _context2.sent.data;
+                console.log(this.sparepart);
                 _context2.next = 10;
                 break;
 
@@ -6323,6 +6504,92 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2, this, [[0, 7]]);
       }));
 
+      function getallsparepart() {
+        return _getallsparepart.apply(this, arguments);
+      }
+
+      return getallsparepart;
+    }(),
+    getSelectedIndex: function getSelectedIndex() {
+      this.index = this.konsumen.map(function (e) {
+        return e.Id_Konsumen;
+      }).indexOf(this.Konsumen.Id_Konsumen);
+      console.log(this.index);
+    },
+    getSelectedIndexJasa: function getSelectedIndexJasa() {
+      this.index = this.jasa.map(function (e) {
+        return e.Id_Jasa;
+      }).indexOf(this.Jasaservice.Id_Jasa);
+      console.log(this.index);
+    },
+    getallmotor: function () {
+      var _getallmotor = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return _service_Motor__WEBPACK_IMPORTED_MODULE_4__["default"].getallmotor();
+
+              case 3:
+                this.motorcycle = _context3.sent.data;
+                console.log(this.motorcycle);
+                _context3.next = 10;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 7]]);
+      }));
+
+      function getallmotor() {
+        return _getallmotor.apply(this, arguments);
+      }
+
+      return getallmotor;
+    }(),
+    getallmotorkonsumen: function () {
+      var _getallmotorkonsumen = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_3__["default"].getallmotorkonsumen();
+
+              case 3:
+                this.motorkonsumendata = _context4.sent.data;
+                console.log(this.motorkonsumendata);
+                _context4.next = 10;
+                break;
+
+              case 7:
+                _context4.prev = 7;
+                _context4.t0 = _context4["catch"](0);
+                console.log(_context4.t0);
+
+              case 10:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[0, 7]]);
+      }));
+
       function getallmotorkonsumen() {
         return _getallmotorkonsumen.apply(this, arguments);
       }
@@ -6332,13 +6599,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     addmotorkonsumen: function () {
       var _addmotorkonsumen = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
         var payload;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
-                _context3.prev = 0;
+                _context5.prev = 0;
                 payload = {
                   Id_Motor_Konsumen: this.Motor_Konsumen.Id_Motor_Konsumen,
                   Id_Konsumen: this.Konsumen.Id_Konsumen,
@@ -6346,26 +6613,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   Id_Motor: this.Motor.Id_Motor,
                   Plat_Kendaraan: this.Motor_Konsumen.Plat_Kendaraan
                 };
-                _context3.next = 4;
-                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_2__["default"].addmotorkonsumen(payload);
+                _context5.next = 4;
+                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_3__["default"].addmotorkonsumen(payload);
 
               case 4:
                 this.getallmotorkonsumen();
                 this.refreshMotorKonsumen();
-                _context3.next = 11;
+                _context5.next = 11;
                 break;
 
               case 8:
-                _context3.prev = 8;
-                _context3.t0 = _context3["catch"](0);
-                console.log(_context3.t0);
+                _context5.prev = 8;
+                _context5.t0 = _context5["catch"](0);
+                console.log(_context5.t0);
 
               case 11:
               case "end":
-                return _context3.stop();
+                return _context5.stop();
             }
           }
-        }, _callee3, this, [[0, 8]]);
+        }, _callee5, this, [[0, 8]]);
       }));
 
       function addmotorkonsumen() {
@@ -6377,13 +6644,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     updatemotorkonsumen: function () {
       var _updatemotorkonsumen = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(id) {
         var payload;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context6.prev = _context6.next) {
               case 0:
-                _context4.prev = 0;
+                _context6.prev = 0;
                 payload = {
                   Id_Motor_Konsumen: this.Motor_Konsumen.Id_Motor_Konsumen,
                   Id_Konsumen: this.Konsumen.Id_Konsumen,
@@ -6391,26 +6658,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   Id_Motor: this.Motor.Id_Motor,
                   Plat_Kendaraan: this.Motor_Konsumen.Plat_Kendaraan
                 };
-                _context4.next = 4;
-                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_2__["default"].updatemotorkonsumen(payload, id);
+                _context6.next = 4;
+                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_3__["default"].updatemotorkonsumen(payload, id);
 
               case 4:
                 this.getallmotorkonsumen();
                 this.refreshMotorKonsumen();
-                _context4.next = 11;
+                _context6.next = 11;
                 break;
 
               case 8:
-                _context4.prev = 8;
-                _context4.t0 = _context4["catch"](0);
-                console.log(_context4.t0);
+                _context6.prev = 8;
+                _context6.t0 = _context6["catch"](0);
+                console.log(_context6.t0);
 
               case 11:
               case "end":
-                return _context4.stop();
+                return _context6.stop();
             }
           }
-        }, _callee4, this, [[0, 8]]);
+        }, _callee6, this, [[0, 8]]);
       }));
 
       function updatemotorkonsumen(_x) {
@@ -6422,31 +6689,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     deletemotorkonsumen: function () {
       var _deletemotorkonsumen = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(id) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context7.prev = _context7.next) {
               case 0:
-                _context5.prev = 0;
-                _context5.next = 3;
-                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_2__["default"].deletemotorkonsumen(id);
+                _context7.prev = 0;
+                _context7.next = 3;
+                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_3__["default"].deletemotorkonsumen(id);
 
               case 3:
                 this.getallmotorkonsumen();
-                _context5.next = 9;
+                _context7.next = 9;
                 break;
 
               case 6:
-                _context5.prev = 6;
-                _context5.t0 = _context5["catch"](0);
-                console.log(_context5.t0);
+                _context7.prev = 6;
+                _context7.t0 = _context7["catch"](0);
+                console.log(_context7.t0);
 
               case 9:
               case "end":
-                return _context5.stop();
+                return _context7.stop();
             }
           }
-        }, _callee5, this, [[0, 6]]);
+        }, _callee7, this, [[0, 6]]);
       }));
 
       function deletemotorkonsumen(_x2) {
@@ -6462,32 +6729,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     getallkonsumen: function () {
       var _getallkonsumen = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
           while (1) {
-            switch (_context6.prev = _context6.next) {
+            switch (_context8.prev = _context8.next) {
               case 0:
-                _context6.prev = 0;
-                _context6.next = 3;
-                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_1__["default"].getallkonsumen();
+                _context8.prev = 0;
+                _context8.next = 3;
+                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_2__["default"].getallkonsumen();
 
               case 3:
-                this.konsumendata = _context6.sent.data;
+                this.konsumendata = _context8.sent.data;
                 console.log(this.konsumendata);
-                _context6.next = 10;
+                _context8.next = 10;
                 break;
 
               case 7:
-                _context6.prev = 7;
-                _context6.t0 = _context6["catch"](0);
-                console.log(_context6.t0);
+                _context8.prev = 7;
+                _context8.t0 = _context8["catch"](0);
+                console.log(_context8.t0);
 
               case 10:
               case "end":
-                return _context6.stop();
+                return _context8.stop();
             }
           }
-        }, _callee6, this, [[0, 7]]);
+        }, _callee8, this, [[0, 7]]);
       }));
 
       function getallkonsumen() {
@@ -6496,84 +6763,88 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return getallkonsumen;
     }(),
-    addkonsumen: function () {
-      var _addkonsumen = _asyncToGenerator(
+    addtransaksi: function () {
+      var _addtransaksi = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
         var payload;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
           while (1) {
-            switch (_context7.prev = _context7.next) {
+            switch (_context9.prev = _context9.next) {
               case 0:
-                _context7.prev = 0;
+                _context9.prev = 0;
                 payload = {
-                  Nama_Konsumen: this.Konsumen.Nama_Konsumen,
-                  Alamat_Konsumen: this.Konsumen.Alamat_Konsumen,
-                  Telepon_Konsumen: this.Konsumen.Telepon_Konsumen
+                  Id_Konsumen: this.Konsumen.Id_Konsumen,
+                  Tanggal_Transaksi: this.Transaksi.Tanggal_Transaksi,
+                  Jenis_Transaksi: this.Transaksi.Jenis_Transaksi,
+                  Subtotal: this.Transaksi.Subtotal,
+                  Diskon: this.Transaksi.Diskon,
+                  Total: this.Transaksi.Total,
+                  Status: '0'
                 };
-                _context7.next = 4;
-                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_1__["default"].addkonsumen(payload);
+                _context9.next = 4;
+                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_2__["default"].addkonsumen(payload);
 
               case 4:
                 this.getallkonsumen();
                 this.refresh();
-                _context7.next = 11;
+                _context9.next = 11;
                 break;
 
               case 8:
-                _context7.prev = 8;
-                _context7.t0 = _context7["catch"](0);
-                console.log(_context7.t0);
+                _context9.prev = 8;
+                _context9.t0 = _context9["catch"](0);
+                console.log(_context9.t0);
 
               case 11:
               case "end":
-                return _context7.stop();
+                return _context9.stop();
             }
           }
-        }, _callee7, this, [[0, 8]]);
+        }, _callee9, this, [[0, 8]]);
       }));
 
-      function addkonsumen() {
-        return _addkonsumen.apply(this, arguments);
+      function addtransaksi() {
+        return _addtransaksi.apply(this, arguments);
       }
 
-      return addkonsumen;
+      return addtransaksi;
     }(),
     updatekonsumen: function () {
       var _updatekonsumen = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8(id) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10(id) {
         var payload;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
           while (1) {
-            switch (_context8.prev = _context8.next) {
+            switch (_context10.prev = _context10.next) {
               case 0:
-                _context8.prev = 0;
+                _context10.prev = 0;
                 payload = {
                   Nama_Konsumen: this.Konsumen.Nama_Konsumen,
                   Alamat_Konsumen: this.Konsumen.Alamat_Konsumen,
                   Telepon_Konsumen: this.Konsumen.Telepon_Konsumen
                 };
-                _context8.next = 4;
-                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_1__["default"].updatekonsumen(payload, id);
+                _context10.next = 4;
+                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_2__["default"].updatekonsumen(payload, id);
 
               case 4:
                 this.getallkonsumen();
                 this.refresh();
-                _context8.next = 11;
+                _context10.next = 11;
                 break;
 
               case 8:
-                _context8.prev = 8;
-                _context8.t0 = _context8["catch"](0);
-                console.log(_context8.t0);
+                _context10.prev = 8;
+                _context10.t0 = _context10["catch"](0);
+                console.log(_context10.t0);
 
               case 11:
               case "end":
-                return _context8.stop();
+                return _context10.stop();
             }
           }
-        }, _callee8, this, [[0, 8]]);
+        }, _callee10, this, [[0, 8]]);
       }));
 
       function updatekonsumen(_x3) {
@@ -6585,31 +6856,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     deletekonsumen: function () {
       var _deletekonsumen = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9(id) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
           while (1) {
-            switch (_context9.prev = _context9.next) {
+            switch (_context11.prev = _context11.next) {
               case 0:
-                _context9.prev = 0;
-                _context9.next = 3;
-                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_1__["default"].deletekonsumen(id);
+                _context11.prev = 0;
+                _context11.next = 3;
+                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_2__["default"].deletekonsumen(id);
 
               case 3:
                 this.getallkonsumen();
-                _context9.next = 9;
+                _context11.next = 9;
                 break;
 
               case 6:
-                _context9.prev = 6;
-                _context9.t0 = _context9["catch"](0);
-                console.log(_context9.t0);
+                _context11.prev = 6;
+                _context11.t0 = _context11["catch"](0);
+                console.log(_context11.t0);
 
               case 9:
               case "end":
-                return _context9.stop();
+                return _context11.stop();
             }
           }
-        }, _callee9, this, [[0, 6]]);
+        }, _callee11, this, [[0, 6]]);
       }));
 
       function deletekonsumen(_x4) {
@@ -6633,18 +6904,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   computed: {
-    filteredkonsumen: function filteredkonsumen() {
+    filteredmotor: function filteredmotor() {
       var _this = this;
 
+      return this.motorcycle.filter(function (motor) {
+        return motor.Merk.match(_this.Cari_Motor);
+      });
+    },
+    filteredkonsumen: function filteredkonsumen() {
+      var _this2 = this;
+
       return this.konsumendata.filter(function (konsumen) {
-        return konsumen.Nama_Konsumen.toLowerCase().match(_this.Cari_Konsumen.toLowerCase());
+        return konsumen.Nama_Konsumen.toLowerCase().match(_this2.Cari_Konsumen.toLowerCase());
       });
     },
     filteredmotorkonsumen: function filteredmotorkonsumen() {
-      var _this2 = this;
+      var _this3 = this;
 
       return this.motorkonsumendata.filter(function (motorkonsumen) {
-        return motorkonsumen.Plat_Kendaraan.toLowerCase().match(_this2.Cari_Motor_Konsumen.toLowerCase());
+        return motorkonsumen.Plat_Kendaraan.toLowerCase().match(_this3.Cari_Motor_Konsumen.toLowerCase());
       });
     },
     nameErrors: function nameErrors() {
@@ -53871,6 +54149,32 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(konsumen.Telepon_Konsumen) + " ")]),
                     _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(konsumen.Telepon_Konsumen) + " ")]),
+                    _vm._v(" "),
+                    _vm.Transaksi.Status == 0
+                      ? _c("td", [
+                          _vm._v(
+                            "\n                                Belum Diproses\n                            "
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.Transaksi.Status == 1
+                      ? _c("td", [
+                          _vm._v(
+                            "\n                                Sedang Diproses\n                            "
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.Transaksi.Status == 2
+                      ? _c("td", [
+                          _vm._v(
+                            "\n                                Selesai\n                            "
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
                     _c("td", { staticClass: "text-center" }, [
                       _c(
                         "p",
@@ -54071,7 +54375,7 @@ var render = function() {
                   : _vm._e()
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "input-group" }, [
+              _c("div", { staticClass: "input-group mt-3" }, [
                 _vm._m(7),
                 _vm._v(" "),
                 _c(
@@ -54119,7 +54423,74 @@ var render = function() {
                           value: "Pilih Merk"
                         }
                       },
-                      [_vm._v("-- Nama Konsumen --")]
+                      [_vm._v("-- Alamat Konsumen --")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.konsumendata, function(konsumen) {
+                      return _c(
+                        "option",
+                        {
+                          key: konsumen["Id_Konsumen"],
+                          domProps: { value: konsumen.Id_Konsumen },
+                          on: { change: _vm.getSelectedIndex }
+                        },
+                        [_vm._v(_vm._s(konsumen.Alamat_Konsumen))]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(8),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Konsumen.Id_Konsumen,
+                        expression: "Konsumen.Id_Konsumen"
+                      }
+                    ],
+                    staticClass: "form-control mr-2",
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.Konsumen,
+                            "Id_Konsumen",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        },
+                        _vm.getSelectedIndex
+                      ]
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Merk"
+                        }
+                      },
+                      [_vm._v("-- Telepon Konsumen --")]
                     ),
                     _vm._v(" "),
                     _vm._l(_vm.konsumendata, function(konsumen) {
@@ -54149,7 +54520,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-3" }, [
-                _vm._m(8),
+                _vm._m(9),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -54197,7 +54568,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-3" }, [
-                _vm._m(9),
+                _vm._m(10),
                 _vm._v(" "),
                 _c(
                   "select",
@@ -54250,23 +54621,646 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(11),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.jenis,
+                        expression: "jenis"
+                      }
+                    ],
+                    staticClass: "form-control mr-2",
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.jenis = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Posisi"
+                        }
+                      },
+                      [_vm._v("Pilih Jenis Transaksi")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.Jenis, function(jenis, index) {
+                      return _c("option", { key: index }, [
+                        _vm._v(_vm._s(jenis.value))
+                      ])
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _vm.jenis == "Sparepart"
+                ? _c("div", { staticClass: "input-group mt-3" }, [
+                    _vm._m(12),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.Sparepart.Kode_Sparepart,
+                            expression: "Sparepart.Kode_Sparepart"
+                          }
+                        ],
+                        staticClass: "form-control mr-2",
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.Sparepart,
+                                "Kode_Sparepart",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            },
+                            _vm.getSelectedIndex
+                          ]
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              disabled: "disabled",
+                              selected: "selected",
+                              value: "Pilih "
+                            }
+                          },
+                          [_vm._v("-- Pilih Sparepart --")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.sparepart, function(spareparts) {
+                          return _c(
+                            "option",
+                            {
+                              key: spareparts["Kode_Sparepart"],
+                              domProps: { value: spareparts.Kode_Sparepart },
+                              on: { change: _vm.getSelectedIndex }
+                            },
+                            [_vm._v(_vm._s(spareparts.Nama_Sparepart))]
+                          )
+                        })
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _vm._m(13),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.Sparepart.Kode_Sparepart,
+                            expression: "Sparepart.Kode_Sparepart"
+                          }
+                        ],
+                        staticClass: "form-control mr-2",
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.Sparepart,
+                                "Kode_Sparepart",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            },
+                            _vm.getSelectedIndex
+                          ]
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              disabled: "disabled",
+                              selected: "selected",
+                              value: "Pilih "
+                            }
+                          },
+                          [_vm._v("-- Tipe Sparepart --")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.sparepart, function(spareparts) {
+                          return _c(
+                            "option",
+                            {
+                              key: spareparts["Kode_Sparepart"],
+                              attrs: { disabled: "" },
+                              domProps: { value: spareparts.Kode_Sparepart },
+                              on: { change: _vm.getSelectedIndex }
+                            },
+                            [_vm._v(_vm._s(spareparts.Tipe_Barang))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.jenis == "Sparepart"
+                ? _c("div", { staticClass: "input-group mt-3" }, [
+                    _vm._m(14),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.Sparepart.Kode_Sparepart,
+                            expression: "Sparepart.Kode_Sparepart"
+                          }
+                        ],
+                        staticClass: "form-control mr-2",
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.Sparepart,
+                                "Kode_Sparepart",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            },
+                            _vm.getSelectedIndex
+                          ]
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              disabled: "disabled",
+                              selected: "selected",
+                              value: "Pilih "
+                            }
+                          },
+                          [_vm._v("-- Jumlah Sparepart --")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.sparepart, function(spareparts) {
+                          return _c(
+                            "option",
+                            {
+                              key: spareparts["Kode_Sparepart"],
+                              attrs: { disabled: "" },
+                              domProps: { value: spareparts.Kode_Sparepart },
+                              on: { change: _vm.getSelectedIndex }
+                            },
+                            [_vm._v(_vm._s(spareparts.Jumlah_Sparepart))]
+                          )
+                        })
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _vm.jenis == "Sparepart"
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "input-group-prepend d-block",
+                            staticStyle: { width: "100px" }
+                          },
+                          [
+                            _c(
+                              "span",
+                              {
+                                staticClass: "input-group-text",
+                                attrs: { id: "basic-addon2", disabled: "" }
+                              },
+                              [_vm._v("Harga Jual")]
+                            )
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.Sparepart.Kode_Sparepart,
+                            expression: "Sparepart.Kode_Sparepart"
+                          }
+                        ],
+                        staticClass: "form-control mr-2",
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.Sparepart,
+                                "Kode_Sparepart",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            },
+                            _vm.getSelectedIndex
+                          ]
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              disabled: "disabled",
+                              selected: "selected",
+                              value: "Pilih "
+                            }
+                          },
+                          [_vm._v("-- Harga Jual --")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.sparepart, function(spareparts) {
+                          return _c(
+                            "option",
+                            {
+                              key: spareparts["Kode_Sparepart"],
+                              attrs: { disabled: "" },
+                              domProps: { value: spareparts.Kode_Sparepart },
+                              on: { change: _vm.getSelectedIndex }
+                            },
+                            [_vm._v(_vm._s(spareparts.Harga_Jual))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.jenis == "Sparepart"
+                ? _c("div", { staticClass: "input-group mt-3" }, [
+                    _vm._m(15),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Transaksi.Jumlah,
+                          expression: "Transaksi.Jumlah"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "number",
+                        placeholder: "Jumlah Sparepart Yang Ingin Dibeli",
+                        "aria-label": "Transaksi_Jumlah",
+                        "aria-describedby": "basic-addon2",
+                        id: "Transaksi_Jumlah",
+                        name: "Transaksi_Jumlah",
+                        required: ""
+                      },
+                      domProps: { value: _vm.Transaksi.Jumlah },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.Transaksi, "Jumlah", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.jenis == "Service"
+                ? _c("div", { staticClass: "input-group mt-3" }, [
+                    _vm._m(16),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.Jasaservice.Id_Jasa,
+                            expression: "Jasaservice.Id_Jasa"
+                          }
+                        ],
+                        staticClass: "form-control mr-2",
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.Jasaservice,
+                                "Id_Jasa",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            },
+                            _vm.getSelectedIndexJasa
+                          ]
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              disabled: "disabled",
+                              selected: "selected",
+                              value: "Pilih "
+                            }
+                          },
+                          [_vm._v("-- Pilih Jasa --")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.jasa, function(jasaS) {
+                          return _c(
+                            "option",
+                            {
+                              key: jasaS["Id_Jasa"],
+                              domProps: { value: jasaS.Id_Jasa },
+                              on: { change: _vm.getSelectedIndexJasa }
+                            },
+                            [_vm._v(_vm._s(jasaS.Nama_Jasa))]
+                          )
+                        })
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _vm._m(17),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.Jasaservice.Id_Jasa,
+                            expression: "Jasaservice.Id_Jasa"
+                          }
+                        ],
+                        staticClass: "form-control mr-2",
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.Jasaservice,
+                                "Id_Jasa",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            },
+                            _vm.getSelectedIndexJasa
+                          ]
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              disabled: "disabled",
+                              selected: "selected",
+                              value: "Pilih "
+                            }
+                          },
+                          [_vm._v("-- Pilih Jasa --")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.jasa, function(jasaS) {
+                          return _c(
+                            "option",
+                            {
+                              key: jasaS["Id_Jasa"],
+                              domProps: { value: jasaS.Id_Jasa },
+                              on: { change: _vm.getSelectedIndexJasa }
+                            },
+                            [_vm._v(_vm._s(jasaS.Harga_Jasa))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.jenis == "Service"
+                ? _c("div", { staticClass: "input-group mt-3" }, [
+                    _vm._m(18),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Transaksi.Subtotal,
+                          expression: "Transaksi.Subtotal"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Subtotal",
+                        "aria-label": "Transaksi_Subtotal",
+                        "aria-describedby": "basic-addon2",
+                        id: "Transaksi_Subtotal",
+                        name: "Transaksi_Subtotal",
+                        disabled: "",
+                        required: ""
+                      },
+                      domProps: { value: _vm.Transaksi.Subtotal },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.Transaksi,
+                            "Subtotal",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.jenis == "Service"
+                ? _c("div", { staticClass: "input-group mt-3" }, [
+                    _vm._m(19),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Transaksi.Diskon,
+                          expression: "Transaksi.Diskon"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Masukkan Diskon",
+                        "aria-label": "Transaksi_Diskon",
+                        "aria-describedby": "basic-addon2",
+                        id: "Transaksi_Diskon",
+                        name: "Transaksi_Diskon",
+                        required: ""
+                      },
+                      domProps: { value: _vm.Transaksi.Diskon },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.Transaksi, "Diskon", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.jenis == "Service"
+                ? _c("div", { staticClass: "input-group mt-3" }, [
+                    _vm._m(20),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.Transaksi.Total,
+                          expression: "Transaksi.Total"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Total",
+                        "aria-label": "Transaksi_Total",
+                        "aria-describedby": "basic-addon2",
+                        id: "Transaksi_Total",
+                        name: "Transaksi_Diskon",
+                        disabled: "",
+                        required: ""
+                      },
+                      domProps: { value: _vm.Transaksi.Total },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.Transaksi, "Total", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
               _c("div", { staticClass: "modal-footer mt-3" }, [
                 _c(
                   "button",
                   {
                     staticClass: "btn btn-success btn-lg w-100",
-                    attrs: {
-                      type: "submit",
-                      disabled: _vm.$v.Konsumen.$invalid,
-                      "data-dismiss": "modal"
-                    },
+                    attrs: { type: "submit", "data-dismiss": "modal" },
                     on: {
                       click: function($event) {
                         return _vm.addkonsumen()
                       }
                     }
                   },
-                  [_vm._v("Tambahkan Konsumen")]
+                  [_vm._v("Tambahkan Transaksi Penjualan")]
                 )
               ])
             ])
@@ -54427,6 +55421,25 @@ var staticRenderFns = [
         _c(
           "span",
           { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Alamat")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
           [_vm._v("Telepon")]
         )
       ]
@@ -54466,6 +55479,196 @@ var staticRenderFns = [
           "span",
           { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
           [_vm._v("Status")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Jenis")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Sparepart")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Tipe")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Jumlah")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Jumlah")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Jasa")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Harga")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Subtotal")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Diskon")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Total")]
         )
       ]
     )
@@ -77007,15 +78210,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************!*\
   !*** ./resources/js/components/layout/Penjualan.vue ***!
   \******************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Penjualan_vue_vue_type_template_id_588b3c7c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Penjualan.vue?vue&type=template&id=588b3c7c& */ "./resources/js/components/layout/Penjualan.vue?vue&type=template&id=588b3c7c&");
 /* harmony import */ var _Penjualan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Penjualan.vue?vue&type=script&lang=js& */ "./resources/js/components/layout/Penjualan.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Penjualan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Penjualan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -77045,7 +78247,7 @@ component.options.__file = "resources/js/components/layout/Penjualan.vue"
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/layout/Penjualan.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
