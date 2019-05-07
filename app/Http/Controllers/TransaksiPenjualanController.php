@@ -23,8 +23,10 @@ class TransaksiPenjualanController extends RestController
     public function index()
     {
         $penjualan=Transaksi_Penjualan::get();
-        $response=generateCollection($penjualan);
-        return sendResponse($response);
+        $response= $this->generateCollection($penjualan);
+        return $this->sendResponse($response);
+
+        
     }
 
     public function store(Request $request)
