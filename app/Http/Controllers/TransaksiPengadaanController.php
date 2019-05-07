@@ -34,13 +34,12 @@ class TransaksiPengadaanController extends RestController
             $pengadaan->Status_Pengadaan    = $request->get('Status_Pengadaan');
             
             $pengadaan->save();
-
+            if($request->has('detail'))
             $pengadaan = DB::transaction(function () use ($pengadaan,$detail) {
                 $pengadaan->detail_pengadaans()->createMany($detail);   
                 return $pengadaan;
             });
 
-            
 
             $response = $this->generateItem($pengadaan);
             return $this->sendResponse($response, 201);
