@@ -106,3 +106,10 @@ Route::delete('/transaksi_pengadaans/delete/{id}', 'TransaksiPengadaanController
 
 //Detail Pengadaan
 Route::get('/detail_pengadaans','DetailPengadaanController@index');
+
+//Penjualan
+Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
+Route::post('/transaksi_penjualans/store','TransaksiPenjualanController@store');
+// Route::patch('/transaksi_penjualans/update/{id}', 'TransaksiPenjualanController@update'); 
+Route::delete('/transaksi_penjualans/delete/{id}', 'TransaksiPenjualanController@destroy');
+// Route::get('/transaksi_penjualans/show/{id}', 'TransaksiPenjualanController@showbyCustomer');

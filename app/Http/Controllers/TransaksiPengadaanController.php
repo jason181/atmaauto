@@ -40,7 +40,6 @@ class TransaksiPengadaanController extends RestController
                 return $pengadaan;
             });
 
-
             $response = $this->generateItem($pengadaan);
             return $this->sendResponse($response, 201);
         } catch (\Exception $e) {
