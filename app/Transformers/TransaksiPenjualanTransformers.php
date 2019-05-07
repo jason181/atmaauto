@@ -11,11 +11,11 @@ class TransaksiPenjualanTransformers extends TransformerAbstract
      * @param Branch $branch
      */
 
-    // protected $defaultIncludes = [
-    //     // 'detail_jasa',
-    //     // 'detail_sparepart',
+    protected $defaultIncludes = [
+        'detail_jasa',
+        'detail_sparepart',
     //     'pegawai_on_duty'
-    // ];
+    ];
     public function transform(Transaksi_Penjualan $transaksi_penjualan)
     {
         return [
@@ -29,14 +29,14 @@ class TransaksiPenjualanTransformers extends TransformerAbstract
             'Status'            =>$transaksi_penjualan->Status
         ];
     }
-    // public function includeDetailJasa(Transaksi_Penjualan $transaksi_penjualan)
-    // {
-    //     return $this->collection($transaksi_penjualan->detail_jasas, new DetailJasaTransformers);
-    // }
-    // public function includeDetailSparepart(Transaksi_Penjualan $transaksi_penjualan)
-    // {
-    //     return $this->collection($transaksi_penjualan->detail_spareparts, new DetailSparepartTransformers);
-    // }
+    public function includeDetailJasa(Transaksi_Penjualan $transaksi_penjualan)
+    {
+        return $this->collection($transaksi_penjualan->detail_jasas, new DetailJasaTransformers);
+    }
+    public function includeDetailSparepart(Transaksi_Penjualan $transaksi_penjualan)
+    {
+        return $this->collection($transaksi_penjualan->detail_spareparts, new DetailSparepartTransformers);
+    }
     // public function includePegawaiOnDuty(Transaksi_Penjualan $transaksi_penjualan)
     // {
     //     return $this->collection($transaksi_penjualan->pegawai_on_duties, new Pegawai_On_Duty);
