@@ -27,7 +27,10 @@ class TransaksiPengadaanController extends RestController
     {
         try{
             date_default_timezone_set('Asia/Jakarta');
-            $detail = $request->get('Detail_Pengadaan');
+            // if($request->has('Detail_Pengadaan'))
+            // {
+                $detail = $request->get('Detail_Pengadaan');
+            // }
             $pengadaan = new Transaksi_Pengadaan;
             $pengadaan->Id_Supplier         = $request->get('Id_Supplier');
             $pengadaan->Tanggal_Pengadaan   = $request->get('Tanggal_Pengadaan').' '.date('H:i:s');
@@ -36,10 +39,13 @@ class TransaksiPengadaanController extends RestController
             
             $pengadaan->save();
 
-            $pengadaan = DB::transaction(function () use ($pengadaan,$detail) {
-                $pengadaan->detail_pengadaans()->createMany($detail);   
-                return $pengadaan;
-            });
+            if($request->has('Detail_Pengadaan'))
+            {
+                $pengadaan = DB::transaction(function () use ($pengadaan,$detail) {
+                    $pengadaan->detail_pengadaans()->createMany($detail);   
+                    return $pengadaan;
+                });
+            }
 
             $response = $this->generateItem($pengadaan);
             return $this->sendResponse($response, 201);
@@ -56,10 +62,10 @@ class TransaksiPengadaanController extends RestController
             $detail->Jumlah         = $request->get('Jumlah');
             $detail->Subtotal_Pengadaan         = $request->get('Subtotal_Pengadaan');
         }catch(\Exception $e)
-            {
-                return $this->sendIseResponse($e->getMessage());
-            }
+        {
+            return $this->sendIseResponse($e->getMessage());
         }
+    }
 
     public function destroy($id)
     {

@@ -398,6 +398,7 @@ export default {
                 console.log(payload);
                 await Controller.addpengadaan(payload)
                 this.getallpengadaan()
+                this.getalldetailpengadaan()
             } catch (err) {
                 console.log(err)
             }

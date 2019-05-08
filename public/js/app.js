@@ -5861,20 +5861,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
                 this.getallpengadaan();
-                _context5.next = 11;
+                this.getalldetailpengadaan();
+                _context5.next = 12;
                 break;
 
-              case 8:
-                _context5.prev = 8;
+              case 9:
+                _context5.prev = 9;
                 _context5.t0 = _context5["catch"](0);
                 console.log(_context5.t0);
 
-              case 11:
+              case 12:
               case "end":
                 return _context5.stop();
             }
           }
-        }, _callee5, this, [[0, 8]]);
+        }, _callee5, this, [[0, 9]]);
       }));
 
       function addpengadaan() {
