@@ -35,7 +35,7 @@ class Transaksi_Penjualan extends Model
 
     public function pegawai_on_duties()
     {
-        return $this->hasMany('App\Pegawai_On_Duty','Id_Duty');
+        return $this->hasMany('App\Pegawai_On_Duty','Id_Transaksi');
     }
 
     public function konsumens()
