@@ -25,12 +25,12 @@ class Transaksi_Penjualan extends Model
 
     public function detail_spareparts()
     {
-        return $this->hasMany('App\Detail_Sparepart','Id_Detail_Sparepart');
+        return $this->hasMany('App\Detail_Sparepart','Id_Transaksi');
     }
     
     public function detail_jasas()
     {
-        return $this->hasMany('App\Detail_Jasa','Id_Detail_Jasa');
+        return $this->hasMany('App\Detail_Jasa','Id_Transaksi');
     }
 
     public function pegawai_on_duties()

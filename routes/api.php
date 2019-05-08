@@ -113,3 +113,6 @@ Route::post('/transaksi_penjualans/store','TransaksiPenjualanController@store');
 // Route::patch('/transaksi_penjualans/update/{id}', 'TransaksiPenjualanController@update'); 
 Route::delete('/transaksi_penjualans/delete/{id}', 'TransaksiPenjualanController@destroy');
 // Route::get('/transaksi_penjualans/show/{id}', 'TransaksiPenjualanController@showbyCustomer');
+
+//Detail Penjualan
+Route::get('/detail_spareparts','DetailSparepartController@index');
