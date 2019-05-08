@@ -17,7 +17,7 @@ class SparepartController extends RestController
         $response=$this->generateCollection($sparepart);
         return $this->sendResponse($response,201);
     }
-
+    
     public function sorthargaasc()
     {
         $sparepart = Sparepart::orderBy('Harga_Jual')->get();

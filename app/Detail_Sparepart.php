@@ -24,7 +24,7 @@ class Detail_Sparepart extends Model
 
     public function spareparts()
     {
-        return $this->belongsTo('App\Sparepart','Id_Sparepart');
+        return $this->belongsTo('App\Sparepart','Kode_Sparepart');
     }
     
     public function transaksi_penjualan()

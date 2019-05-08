@@ -14,7 +14,7 @@ class TransaksiPenjualanTransformers extends TransformerAbstract
     protected $defaultIncludes = [
         'detail_jasa',
         'detail_sparepart',
-    //     'pegawai_on_duty'
+        'pegawai_on_duty'
     ];
     public function transform(Transaksi_Penjualan $transaksi_penjualan)
     {
@@ -38,9 +38,9 @@ class TransaksiPenjualanTransformers extends TransformerAbstract
     {
         return $this->collection($transaksi_penjualan->detail_spareparts, new DetailSparepartTransformers);
     }
-    // public function includePegawaiOnDuty(Transaksi_Penjualan $transaksi_penjualan)
-    // {
-    //     return $this->collection($transaksi_penjualan->pegawai_on_duties, new Pegawai_On_Duty);
-    // }
+    public function includePegawaiOnDuty(Transaksi_Penjualan $transaksi_penjualan)
+    {
+        return $this->collection($transaksi_penjualan->pegawai_on_duties, new PegawaiOnDutyTransformers);
+    }
 }
 ?>
