@@ -22,6 +22,7 @@ class TransaksiPengadaanController extends RestController
         $response=$this->generateCollection($pengadaan);
         return $this->sendResponse($response,201);
     }
+
     public function store(Request $request)
     {
         try{

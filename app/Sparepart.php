@@ -44,5 +44,10 @@ class Sparepart extends Model
     {
         return $this->belongsTo('App\Ruang','Id_Ruang');
     }
+
+    public function compatibilities()
+    {
+        return $this->hasMany('App\CompatibilitiesJason','Kode_Sparepart');
+    }
     
 }

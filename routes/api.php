@@ -109,6 +109,7 @@ Route::get('/detail_pengadaans','DetailPengadaanController@index');
 
 //Penjualan
 Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
+Route::get('/transaksi_penjualans/showByIdMotorKonsumen/{id}','TransaksiPenjualanController@showByIdMotorKonsumen');
 Route::post('/transaksi_penjualans/store','TransaksiPenjualanController@store');
 // Route::patch('/transaksi_penjualans/update/{id}', 'TransaksiPenjualanController@update'); 
 Route::delete('/transaksi_penjualans/delete/{id}', 'TransaksiPenjualanController@destroy');

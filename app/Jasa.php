@@ -19,6 +19,6 @@ class Jasa extends Model
 
     public function detail_jasas()
     {
-        return $this->hasMany('App\Detail_Jasa','Id_Detail_Jasa');
+        return $this->hasMany('App\Detail_Jasa','Id_Jasa');
     }
 }
