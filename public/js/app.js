@@ -5987,7 +5987,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _service_Motor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../service/Motor */ "./resources/js/service/Motor.js");
 /* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../httpController */ "./resources/js/httpController.js");
 /* harmony import */ var _validations_konsumen_validations__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../validations/konsumen_validations */ "./resources/js/validations/konsumen_validations.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -6485,6 +6488,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -6498,14 +6516,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var _temp;
 
     return {
+      jasa: [],
+      jasaData: [],
+      jasadata: [],
       detailpenjualandata: [],
+      detailjasadata: [],
       transaksidata: [],
       sparepart: [],
       sparepartdata: [],
       sparepartData: [],
       penjualandata: [],
       compabitility: [],
-      jasa: [],
       konsumendata: [],
       konsumen: [],
       motorkonsumendata: [],
@@ -6594,61 +6615,92 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         Harga_Satuan: '',
         Subtotal_Detail_Sparepart: 0,
         Jumlah: 0
-      }, _defineProperty(_temp, "Harga_Satuan", 0), _defineProperty(_temp, "Nama_Sparepart", ''), _temp)
+      }, _defineProperty(_temp, "Harga_Satuan", 0), _defineProperty(_temp, "Nama_Sparepart", ''), _temp),
+      tempJ: {
+        Id_Jasa_Montir: '',
+        Id_Transaksi: '',
+        Id_Jasa: '',
+        Subtotal_Detail_Jasa: 0,
+        Nama_Jasa: '',
+        Harga_Jasa: ''
+      },
+      Diskon: '',
+      tempTotal: '',
+      total: '',
+      Id_Detail_Modal: 0
     };
   },
   mounted: function mounted() {
+    this.getallkonsumen();
     this.getalldetailpenjualan();
+    this.getalldetailjasa();
     this.getallpenjualan();
     this.getalljasaservice();
-    this.getallkonsumen();
     this.getallmotorkonsumen();
     this.getallmotor();
     this.getallsparepart();
   },
   methods: {
+    getDiskon: function getDiskon() {
+      this.Diskon = this.Transaksi.Diskon;
+      this.tempTotal = this.total - this.Transaksi.Diskon;
+    },
     sparepartHandler: function sparepartHandler(sparepart) {
       var _this = this;
 
-      var object = sparepart[this.index]; // console.log(object);
-
+      var object = sparepart[this.index];
       this.temp.Kode_Sparepart = this.Sparepart.Kode_Sparepart;
       this.temp.Id_Transaksi = this.Transaksi.Id_Transaksi;
       var data = this.sparepart.find(function (obj) {
         return obj.Kode_Sparepart == _this.Sparepart.Kode_Sparepart;
-      }); // console.log(data)
-
+      });
+      console.log(data.Nama_Sparepart);
       this.temp.Id_Jasa_Montir = '1';
       this.temp.Nama_Sparepart = data.Nama_Sparepart;
       this.temp.Harga_Satuan = data.Harga_Jual;
       this.temp.Jumlah = this.jumlah;
-      this.temp.Subtotal_Detail_Sparepart = parseInt(data.Harga_Jual * this.temp.Jumlah); //data.Harga_Beli * this.Sparepart.Jumlah_Sparepart;
-      //this.Pengadaan.Total_Harga  = parseInt(this.temp.Subtotal_Pengadaan + this.Pengadaan.Total_Harga ,10);
-
+      this.temp.Subtotal_Detail_Sparepart = this.temp.Harga_Satuan * this.temp.Jumlah;
+      this.total = this.temp.Subtotal_Detail_Sparepart;
       this.sparepartdata.push(JSON.parse(JSON.stringify(this.temp)));
       this.sparepartData.push(this.Sparepart.Kode_Sparepart);
     },
-    jasaHandler: function jasaHandler(sparepart) {
+    jasaHandler: function jasaHandler(jasa) {
       var _this2 = this;
 
-      var object = sparepart[this.index]; // console.log(object);
-
-      this.temp.Kode_Sparepart = this.Sparepart.Kode_Sparepart;
-      this.temp.Id_Transaksi = this.Transaksi.Id_Transaksi;
-      var data = this.sparepart.find(function (obj) {
-        return obj.Kode_Sparepart == _this2.Sparepart.Kode_Sparepart;
-      }); // console.log(data)
-
-      this.temp.Id_Jasa_Montir = '1';
-      this.temp.Nama_Sparepart = data.Nama_Sparepart;
-      this.temp.Harga_Satuan = data.Harga_Jual;
-      this.temp.Jumlah = this.Sparepart.Jumlah_Sparepart;
-      this.temp.Subtotal_Detail_Sparepart = data.Harga_Jual * this.Sparepart.Jumlah_Sparepart;
-      ; //data.Harga_Beli * this.Sparepart.Jumlah_Sparepart;
-      //this.Pengadaan.Total_Harga  = parseInt(this.temp.Subtotal_Pengadaan + this.Pengadaan.Total_Harga ,10);
-
-      this.sparepartdata.push(JSON.parse(JSON.stringify(this.temp)));
-      this.sparepartData.push(this.Sparepart.Kode_Sparepart);
+      var object = jasa[this.index];
+      console.log(object);
+      this.tempJ.Id_Jasa = this.Jasaservice.Id_Jasa;
+      this.tempJ.Id_Transaksi = this.Transaksi.Id_Transaksi;
+      var data = this.jasa.find(function (obj) {
+        return obj.Id_Jasa == _this2.Jasaservice.Id_Jasa;
+      });
+      console.log(data.Nama_Jasa);
+      this.tempJ.Id_Jasa_Montir = '1';
+      this.tempJ.Nama_Jasa = data.Nama_Jasa;
+      this.tempJ.Harga_Jasa = data.Harga_Jasa;
+      this.tempJ.Subtotal_Detail_Jasa = data.Harga_Jasa;
+      this.jasadata.push(JSON.parse(JSON.stringify(this.tempJ)));
+      this.jasaData.push(this.Jasaservice.Id_Jasa);
+    },
+    deleteListSparepart: function deleteListSparepart(id) {
+      var filter = this.sparepartdata.filter(function (obj) {
+        return obj.Kode_Sparepart !== id;
+      });
+      this.sparepartdata = filter;
+      var filter2 = this.sparepartData.filter(function (obj) {
+        return obj !== id;
+      });
+      this.sparepartData = filter2;
+    },
+    deleteListJasa: function deleteListJasa(id) {
+      var filter = this.jasa.filter(function (obj) {
+        return obj.Id_Jasa !== id;
+      });
+      this.jasa = filter;
+      var filter2 = this.jasaData.filter(function (obj) {
+        return obj !== id;
+      });
+      this.jasaData = filter2;
     },
     getalldetailpenjualan: function () {
       var _getalldetailpenjualan = _asyncToGenerator(
@@ -6687,8 +6739,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return getalldetailpenjualan;
     }(),
-    getmotorkonsumen: function () {
-      var _getmotorkonsumen = _asyncToGenerator(
+    getalldetailjasa: function () {
+      var _getalldetailjasa = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
@@ -6697,11 +6749,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getmotorKonsumen();
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getalldetailjasa();
 
               case 3:
-                this.sparepartdata = _context2.sent.data;
-                console.log(this.sparepartdata);
+                this.detailjasadata = _context2.sent.data;
+                console.log(this.detailjasadata);
                 _context2.next = 10;
                 break;
 
@@ -6718,14 +6770,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee2, this, [[0, 7]]);
       }));
 
-      function getmotorkonsumen() {
-        return _getmotorkonsumen.apply(this, arguments);
+      function getalldetailjasa() {
+        return _getalldetailjasa.apply(this, arguments);
       }
 
-      return getmotorkonsumen;
+      return getalldetailjasa;
     }(),
-    getallpenjualan: function () {
-      var _getallpenjualan = _asyncToGenerator(
+    getmotorkonsumen: function () {
+      var _getmotorkonsumen = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
@@ -6734,11 +6786,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getallpenjualan();
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getmotorKonsumen();
 
               case 3:
-                this.penjualandata = _context3.sent.data;
-                console.log(this.penjualandata);
+                this.sparepartdata = _context3.sent.data;
+                console.log(this.sparepartdata);
                 _context3.next = 10;
                 break;
 
@@ -6755,14 +6807,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee3, this, [[0, 7]]);
       }));
 
-      function getallpenjualan() {
-        return _getallpenjualan.apply(this, arguments);
+      function getmotorkonsumen() {
+        return _getmotorkonsumen.apply(this, arguments);
       }
 
-      return getallpenjualan;
+      return getmotorkonsumen;
     }(),
-    getalljasaservice: function () {
-      var _getalljasaservice = _asyncToGenerator(
+    getallpenjualan: function () {
+      var _getallpenjualan = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
@@ -6771,11 +6823,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return _httpController__WEBPACK_IMPORTED_MODULE_6__["default"].getalljasaservice();
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getallpenjualan();
 
               case 3:
-                this.jasa = _context4.sent.data;
-                console.log(this.jasa);
+                this.penjualandata = _context4.sent.data;
+                console.log(this.penjualandata);
                 _context4.next = 10;
                 break;
 
@@ -6792,14 +6844,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee4, this, [[0, 7]]);
       }));
 
-      function getalljasaservice() {
-        return _getalljasaservice.apply(this, arguments);
+      function getallpenjualan() {
+        return _getallpenjualan.apply(this, arguments);
       }
 
-      return getalljasaservice;
+      return getallpenjualan;
     }(),
-    getallsparepart: function () {
-      var _getallsparepart = _asyncToGenerator(
+    getalljasaservice: function () {
+      var _getalljasaservice = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
@@ -6808,11 +6860,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].getallsparepart();
+                return _httpController__WEBPACK_IMPORTED_MODULE_6__["default"].getalljasaservice();
 
               case 3:
-                this.sparepart = _context5.sent.data;
-                console.log(this.sparepart);
+                this.jasa = _context5.sent.data;
+                console.log(this.jasa);
                 _context5.next = 10;
                 break;
 
@@ -6827,6 +6879,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             }
           }
         }, _callee5, this, [[0, 7]]);
+      }));
+
+      function getalljasaservice() {
+        return _getalljasaservice.apply(this, arguments);
+      }
+
+      return getalljasaservice;
+    }(),
+    getallsparepart: function () {
+      var _getallsparepart = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.prev = 0;
+                _context6.next = 3;
+                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].getallsparepart();
+
+              case 3:
+                this.sparepart = _context6.sent.data;
+                console.log(this.sparepart);
+                _context6.next = 10;
+                break;
+
+              case 7:
+                _context6.prev = 7;
+                _context6.t0 = _context6["catch"](0);
+                console.log(_context6.t0);
+
+              case 10:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, this, [[0, 7]]);
       }));
 
       function getallsparepart() {
@@ -6857,43 +6946,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getallmotor: function () {
       var _getallmotor = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
-          while (1) {
-            switch (_context6.prev = _context6.next) {
-              case 0:
-                _context6.prev = 0;
-                _context6.next = 3;
-                return _service_Motor__WEBPACK_IMPORTED_MODULE_5__["default"].getallmotor();
-
-              case 3:
-                this.motorcycle = _context6.sent.data;
-                console.log(this.motorcycle);
-                _context6.next = 10;
-                break;
-
-              case 7:
-                _context6.prev = 7;
-                _context6.t0 = _context6["catch"](0);
-                console.log(_context6.t0);
-
-              case 10:
-              case "end":
-                return _context6.stop();
-            }
-          }
-        }, _callee6, this, [[0, 7]]);
-      }));
-
-      function getallmotor() {
-        return _getallmotor.apply(this, arguments);
-      }
-
-      return getallmotor;
-    }(),
-    getallmotorkonsumen: function () {
-      var _getallmotorkonsumen = _asyncToGenerator(
-      /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
           while (1) {
@@ -6901,11 +6953,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_4__["default"].getallmotorkonsumen();
+                return _service_Motor__WEBPACK_IMPORTED_MODULE_5__["default"].getallmotor();
 
               case 3:
-                this.motorkonsumendata = _context7.sent.data;
-                console.log(this.motorkonsumendata);
+                this.motorcycle = _context7.sent.data;
+                console.log(this.motorcycle);
                 _context7.next = 10;
                 break;
 
@@ -6922,6 +6974,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee7, this, [[0, 7]]);
       }));
 
+      function getallmotor() {
+        return _getallmotor.apply(this, arguments);
+      }
+
+      return getallmotor;
+    }(),
+    getallmotorkonsumen: function () {
+      var _getallmotorkonsumen = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                _context8.prev = 0;
+                _context8.next = 3;
+                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_4__["default"].getallmotorkonsumen();
+
+              case 3:
+                this.motorkonsumendata = _context8.sent.data;
+                console.log(this.motorkonsumendata);
+                _context8.next = 10;
+                break;
+
+              case 7:
+                _context8.prev = 7;
+                _context8.t0 = _context8["catch"](0);
+                console.log(_context8.t0);
+
+              case 10:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, this, [[0, 7]]);
+      }));
+
       function getallmotorkonsumen() {
         return _getallmotorkonsumen.apply(this, arguments);
       }
@@ -6931,52 +7020,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     addmotorkonsumen: function () {
       var _addmotorkonsumen = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
-        var payload;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
-          while (1) {
-            switch (_context8.prev = _context8.next) {
-              case 0:
-                _context8.prev = 0;
-                payload = {
-                  Id_Motor_Konsumen: this.Motor_Konsumen.Id_Motor_Konsumen,
-                  Id_Konsumen: this.Konsumen.Id_Konsumen,
-                  Nama_Konsumen: this.Konsumen.Nama_Konsumen,
-                  Id_Motor: this.Motor.Id_Motor,
-                  Plat_Kendaraan: this.Motor_Konsumen.Plat_Kendaraan
-                };
-                _context8.next = 4;
-                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_4__["default"].addmotorkonsumen(payload);
-
-              case 4:
-                this.getallmotorkonsumen();
-                this.refreshMotorKonsumen();
-                _context8.next = 11;
-                break;
-
-              case 8:
-                _context8.prev = 8;
-                _context8.t0 = _context8["catch"](0);
-                console.log(_context8.t0);
-
-              case 11:
-              case "end":
-                return _context8.stop();
-            }
-          }
-        }, _callee8, this, [[0, 8]]);
-      }));
-
-      function addmotorkonsumen() {
-        return _addmotorkonsumen.apply(this, arguments);
-      }
-
-      return addmotorkonsumen;
-    }(),
-    updatemotorkonsumen: function () {
-      var _updatemotorkonsumen = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9(id) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
         var payload;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
           while (1) {
@@ -6991,7 +7035,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   Plat_Kendaraan: this.Motor_Konsumen.Plat_Kendaraan
                 };
                 _context9.next = 4;
-                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_4__["default"].updatemotorkonsumen(payload, id);
+                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_4__["default"].addmotorkonsumen(payload);
 
               case 4:
                 this.getallmotorkonsumen();
@@ -7012,6 +7056,51 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee9, this, [[0, 8]]);
       }));
 
+      function addmotorkonsumen() {
+        return _addmotorkonsumen.apply(this, arguments);
+      }
+
+      return addmotorkonsumen;
+    }(),
+    updatemotorkonsumen: function () {
+      var _updatemotorkonsumen = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10(id) {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
+          while (1) {
+            switch (_context10.prev = _context10.next) {
+              case 0:
+                _context10.prev = 0;
+                payload = {
+                  Id_Motor_Konsumen: this.Motor_Konsumen.Id_Motor_Konsumen,
+                  Id_Konsumen: this.Konsumen.Id_Konsumen,
+                  Nama_Konsumen: this.Konsumen.Nama_Konsumen,
+                  Id_Motor: this.Motor.Id_Motor,
+                  Plat_Kendaraan: this.Motor_Konsumen.Plat_Kendaraan
+                };
+                _context10.next = 4;
+                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_4__["default"].updatemotorkonsumen(payload, id);
+
+              case 4:
+                this.getallmotorkonsumen();
+                this.refreshMotorKonsumen();
+                _context10.next = 11;
+                break;
+
+              case 8:
+                _context10.prev = 8;
+                _context10.t0 = _context10["catch"](0);
+                console.log(_context10.t0);
+
+              case 11:
+              case "end":
+                return _context10.stop();
+            }
+          }
+        }, _callee10, this, [[0, 8]]);
+      }));
+
       function updatemotorkonsumen(_x) {
         return _updatemotorkonsumen.apply(this, arguments);
       }
@@ -7021,31 +7110,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     deletemotorkonsumen: function () {
       var _deletemotorkonsumen = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10(id) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
           while (1) {
-            switch (_context10.prev = _context10.next) {
+            switch (_context11.prev = _context11.next) {
               case 0:
-                _context10.prev = 0;
-                _context10.next = 3;
+                _context11.prev = 0;
+                _context11.next = 3;
                 return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_4__["default"].deletemotorkonsumen(id);
 
               case 3:
                 this.getallmotorkonsumen();
-                _context10.next = 9;
+                _context11.next = 9;
                 break;
 
               case 6:
-                _context10.prev = 6;
-                _context10.t0 = _context10["catch"](0);
-                console.log(_context10.t0);
+                _context11.prev = 6;
+                _context11.t0 = _context11["catch"](0);
+                console.log(_context11.t0);
 
               case 9:
               case "end":
-                return _context10.stop();
+                return _context11.stop();
             }
           }
-        }, _callee10, this, [[0, 6]]);
+        }, _callee11, this, [[0, 6]]);
       }));
 
       function deletemotorkonsumen(_x2) {
@@ -7061,66 +7150,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getallkonsumen: function () {
       var _getallkonsumen = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
-          while (1) {
-            switch (_context11.prev = _context11.next) {
-              case 0:
-                _context11.prev = 0;
-                _context11.next = 3;
-                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_3__["default"].getallkonsumen();
-
-              case 3:
-                this.konsumendata = _context11.sent.data;
-                console.log(this.konsumendata);
-                _context11.next = 10;
-                break;
-
-              case 7:
-                _context11.prev = 7;
-                _context11.t0 = _context11["catch"](0);
-                console.log(_context11.t0);
-
-              case 10:
-              case "end":
-                return _context11.stop();
-            }
-          }
-        }, _callee11, this, [[0, 7]]);
-      }));
-
-      function getallkonsumen() {
-        return _getallkonsumen.apply(this, arguments);
-      }
-
-      return getallkonsumen;
-    }(),
-    addpenjualan: function () {
-      var _addpenjualan = _asyncToGenerator(
-      /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12() {
-        var payload;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context12) {
           while (1) {
             switch (_context12.prev = _context12.next) {
               case 0:
                 _context12.prev = 0;
-                payload = {
-                  Id_Konsumen: this.Konsumen.Id_Konsumen,
-                  Tanggal_Transaksi: this.Transaksi.Tanggal_Transaksi,
-                  Jenis_Transaksi: this.jenis,
-                  Subtotal: this.temp.Subtotal_Detail_Sparepart,
-                  Diskon: this.Transaksi.Diskon,
-                  Total: parseInt(this.Subtotal - this.Diskon),
-                  Status: '0',
-                  Detail_Sparepart: this.sparepartdata
-                };
-                _context12.next = 4;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].addpenjualan(payload);
+                _context12.next = 3;
+                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_3__["default"].getallkonsumen();
 
-              case 4:
-                this.getallpenjualan(); //this.refresh()
-
+              case 3:
+                this.konsumendata = _context12.sent.data;
+                console.log(this.konsumendata);
                 _context12.next = 10;
                 break;
 
@@ -7137,6 +7178,55 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee12, this, [[0, 7]]);
       }));
 
+      function getallkonsumen() {
+        return _getallkonsumen.apply(this, arguments);
+      }
+
+      return getallkonsumen;
+    }(),
+    addpenjualan: function () {
+      var _addpenjualan = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context13) {
+          while (1) {
+            switch (_context13.prev = _context13.next) {
+              case 0:
+                _context13.prev = 0;
+                payload = {
+                  Id_Konsumen: this.Konsumen.Id_Konsumen,
+                  Tanggal_Transaksi: this.Transaksi.Tanggal_Transaksi,
+                  Jenis_Transaksi: this.jenis,
+                  Subtotal: this.temp.Subtotal_Detail_Sparepart + this.tempJ.Subtotal_Detail_Jasa,
+                  Diskon: this.Transaksi.Diskon,
+                  Total: this.tempTotal,
+                  Status: '0',
+                  Detail_Sparepart: this.sparepartdata,
+                  Detail_Jasa: this.jasadata
+                };
+                _context13.next = 4;
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].addpenjualan(payload);
+
+              case 4:
+                this.getallpenjualan(); //this.refresh()
+
+                _context13.next = 10;
+                break;
+
+              case 7:
+                _context13.prev = 7;
+                _context13.t0 = _context13["catch"](0);
+                console.log(_context13.t0);
+
+              case 10:
+              case "end":
+                return _context13.stop();
+            }
+          }
+        }, _callee13, this, [[0, 7]]);
+      }));
+
       function addpenjualan() {
         return _addpenjualan.apply(this, arguments);
       }
@@ -7146,38 +7236,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     updatekonsumen: function () {
       var _updatekonsumen = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13(id) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee14(id) {
         var payload;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context13) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee14$(_context14) {
           while (1) {
-            switch (_context13.prev = _context13.next) {
+            switch (_context14.prev = _context14.next) {
               case 0:
-                _context13.prev = 0;
+                _context14.prev = 0;
                 payload = {
                   Nama_Konsumen: this.Konsumen.Nama_Konsumen,
                   Alamat_Konsumen: this.Konsumen.Alamat_Konsumen,
                   Telepon_Konsumen: this.Konsumen.Telepon_Konsumen
                 };
-                _context13.next = 4;
+                _context14.next = 4;
                 return _service_Konsumen__WEBPACK_IMPORTED_MODULE_3__["default"].updatekonsumen(payload, id);
 
               case 4:
                 this.getallkonsumen();
                 this.refresh();
-                _context13.next = 11;
+                _context14.next = 11;
                 break;
 
               case 8:
-                _context13.prev = 8;
-                _context13.t0 = _context13["catch"](0);
-                console.log(_context13.t0);
+                _context14.prev = 8;
+                _context14.t0 = _context14["catch"](0);
+                console.log(_context14.t0);
 
               case 11:
               case "end":
-                return _context13.stop();
+                return _context14.stop();
             }
           }
-        }, _callee13, this, [[0, 8]]);
+        }, _callee14, this, [[0, 8]]);
       }));
 
       function updatekonsumen(_x3) {
@@ -7189,31 +7279,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     deletekonsumen: function () {
       var _deletekonsumen = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee14(id) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee14$(_context14) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee15(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee15$(_context15) {
           while (1) {
-            switch (_context14.prev = _context14.next) {
+            switch (_context15.prev = _context15.next) {
               case 0:
-                _context14.prev = 0;
-                _context14.next = 3;
+                _context15.prev = 0;
+                _context15.next = 3;
                 return _service_Konsumen__WEBPACK_IMPORTED_MODULE_3__["default"].deletekonsumen(id);
 
               case 3:
                 this.getallkonsumen();
-                _context14.next = 9;
+                _context15.next = 9;
                 break;
 
               case 6:
-                _context14.prev = 6;
-                _context14.t0 = _context14["catch"](0);
-                console.log(_context14.t0);
+                _context15.prev = 6;
+                _context15.t0 = _context15["catch"](0);
+                console.log(_context15.t0);
 
               case 9:
               case "end":
-                return _context14.stop();
+                return _context15.stop();
             }
           }
-        }, _callee14, this, [[0, 6]]);
+        }, _callee15, this, [[0, 6]]);
       }));
 
       function deletekonsumen(_x4) {
@@ -7226,7 +7316,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.Konsumen = konsumen;
     },
     detailhandler: function detailhandler(transaksi) {
-      this.Id_Detail_Modal = transaksi.Id_Penjualan;
+      this.Id_Detail_Modal = transaksi.Id_Transaksi;
     },
     refresh: function refresh() {
       this.Konsumen.Nama_Konsumen = '';
@@ -7238,7 +7328,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.Motor.Id_Motor = -1;
     }
   },
-  computed: {
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_8__["mapGetters"])({
+    Id_Pegawai: 'LoggedUser/id'
+  }), {
     filteredmotor: function filteredmotor() {
       var _this4 = this;
 
@@ -7271,7 +7363,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this8 = this;
 
       return this.detailpenjualandata.filter(function (detailpenjualan) {
-        return detailpenjualan.Id_Penjualan == _this8.Id_Detail_Modal;
+        return detailpenjualan.Id_Transaksi == _this8.Id_Detail_Modal;
       });
     },
     nameErrors: function nameErrors() {
@@ -7307,7 +7399,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       !this.$v.Motor_Konsumen.Plat_Kendaraan.required && errors.push('Plat is required');
       return errors;
     }
-  }
+  })
 });
 
 /***/ }),
@@ -54419,259 +54511,256 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "container mt-3", staticStyle: { "max-width": "800px" } },
-      [
-        _c("div", { staticClass: "row mb-2" }, [
-          _c("div", { staticClass: "col-sm-2" }, [
+    _c("div", { staticClass: "container-fluid mt-3" }, [
+      _c("div", { staticClass: "row mb-2" }, [
+        _c("div", { staticClass: "col-sm-2" }, [
+          _c("div", { staticClass: "col-sm-7 p-0" }, [
             _c(
               "button",
               {
-                staticClass: "btn btn-success float-left mb-2 btn-block",
+                staticClass: "btn btn-success mb-2 btn-block",
                 attrs: {
-                  "data-title": "Tambah_Konsumen",
+                  "data-title": "Tambah_Transaksi",
                   "data-toggle": "modal",
-                  "data-target": "#Tambah_Konsumen"
+                  "data-target": "#Tambah_Transaksi"
                 },
                 on: {
                   click: function($event) {
-                    _vm.getallkonsumen(), _vm.refresh()
+                    _vm.getallpenjualan(), _vm.refresh()
                   }
                 }
               },
               [
                 _c("i", { staticClass: "fas fa-plus mr-2" }),
-                _vm._v("Tambah\n                    ")
+                _vm._v("Tambah\n                        ")
               ]
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-sm-6" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-4" }, [
-            _c("div", { staticClass: "input-group" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.Cari_Transaksi,
-                    expression: "Cari_Transaksi"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "search", placeholder: "Cari Transaksi" },
-                domProps: { value: _vm.Cari_Transaksi },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.Cari_Transaksi = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm._m(3)
-            ])
-          ])
+          _c("div", { staticClass: "col-sm-5" })
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "table-responsive",
-            staticStyle: { "max-width": "800px", margin: "auto" }
-          },
-          [
-            _c("table", { staticClass: "table table-striped table-hover" }, [
-              _vm._m(4),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.filteredtransaksi, function(transaksi) {
-                  return _c("tr", { key: transaksi["Id_Transaksi"] }, [
-                    _c("td", [_vm._v(_vm._s(transaksi.Id_Transaksi) + " ")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(transaksi.Id_Konsumen) + " ")]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _vm._v(_vm._s(transaksi.Tanggal_Transaksi) + " ")
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(transaksi.Jenis_Transaksi) + " ")]),
-                    _vm._v(" "),
-                    transaksi.Status == 0
-                      ? _c("td", [
-                          _vm._v(
-                            "\n                                Belum Diproses\n                            "
-                          )
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    transaksi.Status == 1
-                      ? _c("td", [
-                          _vm._v(
-                            "\n                                Sedang Diproses\n                            "
-                          )
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    transaksi.Status == 2
-                      ? _c("td", [
-                          _vm._v(
-                            "\n                                Selesai\n                            "
-                          )
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "text-center" }, [
-                      _c(
-                        "p",
-                        {
-                          attrs: {
-                            "data-placement": "top",
-                            "data-toggle": "tooltip",
-                            title: "Detail"
-                          }
-                        },
-                        [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-primary",
-                              attrs: {
-                                "data-title": "Detail_Penjualan",
-                                "data-toggle": "modal",
-                                "data-target": "#Detail_Penjualan"
-                              },
-                              on: {
-                                click: function($event) {
-                                  return _vm.detailhandler(transaksi)
-                                }
-                              }
+        _c("div", { staticClass: "col-sm-7" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-3" }, [
+          _c("div", { staticClass: "input-group" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.Cari_Transaksi,
+                  expression: "Cari_Transaksi"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "search", placeholder: "Cari Transaksi" },
+              domProps: { value: _vm.Cari_Transaksi },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.Cari_Transaksi = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(3)
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "table-responsive", staticStyle: { margin: "auto" } },
+        [
+          _c("table", { staticClass: "table table-striped table-hover" }, [
+            _vm._m(4),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.filteredtransaksi, function(transaksi) {
+                return _c("tr", { key: transaksi["Id_Transaksi"] }, [
+                  _c("td", [_vm._v(_vm._s(transaksi.Id_Transaksi))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(transaksi.Id_Konsumen) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(transaksi.Tanggal_Transaksi) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(transaksi.Jenis_Transaksi) + " ")]),
+                  _vm._v(" "),
+                  transaksi.Status == 0
+                    ? _c("td", [
+                        _vm._v(
+                          "\n                                Belum Diproses\n                            "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  transaksi.Status == 1
+                    ? _c("td", [
+                        _vm._v(
+                          "\n                                Sedang Diproses\n                            "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  transaksi.Status == 2
+                    ? _c("td", [
+                        _vm._v(
+                          "\n                                Selesai\n                            "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(transaksi.Total) + " ")]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "p",
+                      {
+                        attrs: {
+                          "data-placement": "top",
+                          "data-toggle": "tooltip",
+                          title: "Detail"
+                        }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: {
+                              "data-title": "Detail_Penjualan",
+                              "data-toggle": "modal",
+                              "data-target": "#Detail_Penjualan"
                             },
-                            [_c("i", { staticClass: "fas fa-list-ul" })]
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "text-center" }, [
-                      _c(
-                        "p",
-                        {
-                          attrs: {
-                            "data-placement": "top",
-                            "data-toggle": "tooltip",
-                            title: "Tambah"
-                          }
-                        },
-                        [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-success",
-                              attrs: {
-                                "data-title": "Tambah_Motor_Konsumen",
-                                "data-toggle": "modal",
-                                "data-target": "#Tambah_Motor_Konsumen"
-                              },
-                              on: {
-                                click: function($event) {
-                                  return _vm.datakonsumenhandler(_vm.konsumen)
-                                }
+                            on: {
+                              click: function($event) {
+                                return _vm.detailhandler(transaksi)
                               }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-list-ul" })]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "p",
+                      {
+                        attrs: {
+                          "data-placement": "top",
+                          "data-toggle": "tooltip",
+                          title: "Tambah"
+                        }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success",
+                            attrs: {
+                              "data-title": "Tambah_Motor_Konsumen",
+                              "data-toggle": "modal",
+                              "data-target": "#Tambah_Motor_Konsumen"
                             },
-                            [_c("i", { staticClass: "far fa-file-pdf" })]
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "text-center" }, [
-                      _c(
-                        "p",
-                        {
-                          attrs: {
-                            "data-placement": "top",
-                            "data-toggle": "tooltip",
-                            title: "Edit"
-                          }
-                        },
-                        [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-primary",
-                              attrs: {
-                                "data-title": "Edit_Konsumen",
-                                "data-toggle": "modal",
-                                "data-target": "#Edit_Konsumen"
-                              },
-                              on: {
-                                click: function($event) {
-                                  return _vm.datakonsumenhandler(_vm.konsumen)
-                                }
+                            on: {
+                              click: function($event) {
+                                return _vm.datakonsumenhandler(_vm.konsumen)
                               }
+                            }
+                          },
+                          [_c("i", { staticClass: "far fa-file-pdf" })]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "p",
+                      {
+                        attrs: {
+                          "data-placement": "top",
+                          "data-toggle": "tooltip",
+                          title: "Edit"
+                        }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: {
+                              "data-title": "Edit_Konsumen",
+                              "data-toggle": "modal",
+                              "data-target": "#Edit_Konsumen"
                             },
-                            [_c("i", { staticClass: "fas fa-edit" })]
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "text-center" }, [
-                      _c(
-                        "p",
-                        {
-                          attrs: {
-                            "data-placement": "top",
-                            "data-toggle": "tooltip",
-                            title: "Delete"
-                          }
-                        },
-                        [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-danger",
-                              attrs: {
-                                "data-title": "Delete_Konsumen",
-                                "data-toggle": "modal",
-                                "data-target": "#Delete_Konsumen"
-                              },
-                              on: {
-                                click: function($event) {
-                                  return _vm.datakonsumenhandler(_vm.konsumen)
-                                }
+                            on: {
+                              click: function($event) {
+                                return _vm.datakonsumenhandler(_vm.konsumen)
                               }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-edit" })]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "p",
+                      {
+                        attrs: {
+                          "data-placement": "top",
+                          "data-toggle": "tooltip",
+                          title: "Delete"
+                        }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            attrs: {
+                              "data-title": "Delete_Konsumen",
+                              "data-toggle": "modal",
+                              "data-target": "#Delete_Konsumen"
                             },
-                            [_c("i", { staticClass: "fas fa-trash-alt" })]
-                          )
-                        ]
-                      )
-                    ])
+                            on: {
+                              click: function($event) {
+                                return _vm.datakonsumenhandler(_vm.konsumen)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-trash-alt" })]
+                        )
+                      ]
+                    )
                   ])
-                }),
-                0
-              )
-            ])
-          ]
-        )
-      ]
-    ),
+                ])
+              }),
+              0
+            )
+          ])
+        ]
+      )
+    ]),
     _vm._v(" "),
     _c(
       "div",
       {
         staticClass: "modal fade",
         attrs: {
-          id: "Tambah_Konsumen",
+          id: "Tambah_Transaksi",
           tabindex: "-1",
           role: "dialog",
-          "aria-labelledby": "Tambah_Konsumen",
+          "aria-labelledby": "Tambah_Transaksi",
           "aria-hidden": "true"
         }
       },
@@ -55368,63 +55457,65 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _c("div", { staticClass: "input-group mt-3 w-400" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "col-12 mr-2" },
-                    _vm._l(_vm.sparepartdata, function(spareparts) {
-                      return _c(
+              _vm.jenis == "SP"
+                ? _c("div", { staticClass: "input-group mt-3 w-400" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c(
                         "div",
-                        {
-                          key: spareparts["Kode_Sparepart"],
-                          staticClass: "list-group mr-2"
-                        },
-                        [
-                          _c(
-                            "a",
+                        { staticClass: "col-12 mr-2" },
+                        _vm._l(_vm.sparepartdata, function(spareparts) {
+                          return _c(
+                            "div",
                             {
-                              staticClass:
-                                "list-group-item list-group-item-action list-group-item-success",
-                              attrs: { href: "#" }
+                              key: spareparts["Kode_Sparepart"],
+                              staticClass: "list-group mr-2"
                             },
                             [
-                              _vm._v(
-                                "\n                                            " +
-                                  _vm._s(
-                                    spareparts.Kode_Sparepart +
-                                      "-" +
-                                      spareparts.Nama_Sparepart
-                                  ) +
-                                  "          \n                                            "
-                              ),
                               _c(
-                                "button",
+                                "a",
                                 {
-                                  staticClass: "btn btn-danger",
-                                  staticStyle: { "margin-left": "200px" },
-                                  attrs: { type: "submit" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.deleteList(
-                                        spareparts.Kode_Sparepart
-                                      )
-                                    }
-                                  }
+                                  staticClass:
+                                    "list-group-item list-group-item-action list-group-item-success",
+                                  attrs: { href: "#" }
                                 },
-                                [_vm._v("Delete")]
-                              ),
-                              _vm._v(" "),
-                              _c("br")
+                                [
+                                  _vm._v(
+                                    "\n                                            " +
+                                      _vm._s(
+                                        spareparts.Kode_Sparepart +
+                                          "-" +
+                                          spareparts.Nama_Sparepart
+                                      ) +
+                                      "          \n                                            "
+                                  ),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger",
+                                      staticStyle: { "margin-left": "200px" },
+                                      attrs: { type: "submit" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.deleteListSparepart(
+                                            spareparts.Kode_Sparepart
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Delete")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("br")
+                                ]
+                              )
                             ]
                           )
-                        ]
+                        }),
+                        0
                       )
-                    }),
-                    0
-                  )
-                ])
-              ]),
+                    ])
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _vm.jenis == "SP"
                 ? _c("div", { staticClass: "input-group mt-3" }, [
@@ -55435,8 +55526,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.Transaksi.Subtotal,
-                          expression: "Transaksi.Subtotal"
+                          value: _vm.temp.Subtotal_Detail_Sparepart,
+                          expression: "temp.Subtotal_Detail_Sparepart"
                         }
                       ],
                       staticClass: "form-control",
@@ -55450,15 +55541,15 @@ var render = function() {
                         disabled: "",
                         required: ""
                       },
-                      domProps: { value: _vm.Transaksi.Subtotal },
+                      domProps: { value: _vm.temp.Subtotal_Detail_Sparepart },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.Transaksi,
-                            "Subtotal",
+                            _vm.temp,
+                            "Subtotal_Detail_Sparepart",
                             $event.target.value
                           )
                         }
@@ -55503,82 +55594,9 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.jenis == "SP"
-                ? _c("div", { staticClass: "input-group mt-3" }, [
-                    _vm._m(18),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.Transaksi.Total,
-                          expression: "Transaksi.Total"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Total",
-                        "aria-label": "Transaksi_Total",
-                        "aria-describedby": "basic-addon2",
-                        id: "Transaksi_Total",
-                        name: "Transaksi_Diskon",
-                        disabled: "",
-                        required: ""
-                      },
-                      domProps: { value: _vm.Transaksi.Total },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.Transaksi, "Total", $event.target.value)
-                        }
-                      }
-                    })
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.jenis == "Sparepart"
-                ? _c("div", { staticClass: "input-group mt-3" }, [
-                    _vm._m(19),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.Transaksi.Jumlah,
-                          expression: "Transaksi.Jumlah"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "number",
-                        placeholder: "Jumlah Sparepart Yang Ingin Dibeli",
-                        "aria-label": "Transaksi_Jumlah",
-                        "aria-describedby": "basic-addon2",
-                        id: "Transaksi_Jumlah",
-                        name: "Transaksi_Jumlah",
-                        required: ""
-                      },
-                      domProps: { value: _vm.Transaksi.Jumlah },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.Transaksi, "Jumlah", $event.target.value)
-                        }
-                      }
-                    })
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
               _vm.jenis == "SV"
                 ? _c("div", { staticClass: "input-group mt-3" }, [
-                    _vm._m(20),
+                    _vm._m(18),
                     _vm._v(" "),
                     _c(
                       "select",
@@ -55643,7 +55661,7 @@ var render = function() {
                       2
                     ),
                     _vm._v(" "),
-                    _vm._m(21),
+                    _vm._m(19),
                     _vm._v(" "),
                     _c(
                       "select",
@@ -55706,21 +55724,97 @@ var render = function() {
                         })
                       ],
                       2
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success btn",
+                        attrs: { type: "submit" },
+                        on: {
+                          click: function($event) {
+                            return _vm.jasaHandler(_vm.jasa)
+                          }
+                        }
+                      },
+                      [_vm._v("Add Jasa")]
                     )
                   ])
                 : _vm._e(),
               _vm._v(" "),
               _vm.jenis == "SV"
+                ? _c("div", { staticClass: "col-lg-6 mt-3" })
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.jenis == "SV"
+                ? _c("div", { staticClass: "input-group mt-3 w-400" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "col-12 mr-2" },
+                        _vm._l(_vm.jasadata, function(jasaS) {
+                          return _c(
+                            "div",
+                            {
+                              key: jasaS["Id_Jasa"],
+                              staticClass: "list-group mr-2"
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "list-group-item list-group-item-action list-group-item-success",
+                                  attrs: { href: "#" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                            " +
+                                      _vm._s(
+                                        jasaS.Nama_Jasa + "-" + jasaS.Harga_Jasa
+                                      ) +
+                                      "          \n                                            "
+                                  ),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger",
+                                      staticStyle: { "margin-left": "200px" },
+                                      attrs: { type: "submit" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.deleteListJasa(
+                                            jasaS.Id_Jasa
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Delete")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("br")
+                                ]
+                              )
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.jenis == "SV"
                 ? _c("div", { staticClass: "input-group mt-3" }, [
-                    _vm._m(22),
+                    _vm._m(20),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.Transaksi.Subtotal,
-                          expression: "Transaksi.Subtotal"
+                          value: _vm.tempJ.Subtotal_Detail_Jasa,
+                          expression: "tempJ.Subtotal_Detail_Jasa"
                         }
                       ],
                       staticClass: "form-control",
@@ -55734,15 +55828,15 @@ var render = function() {
                         disabled: "",
                         required: ""
                       },
-                      domProps: { value: _vm.Transaksi.Subtotal },
+                      domProps: { value: _vm.tempJ.Subtotal_Detail_Jasa },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.Transaksi,
-                            "Subtotal",
+                            _vm.tempJ,
+                            "Subtotal_Detail_Jasa",
                             $event.target.value
                           )
                         }
@@ -55753,7 +55847,7 @@ var render = function() {
               _vm._v(" "),
               _vm.jenis == "SV"
                 ? _c("div", { staticClass: "input-group mt-3" }, [
-                    _vm._m(23),
+                    _vm._m(21),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -55787,43 +55881,6 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.jenis == "SV"
-                ? _c("div", { staticClass: "input-group mt-3" }, [
-                    _vm._m(24),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.Transaksi.Total,
-                          expression: "Transaksi.Total"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Total",
-                        "aria-label": "Transaksi_Total",
-                        "aria-describedby": "basic-addon2",
-                        id: "Transaksi_Total",
-                        name: "Transaksi_Diskon",
-                        disabled: "",
-                        required: ""
-                      },
-                      domProps: { value: _vm.Transaksi.Total },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.Transaksi, "Total", $event.target.value)
-                        }
-                      }
-                    })
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
               _c("div", { staticClass: "modal-footer mt-3" }, [
                 _c(
                   "button",
@@ -55832,7 +55889,7 @@ var render = function() {
                     attrs: { type: "submit", "data-dismiss": "modal" },
                     on: {
                       click: function($event) {
-                        return _vm.addpenjualan()
+                        _vm.getDiskon(), _vm.addpenjualan()
                       }
                     }
                   },
@@ -55869,7 +55926,7 @@ var render = function() {
               "div",
               { staticClass: "modal-content", staticStyle: { width: "750px" } },
               [
-                _vm._m(25),
+                _vm._m(22),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
                   _c("div", { staticClass: "table-responsive" }, [
@@ -55877,7 +55934,7 @@ var render = function() {
                       "table",
                       { staticClass: "table table-striped table-hover" },
                       [
-                        _vm._m(26),
+                        _vm._m(23),
                         _vm._v(" "),
                         _c(
                           "tbody",
@@ -55888,17 +55945,13 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("td", [
-                                _vm._v(_vm._s(detail.Nama_Sparepart) + " ")
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
                                 _vm._v(_vm._s(detail.Harga_Satuan) + " ")
                               ]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(detail.Jumlah))]),
+                              _c("td", [_vm._v(_vm._s(detail.Jumlah) + " ")]),
                               _vm._v(" "),
                               _c("td", [
-                                _vm._v(_vm._s(detail.Subtotal_Pengadaan) + " ")
+                                _vm._v(_vm._s(detail.Subtotal_Detail_Sparepart))
                               ])
                             ])
                           }),
@@ -55908,7 +55961,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(27)
+                  _vm._m(24)
                 ])
               ]
             )
@@ -56000,6 +56053,8 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Jenis Transaksi")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Status Transaksi")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Total")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Detail")]),
         _vm._v(" "),
@@ -56280,44 +56335,6 @@ var staticRenderFns = [
         _c(
           "span",
           { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
-          [_vm._v("Total")]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "input-group-prepend d-block",
-        staticStyle: { width: "100px" }
-      },
-      [
-        _c(
-          "span",
-          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
-          [_vm._v("Jumlah")]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "input-group-prepend d-block",
-        staticStyle: { width: "100px" }
-      },
-      [
-        _c(
-          "span",
-          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
           [_vm._v("Jasa")]
         )
       ]
@@ -56384,25 +56401,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "input-group-prepend d-block",
-        staticStyle: { width: "100px" }
-      },
-      [
-        _c(
-          "span",
-          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
-          [_vm._v("Total")]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
       _c(
         "h4",
@@ -56433,8 +56431,6 @@ var staticRenderFns = [
     return _c("thead", { staticClass: "table-primary text-center" }, [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Kode Sparepart")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama Sparepart")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Harga Satuan")]),
         _vm._v(" "),
@@ -80526,6 +80522,20 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/detail_spareparts', successCallback, errorCallback);
+    });
+  },
+  getalldetailjasa: function getalldetailjasa() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/detail_jasa', successCallback, errorCallback);
     });
   }
 });

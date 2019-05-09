@@ -28,23 +28,25 @@
         </nav>
 	</div>
 
-    <div class="container mt-3" style="max-width: 800px;">
+    <div class="container-fluid mt-3">
             <div class="row mb-2">
                 <div class="col-sm-2">
-                    <button class="btn btn-success float-left mb-2 btn-block" 
-                    @click="getallkonsumen(),refresh()" 
-                    data-title="Tambah_Konsumen" data-toggle="modal" 
-                    data-target="#Tambah_Konsumen">
-                        <i class="fas fa-plus mr-2"></i>Tambah
-                    </button>
+                    <div class="col-sm-7 p-0">
+                        <button class="btn btn-success mb-2 btn-block" @click="getallpenjualan(),refresh()" 
+                        data-title="Tambah_Transaksi" data-toggle="modal" data-target="#Tambah_Transaksi">
+                            <i class="fas fa-plus mr-2"></i>Tambah
+                        </button>
+                    </div>
+                    <div class="col-sm-5">
+
+                    </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-7">
 
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <div class="input-group">
-                        <input class="form-control" v-model="Cari_Transaksi" type="search" 
-                        placeholder="Cari Transaksi">
+                        <input class="form-control" v-model="Cari_Transaksi" type="search" placeholder="Cari Transaksi">
                         <div class="input-group-append">
                             <span class="input-group-text">
                                 <i class="fas fa-search"></i>
@@ -53,8 +55,9 @@
                     </div>
                 </div>
             </div>
+                
             
-            <div class="table-responsive" style="max-width: 800px; margin: auto;">
+            <div class="table-responsive" style="margin: auto;">
                 <table class="table table-striped table-hover">
                     <thead class="table-primary text-center">
                         <tr>
@@ -63,6 +66,7 @@
                             <th scope="col">Tanggal</th>
                             <th scope="col">Jenis Transaksi</th>
                             <th scope="col">Status Transaksi</th>
+                            <th scope="col">Total</th>
                             <th scope="col">Detail</th>
                             <th scope="col">SPK</th>
                             <th scope="col">Edit/Verify</th>
@@ -71,7 +75,7 @@
                     </thead>
                     <tbody>
                         <tr v-bind:key="transaksi['Id_Transaksi']" v-for="transaksi in filteredtransaksi">
-                            <td>{{transaksi.Id_Transaksi}} </td>
+                            <td>{{transaksi.Id_Transaksi}}</td>
                             <td>{{transaksi.Id_Konsumen}} </td>
                             <td>{{transaksi.Tanggal_Transaksi}} </td>
                             <td>{{transaksi.Jenis_Transaksi}} </td>
@@ -84,6 +88,7 @@
                             <td v-if="transaksi.Status==2">
                                 Selesai
                             </td>
+                            <td>{{transaksi.Total}} </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Detail">
                                     <button @click="detailhandler(transaksi)"  
@@ -128,9 +133,9 @@
         </div>
 
         <!-- MY MODALS -->
-        <!-- TAMBAH KONSUMEN -->
-        <div class="modal fade" id="Tambah_Konsumen" tabindex="-1" role="dialog" 
-            aria-labelledby="Tambah_Konsumen" aria-hidden="true">
+        <!-- TAMBAH TRANSAKSI PENJUALAN -->
+        <div class="modal fade" id="Tambah_Transaksi" tabindex="-1" role="dialog" 
+            aria-labelledby="Tambah_Transaksi" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -311,17 +316,17 @@
                         </div>
 
                         <div class="col-lg-6 mt-3" v-if="jenis == 'SP'">
-                                <button type="submit" class="btn btn-success btn" @click="sparepartHandler(sparepart)">Add Sparepart</button>
-                            </div>
+                            <button type="submit" class="btn btn-success btn" @click="sparepartHandler(sparepart)">Add Sparepart</button>
+                        </div>
 
-                        <div class="input-group mt-3 w-400">
+                        <div class="input-group mt-3 w-400" v-if="jenis=='SP'">
                             <div class="row">
                                 <div class="col-12 mr-2">
                                     <div class="list-group mr-2" v-for="spareparts in sparepartdata" :key="spareparts['Kode_Sparepart']">
                                         <a href="#" class="list-group-item list-group-item-action list-group-item-success">
                                             {{spareparts.Kode_Sparepart + '-' + spareparts.Nama_Sparepart}}          
                                             <button type="submit" class="btn btn-danger" style="margin-left: 200px"
-                                            @click="deleteList(spareparts.Kode_Sparepart)">Delete</button>
+                                            @click="deleteListSparepart(spareparts.Kode_Sparepart)">Delete</button>
                                             <br>     
                                         </a>
                                     </div>
@@ -329,15 +334,14 @@
                             </div>
                         </div>
 
-                        
                         <div class="input-group mt-3" v-if="jenis == 'SP'">
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Subtotal</span>
                             </div>
-                            <input type="text" v-model="Transaksi.Subtotal" 
+                            <input type="text" v-model="temp.Subtotal_Detail_Sparepart" 
                             class="form-control" placeholder="Subtotal" 
                             aria-label="Transaksi_Subtotal" aria-describedby="basic-addon2" 
-                            id="Transaksi_Subtotal" name="Transaksi_Subtotal" disabled required>
+                            id="Transaksi_Subtotal" name="Transaksi_Subtotal" disabled required> 
                         </div>
 
                         <div class="input-group mt-3" v-if="jenis == 'SP'">
@@ -350,7 +354,7 @@
                             id="Transaksi_Diskon" name="Transaksi_Diskon" required>
                         </div>
 
-                        <div class="input-group mt-3" v-if="jenis == 'SP'">
+                        <!-- <div class="input-group mt-3" v-if="jenis == 'SP'">
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Total</span>
                             </div>
@@ -358,17 +362,7 @@
                             class="form-control" placeholder="Total" 
                             aria-label="Transaksi_Total" aria-describedby="basic-addon2" 
                             id="Transaksi_Total" name="Transaksi_Diskon" disabled required>
-                        </div>
-
-                       <div class="input-group mt-3" v-if="jenis == 'Sparepart'">
-                            <div class="input-group-prepend d-block" style="width: 100px;">
-                                <span class="input-group-text" id="basic-addon2">Jumlah</span>
-                            </div>
-                            <input type="number" v-model="Transaksi.Jumlah" 
-                            class="form-control" placeholder="Jumlah Sparepart Yang Ingin Dibeli" 
-                            aria-label="Transaksi_Jumlah" aria-describedby="basic-addon2" 
-                            id="Transaksi_Jumlah" name="Transaksi_Jumlah" required>
-                        </div>
+                        </div> -->
 
                         <div class="input-group mt-3" v-if="jenis == 'SV'"> 
                             <div class="input-group-prepend d-block" style="width: 100px;">
@@ -394,18 +388,40 @@
                                 v-for="jasaS in jasa" 
                                 :value="jasaS.Id_Jasa" >{{jasaS.Harga_Jasa}}</option>
                             </select>
+
+                            <button type="submit" class="btn btn-success btn" @click="jasaHandler(jasa)">Add Jasa</button>
+
                         </div>
-                        <div class="input-group mt-3" v-if="jenis == 'SV'">
-                            <div class="input-group-prepend d-block" style="width: 100px;">
-                                <span class="input-group-text" id="basic-addon2">Subtotal</span>
+
+                        <div class="col-lg-6 mt-3" v-if="jenis == 'SV'">
+                        </div>
+
+                        <div class="input-group mt-3 w-400" v-if="jenis=='SV'">
+                            <div class="row">
+                                <div class="col-12 mr-2">
+                                    <div class="list-group mr-2" v-for="jasaS in jasadata" :key="jasaS['Id_Jasa']">
+                                        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+                                            {{jasaS.Nama_Jasa + '-' + jasaS.Harga_Jasa}}          
+                                            <button type="submit" class="btn btn-danger" style="margin-left: 200px"
+                                            @click="deleteListJasa(jasaS.Id_Jasa)">Delete</button>
+                                            <br>     
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <input type="text" v-model="Transaksi.Subtotal" 
+                        </div>
+                        
+                        <div class="input-group mt-3" v-if="jenis == 'SV'" >
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Subtotal</span> 
+                            </div>
+                            <input type="text" v-model="tempJ.Subtotal_Detail_Jasa" 
                             class="form-control" placeholder="Subtotal" 
                             aria-label="Transaksi_Subtotal" aria-describedby="basic-addon2" 
                             id="Transaksi_Subtotal" name="Transaksi_Subtotal" disabled required>
                         </div>
 
-                        <div class="input-group mt-3" v-if="jenis == 'SV'">
+                        <div class="input-group mt-3" v-if="jenis == 'SV'"> 
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Diskon</span>
                             </div>
@@ -415,7 +431,7 @@
                             id="Transaksi_Diskon" name="Transaksi_Diskon" required>
                         </div>
 
-                        <div class="input-group mt-3" v-if="jenis == 'SV'">
+                        <!-- <div class="input-group mt-3" v-if="jenis == 'SV'">
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Total</span>
                             </div>
@@ -423,17 +439,17 @@
                             class="form-control" placeholder="Total" 
                             aria-label="Transaksi_Total" aria-describedby="basic-addon2" 
                             id="Transaksi_Total" name="Transaksi_Diskon" disabled required>
-                        </div>
+                        </div> -->
 
                         <div class="modal-footer mt-3" >
                             <button type="submit" class="btn btn-success btn-lg w-100" 
-                            data-dismiss="modal" @click="addpenjualan()">Tambahkan Transaksi Penjualan</button>
+                            data-dismiss="modal" @click="getDiskon(),addpenjualan()">Tambahkan Transaksi Penjualan</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- TAMPIL DETAIL PENGADAAN -->
+        <!-- TAMPIL DETAIL PENJUALAN -->
         <div class="modal fade" id="Detail_Penjualan" tabindex="-1" role="dialog" aria-labelledby="Detail_Penjualan" 
         aria-hidden="true">
             <div class="modal-dialog" style="max-width:750px;">
@@ -451,7 +467,6 @@
                                 <thead class="table-primary text-center">
                                     <tr>
                                         <th scope="col">Kode Sparepart</th>
-                                        <th scope="col">Nama Sparepart</th>
                                         <th scope="col">Harga Satuan</th>
                                         <th scope="col">Jumlah Sparepart</th>
                                         <th scope="col">Subtotal Penjualan</th>
@@ -460,10 +475,9 @@
                                 <tbody>
                                     <tr v-bind:key="detail['id']" v-for="detail in filtereddetail">
                                         <td>{{detail.Kode_Sparepart }} </td>
-                                        <td>{{detail.Nama_Sparepart}} </td>
                                         <td>{{detail.Harga_Satuan}} </td>
-                                        <td>{{detail.Jumlah}}</td>
-                                        <td>{{detail.Subtotal_Pengadaan}} </td>
+                                        <td>{{detail.Jumlah}} </td>
+                                        <td>{{detail.Subtotal_Detail_Sparepart}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -496,17 +510,22 @@ import controller from '../../service/MotorKonsumen'
 import motorController from '../../service/Motor'
 import jasaController from '../../httpController'
 import validators from '../../validations/konsumen_validations'
+import { mapGetter, mapGetters } from 'vuex'
+
 export default {
     validations: validators,
     data: () => ({
+        jasa:[],
+        jasaData:[],
+        jasadata:[],
         detailpenjualandata:[],
+        detailjasadata:[],
         transaksidata:[],
         sparepart:[],
         sparepartdata:[],
         sparepartData:[],
         penjualandata:[],
         compabitility:[],
-        jasa:[],
         konsumendata:[],
         konsumen:[],
         motorkonsumendata:[],
@@ -587,56 +606,100 @@ export default {
             Jumlah:0,
             Harga_Satuan:0,
             Nama_Sparepart:'',
-        }
+        },
+        tempJ:{
+            Id_Jasa_Montir:'',
+            Id_Transaksi:'',
+            Id_Jasa:'',
+            Subtotal_Detail_Jasa:0,
+            Nama_Jasa:'',
+            Harga_Jasa:'',
+        },
+        Diskon:'',
+        tempTotal:'',
+        total:'',
+        Id_Detail_Modal:0,
     }),
     mounted(){
+        this.getallkonsumen()
         this.getalldetailpenjualan()
+        this.getalldetailjasa()
         this.getallpenjualan()
         this.getalljasaservice()
-        this.getallkonsumen()
         this.getallmotorkonsumen()
         this.getallmotor()
         this.getallsparepart()
     },
     methods:{
+        getDiskon(){
+            this.Diskon     = this.Transaksi.Diskon;
+            this.tempTotal  = this.total - this.Transaksi.Diskon;
+        },
         sparepartHandler(sparepart){
             var object = sparepart[this.index]
-            // console.log(object);
             this.temp.Kode_Sparepart            = this.Sparepart.Kode_Sparepart;
             this.temp.Id_Transaksi              = this.Transaksi.Id_Transaksi;
             let data = this.sparepart.find(obj=>obj.Kode_Sparepart == this.Sparepart.Kode_Sparepart)
-            // console.log(data)
+            console.log(data.Nama_Sparepart)
             this.temp.Id_Jasa_Montir            = '1';
             this.temp.Nama_Sparepart            = data.Nama_Sparepart;
             this.temp.Harga_Satuan              = data.Harga_Jual;
             this.temp.Jumlah                    = this.jumlah;
-            this.temp.Subtotal_Detail_Sparepart = parseInt(data.Harga_Jual * this.temp.Jumlah);
-            //data.Harga_Beli * this.Sparepart.Jumlah_Sparepart;
-            //this.Pengadaan.Total_Harga  = parseInt(this.temp.Subtotal_Pengadaan + this.Pengadaan.Total_Harga ,10);
+            this.temp.Subtotal_Detail_Sparepart = this.temp.Harga_Satuan * this.temp.Jumlah;
+            this.total = this.temp.Subtotal_Detail_Sparepart;
+
             this.sparepartdata.push(JSON.parse(JSON.stringify(this.temp)))
             this.sparepartData.push(this.Sparepart.Kode_Sparepart)
         },
-        jasaHandler(sparepart){
-            var object = sparepart[this.index]
-            // console.log(object);
-            this.temp.Kode_Sparepart            = this.Sparepart.Kode_Sparepart;
-            this.temp.Id_Transaksi              = this.Transaksi.Id_Transaksi;
-            let data = this.sparepart.find(obj=>obj.Kode_Sparepart == this.Sparepart.Kode_Sparepart)
-            // console.log(data)
-            this.temp.Id_Jasa_Montir            = '1';
-            this.temp.Nama_Sparepart            = data.Nama_Sparepart;
-            this.temp.Harga_Satuan              = data.Harga_Jual;
-            this.temp.Jumlah                    = this.Sparepart.Jumlah_Sparepart;
-            this.temp.Subtotal_Detail_Sparepart = data.Harga_Jual * this.Sparepart.Jumlah_Sparepart;;
-            //data.Harga_Beli * this.Sparepart.Jumlah_Sparepart;
-            //this.Pengadaan.Total_Harga  = parseInt(this.temp.Subtotal_Pengadaan + this.Pengadaan.Total_Harga ,10);
-            this.sparepartdata.push(JSON.parse(JSON.stringify(this.temp)))
-            this.sparepartData.push(this.Sparepart.Kode_Sparepart)
+        jasaHandler(jasa){
+            var object = jasa[this.index]
+            console.log(object);
+            this.tempJ.Id_Jasa                   = this.Jasaservice.Id_Jasa;
+            this.tempJ.Id_Transaksi              = this.Transaksi.Id_Transaksi;
+            let data = this.jasa.find(obj=>obj.Id_Jasa == this.Jasaservice.Id_Jasa)
+            console.log(data.Nama_Jasa)
+            this.tempJ.Id_Jasa_Montir            = '1';
+            this.tempJ.Nama_Jasa                 = data.Nama_Jasa;
+            this.tempJ.Harga_Jasa                = data.Harga_Jasa;
+            this.tempJ.Subtotal_Detail_Jasa      = data.Harga_Jasa;
+
+            this.jasadata.push(JSON.parse(JSON.stringify(this.tempJ)))
+            this.jasaData.push(this.Jasaservice.Id_Jasa)
+        },
+        deleteListSparepart(id)
+        {
+            let filter = this.sparepartdata.filter(function( obj ) {
+                return obj.Kode_Sparepart !== id;
+            });
+            this.sparepartdata=filter
+            let filter2 = this.sparepartData.filter(function( obj ) {
+                return obj !== id;
+            });
+            this.sparepartData=filter2
+        },
+        deleteListJasa(id)
+        {
+            let filter = this.jasa.filter(function( obj ) {
+                return obj.Id_Jasa !== id;
+            });
+            this.jasa=filter
+            let filter2 = this.jasaData.filter(function( obj ) {
+                return obj !== id;
+            });
+            this.jasaData=filter2
         },
         async getalldetailpenjualan () {
             try {
                 this.detailpenjualandata = (await penjualanController.getalldetailpenjualan()).data
                 console.log(this.detailpenjualandata)
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async getalldetailjasa () {
+            try {
+                this.detailjasadata = (await penjualanController.getalldetailjasa()).data
+                console.log(this.detailjasadata)
             } catch (err) {
                 console.log(err)
             }
@@ -760,11 +823,12 @@ export default {
                     Id_Konsumen         : this.Konsumen.Id_Konsumen,
                     Tanggal_Transaksi   : this.Transaksi.Tanggal_Transaksi,
                     Jenis_Transaksi     : this.jenis,
-                    Subtotal            : this.temp.Subtotal_Detail_Sparepart,
+                    Subtotal            : this.temp.Subtotal_Detail_Sparepart + this.tempJ.Subtotal_Detail_Jasa,
                     Diskon              : this.Transaksi.Diskon,
-                    Total               : parseInt(this.Subtotal - this.Diskon),
+                    Total               : this.tempTotal,
                     Status              : '0',
                     Detail_Sparepart    : this.sparepartdata,
+                    Detail_Jasa         : this.jasadata,
                 }
                 await penjualanController.addpenjualan(payload)
                 this.getallpenjualan()
@@ -799,7 +863,7 @@ export default {
             this.Konsumen = konsumen
         },
         detailhandler(transaksi){
-            this.Id_Detail_Modal = transaksi.Id_Penjualan
+            this.Id_Detail_Modal = transaksi.Id_Transaksi
         },
         refresh(){
             this.Konsumen.Nama_Konsumen = '';
@@ -812,6 +876,9 @@ export default {
         }
     },
     computed:{
+        ...mapGetters({
+            Id_Pegawai : 'LoggedUser/id'
+        }),
         filteredmotor:function(){
             return this.motorcycle.filter((motor)=>{
                 return motor.Merk.match(this.Cari_Motor);
@@ -834,7 +901,7 @@ export default {
         },
         filtereddetail:function(){
             return this.detailpenjualandata.filter((detailpenjualan)=>{
-                return detailpenjualan.Id_Penjualan == this.Id_Detail_Modal;
+                return detailpenjualan.Id_Transaksi == this.Id_Detail_Modal;
             });
         },
         nameErrors () {

@@ -54,4 +54,19 @@ export default {
             Http.get('/api/detail_spareparts', successCallback, errorCallback)
         })
     },
+    getalldetailjasa(){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.get('/api/detail_jasa', successCallback, errorCallback)
+        })
+    },
 }

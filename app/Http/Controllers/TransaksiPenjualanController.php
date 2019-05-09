@@ -77,6 +77,7 @@ class TransaksiPenjualanController extends RestController
                     return $penjualan;  
                 });
             }
+            dd($penjualan);
             if($jenis == 'SS' || $jenis == 'SP')
             {
                 $penjualan = DB::transaction(function () use($penjualan,$sparepart){
