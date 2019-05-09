@@ -103,6 +103,7 @@ Route::post('/transaksi_pengadaans/storeDetail','TransaksiPengadaanController@st
 // Route::patch('/transaksi_pengadaans/update/{id}', 'TransaksiPengadaanController@update'); 
 Route::delete('/transaksi_pengadaans/delete/{id}', 'TransaksiPengadaanController@destroy');
 // Route::get('/transaksi_pengadaans/show/{id}', 'TransaksiPengadaanController@showbyCustomer');
+Route::get('/transaksi_pengadaans/cetakSuratPemesanan/{id}','TransaksiPengadaanController@cetakSuratPemesanan');
 
 //Detail Pengadaan
 Route::get('/detail_pengadaans','DetailPengadaanController@index');
@@ -114,9 +115,10 @@ Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
     Route::get('/transaksi_penjualans/showByIdMotorKonsumen/{id}','TransaksiPenjualanController@showByIdMotorKonsumen');
     Route::post('/transaksi_penjualans/store','TransaksiPenjualanController@store');
     Route::post('/transaksi_penjualans/storeSparepart','TransaksiPenjualanController@storeSparepart');
+    Route::delete('/transaksi_penjualans/delete/{id}','TransaksiPenjualanController@destroy');
 // });
 
 
 // Route::patch('/transaksi_penjualans/update/{id}', 'TransaksiPenjualanController@update'); 
-Route::delete('/transaksi_penjualans/delete/{id}', 'TransaksiPenjualanController@destroy');
+// Route::delete('/transaksi_penjualans/delete/{id}', 'TransaksiPenjualanController@destroy');
 // Route::get('/transaksi_penjualans/show/{id}', 'TransaksiPenjualanController@showbyCustomer');

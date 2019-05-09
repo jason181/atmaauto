@@ -197,4 +197,46 @@ class TransaksiPenjualanController extends RestController
             return $this->sendIseResponse($e->getMessage());
         }
     }
+
+    public function destroy($id)
+    {
+        $jasas = Detail_Jasa::where('Id_Transaksi',$id)->get();
+        foreach($jasas as $jasa)
+        {
+            // if(Detail_Jasa::where('Id_Transaksi',$id)->get() !== null)
+            $montirs = Montir::where('Id_Jasa_Montir',$jasa->Id_Jasa_Montir)->get();
+            
+            $detele_jasa = $jasa->delete();
+
+            foreach($montirs as $montir)
+            {
+                $delete_montir = $montir->delete();
+            }
+        }
+        $spareparts = Detail_Sparepart::where('Id_Transaksi',$id)->get();
+        foreach($spareparts as $sparepart)
+        {
+            $montirs = Montir::where('Id_Jasa_Montir',$sparepart->Id_Jasa_Montir)->get();
+            
+            $delete_sparepart = $sparepart->delete();
+
+            foreach($montirs as $montir)
+            {
+                $delete_montir = $montir->delete();
+            }
+        }
+        $pods = Pegawai_On_Duty::where('Id_Transaksi',$id)->get();
+        foreach($pods as $pod)
+        {
+            $delete_pod = $pod->delete();
+        }
+        $penjualan = Transaksi_Penjualan::find($id);
+        $status = $penjualan->delete();
+
+        return response()->json([
+            'status' =>$status,
+            'message' => $status ? 'Deleted' : 'Error Delete'
+        ]);
+    }
+
 }
