@@ -21,6 +21,7 @@ class TransaksiPenjualanTransformers extends TransformerAbstract
         return [
             'Id_Transaksi'      =>$transaksi_penjualan->Id_Transaksi,
             'Id_Konsumen'       =>$transaksi_penjualan->Id_Konsumen,
+            'Nama_Konsumen'       =>$transaksi_penjualan->konsumens->Nama_Konsumen,
             'Tanggal_Transaksi' =>$transaksi_penjualan->Tanggal_Transaksi,
             'Jenis_Transaksi'   =>$transaksi_penjualan->Jenis_Transaksi,
             'Subtotal'          =>$transaksi_penjualan->Subtotal,
