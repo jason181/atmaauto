@@ -81,4 +81,17 @@ export default {
             Http.delete('/api/transaksi_penjualans/delete/'+id, successCallback, errorCallback)
         })
     },
+    getPegawai(){
+        return new Promise((resolve, reject) => {
+             
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.get('/api/pegawais', successCallback, errorCallback)
+        })
+    },
 }
