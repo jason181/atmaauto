@@ -62,6 +62,7 @@ Route::patch('/suppliers/delSales/{id}', 'SupplierController@delSales');
 
 //Sparepart
 Route::get('/spareparts','SparepartController@index');
+Route::get('/spareparts/showBelowMinimumStock','SparepartController@showBelowMinimumStock');
 Route::get('/spareparts/sorthargaasc','SparepartController@sorthargaasc');
 Route::get('/spareparts/sorthargadesc','SparepartController@sorthargadesc');
 Route::get('/spareparts/sortjumlahasc','SparepartController@sortjumlahasc');
@@ -105,6 +106,7 @@ Route::delete('/transaksi_pengadaans/delete/{id}', 'TransaksiPengadaanController
 // Route::get('/transaksi_pengadaans/show/{id}', 'TransaksiPengadaanController@showbyCustomer');
 Route::get('/transaksi_pengadaans/cetakSuratPemesanan/{id}','TransaksiPengadaanController@cetakSuratPemesanan');
 Route::post('/transaksi_pengadaans/verify/{id}','TransaksiPengadaanController@verify');
+
 
 //Detail Pengadaan
 Route::get('/detail_pengadaans','DetailPengadaanController@index');

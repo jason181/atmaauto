@@ -17,6 +17,14 @@ class SparepartController extends RestController
         $response=$this->generateCollection($sparepart);
         return $this->sendResponse($response,201);
     }
+
+    public function showBelowMinimumStock()
+    {
+        $sparepart=Sparepart::whereColumn('Jumlah_Sparepart','<=','Stok_Minimum_Sparepart')->get();
+        dd($sparepart);
+        $response=$this->generateCollection($sparepart);
+        return $this->sendResponse($response,201);
+    }
     
     public function sorthargaasc()
     {

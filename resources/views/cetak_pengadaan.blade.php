@@ -7,8 +7,8 @@
         <title>Atma Auto</title>
     </head>
     <body>
-        <div class="container-fluid" style="border:1px solid black;">
-            TEST
+        <div class="" style="border:1px solid black;">
+            TEST PDF
         </div>    
     </body>
 

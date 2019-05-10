@@ -129,7 +129,8 @@ class TransaksiPengadaanController extends RestController
             $sparepart[$i]->Jumlah_Sparepart += $details[$i]->Jumlah;
             $sparepart[$i]->save();
         }
-        $response = generateItem($pengadaan, new SparepartTransformers);
+        $pengadaan->save();
+        $response = $this->generateItem($pengadaan);
         return $this->sendResponse($response);
     }
 
