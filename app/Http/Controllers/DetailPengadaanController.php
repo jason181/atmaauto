@@ -24,6 +24,13 @@ class DetailPengadaanController extends RestController
         return $this->sendResponse($response,201);
     }
 
+    public function showByIdPengadaan($id)
+    {
+        $detail_pengadaan=Detail_Pengadaan::where('Id_Pengadaan',$id);
+        $response=$this->generateCollection($detail_pengadaan);
+        return $this->sendResponse($response,201);
+    }
+
     public function store(Request $request)
     {
         $detail_pengadaan = Detail_Pengadaan::create([

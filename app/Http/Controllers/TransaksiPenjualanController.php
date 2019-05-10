@@ -152,10 +152,11 @@ class TransaksiPenjualanController extends RestController
 
                 for($i=0;$i<$countsparepart;$i++)
                 {
-                    $datasparepart=Sparepart::where('Kode_Sparepart',$sparepart[$i]->Kode_Sparepart)->get();
-                    // dd($sparepart[0]->Jumlah_Sparepart);
-                    $datasparepart->Jumlah_Sparepart += $sparepart[$i]->Jumlah;
-                    $datasparepart->save();
+                    dd($sparepart[$i]->Kode_Sparepart);
+                    // $datasparepart=Sparepart::where('Kode_Sparepart',$sparepart[$i]->Kode_Sparepart)->get();
+                    // dd($datasparepart->Jumlah_Sparepart);
+                    // $datasparepart->Jumlah_Sparepart += $sparepart[$i]->Jumlah;
+                    // $datasparepart->save();
                 }
             }
             
@@ -200,7 +201,8 @@ class TransaksiPenjualanController extends RestController
         }
     }
 
-    public function storeJasa(Request $request){
+    public function storeJasa(Request $request)
+    {
         try{
             $jasa = new Detail_Jasa;
 
