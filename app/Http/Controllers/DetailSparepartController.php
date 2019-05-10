@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Transformers\DetailSparepartTransformers;
 use App\Detail_Sparepart;
 
-<<<<<<< HEAD
 class DetailSparepartController extends RestController
 {
     protected $transformer=DetailSparepartTransformers::Class;
@@ -21,6 +20,7 @@ class DetailSparepartController extends RestController
     public function store(Request $request)
     {
         $detail_sparepart = Detail_Sparepart::create([
+            'Id_Transaksi'              => $request->Id_Transaksi,
             'Kode_Sparepart'            => $request->Kode_Sparepart,
             'Harga_Satuan'              => $request->Harga_Satuan,
             'Jumlah'                    => $request->Jumlah,
@@ -30,12 +30,5 @@ class DetailSparepartController extends RestController
         $response = $this->generateItem($detail_sparepart);
         return $this->sendResponse($response);
     }
-=======
 
-
-class DetailSparepartController extends Controller
-{
-    //
-
->>>>>>> 6d2b5fa30b113f19e21d6a6a2fbb135293cc4fa6
 }
