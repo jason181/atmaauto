@@ -6,14 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Transaksi_Pengadaan;
 use App\Detail_Pengadaan;
 use App\Supplier;
+use App\Sparepart;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
 use App\Transformers\TransaksiPengadaanTransformers;
+use App\Transformers\SparepartTransformers;
 use PDF;
-// use Barryvdh\DomPDF\Facade as PDF;
 
 class TransaksiPengadaanController extends RestController
 {
@@ -71,29 +72,65 @@ class TransaksiPengadaanController extends RestController
         }
     }
     
-    public function update($id)
+    public function update(Request $request,$id)
     {
+        date_default_timezone_set('Asia/Jakarta');
+        
+        $details = Detail_Pengadaan::where('Id_Pengadaan',$id)->get();
+        
+        foreach($details as $detail)
+        {
+            if(Detail_Pengadaan::where('Id_Pengadaan',$id)->get() !== null)
+            $delete = Detail_Pengadaan::where('Id_Pengadaan',$id)->delete();
+        }
+
         $pengadaan = Transaksi_Pengadaan::find($id);
 
+        if($request->has('Detail_Pengadaan'))
+        {
+            $detail=$request->Detail_Pengadaan;
+        }
         if(!is_null($request->get('Id_Supplier'))){
             $pengadaan->Id_Supplier         = $request->get('Id_Supplier');
         }
         if(!is_null($request->get('Tanggal_Pengadaan'))){
             $pengadaan->Tanggal_Pengadaan   = $request->get('Tanggal_Pengadaan').' '.date('H:i:s');
         }
-        // if(!is_null($request->Telepon_Pegawai)){
-        //     $pengadaan->Total_Harga         = $request->get('Total_Harga');
-        // }
-        if(!is_null($request->get('Status_Pengadaan'))){
-            $pengadaan->Status_Pengadaan    = $request->get('Status_Pengadaan');
+        if(!is_null($request->get('Total_Harga'))){
+            $pengadaan->Total_Harga         = $request->get('Total_Harga');
         }
         
-        $success = $pengadaan->save();
+        $pengadaan->save();
 
-        if(!$success){
-            return response()->json('Error Update',500);
-        }else   
-            return response()->json('Success',200);
+        if($request->has('Detail_Pengadaan'))
+        {
+            $pengadaan = DB::transaction(function () use ($pengadaan,$detail){
+                $pengadaan->detail_pengadaans()->createMany($detail);
+                return $pengadaan;
+            });
+        }
+
+        $response=$this->generateItem($pengadaan);
+        return $this->sendResponse($response);
+    }
+
+    public function verify($id)
+    {
+        // dd($id);
+        $pengadaan = Transaksi_Pengadaan::find($id);
+
+        $pengadaan->Status_Pengadaan = '2';
+        $details = Detail_Pengadaan::where('Id_Pengadaan',$id)->get();
+        $count_detail = count($details);
+        for($i=0;$i<$count_detail;$i++)
+        {
+            $sparepart=Sparepart::where('Kode_Sparepart',$details[$i]->Kode_Sparepart)->get();
+            // dd($sparepart[0]->Jumlah_Sparepart);
+            $sparepart[$i]->Jumlah_Sparepart += $details[$i]->Jumlah;
+            $sparepart[$i]->save();
+        }
+        $response = generateItem($pengadaan, new SparepartTransformers);
+        return $this->sendResponse($response);
     }
 
     public function destroy($id)
@@ -104,11 +141,10 @@ class TransaksiPengadaanController extends RestController
             if(Detail_Pengadaan::where('Id_Pengadaan',$id)->get() !== null)
             $delete = Detail_Pengadaan::where('Id_Pengadaan',$id)->delete();
         }
-        // dd($detail = Detail_Pengadaan::where('Id_Pengadaan',$id)->get());
+
         $pengadaan=Transaksi_Pengadaan::find($id);
         $status = $pengadaan->delete();
         
-        // $status = $supplier->delete();
         return response()->json([
             'status' => $status,
             'message' => $status ? 'Deleted' : 'Error Delete'
@@ -118,14 +154,17 @@ class TransaksiPengadaanController extends RestController
     public function cetakSuratPemesanan($id)
     {
         $pengadaan  = Transaksi_Pengadaan::find($id);
-        $supplier   = Supplier::find($pengadaan->Id_Supplier);
-        $detail     = Detail_Pengadaan::where('Id_Pengadaan',$pengadaan->Id_Pengadaan);
-        // dd($pengadaan);
-        // dd($supplier);
-        // dd($detail);
-        $pdf = PDF::loadview('cetak_pengadaan',['pengadaan' => $pengadaan,'supplier' => $supplier, 'detail' => $detail]);
+        
+        $pdf = PDF::loadview('cetak_pengadaan');
 	    return $pdf->stream();
     }
 
-    
+    public function testSuratPemesanan($id)
+    {
+        $pengadaan  = Transaksi_Pengadaan::find($id);
+        $supplier   = Supplier::find($pengadaan->Id_Supplier);
+        $detail     = Detail_Pengadaan::where('Id_Pengadaan',$pengadaan->Id_Pengadaan);
+
+        return view('cetak_pengadaan', compact('pengadaan', 'supplier', 'detail'));
+    }
 }
