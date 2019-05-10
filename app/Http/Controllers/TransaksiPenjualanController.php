@@ -139,7 +139,7 @@ class TransaksiPenjualanController extends RestController
                     });
                 }
             }
-            
+           // dd($penjualan);
             if($jenis == 'SS' || $jenis == 'SP')
             {
                 if($request->has('Detail_Sparepart'))

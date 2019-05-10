@@ -126,7 +126,13 @@ Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
     Route::delete('/transaksi_penjualans/delete/{id}','TransaksiPenjualanController@destroy');
 // });
 
-
 // Route::patch('/transaksi_penjualans/update/{id}', 'TransaksiPenjualanController@update'); 
+Route::delete('/transaksi_penjualans/delete/{id}', 'TransaksiPenjualanController@destroy');
+// Route::get('/transaksi_penjualans/show/{id}', 'TransaksiPenjualanController@showbyCustomer');
+
+//Detail Transaksi Penjualan
+Route::get('/detail_spareparts','DetailSparepartController@index');
+Route::get('/detail_spareparts/store','DetailSparepartController@store');
+Route::get('/detail_jasas','DetailJasaController@index');
 // Route::delete('/transaksi_penjualans/delete/{id}', 'TransaksiPenjualanController@destroy');
 // Route::get('/transaksi_penjualans/show/{id}', 'TransaksiPenjualanController@showbyCustomer');
