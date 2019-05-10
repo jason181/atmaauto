@@ -110,10 +110,11 @@ Route::post('/transaksi_pengadaans/verify/{id}','TransaksiPengadaanController@ve
 
 //Detail Pengadaan
 Route::get('/detail_pengadaans','DetailPengadaanController@index');
+Route::get('/detail_pengadaans/showById/{id}','DetailPengadaanController@showById');
+Route::get('/detail_pengadaans/showByIdPengadaan/{id}','DetailPengadaanController@showByIdPengadaan');
 Route::post('/detail_pengadaans','DetailPengadaanController@store');
 Route::patch('/detail_pengadaans/update/{id}', 'DetailPengadaanController@update'); 
-Route::delete('/detail_pengadaans/delete/{id}', 'TransaksiPengadaanController@destroy');
-
+Route::delete('/detail_pengadaans/delete/{id}', 'DetailPengadaanController@destroy');
 
 //Penjualan
 Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
