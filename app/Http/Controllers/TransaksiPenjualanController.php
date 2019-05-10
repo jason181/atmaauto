@@ -60,9 +60,29 @@ class TransaksiPenjualanController extends RestController
         return $this->sendResponse($response,201);
     }
 
+    public function update(Request $request,$id)
+    {
+        try
+        {
+            $penjualan = Transaksi_Penjualan::find($id);
+            $jenis=$request->Jenis_Transaksi;
+            if($penjualan->Jenis_Transaksi == $jenis)
+            {
+                if($jenis == 'SS' || $jenis == 'SV')
+                {
+                    null;
+                }
+            }
+
+        }
+        catch(\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+
+    }
+
     public function store(Request $request)
     {
-        // dd($request);
         try{
             date_default_timezone_set('Asia/Jakarta');
 
@@ -70,15 +90,7 @@ class TransaksiPenjualanController extends RestController
                 'Id_Pegawai' => $request->Id_Montir,
                 'Id_Motor_Konsumen' => $request->Id_Motor_Konsumen,
             ]);
-            // dd($montir->Id_Jasa_Montir);
-            // return response()->json([
-            //     'status' => (bool) $montir,
-            //     'data' => $montir,
-            //     'message' => $montir ? 'Success' : 'Error Motor'
-            // ]);
-            // $montir[0]['Id_Pegawai'] = $request->get('Id_Pegawai');
-            // $montir[0]['Id_Motor_Konsumen'] = $request->get('Id_Motor_Konsumen');
-            // dd($montir->Id_Jasa_Montir);
+            
             if($request->has('Detail_Jasa'))
             {
                 $jasa       = $request->get('Detail_Jasa');
@@ -114,9 +126,9 @@ class TransaksiPenjualanController extends RestController
             {
                 $penjualan->Status = 1;
             }
-            // $penjualan->Status              = $request->get('Status');
+            
             $penjualan->save();
-            // dd($request->Detail_Jasa,$request->Detail_Sparepart);
+            
             if($jenis == 'SS' || $jenis == 'SV')
             {
                 if($request->has('Detail_Jasa'))
@@ -136,6 +148,12 @@ class TransaksiPenjualanController extends RestController
                         $penjualan->detail_spareparts()->createMany($sparepart);
                         return $penjualan;
                     });
+                }
+                
+                
+                for($i=0;$i<$countsparepart;$i++)
+                {
+                    $sparepart[$i]['Id_Jasa_Montir']=$montir->Id_Jasa_Montir;
                 }
             }
             
