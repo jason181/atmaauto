@@ -6604,6 +6604,67 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -56157,12 +56218,78 @@ var render = function() {
                 _vm._m(22),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
+                  _c("div", { staticClass: "container-fluid mt-3" }, [
+                    _c("div", { staticClass: "row mb-2" }, [
+                      _c("div", { staticClass: "col-sm-3" }, [
+                        _c("div", { staticClass: "col-sm-9 p-0" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-success mb-2 btn-block",
+                              attrs: {
+                                "data-title": "Tambah_Detail",
+                                "data-toggle": "modal",
+                                "data-target": "#Tambah_Detail"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.getallpenjualan(), _vm.refresh()
+                                }
+                              }
+                            },
+                            [
+                              _c("i", { staticClass: "fas fa-plus mr-2" }),
+                              _vm._v(
+                                "Tambah\n                                    "
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-sm-3" })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-5" }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-4" }, [
+                        _c("div", { staticClass: "input-group" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.Cari_Transaksi,
+                                expression: "Cari_Transaksi"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "search",
+                              placeholder: "Cari Detail"
+                            },
+                            domProps: { value: _vm.Cari_Transaksi },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.Cari_Transaksi = $event.target.value
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm._m(23)
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
                   _c("div", { staticClass: "table-responsive" }, [
                     _c(
                       "table",
                       { staticClass: "table table-striped table-hover" },
                       [
-                        _vm._m(23),
+                        _vm._m(24),
                         _vm._v(" "),
                         _c(
                           "tbody",
@@ -56261,12 +56388,80 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
+                  _vm._m(25),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "container-fluid mt-3" }, [
+                    _c("div", { staticClass: "row mb-2" }, [
+                      _c("div", { staticClass: "col-sm-3" }, [
+                        _c("div", { staticClass: "col-sm-9 p-0" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-success mb-2 btn-block",
+                              attrs: {
+                                "data-title": "Tambah_Detail",
+                                "data-toggle": "modal",
+                                "data-target": "#Tambah_Detail"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.getallpenjualan(), _vm.refresh()
+                                }
+                              }
+                            },
+                            [
+                              _c("i", { staticClass: "fas fa-plus mr-2" }),
+                              _vm._v(
+                                "Tambah\n                                        "
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-sm-3" })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-5" }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-4" }, [
+                        _c("div", { staticClass: "input-group" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.Cari_Transaksi,
+                                expression: "Cari_Transaksi"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "search",
+                              placeholder: "Cari Detail"
+                            },
+                            domProps: { value: _vm.Cari_Transaksi },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.Cari_Transaksi = $event.target.value
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm._m(26)
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
                   _c("div", { staticClass: "table-responsive" }, [
                     _c(
                       "table",
                       { staticClass: "table table-striped table-hover" },
                       [
-                        _vm._m(24),
+                        _vm._m(27),
                         _vm._v(" "),
                         _c(
                           "tbody",
@@ -56285,7 +56480,9 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("td", [
-                                _vm._v(_vm._s(detailjasa.Total) + " ")
+                                _vm._v(
+                                  _vm._s(detailjasa.Subtotal_Detail_Jasa) + " "
+                                )
                               ]),
                               _vm._v(" "),
                               _c("td", { staticClass: "text-center" }, [
@@ -56367,7 +56564,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(25)
+                  _vm._m(28)
                 ])
               ]
             )
@@ -56391,9 +56588,9 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(26),
+            _vm._m(29),
             _vm._v(" "),
-            _vm._m(27),
+            _vm._m(30),
             _vm._v(" "),
             _c("div", { staticClass: "modal-footer " }, [
               _c(
@@ -56424,7 +56621,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(28)
+              _vm._m(31)
             ])
           ])
         ])
@@ -56866,7 +57063,7 @@ var staticRenderFns = [
       _c(
         "h4",
         { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
-        [_vm._v("Detail Transaksi")]
+        [_vm._v("Detail Transaksi Penjualan Sparepart")]
       ),
       _vm._v(" "),
       _c(
@@ -56889,6 +57086,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text" }, [
+        _c("i", { staticClass: "fas fa-search" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "table-primary text-center" }, [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Kode Sparepart")]),
@@ -56902,6 +57109,28 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Detail Transaksi Jasa")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text" }, [
+        _c("i", { staticClass: "fas fa-search" })
       ])
     ])
   },
@@ -56937,11 +57166,13 @@ var staticRenderFns = [
           "button",
           {
             staticClass: "btn btn-success mb-2 btn-block",
-            attrs: { "data-title": "Cetak_Nota" }
+            attrs: { "data-title": "Cetak_SPK" }
           },
           [
             _c("i", { staticClass: "far fa-file-pdf" }),
-            _vm._v(" Cetak Nota Pengadaan\n                                ")
+            _vm._v(
+              " Cetak Surat Perintah Kerja\n                                "
+            )
           ]
         )
       ]),

@@ -469,13 +469,43 @@
             <div class="modal-dialog" style="max-width:750px;">
                 <div class="modal-content" style="width:750px;">
                     <div class="modal-header">
-                        <h4 class="modal-title mx-auto" id="Heading">Detail Transaksi</h4>
+                        <h4 class="modal-title mx-auto" id="Heading">Detail Transaksi Penjualan Sparepart</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" 
                         style="margin-left: -30px;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    
                     <div class="modal-body">
+                        <div class="container-fluid mt-3">
+                        <div class="row mb-2">
+                            <div class="col-sm-3">
+                                <div class="col-sm-9 p-0">
+                                    <button class="btn btn-success mb-2 btn-block" @click="getallpenjualan(),refresh()" 
+                                    data-title="Tambah_Detail" data-toggle="modal" data-target="#Tambah_Detail">
+                                        <i class="fas fa-plus mr-2"></i>Tambah
+                                    </button>
+                                </div>
+                                <div class="col-sm-3">
+
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <input class="form-control" v-model="Cari_Transaksi" type="search" placeholder="Cari Detail">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-search"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="table-primary text-center">
@@ -518,7 +548,38 @@
                             </table>
                         </div>
                         
+                        <div class="modal-header">
+                            <h4 class="modal-title mx-auto" id="Heading">Detail Transaksi Jasa</h4>
+                        </div>
                         
+                        <div class="container-fluid mt-3">
+                            <div class="row mb-2">
+                                <div class="col-sm-3">
+                                    <div class="col-sm-9 p-0">
+                                        <button class="btn btn-success mb-2 btn-block" @click="getallpenjualan(),refresh()" 
+                                        data-title="Tambah_Detail" data-toggle="modal" data-target="#Tambah_Detail">
+                                            <i class="fas fa-plus mr-2"></i>Tambah
+                                        </button>
+                                    </div>
+                                    <div class="col-sm-3">
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-5">
+
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <input class="form-control" v-model="Cari_Transaksi" type="search" placeholder="Cari Detail">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-search"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="table-primary text-center">
@@ -536,7 +597,7 @@
                                         <td>{{detailjasa.Id_Jasa }} </td>
                                         <td>{{detailjasa.Nama_Jasa}} </td>
                                         <td>{{detailjasa.Harga_Jasa}} </td>
-                                        <td>{{detailjasa.Total}} </td>
+                                        <td>{{detailjasa.Subtotal_Detail_Jasa}} </td>
                                         <td class="text-center">
                                             <p data-placement="top" data-toggle="tooltip" title="Edit">
                                                 <button class="btn btn-primary" 
@@ -566,8 +627,8 @@
 
                             </div>
                             <div class="col-sm-4">
-                                <button class="btn btn-success mb-2 btn-block" data-title="Cetak_Nota">
-                                    <i class="far fa-file-pdf"></i> Cetak Nota Pengadaan
+                                <button class="btn btn-success mb-2 btn-block" data-title="Cetak_SPK">
+                                    <i class="far fa-file-pdf"></i> Cetak Surat Perintah Kerja
                                 </button>
                             </div>
                             <div class="col-sm-4">
