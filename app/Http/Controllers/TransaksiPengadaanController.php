@@ -126,8 +126,8 @@ class TransaksiPengadaanController extends RestController
         {
             $sparepart=Sparepart::where('Kode_Sparepart',$details[$i]->Kode_Sparepart)->get();
             // dd($sparepart[0]->Jumlah_Sparepart);
-            $sparepart[$i]->Jumlah_Sparepart += $details[$i]->Jumlah;
-            $sparepart[$i]->save();
+            $sparepart->Jumlah_Sparepart += $details[$i]->Jumlah;
+            $sparepart->save();
         }
         $pengadaan->save();
         $response = $this->generateItem($pengadaan);

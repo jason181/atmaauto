@@ -118,14 +118,14 @@ class TransaksiPenjualanController extends RestController
             $penjualan->Subtotal            = $request->get('Subtotal');
             $penjualan->Diskon              = $request->get('Diskon');
             $penjualan->Total               = $request->get('Subtotal')-$request->get('Diskon');
-            if($montir->Id_Pegawai == null)
-            {
-                $penjualan->Status = 0;
-            }
-            else
-            {
-                $penjualan->Status = 1;
-            }
+            // if($montir->Id_Pegawai == null)
+            // {
+            $penjualan->Status = 0;
+            // }
+            // else
+            // {
+            //     $penjualan->Status = 1;
+            // }
             
             $penjualan->save();
             
@@ -149,11 +149,13 @@ class TransaksiPenjualanController extends RestController
                         return $penjualan;
                     });
                 }
-                
-                
+
                 for($i=0;$i<$countsparepart;$i++)
                 {
-                    $sparepart[$i]['Id_Jasa_Montir']=$montir->Id_Jasa_Montir;
+                    $datasparepart=Sparepart::where('Kode_Sparepart',$sparepart[$i]->Kode_Sparepart)->get();
+                    // dd($sparepart[0]->Jumlah_Sparepart);
+                    $datasparepart->Jumlah_Sparepart += $sparepart[$i]->Jumlah;
+                    $datasparepart->save();
                 }
             }
             
