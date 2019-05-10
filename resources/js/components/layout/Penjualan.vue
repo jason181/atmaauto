@@ -119,9 +119,9 @@
                             </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                    <button @click="datakonsumenhandler(konsumen)" 
-                                        class="btn btn-danger"  data-title="Delete_Konsumen" 
-                                        data-toggle="modal" data-target="#Delete_Konsumen">
+                                    <button @click="datatransaksihandler(transaksi)" 
+                                        class="btn btn-danger"  data-title="Delete_Penjualan" 
+                                        data-toggle="modal" data-target="#Delete_Penjualan">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </p>
@@ -449,7 +449,7 @@
                 </div>
             </div>
         </div>
-        <!-- TAMPIL DETAIL PENJUALAN -->
+        <!-- TAMPIL DETAIL PENJUALAN SPAREPART-->
         <div class="modal fade" id="Detail_Penjualan" tabindex="-1" role="dialog" aria-labelledby="Detail_Penjualan" 
         aria-hidden="true">
             <div class="modal-dialog" style="max-width:750px;">
@@ -499,7 +499,79 @@
                 </div>
             </div>
         </div>
-        <!-- END OF TAMPIL DETAIL PENGADAAN -->
+        <!-- END OF TAMPIL DETAIL PENJUALAN SPAREPART -->
+        <!-- TAMPIL DETAIL PENJUALAN SPAREPART-->
+        <div class="modal fade" id="Detail_Penjualan" tabindex="-1" role="dialog" aria-labelledby="Detail_Penjualan" 
+        aria-hidden="true" >
+            <div class="modal-dialog" style="max-width:750px;">
+                <div class="modal-content" style="width:750px;">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Detail Jasa</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" 
+                        style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead class="table-primary text-center">
+                                    <tr>
+                                        <th scope="col">ID Jasa</th>
+                                        <th scope="col">Nama Jasa</th>
+                                        <th scope="col">Harga Jasa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-bind:key="detail['id']" v-for="detail in filtereddetailjasa">
+                                        <td>{{detail.Id_Jasa }} </td>
+                                        <td>{{detail.Nama_Jasa}} </td>
+                                        <td>{{detail.Harga_Jasa}} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+
+                            </div>
+                            <div class="col-sm-4">
+                                <button class="btn btn-success mb-2 btn-block" data-title="Cetak_Nota">
+                                    <i class="far fa-file-pdf"></i> Cetak Nota Pengadaan
+                                </button>
+                            </div>
+                            <div class="col-sm-4">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END OF TAMPIL DETAIL JASA -->
+        <!-- DELETE TRANSAKSI PENJUALAN -->
+        <div class="modal fade" id="Delete_Penjualan" tabindex="-1" role="dialog" aria-labelledby="Delete_Penjualan" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Hapus Data Transaksi </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Apakah Anda Yakin Ingin Menghapus Data Transaksi Ini ?</div>
+                    </div>
+                    <div class="modal-footer ">
+                        <a id="delete_btn" class="float-left w-100">
+                            <button type="button" @click="deletepenjualan(Transaksi.Id_Transaksi)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
+                        </a>
+                        <button type="button" class="btn btn-secondary float-right w-50" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END OF DELETE DELETE TRANSAKSI PENGADAAN -->
    </div>
 </template>
 <script>
@@ -658,7 +730,6 @@ export default {
             this.tempJ.Id_Transaksi              = this.Transaksi.Id_Transaksi;
             let data = this.jasa.find(obj=>obj.Id_Jasa == this.Jasaservice.Id_Jasa)
             console.log(data.Nama_Jasa)
-            this.tempJ.Id_Jasa_Montir            = '1';
             this.tempJ.Nama_Jasa                 = data.Nama_Jasa;
             this.tempJ.Harga_Jasa                = data.Harga_Jasa;
             this.tempJ.Subtotal_Detail_Jasa      = data.Harga_Jasa;
@@ -821,6 +892,7 @@ export default {
             try {
                 const payload = {
                     Id_Konsumen         : this.Konsumen.Id_Konsumen,
+                    Id_Motor_Konsumen   : this.Motor.Id_Motor,
                     Tanggal_Transaksi   : this.Transaksi.Tanggal_Transaksi,
                     Jenis_Transaksi     : this.jenis,
                     Subtotal            : this.temp.Subtotal_Detail_Sparepart + this.tempJ.Subtotal_Detail_Jasa,
@@ -833,6 +905,15 @@ export default {
                 await penjualanController.addpenjualan(payload)
                 this.getallpenjualan()
                 //this.refresh()
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async deletepenjualan(id) {
+            try {
+                await penjualanController.deletepenjualan(id)
+                this.getallpenjualan()
+                // console.log()
             } catch (err) {
                 console.log(err)
             }
@@ -861,6 +942,9 @@ export default {
         },
         datakonsumenhandler(konsumen){
             this.Konsumen = konsumen
+        },
+        datatransaksihandler(transaksi){
+            this.Transaksi = transaksi
         },
         detailhandler(transaksi){
             this.Id_Detail_Modal = transaksi.Id_Transaksi
@@ -902,6 +986,11 @@ export default {
         filtereddetail:function(){
             return this.detailpenjualandata.filter((detailpenjualan)=>{
                 return detailpenjualan.Id_Transaksi == this.Id_Detail_Modal;
+            });
+        },
+        filtereddetailjasa:function(){
+            return this.detailjasadata.filter((detailjasa)=>{
+                return detailjasa.Id_Transaksi == this.Id_Detail_Modal;
             });
         },
         nameErrors () {

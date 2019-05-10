@@ -6502,6 +6502,78 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -6675,7 +6747,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return obj.Id_Jasa == _this2.Jasaservice.Id_Jasa;
       });
       console.log(data.Nama_Jasa);
-      this.tempJ.Id_Jasa_Montir = '1';
       this.tempJ.Nama_Jasa = data.Nama_Jasa;
       this.tempJ.Harga_Jasa = data.Harga_Jasa;
       this.tempJ.Subtotal_Detail_Jasa = data.Harga_Jasa;
@@ -7196,6 +7267,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 _context13.prev = 0;
                 payload = {
                   Id_Konsumen: this.Konsumen.Id_Konsumen,
+                  Id_Motor_Konsumen: this.Motor.Id_Motor,
                   Tanggal_Transaksi: this.Transaksi.Tanggal_Transaksi,
                   Jenis_Transaksi: this.jenis,
                   Subtotal: this.temp.Subtotal_Detail_Sparepart + this.tempJ.Subtotal_Detail_Jasa,
@@ -7233,44 +7305,81 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return addpenjualan;
     }(),
-    updatekonsumen: function () {
-      var _updatekonsumen = _asyncToGenerator(
+    deletepenjualan: function () {
+      var _deletepenjualan = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee14(id) {
-        var payload;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee14$(_context14) {
           while (1) {
             switch (_context14.prev = _context14.next) {
               case 0:
                 _context14.prev = 0;
+                _context14.next = 3;
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].deletepenjualan(id);
+
+              case 3:
+                this.getallpenjualan(); // console.log()
+
+                _context14.next = 9;
+                break;
+
+              case 6:
+                _context14.prev = 6;
+                _context14.t0 = _context14["catch"](0);
+                console.log(_context14.t0);
+
+              case 9:
+              case "end":
+                return _context14.stop();
+            }
+          }
+        }, _callee14, this, [[0, 6]]);
+      }));
+
+      function deletepenjualan(_x3) {
+        return _deletepenjualan.apply(this, arguments);
+      }
+
+      return deletepenjualan;
+    }(),
+    updatekonsumen: function () {
+      var _updatekonsumen = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee15(id) {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee15$(_context15) {
+          while (1) {
+            switch (_context15.prev = _context15.next) {
+              case 0:
+                _context15.prev = 0;
                 payload = {
                   Nama_Konsumen: this.Konsumen.Nama_Konsumen,
                   Alamat_Konsumen: this.Konsumen.Alamat_Konsumen,
                   Telepon_Konsumen: this.Konsumen.Telepon_Konsumen
                 };
-                _context14.next = 4;
+                _context15.next = 4;
                 return _service_Konsumen__WEBPACK_IMPORTED_MODULE_3__["default"].updatekonsumen(payload, id);
 
               case 4:
                 this.getallkonsumen();
                 this.refresh();
-                _context14.next = 11;
+                _context15.next = 11;
                 break;
 
               case 8:
-                _context14.prev = 8;
-                _context14.t0 = _context14["catch"](0);
-                console.log(_context14.t0);
+                _context15.prev = 8;
+                _context15.t0 = _context15["catch"](0);
+                console.log(_context15.t0);
 
               case 11:
               case "end":
-                return _context14.stop();
+                return _context15.stop();
             }
           }
-        }, _callee14, this, [[0, 8]]);
+        }, _callee15, this, [[0, 8]]);
       }));
 
-      function updatekonsumen(_x3) {
+      function updatekonsumen(_x4) {
         return _updatekonsumen.apply(this, arguments);
       }
 
@@ -7279,34 +7388,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     deletekonsumen: function () {
       var _deletekonsumen = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee15(id) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee15$(_context15) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee16(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee16$(_context16) {
           while (1) {
-            switch (_context15.prev = _context15.next) {
+            switch (_context16.prev = _context16.next) {
               case 0:
-                _context15.prev = 0;
-                _context15.next = 3;
+                _context16.prev = 0;
+                _context16.next = 3;
                 return _service_Konsumen__WEBPACK_IMPORTED_MODULE_3__["default"].deletekonsumen(id);
 
               case 3:
                 this.getallkonsumen();
-                _context15.next = 9;
+                _context16.next = 9;
                 break;
 
               case 6:
-                _context15.prev = 6;
-                _context15.t0 = _context15["catch"](0);
-                console.log(_context15.t0);
+                _context16.prev = 6;
+                _context16.t0 = _context16["catch"](0);
+                console.log(_context16.t0);
 
               case 9:
               case "end":
-                return _context15.stop();
+                return _context16.stop();
             }
           }
-        }, _callee15, this, [[0, 6]]);
+        }, _callee16, this, [[0, 6]]);
       }));
 
-      function deletekonsumen(_x4) {
+      function deletekonsumen(_x5) {
         return _deletekonsumen.apply(this, arguments);
       }
 
@@ -7314,6 +7423,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }(),
     datakonsumenhandler: function datakonsumenhandler(konsumen) {
       this.Konsumen = konsumen;
+    },
+    datatransaksihandler: function datatransaksihandler(transaksi) {
+      this.Transaksi = transaksi;
     },
     detailhandler: function detailhandler(transaksi) {
       this.Id_Detail_Modal = transaksi.Id_Transaksi;
@@ -7364,6 +7476,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return this.detailpenjualandata.filter(function (detailpenjualan) {
         return detailpenjualan.Id_Transaksi == _this8.Id_Detail_Modal;
+      });
+    },
+    filtereddetailjasa: function filtereddetailjasa() {
+      var _this9 = this;
+
+      return this.detailjasadata.filter(function (detailjasa) {
+        return detailjasa.Id_Transaksi == _this9.Id_Detail_Modal;
       });
     },
     nameErrors: function nameErrors() {
@@ -54728,13 +54847,13 @@ var render = function() {
                           {
                             staticClass: "btn btn-danger",
                             attrs: {
-                              "data-title": "Delete_Konsumen",
+                              "data-title": "Delete_Penjualan",
                               "data-toggle": "modal",
-                              "data-target": "#Delete_Konsumen"
+                              "data-target": "#Delete_Penjualan"
                             },
                             on: {
                               click: function($event) {
-                                return _vm.datakonsumenhandler(_vm.konsumen)
+                                return _vm.datatransaksihandler(transaksi)
                               }
                             }
                           },
@@ -55968,6 +56087,125 @@ var render = function() {
           ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Detail_Penjualan",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Detail_Penjualan",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog",
+            staticStyle: { "max-width": "750px" }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "modal-content", staticStyle: { width: "750px" } },
+              [
+                _vm._m(25),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c(
+                      "table",
+                      { staticClass: "table table-striped table-hover" },
+                      [
+                        _vm._m(26),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(_vm.filtereddetailjasa, function(detail) {
+                            return _c("tr", { key: detail["id"] }, [
+                              _c("td", [_vm._v(_vm._s(detail.Id_Jasa) + " ")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(detail.Nama_Jasa) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(detail.Harga_Jasa) + " ")
+                              ])
+                            ])
+                          }),
+                          0
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(27)
+                ])
+              ]
+            )
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Delete_Penjualan",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Delete_Penjualan",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(28),
+            _vm._v(" "),
+            _vm._m(29),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer " }, [
+              _c(
+                "a",
+                {
+                  staticClass: "float-left w-100",
+                  attrs: { id: "delete_btn" }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger float-left w-50",
+                      attrs: { type: "button", "data-dismiss": "modal" },
+                      on: {
+                        click: function($event) {
+                          return _vm.deletepenjualan(_vm.Transaksi.Id_Transaksi)
+                        }
+                      }
+                    },
+                    [
+                      _c("span", {
+                        staticClass: "glyphicon glyphicon-ok-sign"
+                      }),
+                      _vm._v("Ya")
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(30)
+            ])
+          ])
+        ])
+      ]
     )
   ])
 }
@@ -56463,6 +56701,125 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "col-sm-4" })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Detail Jasa")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "table-primary text-center" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("ID Jasa")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama Jasa")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Harga Jasa")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-4" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success mb-2 btn-block",
+            attrs: { "data-title": "Cetak_Nota" }
+          },
+          [
+            _c("i", { staticClass: "far fa-file-pdf" }),
+            _vm._v(" Cetak Nota Pengadaan\n                                ")
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-4" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Hapus Data Transaksi ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("div", { staticClass: "alert alert-danger" }, [
+        _c("span", { staticClass: "glyphicon glyphicon-warning-sign" }),
+        _vm._v(" Apakah Anda Yakin Ingin Menghapus Data Transaksi Ini ?")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-secondary float-right w-50",
+        attrs: { type: "button", "data-dismiss": "modal" }
+      },
+      [
+        _c("span", { staticClass: "glyphicon glyphicon-remove" }),
+        _vm._v("Tidak")
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -80535,7 +80892,21 @@ __webpack_require__.r(__webpack_exports__);
         reject(err);
       };
 
-      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/detail_jasa', successCallback, errorCallback);
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/detail_jasas', successCallback, errorCallback);
+    });
+  },
+  deletepenjualan: function deletepenjualan(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].delete('/api/transaksi_penjualans/delete/' + id, successCallback, errorCallback);
     });
   }
 });

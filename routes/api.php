@@ -120,14 +120,11 @@ Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
 
 
 // Route::patch('/transaksi_penjualans/update/{id}', 'TransaksiPenjualanController@update'); 
-<<<<<<< HEAD
 Route::delete('/transaksi_penjualans/delete/{id}', 'TransaksiPenjualanController@destroy');
 // Route::get('/transaksi_penjualans/show/{id}', 'TransaksiPenjualanController@showbyCustomer');
 
 //Detail Transaksi Penjualan
 Route::get('/detail_spareparts','DetailSparepartController@index');
 Route::get('/detail_jasas','DetailJasaController@index');
-=======
 // Route::delete('/transaksi_penjualans/delete/{id}', 'TransaksiPenjualanController@destroy');
 // Route::get('/transaksi_penjualans/show/{id}', 'TransaksiPenjualanController@showbyCustomer');
->>>>>>> 97811768204eefda13c51be29989e8f2ce0c7b75

@@ -3,7 +3,7 @@ import Http from '../http'
 export default {
     getallpenjualan(){
         return new Promise((resolve, reject) => {
-            
+             
             const successCallback = (res) => {
                 const data = res.data
                 resolve(data)
@@ -66,7 +66,19 @@ export default {
                 reject(err)
             }
 
-            Http.get('/api/detail_jasa', successCallback, errorCallback)
+            Http.get('/api/detail_jasas', successCallback, errorCallback)
+        })
+    },
+    deletepenjualan(id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.delete('/api/transaksi_penjualans/delete/'+id, successCallback, errorCallback)
         })
     },
 }
