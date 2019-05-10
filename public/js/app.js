@@ -7402,7 +7402,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context13.prev = 0;
                 payload = {
-                  Id_Montir: this.Id_Jasa_Montir,
                   Kode_Sparepart: this.Kode_Sparepart,
                   Harga_Satuan: this.Harga_Satuan,
                   Jumlah: this.Jumlah,
@@ -7410,7 +7409,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   Total: this.tempTotal
                 };
                 _context13.next = 4;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].addpenjualan(payload);
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].adddetailspareparts(payload);
 
               case 4:
                 this.getallpenjualan();
@@ -56908,7 +56907,7 @@ var render = function() {
                     attrs: { type: "submit", "data-dismiss": "modal" },
                     on: {
                       click: function($event) {
-                        _vm.getDiskon(), _vm.addpenjualan()
+                        return _vm.adddetailspareparts()
                       }
                     }
                   },
@@ -81752,6 +81751,20 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/pegawais', successCallback, errorCallback);
+    });
+  },
+  adddetailspareparts: function adddetailspareparts() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/detail_spareparts/store', payload, successCallback, errorCallback);
     });
   }
 });

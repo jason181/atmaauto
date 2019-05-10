@@ -703,7 +703,7 @@
 
                         <div class="modal-footer mt-3" >
                             <button type="submit" class="btn btn-success btn-lg w-100" 
-                            data-dismiss="modal" @click="getDiskon(),addpenjualan()">Tambahkan Penjualan Sparepart</button>
+                            data-dismiss="modal" @click="adddetailspareparts()">Tambahkan Penjualan Sparepart</button>
                         </div>
                     </div>
                 </div>
@@ -1028,14 +1028,13 @@ export default {
         async adddetailspareparts () {
             try {
                 const payload = {
-                    Id_Montir           : this.Id_Jasa_Montir,
-                    Kode_Sparepart      : this.Kode_Sparepart,
-                    Harga_Satuan        : this.Harga_Satuan,
-                    Jumlah                        : this.Jumlah,
-                    Subtotal_Detail_Sparepart     : this.temp.Subtotal_Detail_Sparepart + this.tempJ.Subtotal_Detail_Jasa,
-                    Total               : this.tempTotal,
+                    Kode_Sparepart                  : this.Kode_Sparepart,
+                    Harga_Satuan                    : this.Harga_Satuan,
+                    Jumlah                          : this.Jumlah,
+                    Subtotal_Detail_Sparepart       : this.temp.Subtotal_Detail_Sparepart + this.tempJ.Subtotal_Detail_Jasa,
+                    Total                           : this.tempTotal,
                 }
-                await penjualanController.addpenjualan(payload)
+                await penjualanController.adddetailspareparts(payload)
                 this.getallpenjualan()
             } catch (err) {
                 console.log(err)
