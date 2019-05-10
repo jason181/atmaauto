@@ -502,7 +502,7 @@
                                 <div class="col-sm-3">
                                     <div class="col-sm-9 p-0">
                                         <button class="btn btn-success mb-2 btn-block" @click="getallpenjualan(),refresh()" 
-                                        data-title="Tambah_Detail" data-toggle="modal" data-target="#Tambah_Detail">
+                                        data-title="Tambah_Detail_Jasa" data-toggle="modal" data-target="#Tambah_Detail_Jasa">
                                             <i class="fas fa-plus mr-2"></i>Tambah
                                         </button>
                                     </div>
@@ -703,14 +703,80 @@
 
                         <div class="modal-footer mt-3" >
                             <button type="submit" class="btn btn-success btn-lg w-100" 
-                            data-dismiss="modal" @click="adddetailspareparts()">Tambahkan Penjualan Sparepart</button>
+                            data-dismiss="modal" @click="addetailspareparts()">Tambahkan Penjualan</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- END OF TAMBAH DETAIL SPAREPART -->
-   </div>
+        <!-- TAMBAH DETAIL TRANSAKSI JASA -->
+        <div class="modal fade" id="Tambah_Detail_Jasa" tabindex="-1" role="dialog" 
+            aria-labelledby="Tambah_Detail_Jasa" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Tambah Transaksi Jasa</h4>
+                        <button type="button" class="close" data-dismiss="modal" 
+                            aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mt-3"> 
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Jasa</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Jasaservice.Id_Jasa" v-on:change="getSelectedIndexJasa" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Pilih Jasa --</option>
+                                <option v-bind:key="jasaS['Id_Jasa']" 
+                                v-on:change="getSelectedIndexJasa"
+                                v-for="jasaS in jasa" 
+                                :value="jasaS.Id_Jasa" >{{jasaS.Nama_Jasa}}</option>
+                            </select>
+
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Harga</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Jasaservice.Id_Jasa" v-on:change="getSelectedIndexJasa" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Pilih Jasa --</option>
+                                <option v-bind:key="jasaS['Id_Jasa']" 
+                                v-on:change="getSelectedIndexJasa"
+                                v-for="jasaS in jasa" 
+                                :value="jasaS.Id_Jasa" >{{jasaS.Harga_Jasa}}</option>
+                            </select>
+                            <button type="submit" class="btn btn-success btn" @click="jasaHandler(jasa)">Add Jasa</button>
+                        </div>
+
+                            <div class="col-lg-6 mt-3">
+                            </div>
+
+                            <div class="input-group mt-3 w-400">
+                                <div class="row">
+                                    <div class="col-12 mr-2">
+                                        <div class="list-group mr-2" v-for="jasaS in jasadata" :key="jasaS['Id_Jasa']">
+                                            <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+                                                {{jasaS.Nama_Jasa + '-' + jasaS.Harga_Jasa}}          
+                                                <button type="submit" class="btn btn-danger" style="margin-left: 200px"
+                                                @click="deleteListJasa(jasaS.Id_Jasa)">Delete</button>
+                                                <br>     
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer mt-3" >
+                            <button type="submit" class="btn btn-success btn-lg w-100" 
+                            data-dismiss="modal" @click="adddetailjasa()">Tambahkan Transaksi Jasa</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END OF TAMBAH DETAIL TRANSAKSI JASA -->
 </template>
 <script>
 import sparepartController from '../../service/Sparepart'
@@ -961,11 +1027,12 @@ export default {
         },
         getSelectedIndex(){
             this.index = this.konsumen.map(function(e) { return e.Id_Konsumen; }).indexOf(this.Konsumen.Id_Konsumen)
-            console.log(this.index)
+        },
+        getSelectedIndexJasa(){
+            this.index = this.jasa.map(function(e) { return e.Id_Jasa; }).indexOf(this.Jasaservice.Id_Jasa)
         },
         getKonsumen(){
             this.konsumen = this.konsumendata.find(obj=>obj.Id_Konsumen == this.Konsumen.Id_Konsumen);
-            // this.konsumen = Konsumen.Id_Konsumen;
         },
         async getallmotor () {
             try {
@@ -1025,16 +1092,17 @@ export default {
                 console.log(err)
             }
         },
-        async adddetailspareparts () {
+        async addetailspareparts () {
             try {
                 const payload = {
-                    Kode_Sparepart                  : this.Kode_Sparepart,
-                    Harga_Satuan                    : this.Harga_Satuan,
-                    Jumlah                          : this.Jumlah,
-                    Subtotal_Detail_Sparepart       : this.temp.Subtotal_Detail_Sparepart + this.tempJ.Subtotal_Detail_Jasa,
-                    Total                           : this.tempTotal,
+                    // Kode_Sparepart                  : this.Kode_Sparepart,
+                    // Harga_Satuan                    : this.Harga_Satuan,
+                    // Jumlah                          : this.Jumlah,
+                    // Subtotal_Detail_Sparepart       : this.temp.Subtotal_Detail_Sparepart + this.tempJ.Subtotal_Detail_Jasa,
+                    // Total                           : this.tempTotal,
+                    Detail_Sparepart    : this.sparepartdata
                 }
-                await penjualanController.adddetailspareparts(payload)
+                await penjualanController.addetailspareparts(payload)
                 this.getallpenjualan()
             } catch (err) {
                 console.log(err)

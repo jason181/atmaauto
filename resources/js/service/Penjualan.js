@@ -94,7 +94,7 @@ export default {
             Http.get('/api/pegawais', successCallback, errorCallback)
         })
     },
-    adddetailspareparts(){
+    addetailspareparts(payload){
         return new Promise((resolve, reject) => {
             const successCallback = (res) => {
                 const data = res.data
