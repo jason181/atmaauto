@@ -232,31 +232,6 @@
                                 -- {{motor.Tipe}} -- -- {{motor.Merk}}</option>
                             </select>
                         </div>
-
-                        <!-- <div class="input-group mt-3">
-                                <div class="input-group-prepend d-block" style="width: 100px;">
-                                    <span class="input-group-text" id="basic-addon2">Merk</span>
-                                </div>
-                                    
-                                <select class="form-control mr-2" v-model="Motor_Konsumen.Id_Motor_Konsumen" v-on:change="getSelectedIndex" >
-                                    <option disabled="disabled" selected="selected" 
-                                    value="Pilih Merk">-- Pilih Merk Motor --</option>
-                                    <option v-bind:key="motor['Id_Motor']" 
-                                    v-on:change="getSelectedIndex"
-                                    v-for="motor in motorcycle" 
-                                    :value="motor.Id_Motor">{{motor.Merk}}</option>
-                                </select>
-                                
-                                <span class="input-group-text" id="basic-addon2">Tipe</span>
-                                <select class="form-control mr-2" v-model="Motor_Konsumen.Id_Motor_Konsumen" v-on:change="getSelectedIndex">
-                                    <option disabled="disabled" selected="selected" 
-                                    value="Pilih Merk">-- Pilih Tipe Motor --</option>
-                                    <option v-bind:key="motor['Id_Motor']"
-                                    v-on:change="getSelectedIndex" 
-                                    v-for="motor in motorcycle" 
-                                    :value="motor.Id_Motor">{{motor.Tipe}}</option>
-                                </select>
-                            </div> -->
                             
                         <div class="input-group mt-3">
                             <div class="input-group-prepend d-block" style="width: 100px;">
@@ -358,26 +333,6 @@
                             id="Transaksi_Subtotal" name="Transaksi_Subtotal" disabled required> 
                         </div>
 
-                        <!-- <div class="input-group mt-3" v-if="jenis == 'SP' || jenis=='SS' || jenis=='SV'">
-                            <div class="input-group-prepend d-block" style="width: 100px;">
-                                <span class="input-group-text" id="basic-addon2">Diskon</span>
-                            </div>
-                            <input type="text" v-model="Transaksi.Diskon" 
-                            class="form-control" placeholder="Masukkan Diskon" 
-                            aria-label="Transaksi_Diskon" aria-describedby="basic-addon2" 
-                            id="Transaksi_Diskon" name="Transaksi_Diskon" required>
-                        </div> -->
-
-                        <!-- <div class="input-group mt-3" v-if="jenis == 'SP'">
-                            <div class="input-group-prepend d-block" style="width: 100px;">
-                                <span class="input-group-text" id="basic-addon2">Total</span>
-                            </div>
-                            <input type="text" v-model="Transaksi.Total" 
-                            class="form-control" placeholder="Total" 
-                            aria-label="Transaksi_Total" aria-describedby="basic-addon2" 
-                            id="Transaksi_Total" name="Transaksi_Diskon" disabled required>
-                        </div> -->
-
                         <div class="input-group mt-3" v-if="jenis == 'SV' || jenis=='SS'"> 
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Jasa</span>
@@ -445,16 +400,6 @@
                             id="Transaksi_Diskon" name="Transaksi_Diskon" required>
                         </div>
 
-                        <!-- <div class="input-group mt-3" v-if="jenis == 'SV'">
-                            <div class="input-group-prepend d-block" style="width: 100px;">
-                                <span class="input-group-text" id="basic-addon2">Total</span>
-                            </div>
-                            <input type="text" v-model="Transaksi.Total" 
-                            class="form-control" placeholder="Total" 
-                            aria-label="Transaksi_Total" aria-describedby="basic-addon2" 
-                            id="Transaksi_Total" name="Transaksi_Diskon" disabled required>
-                        </div> -->
-
                         <div class="modal-footer mt-3" >
                             <button type="submit" class="btn btn-success btn-lg w-100" 
                             data-dismiss="modal" @click="getDiskon(),addpenjualan()">Tambahkan Transaksi Penjualan</button>
@@ -482,7 +427,7 @@
                             <div class="col-sm-3">
                                 <div class="col-sm-9 p-0">
                                     <button class="btn btn-success mb-2 btn-block" @click="getallpenjualan(),refresh()" 
-                                    data-title="Tambah_Detail" data-toggle="modal" data-target="#Tambah_Detail">
+                                    data-title="Tambah_Detail_Sparepart" data-toggle="modal" data-target="#Tambah_Detail_Sparepart">
                                         <i class="fas fa-plus mr-2"></i>Tambah
                                     </button>
                                 </div>
@@ -662,7 +607,109 @@
                 </div>
             </div>
         </div>
-        <!-- END OF DELETE DELETE TRANSAKSI PENGADAAN -->
+        <!-- END OF DELETE DELETE TRANSAKSI PENJUALAN -->
+        <!-- TAMBAH DETAIL TRANSAKSI SPAREPART -->
+        <div class="modal fade" id="Tambah_Detail_Sparepart" tabindex="-1" role="dialog" 
+            aria-labelledby="Tambah_Detail_Sparepart" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Tambah Transaksi Penjualan Sparepart</h4>
+                        <button type="button" class="close" data-dismiss="modal" 
+                            aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mt-3"> 
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Sparepart</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Pilih Sparepart --</option>
+                                <option v-bind:key="spareparts['Kode_Sparepart']" 
+                                v-on:change="getSelectedIndex"
+                                v-for="spareparts in sparepart" 
+                                :value="spareparts.Kode_Sparepart" >{{spareparts.Nama_Sparepart}}</option>
+                            </select>
+
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Tipe</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Tipe Sparepart --</option>
+                                <option v-bind:key="spareparts['Kode_Sparepart']" 
+                                v-on:change="getSelectedIndex"
+                                v-for="spareparts in sparepart" 
+                                :value="spareparts.Kode_Sparepart" disabled>{{spareparts.Tipe_Barang}}</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group mt-3"> 
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Jumlah</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Jumlah Sparepart --</option>
+                                <option v-bind:key="spareparts['Kode_Sparepart']" 
+                                v-on:change="getSelectedIndex"
+                                v-for="spareparts in sparepart" 
+                                :value="spareparts.Kode_Sparepart" disabled>{{spareparts.Jumlah_Sparepart}}</option>
+                            </select>
+
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2" disabled>Harga Jual</span>
+                            </div> 
+                            <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Harga Jual --</option>
+                                <option v-bind:key="spareparts['Kode_Sparepart']" 
+                                v-on:change="getSelectedIndex"
+                                v-for="spareparts in sparepart" 
+                                :value="spareparts.Kode_Sparepart" disabled>{{spareparts.Harga_Jual}}</option>
+                            </select>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Jumlah</span>
+                            </div>
+                            <input type="number" v-model="jumlah" 
+                            class="form-control" placeholder="Masukkan Jumlah Sparepart Yang Ingin Dibeli" 
+                            aria-label="jumlah" aria-describedby="basic-addon2" 
+                            id="jumlah" name="jumlah" required>
+                        </div>
+
+                        <div class="col-lg-6 mt-3">
+                            <button type="submit" class="btn btn-success btn" @click="sparepartHandler(sparepart)">Add Sparepart</button>
+                        </div>
+
+                        <div class="input-group mt-3 w-400">
+                            <div class="row">
+                                <div class="col-12 mr-2">
+                                    <div class="list-group mr-2" v-for="spareparts in sparepartdata" :key="spareparts['Kode_Sparepart']">
+                                        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+                                            {{spareparts.Kode_Sparepart + '-' + spareparts.Nama_Sparepart}}          
+                                            <button type="submit" class="btn btn-danger" style="margin-left: 200px"
+                                            @click="deleteListSparepart(spareparts.Kode_Sparepart)">Delete</button>
+                                            <br>     
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer mt-3" >
+                            <button type="submit" class="btn btn-success btn-lg w-100" 
+                            data-dismiss="modal" @click="getDiskon(),addpenjualan()">Tambahkan Penjualan Sparepart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END OF TAMBAH DETAIL SPAREPART -->
    </div>
 </template>
 <script>
@@ -739,7 +786,6 @@ export default {
             Nama_Sparepart:'',
             Merk_Sparepart:'',
             Rak_Sparepart: '',
-            //Jumlah_Sparepart:0,
             Stok_Minimum_Sparepart:0,
             Harga_Beli:0,
             Harga_Jual:0,
@@ -921,10 +967,6 @@ export default {
             this.konsumen = this.konsumendata.find(obj=>obj.Id_Konsumen == this.Konsumen.Id_Konsumen);
             // this.konsumen = Konsumen.Id_Konsumen;
         },
-        getSelectedIndexJasa(){
-            this.index = this.jasa.map(function(e) { return e.Id_Jasa; }).indexOf(this.Jasaservice.Id_Jasa)
-            console.log(this.index)
-        },
         async getallmotor () {
             try {
                 this.motorcycle = (await motorController.getallmotor()).data
@@ -941,51 +983,9 @@ export default {
                 console.log(err)
             }
         },
-        
-        async addmotorkonsumen () {
-            try {
-                const payload = {
-                    Id_Motor_Konsumen     : this.Motor_Konsumen.Id_Motor_Konsumen,
-                    Id_Konsumen           : this.Konsumen.Id_Konsumen,
-                    Nama_Konsumen         : this.Konsumen.Nama_Konsumen,
-                    Id_Motor              : this.Motor.Id_Motor,
-                    Plat_Kendaraan        : this.Motor_Konsumen.Plat_Kendaraan,
-                }
-                await controller.addmotorkonsumen(payload)
-                this.getallmotorkonsumen()
-                this.refreshMotorKonsumen()
-            } catch (err) {
-                console.log(err)
-            }
-        },
-        async updatemotorkonsumen (id) {
-            try {
-                const payload = {
-                    Id_Motor_Konsumen     : this.Motor_Konsumen.Id_Motor_Konsumen,
-                    Id_Konsumen           : this.Konsumen.Id_Konsumen,
-                    Nama_Konsumen         : this.Konsumen.Nama_Konsumen,
-                    Id_Motor              : this.Motor.Id_Motor,
-                    Plat_Kendaraan        : this.Motor_Konsumen.Plat_Kendaraan,
-                }
-                await controller.updatemotorkonsumen(payload,id)
-                this.getallmotorkonsumen()
-                this.refreshMotorKonsumen()
-            } catch (err) {
-                console.log(err)
-            }
-        },
-        async deletemotorkonsumen(id) {
-            try {
-                await controller.deletemotorkonsumen(id)
-                this.getallmotorkonsumen()
-            } catch (err) {
-                console.log(err)
-            }
-        },
         datamotorkonsumenhandler(motorkonsumen){
             this.Motor_Konsumen = motorkonsumen
         },
-        //Method konsumen
         async getallkonsumen () {
             try {
                 this.konsumendata = (await Controller.getallkonsumen()).data
@@ -1025,24 +1025,18 @@ export default {
                 console.log(err)
             }
         },
-        async updatekonsumen (id) {
+        async adddetailspareparts () {
             try {
                 const payload = {
-                    Nama_Konsumen       : this.Konsumen.Nama_Konsumen,
-                    Alamat_Konsumen     : this.Konsumen.Alamat_Konsumen,
-                    Telepon_Konsumen    : this.Konsumen.Telepon_Konsumen,
+                    Id_Montir           : this.Id_Jasa_Montir,
+                    Kode_Sparepart      : this.Kode_Sparepart,
+                    Harga_Satuan        : this.Harga_Satuan,
+                    Jumlah                        : this.Jumlah,
+                    Subtotal_Detail_Sparepart     : this.temp.Subtotal_Detail_Sparepart + this.tempJ.Subtotal_Detail_Jasa,
+                    Total               : this.tempTotal,
                 }
-                await Controller.updatekonsumen(payload,id)
-                this.getallkonsumen()
-                this.refresh()
-            } catch (err) {
-                console.log(err)
-            }
-        },
-        async deletekonsumen(id) {
-            try {
-                await Controller.deletekonsumen(id)
-                this.getallkonsumen()
+                await penjualanController.addpenjualan(payload)
+                this.getallpenjualan()
             } catch (err) {
                 console.log(err)
             }
