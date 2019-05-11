@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 use App\Transaksi_Penjualan;
 use App\Detail_Jasa;
@@ -152,11 +153,13 @@ class TransaksiPenjualanController extends RestController
 
                 for($i=0;$i<$countsparepart;$i++)
                 {
-                    dd($sparepart[$i]->Kode_Sparepart);
-                    // $datasparepart=Sparepart::where('Kode_Sparepart',$sparepart[$i]->Kode_Sparepart)->get();
+                    // dd($sparepart[$i]['Kode_Sparepart']);
+                    $sparepartCollection=Sparepart::where('Kode_Sparepart',$sparepart[$i]['Kode_Sparepart'])->get();
+                    $sparepartdata=$sparepartCollection->first();
+                    
                     // dd($datasparepart->Jumlah_Sparepart);
-                    // $datasparepart->Jumlah_Sparepart += $sparepart[$i]->Jumlah;
-                    // $datasparepart->save();
+                    $sparepartdata->Jumlah_Sparepart -= $sparepart[$i]['Jumlah'];
+                    $sparepartdata->save();
                 }
             }
             
