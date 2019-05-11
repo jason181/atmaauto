@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Transformers\DetailSparepartTransformers;
 use App\Detail_Sparepart;
+use App\Detail_Jasa;
 use App\Transaksi_Penjualan;
 use App\Montir;
 use App\Sparepart;
@@ -61,25 +62,56 @@ class DetailSparepartController extends RestController
         return $this->sendResponse($response);
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request,$id) //cek lagi pake postman dan cek smua database
     {
-        $pengadaan = Transaksi_Pengadaan::find($request->Id_Transaksi);
-        $before = $pengadaan->Jumlah; 
-        $detail_sparepart = Detail_Sparepart::create([
-            'Id_Transaksi'              => $request->Id_Transaksi,
-            'Id_Jasa_Montir'            => $montir ->Id_Jasa_Montir,
-            'Kode_Sparepart'            => $request->Kode_Sparepart,
-            'Harga_Satuan'              => $request->Harga_Satuan,
-            'Jumlah'                    => $request->Jumlah,
-            'Subtotal_Detail_Sparepart' => $request->Subtotal_Detail_Sparepart
+        
+        $sparepart = $request->Detail_Sparepart;
+        
+        $transaksi = Transaksi_Pengadaan::find($sparepart[0]['Id_Transaksi']);
+        $sparepart = $request->Detail_Sparepart;
+        $detail_sparepart = Detail_Sparepart::find($id);
+        $Subtotal_Before = $detail_sparepart->Subtotal_Detail_Sparepart;
+        $jumlah = $detail_sparepart->Jumlah - $sparepart[0]['Jumlah'];
+        
+        $sparepartdata = Sparepart::where('Kode_Sparepart',$sparepart[0]['Kode_Sparepart'])->get();
+        $sparepartdata->Jumlah_Sparepart += $jumlah;
+        $subtotal = $jumlah * $sparepart[0]['Harga_Satuan'];
+
+        $detail_sparepart->update([
+            'Jumlah'                    => $sparepart[0]['Jumlah'],
+            'Subtotal_Detail_Sparepart' => $sparepart[0]['Subtotal_Detail_Sparepart']
         ]);
-        $transaksi = Transaksi_Pengadaan::find($request->Id_Transaksi);
-        $transaksi->Total += $request->Subtotal_Detail_Sparepart;
-        $transaksi->save();
+        
+        $penjualan->Total += $subtotal;
+        $penjualan->save();
 
         $response = $this->generateItem($detail_sparepart);
         return $this->sendResponse($response);
     }
 
+    public function destroy($id)
+    {
+        $detail_sparepart = Detail_Sparepart::find($id);
+        // dd($detail_sparepart);
+        $sparepart  = Sparepart::where('Kode_Sparepart',$detail_sparepart->Kode_Sparepart);
+        // dd($sparepart);
+        $sparepart->Jumlah_Sparepart += $detail_sparepart->Jumlah;
+        // dd($detail_sparepart->Id_Jasa_Montir);
+        $montir = Montir::find($detail_sparepart->Id_Jasa_Montir);
+        
+        $status=$detail_sparepart->delete();
+        
+        $find_montir_sparepart  = Detail_Sparepart::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->get();
+        $find_montir_jasa       = Detail_Jasa::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->get();
+        if($find_montir_sparepart == null && $find_montir_jasa == null)
+        {
+            $status = $montir->delete();    
+        }
+        
+        return response()->json([
+            'status' => $status,
+            'message' => $status ? 'Deleted' : 'Error Delete'
+        ]);
+    }
 
 }

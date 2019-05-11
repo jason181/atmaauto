@@ -130,6 +130,8 @@ Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
 //Detail Sparepart Transaksi Penjualan
 Route::get('/detail_spareparts','DetailSparepartController@index');
 Route::post('/detail_spareparts/store','DetailSparepartController@store');
+Route::patch('/detail_spareparts/update/{id}','DetailSparepartController@update');
+Route::delete('/detail_spareparts/delete/{id}','DetailSparepartController@destroy');
 
 
 //Detail Jasa Transaksi Penjualan
