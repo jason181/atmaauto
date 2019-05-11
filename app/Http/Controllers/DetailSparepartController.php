@@ -115,6 +115,7 @@ class DetailSparepartController extends RestController
         }
         else
         {
+            $status3 = false;
             $status2 = false;
         }
         

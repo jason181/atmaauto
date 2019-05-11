@@ -108,6 +108,7 @@ class DetailJasaController extends RestController
         }
         else
         {
+            $status3 = false;
             $status2 = false;
         }
         
@@ -116,6 +117,7 @@ class DetailJasaController extends RestController
             'find_jasa' => $find_montir_jasa,
             'detail' => $status,
             'montir' => $status2,
+            'penjualan' => $status3,
             'message' => $status ? 'Deleted' : 'Error Delete'
         ]);
     }
