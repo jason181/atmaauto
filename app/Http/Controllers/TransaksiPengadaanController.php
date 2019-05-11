@@ -114,6 +114,25 @@ class TransaksiPengadaanController extends RestController
         return $this->sendResponse($response);
     }
 
+    public function updatemobile(Request $request,$id)
+    {
+        date_default_timezone_set('Asia/Jakarta');
+
+        $pengadaan = Transaksi_Pengadaan::find($id);
+
+        if(!is_null($request->get('Tanggal_Pengadaan'))){
+            $pengadaan->Tanggal_Pengadaan   = $request->get('Tanggal_Pengadaan').' '.date('H:i:s');
+        }
+        if(!is_null($request->get('Total_Harga'))){
+            $pengadaan->Total_Harga         = $request->get('Total_Harga');
+        }
+        
+        $pengadaan->save();
+
+        $response=$this->generateItem($pengadaan);
+        return $this->sendResponse($response,201);
+    }
+
     public function verify($id)
     {
         // dd($id);
