@@ -105,5 +105,17 @@ export default {
             }
             Http.post('/api/detail_spareparts/store', payload, successCallback, errorCallback)
         })
-    }
+    },
+    deletedetailsparepart(id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.delete('/api/detail_spareparts/delete/'+id, successCallback, errorCallback)
+        })
+    },
 }

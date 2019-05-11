@@ -6992,6 +6992,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -7125,7 +7126,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         Id_Pegawai: ''
       },
       Id_Jasa_Montir: '',
-      Harga: ''
+      Harga: '',
+      Detail: {
+        Id_Detail_Sparepart: ''
+      }
     };
   },
   mounted: function mounted() {
@@ -7182,9 +7186,44 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.Transaksi.Total = parseInt(this.tempJ.Subtotal_Detail_Jasa + this.Transaksi.Total, 10); //this.totalJasa                       = data.Harga_Jasa + this.tempJ.Subtotal_Detail_Jasa;
 
       this.jasadata.push(JSON.parse(JSON.stringify(this.tempJ)));
-      this.jasaData.push(this.Jasaservice.Id_Jasa); // this.jasadata = jasa.Subtotal_Detail_Jasa.data;
-      // console.log(this.jasadata)
+      this.jasaData.push(this.Jasaservice.Id_Jasa);
     },
+    deletedetailsparepart: function () {
+      var _deletedetailsparepart = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].deletedetailsparepart(id);
+
+              case 3:
+                this.getalldetailpenjualan();
+                _context.next = 9;
+                break;
+
+              case 6:
+                _context.prev = 6;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+              case 9:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 6]]);
+      }));
+
+      function deletedetailsparepart(_x) {
+        return _deletedetailsparepart.apply(this, arguments);
+      }
+
+      return deletedetailsparepart;
+    }(),
     deleteListSparepart: function deleteListSparepart(id) {
       var filter = this.sparepartdata.filter(function (obj) {
         return obj.Kode_Sparepart !== id;
@@ -7208,43 +7247,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getalldetailpenjualan: function () {
       var _getalldetailpenjualan = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getalldetailpenjualan();
-
-              case 3:
-                this.detailpenjualandata = _context.sent.data;
-                console.log(this.detailpenjualandata);
-                _context.next = 10;
-                break;
-
-              case 7:
-                _context.prev = 7;
-                _context.t0 = _context["catch"](0);
-                console.log(_context.t0);
-
-              case 10:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this, [[0, 7]]);
-      }));
-
-      function getalldetailpenjualan() {
-        return _getalldetailpenjualan.apply(this, arguments);
-      }
-
-      return getalldetailpenjualan;
-    }(),
-    getalldetailjasa: function () {
-      var _getalldetailjasa = _asyncToGenerator(
-      /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
@@ -7252,11 +7254,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getalldetailjasa();
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getalldetailpenjualan();
 
               case 3:
-                this.detailjasadata = _context2.sent.data;
-                console.log(this.detailjasadata);
+                this.detailpenjualandata = _context2.sent.data;
+                console.log(this.detailpenjualandata);
                 _context2.next = 10;
                 break;
 
@@ -7273,14 +7275,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee2, this, [[0, 7]]);
       }));
 
-      function getalldetailjasa() {
-        return _getalldetailjasa.apply(this, arguments);
+      function getalldetailpenjualan() {
+        return _getalldetailpenjualan.apply(this, arguments);
       }
 
-      return getalldetailjasa;
+      return getalldetailpenjualan;
     }(),
-    getmotorkonsumen: function () {
-      var _getmotorkonsumen = _asyncToGenerator(
+    getalldetailjasa: function () {
+      var _getalldetailjasa = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
@@ -7289,11 +7291,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getmotorKonsumen();
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getalldetailjasa();
 
               case 3:
-                this.sparepartdata = _context3.sent.data;
-                console.log(this.sparepartdata);
+                this.detailjasadata = _context3.sent.data;
+                console.log(this.detailjasadata);
                 _context3.next = 10;
                 break;
 
@@ -7310,14 +7312,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee3, this, [[0, 7]]);
       }));
 
-      function getmotorkonsumen() {
-        return _getmotorkonsumen.apply(this, arguments);
+      function getalldetailjasa() {
+        return _getalldetailjasa.apply(this, arguments);
       }
 
-      return getmotorkonsumen;
+      return getalldetailjasa;
     }(),
-    getPegawai: function () {
-      var _getPegawai = _asyncToGenerator(
+    getmotorkonsumen: function () {
+      var _getmotorkonsumen = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
@@ -7326,11 +7328,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getPegawai();
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getmotorKonsumen();
 
               case 3:
-                this.pegawaidata = _context4.sent.data;
-                console.log(this.pegawaidata);
+                this.sparepartdata = _context4.sent.data;
+                console.log(this.sparepartdata);
                 _context4.next = 10;
                 break;
 
@@ -7347,14 +7349,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee4, this, [[0, 7]]);
       }));
 
-      function getPegawai() {
-        return _getPegawai.apply(this, arguments);
+      function getmotorkonsumen() {
+        return _getmotorkonsumen.apply(this, arguments);
       }
 
-      return getPegawai;
+      return getmotorkonsumen;
     }(),
-    getallpenjualan: function () {
-      var _getallpenjualan = _asyncToGenerator(
+    getPegawai: function () {
+      var _getPegawai = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
@@ -7363,11 +7365,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getallpenjualan();
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getPegawai();
 
               case 3:
-                this.penjualandata = _context5.sent.data;
-                console.log(this.penjualandata);
+                this.pegawaidata = _context5.sent.data;
+                console.log(this.pegawaidata);
                 _context5.next = 10;
                 break;
 
@@ -7384,14 +7386,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee5, this, [[0, 7]]);
       }));
 
-      function getallpenjualan() {
-        return _getallpenjualan.apply(this, arguments);
+      function getPegawai() {
+        return _getPegawai.apply(this, arguments);
       }
 
-      return getallpenjualan;
+      return getPegawai;
     }(),
-    getalljasaservice: function () {
-      var _getalljasaservice = _asyncToGenerator(
+    getallpenjualan: function () {
+      var _getallpenjualan = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
@@ -7400,11 +7402,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return _httpController__WEBPACK_IMPORTED_MODULE_6__["default"].getalljasaservice();
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getallpenjualan();
 
               case 3:
-                this.jasa = _context6.sent.data;
-                console.log(this.jasa);
+                this.penjualandata = _context6.sent.data;
+                console.log(this.penjualandata);
                 _context6.next = 10;
                 break;
 
@@ -7421,14 +7423,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee6, this, [[0, 7]]);
       }));
 
-      function getalljasaservice() {
-        return _getalljasaservice.apply(this, arguments);
+      function getallpenjualan() {
+        return _getallpenjualan.apply(this, arguments);
       }
 
-      return getalljasaservice;
+      return getallpenjualan;
     }(),
-    getallsparepart: function () {
-      var _getallsparepart = _asyncToGenerator(
+    getalljasaservice: function () {
+      var _getalljasaservice = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
@@ -7437,11 +7439,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].getallsparepart();
+                return _httpController__WEBPACK_IMPORTED_MODULE_6__["default"].getalljasaservice();
 
               case 3:
-                this.sparepart = _context7.sent.data;
-                console.log(this.sparepart);
+                this.jasa = _context7.sent.data;
+                console.log(this.jasa);
                 _context7.next = 10;
                 break;
 
@@ -7456,6 +7458,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             }
           }
         }, _callee7, this, [[0, 7]]);
+      }));
+
+      function getalljasaservice() {
+        return _getalljasaservice.apply(this, arguments);
+      }
+
+      return getalljasaservice;
+    }(),
+    getallsparepart: function () {
+      var _getallsparepart = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                _context8.prev = 0;
+                _context8.next = 3;
+                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].getallsparepart();
+
+              case 3:
+                this.sparepart = _context8.sent.data;
+                console.log(this.sparepart);
+                _context8.next = 10;
+                break;
+
+              case 7:
+                _context8.prev = 7;
+                _context8.t0 = _context8["catch"](0);
+                console.log(_context8.t0);
+
+              case 10:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, this, [[0, 7]]);
       }));
 
       function getallsparepart() {
@@ -7484,43 +7523,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getallmotor: function () {
       var _getallmotor = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
-          while (1) {
-            switch (_context8.prev = _context8.next) {
-              case 0:
-                _context8.prev = 0;
-                _context8.next = 3;
-                return _service_Motor__WEBPACK_IMPORTED_MODULE_5__["default"].getallmotor();
-
-              case 3:
-                this.motorcycle = _context8.sent.data;
-                console.log(this.motorcycle);
-                _context8.next = 10;
-                break;
-
-              case 7:
-                _context8.prev = 7;
-                _context8.t0 = _context8["catch"](0);
-                console.log(_context8.t0);
-
-              case 10:
-              case "end":
-                return _context8.stop();
-            }
-          }
-        }, _callee8, this, [[0, 7]]);
-      }));
-
-      function getallmotor() {
-        return _getallmotor.apply(this, arguments);
-      }
-
-      return getallmotor;
-    }(),
-    getallmotorkonsumen: function () {
-      var _getallmotorkonsumen = _asyncToGenerator(
-      /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
           while (1) {
@@ -7528,11 +7530,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_4__["default"].getallmotorkonsumen();
+                return _service_Motor__WEBPACK_IMPORTED_MODULE_5__["default"].getallmotor();
 
               case 3:
-                this.motorkonsumendata = _context9.sent.data;
-                console.log(this.motorkonsumendata);
+                this.motorcycle = _context9.sent.data;
+                console.log(this.motorcycle);
                 _context9.next = 10;
                 break;
 
@@ -7549,17 +7551,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee9, this, [[0, 7]]);
       }));
 
-      function getallmotorkonsumen() {
-        return _getallmotorkonsumen.apply(this, arguments);
+      function getallmotor() {
+        return _getallmotor.apply(this, arguments);
       }
 
-      return getallmotorkonsumen;
+      return getallmotor;
     }(),
-    datamotorkonsumenhandler: function datamotorkonsumenhandler(motorkonsumen) {
-      this.Motor_Konsumen = motorkonsumen;
-    },
-    getallkonsumen: function () {
-      var _getallkonsumen = _asyncToGenerator(
+    getallmotorkonsumen: function () {
+      var _getallmotorkonsumen = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
@@ -7568,11 +7567,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context10.prev = 0;
                 _context10.next = 3;
-                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_3__["default"].getallkonsumen();
+                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_4__["default"].getallmotorkonsumen();
 
               case 3:
-                this.konsumendata = _context10.sent.data;
-                console.log(this.konsumendata);
+                this.motorkonsumendata = _context10.sent.data;
+                console.log(this.motorkonsumendata);
                 _context10.next = 10;
                 break;
 
@@ -7589,6 +7588,46 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee10, this, [[0, 7]]);
       }));
 
+      function getallmotorkonsumen() {
+        return _getallmotorkonsumen.apply(this, arguments);
+      }
+
+      return getallmotorkonsumen;
+    }(),
+    datamotorkonsumenhandler: function datamotorkonsumenhandler(motorkonsumen) {
+      this.Motor_Konsumen = motorkonsumen;
+    },
+    getallkonsumen: function () {
+      var _getallkonsumen = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
+          while (1) {
+            switch (_context11.prev = _context11.next) {
+              case 0:
+                _context11.prev = 0;
+                _context11.next = 3;
+                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_3__["default"].getallkonsumen();
+
+              case 3:
+                this.konsumendata = _context11.sent.data;
+                console.log(this.konsumendata);
+                _context11.next = 10;
+                break;
+
+              case 7:
+                _context11.prev = 7;
+                _context11.t0 = _context11["catch"](0);
+                console.log(_context11.t0);
+
+              case 10:
+              case "end":
+                return _context11.stop();
+            }
+          }
+        }, _callee11, this, [[0, 7]]);
+      }));
+
       function getallkonsumen() {
         return _getallkonsumen.apply(this, arguments);
       }
@@ -7598,13 +7637,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     addpenjualan: function () {
       var _addpenjualan = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12() {
         var payload;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context12) {
           while (1) {
-            switch (_context11.prev = _context11.next) {
+            switch (_context12.prev = _context12.next) {
               case 0:
-                _context11.prev = 0;
+                _context12.prev = 0;
                 payload = {
                   Id_Montir: this.Id_Jasa_Montir,
                   Id_Konsumen: this.Konsumen.Id_Konsumen,
@@ -7618,7 +7657,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   Detail_Sparepart: this.sparepartdata,
                   Detail_Jasa: this.jasadata
                 };
-                _context11.next = 4;
+                _context12.next = 4;
                 return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].addpenjualan(payload);
 
               case 4:
@@ -7626,20 +7665,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 this.getalldetailpenjualan();
                 this.getalldetailjasa();
                 this.refresh();
-                _context11.next = 13;
+                _context12.next = 13;
                 break;
 
               case 10:
-                _context11.prev = 10;
-                _context11.t0 = _context11["catch"](0);
-                console.log(_context11.t0);
+                _context12.prev = 10;
+                _context12.t0 = _context12["catch"](0);
+                console.log(_context12.t0);
 
               case 13:
               case "end":
-                return _context11.stop();
+                return _context12.stop();
             }
           }
-        }, _callee11, this, [[0, 10]]);
+        }, _callee12, this, [[0, 10]]);
       }));
 
       function addpenjualan() {
@@ -7651,35 +7690,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     deletepenjualan: function () {
       var _deletepenjualan = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12(id) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context12) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context13) {
           while (1) {
-            switch (_context12.prev = _context12.next) {
+            switch (_context13.prev = _context13.next) {
               case 0:
-                _context12.prev = 0;
-                _context12.next = 3;
+                _context13.prev = 0;
+                _context13.next = 3;
                 return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].deletepenjualan(id);
 
               case 3:
                 this.getallpenjualan(); // console.log()
 
-                _context12.next = 9;
+                _context13.next = 9;
                 break;
 
               case 6:
-                _context12.prev = 6;
-                _context12.t0 = _context12["catch"](0);
-                console.log(_context12.t0);
+                _context13.prev = 6;
+                _context13.t0 = _context13["catch"](0);
+                console.log(_context13.t0);
 
               case 9:
               case "end":
-                return _context12.stop();
+                return _context13.stop();
             }
           }
-        }, _callee12, this, [[0, 6]]);
+        }, _callee13, this, [[0, 6]]);
       }));
 
-      function deletepenjualan(_x) {
+      function deletepenjualan(_x2) {
         return _deletepenjualan.apply(this, arguments);
       }
 
@@ -7688,13 +7727,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     addetailspareparts: function () {
       var _addetailspareparts = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee14() {
         var payload;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context13) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee14$(_context14) {
           while (1) {
-            switch (_context13.prev = _context13.next) {
+            switch (_context14.prev = _context14.next) {
               case 0:
-                _context13.prev = 0;
+                _context14.prev = 0;
                 payload = {
                   //Id_Montir           : this.Id_Jasa_Montir,
                   // Kode_Sparepart                  : this.Kode_Sparepart,
@@ -7704,25 +7743,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   // Total                           : this.tempTotal,
                   Detail_Sparepart: this.sparepartdata
                 };
-                _context13.next = 4;
+                _context14.next = 4;
                 return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].addetailspareparts(payload);
 
               case 4:
                 this.getallpenjualan();
-                _context13.next = 10;
+                _context14.next = 10;
                 break;
 
               case 7:
-                _context13.prev = 7;
-                _context13.t0 = _context13["catch"](0);
-                console.log(_context13.t0);
+                _context14.prev = 7;
+                _context14.t0 = _context14["catch"](0);
+                console.log(_context14.t0);
 
               case 10:
               case "end":
-                return _context13.stop();
+                return _context14.stop();
             }
           }
-        }, _callee13, this, [[0, 7]]);
+        }, _callee14, this, [[0, 7]]);
       }));
 
       function addetailspareparts() {
@@ -7734,8 +7773,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     datakonsumenhandler: function datakonsumenhandler(konsumen) {
       this.Konsumen = konsumen;
     },
-    datatransaksihandler: function datatransaksihandler(transaksi) {
+    detailtransaksihandler: function detailtransaksihandler(detail) {
       this.Transaksi = transaksi;
+      this.Detail = detail;
+      this.sparepartdata = transaksi.detail_sparepart.data;
     },
     detailhandler: function detailhandler(transaksi) {
       this.Id_Detail_Modal = transaksi.Id_Transaksi;
@@ -56501,6 +56542,10 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("td", [
+                                _vm._v(_vm._s(detail.Id_Detail_Sparepart) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
                                 _vm._v(_vm._s(detail.Harga_Satuan) + " ")
                               ]),
                               _vm._v(" "),
@@ -56533,8 +56578,8 @@ var render = function() {
                                         },
                                         on: {
                                           click: function($event) {
-                                            return _vm.datakonsumenhandler(
-                                              _vm.konsumen
+                                            return _vm.detailtransaksihandler(
+                                              detail
                                             )
                                           }
                                         }
@@ -56569,8 +56614,8 @@ var render = function() {
                                         },
                                         on: {
                                           click: function($event) {
-                                            return _vm.datatransaksihandler(
-                                              _vm.transaksi
+                                            return _vm.detailtransaksihandler(
+                                              detail
                                             )
                                           }
                                         }
@@ -56711,8 +56756,8 @@ var render = function() {
                                         },
                                         on: {
                                           click: function($event) {
-                                            return _vm.datakonsumenhandler(
-                                              _vm.konsumen
+                                            return _vm.detailtransaksihandler(
+                                              _vm.detailtransaksi
                                             )
                                           }
                                         }
@@ -56745,8 +56790,8 @@ var render = function() {
                                         },
                                         on: {
                                           click: function($event) {
-                                            return _vm.datatransaksihandler(
-                                              _vm.transaksi
+                                            return _vm.detailtransaksihandler(
+                                              _vm.detailtransaksi
                                             )
                                           }
                                         }
@@ -57694,7 +57739,9 @@ var render = function() {
                       attrs: { type: "button", "data-dismiss": "modal" },
                       on: {
                         click: function($event) {
-                          return _vm.deletepenjualan(_vm.Transaksi.Id_Transaksi)
+                          return _vm.deletedetailsparepart(
+                            _vm.Detail.Id_Detail_Sparepart
+                          )
                         }
                       }
                     },
@@ -83460,6 +83507,20 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/detail_spareparts/store', payload, successCallback, errorCallback);
+    });
+  },
+  deletedetailsparepart: function deletedetailsparepart(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].delete('/api/detail_spareparts/delete/' + id, successCallback, errorCallback);
     });
   }
 });

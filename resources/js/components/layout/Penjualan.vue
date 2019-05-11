@@ -466,13 +466,14 @@
                                 <tbody>
                                     <tr v-bind:key="detail['id']" v-for="detail in filtereddetail">
                                         <td>{{detail.Kode_Sparepart }} </td>
+                                        <td>{{detail.Id_Detail_Sparepart}} </td>
                                         <td>{{detail.Harga_Satuan}} </td>
                                         <td>{{detail.Jumlah}} </td>
                                         <td>{{detail.Subtotal_Detail_Sparepart}}</td>
                                         <td class="text-center">
                                             <p data-placement="top" data-toggle="tooltip" title="Edit">
                                                 <button class="btn btn-primary" 
-                                                    @click="datakonsumenhandler(konsumen)" 
+                                                    @click="detailtransaksihandler(detail)" 
                                                     data-title="Edit_Detail_Sparepart" data-toggle="modal" 
                                                     data-target="#Edit_Detail_Sparepart">
                                                     <i class="fas fa-edit"></i>
@@ -481,7 +482,7 @@
                                         </td>
                                         <td class="text-center">
                                             <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                <button @click="datatransaksihandler(transaksi)" 
+                                                <button @click="detailtransaksihandler(detail)" 
                                                     class="btn btn-danger"  data-title="Delete_Detail_Sparepart" 
                                                     data-toggle="modal" data-target="#Delete_Detail_Sparepart">
                                                     <i class="fas fa-trash-alt"></i>
@@ -546,7 +547,7 @@
                                         <td class="text-center">
                                             <p data-placement="top" data-toggle="tooltip" title="Edit">
                                                 <button class="btn btn-primary" 
-                                                    @click="datakonsumenhandler(konsumen)" 
+                                                    @click="detailtransaksihandler(detailtransaksi)" 
                                                     data-title="Edit_Detail_Jasa" data-toggle="modal" 
                                                     data-target="#Edit_Detail_Jasa">
                                                     <i class="fas fa-edit"></i>
@@ -555,7 +556,7 @@
                                         </td>
                                         <td class="text-center">
                                             <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                <button @click="datatransaksihandler(transaksi)" 
+                                                <button @click="detailtransaksihandler(detailtransaksi)" 
                                                     class="btn btn-danger"  data-title="Delete_Detail_Jasa" 
                                                     data-toggle="modal" data-target="#Delete_Detail_Jasa">
                                                     <i class="fas fa-trash-alt"></i>
@@ -827,7 +828,7 @@
                     </div>
                     <div class="modal-footer ">
                         <a id="delete_btn" class="float-left w-100">
-                            <button type="button" @click="deletepenjualan(Transaksi.Id_Transaksi)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
+                            <button type="button" @click="deletedetailsparepart(Detail.Id_Detail_Sparepart)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
                         </a>
                         <button type="button" class="btn btn-secondary float-right w-50" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
                     </div>
@@ -967,7 +968,7 @@
                 </div>
             </div>
         <!-- END OF EDIT DETAIL TRANSAKSI JASA -->
-        <!-- DELETE TRANSAKSI PENJUALAN SPAREPART -->
+        <!-- DELETE TRANSAKSI PENJUALAN JASA -->
         <div class="modal fade" id="Delete_Detail_Jasa" tabindex="-1" role="dialog" aria-labelledby="Delete_Detail_Sparepart" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -990,7 +991,7 @@
             </div>
         </div>
         </div>
-        <!-- END OF DELETE DETAIL SPAREPART -->
+        <!-- END OF DELETE DETAIL JASA -->
 </template>
 <script>
 import sparepartController from '../../service/Sparepart'
@@ -1117,6 +1118,9 @@ export default {
         },
         Id_Jasa_Montir:'',
         Harga:'',
+        Detail:{
+            Id_Detail_Sparepart:'',
+        }
     }),
     mounted(){
         this.getPegawai()
@@ -1164,14 +1168,17 @@ export default {
             this.tempJ.Subtotal_Detail_Jasa      = data.Harga_Jasa;
             this.Transaksi.Subtotal              = parseInt(this.Transaksi.Subtotal + this.tempJ.Subtotal_Detail_Jasa,10);
             this.Transaksi.Total                 = parseInt(this.tempJ.Subtotal_Detail_Jasa + this.Transaksi.Total,10);
-
             //this.totalJasa                       = data.Harga_Jasa + this.tempJ.Subtotal_Detail_Jasa;
-
             this.jasadata.push(JSON.parse(JSON.stringify(this.tempJ)))
             this.jasaData.push(this.Jasaservice.Id_Jasa)
-
-            // this.jasadata = jasa.Subtotal_Detail_Jasa.data;
-            // console.log(this.jasadata)
+        },
+        async deletedetailsparepart(id) {
+            try {
+                await penjualanController.deletedetailsparepart(id)
+                this.getalldetailpenjualan()
+            } catch (err) {
+                console.log(err)
+            }
         },
         deleteListSparepart(id)
         {
@@ -1340,8 +1347,10 @@ export default {
         datakonsumenhandler(konsumen){
             this.Konsumen = konsumen
         },
-        datatransaksihandler(transaksi){
+        detailtransaksihandler(detail){
             this.Transaksi = transaksi
+            this.Detail = detail
+            this.sparepartdata = transaksi.detail_sparepart.data;
         },
         detailhandler(transaksi){
             this.Id_Detail_Modal = transaksi.Id_Transaksi
