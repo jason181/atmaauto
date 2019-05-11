@@ -101,7 +101,8 @@ Route::get('/motor_konsumens/show/{id}', 'MotorKonsumenController@showbyCustomer
 Route::get('/transaksi_pengadaans','TransaksiPengadaanController@index');
 Route::post('/transaksi_pengadaans/store','TransaksiPengadaanController@store');
 Route::post('/transaksi_pengadaans/storeDetail','TransaksiPengadaanController@storeDetail');
-Route::patch('/transaksi_pengadaans/update/{id}', 'TransaksiPengadaanController@update'); 
+Route::patch('/transaksi_pengadaans/update/{id}', 'TransaksiPengadaanController@update');
+Route::patch('/transaksi_pengadaans/updatemobile/{id}', 'TransaksiPengadaanController@updatemobile'); 
 Route::delete('/transaksi_pengadaans/delete/{id}', 'TransaksiPengadaanController@destroy');
 // Route::get('/transaksi_pengadaans/show/{id}', 'TransaksiPengadaanController@showbyCustomer');
 Route::get('/transaksi_pengadaans/cetakSuratPemesanan/{id}','TransaksiPengadaanController@cetakSuratPemesanan');
