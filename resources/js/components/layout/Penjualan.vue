@@ -327,7 +327,7 @@
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Subtotal</span>
                             </div>
-                            <input type="text" v-model="temp.Subtotal_Detail_Sparepart" 
+                            <input type="text" v-model="Transaksi.Subtotal" 
                             class="form-control" placeholder="Subtotal" 
                             aria-label="Transaksi_Subtotal" aria-describedby="basic-addon2" 
                             id="Transaksi_Subtotal" name="Transaksi_Subtotal" disabled required> 
@@ -384,7 +384,7 @@
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Subtotal</span> 
                             </div>
-                            <input type="text" v-model="tempJ.Subtotal_Detail_Jasa" 
+                            <input type="text" v-model="Transaksi.Subtotal" 
                             class="form-control" placeholder="Subtotal" 
                             aria-label="Transaksi_Subtotal" aria-describedby="basic-addon2" 
                             id="Transaksi_Subtotal" name="Transaksi_Subtotal" disabled required>
@@ -440,7 +440,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="input-group">
-                                    <input class="form-control" v-model="Cari_Transaksi" type="search" placeholder="Cari Detail">
+                                    <input class="form-control" v-model="Cari_Detail_Sparepart" type="search" placeholder="Cari Detail">
                                     <div class="input-group-append">
                                         <span class="input-group-text">
                                             <i class="fas fa-search"></i>
@@ -473,8 +473,8 @@
                                             <p data-placement="top" data-toggle="tooltip" title="Edit">
                                                 <button class="btn btn-primary" 
                                                     @click="datakonsumenhandler(konsumen)" 
-                                                    data-title="Edit_Konsumen" data-toggle="modal" 
-                                                    data-target="#Edit_Konsumen">
+                                                    data-title="Edit_Detail_Sparepart" data-toggle="modal" 
+                                                    data-target="#Edit_Detail_Sparepart">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
                                             </p>
@@ -482,8 +482,8 @@
                                         <td class="text-center">
                                             <p data-placement="top" data-toggle="tooltip" title="Delete">
                                                 <button @click="datatransaksihandler(transaksi)" 
-                                                    class="btn btn-danger"  data-title="Delete_Penjualan" 
-                                                    data-toggle="modal" data-target="#Delete_Penjualan">
+                                                    class="btn btn-danger"  data-title="Delete_Detail_Sparepart" 
+                                                    data-toggle="modal" data-target="#Delete_Detail_Sparepart">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
                                             </p>
@@ -515,7 +515,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
-                                        <input class="form-control" v-model="Cari_Transaksi" type="search" placeholder="Cari Detail">
+                                        <input class="form-control" v-model="Cari_Detail_Jasa" type="search" placeholder="Cari Detail">
                                         <div class="input-group-append">
                                             <span class="input-group-text">
                                                 <i class="fas fa-search"></i>
@@ -547,8 +547,8 @@
                                             <p data-placement="top" data-toggle="tooltip" title="Edit">
                                                 <button class="btn btn-primary" 
                                                     @click="datakonsumenhandler(konsumen)" 
-                                                    data-title="Edit_Konsumen" data-toggle="modal" 
-                                                    data-target="#Edit_Konsumen">
+                                                    data-title="Edit_Detail_Jasa" data-toggle="modal" 
+                                                    data-target="#Edit_Detail_Jasa">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
                                             </p>
@@ -556,8 +556,8 @@
                                         <td class="text-center">
                                             <p data-placement="top" data-toggle="tooltip" title="Delete">
                                                 <button @click="datatransaksihandler(transaksi)" 
-                                                    class="btn btn-danger"  data-title="Delete_Penjualan" 
-                                                    data-toggle="modal" data-target="#Delete_Penjualan">
+                                                    class="btn btn-danger"  data-title="Delete_Detail_Jasa" 
+                                                    data-toggle="modal" data-target="#Delete_Detail_Jasa">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
                                             </p>
@@ -710,6 +710,131 @@
             </div>
         </div>
         <!-- END OF TAMBAH DETAIL SPAREPART -->
+        <!-- EDIT DETAIL TRANSAKSI SPAREPART -->
+        <div class="modal fade" id="Edit_Detail_Sparepart" tabindex="-1" role="dialog" 
+            aria-labelledby="Edit_Detail_Sparepart" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Edit Transaksi Penjualan Sparepart</h4>
+                        <button type="button" class="close" data-dismiss="modal" 
+                            aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mt-3"> 
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Sparepart</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Pilih Sparepart --</option>
+                                <option v-bind:key="spareparts['Kode_Sparepart']" 
+                                v-on:change="getSelectedIndex"
+                                v-for="spareparts in sparepart" 
+                                :value="spareparts.Kode_Sparepart" >{{spareparts.Nama_Sparepart}}</option>
+                            </select>
+
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Tipe</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Tipe Sparepart --</option>
+                                <option v-bind:key="spareparts['Kode_Sparepart']" 
+                                v-on:change="getSelectedIndex"
+                                v-for="spareparts in sparepart" 
+                                :value="spareparts.Kode_Sparepart" disabled>{{spareparts.Tipe_Barang}}</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group mt-3"> 
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Jumlah</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Jumlah Sparepart --</option>
+                                <option v-bind:key="spareparts['Kode_Sparepart']" 
+                                v-on:change="getSelectedIndex"
+                                v-for="spareparts in sparepart" 
+                                :value="spareparts.Kode_Sparepart" disabled>{{spareparts.Jumlah_Sparepart}}</option>
+                            </select>
+
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2" disabled>Harga Jual</span>
+                            </div> 
+                            <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Harga Jual --</option>
+                                <option v-bind:key="spareparts['Kode_Sparepart']" 
+                                v-on:change="getSelectedIndex"
+                                v-for="spareparts in sparepart" 
+                                :value="spareparts.Kode_Sparepart" disabled>{{spareparts.Harga_Jual}}</option>
+                            </select>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Jumlah</span>
+                            </div>
+                            <input type="number" v-model="jumlah" 
+                            class="form-control" placeholder="Masukkan Jumlah Sparepart Yang Ingin Dibeli" 
+                            aria-label="jumlah" aria-describedby="basic-addon2" 
+                            id="jumlah" name="jumlah" required>
+                        </div>
+
+                        <div class="col-lg-6 mt-3">
+                            <button type="submit" class="btn btn-success btn" @click="sparepartHandler(sparepart)">Add Sparepart</button>
+                        </div>
+
+                        <div class="input-group mt-3 w-400">
+                            <div class="row">
+                                <div class="col-12 mr-2">
+                                    <div class="list-group mr-2" v-for="spareparts in sparepartdata" :key="spareparts['Kode_Sparepart']">
+                                        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+                                            {{spareparts.Kode_Sparepart + '-' + spareparts.Nama_Sparepart}}          
+                                            <button type="submit" class="btn btn-danger" style="margin-left: 200px"
+                                            @click="deleteListSparepart(spareparts.Kode_Sparepart)">Delete</button>
+                                            <br>     
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer mt-3" >
+                            <button type="submit" class="btn btn-primary btn-lg w-100" 
+                            data-dismiss="modal" @click="addetailspareparts()">Simpan Perubahan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END OF EDIT DETAIL SPAREPART -->
+        <!-- DELETE TRANSAKSI PENJUALAN SPAREPART -->
+        <div class="modal fade" id="Delete_Detail_Sparepart" tabindex="-1" role="dialog" aria-labelledby="Delete_Detail_Sparepart" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Hapus Data Transaksi </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Apakah Anda Yakin Ingin Menghapus Detail Sparepart Ini ?</div>
+                    </div>
+                    <div class="modal-footer ">
+                        <a id="delete_btn" class="float-left w-100">
+                            <button type="button" @click="deletepenjualan(Transaksi.Id_Transaksi)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
+                        </a>
+                        <button type="button" class="btn btn-secondary float-right w-50" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END OF DELETE DETAIL SPAREPART -->
         <!-- TAMBAH DETAIL TRANSAKSI JASA -->
         <div class="modal fade" id="Tambah_Detail_Jasa" tabindex="-1" role="dialog" 
             aria-labelledby="Tambah_Detail_Jasa" aria-hidden="true">
@@ -775,8 +900,97 @@
                     </div>
                 </div>
             </div>
-        </div>
         <!-- END OF TAMBAH DETAIL TRANSAKSI JASA -->
+        <!-- EDIT DETAIL TRANSAKSI JASA -->
+        <div class="modal fade" id="Edit_Detail_Jasa" tabindex="-1" role="dialog" 
+            aria-labelledby="Edit_Detail_Jasa" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Edit Detail Transaksi Jasa</h4>
+                        <button type="button" class="close" data-dismiss="modal" 
+                            aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mt-3"> 
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Jasa</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Jasaservice.Id_Jasa" v-on:change="getSelectedIndexJasa" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Pilih Jasa --</option>
+                                <option v-bind:key="jasaS['Id_Jasa']" 
+                                v-on:change="getSelectedIndexJasa"
+                                v-for="jasaS in jasa" 
+                                :value="jasaS.Id_Jasa" >{{jasaS.Nama_Jasa}}</option>
+                            </select>
+
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Harga</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Jasaservice.Id_Jasa" v-on:change="getSelectedIndexJasa" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Pilih Jasa --</option>
+                                <option v-bind:key="jasaS['Id_Jasa']" 
+                                v-on:change="getSelectedIndexJasa"
+                                v-for="jasaS in jasa" 
+                                :value="jasaS.Id_Jasa" >{{jasaS.Harga_Jasa}}</option>
+                            </select>
+                            <button type="submit" class="btn btn-success btn" @click="jasaHandler(jasa)">Add Jasa</button>
+                        </div>
+
+                            <div class="col-lg-6 mt-3">
+                            </div>
+
+                            <div class="input-group mt-3 w-400">
+                                <div class="row">
+                                    <div class="col-12 mr-2">
+                                        <div class="list-group mr-2" v-for="jasaS in jasadata" :key="jasaS['Id_Jasa']">
+                                            <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+                                                {{jasaS.Nama_Jasa + '-' + jasaS.Harga_Jasa}}          
+                                                <button type="submit" class="btn btn-danger" style="margin-left: 200px"
+                                                @click="deleteListJasa(jasaS.Id_Jasa)">Delete</button>
+                                                <br>     
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer mt-3" >
+                            <button type="submit" class="btn btn-primary  btn-lg w-100" 
+                            data-dismiss="modal" @click="adddetailjasa()">Simpan Perubahan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- END OF EDIT DETAIL TRANSAKSI JASA -->
+        <!-- DELETE TRANSAKSI PENJUALAN SPAREPART -->
+        <div class="modal fade" id="Delete_Detail_Jasa" tabindex="-1" role="dialog" aria-labelledby="Delete_Detail_Sparepart" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Hapus Data Transaksi </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Apakah Anda Yakin Ingin Menghapus Detail Jasa Ini ?</div>
+                    </div>
+                    <div class="modal-footer ">
+                        <a id="delete_btn" class="float-left w-100">
+                            <button type="button" @click="deletepenjualan(Transaksi.Id_Transaksi)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
+                        </a>
+                        <button type="button" class="btn btn-secondary float-right w-50" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- END OF DELETE DETAIL SPAREPART -->
 </template>
 <script>
 import sparepartController from '../../service/Sparepart'
@@ -813,6 +1027,8 @@ export default {
         Telepon_Konsumen:'',
         Cari_Motor_Konsumen: '',
         Cari_Transaksi:'',
+        Cari_Detail_Sparepart:'',
+        Cari_Detail_Jasa:'',
         Id_Konsumen: '',
         Id_Motor_Konsumen: '',
         Plat_Kendaraan:'',
@@ -862,15 +1078,15 @@ export default {
             Id_Konsumen:'',
             Tanggal_Transaksi:'',
             Jenis_Transaksi:'',
-            Subtotal:'',
-            Diskon:'',
-            Total:'',
+            Subtotal:0,
+            Diskon:0,
+            Total:0,
             Status:0,
         },
         Jasaservice:{
             Id_Jasa:'',
             Nama_Jasa:'',
-            Harga_Jasa:'',
+            Harga_Jasa:0,
         },
         jumlah:'',
         temp:{
@@ -889,7 +1105,7 @@ export default {
             Id_Jasa:'',
             Subtotal_Detail_Jasa:0,
             Nama_Jasa:'',
-            Harga_Jasa:'',
+            Harga_Jasa:0,
         },
         Diskon:0,
         tempTotal:0,
@@ -899,7 +1115,8 @@ export default {
         Pegawai:{
             Id_Pegawai:'',
         },
-        Id_Jasa_Montir:''
+        Id_Jasa_Montir:'',
+        Harga:'',
     }),
     mounted(){
         this.getPegawai()
@@ -914,8 +1131,9 @@ export default {
     },
     methods:{
         getDiskon(){
-            this.Diskon     = this.Transaksi.Diskon;
-            this.tempTotal  = (this.total + this.totalJasa) - this.Transaksi.Diskon;
+            //this.Diskon     = this.Transaksi.Diskon;
+            //this.tempTotal  = (this.total + this.totalJasa) - this.Transaksi.Diskon;
+            //this.Transaksi.Total  = (this.Transaksi.Total - this.Transaksi.Diskon);
         },
         sparepartHandler(sparepart){
             var object = sparepart[this.index]
@@ -927,7 +1145,9 @@ export default {
             this.temp.Harga_Satuan              = data.Harga_Jual;
             this.temp.Jumlah                    = this.jumlah;
             this.temp.Subtotal_Detail_Sparepart = this.temp.Harga_Satuan * this.temp.Jumlah;
-            this.total                          = this.temp.Subtotal_Detail_Sparepart;
+            //this.total                          = parseInt(this.temp.Subtotal_Pengadaan + this.total);
+            this.Transaksi.Subtotal             = parseInt(this.Transaksi.Subtotal + this.temp.Subtotal_Detail_Sparepart,10);
+            this.Transaksi.Total                 = parseInt(this.temp.Subtotal_Detail_Sparepart + this.Transaksi.Total,10);
 
             this.sparepartdata.push(JSON.parse(JSON.stringify(this.temp)))
             this.sparepartData.push(this.Sparepart.Kode_Sparepart)
@@ -942,10 +1162,16 @@ export default {
             this.tempJ.Nama_Jasa                 = data.Nama_Jasa;
             this.tempJ.Harga_Jasa                = data.Harga_Jasa;
             this.tempJ.Subtotal_Detail_Jasa      = data.Harga_Jasa;
-            this.totalJasa                       = this.tempJ.Subtotal_Detail_Jasa;
+            this.Transaksi.Subtotal              = parseInt(this.Transaksi.Subtotal + this.tempJ.Subtotal_Detail_Jasa,10);
+            this.Transaksi.Total                 = parseInt(this.tempJ.Subtotal_Detail_Jasa + this.Transaksi.Total,10);
+
+            //this.totalJasa                       = data.Harga_Jasa + this.tempJ.Subtotal_Detail_Jasa;
 
             this.jasadata.push(JSON.parse(JSON.stringify(this.tempJ)))
             this.jasaData.push(this.Jasaservice.Id_Jasa)
+
+            // this.jasadata = jasa.Subtotal_Detail_Jasa.data;
+            // console.log(this.jasadata)
         },
         deleteListSparepart(id)
         {
@@ -963,7 +1189,7 @@ export default {
             let filter = this.jasa.filter(function( obj ) {
                 return obj.Id_Jasa !== id;
             });
-            this.jasa=filter
+            this.jasadata=filter
             let filter2 = this.jasaData.filter(function( obj ) {
                 return obj !== id;
             });
@@ -1069,16 +1295,18 @@ export default {
                     Id_Motor_Konsumen   : this.Motor.Id_Motor,
                     Tanggal_Transaksi   : this.Transaksi.Tanggal_Transaksi,
                     Jenis_Transaksi     : this.jenis,
-                    Subtotal            : this.temp.Subtotal_Detail_Sparepart + this.tempJ.Subtotal_Detail_Jasa,
+                    Subtotal            : this.Transaksi.Subtotal,
                     Diskon              : this.Transaksi.Diskon,
-                    Total               : this.tempTotal,
+                    Total               : this.Transaksi.Total - this.Transaksi.Diskon,
                     Status              : '0',
                     Detail_Sparepart    : this.sparepartdata,
                     Detail_Jasa         : this.jasadata,
                 }
                 await penjualanController.addpenjualan(payload)
                 this.getallpenjualan()
-                //this.refresh()
+                this.getalldetailpenjualan()
+                this.getalldetailjasa()
+                this.refresh()
             } catch (err) {
                 console.log(err)
             }
@@ -1095,6 +1323,7 @@ export default {
         async addetailspareparts () {
             try {
                 const payload = {
+                    Id_Montir           : this.Id_Jasa_Montir,
                     // Kode_Sparepart                  : this.Kode_Sparepart,
                     // Harga_Satuan                    : this.Harga_Satuan,
                     // Jumlah                          : this.Jumlah,
@@ -1123,9 +1352,21 @@ export default {
             this.Konsumen.Telepon_Konsumen= '';
         },
         refreshMotorKonsumen(){
-            this.Motor_Konsumen.Plat_Kendaraan = '';
             this.Motor.Id_Motor = -1;
-        }
+        },
+        refresh(){
+            // this.Transaksi.Diskon      ='0'
+            // this.Transaksi.Subtotal    ='0'
+            // this.Transaksi.Tanggal_Transaksi=''
+            // this.Id_Jasa_Montir = '-1'
+            // this.Transaksi.Status ='0'
+            // this.jumlah = 0
+            // this.jenis = ''
+            // this.Motor.Id_Motor = '-1'
+            // this.Konsumen.Id_Konsumen = '-1'
+            // this.Konsumen.Nama_Konsumen = '-1'
+            // this.Konsumen.Alamat_Konsumen = '-1'
+        },
     },
     computed:{
         ...mapGetters({
@@ -1159,6 +1400,19 @@ export default {
         filtereddetail:function(){
             return this.detailpenjualandata.filter((detailpenjualan)=>{
                 return detailpenjualan.Id_Transaksi == this.Id_Detail_Modal;
+            });
+            return this.detailpenjualandata.filter((detailpenjualan)=>{
+                return detailpenjualan.Kode_Sparepart.toLowerCase().match(this.Cari_Detail_Sparepart.toLowerCase());
+            });
+        },
+        filtereddetailsparepart:function(){
+            return this.detailpenjualandata.filter((detailpenjualan)=>{
+                return detailpenjualan.Kode_Sparepart.toLowerCase().match(this.Cari_Detail_Sparepart.toLowerCase());
+            });
+        },
+        filtereddetailJasa:function(){
+            return this.detailjasadata.filter((detailjasa)=>{
+                return detailjasa.Id_Jasa.toLowerCase().match(this.Cari_Detail_Jasa.toLowerCase());
             });
         },
         filtereddetailjasa:function(){
