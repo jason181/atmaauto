@@ -28,7 +28,7 @@ class SparepartTransformers extends TransformerAbstract
             'Stok_Minimum_Sparepart' =>$sparepart->Stok_Minimum_Sparepart,
             'Harga_Beli'             =>$sparepart->Harga_Beli,
             'Harga_Jual'             =>$sparepart->Harga_Jual,
-            'Gambar'                 =>$sparepart->Gambar,    
+            'Gambar'                 =>$sparepart->Gambar,
         ];
     }
     public function includeCompatibility(Sparepart $sparepart)
