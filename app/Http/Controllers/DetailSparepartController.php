@@ -25,7 +25,6 @@ class DetailSparepartController extends RestController
 
     public function store(Request $request)
     {
-
         $montir = Detail_Sparepart::where('Id_Transaksi',$request->Detail_Sparepart[0]['Id_Transaksi'])->first()->value('Id_Jasa_Montir');
 
         $penjualan  = new Transaksi_Penjualan;
@@ -67,10 +66,10 @@ class DetailSparepartController extends RestController
         
         $sparepart = $request->Detail_Sparepart;
         
-        $transaksi = Transaksi_Pengadaan::find($sparepart[0]['Id_Transaksi']);
+        $penjualan = Transaksi_Penjualan::find($sparepart[0]['Id_Transaksi']);
         $sparepart = $request->Detail_Sparepart;
         $detail_sparepart = Detail_Sparepart::find($id);
-        $Subtotal_Before = $detail_sparepart->Subtotal_Detail_Sparepart;
+
         $jumlah = $detail_sparepart->Jumlah - $sparepart[0]['Jumlah'];
         
         $sparepartdata = Sparepart::where('Kode_Sparepart',$sparepart[0]['Kode_Sparepart'])->get();
@@ -93,11 +92,11 @@ class DetailSparepartController extends RestController
     {
         $detail_sparepart = Detail_Sparepart::find($id);
         // dd($detail_sparepart);
-        $sparepart  = Sparepart::where('Kode_Sparepart',$detail_sparepart->Kode_Sparepart);
-        // dd($sparepart);
+        $sparepart  = Sparepart::where('Kode_Sparepart',$detail_sparepart->Kode_Sparepart)->first();
+        
         $sparepart->Jumlah_Sparepart += $detail_sparepart->Jumlah;
-        // dd($detail_sparepart->Id_Jasa_Montir);
         $montir = Montir::find($detail_sparepart->Id_Jasa_Montir);
+        // dd($montir);
         
         $status=$detail_sparepart->delete();
         

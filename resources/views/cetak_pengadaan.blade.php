@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="" style="border:1px solid black;">
-            TEST PDF
+            TEST
         </div>    
     </body>
 
