@@ -9,6 +9,7 @@ use App\Jasa;
 use App\Detail_Jasa;
 use App\Detail_Sparepart;
 use App\Transaksi_Penjualan;
+use App\Montir;
 
 class DetailJasaController extends RestController
 {
@@ -84,21 +85,29 @@ class DetailJasaController extends RestController
 
     public function destroy($id)
     {
-        $detail_sparepart = Detail_Sparepart::find($id);
-        $sparepart  = Jasa::where('Id_Jasa',$detail_sparepart->Id_Jasa);
-        $montir = Montir::find($detail_sparepart->Id_Jasa_Montir);
+        $detail_jasa = Detail_Jasa::find($id);
+        $jasa  = Jasa::where('Id_Jasa',$detail_jasa->Id_Jasa)->first();
+        $montir = Montir::find($detail_jasa->Id_Jasa_Montir);
         
-        $status=$detail_sparepart->delete();
+        $status=$detail_jasa->delete();
         
-        $find_montir_sparepart  = Detail_Sparepart::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->get();
-        $find_montir_jasa       = Detail_Jasa::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->get();
+        $find_montir_sparepart  = Detail_Sparepart::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->first();
+        $find_montir_jasa       = Detail_Jasa::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->first();
+        // dd($find_montir_jasa);
         if($find_montir_sparepart == null && $find_montir_jasa == null)
         {
-            $status = $montir->delete();    
+            $status2 = $montir->delete();
+        }
+        else
+        {
+            $status2 = false;
         }
         
         return response()->json([
-            'status' => $status,
+            'find_sparepart' => $find_montir_sparepart,
+            'find_jasa' => $find_montir_jasa,
+            'detail' => $status,
+            'montir' => $status2,
             'message' => $status ? 'Deleted' : 'Error Delete'
         ]);
     }

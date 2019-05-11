@@ -100,15 +100,22 @@ class DetailSparepartController extends RestController
         
         $status=$detail_sparepart->delete();
         
-        $find_montir_sparepart  = Detail_Sparepart::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->get();
-        $find_montir_jasa       = Detail_Jasa::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->get();
+        $find_montir_sparepart  = Detail_Sparepart::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->first();
+        $find_montir_jasa       = Detail_Jasa::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->first();
         if($find_montir_sparepart == null && $find_montir_jasa == null)
         {
-            $status = $montir->delete();    
+            $status2 = $montir->delete();
+        }
+        else
+        {
+            $status2 = false;
         }
         
         return response()->json([
-            'status' => $status,
+            'find_sparepart' => $find_montir_sparepart,
+            'find_jasa' => $find_montir_jasa,
+            'detail' => $status,
+            'montir' => $status2,
             'message' => $status ? 'Deleted' : 'Error Delete'
         ]);
     }
