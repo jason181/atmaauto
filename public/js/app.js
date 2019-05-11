@@ -7149,7 +7149,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       var object = sparepart[this.index];
       this.temp.Kode_Sparepart = this.Sparepart.Kode_Sparepart;
-      this.temp.Id_Transaksi = this.Transaksi.Id_Transaksi;
+      this.temp.Id_Transaksi = this.Id_Detail_Modal;
       var data = this.sparepart.find(function (obj) {
         return obj.Kode_Sparepart == _this.Sparepart.Kode_Sparepart;
       });
@@ -7696,7 +7696,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context13.prev = 0;
                 payload = {
-                  Id_Montir: this.Id_Jasa_Montir,
+                  //Id_Montir           : this.Id_Jasa_Montir,
                   // Kode_Sparepart                  : this.Kode_Sparepart,
                   // Harga_Satuan                    : this.Harga_Satuan,
                   // Jumlah                          : this.Jumlah,

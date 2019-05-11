@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Transformers\DetailSparepartTransformers;
 use App\Detail_Sparepart;
+use App\Detail_Jasa;
 use App\Transaksi_Penjualan;
 use App\Montir;
 use App\Sparepart;
@@ -24,16 +25,26 @@ class DetailSparepartController extends RestController
 
     public function store(Request $request)
     {
-
-        $montir = Detail_Sparepart::where('Id_Transaksi',$request->Detail_Sparepart[0]['Id_Transaksi'])->first()->value('Id_Jasa_Montir');
-
+        // dd($request);
+        $montirdata = Detail_Sparepart::where('Id_Transaksi',$request->Detail_Sparepart[0]['Id_Transaksi'])->first();
+        if($montirdata !== null)
+        {
+            $montir=$montirdata->Id_Jasa_Montir;
+        }
+        else if($montirdata == null)
+        {
+            $montir = Detail_Jasa::where('Id_Transaksi',$request->Detail_Sparepart[0]['Id_Transaksi'])->first()->value('Id_Jasa_Montir');
+        }
+        
         $penjualan  = new Transaksi_Penjualan;
         $detail_sparepart = new Detail_Sparepart;
-
+        
         if($request->has('Detail_Sparepart'))
         {
+            
             $sparepart      = $request->get('Detail_Sparepart');
             $countsparepart = count($sparepart);
+            
             for($i=0;$i<$countsparepart;$i++)
             {
                 $detail_sparepart->Id_Transaksi    = $sparepart[$i]['Id_Transaksi'];
@@ -50,9 +61,9 @@ class DetailSparepartController extends RestController
                 $sparepartdata->Jumlah_Sparepart -= $sparepart[$i]['Jumlah'];
                 $sparepartdata->save();
             }
+            // dd($sparepart);
 
         }
-
         $penjualan = Transaksi_Penjualan::find($request->Detail_Sparepart[0]['Id_Transaksi']);
         $penjualan->Total += $request->Subtotal_Detail_Sparepart;
         $penjualan->save();

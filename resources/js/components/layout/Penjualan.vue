@@ -1138,7 +1138,7 @@ export default {
         sparepartHandler(sparepart){
             var object = sparepart[this.index]
             this.temp.Kode_Sparepart            = this.Sparepart.Kode_Sparepart;
-            this.temp.Id_Transaksi              = this.Transaksi.Id_Transaksi;
+            this.temp.Id_Transaksi              = this.Id_Detail_Modal;
             let data = this.sparepart.find(obj=>obj.Kode_Sparepart == this.Sparepart.Kode_Sparepart)
             console.log(data.Nama_Sparepart)
             this.temp.Nama_Sparepart            = data.Nama_Sparepart;
@@ -1323,7 +1323,7 @@ export default {
         async addetailspareparts () {
             try {
                 const payload = {
-                    Id_Montir           : this.Id_Jasa_Montir,
+                    //Id_Montir           : this.Id_Jasa_Montir,
                     // Kode_Sparepart                  : this.Kode_Sparepart,
                     // Harga_Satuan                    : this.Harga_Satuan,
                     // Jumlah                          : this.Jumlah,
