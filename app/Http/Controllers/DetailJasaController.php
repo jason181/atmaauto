@@ -30,9 +30,9 @@ class DetailJasaController extends RestController
         {
             $montir = $montirdata->Id_Jasa_Montir;
         }
-        else if($montirdata !== null)
+        else if($montirdata == null)
         {
-            $montir = Detail_Sparepart::where('Id_Transaksi',$request->Detail_Jasa[0]['Id_Transaksi'])->first();
+            $montir = Detail_Sparepart::where('Id_Transaksi',$request->Detail_Jasa[0]['Id_Transaksi'])->first()->value('Id_Jasa_Montir');
         }
 
         $penjualan  = new Transaksi_Penjualan;
@@ -86,6 +86,7 @@ class DetailJasaController extends RestController
     public function destroy($id)
     {
         $detail_jasa = Detail_Jasa::find($id);
+        $id_transaksi = $detail_jasa->Id_Transaksi;
         $jasa  = Jasa::where('Id_Jasa',$detail_jasa->Id_Jasa)->first();
         $montir = Montir::find($detail_jasa->Id_Jasa_Montir);
         
@@ -97,6 +98,13 @@ class DetailJasaController extends RestController
         if($find_montir_sparepart == null && $find_montir_jasa == null)
         {
             $status2 = $montir->delete();
+            $pods = Pegawai_On_Duty::where('Id_Transaksi',$id_transaksi)->get();
+            foreach($pods as $pod)
+            {
+                $delete_pod = $pod->delete();
+            }
+            $penjualan = Transaksi_Penjualan::find($id_transaksi);
+            $status3 = $penjualan->delete();
         }
         else
         {
