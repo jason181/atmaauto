@@ -45,7 +45,9 @@ class TransaksiPenjualanController extends RestController
 
     public function showByIdMotorKonsumen($id)
     {
+        // dd($id);
         $motorKonsumen = Motor_Konsumen::find($id);
+        // dd($motorKonsumen);
         $motor = Motor::find($motorKonsumen->Id_Motor);
         $compatibility = CompatibilityJason::where('Id_Motor',$motor->Id_Motor)->get();
         // $sparepart_ids = $compatibility
@@ -57,6 +59,7 @@ class TransaksiPenjualanController extends RestController
             ->map(function ($item) {
                 return Sparepart::find($item['Kode_Sparepart']);
             });
+        // dd($spareparts_found);
         $response=$this->generateCollection($spareparts_found, new SparepartTransformers);
         return $this->sendResponse($response,201);
     }
