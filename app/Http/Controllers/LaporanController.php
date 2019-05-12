@@ -13,6 +13,8 @@ use App\CompatibilityJason;
 use App\Sparepart;
 use App\Pegawai_On_Duty;
 use App\Montir;
+use App\Supplier;
+use App\Detail_Pengadaan;
 use PDF;
 
 class LaporanController extends Controller
@@ -29,9 +31,10 @@ class LaporanController extends Controller
     public function testSuratPemesanan($id)
     {
         $pengadaan  = Transaksi_Pengadaan::find($id);
+        // dd($pengadaan);
         $supplier   = Supplier::find($pengadaan->Id_Supplier);
         $detail     = Detail_Pengadaan::where('Id_Pengadaan',$pengadaan->Id_Pengadaan);
-
+        
         return view('cetak_pengadaan', compact('pengadaan', 'supplier', 'detail'));
     }
 }

@@ -66,6 +66,10 @@ class TransaksiPengadaanController extends RestController
             $detail->Harga_Satuan       = $request->get('Harga_Satuan');
             $detail->Jumlah             = $request->get('Jumlah');
             $detail->Subtotal_Pengadaan = $request->get('Subtotal_Pengadaan');
+
+            $detail->save();
+            $response = $this->generateItem($detail);
+            return $this->sendResponse($response);
         }catch(\Exception $e)
         {
             return $this->sendIseResponse($e->getMessage());

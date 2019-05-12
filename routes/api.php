@@ -123,7 +123,10 @@ Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
     Route::get('/transaksi_penjualans/showByIdMotorKonsumen/{id}','TransaksiPenjualanController@showByIdMotorKonsumen');
     Route::post('/transaksi_penjualans/store','TransaksiPenjualanController@store');
     Route::post('/transaksi_penjualans/storeSparepart','TransaksiPenjualanController@storeSparepart');
+    Route::post('/transaksi_penjualans/storeJasa','TransaksiPenjualanController@storeJasa');
+    Route::patch('/transaksi_penjualans/update/{id}','TransaksiPenjualanController@update');
     Route::delete('/transaksi_penjualans/delete/{id}','TransaksiPenjualanController@destroy');
+    
 // });
 
 //Detail Sparepart Transaksi Penjualan
