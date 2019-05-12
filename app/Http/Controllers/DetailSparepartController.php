@@ -42,7 +42,6 @@ class DetailSparepartController extends RestController
         
         if($request->has('Detail_Sparepart'))
         {
-            
             $sparepart      = $request->get('Detail_Sparepart');
             $countsparepart = count($sparepart);
             
@@ -58,15 +57,14 @@ class DetailSparepartController extends RestController
 
                 $sparepartCollection=Sparepart::where('Kode_Sparepart',$sparepart[$i]['Kode_Sparepart'])->get();
                 $sparepartdata=$sparepartCollection->first();
-                
+
                 $sparepartdata->Jumlah_Sparepart -= $sparepart[$i]['Jumlah'];
                 $sparepartdata->save();
             }
-            // dd($sparepart);
-
         }
         $penjualan = Transaksi_Penjualan::find($request->Detail_Sparepart[0]['Id_Transaksi']);
-        $penjualan->Total += $request->Subtotal_Detail_Sparepart;
+        $penjualan->Subtotal += $sparepart[0]['Subtotal_Detail_Sparepart'];
+        $penjualan->Total += $sparepart[0]['Subtotal_Detail_Sparepart'];
         $penjualan->save();
 
         $response = $this->generateItem($penjualan, new TransaksiPenjualanTransformers);
@@ -93,6 +91,7 @@ class DetailSparepartController extends RestController
             'Subtotal_Detail_Sparepart' => $sparepart[0]['Subtotal_Detail_Sparepart']
         ]);
         
+        $penjualan->Subtotal += $subtotal;
         $penjualan->Total += $subtotal;
         $penjualan->save();
 
@@ -108,6 +107,9 @@ class DetailSparepartController extends RestController
         
         $sparepart->Jumlah_Sparepart += $detail_sparepart->Jumlah;
         $montir = Montir::find($detail_sparepart->Id_Jasa_Montir);
+        $penjualan = Transaksi_Penjualan::find($id_transaksi);
+        $penjualan->Subtotal -= $detail_sparepart->Subtotal_Detail_Sparepart;
+        $penjualan->Total -+ $detail_sparepart->Subtotal_Detail_Sparepart;
         
         $status=$detail_sparepart->delete();
         
@@ -121,7 +123,6 @@ class DetailSparepartController extends RestController
             {
                 $delete_pod = $pod->delete();
             }
-            $penjualan = Transaksi_Penjualan::find($id_transaksi);
             $status3 = $penjualan->delete();
         }
         else
