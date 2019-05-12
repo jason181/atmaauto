@@ -94,4 +94,40 @@ export default {
             Http.get('/api/pegawais', successCallback, errorCallback)
         })
     },
+    addetailspareparts(payload){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.post('/api/detail_spareparts/store', payload, successCallback, errorCallback)
+        })
+    },
+    deletedetailsparepart(id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.delete('/api/detail_spareparts/delete/'+id, successCallback, errorCallback)
+        })
+    },
+    adddetailjasa(payload){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.post('/api/detail_jasas/store', payload, successCallback, errorCallback)
+        })
+    },
 }
