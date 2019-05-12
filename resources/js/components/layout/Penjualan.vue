@@ -252,7 +252,7 @@
                                 value="Pilih ">-- Pilih Sparepart --</option>
                                 <option v-bind:key="spareparts['Kode_Sparepart']" 
                                 v-on:change="getSelectedIndex"
-                                v-for="spareparts in sparepart" 
+                                v-for="spareparts in sparepartdata" 
                                 :value="spareparts.Kode_Sparepart" >{{spareparts.Nama_Sparepart}}</option>
                             </select>
 
@@ -547,7 +547,7 @@
                                         <td class="text-center">
                                             <p data-placement="top" data-toggle="tooltip" title="Edit">
                                                 <button class="btn btn-primary" 
-                                                    @click="detailtransaksihandler(detailtransaksi)" 
+                                                    @click="detailtransaksihandler(detailjasa)" 
                                                     data-title="Edit_Detail_Jasa" data-toggle="modal" 
                                                     data-target="#Edit_Detail_Jasa">
                                                     <i class="fas fa-edit"></i>
@@ -556,7 +556,7 @@
                                         </td>
                                         <td class="text-center">
                                             <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                <button @click="detailtransaksihandler(detailtransaksi)" 
+                                                <button @click="detailtransaksihandler(detailjasa)" 
                                                     class="btn btn-danger"  data-title="Delete_Detail_Jasa" 
                                                     data-toggle="modal" data-target="#Delete_Detail_Jasa">
                                                     <i class="fas fa-trash-alt"></i>
@@ -608,7 +608,7 @@
                 </div>
             </div>
         </div>
-        <!-- END OF DELETE DELETE TRANSAKSI PENJUALAN -->
+        <!-- END OF DELETE TRANSAKSI PENJUALAN -->
         <!-- TAMBAH DETAIL TRANSAKSI SPAREPART -->
         <div class="modal fade" id="Tambah_Detail_Sparepart" tabindex="-1" role="dialog" 
             aria-labelledby="Tambah_Detail_Sparepart" aria-hidden="true">
@@ -690,7 +690,7 @@
                         <div class="input-group mt-3 w-400">
                             <div class="row">
                                 <div class="col-12 mr-2">
-                                    <div class="list-group mr-2" v-for="spareparts in sparepartdata" :key="spareparts['Kode_Sparepart']">
+                                    <div class="list-group mr-2" v-for="spareparts in sparepartdata" :key="spareparts.Kode_Sparepart">
                                         <a href="#" class="list-group-item list-group-item-action list-group-item-success">
                                             {{spareparts.Kode_Sparepart + '-' + spareparts.Nama_Sparepart}}          
                                             <button type="submit" class="btn btn-danger" style="margin-left: 200px"
@@ -1151,7 +1151,7 @@ export default {
             this.temp.Subtotal_Detail_Sparepart = this.temp.Harga_Satuan * this.temp.Jumlah;
             //this.total                          = parseInt(this.temp.Subtotal_Pengadaan + this.total);
             this.Transaksi.Subtotal             = parseInt(this.Transaksi.Subtotal + this.temp.Subtotal_Detail_Sparepart,10);
-            this.Transaksi.Total                 = parseInt(this.temp.Subtotal_Detail_Sparepart + this.Transaksi.Total,10);
+            this.Transaksi.Total                = parseInt(this.temp.Subtotal_Detail_Sparepart + this.Transaksi.Total,10);
 
             this.sparepartdata.push(JSON.parse(JSON.stringify(this.temp)))
             this.sparepartData.push(this.Sparepart.Kode_Sparepart)
@@ -1160,7 +1160,7 @@ export default {
             var object = jasa[this.index]
             console.log(object);
             this.tempJ.Id_Jasa                   = this.Jasaservice.Id_Jasa;
-            this.tempJ.Id_Transaksi              = this.Transaksi.Id_Transaksi;
+            this.tempJ.Id_Transaksi              = this.Id_Detail_Modal;
             let data = this.jasa.find(obj=>obj.Id_Jasa == this.Jasaservice.Id_Jasa)
             console.log(data.Nama_Jasa)
             this.tempJ.Nama_Jasa                 = data.Nama_Jasa;
@@ -1171,14 +1171,6 @@ export default {
             //this.totalJasa                       = data.Harga_Jasa + this.tempJ.Subtotal_Detail_Jasa;
             this.jasadata.push(JSON.parse(JSON.stringify(this.tempJ)))
             this.jasaData.push(this.Jasaservice.Id_Jasa)
-        },
-        async deletedetailsparepart(id) {
-            try {
-                await penjualanController.deletedetailsparepart(id)
-                this.getalldetailpenjualan()
-            } catch (err) {
-                console.log(err)
-            }
         },
         deleteListSparepart(id)
         {
@@ -1327,19 +1319,32 @@ export default {
                 console.log(err)
             }
         },
+        async adddetailjasa() {
+            try {
+                const payload = {
+                    Detail_Jasa    : this.jasadata
+                }
+                await penjualanController.adddetailjasa(payload)
+                this.getalldetailjasa()
+            } catch (err) {
+                console.log(err)
+            }
+        },
         async addetailspareparts () {
             try {
                 const payload = {
-                    //Id_Montir           : this.Id_Jasa_Montir,
-                    // Kode_Sparepart                  : this.Kode_Sparepart,
-                    // Harga_Satuan                    : this.Harga_Satuan,
-                    // Jumlah                          : this.Jumlah,
-                    // Subtotal_Detail_Sparepart       : this.temp.Subtotal_Detail_Sparepart + this.tempJ.Subtotal_Detail_Jasa,
-                    // Total                           : this.tempTotal,
                     Detail_Sparepart    : this.sparepartdata
                 }
                 await penjualanController.addetailspareparts(payload)
                 this.getallpenjualan()
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async deletedetailsparepart(id) {
+            try {
+                await penjualanController.deletedetailsparepart(id)
+                this.getalldetailpenjualan()
             } catch (err) {
                 console.log(err)
             }
@@ -1350,7 +1355,7 @@ export default {
         detailtransaksihandler(detail){
             this.Transaksi = transaksi
             this.Detail = detail
-            this.sparepartdata = transaksi.detail_sparepart.data;
+            //this.sparepartdata = detail
         },
         detailhandler(transaksi){
             this.Id_Detail_Modal = transaksi.Id_Transaksi

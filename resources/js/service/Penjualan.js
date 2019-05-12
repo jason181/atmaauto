@@ -118,4 +118,16 @@ export default {
             Http.delete('/api/detail_spareparts/delete/'+id, successCallback, errorCallback)
         })
     },
+    adddetailjasa(payload){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.post('/api/detail_jasas/store', payload, successCallback, errorCallback)
+        })
+    },
 }
