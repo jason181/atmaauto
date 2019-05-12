@@ -10,6 +10,7 @@ use App\Detail_Jasa;
 use App\Transaksi_Penjualan;
 use App\Montir;
 use App\Sparepart;
+use App\Pegawai_On_Duty;
 use App\Transformers\TransaksiPenjualanTransformers;
 
 class DetailSparepartController extends RestController
@@ -102,24 +103,39 @@ class DetailSparepartController extends RestController
     public function destroy($id)
     {
         $detail_sparepart = Detail_Sparepart::find($id);
-        // dd($detail_sparepart);
+        $id_transaksi = $detail_sparepart->Id_Transaksi;
         $sparepart  = Sparepart::where('Kode_Sparepart',$detail_sparepart->Kode_Sparepart)->first();
         
         $sparepart->Jumlah_Sparepart += $detail_sparepart->Jumlah;
         $montir = Montir::find($detail_sparepart->Id_Jasa_Montir);
-        // dd($montir);
         
         $status=$detail_sparepart->delete();
         
-        $find_montir_sparepart  = Detail_Sparepart::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->get();
-        $find_montir_jasa       = Detail_Jasa::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->get();
+        $find_montir_sparepart  = Detail_Sparepart::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->first();
+        $find_montir_jasa       = Detail_Jasa::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->first();
         if($find_montir_sparepart == null && $find_montir_jasa == null)
         {
-            $status = $montir->delete();    
+            $status2 = $montir->delete();
+            $pods = Pegawai_On_Duty::where('Id_Transaksi',$id_transaksi)->get();
+            foreach($pods as $pod)
+            {
+                $delete_pod = $pod->delete();
+            }
+            $penjualan = Transaksi_Penjualan::find($id_transaksi);
+            $status3 = $penjualan->delete();
+        }
+        else
+        {
+            $status3 = false;
+            $status2 = false;
         }
         
         return response()->json([
-            'status' => $status,
+            'find_sparepart' => $find_montir_sparepart,
+            'find_jasa' => $find_montir_jasa,
+            'detail' => $status,
+            'montir' => $status2,
+            'penjualan' => $status3,
             'message' => $status ? 'Deleted' : 'Error Delete'
         ]);
     }
