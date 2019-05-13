@@ -13,6 +13,7 @@ import Katalog from './components/layout/Katalog.vue';
 import Status from './components/layout/Status.vue';
 import Pengadaan from './components/layout/Pengadaan.vue';
 import Penjualan from './components/layout/Penjualan.vue';
+import DetailKatalog from './components/layout/DetailKatalog.vue';
 
 import { homedir } from 'os';
 

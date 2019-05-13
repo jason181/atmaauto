@@ -22,9 +22,17 @@ class LaporanController extends Controller
     //
     public function cetakSuratPemesanan($id)
     {
+        // return $id;
         $pengadaan  = Transaksi_Pengadaan::find($id);
-        
-        $pdf = PDF::loadview('cetak_pengadaan');
+        // return $pengadaan;
+        // dd($pengadaan);
+        $supplier   = Supplier::find($pengadaan->Id_Supplier);
+        // return 
+        $detail     = Detail_Pengadaan::where('Id_Pengadaan',$pengadaan->Id_Pengadaan)->get();
+        // return $detail;
+        // return $id;.
+        $pdf = PDF::loadView('cetak_pengadaan',['pengadaan' => $pengadaan, 'supplier' => $supplier, 'detail' => $detail]);
+        $pdf->setPaper([0,0,550,900]);
 	    return $pdf->stream();
     }
 
@@ -35,6 +43,6 @@ class LaporanController extends Controller
         $supplier   = Supplier::find($pengadaan->Id_Supplier);
         $detail     = Detail_Pengadaan::where('Id_Pengadaan',$pengadaan->Id_Pengadaan);
         
-        return view('cetak_pengadaan', compact('pengadaan', 'supplier', 'detail'));
+        return view('cetak_pengadaan', ['pengadaan' => $pengadaan, 'supplier' => $supplier, 'detail' => $detail]);
     }
 }

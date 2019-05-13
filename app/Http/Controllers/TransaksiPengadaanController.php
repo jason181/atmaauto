@@ -139,7 +139,6 @@ class TransaksiPengadaanController extends RestController
 
     public function verify($id)
     {
-        // dd($id);
         $pengadaan = Transaksi_Pengadaan::find($id);
 
         $pengadaan->Status_Pengadaan = '2';
@@ -148,13 +147,12 @@ class TransaksiPengadaanController extends RestController
         for($i=0;$i<$count_detail;$i++)
         {
             $sparepart=Sparepart::where('Kode_Sparepart',$details[$i]->Kode_Sparepart)->get();
-            // dd($sparepart[0]->Jumlah_Sparepart);
             $sparepart->Jumlah_Sparepart += $details[$i]->Jumlah;
             $sparepart->save();
         }
         $pengadaan->save();
         $response = $this->generateItem($pengadaan);
-        return $this->sendResponse($response);
+        return $this->sendResponse($response,201);
     }
 
     public function destroy($id)

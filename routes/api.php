@@ -45,6 +45,7 @@ Route::delete('/jasas/delete/{id}', 'JasaController@destroy');
 Route::get('/pegawais', 'PegawaiController@index');
 Route::post('/pegawais/store', 'PegawaiController@store');
 Route::get('/pegawais/{id}', 'PegawaiController@showbyID');
+Route::get('/pegawais/showMontir','PegawaiController@showMontir');
 Route::patch('/pegawais/update/{id}', 'PegawaiController@update'); 
 Route::delete('/pegawais/delete/{id}', 'PegawaiController@destroy');
 Route::POST('/pegawais/mobileauthenticate','PegawaiController@mobileauthenticate');
@@ -140,3 +141,5 @@ Route::get('/detail_jasas','DetailJasaController@index');
 Route::post('/detail_jasas/store','DetailJasaController@store');
 Route::patch('/detail_jasas/update/{id}','DetailJasaController@update');
 Route::delete('/detail_jasas/delete/{id}','DetailJasaController@destroy');
+
+Route::get('/test-surat-pemesanan/{id}', 'LaporanController@cetakSuratPemesanan');
