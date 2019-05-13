@@ -46,7 +46,7 @@ class TransaksiPenjualanController extends RestController
 
     public function transaksikeluar(){
         $penjualan=Transaksi_Penjualan::where('Status',3)->get();
-        $response=$this->generateCollection($pengadaan);
+        $response=$this->generateCollection($penjualan);
         return $this->sendResponse($response,201);
     }
 
