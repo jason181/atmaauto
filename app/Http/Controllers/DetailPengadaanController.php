@@ -51,7 +51,7 @@ class DetailPengadaanController extends RestController
     {
         $detail_pengadaan = Detail_Pengadaan::find($id);
         $pengadaan = Transaksi_Pengadaan::find($detail_pengadaan->Id_Pengadaan);
-        $pengadaan->TotalHarga += $request->Harga_Satuan * $request->Jumlah - $pengadaan->Total_Harga;
+        $pengadaan->TotalHarga += $pengadaan->Harga_Satuan * $request->Jumlah - $pengadaan->Total_Harga;
         $pengadaan->save();
         if(!is_null($request->Kode_Sparepart))
         {
