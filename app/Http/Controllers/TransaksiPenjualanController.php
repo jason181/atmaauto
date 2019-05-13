@@ -44,6 +44,12 @@ class TransaksiPenjualanController extends RestController
         
     }
 
+    public function transaksikeluar(){
+        $penjualan=Transaksi_Penjualan::where('Status',3)->get();
+        $response=$this->generateCollection($penjualan);
+        return $this->sendResponse($response,201);
+    }
+
     public function showByIdMotorKonsumen($id)
     {
         $motorKonsumen = Motor_Konsumen::find($id);

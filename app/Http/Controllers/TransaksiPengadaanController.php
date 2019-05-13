@@ -27,6 +27,12 @@ class TransaksiPengadaanController extends RestController
         return $this->sendResponse($response,201);
     }
 
+    public function transaksimasuk(){
+        $pengadaan=Transaksi_Pengadaan::where('Status_Pengadaan',2)->get();
+        $response=$this->generateCollection($pengadaan);
+        return $this->sendResponse($response,201);
+    }
+
     public function store(Request $request)
     {
         try{
@@ -143,6 +149,7 @@ class TransaksiPengadaanController extends RestController
 
         $pengadaan->Status_Pengadaan = '2';
         $details = Detail_Pengadaan::where('Id_Pengadaan',$id)->get();
+        
         $count_detail = count($details);
         for($i=0;$i<$count_detail;$i++)
         {

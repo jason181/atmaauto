@@ -101,6 +101,7 @@ Route::get('/motor_konsumens/show/{id}', 'MotorKonsumenController@showbyCustomer
 //Pengadaan
 Route::get('/transaksi_pengadaans','TransaksiPengadaanController@index');
 Route::post('/transaksi_pengadaans/store','TransaksiPengadaanController@store');
+Route::get('/transaksi_pengadaans/transaksimasuk','TransaksiPengadaanController@transaksimasuk');
 Route::post('/transaksi_pengadaans/storeDetail','TransaksiPengadaanController@storeDetail');
 Route::patch('/transaksi_pengadaans/update/{id}', 'TransaksiPengadaanController@update');
 Route::patch('/transaksi_pengadaans/updatemobile/{id}', 'TransaksiPengadaanController@updatemobile'); 
@@ -122,6 +123,7 @@ Route::delete('/detail_pengadaans/delete/{id}', 'DetailPengadaanController@destr
 Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
 // Route::group(['middleware' => 'token'], function () {
     Route::get('/transaksi_penjualans/showByIdMotorKonsumen/{id}','TransaksiPenjualanController@showByIdMotorKonsumen');
+    Route::get('/transaksi_penjualans/transaksikeluar','TransaksiPenjualanController@transaksikeluar');
     Route::post('/transaksi_penjualans/store','TransaksiPenjualanController@store');
     Route::post('/transaksi_penjualans/storeSparepart','TransaksiPenjualanController@storeSparepart');
     Route::post('/transaksi_penjualans/storeJasa','TransaksiPenjualanController@storeJasa');
