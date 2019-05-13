@@ -35,7 +35,6 @@ class DetailJasaController extends RestController
             $montir = Detail_Sparepart::where('Id_Transaksi',$request->Detail_Jasa[0]['Id_Transaksi'])->first()->value('Id_Jasa_Montir');
         }
 
-        $penjualan  = new Transaksi_Penjualan;
         $detail_jasa = new Detail_Jasa;
 
         if($request->has('Detail_Jasa'))
@@ -53,6 +52,10 @@ class DetailJasaController extends RestController
         }
 
         $penjualan = Transaksi_Penjualan::find($request->Detail_Jasa[0]['Id_Transaksi']);
+        if($penjualan->Jenis_Transaksi == 'SP')
+        {
+            $penjualan->Jenis_Transaksi = 'SS';
+        }
         $penjualan->Subtotal += $request->Subtotal_Detail_Jasa;
         $penjualan->Total += $request->Subtotal_Detail_Jasa;
         $penjualan->save();
@@ -94,12 +97,12 @@ class DetailJasaController extends RestController
         $penjualan = Transaksi_Penjualan::find($id_transaksi);
         $penjualan->Subtotal -= $detail_jasa->Subtotal_Detail_Jasa;
         $penjualan->Total -+ $detail->Subtotal_Detail_Jasa;
-
+        
         $status=$detail_jasa->delete();
 
         $find_montir_sparepart  = Detail_Sparepart::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->first();
         $find_montir_jasa       = Detail_Jasa::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->first();
-
+        
         if($find_montir_sparepart == null && $find_montir_jasa == null)
         {
             $status2 = $montir->delete();
@@ -110,11 +113,16 @@ class DetailJasaController extends RestController
             }
             $status3 = $penjualan->delete();
         }
+        else if($find_montir_jasa == null && $find_montir_sparepart !== null)
+        {
+            $penjualan->Jenis_Transaksi = 'SP';
+        }
         else
         {
             $status3 = false;
             $status2 = false;
         }
+        $penjualan->save();
         
         return response()->json([
             'find_sparepart' => $find_montir_sparepart,

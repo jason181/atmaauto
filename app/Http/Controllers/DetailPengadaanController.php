@@ -40,7 +40,9 @@ class DetailPengadaanController extends RestController
             'Jumlah'            => $request->Jumlah,
             'Subtotal_Pengadaan'=> $request->Subtotal_Pengadaan
         ]);
-
+        $pengadaan = Pengadaan::find($request->Id_Pengadaan);
+        $pengadaan->Total_Harga += $request->Harga_Satuan * $request->Jumlah - $pengadaan->Total_Harga;
+        $pengadaan->save();
         $response = $this->generateItem($detail_pengadaan);
         return $this->sendResponse($response);
     }
@@ -48,7 +50,9 @@ class DetailPengadaanController extends RestController
     public function update(Request $request,$id)
     {
         $detail_pengadaan = Detail_Pengadaan::find($id);
-
+        $pengadaan = Transaksi_Pengadaan::find($detail_pengadaan->Id_Pengadaan);
+        $pengadaan->TotalHarga += $request->Harga_Satuan * $request->Jumlah - $pengadaan->Total_Harga;
+        $pengadaan->save();
         if(!is_null($request->Kode_Sparepart))
         {
             $detail_pengadaan->Kode_Sparepart = $request->Kode_Sparepart;
@@ -66,9 +70,9 @@ class DetailPengadaanController extends RestController
 
         if(!is_null($request->Subtotal_Pengadaan))
         {
-            $detail_pengadaan->Subtotal_Pengadaan = $request->Subtotal_Pengadaan;
+            $detail_pengadaan->Subtotal_Pengadaan = $request->Harga_Satuan * $request->Jumlah;
         }
-
+        $detail_pengadaan->save();
         $response = generateItem($detail_pengadaan);
         return sendResponse($response);
     }
