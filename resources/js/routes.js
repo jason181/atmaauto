@@ -5,6 +5,7 @@ import Pegawai from './components/layout/Pegawai.vue';
 import Jasa_Service from './components/layout/JasaService.vue';
 import Supplier from './components/layout/Supplier.vue';
 import Sparepart from './components/layout/sparepart.vue';
+import SparepartMinimum from './components/layout/SparepartMinimum';
 import Cabang from './components/layout/Cabang.vue';
 import Konsumen from './components/layout/Konsumen.vue';
 import Motor from './components/layout/Motor.vue';
@@ -13,7 +14,7 @@ import Katalog from './components/layout/Katalog.vue';
 import Status from './components/layout/Status.vue';
 import Pengadaan from './components/layout/Pengadaan.vue';
 import Penjualan from './components/layout/Penjualan.vue';
-import DetailKatalog from './components/layout/DetailKatalog.vue';
+
 
 import { homedir } from 'os';
 
@@ -60,6 +61,19 @@ export const routes = [
         name: 'Sparepart',
         path: '/sparepart',
         component: Sparepart,
+        meta: { 
+            role: [
+                'Admin'
+            ]
+        },
+        beforeEnter: middleware([
+            auth
+        ]) 
+    },
+    {
+        name: 'SparepartMinimum',
+        path: '/sparepartminimum',
+        component: SparepartMinimum,
         meta: { 
             role: [
                 'Admin'

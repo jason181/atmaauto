@@ -16,6 +16,21 @@ export default {
             Http.get('/api/spareparts', successCallback, errorCallback)
         })
     },
+    getallsparepartminimum(){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.get('/api/spareparts/showBelowMinimumStock', successCallback, errorCallback)
+        })
+    },
     addsparepart(payload) {
         return new Promise((resolve, reject) => {
 
