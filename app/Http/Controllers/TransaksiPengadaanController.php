@@ -146,7 +146,7 @@ class TransaksiPengadaanController extends RestController
         $count_detail = count($details);
         for($i=0;$i<$count_detail;$i++)
         {
-            $sparepart=Sparepart::where('Kode_Sparepart',$details[$i]->Kode_Sparepart)->get();
+            $sparepart=Sparepart::where('Kode_Sparepart',$details[$i]->Kode_Sparepart)->first();
             $sparepart->Jumlah_Sparepart += $details[$i]->Jumlah;
             $sparepart->save();
         }
