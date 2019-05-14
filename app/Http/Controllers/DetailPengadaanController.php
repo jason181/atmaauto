@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Transformers\DetailPengadaanTransformers;
 use App\Detail_Pengadaan;
+use App\Transaksi_Pengadaan;
 
 class DetailPengadaanController extends RestController
 {
@@ -40,6 +41,9 @@ class DetailPengadaanController extends RestController
             'Jumlah'            => $request->Jumlah,
             'Subtotal_Pengadaan'=> $request->Subtotal_Pengadaan
         ]);
+        $pengadaan = Pengadaan::find($request->Id_Pengadaan);
+        $pengadaan->Total_Harga += $request->Harga_Satuan * $request->Jumlah - $pengadaan->Total_Harga;
+        $pengadaan->save();
 
         $response = $this->generateItem($detail_pengadaan);
         return $this->sendResponse($response);
@@ -48,7 +52,9 @@ class DetailPengadaanController extends RestController
     public function update(Request $request,$id)
     {
         $detail_pengadaan = Detail_Pengadaan::find($id);
-
+        $pengadaan = Transaksi_Pengadaan::find($detail_pengadaan->Id_Pengadaan);
+        $pengadaan->Total_Harga += $pengadaan->Harga_Satuan * $request->Jumlah - $pengadaan->Total_Harga;
+        $pengadaan->save();
         if(!is_null($request->Kode_Sparepart))
         {
             $detail_pengadaan->Kode_Sparepart = $request->Kode_Sparepart;
@@ -66,19 +72,25 @@ class DetailPengadaanController extends RestController
 
         if(!is_null($request->Subtotal_Pengadaan))
         {
-            $detail_pengadaan->Subtotal_Pengadaan = $request->Subtotal_Pengadaan;
+            $detail_pengadaan->Subtotal_Pengadaan = $request->Harga_Satuan * $request->Jumlah;
         }
-
-        $response = generateItem($detail_pengadaan);
-        return sendResponse($response);
+        $detail_pengadaan->save();
+        $response = $this->generateItem($detail_pengadaan);
+        return $this->sendResponse($response);
     }
 
     public function destroy($id)
     {
         $detail_pengadaan = Detail_Pengadaan::find($id);
+        $pengadaan = Transaksi_Pengadaan::find($detail->Id_Pengadaan);
+        $pengadaan->Total_Harga -= $detail_pengadaan->Subtotal_Pengadaan;
         $detail_pengadaan->delete();
-
-        $response = generateItem($detail_pengadaan);
-        return sendResponse($detail_pengadaan);
+        $cari_pengadaan = Detail_Pengadaan::where('Id_Pengadaan',$pengadaan->Id_Pengadaan)->get();
+        if($cari_pengadaan == null)
+        {
+            $status = $pengadaan->delete();
+        }
+        $response = $this->generateItem($detail_pengadaan);
+        return $this->sendResponse($detail_pengadaan);
     }
 }

@@ -27,6 +27,12 @@ class TransaksiPengadaanController extends RestController
         return $this->sendResponse($response,201);
     }
 
+    public function transaksimasuk(){
+        $pengadaan=Transaksi_Pengadaan::where('Status_Pengadaan',2)->get();
+        $response=$this->generateCollection($pengadaan);
+        return $this->sendResponse($response,201);
+    }
+
     public function store(Request $request)
     {
         try{
@@ -66,6 +72,10 @@ class TransaksiPengadaanController extends RestController
             $detail->Harga_Satuan       = $request->get('Harga_Satuan');
             $detail->Jumlah             = $request->get('Jumlah');
             $detail->Subtotal_Pengadaan = $request->get('Subtotal_Pengadaan');
+
+            $detail->save();
+            $response = $this->generateItem($detail);
+            return $this->sendResponse($response);
         }catch(\Exception $e)
         {
             return $this->sendIseResponse($e->getMessage());
@@ -135,22 +145,21 @@ class TransaksiPengadaanController extends RestController
 
     public function verify($id)
     {
-        // dd($id);
         $pengadaan = Transaksi_Pengadaan::find($id);
 
         $pengadaan->Status_Pengadaan = '2';
         $details = Detail_Pengadaan::where('Id_Pengadaan',$id)->get();
+        
         $count_detail = count($details);
         for($i=0;$i<$count_detail;$i++)
         {
-            $sparepart=Sparepart::where('Kode_Sparepart',$details[$i]->Kode_Sparepart)->get();
-            // dd($sparepart[0]->Jumlah_Sparepart);
+            $sparepart=Sparepart::where('Kode_Sparepart',$details[$i]->Kode_Sparepart)->first();
             $sparepart->Jumlah_Sparepart += $details[$i]->Jumlah;
             $sparepart->save();
         }
         $pengadaan->save();
         $response = $this->generateItem($pengadaan);
-        return $this->sendResponse($response);
+        return $this->sendResponse($response,201);
     }
 
     public function destroy($id)

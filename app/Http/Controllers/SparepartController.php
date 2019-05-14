@@ -21,7 +21,6 @@ class SparepartController extends RestController
     public function showBelowMinimumStock()
     {
         $sparepart=Sparepart::whereColumn('Jumlah_Sparepart','<=','Stok_Minimum_Sparepart')->get();
-        dd($sparepart);
         $response=$this->generateCollection($sparepart);
         return $this->sendResponse($response,201);
     }

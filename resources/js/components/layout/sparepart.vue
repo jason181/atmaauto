@@ -1,18 +1,23 @@
 <template>
     <body>
         <div class="container-fluid mt-3" style="">
+            
             <div class="row mb-2">
-                <div class="col-sm-2">
-                    <div class="col-sm-7 p-0">
-                        <button class="btn btn-success mb-2 btn-block" @click="getallsparepart(),refresh()" data-title="Tambah_Sparepart" data-toggle="modal" data-target="#Tambah_Sparepart">
-                            <i class="fas fa-plus mr-2"></i>Tambah
-                        </button>
-                    </div>
-                    <div class="col-sm-5">
-
+                <div class="col-sm-4">
+                    <div class="row ml-1">
+                        <div class="col-sm-3 p-0">
+                            <button class="btn btn-success mb-2 btn-block" @click="getallsparepart(),refresh()" data-title="Tambah_Sparepart" data-toggle="modal" data-target="#Tambah_Sparepart">
+                                <i class="fas fa-plus mr-2"></i>Tambah
+                            </button>
+                        </div>
+                        <div class="col-sm-9">
+                            <router-link :to="{name:'SparepartMinimum'}" class="">
+                                <button class="btn btn-info text-white"><i class="fas fa-exclamation-triangle"></i> Stok dibawah minimum</button>
+                            </router-link>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-7">
+                <div class="col-sm-5">
 
                 </div>
                 <div class="col-sm-3">

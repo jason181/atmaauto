@@ -45,6 +45,7 @@ Route::delete('/jasas/delete/{id}', 'JasaController@destroy');
 Route::get('/pegawais', 'PegawaiController@index');
 Route::post('/pegawais/store', 'PegawaiController@store');
 Route::get('/pegawais/{id}', 'PegawaiController@showbyID');
+Route::get('/pegawais/showMontir','PegawaiController@showMontir');
 Route::patch('/pegawais/update/{id}', 'PegawaiController@update'); 
 Route::delete('/pegawais/delete/{id}', 'PegawaiController@destroy');
 Route::POST('/pegawais/mobileauthenticate','PegawaiController@mobileauthenticate');
@@ -100,13 +101,14 @@ Route::get('/motor_konsumens/show/{id}', 'MotorKonsumenController@showbyCustomer
 //Pengadaan
 Route::get('/transaksi_pengadaans','TransaksiPengadaanController@index');
 Route::post('/transaksi_pengadaans/store','TransaksiPengadaanController@store');
+Route::get('/transaksi_pengadaans/transaksimasuk','TransaksiPengadaanController@transaksimasuk');
 Route::post('/transaksi_pengadaans/storeDetail','TransaksiPengadaanController@storeDetail');
 Route::patch('/transaksi_pengadaans/update/{id}', 'TransaksiPengadaanController@update');
 Route::patch('/transaksi_pengadaans/updatemobile/{id}', 'TransaksiPengadaanController@updatemobile'); 
 Route::delete('/transaksi_pengadaans/delete/{id}', 'TransaksiPengadaanController@destroy');
 // Route::get('/transaksi_pengadaans/show/{id}', 'TransaksiPengadaanController@showbyCustomer');
 Route::get('/transaksi_pengadaans/cetakSuratPemesanan/{id}','TransaksiPengadaanController@cetakSuratPemesanan');
-Route::post('/transaksi_pengadaans/verify/{id}','TransaksiPengadaanController@verify');
+Route::patch('/transaksi_pengadaans/verify/{id}','TransaksiPengadaanController@verify');
 
 
 //Detail Pengadaan
@@ -121,9 +123,13 @@ Route::delete('/detail_pengadaans/delete/{id}', 'DetailPengadaanController@destr
 Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
 // Route::group(['middleware' => 'token'], function () {
     Route::get('/transaksi_penjualans/showByIdMotorKonsumen/{id}','TransaksiPenjualanController@showByIdMotorKonsumen');
+    Route::get('/transaksi_penjualans/transaksikeluar','TransaksiPenjualanController@transaksikeluar');
     Route::post('/transaksi_penjualans/store','TransaksiPenjualanController@store');
     Route::post('/transaksi_penjualans/storeSparepart','TransaksiPenjualanController@storeSparepart');
+    Route::post('/transaksi_penjualans/storeJasa','TransaksiPenjualanController@storeJasa');
+    Route::patch('/transaksi_penjualans/update/{id}','TransaksiPenjualanController@update');
     Route::delete('/transaksi_penjualans/delete/{id}','TransaksiPenjualanController@destroy');
+    
 // });
 
 //Detail Sparepart Transaksi Penjualan
@@ -137,3 +143,5 @@ Route::get('/detail_jasas','DetailJasaController@index');
 Route::post('/detail_jasas/store','DetailJasaController@store');
 Route::patch('/detail_jasas/update/{id}','DetailJasaController@update');
 Route::delete('/detail_jasas/delete/{id}','DetailJasaController@destroy');
+
+Route::get('/test-surat-pemesanan/{id}', 'LaporanController@cetakSuratPemesanan');

@@ -37,12 +37,10 @@ class DetailSparepartController extends RestController
             $montir = Detail_Jasa::where('Id_Transaksi',$request->Detail_Sparepart[0]['Id_Transaksi'])->first()->value('Id_Jasa_Montir');
         }
         
-        $penjualan  = new Transaksi_Penjualan;
         $detail_sparepart = new Detail_Sparepart;
         
         if($request->has('Detail_Sparepart'))
         {
-            
             $sparepart      = $request->get('Detail_Sparepart');
             $countsparepart = count($sparepart);
             
@@ -58,15 +56,18 @@ class DetailSparepartController extends RestController
 
                 $sparepartCollection=Sparepart::where('Kode_Sparepart',$sparepart[$i]['Kode_Sparepart'])->get();
                 $sparepartdata=$sparepartCollection->first();
-                
+
                 $sparepartdata->Jumlah_Sparepart -= $sparepart[$i]['Jumlah'];
                 $sparepartdata->save();
             }
-            // dd($sparepart);
-
         }
         $penjualan = Transaksi_Penjualan::find($request->Detail_Sparepart[0]['Id_Transaksi']);
-        $penjualan->Total += $request->Subtotal_Detail_Sparepart;
+        if($penjualan->Jenis_Transaksi == 'SV')
+        {
+            $penjualan->Jenis_Transaksi = 'SS';
+        }
+        $penjualan->Subtotal += $sparepart[0]['Subtotal_Detail_Sparepart'];
+        $penjualan->Total += $sparepart[0]['Subtotal_Detail_Sparepart'];
         $penjualan->save();
 
         $response = $this->generateItem($penjualan, new TransaksiPenjualanTransformers);
@@ -75,7 +76,6 @@ class DetailSparepartController extends RestController
 
     public function update(Request $request,$id) //cek lagi pake postman dan cek smua database
     {
-        
         $sparepart = $request->Detail_Sparepart;
         
         $penjualan = Transaksi_Penjualan::find($sparepart[0]['Id_Transaksi']);
@@ -93,6 +93,7 @@ class DetailSparepartController extends RestController
             'Subtotal_Detail_Sparepart' => $sparepart[0]['Subtotal_Detail_Sparepart']
         ]);
         
+        $penjualan->Subtotal += $subtotal;
         $penjualan->Total += $subtotal;
         $penjualan->save();
 
@@ -108,6 +109,9 @@ class DetailSparepartController extends RestController
         
         $sparepart->Jumlah_Sparepart += $detail_sparepart->Jumlah;
         $montir = Montir::find($detail_sparepart->Id_Jasa_Montir);
+        $penjualan = Transaksi_Penjualan::find($id_transaksi);
+        $penjualan->Subtotal -= $detail_sparepart->Subtotal_Detail_Sparepart;
+        $penjualan->Total -+ $detail_sparepart->Subtotal_Detail_Sparepart;
         
         $status=$detail_sparepart->delete();
         
@@ -121,14 +125,18 @@ class DetailSparepartController extends RestController
             {
                 $delete_pod = $pod->delete();
             }
-            $penjualan = Transaksi_Penjualan::find($id_transaksi);
             $status3 = $penjualan->delete();
+        }
+        else if($find_montir_jasa == null && $find_montir_sparepart !== null)
+        {
+            $penjualan->Jenis_Transaksi = 'SV';
         }
         else
         {
             $status3 = false;
             $status2 = false;
         }
+        $penjualan->save();
         
         return response()->json([
             'find_sparepart' => $find_montir_sparepart,
