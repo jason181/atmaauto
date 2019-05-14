@@ -86,7 +86,9 @@
                                 Sedang Diproses
                             </td>
                             <td v-if="transaksi.Status==2">
-                                Selesai
+                                Selesai Diproses
+                            </td><td v-if="transaksi.Status==3">
+                                Sudah Dibayar
                             </td>
                             <td>{{transaksi.Total}} </td>
                             <td class="text-center">
@@ -245,15 +247,15 @@
 
                         <div class="input-group mt-3" v-if="jenis == 'SP' || jenis=='SS'"> 
                             <div class="input-group-prepend d-block" style="width: 100px;">
-                                <span class="input-group-text" id="basic-addon2">Sparepart</span>
+                                <span class="input-group-text" id="basic-addon2">Nama Sparepart</span>
                             </div>  
                             <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
                                 <option disabled="disabled" selected="selected" 
                                 value="Pilih ">-- Pilih Sparepart --</option>
                                 <option v-bind:key="spareparts['Kode_Sparepart']" 
                                 v-on:change="getSelectedIndex"
-                                v-for="spareparts in sparepartdata" 
-                                :value="spareparts.Kode_Sparepart" >{{spareparts.Nama_Sparepart}}</option>
+                                v-for="spareparts in sparepart" 
+                                :value="spareparts.Kode_Sparepart">{{spareparts.Nama_Sparepart}}</option>
                             </select>
 
                             <div class="input-group-prepend d-block" style="width: 100px;">
@@ -265,7 +267,7 @@
                                 <option v-bind:key="spareparts['Kode_Sparepart']" 
                                 v-on:change="getSelectedIndex"
                                 v-for="spareparts in sparepart" 
-                                :value="spareparts.Kode_Sparepart" disabled>{{spareparts.Tipe_Barang}}</option>
+                                :value="spareparts.Kode_Sparepart">{{spareparts.Tipe_Barang}}</option>
                             </select>
                         </div>
 
@@ -690,7 +692,7 @@
                         <div class="input-group mt-3 w-400">
                             <div class="row">
                                 <div class="col-12 mr-2">
-                                    <div class="list-group mr-2" v-for="spareparts in sparepartdata" :key="spareparts.Kode_Sparepart">
+                                    <div class="list-group mr-2" v-for="spareparts in sparepartdata" :key="spareparts['Kode_Sparepart']">
                                         <a href="#" class="list-group-item list-group-item-action list-group-item-success">
                                             {{spareparts.Kode_Sparepart + '-' + spareparts.Nama_Sparepart}}          
                                             <button type="submit" class="btn btn-danger" style="margin-left: 200px"

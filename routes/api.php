@@ -108,7 +108,7 @@ Route::patch('/transaksi_pengadaans/updatemobile/{id}', 'TransaksiPengadaanContr
 Route::delete('/transaksi_pengadaans/delete/{id}', 'TransaksiPengadaanController@destroy');
 // Route::get('/transaksi_pengadaans/show/{id}', 'TransaksiPengadaanController@showbyCustomer');
 Route::get('/transaksi_pengadaans/cetakSuratPemesanan/{id}','TransaksiPengadaanController@cetakSuratPemesanan');
-Route::post('/transaksi_pengadaans/verify/{id}','TransaksiPengadaanController@verify');
+Route::patch('/transaksi_pengadaans/verify/{id}','TransaksiPengadaanController@verify');
 
 
 //Detail Pengadaan
