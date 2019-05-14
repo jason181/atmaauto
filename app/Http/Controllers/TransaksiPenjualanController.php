@@ -41,7 +41,6 @@ class TransaksiPenjualanController extends RestController
         $penjualan=Transaksi_Penjualan::get();
         $response= $this->generateCollection($penjualan);
         return $this->sendResponse($response);
-        
     }
 
     public function transaksikeluar(){

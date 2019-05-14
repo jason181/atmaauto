@@ -117,7 +117,7 @@ class LaporanController extends Controller
 
         return response()->json([
             'status' => (bool) $data1,
-            'data' => $data1,
+            'data1' => $data1,
             'data2' => $data2,
             'data3' => $data3,
             'data4' => $data4,
