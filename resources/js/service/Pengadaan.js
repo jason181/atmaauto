@@ -97,4 +97,19 @@ export default {
             Http.get('/api/detail_pengadaans', successCallback, errorCallback)
         })
     },
+    cetaksuratpemesanan(id){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.download('/api/cetak_surat_pemesanan/'+id, successCallback, errorCallback)
+        })
+    },
 }

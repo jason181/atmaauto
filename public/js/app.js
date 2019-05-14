@@ -5323,8 +5323,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/Pengadaan */ "./resources/js/service/Pengadaan.js");
-/* harmony import */ var _validations_pengadaan_validations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../validations/pengadaan_validations */ "./resources/js/validations/pengadaan_validations.js");
+/* harmony import */ var _service_Http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/Http */ "./resources/js/service/Http.js");
+/* harmony import */ var _service_Pengadaan__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../service/Pengadaan */ "./resources/js/service/Pengadaan.js");
+/* harmony import */ var _validations_pengadaan_validations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../validations/pengadaan_validations */ "./resources/js/validations/pengadaan_validations.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -5605,10 +5606,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  validations: _validations_pengadaan_validations__WEBPACK_IMPORTED_MODULE_2__["default"],
+  validations: _validations_pengadaan_validations__WEBPACK_IMPORTED_MODULE_3__["default"],
   data: function data() {
     return {
       pengadaandata: [],
@@ -5700,7 +5715,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].getallpengadaan();
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_2__["default"].getallpengadaan();
 
               case 3:
                 this.pengadaandata = _context.sent.data;
@@ -5737,7 +5752,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].getallsupplier();
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_2__["default"].getallsupplier();
 
               case 3:
                 this.supplierdata = _context2.sent.data;
@@ -5774,7 +5789,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].getallsparepart();
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_2__["default"].getallsparepart();
 
               case 3:
                 this.sparepart = _context3.sent.data;
@@ -5811,7 +5826,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].getalldetailpengadaan();
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_2__["default"].getalldetailpengadaan();
 
               case 3:
                 this.detailpengadaandata = _context4.sent.data;
@@ -5857,7 +5872,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 };
                 console.log(payload);
                 _context5.next = 5;
-                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].addpengadaan(payload);
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_2__["default"].addpengadaan(payload);
 
               case 5:
                 this.getallpengadaan();
@@ -5884,10 +5899,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return addpengadaan;
     }(),
-    // async updatepengadaan () {
-    // },
-    deletepengadaan: function () {
-      var _deletepengadaan = _asyncToGenerator(
+    cetaksuratpemesanan: function () {
+      var _cetaksuratpemesanan = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(id) {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
@@ -5896,28 +5909,68 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].deletepengadaan(id);
+                return _service_Http__WEBPACK_IMPORTED_MODULE_1__["default"].download('/api/cetak_surat_pemesanan/' + id);
 
               case 3:
-                this.getallpengadaan(); // console.log()
-
-                _context6.next = 9;
+                // await Controller.cetaksuratpemesanan(id)
+                this.getallpengadaan();
+                console.log(this.supplierdata);
+                _context6.next = 10;
                 break;
 
-              case 6:
-                _context6.prev = 6;
+              case 7:
+                _context6.prev = 7;
                 _context6.t0 = _context6["catch"](0);
                 console.log(_context6.t0);
 
-              case 9:
+              case 10:
               case "end":
                 return _context6.stop();
             }
           }
-        }, _callee6, this, [[0, 6]]);
+        }, _callee6, this, [[0, 7]]);
       }));
 
-      function deletepengadaan(_x) {
+      function cetaksuratpemesanan(_x) {
+        return _cetaksuratpemesanan.apply(this, arguments);
+      }
+
+      return cetaksuratpemesanan;
+    }(),
+    // async updatepengadaan () {
+    // },
+    deletepengadaan: function () {
+      var _deletepengadaan = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _context7.prev = 0;
+                _context7.next = 3;
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_2__["default"].deletepengadaan(id);
+
+              case 3:
+                this.getallpengadaan(); // console.log()
+
+                _context7.next = 9;
+                break;
+
+              case 6:
+                _context7.prev = 6;
+                _context7.t0 = _context7["catch"](0);
+                console.log(_context7.t0);
+
+              case 9:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7, this, [[0, 6]]);
+      }));
+
+      function deletepengadaan(_x2) {
         return _deletepengadaan.apply(this, arguments);
       }
 
@@ -54190,7 +54243,7 @@ var render = function() {
                 pengadaan.Status_Pengadaan == 0
                   ? _c("td", [
                       _vm._v(
-                        "\n                            Sudah Dipesan\n                        "
+                        "\n                            Ordered\n                        "
                       )
                     ])
                   : _vm._e(),
@@ -54198,7 +54251,7 @@ var render = function() {
                 pengadaan.Status_Pengadaan == 1
                   ? _c("td", [
                       _vm._v(
-                        "\n                            Sudah Dicetak\n                        "
+                        "\n                            Printed\n                        "
                       )
                     ])
                   : _vm._e(),
@@ -54206,7 +54259,7 @@ var render = function() {
                 pengadaan.Status_Pengadaan == 2
                   ? _c("td", [
                       _vm._v(
-                        "\n                            Sudah Datang\n                        "
+                        "\n                            Finished\n                        "
                       )
                     ])
                   : _vm._e(),
@@ -54238,6 +54291,39 @@ var render = function() {
                           }
                         },
                         [_c("i", { staticClass: "fas fa-list-ul" })]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _c(
+                    "p",
+                    {
+                      attrs: {
+                        "data-placement": "top",
+                        "data-toggle": "tooltip",
+                        title: "Print"
+                      }
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success",
+                          attrs: {
+                            "data-title": "Cetak_Nota",
+                            disabled: pengadaan.Status_Pengadaan !== 0
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.cetaksuratpemesanan(
+                                pengadaan.Id_Pengadaan
+                              )
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fas fa-file-pdf" })]
                       )
                     ]
                   )
@@ -54311,6 +54397,41 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
+                pengadaan.Status_Pengadaan == 2
+                  ? _c("td", { staticClass: "text-center" }, [
+                      _c(
+                        "p",
+                        {
+                          attrs: {
+                            "data-placement": "top",
+                            "data-toggle": "tooltip",
+                            title: "Edit"
+                          }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-success",
+                              attrs: {
+                                disabled: "",
+                                "data-title": "Verify_Pengadaan",
+                                "data-toggle": "modal",
+                                "data-target": "#Verify_Pengadaan"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.datapengadaanhandler(pengadaan)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-check-circle" })]
+                          )
+                        ]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
                 _c("td", { staticClass: "text-center" }, [
                   _c(
                     "p",
@@ -54327,6 +54448,7 @@ var render = function() {
                         {
                           staticClass: "btn btn-danger",
                           attrs: {
+                            disabled: pengadaan.Status_Pengadaan !== 0,
                             "data-title": "Delete_Pengadaan",
                             "data-toggle": "modal",
                             "data-target": "#Delete_Pengadaan"
@@ -54905,6 +55027,8 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Detail")]),
         _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Print")]),
+        _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit/Verify")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
@@ -55121,20 +55245,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-sm-4" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-4" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success mb-2 btn-block",
-            attrs: { "data-title": "Cetak_Nota" }
-          },
-          [
-            _c("i", { staticClass: "far fa-file-pdf" }),
-            _vm._v(" Cetak Nota Pengadaan\n                            ")
-          ]
-        )
-      ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-sm-4" })
     ])
@@ -83500,6 +83610,25 @@ __webpack_require__.r(__webpack_exports__);
     } catch (err) {
       throw err;
     }
+  },
+  download: function download(url) {
+    try {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.request({
+        url: url,
+        method: 'get',
+        responseType: 'blob'
+      }).then(function (response) {
+        var file = new Blob([response.data], {
+          type: 'application/pdf'
+        }); //Build a URL from the file
+
+        var fileURL = URL.createObjectURL(file); //Open the URL on new Window
+
+        window.open(fileURL);
+      });
+    } catch (err) {
+      throw err;
+    }
   }
 });
 
@@ -83827,6 +83956,20 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/detail_pengadaans', successCallback, errorCallback);
+    });
+  },
+  cetaksuratpemesanan: function cetaksuratpemesanan(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].download('/api/cetak_surat_pemesanan/' + id, successCallback, errorCallback);
     });
   }
 });
@@ -84523,8 +84666,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\atmaauto\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\JASON\atmaauto\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\JASON\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

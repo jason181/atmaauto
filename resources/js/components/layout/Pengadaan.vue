@@ -39,6 +39,7 @@
                             <th scope="col">Total Harga</th>
                             <th scope="col">Status</th>
                             <th scope="col">Detail</th>
+                            <th scope="col">Print</th>
                             <th scope="col">Edit/Verify</th>
                             <th scope="col">Delete</th>
                         </tr>
@@ -50,19 +51,27 @@
                             <td>{{pengadaan.Tanggal_Pengadaan}} </td>
                             <td>{{pengadaan.Total_Harga}}</td>
                             <td v-if="pengadaan.Status_Pengadaan==0">
-                                Sudah Dipesan
+                                Ordered
                             </td>
                             <td v-if="pengadaan.Status_Pengadaan==1">
-                                Sudah Dicetak
+                                Printed
                             </td>
                             <td v-if="pengadaan.Status_Pengadaan==2">
-                                Sudah Datang
+                                Finished
                             </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Edit">
                                     <button class="btn btn-primary" @click="detailhandler(pengadaan)" 
                                     data-title="Detail_Pengadaan" data-toggle="modal" data-target="#Detail_Pengadaan">
                                         <i class="fas fa-list-ul"></i>
+                                    </button>
+                                </p>
+                            </td>
+                            <td class="text-center">
+                                <p data-placement="top" data-toggle="tooltip" title="Print">
+                                    <button class="btn btn-success" data-title="Cetak_Nota" @click="cetaksuratpemesanan(pengadaan.Id_Pengadaan)" 
+                                    :disabled="pengadaan.Status_Pengadaan !== 0">
+                                        <i class="fas fa-file-pdf"></i>
                                     </button>
                                 </p>
                             </td>
@@ -82,9 +91,17 @@
                                     </button>
                                 </p>
                             </td>
+                            <td class="text-center" v-if="pengadaan.Status_Pengadaan == 2">
+                                <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                    <button class="btn btn-success" @click="datapengadaanhandler(pengadaan)" disabled
+                                    data-title="Verify_Pengadaan" data-toggle="modal" data-target="#Verify_Pengadaan">
+                                        <i class="fas fa-check-circle"></i>
+                                    </button>
+                                </p>
+                            </td>
                             <td class="text-center">
-                                <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                    <button @click="datapengadaanhandler(pengadaan)" class="btn btn-danger" 
+                                <p data-placement="top" data-toggle="tooltip" title="Delete" >
+                                    <button @click="datapengadaanhandler(pengadaan)" class="btn btn-danger" :disabled="pengadaan.Status_Pengadaan !== 0" 
                                     data-title="Delete_Pengadaan" data-toggle="modal" data-target="#Delete_Pengadaan">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
@@ -255,11 +272,7 @@
                             <div class="col-sm-4">
 
                             </div>
-                            <div class="col-sm-4">
-                                <button class="btn btn-success mb-2 btn-block" data-title="Cetak_Nota">
-                                    <i class="far fa-file-pdf"></i> Cetak Nota Pengadaan
-                                </button>
-                            </div>
+                            
                             <div class="col-sm-4">
 
                             </div>
@@ -273,6 +286,7 @@
     </body>
 </template>
 <script>
+import Http from '../../service/Http'
 import Controller from '../../service/Pengadaan'
 import validators from '../../validations/pengadaan_validations'
 export default {
@@ -399,6 +413,16 @@ export default {
                 await Controller.addpengadaan(payload)
                 this.getallpengadaan()
                 this.getalldetailpengadaan()
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async cetaksuratpemesanan(id){
+            try {
+                await Http.download('/api/cetak_surat_pemesanan/'+id);
+                // await Controller.cetaksuratpemesanan(id)
+                this.getallpengadaan()
+                console.log(this.supplierdata)
             } catch (err) {
                 console.log(err)
             }
