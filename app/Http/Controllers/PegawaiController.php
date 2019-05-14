@@ -21,7 +21,9 @@ class PegawaiController extends RestController
 
     public function showMontir()
     {
-        $pegawai = Pegawai::where('Id_Role','4')->get();
+        
+        $pegawai = Pegawai::where('Id_Role',4)->get();
+
         $response=$this->generateCollection($pegawai);
         return $this->sendResponse($response,201);
     }
