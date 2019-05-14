@@ -7030,6 +7030,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -55360,7 +55362,14 @@ var render = function() {
                   transaksi.Status == 2
                     ? _c("td", [
                         _vm._v(
-                          "\n                                Selesai\n                            "
+                          "\n                                Selesai Diproses\n                            "
+                        )
+                      ])
+                    : _vm._e(),
+                  transaksi.Status == 3
+                    ? _c("td", [
+                        _vm._v(
+                          "\n                                Sudah Dibayar\n                            "
                         )
                       ])
                     : _vm._e(),
@@ -55981,7 +55990,7 @@ var render = function() {
                           [_vm._v("-- Pilih Sparepart --")]
                         ),
                         _vm._v(" "),
-                        _vm._l(_vm.sparepartdata, function(spareparts) {
+                        _vm._l(_vm.sparepart, function(spareparts) {
                           return _c(
                             "option",
                             {
@@ -56051,7 +56060,6 @@ var render = function() {
                             "option",
                             {
                               key: spareparts["Kode_Sparepart"],
-                              attrs: { disabled: "" },
                               domProps: { value: spareparts.Kode_Sparepart },
                               on: { change: _vm.getSelectedIndex }
                             },
@@ -57470,7 +57478,7 @@ var render = function() {
                       return _c(
                         "div",
                         {
-                          key: spareparts.Kode_Sparepart,
+                          key: spareparts["Kode_Sparepart"],
                           staticClass: "list-group mr-2"
                         },
                         [
@@ -58818,7 +58826,7 @@ var staticRenderFns = [
         _c(
           "span",
           { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
-          [_vm._v("Sparepart")]
+          [_vm._v("Nama Sparepart")]
         )
       ]
     )
@@ -84569,8 +84577,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\JASON\atmaauto\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\JASON\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\atmaauto\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

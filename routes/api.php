@@ -148,3 +148,8 @@ Route::delete('/detail_jasas/delete/{id}','DetailJasaController@destroy');
 //Laporan
 Route::get('/cetak_surat_pemesanan/{id}', 'LaporanController@cetakSuratPemesanan');
 Route::get('/cetak_spk/{id}', 'LaporanController@cetakSPK');
+Route::get('/test-surat-pemesanan/{id}', 'LaporanController@cetakSuratPemesanan');
+
+//Laporan
+Route::get('/cetakSuratPemesananDesktop/{id}','LaporanController@cetakSuratPemesananDesktop');
+Route::get('/cetakSuratPerintahKerjaDesktop/{id}','LaporanController@cetakSuratPerintahKerjaDesktop');
