@@ -145,3 +145,7 @@ Route::patch('/detail_jasas/update/{id}','DetailJasaController@update');
 Route::delete('/detail_jasas/delete/{id}','DetailJasaController@destroy');
 
 Route::get('/test-surat-pemesanan/{id}', 'LaporanController@cetakSuratPemesanan');
+
+//Laporan
+Route::get('/cetakSuratPemesananDesktop/{id}','LaporanController@cetakSuratPemesananDesktop');
+Route::get('/cetakSuratPerintahKerjaDesktop/{id}','LaporanController@cetakSuratPerintahKerjaDesktop');
