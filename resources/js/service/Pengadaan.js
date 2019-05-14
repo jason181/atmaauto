@@ -109,7 +109,7 @@ export default {
                 reject(err)
             }
 
-            Http.get('/api/cetak_surat_pemesanan/'+id, successCallback, errorCallback)
+            Http.download('/api/cetak_surat_pemesanan/'+id, successCallback, errorCallback)
         })
     },
 }

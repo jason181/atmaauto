@@ -66,23 +66,23 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td colspan="2" style="text-align:right;">{{ date('d M Y H:i:s', strtotime($datas[0]->updated_at)) }}</td>
+                        <td colspan="2" style="text-align:right;">{{ date('d M Y H:i:s', strtotime($header[0]->created_at)) }}</td>
                     </tr>
                     <tr>
-                        <td colspan="5" style="font-size:18px;">{{$datas[0]->Jenis_Transaksi.'-'.date('dmy', strtotime($datas[0]->Tanggal_Transaksi)).'-'.$datas[0]->Id_Transaksi }}</td>
+                        <td colspan="5" style="font-size:18px;">{{$kode[0]->Kode_Transaksi}}</td>
                     </tr>
                     
                     <tr>
                         <td>Cust</td>
-                        <td colspan="2">NAMA KONSUMEN</td>
+                        <td colspan="2">{{$header[0]->Cust}}</td>
                         <td>CS</td>
-                        <td>NAMA CUST SERVICE</td>
+                        <td>{{$cs[0]->CS}}</td>
                     </tr>
                     <tr>
                         <td>Telepon</td>
-                        <td colspan="2">TELEPON KONSUMEN</td>
+                        <td colspan="2">{{$header[0]->Telepon}}</td>
                         <td>Montir</td>
-                        <td>NAMA MONTIR</td>
+                        <td>{{$montir}}</td>
                     </tr>
                     <tr>
                         <td style="padding-bottom:15px;">Motor</td>
@@ -90,6 +90,7 @@
                         <td></td>
                         <td></td>
                     </tr>
+                    @if($s_status == true)
                     <tr>
                         <td colspan="5" class="mytable" style="font-size:16px;font-weight:bold;text-align:center;padding:2px;">SPAREPARTS</td>
                     </tr>
@@ -106,13 +107,13 @@
                         <th class="mytable" style="text-align:center;">Rak</th>
                         <th class="mytable" style="text-align:center;">Jumlah</th>
                     </tr>
-                    @foreach($datas as $data)
+                    @foreach($spareparts as $sparepart)
                     <tr>
-                        <td>888-RTZ-123</td>
-                        <td>Bohlam Depan</td>
-                        <td>Yamaha</td>
-                        <td>DPN-KACA-01</td>
-                        <td style="text-align:right">1</td>
+                        <td> {{$sparepart->Kode}} </td>
+                        <td> {{$sparepart->Nama}} </td>
+                        <td> {{$sparepart->Merk}} </td>
+                        <td> {{$sparepart->Rak}} </td>
+                        <td style="text-align:right"> {{$sparepart->Jumlah}} </td>
                     </tr>
                     @endforeach
                     <tr>
@@ -124,9 +125,11 @@
                     <tr>
                         <td colspan="5" class="mytable" style="padding:1px;"></td>
                     </tr>
+                    @endif
                     <tr>
-                        <td colspan="5" class="mytable" style="padding:10px;"></td>
+                        <td colspan="5" style="padding:10px;"></td>
                     </tr>
+                    @if($j_status == true)
                     <tr>
                         <td colspan="5" class="mytable" style="font-size:16px;font-weight:bold;text-align:center;padding:2px;">SERVICES</td>
                     </tr>
@@ -143,10 +146,12 @@
                         <th class="mytable"></th>
                         <th class="mytable" style="text-align:right;">Jumlah</th>
                     </tr>
-                    @foreach($datas as $data)
+                    {{$i=0}}
+                    @foreach($jasas as $jasa)
+                    {{$i++}}
                     <tr>
-                        <td style="padding-left:10px;">1</td>
-                        <td>Service Roda</td>
+                        <td style="padding-left:10px;"> {{$jasa->KodeJasa}} </td>
+                        <td> {{$jasa->NamaJasa}} </td>
                         <td></td>
                         <td></td>
                         <td style="text-align:right">1</td>
@@ -156,11 +161,12 @@
                         <td colspan="5" class="mytable" style="padding:1px;"></td>
                     </tr>
                     <tr>
-                        <td colspan="5" style="text-align:right">3</td>
+                        <td colspan="5" style="text-align:right"> {{$i}} </td>
                     </tr>
                     <tr>
                         <td colspan="5" class="mytable" style="padding:1px;"></td>
                     </tr>
+                    @endif
                 </tbody>
             </table>
         </div>
