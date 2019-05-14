@@ -199,12 +199,17 @@ class TransaksiPenjualanController extends RestController
 
             $montir = Montir::orderBy('Id_Jasa_Montir','DESC')->first();
             // dd($montir);
-            $sparepart->Id_Transaksi        = $request->get('Id_Transaksi');
-            $sparepart->Id_Jasa_Montir      = $montir->Id_Jasa_Montir;
-            $sparepart->Kode_Sparepart      = $request->get('Kode_Sparepart');
-            $sparepart->Harga_Satuan        = $request->get('Harga_Satuan');
-            $sparepart->Jumlah              = $request->get('Jumlah');
-            $sparepart->Subtotal_Detail_Sparepart = $request->get('Subtotal_Detail_Sparepart');
+            $jasa->Id_Transaksi        = $request->get('Id_Transaksi');
+            $jasa->Id_Jasa_Montir      = $request->get('Id_Jasa_Montir');
+            $jasa->Id_Jasa             = $request->get("Id_Jasa");
+            $jasa->Id_Jasa             = $request->get("Subtotal_Detail_Jasa");
+            $jasa->save();
+            return response()->json([
+                'status' => (bool) $jasa,
+                'data' => $jasa,
+                'message' => $jasa ? 'Success' : 'Error Role'
+            ]);
+
         }catch(\Exception $e)
         {
             return $this->sendIseResponse($e->getMessage());
