@@ -144,4 +144,7 @@ Route::post('/detail_jasas/store','DetailJasaController@store');
 Route::patch('/detail_jasas/update/{id}','DetailJasaController@update');
 Route::delete('/detail_jasas/delete/{id}','DetailJasaController@destroy');
 
-Route::get('/test-surat-pemesanan/{id}', 'LaporanController@cetakSuratPemesanan');
+
+//Laporan
+Route::get('/cetak_surat_pemesanan/{id}', 'LaporanController@cetakSuratPemesanan');
+Route::get('/cetak_spk/{id}', 'LaporanController@cetakSPK');

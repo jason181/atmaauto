@@ -256,7 +256,7 @@
 
                             </div>
                             <div class="col-sm-4">
-                                <button class="btn btn-success mb-2 btn-block" data-title="Cetak_Nota">
+                                <button class="btn btn-success mb-2 btn-block" data-title="Cetak_Nota" @click="cetaksuratpemesanan(Id_Detail_Modal)">
                                     <i class="far fa-file-pdf"></i> Cetak Nota Pengadaan
                                 </button>
                             </div>
@@ -399,6 +399,15 @@ export default {
                 await Controller.addpengadaan(payload)
                 this.getallpengadaan()
                 this.getalldetailpengadaan()
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async cetaksuratpemesanan(id){
+            try {
+                await Controller.cetaksuratpemesanan(id)
+                this.getallpengadaan()
+                console.log(this.supplierdata)
             } catch (err) {
                 console.log(err)
             }

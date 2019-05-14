@@ -44,6 +44,23 @@ class LaporanController extends Controller
 	    return $pdf->stream();
     }
 
+    public function cetakSPK($id)
+    {
+        $datas = DB::select("SELECT * FROM transaksi_penjualans LIMIT 3");
+        // $datas  = DB::select("SELECT * FROM transaksi_pengadaans 
+        //             LEFT JOIN detail_pengadaans 
+        //             ON transaksi_pengadaans.Id_Pengadaan = detail_pengadaans.Id_Pengadaan 
+        //             LEFT JOIN suppliers
+        //             ON transaksi_pengadaans.Id_Supplier = suppliers.Id_Supplier
+        //             LEFT JOIN spareparts
+        //             ON detail_pengadaans.Kode_Sparepart = spareparts.Kode_Sparepart
+        //             WHERE transaksi_pengadaans.Id_Pengadaan = $id");
+        // return $datas;
+        $pdf = PDF::loadView('cetak_spk',['datas' => $datas]);
+        $pdf->setPaper([0,0,550,900]);
+	    return $pdf->stream();
+    }
+
     public function testSuratPemesanan($id)
     {
         $pengadaan  = Transaksi_Pengadaan::find($id);

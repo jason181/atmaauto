@@ -5884,10 +5884,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return addpengadaan;
     }(),
-    // async updatepengadaan () {
-    // },
-    deletepengadaan: function () {
-      var _deletepengadaan = _asyncToGenerator(
+    cetaksuratpemesanan: function () {
+      var _cetaksuratpemesanan = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(id) {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
@@ -5896,28 +5894,67 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
+                return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].cetaksuratpemesanan(id);
+
+              case 3:
+                this.getallpengadaan();
+                console.log(this.supplierdata);
+                _context6.next = 10;
+                break;
+
+              case 7:
+                _context6.prev = 7;
+                _context6.t0 = _context6["catch"](0);
+                console.log(_context6.t0);
+
+              case 10:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, this, [[0, 7]]);
+      }));
+
+      function cetaksuratpemesanan(_x) {
+        return _cetaksuratpemesanan.apply(this, arguments);
+      }
+
+      return cetaksuratpemesanan;
+    }(),
+    // async updatepengadaan () {
+    // },
+    deletepengadaan: function () {
+      var _deletepengadaan = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _context7.prev = 0;
+                _context7.next = 3;
                 return _service_Pengadaan__WEBPACK_IMPORTED_MODULE_1__["default"].deletepengadaan(id);
 
               case 3:
                 this.getallpengadaan(); // console.log()
 
-                _context6.next = 9;
+                _context7.next = 9;
                 break;
 
               case 6:
-                _context6.prev = 6;
-                _context6.t0 = _context6["catch"](0);
-                console.log(_context6.t0);
+                _context7.prev = 6;
+                _context7.t0 = _context7["catch"](0);
+                console.log(_context7.t0);
 
               case 9:
               case "end":
-                return _context6.stop();
+                return _context7.stop();
             }
           }
-        }, _callee6, this, [[0, 6]]);
+        }, _callee7, this, [[0, 6]]);
       }));
 
-      function deletepengadaan(_x) {
+      function deletepengadaan(_x2) {
         return _deletepengadaan.apply(this, arguments);
       }
 
@@ -54864,7 +54901,34 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(12)
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-sm-4" }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-4" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success mb-2 btn-block",
+                          attrs: { "data-title": "Cetak_Nota" },
+                          on: {
+                            click: function($event) {
+                              return _vm.cetaksuratpemesanan(
+                                _vm.Id_Detail_Modal
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "far fa-file-pdf" }),
+                          _vm._v(
+                            " Cetak Nota Pengadaan\n                            "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-4" })
+                  ])
                 ])
               ]
             )
@@ -55111,30 +55175,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Subtotal Pengadaan")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-4" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-4" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success mb-2 btn-block",
-            attrs: { "data-title": "Cetak_Nota" }
-          },
-          [
-            _c("i", { staticClass: "far fa-file-pdf" }),
-            _vm._v(" Cetak Nota Pengadaan\n                            ")
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-4" })
     ])
   }
 ]
@@ -83819,6 +83859,20 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/detail_pengadaans', successCallback, errorCallback);
+    });
+  },
+  cetaksuratpemesanan: function cetaksuratpemesanan(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/cetak_surat_pemesanan/' + id, successCallback, errorCallback);
     });
   }
 });
