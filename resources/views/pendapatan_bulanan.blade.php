@@ -60,13 +60,14 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="5" class="mytable" style="font-weight:bold;text-align:center;padding:5px;">SURAT PERINTAH KERJA</td>
+                        <td colspan="5" class="mytable" style="font-weight:bold;text-align:center;padding:5px;">LAPORAN PENDAPATAN BULANAN</td>
                     </tr>
                     <tr>
+                        <td style="padding-left:2px;">Tahun :</td>
+                        <td>2019</td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td colspan="2" style="text-align:right;">{{ date('d M Y H:i:s', strtotime($header[0]->created_at)) }}</td>
                     </tr>
                     <tr>
                         <td colspan="5" style="font-size:18px;">{{$kode[0]->Kode_Transaksi}}</td>

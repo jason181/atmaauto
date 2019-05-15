@@ -130,6 +130,7 @@ Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
     Route::post('/transaksi_penjualans/storeSparepart','TransaksiPenjualanController@storeSparepart');
     Route::post('/transaksi_penjualans/storeJasa','TransaksiPenjualanController@storeJasa');
     Route::patch('/transaksi_penjualans/update/{id}','TransaksiPenjualanController@update');
+    Route::patch('/transaksi_penjualans/pembayaran/{id}','TransaksiPenjualanController@pembayaran');
     Route::delete('/transaksi_penjualans/delete/{id}','TransaksiPenjualanController@destroy');
     
 // });
@@ -151,6 +152,7 @@ Route::delete('/detail_jasas/delete/{id}','DetailJasaController@destroy');
 Route::get('/cetak_surat_pemesanan/{id}', 'LaporanController@cetakSuratPemesanan');
 Route::get('/cetak_spk/{id}', 'LaporanController@cetakSPK');
 Route::get('/test-surat-pemesanan/{id}', 'LaporanController@cetakSuratPemesanan');
+Route::get('/pendapatan_bulanan','LaporanController@pendapatanBulanan');
 
 Route::get('/cetakNotaLunas/{id}','LaporanController@cetakNotaLunas');
 Route::get('/cetakSuratPemesananDesktop/{id}','LaporanController@cetakSuratPemesananDesktop');

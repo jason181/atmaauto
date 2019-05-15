@@ -151,6 +151,47 @@ class LaporanController extends Controller
 	    return $pdf->stream();
     }
 
+    public function pendapatanBulanan()
+    {
+        $data = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan, COALESCE(SUM(d.Subtotal_Detail_Sparepart),0) as Sparepart, COALESCE(SUM(e.Subtotal_Detail_Jasa),0) as Service FROM (SELECT '01' AS
+                            bulan
+                            UNION SELECT '02' AS
+                            bulan
+                            UNION SELECT '03' AS
+                            bulan
+                            UNION SELECT '04' AS
+                            bulan
+                            UNION SELECT '05' AS
+                            bulan
+                            UNION SELECT '06' AS
+                            bulan
+                            UNION SELECT '07'AS
+                            bulan
+                            UNION SELECT '08'AS
+                            bulan
+                            UNION SELECT '09' AS
+                            bulan
+                            UNION SELECT '10' AS
+                            bulan
+                            UNION SELECT '11' AS
+                            bulan
+                            UNION SELECT '12' AS
+                            bulan
+                            ) AS m LEFT JOIN transaksi_penjualans p ON MONTHNAME(p.Tanggal_Transaksi) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
+                            LEFT JOIN detail_spareparts d ON p.Id_Transaksi=d.Id_Transaksi
+                            LEFT JOIN detail_jasas e ON p.Id_Transaksi=e.Id_Transaksi
+                            where YEAR(p.Tanggal_Transaksi)='2019' or YEAR(P.Tanggal_Transaksi) is null
+                            OR p.Status = '3' 
+                            GROUP BY m.bulan, YEAR(p.Tanggal_Transaksi)");
+
+        $total= DB::select("SELECT SUM(Total) as Total_Transaksi FROM transaksi_penjualans");
+
+        $pdf = PDF::loadView('pendapatan_bulanan',
+        ['data'=>$data, 'total'=>$total]);
+        $pdf->setPaper([0,0,550,900]);
+	    return $pdf->stream();
+    }
+
     public function testSuratPemesanan($id)
     {
         $pengadaan  = Transaksi_Pengadaan::find($id);
