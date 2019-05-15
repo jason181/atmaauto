@@ -393,7 +393,7 @@ class LaporanController extends Controller
         INNER JOIN pegawais p ON p.Id_Pegawai = m.Id_Pegawai
         WHERE t.Id_Transaksi = $id AND t.Status = '3'");
 
-        if(!empty($montirsparepart))
+        if($montirsparepart !== [])
         {
             // dd($montirsparepart);
             $montir = $montirsparepart[0]->Montir;
