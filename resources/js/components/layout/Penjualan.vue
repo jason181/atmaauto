@@ -417,7 +417,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title mx-auto" id="Heading">Tambah Transaksi</h4>
+                        <h4 class="modal-title mx-auto" id="Heading">Edit Transaksi</h4>
                         <button type="button" class="close" data-dismiss="modal" 
                             aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
                             <span aria-hidden="true">&times;</span>
@@ -428,7 +428,7 @@
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Konsumen</span>
                             </div>
-                            <select class="form-control mr-2" v-model="Transaksi.Id_Konsumen" v-on:change="getKonsumen()">
+                            <select class="form-control mr-2" v-model="Transaksi.Id_Konsumen" v-on:change="getKonsumen()" disabled>
                                 <option disabled="disabled" selected="selected" 
                                 value="Pilih Merk">-- Nama Konsumen --</option>
                                 <option v-bind:key="konsumen['Id_Konsumen']" 
@@ -444,22 +444,44 @@
 
                         <div class="input-group mt-3">
                             <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Konsumen</span>
+                            </div>
+                            <select class="form-control mr-2" v-model="Transaksi.Id_Konsumen" v-on:change="getKonsumen()" disabled>
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih Merk">-- Nama Konsumen --</option>
+                                <option v-bind:key="konsumen['Id_Konsumen']" 
+                                v-for="konsumen in konsumendata" 
+                                v-on:change="getKonsumen()"
+                                :value="konsumen.Id_Konsumen" >{{konsumen.Alamat_Konsumen}}</option>
+                            </select>
+                            <!-- <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Alamat</span>
                             </div>
                             <input type="text" v-model="Transaksi.Alamat_Konsumen" 
                             class="form-control" 
                             aria-label="Alamat_Konsumen" aria-describedby="basic-addon2" 
-                            id="Alamat_Konsumen" name="Alamat_Konsumen" disabled>{{Transaksi.Alamat_Konsumen}}
+                            id="Alamat_Konsumen" name="Alamat_Konsumen" disabled>{{Transaksi.Alamat_Konsumen}} -->
                         </div>
 
                         <div class="input-group mt-3">
-                            <div class="input-group-prepend d-block" style="width: 100px;">
+                            <!-- <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Telepon</span>
                             </div>
                             <input type="text" v-model="konsumen.Telepon_Konsumen" 
                             class="form-control" 
                             aria-label="Telepon_Konsumen" aria-describedby="basic-addon2" 
-                            id="Telepon_Konsumen" name="Telepon_Konsumen" disabled>
+                            id="Telepon_Konsumen" name="Telepon_Konsumen" disabled> -->
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Konsumen</span>
+                            </div>
+                            <select class="form-control mr-2" v-model="Transaksi.Id_Konsumen" v-on:change="getKonsumen()" disabled>
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih Merk">-- Nama Konsumen --</option>
+                                <option v-bind:key="konsumen['Id_Konsumen']" 
+                                v-for="konsumen in konsumendata" 
+                                v-on:change="getKonsumen()"
+                                :value="konsumen.Id_Konsumen" >{{konsumen.Telepon_Konsumen}}</option>
+                            </select>
                         </div>
 
                         <div class="text-center">
@@ -486,7 +508,7 @@
                                 <span class="input-group-text" id="basic-addon2">Jasa Montir</span>
                             </div>
                                 
-                            <select class="form-control mr-2" v-model="Transaksi.Id_Jasa_Montir">
+                            <select class="form-control mr-2" v-model="Id_Jasa_Montir">
                                 <option disabled="disabled" selected="selected" 
                                 value="Pilih Merk">-- Pilih Jasa Montir --</option>
                                 <option v-bind:key="pegawai['Id_Pegawai']" 
@@ -1357,6 +1379,7 @@ export default {
         Transaksi:{
             Id_Transaksi:'',
             Id_Konsumen:'',
+            Alamat_Konsumen:'',
             Tanggal_Transaksi:'',
             Jenis_Transaksi:'',
             Subtotal:0,

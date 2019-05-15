@@ -7796,6 +7796,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -7892,6 +7914,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       Transaksi: {
         Id_Transaksi: '',
         Id_Konsumen: '',
+        Alamat_Konsumen: '',
         Tanggal_Transaksi: '',
         Jenis_Transaksi: '',
         Subtotal: 0,
@@ -58488,6 +58511,7 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control mr-2",
+                    attrs: { disabled: "" },
                     on: {
                       change: [
                         function($event) {
@@ -58559,79 +58583,149 @@ var render = function() {
               _c("div", { staticClass: "input-group mt-3" }, [
                 _vm._m(24),
                 _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.Transaksi.Alamat_Konsumen,
-                      expression: "Transaksi.Alamat_Konsumen"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    "aria-label": "Alamat_Konsumen",
-                    "aria-describedby": "basic-addon2",
-                    id: "Alamat_Konsumen",
-                    name: "Alamat_Konsumen",
-                    disabled: ""
-                  },
-                  domProps: { value: _vm.Transaksi.Alamat_Konsumen },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Transaksi.Id_Konsumen,
+                        expression: "Transaksi.Id_Konsumen"
                       }
-                      _vm.$set(
-                        _vm.Transaksi,
-                        "Alamat_Konsumen",
-                        $event.target.value
-                      )
+                    ],
+                    staticClass: "form-control mr-2",
+                    attrs: { disabled: "" },
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.Transaksi,
+                            "Id_Konsumen",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        },
+                        function($event) {
+                          return _vm.getKonsumen()
+                        }
+                      ]
                     }
-                  }
-                }),
-                _vm._v(
-                  _vm._s(_vm.Transaksi.Alamat_Konsumen) +
-                    "\n                        "
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Merk"
+                        }
+                      },
+                      [_vm._v("-- Nama Konsumen --")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.konsumendata, function(konsumen) {
+                      return _c(
+                        "option",
+                        {
+                          key: konsumen["Id_Konsumen"],
+                          domProps: { value: konsumen.Id_Konsumen },
+                          on: {
+                            change: function($event) {
+                              return _vm.getKonsumen()
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(konsumen.Alamat_Konsumen))]
+                      )
+                    })
+                  ],
+                  2
                 )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group mt-3" }, [
                 _vm._m(25),
                 _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.konsumen.Telepon_Konsumen,
-                      expression: "konsumen.Telepon_Konsumen"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    "aria-label": "Telepon_Konsumen",
-                    "aria-describedby": "basic-addon2",
-                    id: "Telepon_Konsumen",
-                    name: "Telepon_Konsumen",
-                    disabled: ""
-                  },
-                  domProps: { value: _vm.konsumen.Telepon_Konsumen },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Transaksi.Id_Konsumen,
+                        expression: "Transaksi.Id_Konsumen"
                       }
-                      _vm.$set(
-                        _vm.konsumen,
-                        "Telepon_Konsumen",
-                        $event.target.value
-                      )
+                    ],
+                    staticClass: "form-control mr-2",
+                    attrs: { disabled: "" },
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.Transaksi,
+                            "Id_Konsumen",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        },
+                        function($event) {
+                          return _vm.getKonsumen()
+                        }
+                      ]
                     }
-                  }
-                })
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih Merk"
+                        }
+                      },
+                      [_vm._v("-- Nama Konsumen --")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.konsumendata, function(konsumen) {
+                      return _c(
+                        "option",
+                        {
+                          key: konsumen["Id_Konsumen"],
+                          domProps: { value: konsumen.Id_Konsumen },
+                          on: {
+                            change: function($event) {
+                              return _vm.getKonsumen()
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(konsumen.Telepon_Konsumen))]
+                      )
+                    })
+                  ],
+                  2
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "text-center" }, [
@@ -58701,8 +58795,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.Transaksi.Id_Jasa_Montir,
-                        expression: "Transaksi.Id_Jasa_Montir"
+                        value: _vm.Id_Jasa_Montir,
+                        expression: "Id_Jasa_Montir"
                       }
                     ],
                     staticClass: "form-control mr-2",
@@ -58716,13 +58810,9 @@ var render = function() {
                             var val = "_value" in o ? o._value : o.value
                             return val
                           })
-                        _vm.$set(
-                          _vm.Transaksi,
-                          "Id_Jasa_Montir",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
+                        _vm.Id_Jasa_Montir = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
                       }
                     }
                   },
@@ -61942,7 +62032,7 @@ var staticRenderFns = [
       _c(
         "h4",
         { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
-        [_vm._v("Tambah Transaksi")]
+        [_vm._v("Edit Transaksi")]
       ),
       _vm._v(" "),
       _c(
@@ -61994,7 +62084,7 @@ var staticRenderFns = [
         _c(
           "span",
           { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
-          [_vm._v("Alamat")]
+          [_vm._v("Konsumen")]
         )
       ]
     )
@@ -62013,7 +62103,7 @@ var staticRenderFns = [
         _c(
           "span",
           { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
-          [_vm._v("Telepon")]
+          [_vm._v("Konsumen")]
         )
       ]
     )
