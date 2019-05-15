@@ -38,10 +38,40 @@ class TransaksiPenjualanController extends RestController
 
     public function index()
     {
-        $penjualan=Transaksi_Penjualan::get();
+        $penjualan=Transaksi_Penjualan::orderBy('Id_Transaksi','DESC')->get();
         $response= $this->generateCollection($penjualan);
         return $this->sendResponse($response);
+    }
+
+    public function processed()
+    {
+        $processed = Transaksi_Penjualan::where('Status','1')->get();
+        $response = $this->generateCollection($processed);
+        return $this->sendResponse($response);
+    }
+
+    public function finished()
+    {
+        $finished = Transaksi_Penjualan::where('Status','2')->get();
+        $response = $this->generateCollection($finished);
+        return $this->sendResponse($response);
+    }
+
+    public function historykeluar()
+    {
+        $keluar = DB::select("SELECT * FROM transaksi_penjualans 
+        LEFT JOIN detail_spareparts ON transaksi_penjualans.Id_Transaksi = detail_spareparts.Id_Transaksi
+        LEFT JOIN spareparts ON detail_spareparts.Kode_Sparepart = spareparts.Kode_Sparepart
+        WHERE spareparts.Kode_Sparepart IS NOT NULL ORDER BY transaksi_penjualans.Tanggal_Transaksi DESC");
         
+        return response()->json([
+            'status' => (bool) $keluar,
+            'data' => $keluar,
+            'message' => $keluar ? 'Success' : 'Error History Keluar'
+        ]);
+
+        // $response=$this->generateCollection($masuk);
+        // return $this->sendResponse($response,201);
     }
 
     public function transaksikeluar(){
@@ -73,6 +103,7 @@ class TransaksiPenjualanController extends RestController
 
     public function store(Request $request)
     {
+        // return $request;
         try{
             date_default_timezone_set('Asia/Jakarta');
 
@@ -111,7 +142,7 @@ class TransaksiPenjualanController extends RestController
 
             $penjualan->Status = 0;
             $penjualan->save();
-            
+
             if($jenis == 'SS' || $jenis == 'SV')
             {
                 if($request->has('Detail_Jasa'))
@@ -295,7 +326,10 @@ class TransaksiPenjualanController extends RestController
                 {
                     $penjualan->Total               = $request->get('Total');
                 }
-                
+                else
+                {
+                    $penjualan->Total               = $request->get('Subtotal') - $request->get('Diskon');
+                }
                 $penjualan->save();
                 dd($penjualan);
                 $response = $this->generateCollection($penjualan);
@@ -379,6 +413,16 @@ class TransaksiPenjualanController extends RestController
             'status' =>$status,
             'message' => $status ? 'Deleted' : 'Error Delete'
         ]);
+    }
+
+    public function pembayaran($id)
+    {
+        $penjualan = Transaksi_Penjualan::find($id);
+        $penjualan->Status = '3';
+        $penjualan->save();
+
+        $response=$this->generateCollection($penjualan);
+        return $this->sendResponse($response);
     }
 
 }

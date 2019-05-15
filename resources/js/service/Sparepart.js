@@ -72,5 +72,36 @@ export default {
             }
             Http.delete('/api/spareparts/delete/'+id, successCallback, errorCallback)
         })
-    }
+    },
+    getallinput(){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.get('/api/history_masuk', successCallback, errorCallback)
+        })
+    },
+    getalloutput(){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.get('/api/history_keluar', successCallback, errorCallback)
+        })
+    },
+
 }
