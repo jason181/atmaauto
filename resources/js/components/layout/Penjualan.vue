@@ -30,18 +30,26 @@
 
     <div class="container-fluid mt-3">
             <div class="row mb-2">
-                <div class="col-sm-2">
-                    <div class="col-sm-7 p-0">
-                        <button class="btn btn-success mb-2 btn-block" @click="getallpenjualan(),refresh()" 
-                        data-title="Tambah_Transaksi" data-toggle="modal" data-target="#Tambah_Transaksi">
-                            <i class="fas fa-plus mr-2"></i>Tambah
-                        </button>
-                    </div>
-                    <div class="col-sm-5">
-
+                <div class="col-sm-3">
+                    <div class="row ml-1">
+                        <div class="col-sm-5 p-0">
+                            <button class="btn btn-success mb-2 btn-block" @click="getallpenjualan(),refresh()" 
+                            data-title="Tambah_Transaksi" data-toggle="modal" data-target="#Tambah_Transaksi">
+                                <i class="fas fa-plus mr-2"></i>Tambah
+                            </button>
+                        </div>
+                        <div class="col-sm-7">
+                            <select class="form-control" v-model="Status_Transaksi">
+                                <option disabled="disabled" selected="selected" value="">-- Pilih Jenis Transaksi --</option>
+                                <option value="0">Ordered</option>
+                                <option value="1">Processed</option>
+                                <option value="2">Finished</option>
+                                <option value="3">Paid</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-7">
+                <div class="col-sm-6">
 
                 </div>
                 <div class="col-sm-3">
@@ -78,7 +86,15 @@
                             <td>{{transaksi.Id_Transaksi}}</td>
                             <td>{{transaksi.Id_Konsumen}} </td>
                             <td>{{transaksi.Tanggal_Transaksi}} </td>
-                            <td>{{transaksi.Jenis_Transaksi}} </td>
+                            <td v-if="transaksi.Jenis_Transaksi == 'SS'">
+                                Servis dan Sparepart
+                            </td>
+                            <td v-if="transaksi.Jenis_Transaksi == 'SV'">
+                                Servis
+                            </td>
+                            <td v-if="transaksi.Jenis_Transaksi == 'SP'">
+                                Sparepart
+                            </td>
                             <td v-if="transaksi.Status==0">
                                 Belum Diproses
                             </td>
@@ -1400,7 +1416,8 @@ export default {
         Harga:'',
         Detail:{
             Id_Detail_Sparepart:'',
-        }
+        },
+        Status_Transaksi:'',
     }),
     mounted(){
         this.getPegawai()
@@ -1569,6 +1586,7 @@ export default {
         async addpenjualan () {
             try {
                 const payload = {
+                    Id_Pegawai          : this.Id_Pegawai,
                     Id_Montir           : this.Id_Jasa_Montir,
                     Id_Konsumen         : this.Konsumen.Id_Konsumen,
                     Id_Motor_Konsumen   : this.Motor.Id_Motor,
@@ -1725,7 +1743,8 @@ export default {
         },
         filteredtransaksi:function(){
             return this.penjualandata.filter((transaksi)=>{
-                return transaksi.Jenis_Transaksi.toLowerCase().match(this.Cari_Transaksi.toLowerCase());
+                return transaksi.Jenis_Transaksi.toLowerCase().match(this.Cari_Transaksi.toLowerCase()) &&
+                        transaksi.Status == this.Status_Transaksi;
             });
         },
         filtereddetail:function(){

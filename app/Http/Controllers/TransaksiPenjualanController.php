@@ -38,8 +38,22 @@ class TransaksiPenjualanController extends RestController
 
     public function index()
     {
-        $penjualan=Transaksi_Penjualan::get();
+        $penjualan=Transaksi_Penjualan::orderBy('Id_Transaksi','DESC')->get();
         $response= $this->generateCollection($penjualan);
+        return $this->sendResponse($response);
+    }
+
+    public function processed()
+    {
+        $processed = Transaksi_Penjualan::where('Status','1')->get();
+        $response = $this->generateCollection($processed);
+        return $this->sendResponse($response);
+    }
+
+    public function finished()
+    {
+        $finished = Transaksi_Penjualan::where('Status','2')->get();
+        $response = $this->generateCollection($finished);
         return $this->sendResponse($response);
     }
 
@@ -87,6 +101,7 @@ class TransaksiPenjualanController extends RestController
 
     public function store(Request $request)
     {
+        // return $request;
         try{
             date_default_timezone_set('Asia/Jakarta');
 
@@ -125,7 +140,7 @@ class TransaksiPenjualanController extends RestController
 
             $penjualan->Status = 0;
             $penjualan->save();
-            
+
             if($jenis == 'SS' || $jenis == 'SV')
             {
                 if($request->has('Detail_Jasa'))
@@ -308,6 +323,10 @@ class TransaksiPenjualanController extends RestController
                 if(!is_null($request->Total))
                 {
                     $penjualan->Total               = $request->get('Total');
+                }
+                else
+                {
+                    $penjualan->Total               = $request->get('Subtotal') - $request->get('Diskon');
                 }
 
                 $penjualan->save();

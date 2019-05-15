@@ -116,7 +116,7 @@ class LaporanController extends Controller
 
         // dd($montirjasa,$montirsparepart);
         
-        if(!empty($montirsparepart))
+        if($montirsparepart !== [] )
         {
             // dd($montirsparepart);
             $montir = $montirsparepart[0]->Montir;
