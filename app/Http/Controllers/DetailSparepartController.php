@@ -24,6 +24,12 @@ class DetailSparepartController extends RestController
         return $this->sendResponse($response,201);
     }
 
+    public function detailsparepartkonsumen($id){
+        $detailsparepart=Detail_Sparepart::where('Id_Transaksi',$id)->get();
+        $response=$this->generateCollection($detailsparepart);
+        return $this->sendResponse($response,201);
+    }
+
     public function store(Request $request)
     {
         // dd($request);

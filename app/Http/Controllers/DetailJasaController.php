@@ -22,6 +22,12 @@ class DetailJasaController extends RestController
         return $this->sendResponse($response,201);
     }
 
+    
+    public function detailjasakonsumen($id){
+        $detailjasa=Detail_Jasa::where('Id_Transaksi',$id)->get();
+        $response=$this->generateCollection($detailjasa);
+        return $this->sendResponse($response,201);
+    }
     public function store(Request $request)
     {
         $montirdata = Detail_Jasa::where('Id_Transaksi',$request->Detail_Jasa[0]['Id_Transaksi'])->first();

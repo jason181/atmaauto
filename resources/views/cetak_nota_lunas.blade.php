@@ -41,27 +41,27 @@
                         <td rowspan="5" colspan="2" style="text-align:right;padding:3px">
                             <img src="{{ public_path('/images/Logo_Transparan.png') }}" alt="Logo_AA" width="120px;">
                         </td>
-                        <td colspan="4" style="text-align:center;font-size:20pt;">
+                        <td colspan="3" style="text-align:center;font-size:20pt;">
                             ATMA AUTO
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="4" style="text-align:center;">
+                        <td colspan="3" style="text-align:center;">
                             MOTORCYCLE SPAREPARTS AND SERVICE
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="4" style="text-align:center;">
+                        <td colspan="3" style="text-align:center;">
                             Jl. Babarsari No. 43 Yogyakarta 552181
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="4" style="text-align:center;">
+                        <td colspan="3" style="text-align:center;">
                             Telp. (0274) 487711
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="4" style="text-align:center;">
+                        <td colspan="3" style="text-align:center;">
                             http://atmauto.jasonfw.com/
                         </td>
                     </tr>
