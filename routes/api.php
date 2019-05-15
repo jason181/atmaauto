@@ -134,12 +134,14 @@ Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
 
 //Detail Sparepart Transaksi Penjualan
 Route::get('/detail_spareparts','DetailSparepartController@index');
+Route::get('/detail_spareparts/{id}','DetailSparepartController@detailsparepartkonsumen');
 Route::post('/detail_spareparts/store','DetailSparepartController@store');
 Route::patch('/detail_spareparts/update/{id}','DetailSparepartController@update');
 Route::delete('/detail_spareparts/delete/{id}','DetailSparepartController@destroy');
 
 //Detail Jasa Transaksi Penjualan
 Route::get('/detail_jasas','DetailJasaController@index');
+Route::get('/detail_jasas/{id}','DetailJasaController@detailjasakonsumen');
 Route::post('/detail_jasas/store','DetailJasaController@store');
 Route::patch('/detail_jasas/update/{id}','DetailJasaController@update');
 Route::delete('/detail_jasas/delete/{id}','DetailJasaController@destroy');

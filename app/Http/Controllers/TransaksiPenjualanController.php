@@ -50,6 +50,8 @@ class TransaksiPenjualanController extends RestController
         return $this->sendResponse($response,201);
     }
 
+    
+
     public function showByIdMotorKonsumen($id)
     {
         $motorKonsumen = Motor_Konsumen::find($id);
@@ -293,14 +295,47 @@ class TransaksiPenjualanController extends RestController
                 {
                     $penjualan->Total               = $request->get('Total');
                 }
-
-                $penjualan->save();
                 
+                $penjualan->save();
+                dd($penjualan);
                 $response = $this->generateCollection($penjualan);
                 return $this->sendResponse($response);
             }
         }
         catch(\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+    }
+
+    public function updatetransaksimobile(Request $request,$id){
+        try{
+            $penjualan = Transaksi_Penjualan::find($id);
+            if(!is_null($request->get("Tanggal_Transaksi")))
+                {
+                    $penjualan->Tanggal_Transaksi   = $request->get('Tanggal_Transaksi');
+                }
+                if(!is_null($request->get("Jenis_Transaksi")))
+                {
+                    $penjualan->Jenis_Transaksi     = $request->get('Jenis_Transaksi');
+                }
+                if(!is_null($request->get("Subtotal")))
+                {
+                    $penjualan->Subtotal            = $request->get('Subtotal');
+                }
+                if(!is_null($request->get("Diskon")))
+                {
+                    $penjualan->Diskon              = $request->get('Diskon');
+                }
+                if(!is_null($request->Total))
+                {
+                    $penjualan->Total               = $request->get('Total');
+                }
+
+                $penjualan->save();
+                
+                $response = $this->generateItem($penjualan);
+                return $this->sendResponse($response,201);
+        }catch(\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
         }
     }
