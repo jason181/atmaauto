@@ -356,6 +356,10 @@ class LaporanController extends Controller
     }
 
     public function cetaknotalunasWeb($id){
+        $penjualan = Transaksi_Penjualan::find($id);
+        $penjualan->Status = '3';
+        $penjualan->save();
+
         $spareparts = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, s.Kode_Sparepart as Kode, s.Nama_Sparepart as Nama, s.Merk_Sparepart as Merk, s.Rak_Sparepart as Rak, d.Jumlah as Jumlah, d.Harga_Satuan as Harga_Satuan, d.Subtotal_Detail_Sparepart as Subtotal_Detail_Sparepart
         FROM transaksi_penjualans t 
         INNER JOIN detail_spareparts d ON d.Id_Transaksi =  t.Id_Transaksi
@@ -469,20 +473,15 @@ class LaporanController extends Controller
 
     public function pendapatanTahunan()
     {
-        $data = DB::select("SELECT YEAR(c.Tanggal_Transaksi) AS Tahun, d.Nama_Cabang AS Cabang, SUM(c.Total) AS Total 
+        $datas = DB::select("SELECT YEAR(c.Tanggal_Transaksi) AS Tahun, d.Nama_Cabang AS Cabang, SUM(c.Total) AS Total 
         FROM pegawai_on_duties a join pegawais b on b.Id_Pegawai=a.Id_Pegawai 
         JOIN transaksi_penjualans c on c.Id_Transaksi=a.Id_Transaksi
         join cabangs d on d.Id_Cabang=b.Id_Cabang
         WHERE b.Id_Role = 1 or b.Id_Role = 2
         GROUP BY YEAR(c.Tanggal_Transaksi),d.Nama_Cabang");
 
-        return response()->json([
-            'data' => (bool) $data,
-            'data' => $data,
-            'message' => $data ? 'Success' : 'Error',
-        ]);
         $pdf = PDF::loadView('pendapatan_tahunan',
-        ['data'=>$data]);
+        ['datas'=>$datas]);
         $pdf->setPaper([0,0,550,900]);
 	    return $pdf->stream();
     }

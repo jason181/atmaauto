@@ -130,7 +130,6 @@ Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
     Route::post('/transaksi_penjualans/storeSparepart','TransaksiPenjualanController@storeSparepart');
     Route::post('/transaksi_penjualans/storeJasa','TransaksiPenjualanController@storeJasa');
     Route::patch('/transaksi_penjualans/update/{id}','TransaksiPenjualanController@update');
-    Route::patch('/transaksi_penjualans/pembayaran/{id}','TransaksiPenjualanController@pembayaran');
     Route::delete('/transaksi_penjualans/delete/{id}','TransaksiPenjualanController@destroy');
     
 // });
