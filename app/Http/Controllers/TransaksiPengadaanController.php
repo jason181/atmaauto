@@ -84,22 +84,21 @@ class TransaksiPengadaanController extends RestController
     
     public function update(Request $request,$id)
     {
-        date_default_timezone_set('Asia/Jakarta');
+        // date_default_timezone_set('Asia/Jakarta');
+        // $details = Detail_Pengadaan::where('Id_Pengadaan',$id)->get();
         
-        $details = Detail_Pengadaan::where('Id_Pengadaan',$id)->get();
-        
-        foreach($details as $detail)
-        {
-            if(Detail_Pengadaan::where('Id_Pengadaan',$id)->get() !== null)
-            $delete = Detail_Pengadaan::where('Id_Pengadaan',$id)->delete();
-        }
-
+        // dd ($request);
+        // foreach($details as $detail)
+        // {
+        //     if(Detail_Pengadaan::where('Id_Pengadaan',$id)->get() !== null)
+        //     $delete = Detail_Pengadaan::where('Id_Pengadaan',$id)->delete();
+        // }
         $pengadaan = Transaksi_Pengadaan::find($id);
+        // if($request->has('Detail_Pengadaan'))
+        // {
+        //     $detail=$request->Detail_Pengadaan;
+        // }
 
-        if($request->has('Detail_Pengadaan'))
-        {
-            $detail=$request->Detail_Pengadaan;
-        }
         if(!is_null($request->get('Id_Supplier'))){
             $pengadaan->Id_Supplier         = $request->get('Id_Supplier');
         }
@@ -109,16 +108,17 @@ class TransaksiPengadaanController extends RestController
         if(!is_null($request->get('Total_Harga'))){
             $pengadaan->Total_Harga         = $request->get('Total_Harga');
         }
-        
         $pengadaan->save();
 
-        if($request->has('Detail_Pengadaan'))
-        {
-            $pengadaan = DB::transaction(function () use ($pengadaan,$detail){
-                $pengadaan->detail_pengadaans()->createMany($detail);
-                return $pengadaan;
-            });
-        }
+        // if($request->has('Detail_Pengadaan'))
+        // {
+        //     $pengadaan = DB::transaction(function () use ($pengadaan,$detail){
+        //         $pengadaan->detail_pengadaans()->createMany($detail);
+        //         return $pengadaan;
+        //     });
+        // }
+        //dd($pengadaan);
+
 
         $response=$this->generateItem($pengadaan);
         return $this->sendResponse($response);
