@@ -3,8 +3,8 @@
     <title>Atma Auto</title>
         <style>
             .mytable{
-                border-top:1px solid black;
-                border-bottom:1px solid black;
+                border:1px solid black;
+                /* border-bottom:1px solid black; */
             }
             table,th,td{
                 /* border:1px solid black; */
@@ -60,7 +60,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="5" class="mytable" style="font-weight:bold;text-align:center;padding:5px;">LAPORAN PENDAPATAN BULANAN</td>
+                        <td colspan="5" style="margin-top:1px solid black;font-weight:bold;text-align:center;padding:5px;">LAPORAN PENDAPATAN BULANAN</td>
                     </tr>
                     <tr>
                         <td style="padding-left:2px;">Tahun :</td>
@@ -70,106 +70,29 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td colspan="5" style="font-size:18px;">{{$kode[0]->Kode_Transaksi}}</td>
+                        <td  class="mytable">No</td>
+                        <td class="mytable">Bulan</td>
+                        <td class="mytable">Services</td>
+                        <td class="mytable">Spareparts</td>
+                        <td class="mytable">Total</td>
                     </tr>
+                    @for($i=0;$i<=11;$i++)
                     
                     <tr>
-                        <td>Cust</td>
-                        <td colspan="2">{{$header[0]->Cust}}</td>
-                        <td>CS</td>
-                        <td>{{$cs[0]->CS}}</td>
+                        <td class="mytable">{{$i+1}}</td>
+                        <td class="mytable">{{$data[$i]->Bulan}}</td>
+                        <td class="mytable">{{$data[$i]->Service}}</td>
+                        <td class="mytable"> {{$data[$i]->Sparepart}} </td>
+                        <td class="mytable">{{$data[$i]->Total}}</td>
                     </tr>
+                    @endfor
                     <tr>
-                        <td>Telepon</td>
-                        <td colspan="2">{{$header[0]->Telepon}}</td>
-                        <td>Montir</td>
-                        <td>{{$montir}}</td>
-                    </tr>
-                    <tr>
-                        <td style="padding-bottom:15px;">Motor</td>
-                        <td colspan="2" style="padding-bottom:15px;">Merk Motor Jenis Motor Plat Motor</td>
                         <td></td>
                         <td></td>
-                    </tr>
-                    @if($s_status == true)
-                    <tr>
-                        <td colspan="5" class="mytable" style="font-size:16px;font-weight:bold;text-align:center;padding:2px;">SPAREPARTS</td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" class="mytable" style="padding:10px;"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" class="mytable" style="padding:1px;"></td>
-                    </tr>
-                    <tr class="mytable">
-                        <th class="mytable" style="text-align:center;">Kode</th>
-                        <th class="mytable" style="text-align:center;">Nama</th>
-                        <th class="mytable" style="text-align:center;">Merk</th>
-                        <th class="mytable" style="text-align:center;">Rak</th>
-                        <th class="mytable" style="text-align:center;">Jumlah</th>
-                    </tr>
-                    {{$jumlah=0}}
-                    @foreach($spareparts as $sparepart)
-                    {{$jumlah += $sparepart->Jumlah}}
-                    <tr>
-                        <td> {{$sparepart->Kode}} </td>
-                        <td> {{$sparepart->Nama}} </td>
-                        <td> {{$sparepart->Merk}} </td>
-                        <td> {{$sparepart->Rak}} </td>
-                        <td style="text-align:right"> {{$sparepart->Jumlah}} </td>
-                    </tr>
-                    @endforeach
-                    <tr>
-                        <td colspan="5" class="mytable" style="padding:1px;"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" style="text-align:right">{{$jumlah}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" class="mytable" style="padding:1px;"></td>
-                    </tr>
-                    @endif
-                    <tr>
-                        <td colspan="5" style="padding:10px;"></td>
-                    </tr>
-                    @if($j_status == true)
-                    <tr>
-                        <td colspan="5" class="mytable" style="font-size:16px;font-weight:bold;text-align:center;padding:2px;">SERVICES</td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" class="mytable" style="padding:10px;"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" class="mytable" style="padding:1px;"></td>
-                    </tr>
-                    <tr class="mytable">
-                        <th class="mytable" style="padding-left:10px;">Kode</th>
-                        <th class="mytable">Nama</th>
-                        <th class="mytable"></th>
-                        <th class="mytable"></th>
-                        <th class="mytable" style="text-align:right;">Jumlah</th>
-                    </tr>
-                    {{$i=0}}
-                    @foreach($jasas as $jasa)
-                    {{$i++}}
-                    <tr>
-                        <td style="padding-left:10px;"> {{$jasa->KodeJasa}} </td>
-                        <td> {{$jasa->NamaJasa}} </td>
                         <td></td>
-                        <td></td>
-                        <td style="text-align:right">1</td>
+                        <td style="text-align:right;">TOTAL</td>
+                        <td>{{$total[0]->Total_Transaksi}}</td>
                     </tr>
-                    @endforeach
-                    <tr>
-                        <td colspan="5" class="mytable" style="padding:1px;"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" style="text-align:right"> {{$i}} </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" class="mytable" style="padding:1px;"></td>
-                    </tr>
-                    @endif
                 </tbody>
             </table>
         </div>

@@ -155,6 +155,7 @@ Route::get('/test-surat-pemesanan/{id}', 'LaporanController@cetakSuratPemesanan'
 Route::get('/pendapatan_bulanan','LaporanController@pendapatanBulanan');
 
 Route::get('/cetakNotaLunas/{id}','LaporanController@cetakNotaLunas');
+
 Route::get('/cetakSuratPemesananDesktop/{id}','LaporanController@cetakSuratPemesananDesktop');
 Route::get('/cetakSuratPerintahKerjaDesktop/{id}','LaporanController@cetakSuratPerintahKerjaDesktop');
 
