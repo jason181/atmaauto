@@ -239,7 +239,7 @@ class LaporanController extends Controller
             'data5' => $data5,
             'data6' => $data6,
             'data7' => $data7,
-            'data7' => $data8,
+            'data8' => $data8,
             'message' => $data1 ? 'Success' : 'Error',
         ]);
     }
