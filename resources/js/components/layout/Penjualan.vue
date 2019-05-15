@@ -1569,6 +1569,7 @@ export default {
         async addpenjualan () {
             try {
                 const payload = {
+                    Id_Pegawai          : this.Id_Pegawai,
                     Id_Montir           : this.Id_Jasa_Montir,
                     Id_Konsumen         : this.Konsumen.Id_Konsumen,
                     Id_Motor_Konsumen   : this.Motor.Id_Motor,
