@@ -39,6 +39,18 @@ export default {
             Http.post('/api/transaksi_penjualans/store', payload, successCallback, errorCallback)
         })
     },
+    updatepenjualan(payload,id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.patch('/api/transaksi_penjualans/update/'+id, payload, successCallback, errorCallback)
+        })
+    },
     getmotorKonsumen(id){
         return new Promise((resolve, reject) => {
             

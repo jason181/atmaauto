@@ -104,6 +104,7 @@ class TransaksiPengadaanController extends RestController
         // return $request;
         date_default_timezone_set('Asia/Jakarta');
         $details = Detail_Pengadaan::where('Id_Pengadaan',$id)->get();
+        
         foreach($details as $detail)
         {
             if(Detail_Pengadaan::where('Id_Pengadaan',$id)->get() !== null)
@@ -111,11 +112,11 @@ class TransaksiPengadaanController extends RestController
         }
 
         $pengadaan = Transaksi_Pengadaan::find($id);
-
         if($request->has('Detail_Pengadaan'))
         {
             $detail=$request->Detail_Pengadaan;
         }
+
         if(!is_null($request->get('Id_Supplier'))){
             $pengadaan->Id_Supplier         = $request->get('Id_Supplier');
         }
