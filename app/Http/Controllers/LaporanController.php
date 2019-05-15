@@ -114,6 +114,14 @@ class LaporanController extends Controller
         INNER JOIN pegawais p ON p.Id_Pegawai = m.Id_Pegawai
         WHERE t.Id_Transaksi = $id");
 
+        $motor = DB::select("SELECT t.Id_Transaksi, n.Merk as Merk, n.Tipe as Tipe, p.Plat_Kendaraan as Plat 
+        FROM transaksi_penjualans t 
+        INNER JOIN detail_spareparts d ON d.Id_Transaksi =  t.Id_Transaksi
+        INNER JOIN montirs m ON m.Id_Jasa_Montir = d.Id_Jasa_Montir
+        INNER JOIN motor_konsumens p ON p.Id_Motor_Konsumen = m.Id_Motor_Konsumen
+        INNER JOIN motors n ON n.Id_Motor = p.Id_Motor
+        WHERE t.Id_Transaksi = $id");
+
         // dd($montirjasa,$montirsparepart);
         
         if($montirsparepart !== [] )
@@ -137,7 +145,7 @@ class LaporanController extends Controller
         $pdf = PDF::loadView('cetak_spk',
         ['spareparts' => $spareparts,'jasas' => $jasas, 
         'header' => $header, 'cs' => $cs, 
-        'montir' => $montir, 'kode' => $kode,
+        'montir' => $montir, 'kode' => $kode, 'motor' => $motor,
         's_status' => $s_status,'j_status'=>$j_status]);
         $pdf->setPaper([0,0,550,900]);
 	    return $pdf->stream();
@@ -214,6 +222,14 @@ class LaporanController extends Controller
         FROM transaksi_penjualans t 
         WHERE t.Id_Transaksi = $id");
 
+        $data8 = DB::select("SELECT t.Id_Transaksi, n.Merk as Merk, n.Tipe as Tipe, p.Plat_Kendaraan as Plat 
+        FROM transaksi_penjualans t 
+        INNER JOIN detail_spareparts d ON d.Id_Transaksi =  t.Id_Transaksi
+        INNER JOIN montirs m ON m.Id_Jasa_Montir = d.Id_Jasa_Montir
+        INNER JOIN motor_konsumens p ON p.Id_Motor_Konsumen = m.Id_Motor_Konsumen
+        INNER JOIN motors n ON n.Id_Motor = p.Id_Motor
+        WHERE t.Id_Transaksi = $id");
+
         return response()->json([
             'status' => (bool) $data1,
             'data1' => $data1,
@@ -223,6 +239,7 @@ class LaporanController extends Controller
             'data5' => $data5,
             'data6' => $data6,
             'data7' => $data7,
+            'data8' => $data8,
             'message' => $data1 ? 'Success' : 'Error',
         ]);
     }

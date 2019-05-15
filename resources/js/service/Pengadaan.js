@@ -50,6 +50,18 @@ export default {
             Http.delete('/api/transaksi_pengadaans/delete/'+id, successCallback, errorCallback)
         })
     },
+    verifikasipengadaan(id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.patch('/api/transaksi_pengadaans/verify/'+id, successCallback, errorCallback)
+        })
+    },
     getallsupplier(){
         return new Promise((resolve, reject) => {
             

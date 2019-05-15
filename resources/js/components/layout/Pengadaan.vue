@@ -76,25 +76,25 @@
                                 </p>
                             </td>
                             <td class="text-center" v-if="pengadaan.Status_Pengadaan == 0">
-                                <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                <p data-placement="top" data-toggle="tooltip" title="Verify_Pengadaan">
                                     <button class="btn btn-primary" @click="datapengadaanhandler(pengadaan)" 
-                                    data-title="Verify_Pengadaan" data-toggle="modal" data-target="#Edit_Pengadaan">
+                                    data-title="Verify_Pengadaan" data-dismiss="modal" data-toggle="modal" data-target="#Edit_Pengadaan">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </p>
                             </td>
                             <td class="text-center" v-if="pengadaan.Status_Pengadaan == 1">
-                                <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                <p data-placement="top" data-toggle="tooltip" title="Verify_Pengadaan">
                                     <button class="btn btn-primary" @click="datapengadaanhandler(pengadaan)" 
-                                    data-title="Verify_Pengadaan" data-toggle="modal" data-target="#Verify_Pengadaan">
+                                    data-title="Verify_Pengadaan" data-dismiss="modal" data-toggle="modal" data-target="#Verify_Pengadaan">
                                         <i class="fas fa-check-circle"></i>
                                     </button>
                                 </p>
                             </td>
                             <td class="text-center" v-if="pengadaan.Status_Pengadaan == 2">
-                                <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                    <button class="btn btn-success" @click="datapengadaanhandler(pengadaan)" disabled
-                                    data-title="Verify_Pengadaan" data-toggle="modal" data-target="#Verify_Pengadaan">
+                                <p data-placement="top" data-toggle="tooltip" title="Verify_Pengadaan">
+                                    <button class="btn btn-success" @click="datapengadaanhandler(pengadaan),refresh()" disabled
+                                    data-title="Verify_Pengadaan" data-dismiss="modal" data-toggle="modal" data-target="#Verify_Pengadaan">
                                         <i class="fas fa-check-circle"></i>
                                     </button>
                                 </p>
@@ -399,18 +399,29 @@
         </div>
         <!-- END OF EDIT TRANSAKSI PENGADAAN -->
         <!-- TAMPIL DETAIL PENGADAAN -->
-        <div class="modal fade" id="Verify_Pengadaan" tabindex="-1" role="dialog" aria-labelledby="Detail_Pengadaan" 
+        <div class="modal fade" id="Verify_Pengadaan" tabindex="-1" role="dialog" aria-labelledby="Verify_Pengadaan" 
         aria-hidden="true">
             <div class="modal-dialog" style="max-width:750px;">
                 <div class="modal-content" style="width:750px;">
                     <div class="modal-header">
-                        <h4 class="modal-title mx-auto" id="Heading">Detail Pengadaan</h4>
+                        <h4 class="modal-title mx-auto" id="Heading">Verify Pengadaan</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" 
                         style="margin-left: -30px;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+
                     <div class="modal-body">
+                        <div class="container-fluid mt-3">
+                        <div class="row mb-2">
+                            <div class="col-lg-3">
+                                <button class="btn btn-warning mb-2 btn-block" @click="verifikasipengadaan(Pengadaan.Id_Pengadaan),refresh()" 
+                                data-title="Tambah_Pengadaan" data-toggle="modal" data-target="" data-dismiss="modal">
+                                    <i class="fas fa-plus mr-2"></i>Verifikasi
+                                </button>
+                            </div>
+                        </div>
+                     </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="table-primary text-center">
@@ -598,6 +609,15 @@ export default {
                 console.log(err)
             }
         },
+        async verifikasipengadaan(id) {
+            try {
+                await Controller.verifikasipengadaan(id)
+                this.getallpengadaan()
+                this.refresh();
+            } catch (err) {
+                console.log(err)
+            }
+        },
         async cetaksuratpemesanan(id){
             try {
                 await Http.download('/api/cetak_surat_pemesanan/'+id);
@@ -623,6 +643,8 @@ export default {
         datapengadaanhandler(pengadaan){
             this.Pengadaan = pengadaan;
             this.sparepartdata = pengadaan.detail_pengadaan.data;
+            this.Id_Detail_Modal = pengadaan.Id_Pengadaan
+            console.log(this.Pengadaan);
         },
         refresh(){
             this.Pengadaan.Id_Supplier      ='Pilih Supplier';
@@ -632,6 +654,9 @@ export default {
         },
         detailhandler(pengadaan){
             this.Id_Detail_Modal = pengadaan.Id_Pengadaan
+            this.Pengadaan = pengadaan;
+            this.sparepartdata = pengadaan.detail_pengadaan.data;
+            console.log(this.Pengadaan);
         }
     },
     computed:{
