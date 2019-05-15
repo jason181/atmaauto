@@ -356,7 +356,7 @@ class LaporanController extends Controller
     }
 
     public function cetaknotalunasWeb($id){
-        $spareparts = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, s.Kode_Sparepart as Kode, s.Nama_Sparepart as Nama, s.Merk_Sparepart as Merk, s.Rak_Sparepart as Rak, d.Jumlah as Jumlah
+        $spareparts = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, s.Kode_Sparepart as Kode, s.Nama_Sparepart as Nama, s.Merk_Sparepart as Merk, s.Rak_Sparepart as Rak, d.Jumlah as Jumlah, d.Harga_Satuan as Harga_Satuan, d.Subtotal_Detail_Sparepart as Subtotal_Detail_Sparepart
         FROM transaksi_penjualans t 
         INNER JOIN detail_spareparts d ON d.Id_Transaksi =  t.Id_Transaksi
         INNER JOIN spareparts s ON s.Kode_Sparepart = d.Kode_Sparepart
@@ -377,7 +377,13 @@ class LaporanController extends Controller
         FROM transaksi_penjualans t 
         INNER JOIN pegawai_on_duties m ON m.Id_Transaksi =  t.Id_Transaksi
         INNER JOIN pegawais p ON p.Id_Pegawai = m.Id_Pegawai
-        WHERE t.Id_Transaksi = $id AND t.Status = '3'");
+        WHERE t.Id_Transaksi = $id AND t.Status = '3' AND p.Id_Role = '2'");
+
+        $kasir = DB::select("SELECT t.Id_Transaksi, p.Nama_Pegawai as Kasir
+        FROM transaksi_penjualans t 
+        INNER JOIN pegawai_on_duties m ON m.Id_Transaksi =  t.Id_Transaksi
+        INNER JOIN pegawais p ON p.Id_Pegawai = m.Id_Pegawai
+        WHERE t.Id_Transaksi = $id AND t.Status = '3' AND p.Id_Role = '3'");
 
         $montirsparepart= DB::select("SELECT t.Id_Transaksi, p.Nama_Pegawai as Montir
         FROM transaksi_penjualans t 
@@ -393,7 +399,25 @@ class LaporanController extends Controller
         INNER JOIN pegawais p ON p.Id_Pegawai = m.Id_Pegawai
         WHERE t.Id_Transaksi = $id AND t.Status = '3'");
 
-        if(!empty($montirsparepart))
+        if($spareparts == [])
+        {
+            $s_status = false;
+        }
+        else
+        {
+            $s_status = true;
+        }
+
+        if($jasas == [])
+        {
+            $j_status = false;
+        }
+        else
+        {
+            $j_status = true;
+        }
+
+        if($montirsparepart !== [] )
         {
             // dd($montirsparepart);
             $montir = $montirsparepart[0]->Montir;
@@ -404,7 +428,7 @@ class LaporanController extends Controller
             $montir = $montirjasa[0]->Montir;
         }
 
-        $kode = DB::select("SELECT t.Id_Transaksi, CONCAT(t.Jenis_Transaksi,'-',t.created_at,'-',t.Id_Transaksi) AS 'Kode Transaksi'
+        $kode = DB::select("SELECT t.Id_Transaksi, CONCAT(t.Jenis_Transaksi,'-',t.created_at,'-',t.Id_Transaksi) AS 'Kode_Transaksi'
         FROM transaksi_penjualans t 
         WHERE t.Id_Transaksi = $id AND t.Status = '3'");
 
@@ -420,23 +444,24 @@ class LaporanController extends Controller
         INNER JOIN motors n ON n.Id_Motor = p.Id_Motor
         WHERE t.Id_Transaksi = $id AND t.Status = '3'");
 
-        return response()->json([
-            'spareparts' => (bool) $spareparts,
-            'spareparts' => $spareparts,
-            'jasas' => $jasas,
-            'konsumens' => $konsumens,
-            'cs' => $cs,
-            'montir' => $montir,
-            'motor' => $motor,
-            'total' => $total,
-            'kode' => $kode,
-            'message' => $spareparts ? 'Success' : 'Error',
-        ]);
+        // return response()->json([
+        //     'spareparts' => (bool) $spareparts,
+        //     'spareparts' => $spareparts,
+        //     'jasas' => $jasas,
+        //     'konsumens' => $konsumens,
+        //     'cs' => $cs,
+        //     'montir' => $montir,
+        //     'motor' => $motor,
+        //     'total' => $total,
+        //     'kode' => $kode,
+        //     'message' => $spareparts ? 'Success' : 'Error',
+        // ]);
 
         $pdf = PDF::loadView('cetak_nota_lunas',
         ['spareparts' => $spareparts,'jasas' => $jasas, 
-        'konsumens'=>$konsumens, 'cs'=>$cs,
+        'konsumens'=>$konsumens, 'cs'=>$cs, 'kasir'=>$kasir,
         'montir' => $montir, 'kode' => $kode, 
+        's_status'=>$s_status, 'j_status'=>$j_status,
         'motor' => $motor,'total'=>$total]);
         $pdf->setPaper([0,0,550,900]);
 	    return $pdf->stream();
