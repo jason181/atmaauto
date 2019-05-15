@@ -102,9 +102,9 @@
                             </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Tambah">
-                                    <button @click="datakonsumenhandler(konsumen)" 
-                                    class="btn btn-success" data-title="Tambah_Motor_Konsumen"
-                                    data-toggle="modal" data-target="#Tambah_Motor_Konsumen">
+                                    <button @click="cetakspk(transaksi.Id_Transaksi)" 
+                                    class="btn btn-success" data-title="Cetak_SPK" :disabled="transaksi.Status !== 0"
+                                    data-toggle="modal" data-target="#Cetak_SPK">
                                         <i class="far fa-file-pdf"></i>
                                     </button>
                                 </p>
@@ -996,6 +996,7 @@
         <!-- END OF DELETE DETAIL JASA -->
 </template>
 <script>
+import Http from '../../service/Http'
 import sparepartController from '../../service/Sparepart'
 import penjualanController from '../../service/Penjualan'
 import Controller from '../../service/Konsumen'
@@ -1347,6 +1348,14 @@ export default {
             try {
                 await penjualanController.deletedetailsparepart(id)
                 this.getalldetailpenjualan()
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async cetakspk(id) {
+            try {
+                await Http.download('/api/cetak_spk/'+id);
+                this.getallpenjualan()
             } catch (err) {
                 console.log(err)
             }

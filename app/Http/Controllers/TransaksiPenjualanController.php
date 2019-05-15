@@ -44,6 +44,23 @@ class TransaksiPenjualanController extends RestController
         
     }
 
+    public function historykeluar()
+    {
+        $keluar = DB::select("SELECT * FROM transaksi_penjualans 
+        LEFT JOIN detail_spareparts ON transaksi_penjualans.Id_Transaksi = detail_spareparts.Id_Transaksi
+        LEFT JOIN spareparts ON detail_spareparts.Kode_Sparepart = spareparts.Kode_Sparepart
+        WHERE spareparts.Kode_Sparepart IS NOT NULL ORDER BY transaksi_penjualans.Tanggal_Transaksi DESC");
+        
+        return response()->json([
+            'status' => (bool) $keluar,
+            'data' => $keluar,
+            'message' => $keluar ? 'Success' : 'Error History Keluar'
+        ]);
+
+        // $response=$this->generateCollection($masuk);
+        // return $this->sendResponse($response,201);
+    }
+
     public function transaksikeluar(){
         $penjualan=Transaksi_Penjualan::where('Status',3)->get();
         $response=$this->generateCollection($penjualan);

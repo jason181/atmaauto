@@ -46,6 +46,9 @@
 				<router-link :to="{name:'Pengadaan'}" class="nav-tabs nav-item nav-link">
                     <a class="nav-tabs nav-item nav-link">Pengadaan</a>
                 </router-link>
+                <router-link :to="{name:'History'}" class="nav-tabs nav-item nav-link">
+                    <a class="nav-tabs nav-item nav-link">History</a>
+                </router-link>
 				<router-link :to="{name:'Laporan'}" class="nav-tabs nav-item nav-link">
                     <a class="nav-tabs nav-item nav-link">Laporan</a>
                 </router-link>

@@ -153,3 +153,7 @@ Route::get('/test-surat-pemesanan/{id}', 'LaporanController@cetakSuratPemesanan'
 //Laporan
 Route::get('/cetakSuratPemesananDesktop/{id}','LaporanController@cetakSuratPemesananDesktop');
 Route::get('/cetakSuratPerintahKerjaDesktop/{id}','LaporanController@cetakSuratPerintahKerjaDesktop');
+
+//History
+Route::get('/history_masuk','TransaksiPengadaanController@historymasuk');
+Route::get('/history_keluar','TransaksiPenjualanController@historykeluar');

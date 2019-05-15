@@ -1882,6 +1882,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'appLayout',
@@ -2398,6 +2401,210 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       !this.$v.Cabang.Telepon_Cabang.numeric && errors.push('Phone Number must be numeric');
       !this.$v.Cabang.Telepon_Cabang.required && errors.push('Phone Number is required.');
       return errors;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/History.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/History.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/Sparepart */ "./resources/js/service/Sparepart.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      inputdata: [],
+      outputdata: [],
+      Kode_Sparepart: ''
+    };
+  },
+  mounted: function mounted() {
+    this.getallinput();
+    this.getalloutput();
+  },
+  methods: {
+    getallinput: function () {
+      var _getallinput = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].getallinput();
+
+              case 3:
+                this.inputdata = _context.sent.data;
+                console.log(this.inputdata);
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 7]]);
+      }));
+
+      function getallinput() {
+        return _getallinput.apply(this, arguments);
+      }
+
+      return getallinput;
+    }(),
+    getalloutput: function () {
+      var _getalloutput = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].getalloutput();
+
+              case 3:
+                this.outputdata = _context2.sent.data;
+                console.log(this.outputdata);
+                _context2.next = 10;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 7]]);
+      }));
+
+      function getalloutput() {
+        return _getalloutput.apply(this, arguments);
+      }
+
+      return getalloutput;
+    }()
+  },
+  computed: {
+    filteredinput: function filteredinput() {
+      var _this = this;
+
+      return this.inputdata.filter(function (sparepart) {
+        return sparepart.Nama_Sparepart.toLowerCase().match(_this.Kode_Sparepart.toLowerCase());
+      });
+    },
+    filteredoutput: function filteredoutput() {
+      var _this2 = this;
+
+      return this.outputdata.filter(function (sparepart) {
+        return sparepart.Nama_Sparepart.toLowerCase().match(_this2.Kode_Sparepart.toLowerCase());
+      });
     }
   }
 });
@@ -6033,14 +6240,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/Sparepart */ "./resources/js/service/Sparepart.js");
-/* harmony import */ var _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../service/Penjualan */ "./resources/js/service/Penjualan.js");
-/* harmony import */ var _service_Konsumen__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../service/Konsumen */ "./resources/js/service/Konsumen.js");
-/* harmony import */ var _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../service/MotorKonsumen */ "./resources/js/service/MotorKonsumen.js");
-/* harmony import */ var _service_Motor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../service/Motor */ "./resources/js/service/Motor.js");
-/* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../httpController */ "./resources/js/httpController.js");
-/* harmony import */ var _validations_konsumen_validations__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../validations/konsumen_validations */ "./resources/js/validations/konsumen_validations.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _service_Http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../service/Http */ "./resources/js/service/Http.js");
+/* harmony import */ var _service_Sparepart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../service/Sparepart */ "./resources/js/service/Sparepart.js");
+/* harmony import */ var _service_Penjualan__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../service/Penjualan */ "./resources/js/service/Penjualan.js");
+/* harmony import */ var _service_Konsumen__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../service/Konsumen */ "./resources/js/service/Konsumen.js");
+/* harmony import */ var _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../service/MotorKonsumen */ "./resources/js/service/MotorKonsumen.js");
+/* harmony import */ var _service_Motor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../service/Motor */ "./resources/js/service/Motor.js");
+/* harmony import */ var _httpController__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../httpController */ "./resources/js/httpController.js");
+/* harmony import */ var _validations_konsumen_validations__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../validations/konsumen_validations */ "./resources/js/validations/konsumen_validations.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
@@ -7056,8 +7264,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  validations: _validations_konsumen_validations__WEBPACK_IMPORTED_MODULE_7__["default"],
+  validations: _validations_konsumen_validations__WEBPACK_IMPORTED_MODULE_8__["default"],
   data: function data() {
     var _temp;
 
@@ -7273,7 +7482,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getalldetailpenjualan();
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_3__["default"].getalldetailpenjualan();
 
               case 3:
                 this.detailpenjualandata = _context.sent.data;
@@ -7310,7 +7519,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getalldetailjasa();
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_3__["default"].getalldetailjasa();
 
               case 3:
                 this.detailjasadata = _context2.sent.data;
@@ -7347,7 +7556,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getmotorKonsumen();
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_3__["default"].getmotorKonsumen();
 
               case 3:
                 this.sparepartdata = _context3.sent.data;
@@ -7384,7 +7593,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getPegawai();
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_3__["default"].getPegawai();
 
               case 3:
                 this.pegawaidata = _context4.sent.data;
@@ -7421,7 +7630,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].getallpenjualan();
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_3__["default"].getallpenjualan();
 
               case 3:
                 this.penjualandata = _context5.sent.data;
@@ -7458,7 +7667,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return _httpController__WEBPACK_IMPORTED_MODULE_6__["default"].getalljasaservice();
+                return _httpController__WEBPACK_IMPORTED_MODULE_7__["default"].getalljasaservice();
 
               case 3:
                 this.jasa = _context6.sent.data;
@@ -7495,7 +7704,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_1__["default"].getallsparepart();
+                return _service_Sparepart__WEBPACK_IMPORTED_MODULE_2__["default"].getallsparepart();
 
               case 3:
                 this.sparepart = _context7.sent.data;
@@ -7549,7 +7758,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return _service_Motor__WEBPACK_IMPORTED_MODULE_5__["default"].getallmotor();
+                return _service_Motor__WEBPACK_IMPORTED_MODULE_6__["default"].getallmotor();
 
               case 3:
                 this.motorcycle = _context8.sent.data;
@@ -7586,7 +7795,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_4__["default"].getallmotorkonsumen();
+                return _service_MotorKonsumen__WEBPACK_IMPORTED_MODULE_5__["default"].getallmotorkonsumen();
 
               case 3:
                 this.motorkonsumendata = _context9.sent.data;
@@ -7626,7 +7835,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context10.prev = 0;
                 _context10.next = 3;
-                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_3__["default"].getallkonsumen();
+                return _service_Konsumen__WEBPACK_IMPORTED_MODULE_4__["default"].getallkonsumen();
 
               case 3:
                 this.konsumendata = _context10.sent.data;
@@ -7677,7 +7886,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   Detail_Jasa: this.jasadata
                 };
                 _context11.next = 4;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].addpenjualan(payload);
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_3__["default"].addpenjualan(payload);
 
               case 4:
                 this.getallpenjualan();
@@ -7716,7 +7925,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context12.prev = 0;
                 _context12.next = 3;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].deletepenjualan(id);
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_3__["default"].deletepenjualan(id);
 
               case 3:
                 this.getallpenjualan(); // console.log()
@@ -7757,7 +7966,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   Detail_Jasa: this.jasadata
                 };
                 _context13.next = 4;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].adddetailjasa(payload);
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_3__["default"].adddetailjasa(payload);
 
               case 4:
                 this.getalldetailjasa();
@@ -7797,7 +8006,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   Detail_Sparepart: this.sparepartdata
                 };
                 _context14.next = 4;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].addetailspareparts(payload);
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_3__["default"].addetailspareparts(payload);
 
               case 4:
                 this.getallpenjualan();
@@ -7833,7 +8042,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context15.prev = 0;
                 _context15.next = 3;
-                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_2__["default"].deletedetailsparepart(id);
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_3__["default"].deletedetailsparepart(id);
 
               case 3:
                 this.getalldetailpenjualan();
@@ -7858,6 +8067,42 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       return deletedetailsparepart;
+    }(),
+    cetakspk: function () {
+      var _cetakspk = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee16(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee16$(_context16) {
+          while (1) {
+            switch (_context16.prev = _context16.next) {
+              case 0:
+                _context16.prev = 0;
+                _context16.next = 3;
+                return _service_Http__WEBPACK_IMPORTED_MODULE_1__["default"].download('/api/cetak_spk/' + id);
+
+              case 3:
+                this.getallpenjualan();
+                _context16.next = 9;
+                break;
+
+              case 6:
+                _context16.prev = 6;
+                _context16.t0 = _context16["catch"](0);
+                console.log(_context16.t0);
+
+              case 9:
+              case "end":
+                return _context16.stop();
+            }
+          }
+        }, _callee16, this, [[0, 6]]);
+      }));
+
+      function cetakspk(_x3) {
+        return _cetakspk.apply(this, arguments);
+      }
+
+      return cetakspk;
     }(),
     datakonsumenhandler: function datakonsumenhandler(konsumen) {
       this.Konsumen = konsumen;
@@ -7889,7 +8134,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     // this.Konsumen.Nama_Konsumen = '-1'
     // this.Konsumen.Alamat_Konsumen = '-1'
   }),
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_8__["mapGetters"])({
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_9__["mapGetters"])({
     Id_Pegawai: 'LoggedUser/id'
   }), {
     filteredpegawai: function filteredpegawai() {
@@ -8843,7 +9088,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
 //
 //
 //
@@ -46721,6 +46965,19 @@ var render = function() {
                   "router-link",
                   {
                     staticClass: "nav-tabs nav-item nav-link",
+                    attrs: { to: { name: "History" } }
+                  },
+                  [
+                    _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
+                      _vm._v("History")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-tabs nav-item nav-link",
                     attrs: { to: { name: "Laporan" } }
                   },
                   [
@@ -47835,6 +48092,179 @@ var staticRenderFns = [
         _vm._v("Tidak")
       ]
     )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/History.vue?vue&type=template&id=0ace8bcc&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/History.vue?vue&type=template&id=0ace8bcc& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("body", [
+    _c("div", { staticClass: "container-fluid mt-3" }, [
+      _c("div", { staticClass: "row mb-2" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-5" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-3" }, [
+          _c("div", { staticClass: "input-group" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.Kode_Sparepart,
+                  expression: "Kode_Sparepart"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "search", placeholder: "Cari Sparepart" },
+              domProps: { value: _vm.Kode_Sparepart },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.Kode_Sparepart = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(1)
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-6" }, [
+          _c(
+            "div",
+            {
+              staticClass: "table-responsive",
+              staticStyle: { margin: "auto" }
+            },
+            [
+              _c("table", { staticClass: "table table-striped table-hover" }, [
+                _vm._m(2),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.filteredinput, function(input) {
+                    return _c("tr", { key: input["Kode_Sparepart"] }, [
+                      _c("td", [_vm._v(_vm._s(input.Tanggal_Pengadaan) + " ")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(input.Nama_Sparepart) + " ")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(input.Jumlah) + " ")])
+                    ])
+                  }),
+                  0
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-6" }, [
+          _c(
+            "div",
+            {
+              staticClass: "table-responsive",
+              staticStyle: { margin: "auto" }
+            },
+            [
+              _c("table", { staticClass: "table table-striped table-hover" }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.filteredoutput, function(output) {
+                    return _c("tr", { key: output["Kode_Sparepart"] }, [
+                      _c("td", [
+                        _vm._v(_vm._s(output.Tanggal_Transaksi) + " ")
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(output.Nama_Sparepart) + " ")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(output.Jumlah) + " ")])
+                    ])
+                  }),
+                  0
+                )
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-4" }, [
+      _c("div", { staticClass: "row ml-1" }, [
+        _c("div", { staticClass: "col-sm-4 p-0" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-9" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text" }, [
+        _c("i", { staticClass: "fas fa-search" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "table-primary text-center" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Tanggal")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Jumlah")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "table-primary text-center" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Tanggal")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Jumlah")])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -55494,13 +55924,14 @@ var render = function() {
                           {
                             staticClass: "btn btn-success",
                             attrs: {
-                              "data-title": "Tambah_Motor_Konsumen",
+                              "data-title": "Cetak_SPK",
+                              disabled: transaksi.Status !== 0,
                               "data-toggle": "modal",
-                              "data-target": "#Tambah_Motor_Konsumen"
+                              "data-target": "#Cetak_SPK"
                             },
                             on: {
                               click: function($event) {
-                                return _vm.datakonsumenhandler(_vm.konsumen)
+                                return _vm.cetakspk(transaksi.Id_Transaksi)
                               }
                             }
                           },
@@ -81851,6 +82282,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/layout/History.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/layout/History.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _History_vue_vue_type_template_id_0ace8bcc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./History.vue?vue&type=template&id=0ace8bcc& */ "./resources/js/components/layout/History.vue?vue&type=template&id=0ace8bcc&");
+/* harmony import */ var _History_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./History.vue?vue&type=script&lang=js& */ "./resources/js/components/layout/History.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _History_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _History_vue_vue_type_template_id_0ace8bcc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _History_vue_vue_type_template_id_0ace8bcc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/layout/History.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/History.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/layout/History.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_History_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./History.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/History.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_History_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/History.vue?vue&type=template&id=0ace8bcc&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/layout/History.vue?vue&type=template&id=0ace8bcc& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_History_vue_vue_type_template_id_0ace8bcc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./History.vue?vue&type=template&id=0ace8bcc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/History.vue?vue&type=template&id=0ace8bcc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_History_vue_vue_type_template_id_0ace8bcc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_History_vue_vue_type_template_id_0ace8bcc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/layout/Home.vue":
 /*!*************************************************!*\
   !*** ./resources/js/components/layout/Home.vue ***!
@@ -83165,8 +83665,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_layout_Status_vue__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/layout/Status.vue */ "./resources/js/components/layout/Status.vue");
 /* harmony import */ var _components_layout_Pengadaan_vue__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/layout/Pengadaan.vue */ "./resources/js/components/layout/Pengadaan.vue");
 /* harmony import */ var _components_layout_Penjualan_vue__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/layout/Penjualan.vue */ "./resources/js/components/layout/Penjualan.vue");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _components_layout_History_vue__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/layout/History.vue */ "./resources/js/components/layout/History.vue");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_16__);
+
 
 
 
@@ -83280,6 +83782,13 @@ var routes = [{
     role: ['Admin']
   },
   beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
+}, {
+  name: 'History',
+  path: '/history',
+  component: _components_layout_History_vue__WEBPACK_IMPORTED_MODULE_15__["default"],
+  meta: {
+    role: ['Admin']
+  }
 }, {
   name: 'Penjualan',
   path: '/penjualan',
@@ -84002,6 +84511,20 @@ __webpack_require__.r(__webpack_exports__);
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/transaksi_penjualans', successCallback, errorCallback);
     });
   },
+  cetakspk: function cetakspk() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].download('/api/cetak_spk/' + id, successCallback, errorCallback);
+    });
+  },
   addpenjualan: function addpenjualan(payload) {
     return new Promise(function (resolve, reject) {
       var successCallback = function successCallback(res) {
@@ -84212,6 +84735,34 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].delete('/api/spareparts/delete/' + id, successCallback, errorCallback);
+    });
+  },
+  getallinput: function getallinput() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/history_masuk', successCallback, errorCallback);
+    });
+  },
+  getalloutput: function getalloutput() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/history_keluar', successCallback, errorCallback);
     });
   }
 });

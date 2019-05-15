@@ -27,6 +27,23 @@ class TransaksiPengadaanController extends RestController
         return $this->sendResponse($response,201);
     }
 
+    public function historymasuk()
+    {
+        $masuk = DB::select("SELECT * FROM transaksi_pengadaans 
+        LEFT JOIN detail_pengadaans ON transaksi_pengadaans.Id_Pengadaan = detail_pengadaans.Id_Pengadaan
+        LEFT JOIN spareparts ON detail_pengadaans.Kode_Sparepart = spareparts.Kode_Sparepart
+        WHERE transaksi_pengadaans.Status_Pengadaan = 2 ORDER BY transaksi_pengadaans.Tanggal_Pengadaan DESC");
+        
+        return response()->json([
+            'status' => (bool) $masuk,
+            'data' => $masuk,
+            'message' => $masuk ? 'Success' : 'Error History Masuk'
+        ]);
+
+        // $response=$this->generateCollection($masuk);
+        // return $this->sendResponse($response,201);
+    }
+
     public function transaksimasuk(){
         $pengadaan=Transaksi_Pengadaan::where('Status_Pengadaan',2)->get();
         $response=$this->generateCollection($pengadaan);
@@ -84,14 +101,13 @@ class TransaksiPengadaanController extends RestController
     
     public function update(Request $request,$id)
     {
+        // return $request;
         date_default_timezone_set('Asia/Jakarta');
-        
         $details = Detail_Pengadaan::where('Id_Pengadaan',$id)->get();
-        
         foreach($details as $detail)
         {
             if(Detail_Pengadaan::where('Id_Pengadaan',$id)->get() !== null)
-            $delete = Detail_Pengadaan::where('Id_Pengadaan',$id)->delete();
+                $delete = Detail_Pengadaan::where('Id_Pengadaan',$id)->delete();
         }
 
         $pengadaan = Transaksi_Pengadaan::find($id);
@@ -110,15 +126,14 @@ class TransaksiPengadaanController extends RestController
             $pengadaan->Total_Harga         = $request->get('Total_Harga');
         }
         
-        $pengadaan->save();
-
         if($request->has('Detail_Pengadaan'))
         {
-            $pengadaan = DB::transaction(function () use ($pengadaan,$detail){
-                $pengadaan->detail_pengadaans()->createMany($detail);
+            $pengadaan = DB::transaction(function () use ($pengadaan,$detail) {
+                $pengadaan->detail_pengadaans()->createMany($detail);   
                 return $pengadaan;
             });
         }
+        $pengadaan->save();
 
         $response=$this->generateItem($pengadaan);
         return $this->sendResponse($response);
@@ -178,22 +193,5 @@ class TransaksiPengadaanController extends RestController
             'status' => $status,
             'message' => $status ? 'Deleted' : 'Error Delete'
         ]);
-    }
-
-    public function cetakSuratPemesanan($id)
-    {
-        $pengadaan  = Transaksi_Pengadaan::find($id);
-        
-        $pdf = PDF::loadview('cetak_pengadaan');
-	    return $pdf->stream();
-    }
-
-    public function testSuratPemesanan($id)
-    {
-        $pengadaan  = Transaksi_Pengadaan::find($id);
-        $supplier   = Supplier::find($pengadaan->Id_Supplier);
-        $detail     = Detail_Pengadaan::where('Id_Pengadaan',$pengadaan->Id_Pengadaan);
-
-        return view('cetak_pengadaan', compact('pengadaan', 'supplier', 'detail'));
     }
 }

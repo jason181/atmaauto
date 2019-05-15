@@ -48,6 +48,9 @@ class LaporanController extends Controller
 
     public function cetakSPK($id)
     {
+        $penjualan = Transaksi_Penjualan::find($id);
+        $penjualan->Status ='1';
+        $penjualan->save();
         $spareparts = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, 
         s.Kode_Sparepart as Kode, s.Nama_Sparepart as Nama, 
         s.Merk_Sparepart as Merk, s.Rak_Sparepart as Rak, 

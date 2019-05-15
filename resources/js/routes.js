@@ -14,7 +14,7 @@ import Katalog from './components/layout/Katalog.vue';
 import Status from './components/layout/Status.vue';
 import Pengadaan from './components/layout/Pengadaan.vue';
 import Penjualan from './components/layout/Penjualan.vue';
-
+import History from './components/layout/History.vue';
 
 import { homedir } from 'os';
 
@@ -156,6 +156,14 @@ export const routes = [
         beforeEnter: middleware([
             auth
         ])
+    },
+    {
+        name: 'History',
+        path: '/history',
+        component: History,
+        meta: { role: [
+            'Admin'
+        ]},
     },
     {
         name: 'Penjualan',

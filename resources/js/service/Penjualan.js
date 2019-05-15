@@ -14,6 +14,19 @@ export default {
             Http.get('/api/transaksi_penjualans', successCallback, errorCallback)
         })
     },
+    cetakspk(){
+        return new Promise((resolve, reject) => {
+             
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.download('/api/cetak_spk/'+id, successCallback, errorCallback)
+        })
+    },
     addpenjualan(payload) {
         return new Promise((resolve, reject) => {
             const successCallback = (res) => {

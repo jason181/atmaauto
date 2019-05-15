@@ -1,7 +1,6 @@
 <template>
     <body>
         <div class="container-fluid mt-3" style="">
-            
             <div class="row mb-2">
                 <div class="col-sm-4">
                     <div class="row ml-1">
