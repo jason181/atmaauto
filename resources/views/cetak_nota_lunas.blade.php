@@ -13,6 +13,12 @@
             table {
                 border-collapse: collapse;
             }
+            .tar{
+                text-align:right;
+            }
+            .tac{
+                text-align:center;
+            }
         </style>
     </head>
     <body>
@@ -60,27 +66,28 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="5" class="mytable" style="font-weight:bold;text-align:center;padding:5px;">Cetak Nota Lunas</td>
+                        <td colspan="6" class="mytable" style="font-weight:bold;text-align:center;padding:5px;">NOTA LUNAS</td>
                     </tr>
                     <tr>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td colspan="2" style="text-align:right;">{{ date('d M Y H:i:s', strtotime($header[0]->created_at)) }}</td>
                     </tr>
                     <tr>
-                        <td colspan="5" style="font-size:18px;">{{$kode[0]->Kode_Transaksi}}</td>
+                        <td colspan="6" style="font-size:18px;">{{$kode[0]->Kode_Transaksi}}</td>
                     </tr>
                     
                     <tr>
                         <td>Cust</td>
-                        <td colspan="2">{{$header[0]->Cust}}</td>
+                        <td colspan="3">{{$header[0]->Cust}}</td>
                         <td>CS</td>
                         <td>{{$cs[0]->CS}}</td>
                     </tr>
                     <tr>
                         <td>Telepon</td>
-                        <td colspan="2">{{$header[0]->Telepon}}</td>
+                        <td colspan="3">{{$header[0]->Telepon}}</td>
                         <td>Montir</td>
                         <td>{{$montir}}</td>
                     </tr>
@@ -110,14 +117,14 @@
                     </tr>
                     {{$jumlah=0}}
                     @foreach($spareparts as $sparepart)
-                    {{$jumlah += $sparepart->Jumlah}}
+                    {{$jumlah += $sparepart->Subtotal}}
                     <tr>
                         <td> {{$sparepart->Kode}} </td>
                         <td> {{$sparepart->Nama}} </td>
                         <td> {{$sparepart->Merk}} </td>
-                        <td> {{$sparepart->Harga}} </td>
-                        <td> {{$sparepart->Jumlah}} </td>
-                        <td style="text-align:right"> {{$sparepart->Subtotal}} </td>
+                        <td class="tar"> {{$sparepart->Harga_Satuan}} </td>
+                        <td style="text-align:right"> {{$sparepart->Jumlah}} </td>
+                        <td class="tar">{{$sparepart->Subtotal_Detail_Sparepart}}</td>
                     </tr>
                     @endforeach
                     <tr>
@@ -146,26 +153,27 @@
                     <tr class="mytable">
                         <th class="mytable" style="padding-left:10px;">Kode</th>
                         <th class="mytable">Nama</th>
-                        <th class="mytable">Harga</th>
-                        <th class="mytable">Jumlah</th>
-                        <th class="mytable" style="text-align:right;">Sub Total</th>
+                        <th class="mytable"></th>
+                        <td class="mytable">Harga</td>
+                        <td class="mytable">Jumlah</td>
+                        <td class="mytable">Subtotal</td>
                     </tr>
-                    {{$i=0}}
+                    {{$subtotaljasa=0}}
                     @foreach($jasas as $jasa)
-                    {{$i++}}
+                    {{$subtotaljasa+=$jasa->Harga_Jasa}}
                     <tr>
                         <td style="padding-left:10px;"> {{$jasa->KodeJasa}} </td>
                         <td> {{$jasa->NamaJasa}} </td>
                         <td></td>
-                        <td></td>
-                        <td style="text-align:right">1</td>
+                        <td class="tar">{{$jasa->HargaJasa}}</td>
+                        <td class="tar">{{$jasa->Subtotal}}</td>
                     </tr>
                     @endforeach
                     <tr>
                         <td colspan="5" class="mytable" style="padding:1px;"></td>
                     </tr>
                     <tr>
-                        <td colspan="5" style="text-align:right"> {{$i}} </td>
+                        <td colspan="5" style="text-align:right"> {{$subtotaljasa}} </td>
                     </tr>
                     <tr>
                         <td colspan="5" class="mytable" style="padding:1px;"></td>

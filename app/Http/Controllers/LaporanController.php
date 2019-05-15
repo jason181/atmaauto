@@ -153,7 +153,7 @@ class LaporanController extends Controller
 
     public function pendapatanBulanan()
     {
-        $data = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan, COALESCE(SUM(d.Subtotal_Detail_Sparepart),0) as Sparepart, COALESCE(SUM(e.Subtotal_Detail_Jasa),0) as Service FROM (SELECT '01' AS
+        $data = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan, COALESCE(SUM(d.Subtotal_Detail_Sparepart),0) as Sparepart, COALESCE(SUM(e.Subtotal_Detail_Jasa),0) as Service,COALESCE((p.Total),0) as Total FROM (SELECT '01' AS
                             bulan
                             UNION SELECT '02' AS
                             bulan
@@ -185,7 +185,7 @@ class LaporanController extends Controller
                             GROUP BY m.bulan, YEAR(p.Tanggal_Transaksi)");
 
         $total= DB::select("SELECT SUM(Total) as Total_Transaksi FROM transaksi_penjualans");
-
+        // return $data;
         $pdf = PDF::loadView('pendapatan_bulanan',
         ['data'=>$data, 'total'=>$total]);
         $pdf->setPaper([0,0,550,900]);
