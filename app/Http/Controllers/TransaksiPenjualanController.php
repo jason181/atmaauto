@@ -38,8 +38,22 @@ class TransaksiPenjualanController extends RestController
 
     public function index()
     {
-        $penjualan=Transaksi_Penjualan::get();
+        $penjualan=Transaksi_Penjualan::orderBy('Id_Transaksi','DESC')->get();
         $response= $this->generateCollection($penjualan);
+        return $this->sendResponse($response);
+    }
+
+    public function processed()
+    {
+        $processed = Transaksi_Penjualan::where('Status','1')->get();
+        $response = $this->generateCollection($processed);
+        return $this->sendResponse($response);
+    }
+
+    public function finished()
+    {
+        $finished = Transaksi_Penjualan::where('Status','2')->get();
+        $response = $this->generateCollection($finished);
         return $this->sendResponse($response);
     }
 
@@ -66,6 +80,8 @@ class TransaksiPenjualanController extends RestController
         return $this->sendResponse($response,201);
     }
 
+    
+
     public function showByIdMotorKonsumen($id)
     {
         $motorKonsumen = Motor_Konsumen::find($id);
@@ -87,6 +103,7 @@ class TransaksiPenjualanController extends RestController
 
     public function store(Request $request)
     {
+        // return $request;
         try{
             date_default_timezone_set('Asia/Jakarta');
 
@@ -125,7 +142,7 @@ class TransaksiPenjualanController extends RestController
 
             $penjualan->Status = 0;
             $penjualan->save();
-            
+
             if($jenis == 'SS' || $jenis == 'SV')
             {
                 if($request->has('Detail_Jasa'))
@@ -309,14 +326,50 @@ class TransaksiPenjualanController extends RestController
                 {
                     $penjualan->Total               = $request->get('Total');
                 }
-
+                else
+                {
+                    $penjualan->Total               = $request->get('Subtotal') - $request->get('Diskon');
+                }
                 $penjualan->save();
-                
+                dd($penjualan);
                 $response = $this->generateCollection($penjualan);
                 return $this->sendResponse($response);
             }
         }
         catch(\Exception $e) {
+            return $this->sendIseResponse($e->getMessage());
+        }
+    }
+
+    public function updatetransaksimobile(Request $request,$id){
+        try{
+            $penjualan = Transaksi_Penjualan::find($id);
+            if(!is_null($request->get("Tanggal_Transaksi")))
+                {
+                    $penjualan->Tanggal_Transaksi   = $request->get('Tanggal_Transaksi');
+                }
+                if(!is_null($request->get("Jenis_Transaksi")))
+                {
+                    $penjualan->Jenis_Transaksi     = $request->get('Jenis_Transaksi');
+                }
+                if(!is_null($request->get("Subtotal")))
+                {
+                    $penjualan->Subtotal            = $request->get('Subtotal');
+                }
+                if(!is_null($request->get("Diskon")))
+                {
+                    $penjualan->Diskon              = $request->get('Diskon');
+                }
+                if(!is_null($request->Total))
+                {
+                    $penjualan->Total               = $request->get('Total');
+                }
+
+                $penjualan->save();
+                
+                $response = $this->generateItem($penjualan);
+                return $this->sendResponse($response,201);
+        }catch(\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
         }
     }
@@ -360,6 +413,16 @@ class TransaksiPenjualanController extends RestController
             'status' =>$status,
             'message' => $status ? 'Deleted' : 'Error Delete'
         ]);
+    }
+
+    public function pembayaran($id)
+    {
+        $penjualan = Transaksi_Penjualan::find($id);
+        $penjualan->Status = '3';
+        $penjualan->save();
+
+        $response=$this->generateCollection($penjualan);
+        return $this->sendResponse($response);
     }
 
 }

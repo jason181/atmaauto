@@ -124,22 +124,27 @@ Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
 // Route::group(['middleware' => 'token'], function () {
     Route::get('/transaksi_penjualans/showByIdMotorKonsumen/{id}','TransaksiPenjualanController@showByIdMotorKonsumen');
     Route::get('/transaksi_penjualans/transaksikeluar','TransaksiPenjualanController@transaksikeluar');
+    Route::get('/transaksi_penjualans/processed','TransaksiPenjualanController@processed');
+    Route::get('/transaksi_penjualans/finished','TransaksiPenjualanController@finished');
     Route::post('/transaksi_penjualans/store','TransaksiPenjualanController@store');
     Route::post('/transaksi_penjualans/storeSparepart','TransaksiPenjualanController@storeSparepart');
     Route::post('/transaksi_penjualans/storeJasa','TransaksiPenjualanController@storeJasa');
     Route::patch('/transaksi_penjualans/update/{id}','TransaksiPenjualanController@update');
+    Route::patch('/transaksi_penjualans/pembayaran/{id}','TransaksiPenjualanController@pembayaran');
     Route::delete('/transaksi_penjualans/delete/{id}','TransaksiPenjualanController@destroy');
     
 // });
 
 //Detail Sparepart Transaksi Penjualan
 Route::get('/detail_spareparts','DetailSparepartController@index');
+Route::get('/detail_spareparts/{id}','DetailSparepartController@detailsparepartkonsumen');
 Route::post('/detail_spareparts/store','DetailSparepartController@store');
 Route::patch('/detail_spareparts/update/{id}','DetailSparepartController@update');
 Route::delete('/detail_spareparts/delete/{id}','DetailSparepartController@destroy');
 
 //Detail Jasa Transaksi Penjualan
 Route::get('/detail_jasas','DetailJasaController@index');
+Route::get('/detail_jasas/{id}','DetailJasaController@detailjasakonsumen');
 Route::post('/detail_jasas/store','DetailJasaController@store');
 Route::patch('/detail_jasas/update/{id}','DetailJasaController@update');
 Route::delete('/detail_jasas/delete/{id}','DetailJasaController@destroy');
@@ -149,6 +154,7 @@ Route::delete('/detail_jasas/delete/{id}','DetailJasaController@destroy');
 Route::get('/cetak_surat_pemesanan/{id}', 'LaporanController@cetakSuratPemesanan');
 Route::get('/cetak_spk/{id}', 'LaporanController@cetakSPK');
 Route::get('/test-surat-pemesanan/{id}', 'LaporanController@cetakSuratPemesanan');
+Route::get('/pendapatan_bulanan','LaporanController@pendapatanBulanan');
 
 Route::get('/cetakNotaLunas/{id}','LaporanController@cetakNotaLunas');
 Route::get('/cetaknotalunasWeb/{id}','LaporanController@cetaknotalunasWeb');

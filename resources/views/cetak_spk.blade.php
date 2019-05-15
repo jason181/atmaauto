@@ -107,7 +107,9 @@
                         <th class="mytable" style="text-align:center;">Rak</th>
                         <th class="mytable" style="text-align:center;">Jumlah</th>
                     </tr>
+                    {{$jumlah=0}}
                     @foreach($spareparts as $sparepart)
+                    {{$jumlah += $sparepart->Jumlah}}
                     <tr>
                         <td> {{$sparepart->Kode}} </td>
                         <td> {{$sparepart->Nama}} </td>
@@ -120,7 +122,7 @@
                         <td colspan="5" class="mytable" style="padding:1px;"></td>
                     </tr>
                     <tr>
-                        <td colspan="5" style="text-align:right">3</td>
+                        <td colspan="5" style="text-align:right">{{$jumlah}}</td>
                     </tr>
                     <tr>
                         <td colspan="5" class="mytable" style="padding:1px;"></td>

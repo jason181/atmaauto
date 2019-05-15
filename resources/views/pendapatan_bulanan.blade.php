@@ -60,13 +60,14 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="5" class="mytable" style="font-weight:bold;text-align:center;padding:5px;">Cetak Nota Lunas</td>
+                        <td colspan="5" class="mytable" style="font-weight:bold;text-align:center;padding:5px;">LAPORAN PENDAPATAN BULANAN</td>
                     </tr>
                     <tr>
+                        <td style="padding-left:2px;">Tahun :</td>
+                        <td>2019</td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td colspan="2" style="text-align:right;">{{ date('d M Y H:i:s', strtotime($header[0]->created_at)) }}</td>
                     </tr>
                     <tr>
                         <td colspan="5" style="font-size:18px;">{{$kode[0]->Kode_Transaksi}}</td>
@@ -104,9 +105,8 @@
                         <th class="mytable" style="text-align:center;">Kode</th>
                         <th class="mytable" style="text-align:center;">Nama</th>
                         <th class="mytable" style="text-align:center;">Merk</th>
-                        <th class="mytable" style="text-align:center;">Harga</th>
+                        <th class="mytable" style="text-align:center;">Rak</th>
                         <th class="mytable" style="text-align:center;">Jumlah</th>
-                        <th class="mytable" style="text-align:center;">Subtotal</th>
                     </tr>
                     {{$jumlah=0}}
                     @foreach($spareparts as $sparepart)
@@ -115,9 +115,8 @@
                         <td> {{$sparepart->Kode}} </td>
                         <td> {{$sparepart->Nama}} </td>
                         <td> {{$sparepart->Merk}} </td>
-                        <td> {{$sparepart->Harga}} </td>
-                        <td> {{$sparepart->Jumlah}} </td>
-                        <td style="text-align:right"> {{$sparepart->Subtotal}} </td>
+                        <td> {{$sparepart->Rak}} </td>
+                        <td style="text-align:right"> {{$sparepart->Jumlah}} </td>
                     </tr>
                     @endforeach
                     <tr>
@@ -146,9 +145,9 @@
                     <tr class="mytable">
                         <th class="mytable" style="padding-left:10px;">Kode</th>
                         <th class="mytable">Nama</th>
-                        <th class="mytable">Harga</th>
-                        <th class="mytable">Jumlah</th>
-                        <th class="mytable" style="text-align:right;">Sub Total</th>
+                        <th class="mytable"></th>
+                        <th class="mytable"></th>
+                        <th class="mytable" style="text-align:right;">Jumlah</th>
                     </tr>
                     {{$i=0}}
                     @foreach($jasas as $jasa)

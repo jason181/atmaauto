@@ -22,6 +22,12 @@ class DetailJasaController extends RestController
         return $this->sendResponse($response,201);
     }
 
+    
+    public function detailjasakonsumen($id){
+        $detailjasa=Detail_Jasa::where('Id_Transaksi',$id)->get();
+        $response=$this->generateCollection($detailjasa);
+        return $this->sendResponse($response,201);
+    }
     public function store(Request $request)
     {
         $montirdata = Detail_Jasa::where('Id_Transaksi',$request->Detail_Jasa[0]['Id_Transaksi'])->first();
@@ -96,7 +102,7 @@ class DetailJasaController extends RestController
         $montir = Montir::find($detail_jasa->Id_Jasa_Montir);
         $penjualan = Transaksi_Penjualan::find($id_transaksi);
         $penjualan->Subtotal -= $detail_jasa->Subtotal_Detail_Jasa;
-        $penjualan->Total -+ $detail->Subtotal_Detail_Jasa;
+        $penjualan->Total -+ $detail_jasa->Subtotal_Detail_Jasa;
         
         $status=$detail_jasa->delete();
 
@@ -116,6 +122,8 @@ class DetailJasaController extends RestController
         else if($find_montir_jasa == null && $find_montir_sparepart !== null)
         {
             $penjualan->Jenis_Transaksi = 'SP';
+            $status2=false;
+            $status3=false;
         }
         else
         {
