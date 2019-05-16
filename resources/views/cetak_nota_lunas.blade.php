@@ -91,7 +91,7 @@
                         <td>Telepon</td>
                         <td colspan="3">{{$konsumens[0]->Telepon}}</td>
                         <td>Montir</td>
-                        <td></td>
+                        <td>{{$montir}}</td>
                     </tr>
                     <tr>
                         <td style="padding-bottom:15px;">Motor</td>

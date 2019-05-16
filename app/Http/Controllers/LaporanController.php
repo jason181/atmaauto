@@ -165,9 +165,9 @@ class LaporanController extends Controller
                             bulan
                             UNION SELECT '06' AS
                             bulan
-                            UNION SELECT '07'AS
+                            UNION SELECT '07' AS
                             bulan
-                            UNION SELECT '08'AS
+                            UNION SELECT '08' AS
                             bulan
                             UNION SELECT '09' AS
                             bulan
@@ -400,6 +400,9 @@ class LaporanController extends Controller
 
     public function cetaknotalunasWeb($id){
 
+        $penjualan = Transaksi_Penjualan::where('Id_Transaksi',$id)->first();
+        $penjualan->Status = '3';
+        $penjualan->save();
 
         $spareparts = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, s.Kode_Sparepart as Kode, s.Nama_Sparepart as Nama, s.Merk_Sparepart as Merk, s.Rak_Sparepart as Rak, d.Jumlah as Jumlah, d.Harga_Satuan as Harga_Satuan, d.Subtotal_Detail_Sparepart as Subtotal_Detail_Sparepart
         FROM transaksi_penjualans t 
@@ -413,23 +416,23 @@ class LaporanController extends Controller
         INNER JOIN jasas j2 ON j2.Id_Jasa = j.Id_Jasa
         WHERE t.Id_Transaksi = $id AND t.Status = '3'");
 
-        if($spareparts == [])
-        {
-            $s_status = false;
-        }
-        else
-        {
-            $s_status = true;
-        }
+        // if($spareparts == [])
+        // {
+        //     $s_status = false;
+        // }
+        // else
+        // {
+        //     $s_status = true;
+        // }
 
-        if($jasas == [])
-        {
-            $j_status = false;
-        }
-        else
-        {
-            $j_status = true;
-        }
+        // if($jasas == [])
+        // {
+        //     $j_status = false;
+        // }
+        // else
+        // {
+        //     $j_status = true;
+        // }
         $konsumens = DB::select("SELECT t.created_at as created_at, t.Id_Transaksi as Id_Transaksi, k.Nama_Konsumen as Cust, k.Telepon_Konsumen as Telepon
         FROM transaksi_penjualans t 
         INNER JOIN konsumens k ON k.Id_Konsumen = t.Id_Konsumen
@@ -478,17 +481,13 @@ class LaporanController extends Controller
         {
             $j_status = true;
         }
-        
-        
-        
+
         if($montirsparepart !== [])
         {
-            // dd($montirsparepart);
             $montir = $montirsparepart[0]->Montir;
         }
         else
         {
-            // dd($montirjasa);
             $montir = $montirjasa[0]->Montir;
         }
 
@@ -521,8 +520,9 @@ class LaporanController extends Controller
         //     'message' => $spareparts ? 'Success' : 'Error',
         // ]);
 
+        
         $pdf = PDF::loadView('cetak_nota_lunas',
-        ['spareparts' => $spareparts,'jasas' => $jasas, 
+        ['spareparts' => $spareparts,'jasas' => $jasas, 'montir' => $montir,
         'konsumens'=>$konsumens, 'cs'=>$cs, 'kasir'=>$kasir,'kode' => $kode, 
         's_status'=>$s_status, 'j_status'=>$j_status,
         'motor' => $motor,'total'=>$total]);
