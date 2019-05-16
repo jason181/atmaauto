@@ -77,6 +77,7 @@
                             <th scope="col">Total</th>
                             <th scope="col">Detail</th>
                             <th scope="col">SPK</th>
+                            <th scope="col">Nota Lunas</th>
                             <th scope="col">Edit/Verify</th>
                             <th scope="col">Delete</th>
                         </tr>
@@ -117,10 +118,19 @@
                                 </p>
                             </td>
                             <td class="text-center">
-                                <p data-placement="top" data-toggle="tooltip" title="Tambah">
+                                <p data-placement="top" data-toggle="tooltip" title="SPK">
                                     <button @click="cetakspk(transaksi.Id_Transaksi)" 
                                     class="btn btn-success" data-title="Cetak_SPK" :disabled="transaksi.Status !== 0"
                                     data-toggle="modal" data-target="#Cetak_SPK">
+                                        <i class="far fa-file-pdf"></i>
+                                    </button>
+                                </p>
+                            </td>
+                            <td class="text-center">
+                                <p data-placement="top" data-toggle="tooltip" title="Nota Lunas">
+                                    <button @click="cetaknotalunas(transaksi.Id_Transaksi)" 
+                                    class="btn btn-warning" data-title="Cetak_Nota_Lunas" :disabled="transaksi.Status !== 0"
+                                    data-toggle="modal" data-target="#Cetak_Nota_Lunas">
                                         <i class="far fa-file-pdf"></i>
                                     </button>
                                 </p>
@@ -1317,8 +1327,135 @@
                 </div>
             </div>
         </div>
+        <!-- EDIT DETAIL TRANSAKSI SPAREPART -->
+        <div class="modal fade" id="Edit_Detail_Sparepart" tabindex="-1" role="dialog" 
+            aria-labelledby="Edit_Detail_Sparepart" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Edit Transaksi Penjualan Sparepart</h4>
+                        <button type="button" class="close" data-dismiss="modal" 
+                            aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mt-3"> 
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Sparepart</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Pilih Sparepart --</option>
+                                <option v-bind:key="spareparts['Kode_Sparepart']" 
+                                v-on:change="getSelectedIndex"
+                                v-for="spareparts in sparepart" 
+                                :value="spareparts.Kode_Sparepart" >{{spareparts.Nama_Sparepart}}</option>
+                            </select>
+
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Tipe</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Tipe Sparepart --</option>
+                                <option v-bind:key="spareparts['Kode_Sparepart']" 
+                                v-on:change="getSelectedIndex"
+                                v-for="spareparts in sparepart" 
+                                :value="spareparts.Kode_Sparepart" disabled>{{spareparts.Tipe_Barang}}</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group mt-3"> 
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Jumlah</span>
+                            </div>  
+                            <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Jumlah Sparepart --</option>
+                                <option v-bind:key="spareparts['Kode_Sparepart']" 
+                                v-on:change="getSelectedIndex"
+                                v-for="spareparts in sparepart" 
+                                :value="spareparts.Kode_Sparepart" disabled>{{spareparts.Jumlah_Sparepart}}</option>
+                            </select>
+
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2" disabled>Harga Jual</span>
+                            </div> 
+                            <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
+                                <option disabled="disabled" selected="selected" 
+                                value="Pilih ">-- Harga Jual --</option>
+                                <option v-bind:key="spareparts['Kode_Sparepart']" 
+                                v-on:change="getSelectedIndex"
+                                v-for="spareparts in sparepart" 
+                                :value="spareparts.Kode_Sparepart" disabled>{{spareparts.Harga_Jual}}</option>
+                            </select>
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend d-block" style="width: 100px;">
+                                <span class="input-group-text" id="basic-addon2">Jumlah</span>
+                            </div>
+                            <input type="number" v-model="jumlah" 
+                            class="form-control" placeholder="Masukkan Jumlah Sparepart Yang Ingin Dibeli" 
+                            aria-label="jumlah" aria-describedby="basic-addon2" 
+                            id="jumlah" name="jumlah" required>
+                        </div>
+
+                        <div class="col-lg-6 mt-3">
+                            <button type="submit" class="btn btn-success btn" @click="sparepartHandler(sparepart)">Add Sparepart</button>
+                        </div>
+
+                        <div class="input-group mt-3 w-400">
+                            <div class="row">
+                                <div class="col-12 mr-2">
+                                    <div class="list-group mr-2" v-for="spareparts in sparepartdata" :key="spareparts['Kode_Sparepart']">
+                                        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+                                            {{spareparts.Kode_Sparepart + '-' + spareparts.Nama_Sparepart}}          
+                                            <button type="submit" class="btn btn-danger" style="margin-left: 200px"
+                                            @click="deleteListSparepart(spareparts.Kode_Sparepart)">Delete</button>
+                                            <br>     
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer mt-3" >
+                            <button type="submit" class="btn btn-primary btn-lg w-100" 
+                            data-dismiss="modal" @click="addetailspareparts()">Simpan Perubahan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- END OF DELETE DETAIL JASA -->
+        <!-- TRANSAKSI PEMBAYARAN -->
+        <!-- <div class="modal fade" id="Cetak_Nota_Lunas" tabindex="-1" role="dialog" 
+            aria-labelledby="Edit_Detail_Sparepart" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Transaksi Pembayaran</h4>
+                        <button type="button" class="close" data-dismiss="modal" 
+                            aria-hidden="true" aria-label="Close" style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mt-3"> 
+                           </div> 
+                            
+
+                       <div class="modal-footer mt-3" >
+                            <button type="submit" class="btn btn-primary btn-lg w-100" 
+                            data-dismiss="modal" @click="addetailspareparts()">Simpan Perubahan</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        </div>
+        <!-- END OF TRANSAKSI PEMBAYARAN -->
 </template>
 <script>
 import Http from '../../service/Http'
@@ -1707,6 +1844,14 @@ export default {
         async cetakspk(id) {
             try {
                 await Http.download('/api/cetak_spk/'+id);
+                this.getallpenjualan()
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async cetaknotalunas(id) {
+            try {
+                await Http.download('/api/cetaknotalunasWeb/'+id);
                 this.getallpenjualan()
             } catch (err) {
                 console.log(err)

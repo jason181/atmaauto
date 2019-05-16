@@ -149,15 +149,23 @@ Route::patch('/detail_jasas/update/{id}','DetailJasaController@update');
 Route::delete('/detail_jasas/delete/{id}','DetailJasaController@destroy');
 
 
-//Laporan
+//Laporan Web
 Route::get('/cetak_surat_pemesanan/{id}', 'LaporanController@cetakSuratPemesanan');
 Route::get('/cetak_spk/{id}', 'LaporanController@cetakSPK');
 Route::get('/test-surat-pemesanan/{id}', 'LaporanController@cetakSuratPemesanan');
 Route::get('/pendapatan_bulanan','LaporanController@pendapatanBulanan');
 Route::get('/pendapatan_tahunan','LaporanController@pendapatanTahunan');
-
-Route::get('/cetakNotaLunas/{id}','LaporanController@cetakNotaLunas');
+Route::get('/sparepart_terlaris','LaporanController@sparepartterlaris');
+Route::get('/penjualan_jasa','LaporanController@penjualanjasa');
+Route::get('/pengeluaran_bulanan','LaporanController@pengeluaranbulanan');
+Route::get('/sisa_stok','LaporanController@sisastok');
+//Laporan Desktop
+Route::get('/sparepart_terlaris_desktop','LaporanController@sparepartterlarisDesktop');
+Route::get('/pendapatan_bulanan_desktop','LaporanController@pendapatanBulananDesktop');
+//Cetak Web
 Route::get('/cetaknotalunasWeb/{id}','LaporanController@cetaknotalunasWeb');
+//Cetak Desktop
+Route::get('/cetakNotaLunas/{id}','LaporanController@cetakNotaLunas');
 Route::get('/cetakSuratPemesananDesktop/{id}','LaporanController@cetakSuratPemesananDesktop');
 Route::get('/cetakSuratPerintahKerjaDesktop/{id}','LaporanController@cetakSuratPerintahKerjaDesktop');
 
