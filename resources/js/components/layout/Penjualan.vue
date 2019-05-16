@@ -136,6 +136,16 @@
                                 </p>
                             </td>
                             <td class="text-center">
+                                <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                    <button class="btn btn-primary" 
+                                        @click="datatransaksihandler(transaksi)" 
+                                        data-title="Edit_Transaksi" data-toggle="modal" 
+                                        data-target="#Edit_Transaksi">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </p>
+                            </td>
+                            <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Delete">
                                     <button @click="datatransaksihandler(transaksi)" 
                                         class="btn btn-danger"  data-title="Delete_Penjualan" 

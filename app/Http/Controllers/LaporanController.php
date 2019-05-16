@@ -356,9 +356,6 @@ class LaporanController extends Controller
     }
 
     public function cetaknotalunasWeb($id){
-        $penjualan = Transaksi_Penjualan::find($id);
-        $penjualan->Status = '3';
-        $penjualan->save();
 
         $spareparts = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, s.Kode_Sparepart as Kode, s.Nama_Sparepart as Nama, s.Merk_Sparepart as Merk, s.Rak_Sparepart as Rak, d.Jumlah as Jumlah, d.Harga_Satuan as Harga_Satuan, d.Subtotal_Detail_Sparepart as Subtotal_Detail_Sparepart
         FROM transaksi_penjualans t 
@@ -420,17 +417,9 @@ class LaporanController extends Controller
         {
             $j_status = true;
         }
-
-        if($montirsparepart !== [] )
-        {
-            // dd($montirsparepart);
-            $montir = $montirsparepart[0]->Montir;
-        }
-        else
-        {
-            // dd($montirjasa);
-            $montir = $montirjasa[0]->Montir;
-        }
+        
+        
+        
 
         $kode = DB::select("SELECT t.Id_Transaksi, CONCAT(t.Jenis_Transaksi,'-',t.created_at,'-',t.Id_Transaksi) AS 'Kode_Transaksi'
         FROM transaksi_penjualans t 
@@ -463,8 +452,7 @@ class LaporanController extends Controller
 
         $pdf = PDF::loadView('cetak_nota_lunas',
         ['spareparts' => $spareparts,'jasas' => $jasas, 
-        'konsumens'=>$konsumens, 'cs'=>$cs, 'kasir'=>$kasir,
-        'montir' => $montir, 'kode' => $kode, 
+        'konsumens'=>$konsumens, 'cs'=>$cs, 'kasir'=>$kasir,'kode' => $kode, 
         's_status'=>$s_status, 'j_status'=>$j_status,
         'motor' => $motor,'total'=>$total]);
         $pdf->setPaper([0,0,550,900]);

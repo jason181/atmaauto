@@ -7834,6 +7834,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -57317,6 +57327,38 @@ var render = function() {
                             }
                           },
                           [_c("i", { staticClass: "far fa-file-pdf" })]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "p",
+                      {
+                        attrs: {
+                          "data-placement": "top",
+                          "data-toggle": "tooltip",
+                          title: "Edit"
+                        }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: {
+                              "data-title": "Edit_Transaksi",
+                              "data-toggle": "modal",
+                              "data-target": "#Edit_Transaksi"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.datatransaksihandler(transaksi)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-edit" })]
                         )
                       ]
                     )
