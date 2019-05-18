@@ -241,7 +241,7 @@ class TransaksiPenjualanController extends RestController
             $jasa->Id_Transaksi        = $request->get('Id_Transaksi');
             $jasa->Id_Jasa_Montir      = $montir->Id_Jasa_Montir;
             $jasa->Id_Jasa             = $request->get("Id_Jasa");
-            $jasa->Id_Jasa             = $request->get("Subtotal_Detail_Jasa");
+            $jasa->Subtotal_Detail_Jasa             = $request->get("Subtotal_Detail_Jasa");
             $jasa->save();
             return response()->json([
                 'status' => (bool) $jasa,
