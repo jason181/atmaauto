@@ -825,4 +825,47 @@ class LaporanController extends Controller
                 'message' => $datas ? 'Success' : 'Error',
             ]);
         }
+
+        public function sisaStok($year,$tipe)
+        {
+            $datas = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan, COALESCE((select (
+                (select Jumlah_Sparepart + (select sum(Jumlah) from detail_spareparts join spareparts on detail_spareparts.Kode_Sparepart=spareparts.Kode_Sparepart
+                where spareparts.Tipe_Barang = $tipe and EXTRACT(YEAR FROM detail_spareparts.created_at) = $year)
+                 - (select sum(Jumlah) from detail_pengadaans join spareparts on detail_pengadaans.Kode_Sparepart=spareparts.Kode_Sparepart where spareparts.Tipe_Barang = $tipe and EXTRACT(YEAR FROM detail_pengadaans.created_at) = $year) from spareparts where Tipe_Barang = $tipe)
+                 - (select sum(Jumlah) from detail_spareparts join spareparts on detail_spareparts.Kode_Sparepart=spareparts.Kode_Sparepart where spareparts.Tipe_Barang = $tipe and EXTRACT(Month FROM detail_spareparts.created_at) = bulan) 
+                + (select sum(Jumlah) from detail_pengadaans join spareparts on detail_pengadaans.Kode_Sparepart=spareparts.Kode_Sparepart where spareparts.Tipe_Barang = $tipe and EXTRACT(Month FROM detail_pengadaans.created_at) = bulan))  AS JumlahSparepartSisa 
+                from spareparts where Tipe_Barang = $tipe),'0') AS JumlahStokSisa
+                 FROM(
+                        SELECT '01' AS
+                                bulan
+                                UNION SELECT '02' AS
+                                bulan
+                                UNION SELECT '03' AS
+                                bulan
+                                UNION SELECT '04' AS
+                                bulan
+                                UNION SELECT '05' AS
+                                bulan
+                                UNION SELECT '06' AS
+                                bulan
+                                UNION SELECT '07'AS
+                                bulan
+                                UNION SELECT '08'AS
+                                bulan
+                                UNION SELECT '09' AS
+                                bulan
+                                UNION SELECT '10' AS
+                                bulan
+                                UNION SELECT '11' AS
+                                bulan
+                                UNION SELECT '12' AS
+                                bulan
+                            ) AS m;");
+
+            return response()->json([
+                'datas' => (bool) $datas,
+                'datas' => $datas,
+                'message' => $datas ? 'Success' : 'Error',
+            ]);
+        }
     }
