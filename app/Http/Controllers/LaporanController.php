@@ -193,9 +193,9 @@ class LaporanController extends Controller
 	    return $pdf->stream();
     }
 
-    public function pendapatanBulananDesktop()
+    public function pendapatanBulananDesktop($year)
     {
-        $data = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan, 
+        $datas = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan, 
         COALESCE(SUM(d.Subtotal_Detail_Sparepart),0) as Sparepart, 
         COALESCE(SUM(e.Subtotal_Detail_Jasa),0) as Service,COALESCE((p.Total),0) as Total 
         FROM (SELECT '01' AS
@@ -225,13 +225,13 @@ class LaporanController extends Controller
                             ) AS m LEFT JOIN transaksi_penjualans p ON MONTHNAME(p.Tanggal_Transaksi) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
                             LEFT JOIN detail_spareparts d ON p.Id_Transaksi=d.Id_Transaksi
                             LEFT JOIN detail_jasas e ON p.Id_Transaksi=e.Id_Transaksi
-                            where YEAR(p.Tanggal_Transaksi)='2019' or YEAR(P.Tanggal_Transaksi) is null
+                            where YEAR(p.Tanggal_Transaksi)=$year or YEAR(P.Tanggal_Transaksi) is null
                             OR p.Status = '3' 
                             GROUP BY m.bulan, YEAR(p.Tanggal_Transaksi)");
 
         return response()->json([
             'status' => (bool) $datas,
-            'data' => $datas,
+            'datas' => $datas,
             'message' => $datas ? 'Success' : 'Error'
         ]);
     }
@@ -538,6 +538,22 @@ class LaporanController extends Controller
 	    return $pdf->stream();
     }
 
+    public function pendapatanTahunanDesktop()
+    {
+        $datas = DB::select("SELECT YEAR(c.Tanggal_Transaksi) AS Tahun, d.Nama_Cabang AS Cabang, SUM(c.Total) AS Total 
+        FROM pegawai_on_duties a join pegawais b on b.Id_Pegawai=a.Id_Pegawai 
+        JOIN transaksi_penjualans c on c.Id_Transaksi=a.Id_Transaksi
+        join cabangs d on d.Id_Cabang=b.Id_Cabang
+        WHERE b.Id_Role = 1 or b.Id_Role = 2
+        GROUP BY YEAR(c.Tanggal_Transaksi),d.Nama_Cabang");
+
+        return response()->json([
+            'datas' => (bool) $datas,
+            'datas' => $datas,
+            'message' => $datas ? 'Success' : 'Error',
+        ]);
+    }
+
     public function sparepartterlaris(){
         $datas = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan, 
         Coalesce((select s.Nama_Sparepart 
@@ -629,6 +645,38 @@ class LaporanController extends Controller
         return $pdf->stream();
     }
 
+    public function penjualanjasaDesktop(){
+        $datas = DB::select("SELECT
+            p.Merk AS Merk,
+            p.Tipe AS Tipe,
+            s.Nama_Jasa AS NamaService,
+            Count( t.Tanggal_Transaksi ) AS JumlahService,
+            YEAR(t.Tanggal_Transaksi) AS Tahun ,
+            MONTHNAME(t.Tanggal_Transaksi) AS Bulan
+        FROM
+            motors AS p
+            INNER JOIN motor_konsumens AS q ON q.Id_Motor = p.Id_Motor
+            INNER JOIN transaksi_penjualans AS t ON t.Id_Konsumen = q.Id_Konsumen 
+            INNER JOIN detail_jasas AS r ON r.Id_Transaksi = t.Id_Transaksi
+            INNER JOIN jasas AS s ON s.Id_Jasa = r.Id_Jasa
+        WHERE
+            MONTHNAME( t.Tanggal_Transaksi ) = 'May' 
+            AND YEAR ( t.Tanggal_Transaksi ) = 2019 
+            AND t.Status = '3'
+            AND t.Jenis_Transaksi = 'SV'
+            OR t.Jenis_Transaksi = 'SS'
+        GROUP BY
+            p.Merk,
+            p.Tipe,
+            s.Nama_Jasa");
+
+        return response()->json([
+            'datas' => (bool) $datas,
+            'datas' => $datas,
+            'message' => $datas ? 'Success' : 'Error',
+        ]);
+    }
+
     public function pengeluaranbulanan(){
         $datas = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan,
         COALESCE(SUM(p.Total_Harga),0) as 'Jumlah_Pengeluaran'
@@ -672,5 +720,88 @@ class LaporanController extends Controller
             ['datas'=>$datas,'date'=>$date]);
             $pdf->setPaper([0,0,550,900]);
             return $pdf->stream();
+        }
+
+        public function pengeluaranbulananDesktop(){
+            $datas = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan,
+            COALESCE(SUM(p.Total_Harga),0) as JumlahPengeluaran
+            FROM (SELECT '01' AS
+                    bulan
+                    UNION SELECT '02' AS
+                    bulan
+                    UNION SELECT '03' AS
+                    bulan
+                    UNION SELECT '04' AS
+                    bulan
+                    UNION SELECT '05' AS
+                    bulan
+                    UNION SELECT '06' AS
+                    bulan
+                    UNION SELECT '07'AS
+                    bulan
+                    UNION SELECT '08'AS
+                    bulan
+                    UNION SELECT '09' AS
+                    bulan
+                    UNION SELECT '10' AS
+                    bulan
+                    UNION SELECT '11' AS
+                    bulan
+                    UNION SELECT '12' AS
+                    bulan
+                    ) AS m LEFT JOIN transaksi_pengadaans p ON MONTHNAME(p.Tanggal_Pengadaan) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
+                    WHERE p.Status_Pengadaan = '2' 
+                    OR YEAR(p.Tanggal_Pengadaan)='2019' 
+                    OR YEAR(P.Tanggal_Pengadaan) is null
+                    GROUP BY m.bulan, YEAR(p.Tanggal_Pengadaan)");
+                
+                return response()->json([
+                    'datas' => (bool) $datas,
+                    'datas' => $datas,
+                    'message' => $datas ? 'Success' : 'Error',
+                ]);
+            }
+
+        public function sisastokDesktop()
+        {
+            $datas = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as 'Bulan', COALESCE((select (
+                (select Jumlah_Sparepart + (select sum(Jumlah) from detail_spareparts join spareparts on detail_spareparts.Kode_Sparepart=spareparts.Kode_Sparepart
+                where spareparts.Tipe_Barang = 'Sparepart Roda' and EXTRACT(YEAR FROM detail_spareparts.created_at) = '2019')
+                 - (select sum(Jumlah) from detail_pengadaans join spareparts on detail_pengadaans.Kode_Sparepart=spareparts.Kode_Sparepart where spareparts.Tipe_Barang = 'Sparepart Roda' and EXTRACT(YEAR FROM detail_pengadaans.created_at) = '2019') from spareparts where Tipe_Barang = 'Sparepart Roda')
+                 - (select sum(Jumlah) from detail_spareparts join spareparts on detail_spareparts.Kode_Sparepart=spareparts.Kode_Sparepart where spareparts.Tipe_Barang = 'Sparepart Roda' and EXTRACT(Month FROM detail_spareparts.created_at) = bulan) 
+                + (select sum(Jumlah) from detail_pengadaans join spareparts on detail_pengadaans.Kode_Sparepart=spareparts.Kode_Sparepart where spareparts.Tipe_Barang = 'Sparepart Roda' and EXTRACT(Month FROM detail_pengadaans.created_at) = bulan))  AS 'Jumlah Sparepart Sisa' 
+                from spareparts where Tipe_Barang = 'Sparepart Roda'),'0') AS 'JumlahStokSisa'
+                 FROM(
+                        SELECT '01' AS
+                                bulan
+                                UNION SELECT '02' AS
+                                bulan
+                                UNION SELECT '03' AS
+                                bulan
+                                UNION SELECT '04' AS
+                                bulan
+                                UNION SELECT '05' AS
+                                bulan
+                                UNION SELECT '06' AS
+                                bulan
+                                UNION SELECT '07'AS
+                                bulan
+                                UNION SELECT '08'AS
+                                bulan
+                                UNION SELECT '09' AS
+                                bulan
+                                UNION SELECT '10' AS
+                                bulan
+                                UNION SELECT '11' AS
+                                bulan
+                                UNION SELECT '12' AS
+                                bulan
+                            ) AS m;");
+
+            return response()->json([
+                'datas' => (bool) $datas,
+                'datas' => $datas,
+                'message' => $datas ? 'Success' : 'Error',
+            ]);
         }
     }

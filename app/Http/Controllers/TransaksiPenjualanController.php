@@ -80,6 +80,12 @@ class TransaksiPenjualanController extends RestController
         return $this->sendResponse($response,201);
     }
 
+    public function transaksiunprocess(){
+        $penjualan=Transaksi_Penjualan::where('Status',0)->get();
+        $response=$this->generateCollection($penjualan);
+        return $this->sendResponse($response,201);
+    }
+
     
 
     public function showByIdMotorKonsumen($id)

@@ -124,6 +124,7 @@ Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
 // Route::group(['middleware' => 'token'], function () {
     Route::get('/transaksi_penjualans/showByIdMotorKonsumen/{id}','TransaksiPenjualanController@showByIdMotorKonsumen');
     Route::get('/transaksi_penjualans/transaksikeluar','TransaksiPenjualanController@transaksikeluar');
+    Route::get('/transaksi_penjualans/unprocessed','TransaksiPenjualanController@transaksiunprocess');
     Route::get('/transaksi_penjualans/processed','TransaksiPenjualanController@processed');
     Route::get('/transaksi_penjualans/finished','TransaksiPenjualanController@finished');
     Route::post('/transaksi_penjualans/store','TransaksiPenjualanController@store');
@@ -160,7 +161,11 @@ Route::get('/pengeluaran_bulanan','LaporanController@pengeluaranbulanan');
 Route::get('/sisa_stok','LaporanController@sisastok');
 //Laporan Desktop
 Route::get('/sparepart_terlaris_desktop','LaporanController@sparepartterlarisDesktop');
-Route::get('/pendapatan_bulanan_desktop','LaporanController@pendapatanBulananDesktop');
+Route::get('/pendapatan_bulanan_desktop/{year}','LaporanController@pendapatanBulananDesktop');
+Route::get('/pendapatan_tahunan_desktop','LaporanController@pendapatanTahunanDesktop');
+Route::get('/pengeluaran_bulanan_desktop','LaporanController@pengeluaranbulananDesktop');
+Route::get('/penjualan_jasa_desktop','LaporanController@penjualanjasaDesktop');
+Route::get('/sisa_stok_desktop','LaporanController@sisastokDesktop');
 //Cetak Web
 Route::get('/cetaknotalunasWeb/{id}','LaporanController@cetaknotalunasWeb');
 //Cetak Desktop
