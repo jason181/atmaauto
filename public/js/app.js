@@ -8142,7 +8142,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     sparepartHandler: function sparepartHandler(sparepart) {
       var _this = this;
 
-      var object = sparepart[this.index];
+      // var object = sparepart[this.index]
       this.temp.Kode_Sparepart = this.Sparepart.Kode_Sparepart;
       this.temp.Id_Transaksi = this.Id_Detail_Modal;
       var data = this.sparepart.find(function (obj) {
