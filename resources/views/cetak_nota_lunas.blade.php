@@ -11,6 +11,7 @@
                 /* border-style:dashed; */
             }
             table {
+                width:100%;
                 border-collapse: collapse;
             }
             .tar{

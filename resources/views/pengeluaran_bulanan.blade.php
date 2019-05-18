@@ -9,10 +9,17 @@
             table,th,td{
                 /* border:1px solid black; */
                 /* border-style:dashed; */
+                padding:3px;
             }
             table {
                 border-collapse: collapse;
                 width:100%;
+            }
+            .tac{
+                text-align:center;
+            }
+            .tar{
+                text-align:right;
             }
         </style>
     </head>
@@ -49,30 +56,31 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="5" style="margin-top:1px solid black;font-weight:bold;text-align:center;padding:5px;">LAPORAN PENDAPATAN BULANAN</td>
+                        <td colspan="5" style="border-top:1px solid black;font-weight:bold;text-align:center;padding:5px;">LAPORAN PENGELUARAN BULANAN</td>
                     </tr>
                     <tr>
-                        <td class="mytable">No</td>
-                        <td class="mytable">Tahun</td>
-                        <td class="mytable">Cabang</td>
-                        <td class="mytable">Total</td>
+                        <td colspan="5" style="padding-bottom:10px;">Tahun : 2019</td>
+                    </tr>
+                    <tr>
+                        <td class="mytable tac" style="width:15%">No</td>
+                        <td class="mytable tac" colspan="2">Bulan</td>
+                        <td class="mytable tac" colspan="2">Jumlah Pengeluaran</td>
                     </tr>
                     {{$i=0}}
+                    {{$jumlah=0}}
                     @foreach($datas as $data)
                     {{$i++}}
+                    {{$jumlah+=$data->Jumlah_Pengeluaran}}
                     <tr>
-                        <td class="mytable">{{$i++}}</td>
-                        <td class="mytable">{{$data->Tahun}}</td>
-                        <td class="mytable">{{$data->Cabang}}</td>
-                        <td class="mytable">{{$data->Total}}</td>
+                        <td class="mytable tac" style="width:10%">{{$i}}</td>
+                        <td class="mytable" colspan="2">{{$data->Bulan}}</td>
+                        <td class="mytable tar" colspan="2">{{number_format($data->Jumlah_Pengeluaran)}}</td>
                     </tr>
-                    @endfor
+                    @endforeach
                     <tr>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td style="text-align:right;">TOTAL</td>
-                        <td>{{$total[0]->Total_Transaksi}}</td>
+                        <td class="tar" style="font-weight:bold" colspan="2">TOTAL</td>
+                        <td class="mytable tar" style="font-size:20pt; font-weight:bold" colspan="2">{{number_format($jumlah)}}</td>
                     </tr>
                     <tr class="tar">
                         <td colspan="5" style="padding-top:50px;">Dicetak Tanggal {{date('d M Y', strtotime($date))}}</td>
@@ -81,5 +89,4 @@
             </table>
         </div>
     </body>
-
 </html>

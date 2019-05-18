@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
+use Carbon\Carbon;
 
 use App\Transaksi_Pengadaan;
 use App\Transaksi_Penjualan;
@@ -60,7 +61,7 @@ class LaporanController extends Controller
         INNER JOIN spareparts s ON s.Kode_Sparepart = d.Kode_Sparepart
         WHERE t.Id_Transaksi = $id");
 
-        if(empty($spareparts))
+        if($spareparts == [])
         {
             $s_status = false;
         }
@@ -76,7 +77,7 @@ class LaporanController extends Controller
         INNER JOIN jasas j2 ON j2.Id_Jasa = j.Id_Jasa
         WHERE t.Id_Transaksi = $id");
 
-        if(empty($jasas))
+        if($jasas == [])
         {
             $j_status = false;
         }
@@ -181,13 +182,13 @@ class LaporanController extends Controller
                             LEFT JOIN detail_spareparts d ON p.Id_Transaksi=d.Id_Transaksi
                             LEFT JOIN detail_jasas e ON p.Id_Transaksi=e.Id_Transaksi
                             where YEAR(p.Tanggal_Transaksi)='2019' or YEAR(P.Tanggal_Transaksi) is null
-                            OR p.Status = '3' 
+                            OR p.Status = '3' AND p.deleted_at is null 
                             GROUP BY m.bulan, YEAR(p.Tanggal_Transaksi)");
-
+        $date=Carbon::now();
         $total= DB::select("SELECT SUM(Total) as Total_Transaksi FROM transaksi_penjualans");
         // return $data;
         $pdf = PDF::loadView('pendapatan_bulanan',
-        ['data'=>$data, 'total'=>$total]);
+        ['data'=>$data, 'total'=>$total, 'date'=>$date]);
         $pdf->setPaper([0,0,550,900]);
 	    return $pdf->stream();
     }
@@ -506,20 +507,6 @@ class LaporanController extends Controller
         INNER JOIN motor_konsumens p ON p.Id_Motor_Konsumen = m.Id_Motor_Konsumen
         INNER JOIN motors n ON n.Id_Motor = p.Id_Motor
         WHERE t.Id_Transaksi = $id AND t.Status = '3'");
-
-        // return response()->json([
-        //     'spareparts' => (bool) $spareparts,
-        //     'spareparts' => $spareparts,
-        //     'jasas' => $jasas,
-        //     'konsumens' => $konsumens,
-        //     'cs' => $cs,
-        //     'montir' => $montir,
-        //     'motor' => $motor,
-        //     'total' => $total,
-        //     'kode' => $kode,
-        //     'message' => $spareparts ? 'Success' : 'Error',
-        // ]);
-
         
         $pdf = PDF::loadView('cetak_nota_lunas',
         ['spareparts' => $spareparts,'jasas' => $jasas, 'montir' => $montir,
@@ -544,9 +531,9 @@ class LaporanController extends Controller
             'datas' => $datas,
             'message' => $datas ? 'Success' : 'Error',
         ]);
-
+        $date=Carbon::now();
         $pdf = PDF::loadView('pendapatan_tahunan',
-        ['datas'=>$datas]);
+        ['datas'=>$datas,'date'=>$date]);
         $pdf->setPaper([0,0,550,900]);
 	    return $pdf->stream();
     }
@@ -593,13 +580,14 @@ class LaporanController extends Controller
                        bulan
                 ) AS m;");
 
-        return response()->json([
-                'datas' => (bool) $datas,
-                'datas' => $datas,
-                'message' => $datas ? 'Success' : 'Error',
-            ]);
+        // return response()->json([
+        //         'datas' => (bool) $datas,
+        //         'datas' => $datas,
+        //         'message' => $datas ? 'Success' : 'Error',
+        //     ]);
+        $date=Carbon::now();
         $pdf = PDF::loadView('sparepart_terlaris',
-        ['datas'=>$datas]);
+        ['datas'=>$datas,'date'=>$date]);
         $pdf->setPaper([0,0,550,900]);
         return $pdf->stream();
     }
@@ -634,15 +622,16 @@ class LaporanController extends Controller
             'datas' => $datas,
             'message' => $datas ? 'Success' : 'Error',
         ]);
+        $date=Carbon::now();
         $pdf = PDF::loadView('penjualan_jasa',
-        ['datas'=>$datas]);
+        ['datas'=>$datas,'date'=>$date]);
         $pdf->setPaper([0,0,550,900]);
         return $pdf->stream();
     }
 
     public function pengeluaranbulanan(){
         $datas = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan,
-        COALESCE(SUM(p.Total_Harga),0) as 'Jumlah Pengeluaran'
+        COALESCE(SUM(p.Total_Harga),0) as 'Jumlah_Pengeluaran'
         FROM (SELECT '01' AS
                 bulan
                 UNION SELECT '02' AS
@@ -673,13 +662,14 @@ class LaporanController extends Controller
                 OR YEAR(P.Tanggal_Pengadaan) is null
                 GROUP BY m.bulan, YEAR(p.Tanggal_Pengadaan)");
             
-            return response()->json([
-                'datas' => (bool) $datas,
-                'datas' => $datas,
-                'message' => $datas ? 'Success' : 'Error',
-            ]);
-            $pdf = PDF::loadView('penjualan_jasa',
-            ['datas'=>$datas]);
+            // return response()->json([
+            //     'datas' => (bool) $datas,
+            //     'datas' => $datas,
+            //     'message' => $datas ? 'Success' : 'Error',
+            // ]);
+            $date=Carbon::now();
+            $pdf = PDF::loadView('pengeluaran_bulanan',
+            ['datas'=>$datas,'date'=>$date]);
             $pdf->setPaper([0,0,550,900]);
             return $pdf->stream();
         }
