@@ -12,6 +12,13 @@
             }
             table {
                 border-collapse: collapse;
+                width:100%;
+            }
+            .tac{
+                text-align:center;
+            }
+            .tar{
+                text-align:right;
             }
         </style>
     </head>
@@ -60,7 +67,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="5" style="margin-top:1px solid black;font-weight:bold;text-align:center;padding:5px;">LAPORAN PENDAPATAN BULANAN</td>
+                        <td colspan="5" style="margin-top:1px solid black;font-weight:bold;text-align:center;padding:5px;border-top:1px solid black;">LAPORAN PENDAPATAN BULANAN</td>
                     </tr>
                     <tr>
                         <td style="padding-left:2px;">Tahun :</td>
@@ -70,33 +77,33 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td  class="mytable">No</td>
-                        <td class="mytable">Bulan</td>
-                        <td class="mytable">Services</td>
-                        <td class="mytable">Spareparts</td>
-                        <td class="mytable">Total</td>
+                        <td class="mytable tac" width="10%">No</td>
+                        <td class="mytable tac">Bulan</td>
+                        <td class="mytable tac">Services</td>
+                        <td class="mytable tac">Spareparts</td>
+                        <td class="mytable tac">Total</td>
                     </tr>
                     @for($i=0;$i<=11;$i++)
-                    
                     <tr>
-                        <td class="mytable">{{$i+1}}</td>
+                        <td class="mytable tac">{{$i+1}}</td>
                         <td class="mytable">{{$data[$i]->Bulan}}</td>
-                        <td class="mytable">{{$data[$i]->Service}}</td>
-                        <td class="mytable"> {{$data[$i]->Sparepart}} </td>
-                        <td class="mytable">{{$data[$i]->Total}}</td>
+                        <td class="mytable tar">{{number_format($data[$i]->Service)}}</td>
+                        <td class="mytable tar">{{number_format($data[$i]->Sparepart)}} </td>
+                        <td class="mytable tar">{{number_format($data[$i]->Total)}}</td>
                     </tr>
                     @endfor
                     <tr>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td style="text-align:right;">TOTAL</td>
-                        <td>{{$total[0]->Total_Transaksi}}</td>
+                        <td class="tar" style="font-weight:bold">TOTAL</td>
+                        <td class="tar" style="border:1px solid black; font-weight:bold">{{number_format($total[0]->Total_Transaksi)}}</td>
+                    </tr>
+                    <tr class="tar">
+                        <td colspan="5" style="padding-top:50px;">Dicetak Tanggal {{date('d M Y', strtotime($date))}}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </body>
-
-    
 </html>

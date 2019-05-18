@@ -11,6 +11,7 @@
             }
             table {
                 border-collapse: collapse;
+                width:100%;
             }
         </style>
     </head>
@@ -163,6 +164,4 @@
             </table>
         </div>
     </body>
-
-    
 </html>
