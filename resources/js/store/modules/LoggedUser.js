@@ -17,7 +17,7 @@ const state = {
       state.User.role = source.Nama_Role
       state.isLoggedIn = true
     },
-  
+    
     loggedOut (state) {
       state.isLoggedIn = false
     }
