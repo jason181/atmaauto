@@ -66,7 +66,12 @@ class PegawaiController extends RestController
         if(!is_null($request->Username)){
             $pegawai->Username = $request->Username;
         }
-
+        if(!is_null($request->Id_Role)){
+            $pegawai->Id_Role = $request->Id_Role;
+        }
+        if(!is_null($request->Id_Cabang)){
+            $pegawai->Id_Cabang = $request->Id_Cabang;
+        }
         $success = $pegawai->save();
         if(!$success){
             return response()->json('Error Update',500);
