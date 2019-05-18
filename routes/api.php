@@ -43,6 +43,7 @@ Route::delete('/jasas/delete/{id}', 'JasaController@destroy');
 
 //Pegawai
 Route::get('/pegawais', 'PegawaiController@index');
+Route::get('/pegawais/showmontirbycabang/{id}', 'PegawaiController@showmontirbycabang');
 Route::post('/pegawais/store', 'PegawaiController@store');
 Route::get('/pegawais/{id}', 'PegawaiController@showbyID');
 Route::get('/pegawais/showMontir','PegawaiController@showMontir');
