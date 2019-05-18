@@ -27,6 +27,13 @@ class PegawaiController extends RestController
         return $this->sendResponse($response,201);
     }
 
+    public function showmontirbycabang($id)
+    {
+        $pegawai = Pegawai::where('Id_Cabang',$id)->get();
+        $response=$this->generateCollection($pegawai);
+        return $this->sendResponse($response,201);
+    }
+
     public function store(Request $request)
     {
         $pegawai = Pegawai::create([
