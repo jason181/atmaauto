@@ -1,0 +1,232 @@
+<template>
+    <body>
+        <div class="container w-50 my-5">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <a href="#"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" style="font-size:18px;">
+                                    Laporan Serta Grafik Pendapatan Bulanan
+                                </button>
+                            </h5>
+                        </div>
+                    </a>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend d-block" style="width: 75px;">
+                                            <span class="input-group-text" id="basic-addon2">Tahun</span>
+                                        </div>
+                                        <select class="form-control" require>
+                                            <option value="2018" selected>2018</option>
+                                            <option value="2019">2019</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-success" style="float:right;">
+                                        <i class="far fa-file-pdf"></i> PRINT
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <a href="#"  data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" style="font-size:18px;">
+                                    Laporan Serta Grafik Pengeluaran Bulanan
+                                </button>
+                            </h5>
+                        </div>
+                    </a>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend d-block" style="width: 75px;">
+                                            <span class="input-group-text" id="basic-addon2">Tahun</span>
+                                        </div>
+                                        <select class="form-control" require>
+                                            <option value="2018" selected>2018</option>
+                                            <option value="2019">2019</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-success" style="float:right;">
+                                        <i class="far fa-file-pdf"></i> PRINT
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <a href="#"  data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" style="font-size:18px;">
+                                    Laporan Serta Grafik Sisa Stok Bulanan
+                                </button>
+                            </h5>
+                        </div>
+                    </a>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend d-block" style="width: 75px;">
+                                            <span class="input-group-text" id="basic-addon2">Tahun</span>
+                                        </div>
+                                        <select class="form-control" require>
+                                            <option value="2018" selected>2018</option>
+                                            <option value="2019">2019</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend d-block" style="width: 75px;">
+                                            <span class="input-group-text" id="basic-addon2">Tipe</span>
+                                        </div>
+                                        <select class="form-control" require>
+                                            <option value="Roda" selected>Roda</option>
+                                            <option value="Kelistrikan">Kelistrikan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-success" style="float:right;">
+                                        <i class="far fa-file-pdf"></i> PRINT
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <a href="#"  data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                        <div class="card-header" id="headingFour">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" style="font-size:18px;">
+                                    Laporan Serta Grafik Jumlah Penjualan Terbanyak Bulanan
+                                </button>
+                            </h5>
+                        </div>
+                    </a>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend d-block" style="width: 75px;">
+                                            <span class="input-group-text" id="basic-addon2">Tahun</span>
+                                        </div>
+                                        <select class="form-control" require>
+                                            <option value="2018" selected>2018</option>
+                                            <option value="2019">2019</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-success" style="float:right;">
+                                        <i class="far fa-file-pdf"></i> PRINT
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <a href="#"  data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                        <div class="card-header" id="headingFive">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" style="font-size:18px;">
+                                    Laporan Serta Grafik Pendapatan Cabang Tahunan
+                                </button>
+                            </h5>
+                        </div>
+                    </a>
+                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                   
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-success" style="float:right;">
+                                        <i class="far fa-file-pdf"></i> PRINT
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <a href="#"  data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                        <div class="card-header" id="headingSix">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" style="font-size:18px;">
+                                    Laporan Serta Grafik Penjualan Jasa
+                                </button>
+                            </h5>
+                        </div>
+                    </a>
+                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend d-block" style="width: 75px;">
+                                            <span class="input-group-text" id="basic-addon2">Bulan</span>
+                                        </div>
+                                        <select class="form-control" require>
+                                            <option value="Januari" selected>Januari</option>
+                                            <option value="Februari">Februari</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend d-block" style="width: 75px;">
+                                            <span class="input-group-text" id="basic-addon2">Tahun</span>
+                                        </div>
+                                        <select class="form-control" require>
+                                            <option value="2018" selected>2018</option>
+                                            <option value="2019">2019</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-success" style="float:right;">
+                                        <i class="far fa-file-pdf"></i> PRINT
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</template>

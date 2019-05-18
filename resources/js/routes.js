@@ -15,6 +15,7 @@ import Status from './components/layout/Status.vue';
 import Pengadaan from './components/layout/Pengadaan.vue';
 import Penjualan from './components/layout/Penjualan.vue';
 import History from './components/layout/History.vue';
+import Laporan from './components/layout/Laporan.vue';
 
 import { homedir } from 'os';
 
@@ -164,10 +165,24 @@ export const routes = [
         meta: { role: [
             'Admin'
         ]},
+        beforeEnter: middleware([
+            auth
+        ])
     },
     {
         name: 'Penjualan',
         path: '/penjualan',
         component: Penjualan,
+    },
+    {
+        name: 'Laporan',
+        path:'/laporan',
+        component: Laporan,
+        meta: { role: [
+            'Admin'
+        ]},
+        beforeEnter: middleware([
+            auth
+        ])
     },
 ]

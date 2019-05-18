@@ -12,6 +12,7 @@
             }
             table {
                 border-collapse: collapse;
+                width:100%;
             }
         </style>
     </head>
@@ -60,7 +61,7 @@
                     @foreach($datas as $data)
                     {{$i++}}
                     <tr>
-                        <td class="mytable">{{$i++}}</td>
+                        <td class="mytable">{{$i}}</td>
                         <td class="mytable">{{$data->Tahun}}</td>
                         <td class="mytable">{{$data->Cabang}}</td>
                         <td class="mytable">{{$data->Total}}</td>
@@ -72,6 +73,9 @@
                         <td></td>
                         <td style="text-align:right;">TOTAL</td>
                         <td>{{$total[0]->Total_Transaksi}}</td>
+                    </tr>
+                    <tr class="tar">
+                        <td colspan="5" style="padding-top:50px;">Dicetak Tanggal {{date('d M Y', strtotime($date))}}</td>
                     </tr>
                 </tbody>
             </table>

@@ -52700,6 +52700,767 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Laporan.vue?vue&type=template&id=68c21b71&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/Laporan.vue?vue&type=template&id=68c21b71& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("body", [
+      _c("div", { staticClass: "container w-50 my-5" }, [
+        _c(
+          "div",
+          { staticClass: "accordion", attrs: { id: "accordionExample" } },
+          [
+            _c("div", { staticClass: "card" }, [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href: "#",
+                    "data-toggle": "collapse",
+                    "data-target": "#collapseOne",
+                    "aria-expanded": "true",
+                    "aria-controls": "collapseOne"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "card-header", attrs: { id: "headingOne" } },
+                    [
+                      _c("h5", { staticClass: "mb-0" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-link",
+                            staticStyle: { "font-size": "18px" },
+                            attrs: { type: "button" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Laporan Serta Grafik Pendapatan Bulanan\n                            "
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "collapse show",
+                  attrs: {
+                    id: "collapseOne",
+                    "aria-labelledby": "headingOne",
+                    "data-parent": "#accordionExample"
+                  }
+                },
+                [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "input-group" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "input-group-prepend d-block",
+                              staticStyle: { width: "75px" }
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "input-group-text",
+                                  attrs: { id: "basic-addon2" }
+                                },
+                                [_vm._v("Tahun")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              staticClass: "form-control",
+                              attrs: { require: "" }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { value: "2018", selected: "" } },
+                                [_vm._v("2018")]
+                              ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "2019" } }, [
+                                _vm._v("2019")
+                              ])
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success",
+                            staticStyle: { float: "right" }
+                          },
+                          [
+                            _c("i", { staticClass: "far fa-file-pdf" }),
+                            _vm._v(" PRINT\n                                ")
+                          ]
+                        )
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card" }, [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href: "#",
+                    "data-toggle": "collapse",
+                    "data-target": "#collapseTwo",
+                    "aria-expanded": "true",
+                    "aria-controls": "collapseTwo"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "card-header", attrs: { id: "headingTwo" } },
+                    [
+                      _c("h5", { staticClass: "mb-0" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-link",
+                            staticStyle: { "font-size": "18px" },
+                            attrs: { type: "button" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Laporan Serta Grafik Pengeluaran Bulanan\n                            "
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "collapse",
+                  attrs: {
+                    id: "collapseTwo",
+                    "aria-labelledby": "headingTwo",
+                    "data-parent": "#accordionExample"
+                  }
+                },
+                [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "input-group" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "input-group-prepend d-block",
+                              staticStyle: { width: "75px" }
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "input-group-text",
+                                  attrs: { id: "basic-addon2" }
+                                },
+                                [_vm._v("Tahun")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              staticClass: "form-control",
+                              attrs: { require: "" }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { value: "2018", selected: "" } },
+                                [_vm._v("2018")]
+                              ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "2019" } }, [
+                                _vm._v("2019")
+                              ])
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success",
+                            staticStyle: { float: "right" }
+                          },
+                          [
+                            _c("i", { staticClass: "far fa-file-pdf" }),
+                            _vm._v(" PRINT\n                                ")
+                          ]
+                        )
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card" }, [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href: "#",
+                    "data-toggle": "collapse",
+                    "data-target": "#collapseThree",
+                    "aria-expanded": "true",
+                    "aria-controls": "collapseThree"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "card-header",
+                      attrs: { id: "headingThree" }
+                    },
+                    [
+                      _c("h5", { staticClass: "mb-0" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-link",
+                            staticStyle: { "font-size": "18px" },
+                            attrs: { type: "button" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Laporan Serta Grafik Sisa Stok Bulanan\n                            "
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "collapse",
+                  attrs: {
+                    id: "collapseThree",
+                    "aria-labelledby": "headingThree",
+                    "data-parent": "#accordionExample"
+                  }
+                },
+                [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "input-group" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "input-group-prepend d-block",
+                              staticStyle: { width: "75px" }
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "input-group-text",
+                                  attrs: { id: "basic-addon2" }
+                                },
+                                [_vm._v("Tahun")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              staticClass: "form-control",
+                              attrs: { require: "" }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { value: "2018", selected: "" } },
+                                [_vm._v("2018")]
+                              ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "2019" } }, [
+                                _vm._v("2019")
+                              ])
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "input-group" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "input-group-prepend d-block",
+                              staticStyle: { width: "75px" }
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "input-group-text",
+                                  attrs: { id: "basic-addon2" }
+                                },
+                                [_vm._v("Tipe")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              staticClass: "form-control",
+                              attrs: { require: "" }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { value: "Roda", selected: "" } },
+                                [_vm._v("Roda")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { attrs: { value: "Kelistrikan" } },
+                                [_vm._v("Kelistrikan")]
+                              )
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success",
+                            staticStyle: { float: "right" }
+                          },
+                          [
+                            _c("i", { staticClass: "far fa-file-pdf" }),
+                            _vm._v(" PRINT\n                                ")
+                          ]
+                        )
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card" }, [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href: "#",
+                    "data-toggle": "collapse",
+                    "data-target": "#collapseFour",
+                    "aria-expanded": "true",
+                    "aria-controls": "collapseFour"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "card-header",
+                      attrs: { id: "headingFour" }
+                    },
+                    [
+                      _c("h5", { staticClass: "mb-0" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-link",
+                            staticStyle: { "font-size": "18px" },
+                            attrs: { type: "button" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Laporan Serta Grafik Jumlah Penjualan Terbanyak Bulanan\n                            "
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "collapse",
+                  attrs: {
+                    id: "collapseFour",
+                    "aria-labelledby": "headingThree",
+                    "data-parent": "#accordionExample"
+                  }
+                },
+                [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "input-group" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "input-group-prepend d-block",
+                              staticStyle: { width: "75px" }
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "input-group-text",
+                                  attrs: { id: "basic-addon2" }
+                                },
+                                [_vm._v("Tahun")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              staticClass: "form-control",
+                              attrs: { require: "" }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { value: "2018", selected: "" } },
+                                [_vm._v("2018")]
+                              ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "2019" } }, [
+                                _vm._v("2019")
+                              ])
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success",
+                            staticStyle: { float: "right" }
+                          },
+                          [
+                            _c("i", { staticClass: "far fa-file-pdf" }),
+                            _vm._v(" PRINT\n                                ")
+                          ]
+                        )
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card" }, [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href: "#",
+                    "data-toggle": "collapse",
+                    "data-target": "#collapseFive",
+                    "aria-expanded": "true",
+                    "aria-controls": "collapseFive"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "card-header",
+                      attrs: { id: "headingFive" }
+                    },
+                    [
+                      _c("h5", { staticClass: "mb-0" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-link",
+                            staticStyle: { "font-size": "18px" },
+                            attrs: { type: "button" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Laporan Serta Grafik Pendapatan Cabang Tahunan\n                            "
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "collapse",
+                  attrs: {
+                    id: "collapseFive",
+                    "aria-labelledby": "headingFive",
+                    "data-parent": "#accordionExample"
+                  }
+                },
+                [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-md-4" }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success",
+                            staticStyle: { float: "right" }
+                          },
+                          [
+                            _c("i", { staticClass: "far fa-file-pdf" }),
+                            _vm._v(" PRINT\n                                ")
+                          ]
+                        )
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card" }, [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href: "#",
+                    "data-toggle": "collapse",
+                    "data-target": "#collapseSix",
+                    "aria-expanded": "true",
+                    "aria-controls": "collapseSix"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "card-header", attrs: { id: "headingSix" } },
+                    [
+                      _c("h5", { staticClass: "mb-0" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-link",
+                            staticStyle: { "font-size": "18px" },
+                            attrs: { type: "button" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Laporan Serta Grafik Penjualan Jasa\n                            "
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "collapse",
+                  attrs: {
+                    id: "collapseSix",
+                    "aria-labelledby": "headingSix",
+                    "data-parent": "#accordionExample"
+                  }
+                },
+                [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "input-group" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "input-group-prepend d-block",
+                              staticStyle: { width: "75px" }
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "input-group-text",
+                                  attrs: { id: "basic-addon2" }
+                                },
+                                [_vm._v("Bulan")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              staticClass: "form-control",
+                              attrs: { require: "" }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { value: "Januari", selected: "" } },
+                                [_vm._v("Januari")]
+                              ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "Februari" } }, [
+                                _vm._v("Februari")
+                              ])
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "input-group" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "input-group-prepend d-block",
+                              staticStyle: { width: "75px" }
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "input-group-text",
+                                  attrs: { id: "basic-addon2" }
+                                },
+                                [_vm._v("Tahun")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              staticClass: "form-control",
+                              attrs: { require: "" }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { value: "2018", selected: "" } },
+                                [_vm._v("2018")]
+                              ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "2019" } }, [
+                                _vm._v("2019")
+                              ])
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success",
+                            staticStyle: { float: "right" }
+                          },
+                          [
+                            _c("i", { staticClass: "far fa-file-pdf" }),
+                            _vm._v(" PRINT\n                                ")
+                          ]
+                        )
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            ])
+          ]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Login.vue?vue&type=template&id=34c49422&":
 /*!***************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layout/Login.vue?vue&type=template&id=34c49422& ***!
@@ -86367,6 +87128,59 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/layout/Laporan.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/layout/Laporan.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Laporan_vue_vue_type_template_id_68c21b71___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Laporan.vue?vue&type=template&id=68c21b71& */ "./resources/js/components/layout/Laporan.vue?vue&type=template&id=68c21b71&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _Laporan_vue_vue_type_template_id_68c21b71___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Laporan_vue_vue_type_template_id_68c21b71___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/layout/Laporan.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/Laporan.vue?vue&type=template&id=68c21b71&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/layout/Laporan.vue?vue&type=template&id=68c21b71& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Laporan_vue_vue_type_template_id_68c21b71___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Laporan.vue?vue&type=template&id=68c21b71& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layout/Laporan.vue?vue&type=template&id=68c21b71&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Laporan_vue_vue_type_template_id_68c21b71___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Laporan_vue_vue_type_template_id_68c21b71___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/layout/Login.vue":
 /*!**************************************************!*\
   !*** ./resources/js/components/layout/Login.vue ***!
@@ -87422,8 +88236,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_layout_Pengadaan_vue__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/layout/Pengadaan.vue */ "./resources/js/components/layout/Pengadaan.vue");
 /* harmony import */ var _components_layout_Penjualan_vue__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/layout/Penjualan.vue */ "./resources/js/components/layout/Penjualan.vue");
 /* harmony import */ var _components_layout_History_vue__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/layout/History.vue */ "./resources/js/components/layout/History.vue");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _components_layout_Laporan_vue__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/layout/Laporan.vue */ "./resources/js/components/layout/Laporan.vue");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_17__);
+
 
 
 
@@ -87544,11 +88360,20 @@ var routes = [{
   component: _components_layout_History_vue__WEBPACK_IMPORTED_MODULE_15__["default"],
   meta: {
     role: ['Admin']
-  }
+  },
+  beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
 }, {
   name: 'Penjualan',
   path: '/penjualan',
   component: _components_layout_Penjualan_vue__WEBPACK_IMPORTED_MODULE_14__["default"]
+}, {
+  name: 'Laporan',
+  path: '/laporan',
+  component: _components_layout_Laporan_vue__WEBPACK_IMPORTED_MODULE_16__["default"],
+  meta: {
+    role: ['Admin']
+  },
+  beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
 }];
 
 /***/ }),

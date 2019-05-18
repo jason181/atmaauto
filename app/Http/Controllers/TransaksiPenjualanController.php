@@ -80,6 +80,12 @@ class TransaksiPenjualanController extends RestController
         return $this->sendResponse($response,201);
     }
 
+    public function transaksiunprocess(){
+        $penjualan=Transaksi_Penjualan::where('Status',0)->get();
+        $response=$this->generateCollection($penjualan);
+        return $this->sendResponse($response,201);
+    }
+
     
 
     public function showByIdMotorKonsumen($id)
@@ -233,9 +239,9 @@ class TransaksiPenjualanController extends RestController
             $montir = Montir::orderBy('Id_Jasa_Montir','DESC')->first();
             // dd($montir);
             $jasa->Id_Transaksi        = $request->get('Id_Transaksi');
-            $jasa->Id_Jasa_Montir      = $request->get('Id_Jasa_Montir');
+            $jasa->Id_Jasa_Montir      = $montir->Id_Jasa_Montir;
             $jasa->Id_Jasa             = $request->get("Id_Jasa");
-            $jasa->Id_Jasa             = $request->get("Subtotal_Detail_Jasa");
+            $jasa->Subtotal_Detail_Jasa             = $request->get("Subtotal_Detail_Jasa");
             $jasa->save();
             return response()->json([
                 'status' => (bool) $jasa,

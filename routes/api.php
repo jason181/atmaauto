@@ -43,6 +43,7 @@ Route::delete('/jasas/delete/{id}', 'JasaController@destroy');
 
 //Pegawai
 Route::get('/pegawais', 'PegawaiController@index');
+Route::get('/pegawais/showmontirbycabang/{id}', 'PegawaiController@showmontirbycabang');
 Route::post('/pegawais/store', 'PegawaiController@store');
 Route::get('/pegawais/{id}', 'PegawaiController@showbyID');
 Route::get('/pegawais/showMontir','PegawaiController@showMontir');
@@ -124,6 +125,7 @@ Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
 // Route::group(['middleware' => 'token'], function () {
     Route::get('/transaksi_penjualans/showByIdMotorKonsumen/{id}','TransaksiPenjualanController@showByIdMotorKonsumen');
     Route::get('/transaksi_penjualans/transaksikeluar','TransaksiPenjualanController@transaksikeluar');
+    Route::get('/transaksi_penjualans/unprocessed','TransaksiPenjualanController@transaksiunprocess');
     Route::get('/transaksi_penjualans/processed','TransaksiPenjualanController@processed');
     Route::get('/transaksi_penjualans/finished','TransaksiPenjualanController@finished');
     Route::post('/transaksi_penjualans/store','TransaksiPenjualanController@store');
