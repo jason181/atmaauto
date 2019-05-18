@@ -61,7 +61,7 @@
                     @foreach($datas as $data)
                     {{$i++}}
                     <tr>
-                        <td class="mytable">{{$i++}}</td>
+                        <td class="mytable">{{$i}}</td>
                         <td class="mytable">{{$data->Tahun}}</td>
                         <td class="mytable">{{$data->Cabang}}</td>
                         <td class="mytable">{{$data->Total}}</td>
