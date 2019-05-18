@@ -7834,6 +7834,153 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -8737,6 +8884,42 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       return cetakspk;
+    }(),
+    cetaknotalunas: function () {
+      var _cetaknotalunas = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee18(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee18$(_context18) {
+          while (1) {
+            switch (_context18.prev = _context18.next) {
+              case 0:
+                _context18.prev = 0;
+                _context18.next = 3;
+                return _service_Http__WEBPACK_IMPORTED_MODULE_1__["default"].download('/api/cetaknotalunasWeb/' + id);
+
+              case 3:
+                this.getallpenjualan();
+                _context18.next = 9;
+                break;
+
+              case 6:
+                _context18.prev = 6;
+                _context18.t0 = _context18["catch"](0);
+                console.log(_context18.t0);
+
+              case 9:
+              case "end":
+                return _context18.stop();
+            }
+          }
+        }, _callee18, this, [[0, 6]]);
+      }));
+
+      function cetaknotalunas(_x5) {
+        return _cetaknotalunas.apply(this, arguments);
+      }
+
+      return cetaknotalunas;
     }(),
     datatransaksihandler: function datatransaksihandler(transaksi) {
       this.Transaksi = transaksi;
@@ -57296,7 +57479,7 @@ var render = function() {
                         attrs: {
                           "data-placement": "top",
                           "data-toggle": "tooltip",
-                          title: "Tambah"
+                          title: "SPK"
                         }
                       },
                       [
@@ -57317,6 +57500,73 @@ var render = function() {
                             }
                           },
                           [_c("i", { staticClass: "far fa-file-pdf" })]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "p",
+                      {
+                        attrs: {
+                          "data-placement": "top",
+                          "data-toggle": "tooltip",
+                          title: "Nota Lunas"
+                        }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-warning",
+                            attrs: {
+                              "data-title": "Cetak_Nota_Lunas",
+                              disabled: transaksi.Status !== 0,
+                              "data-toggle": "modal",
+                              "data-target": "#Cetak_Nota_Lunas"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.cetaknotalunas(
+                                  transaksi.Id_Transaksi
+                                )
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "far fa-file-pdf" })]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "p",
+                      {
+                        attrs: {
+                          "data-placement": "top",
+                          "data-toggle": "tooltip",
+                          title: "Edit"
+                        }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: {
+                              "data-title": "Edit_Transaksi",
+                              "data-toggle": "modal",
+                              "data-target": "#Edit_Transaksi"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.datatransaksihandler(transaksi)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-edit" })]
                         )
                       ]
                     )
@@ -61689,6 +61939,420 @@ var render = function() {
           ])
         ])
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "Edit_Detail_Sparepart",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "Edit_Detail_Sparepart",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(73),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(74),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Sparepart.Kode_Sparepart,
+                        expression: "Sparepart.Kode_Sparepart"
+                      }
+                    ],
+                    staticClass: "form-control mr-2",
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.Sparepart,
+                            "Kode_Sparepart",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        },
+                        _vm.getSelectedIndex
+                      ]
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih "
+                        }
+                      },
+                      [_vm._v("-- Pilih Sparepart --")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.sparepart, function(spareparts) {
+                      return _c(
+                        "option",
+                        {
+                          key: spareparts["Kode_Sparepart"],
+                          domProps: { value: spareparts.Kode_Sparepart },
+                          on: { change: _vm.getSelectedIndex }
+                        },
+                        [_vm._v(_vm._s(spareparts.Nama_Sparepart))]
+                      )
+                    })
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _vm._m(75),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Sparepart.Kode_Sparepart,
+                        expression: "Sparepart.Kode_Sparepart"
+                      }
+                    ],
+                    staticClass: "form-control mr-2",
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.Sparepart,
+                            "Kode_Sparepart",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        },
+                        _vm.getSelectedIndex
+                      ]
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih "
+                        }
+                      },
+                      [_vm._v("-- Tipe Sparepart --")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.sparepart, function(spareparts) {
+                      return _c(
+                        "option",
+                        {
+                          key: spareparts["Kode_Sparepart"],
+                          attrs: { disabled: "" },
+                          domProps: { value: spareparts.Kode_Sparepart },
+                          on: { change: _vm.getSelectedIndex }
+                        },
+                        [_vm._v(_vm._s(spareparts.Tipe_Barang))]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(76),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Sparepart.Kode_Sparepart,
+                        expression: "Sparepart.Kode_Sparepart"
+                      }
+                    ],
+                    staticClass: "form-control mr-2",
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.Sparepart,
+                            "Kode_Sparepart",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        },
+                        _vm.getSelectedIndex
+                      ]
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih "
+                        }
+                      },
+                      [_vm._v("-- Jumlah Sparepart --")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.sparepart, function(spareparts) {
+                      return _c(
+                        "option",
+                        {
+                          key: spareparts["Kode_Sparepart"],
+                          attrs: { disabled: "" },
+                          domProps: { value: spareparts.Kode_Sparepart },
+                          on: { change: _vm.getSelectedIndex }
+                        },
+                        [_vm._v(_vm._s(spareparts.Jumlah_Sparepart))]
+                      )
+                    })
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _vm._m(77),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.Sparepart.Kode_Sparepart,
+                        expression: "Sparepart.Kode_Sparepart"
+                      }
+                    ],
+                    staticClass: "form-control mr-2",
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.Sparepart,
+                            "Kode_Sparepart",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        },
+                        _vm.getSelectedIndex
+                      ]
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      {
+                        attrs: {
+                          disabled: "disabled",
+                          selected: "selected",
+                          value: "Pilih "
+                        }
+                      },
+                      [_vm._v("-- Harga Jual --")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.sparepart, function(spareparts) {
+                      return _c(
+                        "option",
+                        {
+                          key: spareparts["Kode_Sparepart"],
+                          attrs: { disabled: "" },
+                          domProps: { value: spareparts.Kode_Sparepart },
+                          on: { change: _vm.getSelectedIndex }
+                        },
+                        [_vm._v(_vm._s(spareparts.Harga_Jual))]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3" }, [
+                _vm._m(78),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.jumlah,
+                      expression: "jumlah"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "number",
+                    placeholder: "Masukkan Jumlah Sparepart Yang Ingin Dibeli",
+                    "aria-label": "jumlah",
+                    "aria-describedby": "basic-addon2",
+                    id: "jumlah",
+                    name: "jumlah",
+                    required: ""
+                  },
+                  domProps: { value: _vm.jumlah },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.jumlah = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-6 mt-3" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success btn",
+                    attrs: { type: "submit" },
+                    on: {
+                      click: function($event) {
+                        return _vm.sparepartHandler(_vm.sparepart)
+                      }
+                    }
+                  },
+                  [_vm._v("Add Sparepart")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mt-3 w-400" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    { staticClass: "col-12 mr-2" },
+                    _vm._l(_vm.sparepartdata, function(spareparts) {
+                      return _c(
+                        "div",
+                        {
+                          key: spareparts["Kode_Sparepart"],
+                          staticClass: "list-group mr-2"
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "list-group-item list-group-item-action list-group-item-success",
+                              attrs: { href: "#" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                            " +
+                                  _vm._s(
+                                    spareparts.Kode_Sparepart +
+                                      "-" +
+                                      spareparts.Nama_Sparepart
+                                  ) +
+                                  "          \n                                            "
+                              ),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  staticStyle: { "margin-left": "200px" },
+                                  attrs: { type: "submit" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.deleteListSparepart(
+                                        spareparts.Kode_Sparepart
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("Delete")]
+                              ),
+                              _vm._v(" "),
+                              _c("br")
+                            ]
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer mt-3" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary btn-lg w-100",
+                    attrs: { type: "submit", "data-dismiss": "modal" },
+                    on: {
+                      click: function($event) {
+                        return _vm.addetailspareparts()
+                      }
+                    }
+                  },
+                  [_vm._v("Simpan Perubahan")]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]
     )
   ])
 }
@@ -61780,6 +62444,8 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Detail")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("SPK")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nota Lunas")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit/Verify")]),
         _vm._v(" "),
@@ -63113,6 +63779,131 @@ var staticRenderFns = [
       [
         _c("span", { staticClass: "glyphicon glyphicon-remove" }),
         _vm._v("Tidak")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title mx-auto", attrs: { id: "Heading" } },
+        [_vm._v("Edit Transaksi Penjualan Sparepart")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          staticStyle: { "margin-left": "-30px" },
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Sparepart")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Tipe")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Jumlah")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          {
+            staticClass: "input-group-text",
+            attrs: { id: "basic-addon2", disabled: "" }
+          },
+          [_vm._v("Harga Jual")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "100px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Jumlah")]
+        )
       ]
     )
   }
@@ -87504,6 +88295,20 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].download('/api/cetak_spk/' + id, successCallback, errorCallback);
+    });
+  },
+  cetaknotalunas: function cetaknotalunas() {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].download('/api/cetaknotalunasWeb/' + id, successCallback, errorCallback);
     });
   },
   addpenjualan: function addpenjualan(payload) {

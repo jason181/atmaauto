@@ -37,6 +37,8 @@
         <div style="border : 1px solid black;">
             <table style="margin:25px;">
                 <tbody>
+                    {{$subtotaljasa=0}}
+                    {{$jumlah=0}}
                     <tr>
                         <td rowspan="5" colspan="2" style="text-align:right;padding:3px">
                             <img src="{{ public_path('/images/Logo_Transparan.png') }}" alt="Logo_AA" width="120px;">
@@ -73,7 +75,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td colspan="2" style="text-align:right;">{{ date('d M Y H:i:s', strtotime($header[0]->created_at)) }}</td>
+                        <td colspan="2" style="text-align:right;">{{ date('d M Y H:i:s', strtotime($konsumens[0]->created_at)) }}</td>
                     </tr>
                     <tr>
                         <td colspan="6" style="font-size:18px;">{{$kode[0]->Kode_Transaksi}}</td>
@@ -81,31 +83,31 @@
                     
                     <tr>
                         <td>Cust</td>
-                        <td colspan="3">{{$header[0]->Cust}}</td>
+                        <td colspan="3">{{$konsumens[0]->Cust}}</td>
                         <td>CS</td>
                         <td>{{$cs[0]->CS}}</td>
                     </tr>
                     <tr>
                         <td>Telepon</td>
-                        <td colspan="3">{{$header[0]->Telepon}}</td>
+                        <td colspan="3">{{$konsumens[0]->Telepon}}</td>
                         <td>Montir</td>
                         <td>{{$montir}}</td>
                     </tr>
                     <tr>
                         <td style="padding-bottom:15px;">Motor</td>
-                        <td colspan="2" style="padding-bottom:15px;">Merk Motor Jenis Motor Plat Motor</td>
+                        <td colspan="2" style="padding-bottom:15px;">{{$motor[0]->Merk}} {{$motor[0]->Tipe}} {{$motor[0]->Plat}}</td>
                         <td></td>
                         <td></td>
                     </tr>
                     @if($s_status == true)
                     <tr>
-                        <td colspan="5" class="mytable" style="font-size:16px;font-weight:bold;text-align:center;padding:2px;">SPAREPARTS</td>
+                        <td colspan="6" class="mytable" style="font-size:16px;font-weight:bold;text-align:center;padding:2px;">SPAREPARTS</td>
                     </tr>
                     <tr>
-                        <td colspan="5" class="mytable" style="padding:10px;"></td>
+                        <td colspan="6" class="mytable" style="padding:10px;"></td>
                     </tr>
                     <tr>
-                        <td colspan="5" class="mytable" style="padding:1px;"></td>
+                        <td colspan="6" class="mytable" style="padding:1px;"></td>
                     </tr>
                     <tr class="mytable">
                         <th class="mytable" style="text-align:center;">Kode</th>
@@ -117,7 +119,7 @@
                     </tr>
                     {{$jumlah=0}}
                     @foreach($spareparts as $sparepart)
-                    {{$jumlah += $sparepart->Subtotal}}
+                    {{$jumlah += $sparepart->Subtotal_Detail_Sparepart}}
                     <tr>
                         <td> {{$sparepart->Kode}} </td>
                         <td> {{$sparepart->Nama}} </td>
@@ -128,27 +130,27 @@
                     </tr>
                     @endforeach
                     <tr>
-                        <td colspan="5" class="mytable" style="padding:1px;"></td>
+                        <td colspan="6" class="mytable" style="padding:1px;"></td>
                     </tr>
                     <tr>
-                        <td colspan="5" style="text-align:right">{{$jumlah}}</td>
+                        <td colspan="6" style="text-align:right">{{$jumlah}}</td>
                     </tr>
                     <tr>
-                        <td colspan="5" class="mytable" style="padding:1px;"></td>
+                        <td colspan="6" class="mytable" style="padding:1px;"></td>
                     </tr>
                     @endif
                     <tr>
-                        <td colspan="5" style="padding:10px;"></td>
+                        <td colspan="6" style="padding:10px;"></td>
                     </tr>
                     @if($j_status == true)
                     <tr>
-                        <td colspan="5" class="mytable" style="font-size:16px;font-weight:bold;text-align:center;padding:2px;">SERVICES</td>
+                        <td colspan="6" class="mytable" style="font-size:16px;font-weight:bold;text-align:center;padding:2px;">SERVICES</td>
                     </tr>
                     <tr>
-                        <td colspan="5" class="mytable" style="padding:10px;"></td>
+                        <td colspan="6" class="mytable" style="padding:10px;"></td>
                     </tr>
                     <tr>
-                        <td colspan="5" class="mytable" style="padding:1px;"></td>
+                        <td colspan="6" class="mytable" style="padding:1px;"></td>
                     </tr>
                     <tr class="mytable">
                         <th class="mytable" style="padding-left:10px;">Kode</th>
@@ -158,7 +160,7 @@
                         <td class="mytable">Jumlah</td>
                         <td class="mytable">Subtotal</td>
                     </tr>
-                    {{$subtotaljasa=0}}
+                    
                     @foreach($jasas as $jasa)
                     {{$subtotaljasa+=$jasa->Harga_Jasa}}
                     <tr>
@@ -170,15 +172,39 @@
                     </tr>
                     @endforeach
                     <tr>
-                        <td colspan="5" class="mytable" style="padding:1px;"></td>
+                        <td colspan="6" class="mytable" style="padding:1px;"></td>
                     </tr>
                     <tr>
-                        <td colspan="5" style="text-align:right"> {{$subtotaljasa}} </td>
+                        <td colspan="6" style="text-align:right"> {{$subtotaljasa}} </td>
                     </tr>
                     <tr>
-                        <td colspan="5" class="mytable" style="padding:1px;"></td>
+                        <td colspan="6" class="mytable" style="padding:1px;"></td>
                     </tr>
                     @endif
+                    <tr>
+                        <td class="tac" colspan="2">Cust</td>
+                        <td class="tac" colspan="2">Kasir</td>
+                        <td>Subtotal</td>
+                        <td class="tar">{{$jumlah + $subtotaljasa}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td>Diskon</td>
+                        <td class="tar" >{{$total[0]->Diskon}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td style="font-weight:bold">Total</td>
+                        <td class="tar" >{{$total[0]->Total}}</td>
+                    </tr>
+                    <tr>
+                        <td class="tac" colspan="2">
+                            ({{$konsumens[0]->Cust}})
+                        </td>
+                        <td class="tac" colspan="2">
+                            ({{$kasir[0]->Kasir}})
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

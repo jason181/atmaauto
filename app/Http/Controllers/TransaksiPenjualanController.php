@@ -421,14 +421,4 @@ class TransaksiPenjualanController extends RestController
         ]);
     }
 
-    public function pembayaran($id)
-    {
-        $penjualan = Transaksi_Penjualan::find($id);
-        $penjualan->Status = '3';
-        $penjualan->save();
-
-        $response=$this->generateCollection($penjualan);
-        return $this->sendResponse($response);
-    }
-
 }
