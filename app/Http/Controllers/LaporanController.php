@@ -155,7 +155,7 @@ class LaporanController extends Controller
     {
         $data = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan, 
         COALESCE(SUM(d.Subtotal_Detail_Sparepart),0) as Sparepart, 
-        COALESCE(SUM(e.Subtotal_Detail_Jasa),0) as Service,COALESCE((p.Total),0) as Total 
+        COALESCE(SUM(e.Subtotal_Detail_Jasa),0) as Service,COALESCE(SUM(p.Total),0) as Total 
         FROM (SELECT '01' AS
                             bulan
                             UNION SELECT '02' AS
@@ -205,7 +205,7 @@ class LaporanController extends Controller
     {
         $datas = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan, 
         COALESCE(SUM(d.Subtotal_Detail_Sparepart),0) as Sparepart, 
-        COALESCE(SUM(e.Subtotal_Detail_Jasa),0) as Service,COALESCE((p.Total),0) as Total 
+        COALESCE(SUM(e.Subtotal_Detail_Jasa),0) as Service,COALESCE(SUM(p.Total),0) as Total 
         FROM (SELECT '01' AS
                             bulan
                             UNION SELECT '02' AS
