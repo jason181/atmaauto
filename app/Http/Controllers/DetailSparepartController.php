@@ -111,13 +111,16 @@ class DetailSparepartController extends RestController
     {
         $detail_sparepart = Detail_Sparepart::find($id);
         $id_transaksi = $detail_sparepart->Id_Transaksi;
-        $sparepart  = Sparepart::where('Kode_Sparepart',$detail_sparepart->Kode_Sparepart)->first();
         
+        $sparepart  = Sparepart::where('Kode_Sparepart',$detail_sparepart->Kode_Sparepart)->first();
         $sparepart->Jumlah_Sparepart += $detail_sparepart->Jumlah;
+        $sparepart->save();
+
         $montir = Montir::find($detail_sparepart->Id_Jasa_Montir);
+        
         $penjualan = Transaksi_Penjualan::find($id_transaksi);
         $penjualan->Subtotal -= $detail_sparepart->Subtotal_Detail_Sparepart;
-        $penjualan->Total -+ $detail_sparepart->Subtotal_Detail_Sparepart;
+        $penjualan->Total -= $detail_sparepart->Subtotal_Detail_Sparepart;
         
         $status=$detail_sparepart->delete();
         

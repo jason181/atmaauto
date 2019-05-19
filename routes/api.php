@@ -157,8 +157,8 @@ Route::get('/cetak_surat_pemesanan/{id}', 'LaporanController@cetakSuratPemesanan
 Route::get('/cetak_spk/{id}', 'LaporanController@cetakSPK');
 Route::get('/pendapatan_bulanan/{year}','LaporanController@pendapatanBulanan');
 Route::get('/pendapatan_tahunan','LaporanController@pendapatanTahunan');
-Route::get('/sparepart_terlaris','LaporanController@sparepartterlaris');
-Route::get('/penjualan_jasa','LaporanController@penjualanjasa');
+Route::get('/sparepart_terlaris/{year}','LaporanController@sparepartterlaris');
+Route::get('/penjualan_jasa/{bulan}/{year}','LaporanController@penjualanjasa');
 Route::get('/pengeluaran_bulanan/{year}','LaporanController@pengeluaranBulanan');
 Route::get('/sisa_stok/{year}/{tipe}','LaporanController@sisaStok');
 

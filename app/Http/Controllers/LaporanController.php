@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
+use Carbon\Carbon;
 
 use App\Transaksi_Pengadaan;
 use App\Transaksi_Penjualan;
@@ -185,14 +186,14 @@ class LaporanController extends Controller
                             GROUP BY m.bulan, YEAR(p.Tanggal_Transaksi)");
 
         $total= DB::select("SELECT SUM(Total) as Total_Transaksi FROM transaksi_penjualans");
-        return response()->json([
-            'status' => (bool) $data,
-            'datas' => $data,
-            'message' => $data ? 'Success' : 'Error'
-        ]);
-
+        // return response()->json([
+        //     'status' => (bool) $data,
+        //     'datas' => $data,
+        //     'message' => $data ? 'Success' : 'Error'
+        // ]);
+        $date=Carbon::now();
         $pdf = PDF::loadView('pendapatan_bulanan',
-        ['data'=>$data, 'total'=>$total]);
+        ['data'=>$data, 'total'=>$total,'date'=>$date,'year'=>$year]);
         $pdf->setPaper([0,0,550,900]);
 	    return $pdf->stream();
     }
@@ -629,7 +630,7 @@ class LaporanController extends Controller
         return $pdf->stream();
     }
 
-    public function penjualanjasa(){
+    public function penjualanjasa($bulan,$tahun){
         $datas = DB::select("SELECT
         p.Merk AS Merk,
         p.Tipe AS Tipe,
@@ -644,8 +645,8 @@ class LaporanController extends Controller
         INNER JOIN detail_jasas AS r ON r.Id_Transaksi = t.Id_Transaksi
         INNER JOIN jasas AS s ON s.Id_Jasa = r.Id_Jasa
     WHERE
-        MONTHNAME( t.Tanggal_Transaksi ) = 'May' 
-        AND YEAR ( t.Tanggal_Transaksi ) = 2019 
+        MONTHNAME( t.Tanggal_Transaksi ) = $bulan 
+        AND YEAR ( t.Tanggal_Transaksi ) = $tahun 
         AND t.Status = '3'
         AND t.Jenis_Transaksi = 'SV'
         OR t.Jenis_Transaksi = 'SS'

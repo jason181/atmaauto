@@ -20,7 +20,7 @@
                                         <div class="input-group-prepend d-block" style="width: 75px;">
                                             <span class="input-group-text" id="basic-addon2">Tahun</span>
                                         </div>
-                                        <select class="form-control" require>
+                                        <select class="form-control" require v-model="TahunPendapatan">
                                             <option value="2018" selected>2018</option>
                                             <option value="2019">2019</option>
                                         </select>
@@ -30,7 +30,7 @@
 
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-success" style="float:right;">
+                                    <button class="btn btn-success" style="float:right;" @click="laporanpendapatanbulananhandler(TahunPendapatan)">
                                         <i class="far fa-file-pdf"></i> PRINT
                                     </button>
                                 </div>
@@ -230,3 +230,34 @@
         </div>
     </body>
 </template>
+
+<script>
+import Controller from '../../service/Laporan'
+import Http from '../../service/Http'
+
+export default {
+    data:() => ({
+        TahunPendapatan:'',
+        TahunPengeluaran:'',
+        TahunSisaStok:'',
+        TipeSisaStok:'',
+        TahunPenjualanTerbanyak:'',
+        BulanPenjualanJasa:'',
+        TahunPenjualanJasa:'',
+    }),
+    methods:{
+        async laporanpendapatanbulanan(TahunPendapatan) {
+            try {
+                await Http.download('/api/pendapatan_bulanan/'+TahunPendapatan);
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        laporanpendapatanbulananhandler(TahunPendapatan)
+        {
+            this.TahunPendapatan=TahunPendapatan;
+            this.laporanpendapatanbulanan(this.TahunPendapatan);
+        }
+    }
+}
+</script>

@@ -337,7 +337,6 @@ class TransaksiPenjualanController extends RestController
                     $penjualan->Total               = $request->get('Subtotal') - $request->get('Diskon');
                 }
                 $penjualan->save();
-                dd($penjualan);
                 $response = $this->generateCollection($penjualan);
                 return $this->sendResponse($response);
             }
@@ -388,7 +387,7 @@ class TransaksiPenjualanController extends RestController
             // if(Detail_Jasa::where('Id_Transaksi',$id)->get() !== null)
             $montirs = Montir::where('Id_Jasa_Montir',$jasa->Id_Jasa_Montir)->get();
             
-            $detele_jasa = $jasa->delete();
+            $delete_jasa = $jasa->delete();
 
             foreach($montirs as $montir)
             {
@@ -400,6 +399,10 @@ class TransaksiPenjualanController extends RestController
         {
             $montirs = Montir::where('Id_Jasa_Montir',$sparepart->Id_Jasa_Montir)->get();
             
+            $sparepartdata = Sparepart::where('Kode_Sparepart',$sparepart->Kode_Sparepart)->first();
+            $sparepartdata->Jumlah_Sparepart += $detail_sparepart->Jumlah;
+            $sparepartdata->save();
+
             $delete_sparepart = $sparepart->delete();
 
             foreach($montirs as $montir)
