@@ -153,7 +153,10 @@ class LaporanController extends Controller
 
     public function pendapatanBulanan($year)
     {
-        $data = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan, COALESCE(SUM(d.Subtotal_Detail_Sparepart),0) as Sparepart, COALESCE(SUM(e.Subtotal_Detail_Jasa),0) as Service,COALESCE((p.Total),0) as Total FROM (SELECT '01' AS
+        $data = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan, 
+        COALESCE(SUM(d.Subtotal_Detail_Sparepart),0) as Sparepart, 
+        COALESCE(SUM(e.Subtotal_Detail_Jasa),0) as Service,COALESCE((p.Total),0) as Total 
+        FROM (SELECT '01' AS
                             bulan
                             UNION SELECT '02' AS
                             bulan
@@ -165,9 +168,9 @@ class LaporanController extends Controller
                             bulan
                             UNION SELECT '06' AS
                             bulan
-                            UNION SELECT '07' AS
+                            UNION SELECT '07'AS
                             bulan
-                            UNION SELECT '08' AS
+                            UNION SELECT '08'AS
                             bulan
                             UNION SELECT '09' AS
                             bulan
@@ -180,8 +183,9 @@ class LaporanController extends Controller
                             ) AS m LEFT JOIN transaksi_penjualans p ON MONTHNAME(p.Tanggal_Transaksi) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
                             LEFT JOIN detail_spareparts d ON p.Id_Transaksi=d.Id_Transaksi
                             LEFT JOIN detail_jasas e ON p.Id_Transaksi=e.Id_Transaksi
-                            where p.deleted_at is null AND YEAR(p.Tanggal_Transaksi)=$year or YEAR(P.Tanggal_Transaksi) is null
-                            OR p.Status = '3' 
+                            where p.Status = '3'
+                            AND YEAR(p.Tanggal_Transaksi)=$year 
+                            OR YEAR(P.Tanggal_Transaksi) is null 
                             GROUP BY m.bulan, YEAR(p.Tanggal_Transaksi)");
 
         $total= DB::select("SELECT SUM(Total) as Total_Transaksi FROM transaksi_penjualans");
@@ -229,8 +233,9 @@ class LaporanController extends Controller
                             ) AS m LEFT JOIN transaksi_penjualans p ON MONTHNAME(p.Tanggal_Transaksi) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
                             LEFT JOIN detail_spareparts d ON p.Id_Transaksi=d.Id_Transaksi
                             LEFT JOIN detail_jasas e ON p.Id_Transaksi=e.Id_Transaksi
-                            where YEAR(p.Tanggal_Transaksi)=$year or YEAR(P.Tanggal_Transaksi) is null
-                            OR p.Status = '3' 
+                            where p.Status = '3'
+                            AND YEAR(p.Tanggal_Transaksi)=$year 
+                            OR YEAR(P.Tanggal_Transaksi) is null 
                             GROUP BY m.bulan, YEAR(p.Tanggal_Transaksi)");
 
         return response()->json([
