@@ -70,11 +70,11 @@
                     {{$jumlah=0}}
                     @foreach($datas as $data)
                     {{$i++}}
-                    {{$jumlah+=$data->Jumlah_Pengeluaran}}
+                    {{$jumlah+=$data->JumlahPengeluaran}}
                     <tr>
                         <td class="mytable tac" style="width:10%">{{$i}}</td>
                         <td class="mytable" colspan="2">{{$data->Bulan}}</td>
-                        <td class="mytable tar" colspan="2">{{number_format($data->Jumlah_Pengeluaran)}}</td>
+                        <td class="mytable tar" colspan="2">{{number_format($data->JumlahPengeluaran)}}</td>
                     </tr>
                     @endforeach
                     <tr>

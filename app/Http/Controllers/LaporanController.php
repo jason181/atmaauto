@@ -581,11 +581,11 @@ class LaporanController extends Controller
         WHERE b.Id_Role = 2 AND c.deleted_at is null
         GROUP BY YEAR(c.Tanggal_Transaksi),d.Nama_Cabang");
 
-        return response()->json([
-            'datas' => (bool) $datas,
-            'datas' => $datas,
-            'message' => $datas ? 'Success' : 'Error',
-        ]);
+        // return response()->json([
+        //     'datas' => (bool) $datas,
+        //     'datas' => $datas,
+        //     'message' => $datas ? 'Success' : 'Error',
+        // ]);
 
         $pdf = PDF::loadView('pendapatan_tahunan',
         ['datas'=>$datas]);
@@ -688,11 +688,11 @@ class LaporanController extends Controller
             p.Tipe,
             s.Nama_Jasa;");
 
-        return response()->json([
-            'datas' => (bool) $datas,
-            'datas' => $datas,
-            'message' => $datas ? 'Success' : 'Error',
-        ]);
+        // return response()->json([
+        //     'datas' => (bool) $datas,
+        //     'datas' => $datas,
+        //     'message' => $datas ? 'Success' : 'Error',
+        // ]);
         $pdf = PDF::loadView('penjualan_jasa',
         ['datas'=>$datas]);
         $pdf->setPaper([0,0,550,900]);
@@ -763,14 +763,10 @@ class LaporanController extends Controller
                 AND YEAR(p.Tanggal_Pengadaan)= $year
                 OR YEAR(P.Tanggal_Pengadaan) is null
                 GROUP BY m.bulan, YEAR(p.Tanggal_Pengadaan)");
-            
-            return response()->json([
-                'datas' => (bool) $datas,
-                'datas' => $datas,
-                'message' => $datas ? 'Success' : 'Error',
-            ]);
-            $pdf = PDF::loadView('penjualan_jasa',
-            ['datas'=>$datas]);
+
+            $date = Carbon::now();
+            $pdf = PDF::loadView('pengeluaran_bulanan',
+            ['datas'=>$datas,'year'=>$year,'date'=>$date]);
             $pdf->setPaper([0,0,550,900]);
             return $pdf->stream();
         }
@@ -897,10 +893,18 @@ class LaporanController extends Controller
                                 bulan
                             ) AS m;");
 
-            return response()->json([
-                'datas' => (bool) $datas,
-                'datas' => $datas,
-                'message' => $datas ? 'Success' : 'Error',
-            ]);
+            // return response()->json([
+            //     'datas' => (bool) $datas,
+            //     'datas' => $datas,
+            //     'message' => $datas ? 'Success' : 'Error',
+            // ]);
+
+            $date = Carbon::now();
+            $tipe = explode('"',$tipe);
+            
+            $pdf = PDF::loadView('sisa_stok',
+            ['datas'=>$datas,'year'=>$year,'date'=>$date,'tipe'=>$tipe[1]]);
+            $pdf->setPaper([0,0,550,900]);
+            return $pdf->stream();
         }
     }

@@ -59,10 +59,10 @@
                         <td colspan="5" style="border-top:1px solid black;font-weight:bold;text-align:center;padding:5px;">LAPORAN SPAREPART TERLARIS</td>
                     </tr>
                     <tr>
-                        <td colspan="5">Tahun : 2019</td>
+                        <td colspan="5">Tahun : {{$year}}</td>
                     </tr>
                     <tr>
-                        <td colspan="5" style="padding-bottom:10px;">Tipe Barang : Roda</td>
+                        <td colspan="5" style="padding-bottom:10px;">Tipe Barang : {{$tipe}}</td>
                     </tr>
                     <tr>
                         <td></td>
@@ -78,7 +78,7 @@
                         <td></td>
                         <td class="mytable tac" style="width:10%">{{$i}}</td>
                         <td class="mytable">{{$data->Bulan}}</td>
-                        <td class="mytable tar">{{$data->SisaStok}}</td>
+                        <td class="mytable tar">{{$data->JumlahStokSisa}}</td>
                         <td></td>
                     </tr>
                     @endforeach
