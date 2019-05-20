@@ -705,7 +705,7 @@ class LaporanController extends Controller
         p.Merk AS Merk,
         p.Tipe AS Tipe,
         s.Nama_Jasa AS NamaService,
-        Count( t.Tanggal_Transaksi ) AS JumlahService,
+        -- Count( t.Tanggal_Transaksi ) AS JumlahService,
         YEAR(t.Tanggal_Transaksi) AS Tahun ,
         MONTHNAME(t.Tanggal_Transaksi) AS Bulan
     FROM
@@ -741,7 +741,6 @@ class LaporanController extends Controller
             p.Merk AS Merk,
             p.Tipe AS Tipe,
             s.Nama_Jasa AS NamaService,
-            Count( t.Tanggal_Transaksi ) AS JumlahService,
             YEAR(t.Tanggal_Transaksi) AS Tahun ,
             MONTHNAME(t.Tanggal_Transaksi) AS Bulan
         FROM
