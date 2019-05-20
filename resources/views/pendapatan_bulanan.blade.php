@@ -71,7 +71,7 @@
                     </tr>
                     <tr>
                         <td style="padding-left:2px;">Tahun :</td>
-                        <td>2019</td>
+                        <td>{{$year}}</td>
                         <td></td>
                         <td></td>
                         <td></td>

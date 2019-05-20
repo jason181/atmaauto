@@ -261,18 +261,35 @@ class TransaksiPenjualanController extends RestController
         {
             $penjualan = Transaksi_Penjualan::find($id);
             $jenis=$request->Jenis_Transaksi;
-            if($penjualan->Jenis_Transaksi == $jenis)
+            
+            $detail_spareparts = Detail_Sparepart::where('Id_Transaksi',$penjualan->Id_Transaksi)->get();
+            foreach($detail_spareparts as $sparepart)
             {
+                $montir = Montir::where('Id_Jasa_Montir',$sparepart->Id_Jasa_Montir)->first();
+                $sparepartCollection = Sparepart::where('Kode_Sparepart',$sparepart->Kode_Sparepart)->get();
+                $sparepartdata = $sparepartCollection->first();
+                $sparepartdata->Jumlah_Sparepart += $sparepart->Jumlah;
+                $sparepartdata->save();
+                $delete_sparepart = $sparepart->delete();
+            }
+            $detail_jasas = Detail_Jasa::where('Id_Transaksi',$penjualan->Id_Transaksi)->get();
+            foreach($detail_jasas as $jasa)
+            {
+                $montir = Montir::where('Id_Jasa_Montir',$jasa->Id_Jasa_Montir)->first();
+                $delete_jasa = $jasa->delete();
+            }
+            // if($penjualan->Jenis_Transaksi == $jenis)
+            // {
                 if($jenis == 'SS' || $jenis == 'SV')
                 {
                     if($request->has('Detail_Jasa'))
                     {
-                        $detail_jasas = Detail_Jasa::where('Id_Transaksi',$penjualan->Id_Transaksi)->get();
-                        foreach($detail_jasas as $jasa)
-                        {
-                            $montir = Montir::where('Id_Jasa_Montir',$jasa->Id_Jasa_Montir)->first();
-                            $delete_jasa = $jasa->delete();
-                        }
+                        // $detail_jasas = Detail_Jasa::where('Id_Transaksi',$penjualan->Id_Transaksi)->get();
+                        // foreach($detail_jasas as $jasa)
+                        // {
+                        //     $montir = Montir::where('Id_Jasa_Montir',$jasa->Id_Jasa_Montir)->first();
+                        //     $delete_jasa = $jasa->delete();
+                        // }
                         $jasa       = $request->get('Detail_Jasa');
                         $countjasa  = count($jasa);
                         for($i=0; $i<$countjasa;$i++)
@@ -285,20 +302,20 @@ class TransaksiPenjualanController extends RestController
                         });
                     }
                 }
-                else if($jenis == 'SS' || $jenis == 'SP')
+                if($jenis == 'SS' || $jenis == 'SP')
                 {
                     if($request->has('Detail_Sparepart'))
                     {
-                        $detail_spareparts = Detail_Sparepart::where('Id_Transaksi',$penjualan->Id_Transaksi)->get();
-                        foreach($detail_spareparts as $sparepart)
-                        {
-                            $montir = Montir::where('Id_Jasa_Montir',$sparepart->Id_Jasa_Montir)->first();
-                            $sparepartCollection = Sparepart::where('Kode_Sparepart',$sparepart->Kode_Sparepart)->get();
-                            $sparepartdata = $sparepartCollection->first();
-                            $sparepartdata->Jumlah_Sparepart += $sparepart->Jumlah;
-                            $sparepartdata->save();
-                            $delete_sparepart = $sparepart->delete();
-                        }
+                        // $detail_spareparts = Detail_Sparepart::where('Id_Transaksi',$penjualan->Id_Transaksi)->get();
+                        // foreach($detail_spareparts as $sparepart)
+                        // {
+                        //     $montir = Montir::where('Id_Jasa_Montir',$sparepart->Id_Jasa_Montir)->first();
+                        //     $sparepartCollection = Sparepart::where('Kode_Sparepart',$sparepart->Kode_Sparepart)->get();
+                        //     $sparepartdata = $sparepartCollection->first();
+                        //     $sparepartdata->Jumlah_Sparepart += $sparepart->Jumlah;
+                        //     $sparepartdata->save();
+                        //     $delete_sparepart = $sparepart->delete();
+                        // }
                         $sparepart       = $request->get('Detail_Sparepart');
                         $countsparepart  = count($sparepart);
                         for($i=0; $i<$countsparepart;$i++)
@@ -311,36 +328,86 @@ class TransaksiPenjualanController extends RestController
                         });
                     }
                 }
-
-                if(!is_null($request->Tanggal_Transaksi))
-                {
-                    $penjualan->Tanggal_Transaksi   = $request->get('Tanggal_Transaksi');
-                }
-                if(!is_null($request->Jenis_Transaksi))
-                {
-                    $penjualan->Jenis_Transaksi     = $request->get('Jenis_Transaksi');
-                }
-                if(!is_null($request->Subtotal))
-                {
-                    $penjualan->Subtotal            = $request->get('Subtotal');
-                }
-                if(!is_null($request->Diskon))
-                {
-                    $penjualan->Diskon              = $request->get('Diskon');
-                }
-                if(!is_null($request->Total))
-                {
-                    $penjualan->Total               = $request->get('Total');
-                }
-                else
-                {
-                    $penjualan->Total               = $request->get('Subtotal') - $request->get('Diskon');
-                }
-                $penjualan->save();
-                dd($penjualan);
-                $response = $this->generateCollection($penjualan);
-                return $this->sendResponse($response);
+            // }
+            // else
+            // {
+                // if($jenis == 'SS' || $jenis == 'SV')
+                // {
+                //     if($request->has('Detail_Jasa'))
+                //     {
+                //         $detail_jasas = Detail_Jasa::where('Id_Transaksi',$penjualan->Id_Transaksi)->get();
+                //         foreach($detail_jasas as $jasa)
+                //         {
+                //             $montir = Montir::where('Id_Jasa_Montir',$jasa->Id_Jasa_Montir)->first();
+                //             $delete_jasa = $jasa->delete();
+                //         }
+                //         $jasa       = $request->get('Detail_Jasa');
+                //         $countjasa  = count($jasa);
+                //         for($i=0; $i<$countjasa;$i++)
+                //         {
+                //             $jasa[$i]['Id_Jasa_Montir'] = $montir->Id_Jasa_Montir;
+                //         }
+                //         $penjualan = DB::transaction(function () use($penjualan,$jasa){
+                //             $penjualan->detail_jasas()->createMany($jasa);
+                //             return $penjualan;  
+                //         });
+                //     }
+                // }
+                // if($jenis == 'SS' || $jenis == 'SP')
+                // {
+                //     if($request->has('Detail_Sparepart'))
+                //     {
+                //         $detail_spareparts = Detail_Sparepart::where('Id_Transaksi',$penjualan->Id_Transaksi)->get();
+                //         foreach($detail_spareparts as $sparepart)
+                //         {
+                //             $montir = Montir::where('Id_Jasa_Montir',$sparepart->Id_Jasa_Montir)->first();
+                //             $sparepartCollection = Sparepart::where('Kode_Sparepart',$sparepart->Kode_Sparepart)->get();
+                //             $sparepartdata = $sparepartCollection->first();
+                //             $sparepartdata->Jumlah_Sparepart += $sparepart->Jumlah;
+                //             $sparepartdata->save();
+                //             $delete_sparepart = $sparepart->delete();
+                //         }
+                //         $sparepart       = $request->get('Detail_Sparepart');
+                //         $countsparepart  = count($sparepart);
+                //         for($i=0; $i<$countsparepart;$i++)
+                //         {
+                //             $sparepart[$i]['Id_Jasa_Montir'] = $montir->Id_Jasa_Montir;
+                //         }
+                //         $penjualan = DB::transaction(function () use($penjualan,$sparepart){
+                //             $penjualan->detail_spareparts()->createMany($sparepart);
+                //             return $penjualan;  
+                //         });
+                //     }
+                // }
+            // }
+            if(!is_null($request->Tanggal_Transaksi))
+            {
+                $penjualan->Tanggal_Transaksi   = $request->get('Tanggal_Transaksi');
             }
+            if(!is_null($request->Jenis_Transaksi))
+            {
+                $penjualan->Jenis_Transaksi     = $request->get('Jenis_Transaksi');
+            }
+            if(!is_null($request->Subtotal))
+            {
+                $penjualan->Subtotal            = $request->get('Subtotal');
+            }
+            if(!is_null($request->Diskon))
+            {
+                $penjualan->Diskon              = $request->get('Diskon');
+            }
+            if(!is_null($request->Total))
+            {
+                $penjualan->Total               = $request->get('Total');
+            }
+            else
+            {
+                $penjualan->Total               = $request->get('Subtotal') - $request->get('Diskon');
+            }
+            // return $penjualan;
+            $penjualan->save();
+            $response = $this->generateItem($penjualan);
+            return $this->sendResponse($response);
         }
         catch(\Exception $e) {
             return $this->sendIseResponse($e->getMessage());
@@ -388,7 +455,7 @@ class TransaksiPenjualanController extends RestController
             // if(Detail_Jasa::where('Id_Transaksi',$id)->get() !== null)
             $montirs = Montir::where('Id_Jasa_Montir',$jasa->Id_Jasa_Montir)->get();
             
-            $detele_jasa = $jasa->delete();
+            $delete_jasa = $jasa->delete();
 
             foreach($montirs as $montir)
             {
@@ -400,6 +467,10 @@ class TransaksiPenjualanController extends RestController
         {
             $montirs = Montir::where('Id_Jasa_Montir',$sparepart->Id_Jasa_Montir)->get();
             
+            $sparepartdata = Sparepart::where('Kode_Sparepart',$sparepart->Kode_Sparepart)->first();
+            $sparepartdata->Jumlah_Sparepart += $detail_sparepart->Jumlah;
+            $sparepartdata->save();
+
             $delete_sparepart = $sparepart->delete();
 
             foreach($montirs as $montir)
