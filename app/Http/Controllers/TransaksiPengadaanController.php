@@ -22,7 +22,7 @@ class TransaksiPengadaanController extends RestController
     
     public function index()
     {
-        $pengadaan=Transaksi_Pengadaan::get();
+        $pengadaan=Transaksi_Pengadaan::orderBy('Id_Pengadaan','DESC')->get();
         $response=$this->generateCollection($pengadaan);
         return $this->sendResponse($response,201);
     }

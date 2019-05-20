@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
+use Carbon\Carbon;
 
 use App\Transaksi_Pengadaan;
 use App\Transaksi_Penjualan;
@@ -154,6 +155,7 @@ class LaporanController extends Controller
 
     public function pendapatanBulanan($year)
     {
+        
         $data = DB::select("SELECT COALESCE(YEAR(p.Tanggal_Transaksi),0) as Year, MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan, 
         COALESCE(SUM(d.Subtotal_Detail_Sparepart),0) as Sparepart, 
         COALESCE(SUM(e.Subtotal_Detail_Jasa),0) as Service,COALESCE(SUM(p.Total),0) as Total 

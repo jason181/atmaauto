@@ -20,7 +20,7 @@
                                         <div class="input-group-prepend d-block" style="width: 75px;">
                                             <span class="input-group-text" id="basic-addon2">Tahun</span>
                                         </div>
-                                        <select class="form-control" require>
+                                        <select class="form-control" require v-model="TahunPendapatan">
                                             <option value="2018" selected>2018</option>
                                             <option value="2019">2019</option>
                                         </select>
@@ -30,7 +30,7 @@
 
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-success" style="float:right;">
+                                    <button class="btn btn-success" style="float:right;" @click="laporanpendapatanbulananhandler(TahunPendapatan)">
                                         <i class="far fa-file-pdf"></i> PRINT
                                     </button>
                                 </div>
@@ -56,7 +56,7 @@
                                         <div class="input-group-prepend d-block" style="width: 75px;">
                                             <span class="input-group-text" id="basic-addon2">Tahun</span>
                                         </div>
-                                        <select class="form-control" require>
+                                        <select class="form-control" require v-model="TahunPengeluaran">
                                             <option value="2018" selected>2018</option>
                                             <option value="2019">2019</option>
                                         </select>
@@ -66,7 +66,7 @@
 
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-success" style="float:right;">
+                                    <button class="btn btn-success" style="float:right;" @click="laporanpengeluaranbulananhandler(TahunPengeluaran)">
                                         <i class="far fa-file-pdf"></i> PRINT
                                     </button>
                                 </div>
@@ -92,7 +92,7 @@
                                         <div class="input-group-prepend d-block" style="width: 75px;">
                                             <span class="input-group-text" id="basic-addon2">Tahun</span>
                                         </div>
-                                        <select class="form-control" require>
+                                        <select class="form-control" require v-model="TahunSisaStok">
                                             <option value="2018" selected>2018</option>
                                             <option value="2019">2019</option>
                                         </select>
@@ -103,14 +103,14 @@
                                         <div class="input-group-prepend d-block" style="width: 75px;">
                                             <span class="input-group-text" id="basic-addon2">Tipe</span>
                                         </div>
-                                        <select class="form-control" require>
-                                            <option value="Roda" selected>Roda</option>
-                                            <option value="Kelistrikan">Kelistrikan</option>
+                                        <select class="form-control" require v-model="TipeSisaStok">
+                                            <option value="Sparepart Roda" selected>Roda</option>
+                                            <option value="Sparepart Kelistrikan">Kelistrikan</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-success" style="float:right;">
+                                    <button class="btn btn-success" style="float:right;" @click="laporansisastok(TahunSisaStok,TipeSisaStok)">
                                         <i class="far fa-file-pdf"></i> PRINT
                                     </button>
                                 </div>
@@ -230,3 +230,97 @@
         </div>
     </body>
 </template>
+
+<script>
+import Controller from '../../service/Laporan'
+import Http from '../../service/Http'
+
+export default {
+    data:() => ({
+        TahunPendapatan:'',
+        TahunPengeluaran:'',
+        TahunSisaStok:'',
+        TipeSisaStok:'',
+        TahunPenjualanTerbanyak:'',
+        BulanPenjualanJasa:'',
+        TahunPenjualanJasa:'',
+    }),
+    methods:{
+        async laporanpendapatanbulanan(TahunPendapatan) {
+            try {
+                await Http.download('/api/pendapatan_bulanan/'+TahunPendapatan);
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        laporanpendapatanbulananhandler(TahunPendapatan)
+        {
+            this.TahunPendapatan=TahunPendapatan;
+            this.laporanpendapatanbulanan(this.TahunPendapatan);
+        },
+        async laporanpengeluaranbulanan(TahunPendapatan)
+        {
+            try{
+                await Http.download('/api/pengeluaranbulanan/'+TahunPengeluaran);
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        laporanpengeluaranbulananhandler(TahunPengeluaran)
+        {
+            this.TahunPengeluaran=TahunPengeluaran;
+            this.laporanpengeluaranbulanan(this.TahunPengeluaran);
+        },
+        async laporansisastok(TahunSisaStok,TipeSisaStok)
+        {
+            try{
+                await Http.download('/api/sisa_stok/'+TahunSisaStok+'/'+TipeSisaStok);
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        laporansisastokhandler(TahunSisaStok,TipeSisaStok)
+        {
+            this.TahunSisaStok=TahunSisaStok;
+            this.TipeSisaStok=TipeSisaStok;
+            this.laporansisastok(this.TahunSisaStok,this.TipeSisaStok);
+        },
+        async laporanpenjualanterbanyak(TahunPenjualanTerbanyak)
+        {
+            try{
+                await Http.download('/api/sparepart_terlaris/'+TahunPenjualanTerbanyak);
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        laporanpenjualanterbanyakhandler()
+        {
+            this.TahunPenjualanTerbanyak = TahunPenjualanTerbanyak;
+            this.laporanpenjualanterbanyak(this.TahunPenjualanTerbanyak);
+        },
+        async laporanpendapatancabangtahunan()
+        {
+            try{
+                await Http.download('/api/pedapatan_tahunan');
+            }catch(err)
+            {
+                console.log(err)
+            }
+        },
+        async laporanpenjualanjasa(BulanPenjualanJasa,TahunPenjualanJasa)
+        {
+            try{
+                await Http.download('/api/penjualan_jasa/'+BulanPenjualanJasa+'/'+TahunPenjualanJasa);
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        laporanpenjualanjasa(BulanPenjualanJasa,TahunPenjualanJasa)
+        {
+            this.BulanPenjualanJasa=BulanPenjualanJasa;
+            this.TahunPenjualanJasa=TahunPenjualanJasa;
+            this.laporanpenjualanjasa(this.BulanPenjualanJasa,this.TahunPenjualanJasa);
+        }
+    }
+}
+</script>
