@@ -32,7 +32,7 @@
                 <p style="text-align:center;">MOTORCYCLE SPAREPARTS AND SERVICES</p>
                 <p style="text-align:center;">Jl. Babarsari No. 43 Yogyakarta 552181</p>
                 <p style="text-align:center;">Telp. (0274) 487711</p>
-                <p style="text-align:center;">http://atmauto.jasonfw.com/</p>
+                <p style="text-align:center;"></p'>http://atmauto.jasonfw.com/</p>
             </div>
         </div> -->
         <div style="border : 1px solid black;">

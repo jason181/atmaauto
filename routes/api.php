@@ -169,7 +169,7 @@ Route::get('/pendapatan_bulanan_desktop/{year}','LaporanController@pendapatanBul
 Route::get('/pendapatan_tahunan_desktop','LaporanController@pendapatanTahunanDesktop');
 Route::get('/pengeluaran_bulanan_desktop/{year}','LaporanController@pengeluaranBulananDesktop');
 Route::get('/penjualan_jasa_desktop/{year}/{month}','LaporanController@penjualanjasaDesktop');
-Route::get('/sisa_stok_desktop','LaporanController@sisastokDesktop');
+Route::get('/sisa_stok_desktop/{year}/{tipe}','LaporanController@sisastokDesktop');
 
 //Cetak Web
 Route::get('/cetaknotalunasWeb/{id}','LaporanController@cetaknotalunasWeb');
