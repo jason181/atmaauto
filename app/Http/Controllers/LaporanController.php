@@ -154,7 +154,6 @@ class LaporanController extends Controller
 
     public function pendapatanBulanan($year)
     {
-        
         $data = DB::select("SELECT COALESCE(YEAR(p.Tanggal_Transaksi),0) as Year, MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan, 
         COALESCE(SUM(d.Subtotal_Detail_Sparepart),0) as Sparepart, 
         COALESCE(SUM(e.Subtotal_Detail_Jasa),0) as Service,COALESCE(SUM(p.Total),0) as Total 
@@ -821,11 +820,11 @@ class LaporanController extends Controller
         {
             $datas = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan, COALESCE((select (
                 (select Jumlah_Sparepart + (select sum(Jumlah) from detail_spareparts join spareparts on detail_spareparts.Kode_Sparepart=spareparts.Kode_Sparepart
-                where spareparts.Tipe_Barang = 'Sparepart Roda' and EXTRACT(YEAR FROM detail_spareparts.created_at) = '2019')
-                 - (select sum(Jumlah) from detail_pengadaans join spareparts on detail_pengadaans.Kode_Sparepart=spareparts.Kode_Sparepart where spareparts.Tipe_Barang = 'Sparepart Roda' and EXTRACT(YEAR FROM detail_pengadaans.created_at) = '2019') from spareparts where Tipe_Barang = 'Sparepart Roda')
-                 - (select sum(Jumlah) from detail_spareparts join spareparts on detail_spareparts.Kode_Sparepart=spareparts.Kode_Sparepart where spareparts.Tipe_Barang = 'Sparepart Roda' and EXTRACT(Month FROM detail_spareparts.created_at) = bulan) 
-                + (select sum(Jumlah) from detail_pengadaans join spareparts on detail_pengadaans.Kode_Sparepart=spareparts.Kode_Sparepart where spareparts.Tipe_Barang = 'Sparepart Roda' and EXTRACT(Month FROM detail_pengadaans.created_at) = bulan))  AS 'Jumlah Sparepart Sisa' 
-                from spareparts where Tipe_Barang = 'Sparepart Roda'),'0') AS JumlahStokSisa
+                where spareparts.Tipe_Barang = 'Sparepart Roda' and EXTRACT(YEAR FROM detail_spareparts.created_at) = $year)
+                 - (select sum(Jumlah) from detail_pengadaans join spareparts on detail_pengadaans.Kode_Sparepart=spareparts.Kode_Sparepart where spareparts.Tipe_Barang = $tipe and EXTRACT(YEAR FROM detail_pengadaans.created_at) = $year) from spareparts where Tipe_Barang = $tipe)
+                 - (select sum(Jumlah) from detail_spareparts join spareparts on detail_spareparts.Kode_Sparepart=spareparts.Kode_Sparepart where spareparts.Tipe_Barang = $tipe and EXTRACT(Month FROM detail_spareparts.created_at) = bulan) 
+                + (select sum(Jumlah) from detail_pengadaans join spareparts on detail_pengadaans.Kode_Sparepart=spareparts.Kode_Sparepart where spareparts.Tipe_Barang = $tipe and EXTRACT(Month FROM detail_pengadaans.created_at) = bulan))  AS JumlahSparepartSisa 
+                from spareparts where Tipe_Barang = $tipe),'0') AS JumlahStokSisa
                  FROM(
                         SELECT '01' AS
                                 bulan
