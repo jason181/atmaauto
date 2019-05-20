@@ -581,11 +581,11 @@ class LaporanController extends Controller
         WHERE b.Id_Role = 2 AND c.deleted_at is null
         GROUP BY YEAR(c.Tanggal_Transaksi),d.Nama_Cabang");
 
-        return response()->json([
-            'datas' => (bool) $datas,
-            'datas' => $datas,
-            'message' => $datas ? 'Success' : 'Error',
-        ]);
+        // return response()->json([
+        //     'datas' => (bool) $datas,
+        //     'datas' => $datas,
+        //     'message' => $datas ? 'Success' : 'Error',
+        // ]);
 
         $pdf = PDF::loadView('pendapatan_tahunan',
         ['datas'=>$datas]);
@@ -688,11 +688,11 @@ class LaporanController extends Controller
             p.Tipe,
             s.Nama_Jasa;");
 
-        return response()->json([
-            'datas' => (bool) $datas,
-            'datas' => $datas,
-            'message' => $datas ? 'Success' : 'Error',
-        ]);
+        // return response()->json([
+        //     'datas' => (bool) $datas,
+        //     'datas' => $datas,
+        //     'message' => $datas ? 'Success' : 'Error',
+        // ]);
         $pdf = PDF::loadView('penjualan_jasa',
         ['datas'=>$datas]);
         $pdf->setPaper([0,0,550,900]);
@@ -898,8 +898,10 @@ class LaporanController extends Controller
             // ]);
 
             $date = Carbon::now();
+            $tipe = explode('"',$tipe);
+            
             $pdf = PDF::loadView('sisa_stok',
-            ['datas'=>$datas,'year'=>$year,'date'=>$date]);
+            ['datas'=>$datas,'year'=>$year,'date'=>$date,'tipe'=>$tipe[1]]);
             $pdf->setPaper([0,0,550,900]);
             return $pdf->stream();
         }

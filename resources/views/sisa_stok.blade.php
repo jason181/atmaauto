@@ -59,10 +59,10 @@
                         <td colspan="5" style="border-top:1px solid black;font-weight:bold;text-align:center;padding:5px;">LAPORAN SPAREPART TERLARIS</td>
                     </tr>
                     <tr>
-                        <td colspan="5">Tahun : 2019</td>
+                        <td colspan="5">Tahun : {{$year}}</td>
                     </tr>
                     <tr>
-                        <td colspan="5" style="padding-bottom:10px;">Tipe Barang : Roda</td>
+                        <td colspan="5" style="padding-bottom:10px;">Tipe Barang : {{$tipe}}</td>
                     </tr>
                     <tr>
                         <td></td>

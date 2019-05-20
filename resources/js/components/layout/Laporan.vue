@@ -177,7 +177,7 @@
 
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-success" style="float:right;">
+                                    <button class="btn btn-success" style="float:right;" @click="laporanpendapatancabangtahunan()">
                                         <i class="far fa-file-pdf"></i> PRINT
                                     </button>
                                 </div>
@@ -203,9 +203,19 @@
                                         <div class="input-group-prepend d-block" style="width: 75px;">
                                             <span class="input-group-text" id="basic-addon2">Bulan</span>
                                         </div>
-                                        <select class="form-control" require>
-                                            <option value="Januari" selected>Januari</option>
-                                            <option value="Februari">Februari</option>
+                                        <select class="form-control" require v-model="BulanPenjualanJasa">
+                                            <option value="January" selected>Januari</option>
+                                            <option value="February">Februari</option>
+                                            <option value="March">Maret</option>
+                                            <option value="April">April</option>
+                                            <option value="May">May</option>
+                                            <option value="June">June</option>
+                                            <option value="July">July</option>
+                                            <option value="August">August</option>
+                                            <option value="September">September</option>
+                                            <option value="October">October</option>
+                                            <option value="November">November</option>
+                                            <option value="December">December</option>
                                         </select>
                                     </div>
                                 </div>
@@ -214,14 +224,14 @@
                                         <div class="input-group-prepend d-block" style="width: 75px;">
                                             <span class="input-group-text" id="basic-addon2">Tahun</span>
                                         </div>
-                                        <select class="form-control" require>
+                                        <select class="form-control" require v-model="TahunPenjualanJasa">
                                             <option value="2018" selected>2018</option>
                                             <option value="2019">2019</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-success" style="float:right;">
+                                    <button class="btn btn-success" style="float:right;" @click="laporanpenjualanjasahandler(BulanPenjualanJasa,TahunPenjualanJasa)">
                                         <i class="far fa-file-pdf"></i> PRINT
                                     </button>
                                 </div>
@@ -313,12 +323,12 @@ export default {
         async laporanpenjualanjasa(BulanPenjualanJasa,TahunPenjualanJasa)
         {
             try{
-                await Http.download('/api/penjualan_jasa/'+TahunPenjualanJasa+'/'+BulanPenjualanJasa);
+                await Http.download('/api/penjualan_jasa/'+TahunPenjualanJasa+'/"'+BulanPenjualanJasa+'"');
             } catch (err) {
                 console.log(err)
             }
         },
-        laporanpenjualanjasa(BulanPenjualanJasa,TahunPenjualanJasa)
+        laporanpenjualanjasahandler(BulanPenjualanJasa,TahunPenjualanJasa)
         {
             this.BulanPenjualanJasa=BulanPenjualanJasa;
             this.TahunPenjualanJasa=TahunPenjualanJasa;

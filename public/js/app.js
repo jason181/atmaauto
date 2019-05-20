@@ -4284,12 +4284,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _service_Http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../service/Http */ "./resources/js/service/Http.js");
 
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4540,7 +4548,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       TahunPenjualanJasa: ''
     };
   },
-  methods: _defineProperty({
+  methods: {
     laporanpendapatanbulanan: function () {
       var _laporanpendapatanbulanan = _asyncToGenerator(
       /*#__PURE__*/
@@ -4743,7 +4751,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/penjualan_jasa/' + TahunPenjualanJasa + '/' + BulanPenjualanJasa);
+                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/penjualan_jasa/' + TahunPenjualanJasa + '/"' + BulanPenjualanJasa + '"');
 
               case 3:
                 _context6.next = 8;
@@ -4767,12 +4775,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return laporanpenjualanjasa;
-    }()
-  }, "laporanpenjualanjasa", function laporanpenjualanjasa(BulanPenjualanJasa, TahunPenjualanJasa) {
-    this.BulanPenjualanJasa = BulanPenjualanJasa;
-    this.TahunPenjualanJasa = TahunPenjualanJasa;
-    this.laporanpenjualanjasa(this.BulanPenjualanJasa, this.TahunPenjualanJasa);
-  })
+    }(),
+    laporanpenjualanjasahandler: function laporanpenjualanjasahandler(BulanPenjualanJasa, TahunPenjualanJasa) {
+      this.BulanPenjualanJasa = BulanPenjualanJasa;
+      this.TahunPenjualanJasa = TahunPenjualanJasa;
+      this.laporanpenjualanjasa(this.BulanPenjualanJasa, this.TahunPenjualanJasa);
+    }
+  }
 });
 
 /***/ }),
@@ -53669,9 +53678,228 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(9),
+          _c("div", { staticClass: "card" }, [
+            _vm._m(9),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "collapse",
+                attrs: {
+                  id: "collapseFive",
+                  "aria-labelledby": "headingFive",
+                  "data-parent": "#accordionExample"
+                }
+              },
+              [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-md-4" }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success",
+                          staticStyle: { float: "right" },
+                          on: {
+                            click: function($event) {
+                              return _vm.laporanpendapatancabangtahunan()
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "far fa-file-pdf" }),
+                          _vm._v(" PRINT\n                                ")
+                        ]
+                      )
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ]),
           _vm._v(" "),
-          _vm._m(10)
+          _c("div", { staticClass: "card" }, [
+            _vm._m(10),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "collapse",
+                attrs: {
+                  id: "collapseSix",
+                  "aria-labelledby": "headingSix",
+                  "data-parent": "#accordionExample"
+                }
+              },
+              [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("div", { staticClass: "input-group" }, [
+                        _vm._m(11),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.BulanPenjualanJasa,
+                                expression: "BulanPenjualanJasa"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { require: "" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.BulanPenjualanJasa = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { value: "January", selected: "" } },
+                              [_vm._v("Januari")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "February" } }, [
+                              _vm._v("Februari")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "March" } }, [
+                              _vm._v("Maret")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "April" } }, [
+                              _vm._v("April")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "May" } }, [
+                              _vm._v("May")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "June" } }, [
+                              _vm._v("June")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "July" } }, [
+                              _vm._v("July")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "August" } }, [
+                              _vm._v("August")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "September" } }, [
+                              _vm._v("September")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "October" } }, [
+                              _vm._v("October")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "November" } }, [
+                              _vm._v("November")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "December" } }, [
+                              _vm._v("December")
+                            ])
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("div", { staticClass: "input-group" }, [
+                        _vm._m(12),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.TahunPenjualanJasa,
+                                expression: "TahunPenjualanJasa"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { require: "" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.TahunPenjualanJasa = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { value: "2018", selected: "" } },
+                              [_vm._v("2018")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "2019" } }, [
+                              _vm._v("2019")
+                            ])
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success",
+                          staticStyle: { float: "right" },
+                          on: {
+                            click: function($event) {
+                              return _vm.laporanpenjualanjasahandler(
+                                _vm.BulanPenjualanJasa,
+                                _vm.TahunPenjualanJasa
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "far fa-file-pdf" }),
+                          _vm._v(" PRINT\n                                ")
+                        ]
+                      )
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ])
         ]
       )
     ])
@@ -53929,225 +54157,115 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card" }, [
-      _c(
-        "a",
-        {
-          attrs: {
-            href: "#",
-            "data-toggle": "collapse",
-            "data-target": "#collapseFive",
-            "aria-expanded": "true",
-            "aria-controls": "collapseFive"
-          }
-        },
-        [
-          _c(
-            "div",
-            { staticClass: "card-header", attrs: { id: "headingFive" } },
-            [
-              _c("h5", { staticClass: "mb-0" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-link",
-                    staticStyle: { "font-size": "18px" },
-                    attrs: { type: "button" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                                Laporan Serta Grafik Pendapatan Cabang Tahunan\n                            "
-                    )
-                  ]
-                )
-              ])
-            ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "collapse",
-          attrs: {
-            id: "collapseFive",
-            "aria-labelledby": "headingFive",
-            "data-parent": "#accordionExample"
-          }
-        },
-        [
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-4" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-4" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-4" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-success",
-                    staticStyle: { float: "right" }
-                  },
-                  [
-                    _c("i", { staticClass: "far fa-file-pdf" }),
-                    _vm._v(" PRINT\n                                ")
-                  ]
-                )
-              ])
+    return _c(
+      "a",
+      {
+        attrs: {
+          href: "#",
+          "data-toggle": "collapse",
+          "data-target": "#collapseFive",
+          "aria-expanded": "true",
+          "aria-controls": "collapseFive"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "card-header", attrs: { id: "headingFive" } },
+          [
+            _c("h5", { staticClass: "mb-0" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-link",
+                  staticStyle: { "font-size": "18px" },
+                  attrs: { type: "button" }
+                },
+                [
+                  _vm._v(
+                    "\n                                Laporan Serta Grafik Pendapatan Cabang Tahunan\n                            "
+                  )
+                ]
+              )
             ])
-          ])
-        ]
-      )
-    ])
+          ]
+        )
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card" }, [
-      _c(
-        "a",
-        {
-          attrs: {
-            href: "#",
-            "data-toggle": "collapse",
-            "data-target": "#collapseSix",
-            "aria-expanded": "true",
-            "aria-controls": "collapseSix"
-          }
-        },
-        [
-          _c(
-            "div",
-            { staticClass: "card-header", attrs: { id: "headingSix" } },
-            [
-              _c("h5", { staticClass: "mb-0" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-link",
-                    staticStyle: { "font-size": "18px" },
-                    attrs: { type: "button" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                                Laporan Serta Grafik Penjualan Jasa\n                            "
-                    )
-                  ]
+    return _c(
+      "a",
+      {
+        attrs: {
+          href: "#",
+          "data-toggle": "collapse",
+          "data-target": "#collapseSix",
+          "aria-expanded": "true",
+          "aria-controls": "collapseSix"
+        }
+      },
+      [
+        _c("div", { staticClass: "card-header", attrs: { id: "headingSix" } }, [
+          _c("h5", { staticClass: "mb-0" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-link",
+                staticStyle: { "font-size": "18px" },
+                attrs: { type: "button" }
+              },
+              [
+                _vm._v(
+                  "\n                                Laporan Serta Grafik Penjualan Jasa\n                            "
                 )
-              ])
-            ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "collapse",
-          attrs: {
-            id: "collapseSix",
-            "aria-labelledby": "headingSix",
-            "data-parent": "#accordionExample"
-          }
-        },
-        [
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-4" }, [
-                _c("div", { staticClass: "input-group" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "input-group-prepend d-block",
-                      staticStyle: { width: "75px" }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "input-group-text",
-                          attrs: { id: "basic-addon2" }
-                        },
-                        [_vm._v("Bulan")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    { staticClass: "form-control", attrs: { require: "" } },
-                    [
-                      _c(
-                        "option",
-                        { attrs: { value: "Januari", selected: "" } },
-                        [_vm._v("Januari")]
-                      ),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "Februari" } }, [
-                        _vm._v("Februari")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-4" }, [
-                _c("div", { staticClass: "input-group" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "input-group-prepend d-block",
-                      staticStyle: { width: "75px" }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "input-group-text",
-                          attrs: { id: "basic-addon2" }
-                        },
-                        [_vm._v("Tahun")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    { staticClass: "form-control", attrs: { require: "" } },
-                    [
-                      _c("option", { attrs: { value: "2018", selected: "" } }, [
-                        _vm._v("2018")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "2019" } }, [
-                        _vm._v("2019")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-4" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-success",
-                    staticStyle: { float: "right" }
-                  },
-                  [
-                    _c("i", { staticClass: "far fa-file-pdf" }),
-                    _vm._v(" PRINT\n                                ")
-                  ]
-                )
-              ])
-            ])
+              ]
+            )
           ])
-        ]
-      )
-    ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "75px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Bulan")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "75px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Tahun")]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -90653,8 +90771,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\atmaauto\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\JASON\atmaauto\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\JASON\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
