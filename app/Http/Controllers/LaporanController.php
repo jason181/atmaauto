@@ -198,37 +198,37 @@ class LaporanController extends Controller
         // ]);
         $date=Carbon::now();
 
-        $year = DB::select("SELECT YEAR(p.Tanggal_Transaksi) as Year    
-                            FROM (SELECT '01' AS
-                            bulan
-                            UNION SELECT '02' AS
-                            bulan
-                            UNION SELECT '03' AS
-                            bulan
-                            UNION SELECT '04' AS
-                            bulan
-                            UNION SELECT '05' AS
-                            bulan
-                            UNION SELECT '06' AS
-                            bulan
-                            UNION SELECT '07'AS
-                            bulan
-                            UNION SELECT '08'AS
-                            bulan
-                            UNION SELECT '09' AS
-                            bulan
-                            UNION SELECT '10' AS
-                            bulan
-                            UNION SELECT '11' AS
-                            bulan
-                            UNION SELECT '12' AS
-                            bulan
-                            ) AS m LEFT JOIN transaksi_penjualans p ON MONTHNAME(p.Tanggal_Transaksi) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
-                            LEFT JOIN detail_spareparts d ON p.Id_Transaksi=d.Id_Transaksi
-                            LEFT JOIN detail_jasas e ON p.Id_Transaksi=e.Id_Transaksi
-                            where p.Status = '3'
-                            AND YEAR(p.Tanggal_Transaksi)=$year 
-                            GROUP BY m.bulan, YEAR(p.Tanggal_Transaksi)");
+        // $year = DB::select("SELECT YEAR(p.Tanggal_Transaksi) as Year    
+        //                     FROM (SELECT '01' AS
+        //                     bulan
+        //                     UNION SELECT '02' AS
+        //                     bulan
+        //                     UNION SELECT '03' AS
+        //                     bulan
+        //                     UNION SELECT '04' AS
+        //                     bulan
+        //                     UNION SELECT '05' AS
+        //                     bulan
+        //                     UNION SELECT '06' AS
+        //                     bulan
+        //                     UNION SELECT '07'AS
+        //                     bulan
+        //                     UNION SELECT '08'AS
+        //                     bulan
+        //                     UNION SELECT '09' AS
+        //                     bulan
+        //                     UNION SELECT '10' AS
+        //                     bulan
+        //                     UNION SELECT '11' AS
+        //                     bulan
+        //                     UNION SELECT '12' AS
+        //                     bulan
+        //                     ) AS m LEFT JOIN transaksi_penjualans p ON MONTHNAME(p.Tanggal_Transaksi) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
+        //                     LEFT JOIN detail_spareparts d ON p.Id_Transaksi=d.Id_Transaksi
+        //                     LEFT JOIN detail_jasas e ON p.Id_Transaksi=e.Id_Transaksi
+        //                     where p.Status = '3'
+        //                     AND YEAR(p.Tanggal_Transaksi)=$year 
+        //                     GROUP BY m.bulan, YEAR(p.Tanggal_Transaksi)");
 
         // return response()->json([
         //     'status' => (bool) $data,

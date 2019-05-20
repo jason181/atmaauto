@@ -415,7 +415,7 @@
                         <div class="container-fluid mt-3">
                         <div class="row mb-2">
                             <div class="col-lg-3">
-                                <button class="btn btn-warning mb-2 btn-block" @click="verifikasipengadaan(Pengadaan.Id_Pengadaan),refresh()" 
+                                <button class="btn btn-warning mb-2 btn-block" @click="verifikasipengadaan(Pengadaan.Id_Pengadaan),getallpengadaan()" 
                                 data-title="Tambah_Pengadaan" data-toggle="modal" data-target="" data-dismiss="modal">
                                     <i class="fas fa-plus mr-2"></i>Verifikasi
                                 </button>
@@ -613,7 +613,6 @@ export default {
             try {
                 await Controller.verifikasipengadaan(id)
                 this.getallpengadaan()
-                this.refresh();
             } catch (err) {
                 console.log(err)
             }
