@@ -230,6 +230,38 @@ class LaporanController extends Controller
         //                     AND YEAR(p.Tanggal_Transaksi)=$year 
         //                     GROUP BY m.bulan, YEAR(p.Tanggal_Transaksi)");
 
+                    $year = DB::select("SELECT YEAR(p.Tanggal_Transaksi) as Year    
+                    FROM (SELECT '01' AS
+                    bulan
+                    UNION SELECT '02' AS
+                    bulan
+                    UNION SELECT '03' AS
+                    bulan
+                    UNION SELECT '04' AS
+                    bulan
+                    UNION SELECT '05' AS
+                    bulan
+                    UNION SELECT '06' AS
+                    bulan
+                    UNION SELECT '07'AS
+                    bulan
+                    UNION SELECT '08'AS
+                    bulan
+                    UNION SELECT '09' AS
+                    bulan
+                    UNION SELECT '10' AS
+                    bulan
+                    UNION SELECT '11' AS
+                    bulan
+                    UNION SELECT '12' AS
+                    bulan
+                    ) AS m LEFT JOIN transaksi_penjualans p ON MONTHNAME(p.Tanggal_Transaksi) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
+                    LEFT JOIN detail_spareparts d ON p.Id_Transaksi=d.Id_Transaksi
+                    LEFT JOIN detail_jasas e ON p.Id_Transaksi=e.Id_Transaksi
+                    where p.Status = '3'
+                    AND YEAR(p.Tanggal_Transaksi)=$year 
+                    GROUP BY m.bulan, YEAR(p.Tanggal_Transaksi)");
+
         // return response()->json([
         //     'status' => (bool) $data,
         //     'data' => $data,
@@ -709,23 +741,23 @@ class LaporanController extends Controller
         return $pdf->stream();
     }
 
-    public function penjualanjasa($bulan,$tahun){
+    public function penjualanjasa($year,$month){
         $datas = DB::select("SELECT
         p.Merk AS Merk,
         p.Tipe AS Tipe,
         s.Nama_Jasa AS NamaService,
-        Count( t.Tanggal_Transaksi ) AS JumlahService,
+        -- Count( t.Tanggal_Transaksi ) AS JumlahService,
         YEAR(t.Tanggal_Transaksi) AS Tahun ,
         MONTHNAME(t.Tanggal_Transaksi) AS Bulan
     FROM
         motors AS p
         INNER JOIN motor_konsumens AS q ON q.Id_Motor = p.Id_Motor
-           INNER JOIN transaksi_penjualans AS t ON t.Id_Konsumen = q.Id_Konsumen 
+        INNER JOIN transaksi_penjualans AS t ON t.Id_Konsumen = q.Id_Konsumen 
         INNER JOIN detail_jasas AS r ON r.Id_Transaksi = t.Id_Transaksi
         INNER JOIN jasas AS s ON s.Id_Jasa = r.Id_Jasa
     WHERE
-        MONTHNAME( t.Tanggal_Transaksi ) = $bulan 
-        AND YEAR ( t.Tanggal_Transaksi ) = $tahun 
+        MONTHNAME( t.Tanggal_Transaksi ) = $month 
+        AND YEAR ( t.Tanggal_Transaksi ) = $year 
         AND t.Status = '3'
         AND t.Jenis_Transaksi = 'SV'
         OR t.Jenis_Transaksi = 'SS'
@@ -745,12 +777,11 @@ class LaporanController extends Controller
         return $pdf->stream();
     }
 
-    public function penjualanjasaDesktop(){
+    public function penjualanjasaDesktop($year,$month){
         $datas = DB::select("SELECT
             p.Merk AS Merk,
             p.Tipe AS Tipe,
             s.Nama_Jasa AS NamaService,
-            Count( t.Tanggal_Transaksi ) AS JumlahService,
             YEAR(t.Tanggal_Transaksi) AS Tahun ,
             MONTHNAME(t.Tanggal_Transaksi) AS Bulan
         FROM
@@ -760,8 +791,8 @@ class LaporanController extends Controller
             INNER JOIN detail_jasas AS r ON r.Id_Transaksi = t.Id_Transaksi
             INNER JOIN jasas AS s ON s.Id_Jasa = r.Id_Jasa
         WHERE
-            MONTHNAME( t.Tanggal_Transaksi ) = 'May' 
-            AND YEAR ( t.Tanggal_Transaksi ) = 2019 
+            MONTHNAME( t.Tanggal_Transaksi ) = $month 
+            AND YEAR ( t.Tanggal_Transaksi ) = $year
             AND t.Status = '3'
             AND t.Jenis_Transaksi = 'SV'
             OR t.Jenis_Transaksi = 'SS'
