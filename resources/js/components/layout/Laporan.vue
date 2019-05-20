@@ -104,13 +104,16 @@
                                             <span class="input-group-text" id="basic-addon2">Tipe</span>
                                         </div>
                                         <select class="form-control" require v-model="TipeSisaStok">
-                                            <option value="Sparepart Roda" selected>Roda</option>
+                                            <option value="Sparepart Motor" selected>Motor</option>
                                             <option value="Sparepart Kelistrikan">Kelistrikan</option>
+                                            <option value="Sparepart Apa">Apa</option>
+                                            <option value="Sparepart Soal">Soal</option>
+                                            <option value="Test Sparepart">Test</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-success" style="float:right;" @click="laporansisastok(TahunSisaStok,TipeSisaStok)">
+                                    <button class="btn btn-success" style="float:right;" @click="laporansisastokhandler(TahunSisaStok,TipeSisaStok)">
                                         <i class="far fa-file-pdf"></i> PRINT
                                     </button>
                                 </div>
@@ -136,7 +139,7 @@
                                         <div class="input-group-prepend d-block" style="width: 75px;">
                                             <span class="input-group-text" id="basic-addon2">Tahun</span>
                                         </div>
-                                        <select class="form-control" require>
+                                        <select class="form-control" require v-model="TahunPenjualanTerbanyak">
                                             <option value="2018" selected>2018</option>
                                             <option value="2019">2019</option>
                                         </select>
@@ -146,7 +149,7 @@
 
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-success" style="float:right;">
+                                    <button class="btn btn-success" style="float:right;" @click="laporanpenjualanterbanyakhandler(TahunPenjualanTerbanyak)">
                                         <i class="far fa-file-pdf"></i> PRINT
                                     </button>
                                 </div>
@@ -258,10 +261,10 @@ export default {
             this.TahunPendapatan=TahunPendapatan;
             this.laporanpendapatanbulanan(this.TahunPendapatan);
         },
-        async laporanpengeluaranbulanan(TahunPendapatan)
+        async laporanpengeluaranbulanan(TahunPengeluaran)
         {
             try{
-                await Http.download('/api/pengeluaranbulanan/'+TahunPengeluaran);
+                await Http.download('/api/pengeluaran_bulanan/'+TahunPengeluaran);
             } catch (err) {
                 console.log(err)
             }
@@ -274,7 +277,7 @@ export default {
         async laporansisastok(TahunSisaStok,TipeSisaStok)
         {
             try{
-                await Http.download('/api/sisa_stok/'+TahunSisaStok+'/'+TipeSisaStok);
+                await Http.download('/api/sisa_stok/'+TahunSisaStok+'/"'+TipeSisaStok+'"');
             } catch (err) {
                 console.log(err)
             }
@@ -293,7 +296,7 @@ export default {
                 console.log(err)
             }
         },
-        laporanpenjualanterbanyakhandler()
+        laporanpenjualanterbanyakhandler(TahunPenjualanTerbanyak)
         {
             this.TahunPenjualanTerbanyak = TahunPenjualanTerbanyak;
             this.laporanpenjualanterbanyak(this.TahunPenjualanTerbanyak);
@@ -310,7 +313,7 @@ export default {
         async laporanpenjualanjasa(BulanPenjualanJasa,TahunPenjualanJasa)
         {
             try{
-                await Http.download('/api/penjualan_jasa/'+BulanPenjualanJasa+'/'+TahunPenjualanJasa);
+                await Http.download('/api/penjualan_jasa/'+TahunPenjualanJasa+'/'+BulanPenjualanJasa);
             } catch (err) {
                 console.log(err)
             }

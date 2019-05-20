@@ -78,7 +78,7 @@
                         <td></td>
                         <td class="mytable tac" style="width:10%">{{$i}}</td>
                         <td class="mytable">{{$data->Bulan}}</td>
-                        <td class="mytable tar">{{$data->SisaStok}}</td>
+                        <td class="mytable tar">{{$data->JumlahStokSisa}}</td>
                         <td></td>
                     </tr>
                     @endforeach

@@ -86,8 +86,6 @@ class TransaksiPenjualanController extends RestController
         return $this->sendResponse($response,201);
     }
 
-    
-
     public function showByIdMotorKonsumen($id)
     {
         $motorKonsumen = Motor_Konsumen::find($id);
@@ -209,7 +207,7 @@ class TransaksiPenjualanController extends RestController
             $sparepartCollection=Sparepart::where('Kode_Sparepart',$request->Kode_Sparepart)->get();
             $sparepartdata=$sparepartCollection->first();
 
-            $sparepartdata->Jumlah_Sparepart += $request->Jumlah;
+            $sparepartdata->Jumlah_Sparepart -= $request->Jumlah;
             $sparepartdata->save();
 
             $sparepart->Id_Transaksi        = $request->get('Id_Transaksi');
@@ -491,5 +489,4 @@ class TransaksiPenjualanController extends RestController
             'message' => $status ? 'Deleted' : 'Error Delete'
         ]);
     }
-
 }

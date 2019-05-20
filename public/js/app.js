@@ -4523,6 +4523,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4580,14 +4583,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     laporanpengeluaranbulanan: function () {
       var _laporanpengeluaranbulanan = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(TahunPendapatan) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(TahunPengeluaran) {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/pengeluaranbulanan/' + TahunPengeluaran);
+                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/pengeluaran_bulanan/' + TahunPengeluaran);
 
               case 3:
                 _context2.next = 8;
@@ -4626,7 +4629,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/sisa_stok/' + TahunSisaStok + '/' + TipeSisaStok);
+                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/sisa_stok/' + TahunSisaStok + '/"' + TipeSisaStok + '"');
 
               case 3:
                 _context3.next = 8;
@@ -4691,7 +4694,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return laporanpenjualanterbanyak;
     }(),
-    laporanpenjualanterbanyakhandler: function laporanpenjualanterbanyakhandler() {
+    laporanpenjualanterbanyakhandler: function laporanpenjualanterbanyakhandler(TahunPenjualanTerbanyak) {
       this.TahunPenjualanTerbanyak = TahunPenjualanTerbanyak;
       this.laporanpenjualanterbanyak(this.TahunPenjualanTerbanyak);
     },
@@ -4740,7 +4743,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/penjualan_jasa/' + BulanPenjualanJasa + '/' + TahunPenjualanJasa);
+                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/penjualan_jasa/' + TahunPenjualanJasa + '/' + BulanPenjualanJasa);
 
               case 3:
                 _context6.next = 8;
@@ -53510,15 +53513,36 @@ var render = function() {
                             _c(
                               "option",
                               {
-                                attrs: { value: "Sparepart Roda", selected: "" }
+                                attrs: {
+                                  value: "Sparepart Motor",
+                                  selected: ""
+                                }
                               },
-                              [_vm._v("Roda")]
+                              [_vm._v("Motor")]
                             ),
                             _vm._v(" "),
                             _c(
                               "option",
                               { attrs: { value: "Sparepart Kelistrikan" } },
                               [_vm._v("Kelistrikan")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "Sparepart Apa" } },
+                              [_vm._v("Apa")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "Sparepart Soal" } },
+                              [_vm._v("Soal")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "Test Sparepart" } },
+                              [_vm._v("Test")]
                             )
                           ]
                         )
@@ -53533,7 +53557,7 @@ var render = function() {
                           staticStyle: { float: "right" },
                           on: {
                             click: function($event) {
-                              return _vm.laporansisastok(
+                              return _vm.laporansisastokhandler(
                                 _vm.TahunSisaStok,
                                 _vm.TipeSisaStok
                               )
@@ -53552,11 +53576,102 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(7),
+          _c("div", { staticClass: "card" }, [
+            _vm._m(7),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "collapse",
+                attrs: {
+                  id: "collapseFour",
+                  "aria-labelledby": "headingThree",
+                  "data-parent": "#accordionExample"
+                }
+              },
+              [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("div", { staticClass: "input-group" }, [
+                        _vm._m(8),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.TahunPenjualanTerbanyak,
+                                expression: "TahunPenjualanTerbanyak"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { require: "" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.TahunPenjualanTerbanyak = $event.target
+                                  .multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { value: "2018", selected: "" } },
+                              [_vm._v("2018")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "2019" } }, [
+                              _vm._v("2019")
+                            ])
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success",
+                          staticStyle: { float: "right" },
+                          on: {
+                            click: function($event) {
+                              return _vm.laporanpenjualanterbanyakhandler(
+                                _vm.TahunPenjualanTerbanyak
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "far fa-file-pdf" }),
+                          _vm._v(" PRINT\n                                ")
+                        ]
+                      )
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ]),
           _vm._v(" "),
-          _vm._m(8),
+          _vm._m(9),
           _vm._v(" "),
-          _vm._m(9)
+          _vm._m(10)
         ]
       )
     ])
@@ -53755,112 +53870,60 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card" }, [
-      _c(
-        "a",
-        {
-          attrs: {
-            href: "#",
-            "data-toggle": "collapse",
-            "data-target": "#collapseFour",
-            "aria-expanded": "true",
-            "aria-controls": "collapseFour"
-          }
-        },
-        [
-          _c(
-            "div",
-            { staticClass: "card-header", attrs: { id: "headingFour" } },
-            [
-              _c("h5", { staticClass: "mb-0" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-link",
-                    staticStyle: { "font-size": "18px" },
-                    attrs: { type: "button" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                                Laporan Serta Grafik Jumlah Penjualan Terbanyak Bulanan\n                            "
-                    )
-                  ]
-                )
-              ])
-            ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "collapse",
-          attrs: {
-            id: "collapseFour",
-            "aria-labelledby": "headingThree",
-            "data-parent": "#accordionExample"
-          }
-        },
-        [
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-4" }, [
-                _c("div", { staticClass: "input-group" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "input-group-prepend d-block",
-                      staticStyle: { width: "75px" }
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "input-group-text",
-                          attrs: { id: "basic-addon2" }
-                        },
-                        [_vm._v("Tahun")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    { staticClass: "form-control", attrs: { require: "" } },
-                    [
-                      _c("option", { attrs: { value: "2018", selected: "" } }, [
-                        _vm._v("2018")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "2019" } }, [
-                        _vm._v("2019")
-                      ])
-                    ]
+    return _c(
+      "a",
+      {
+        attrs: {
+          href: "#",
+          "data-toggle": "collapse",
+          "data-target": "#collapseFour",
+          "aria-expanded": "true",
+          "aria-controls": "collapseFour"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "card-header", attrs: { id: "headingFour" } },
+          [
+            _c("h5", { staticClass: "mb-0" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-link",
+                  staticStyle: { "font-size": "18px" },
+                  attrs: { type: "button" }
+                },
+                [
+                  _vm._v(
+                    "\n                                Laporan Serta Grafik Jumlah Penjualan Terbanyak Bulanan\n                            "
                   )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-4" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-4" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-success",
-                    staticStyle: { float: "right" }
-                  },
-                  [
-                    _c("i", { staticClass: "far fa-file-pdf" }),
-                    _vm._v(" PRINT\n                                ")
-                  ]
-                )
-              ])
+                ]
+              )
             ])
-          ])
-        ]
-      )
-    ])
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input-group-prepend d-block",
+        staticStyle: { width: "75px" }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "input-group-text", attrs: { id: "basic-addon2" } },
+          [_vm._v("Tahun")]
+        )
+      ]
+    )
   },
   function() {
     var _vm = this
