@@ -855,6 +855,8 @@ class LaporanController extends Controller
             return response()->json([
                 'datas' => (bool) $datas,
                 'datas' => $datas,
+                'year' => $year,
+                'tipe' => $tipe,
                 'message' => $datas ? 'Success' : 'Error',
             ]);
         }
