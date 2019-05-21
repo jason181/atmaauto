@@ -34,6 +34,7 @@ class LaporanController extends Controller
         $pengadaan = Transaksi_Pengadaan::find($id);
         $pengadaan->Status_Pengadaan = '1';
         $pengadaan->save();
+
         $datas  = DB::select("SELECT * FROM transaksi_pengadaans 
                     LEFT JOIN detail_pengadaans 
                     ON transaksi_pengadaans.Id_Pengadaan = detail_pengadaans.Id_Pengadaan 
@@ -42,6 +43,7 @@ class LaporanController extends Controller
                     LEFT JOIN spareparts
                     ON detail_pengadaans.Kode_Sparepart = spareparts.Kode_Sparepart
                     WHERE transaksi_pengadaans.Id_Pengadaan = $id");
+                    
         $pdf = PDF::loadView('cetak_pengadaan',['datas' => $datas]);
         $pdf->setPaper([0,0,550,900]);
 	    return $pdf->stream();
@@ -653,13 +655,16 @@ class LaporanController extends Controller
                        bulan
                 ) AS m;");
 
-        return response()->json([
-                'datas' => (bool) $datas,
-                'datas' => $datas,
-                'message' => $datas ? 'Success' : 'Error',
-            ]);
+        // return response()->json([
+        //         'datas' => (bool) $datas,
+        //         'datas' => $datas,
+        //         'message' => $datas ? 'Success' : 'Error',
+        //     ]);
+
+        $date = Carbon::now();
+
         $pdf = PDF::loadView('sparepart_terlaris',
-        ['datas'=>$datas]);
+        ['datas'=>$datas,'date'=>$date]);
         $pdf->setPaper([0,0,550,900]);
         return $pdf->stream();
     }

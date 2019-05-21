@@ -489,4 +489,14 @@ class TransaksiPenjualanController extends RestController
             'message' => $status ? 'Deleted' : 'Error Delete'
         ]);
     }
+
+    public function pembayaran($id)
+    {
+        $penjualan = Transaksi_Penjualan::find($id);
+        $penjualan->Status = 3;
+        $penjualan->save();
+
+        $response=$this->generateItem($penjualan);
+        return $this->sendResponse($response);
+    }
 }

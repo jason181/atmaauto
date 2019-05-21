@@ -89123,10 +89123,8 @@ var routes = [{
   component: _components_layout_Pegawai_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
   meta: {
     role: ['Admin']
-  } // beforeEnter: middleware([
-  //     auth
-  // ]) 
-
+  },
+  beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
 }, {
   name: 'Jasa_Service',
   path: '/jasa_service',
@@ -89186,10 +89184,8 @@ var routes = [{
   component: _components_layout_Cabang_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
   meta: {
     role: ['Admin']
-  } // beforeEnter: middleware([
-  //     auth
-  // ]) 
-
+  },
+  beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
 }, {
   name: 'Konsumen',
   path: '/konsumen',
@@ -89225,7 +89221,11 @@ var routes = [{
 }, {
   name: 'Penjualan',
   path: '/penjualan',
-  component: _components_layout_Penjualan_vue__WEBPACK_IMPORTED_MODULE_14__["default"]
+  component: _components_layout_Penjualan_vue__WEBPACK_IMPORTED_MODULE_14__["default"],
+  meta: {
+    role: ['Customer Service']
+  },
+  beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
 }, {
   name: 'Laporan',
   path: '/laporan',

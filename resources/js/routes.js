@@ -32,9 +32,9 @@ export const routes = [
         meta: { role: [
             'Admin'
         ]},
-        // beforeEnter: middleware([
-        //     auth
-        // ]) 
+        beforeEnter: middleware([
+            auth
+        ]) 
     },
     {
         name: 'Jasa_Service',
@@ -121,9 +121,9 @@ export const routes = [
         meta: { role: [
             'Admin'
         ]},
-        // beforeEnter: middleware([
-        //     auth
-        // ]) 
+        beforeEnter: middleware([
+            auth
+        ]) 
     },
     {
         name: 'Konsumen',
@@ -173,6 +173,12 @@ export const routes = [
         name: 'Penjualan',
         path: '/penjualan',
         component: Penjualan,
+        meta:{ role:[
+            'Customer Service'
+        ]},
+        beforeEnter: middleware([
+            auth
+        ])
     },
     {
         name: 'Laporan',
