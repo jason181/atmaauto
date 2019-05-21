@@ -66204,7 +66204,7 @@ var render = function() {
                     placeholder: "Masukkan Nama Supplier",
                     "aria-label": "Nama_Supplier",
                     "aria-describedby": "basic-addon2",
-                    id: "Nama_Supplier",
+                    id: "Edit_Nama_Supplier",
                     name: "Nama_Supplier",
                     require: ""
                   },
@@ -66260,7 +66260,7 @@ var render = function() {
                     placeholder: "Masukkan Alamat Supplier",
                     "aria-label": "Alamat_Supplier",
                     "aria-describedby": "basic-addon2",
-                    id: "Alamat_Supplier",
+                    id: "Edit_Alamat_Supplier",
                     name: "Alamat_Supplier",
                     required: ""
                   },
@@ -66316,7 +66316,7 @@ var render = function() {
                     placeholder: "Masukkan Telepon Supplier",
                     "aria-label": "Telepon_Supplier",
                     "aria-describedby": "basic-addon2",
-                    id: "Telepon_Supplier",
+                    id: "Edit_Telepon_Supplier",
                     name: "Telepon_Supplier",
                     required: ""
                   },
