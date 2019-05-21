@@ -586,13 +586,13 @@ class LaporanController extends Controller
         //     'datas' => $datas,
         //     'message' => $datas ? 'Success' : 'Error',
         // ]);
-
+        $date = Carbon::now();
         $pdf = PDF::loadView('pendapatan_tahunan',
-        ['datas'=>$datas]);
+        ['datas'=>$datas,'date'=>$date]);
         $pdf->setPaper([0,0,550,900]);
-	    return $pdf->stream();
+         return $pdf->stream();
     }
-
+    
     public function pendapatanTahunanDesktop()
     {
         $datas = DB::select("SELECT YEAR(c.Tanggal_Transaksi) AS Tahun, d.Nama_Cabang AS Cabang, SUM(c.Total) AS Total 

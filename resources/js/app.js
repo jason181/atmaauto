@@ -6,6 +6,7 @@ import store from './store'
 import auth from './service/Auth'
 import middleware from './middleware'
 import { routes } from './routes'
+import VueApexCharts from 'vue-apexcharts'
 Vue.use(Vuelidate);
 
 window.Vue = require('vue');

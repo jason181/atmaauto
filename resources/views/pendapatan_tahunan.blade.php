@@ -49,13 +49,14 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="5" style="margin-top:1px solid black;font-weight:bold;text-align:center;padding:5px;">LAPORAN PENDAPATAN BULANAN</td>
+                        <td colspan="5" style="border-top:1px solid black;font-weight:bold;text-align:center;padding:5px;">LAPORAN PENDAPATAN TAHUNAN</td>
                     </tr>
                     <tr>
                         <td class="mytable">No</td>
                         <td class="mytable">Tahun</td>
                         <td class="mytable">Cabang</td>
                         <td class="mytable">Total</td>
+                        <td></td>
                     </tr>
                     {{$i=0}}
                     @foreach($datas as $data)
@@ -65,14 +66,15 @@
                         <td class="mytable">{{$data->Tahun}}</td>
                         <td class="mytable">{{$data->Cabang}}</td>
                         <td class="mytable">{{$data->Total}}</td>
+                        <td></td>
                     </tr>
-                    @endfor
+                    @endforeach
                     <tr>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td style="text-align:right;">TOTAL</td>
-                        <td>{{$total[0]->Total_Transaksi}}</td>
+                        <td>{{$datas[0]->Total}}</td>
                     </tr>
                     <tr class="tar">
                         <td colspan="5" style="padding-top:50px;">Dicetak Tanggal {{date('d M Y', strtotime($date))}}</td>
