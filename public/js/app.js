@@ -4545,37 +4545,69 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       TipeSisaStok: '',
       TahunPenjualanTerbanyak: '',
       BulanPenjualanJasa: '',
-      TahunPenjualanJasa: ''
+      TahunPenjualanJasa: '',
+      tampung: []
     };
   },
+  // created(){
+  //     this.laporanpendapatanbulanan();
+  // },
   methods: {
-    laporanpendapatanbulanan: function () {
-      var _laporanpendapatanbulanan = _asyncToGenerator(
+    Print: function () {
+      var _Print = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(TahunPendapatan) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/pendapatan_bulanan/' + TahunPendapatan);
+                window.print();
 
-              case 3:
-                _context.next = 8;
-                break;
-
-              case 5:
-                _context.prev = 5;
-                _context.t0 = _context["catch"](0);
-                console.log(_context.t0);
-
-              case 8:
+              case 1:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 5]]);
+        }, _callee);
+      }));
+
+      function Print() {
+        return _Print.apply(this, arguments);
+      }
+
+      return Print;
+    }(),
+    laporanpendapatanbulanan: function () {
+      var _laporanpendapatanbulanan = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(TahunPendapatan) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/pendapatan_bulanan/' + TahunPendapatan);
+
+              case 3:
+                this.tampung = _context2.sent;
+                window.open();
+                this.laporan = this.tampung.data;
+                console.log(this.laporan);
+                _context2.next = 12;
+                break;
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+
+              case 12:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 9]]);
       }));
 
       function laporanpendapatanbulanan(_x) {
@@ -4591,53 +4623,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     laporanpengeluaranbulanan: function () {
       var _laporanpengeluaranbulanan = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(TahunPengeluaran) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.prev = 0;
-                _context2.next = 3;
-                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/pengeluaran_bulanan/' + TahunPengeluaran);
-
-              case 3:
-                _context2.next = 8;
-                break;
-
-              case 5:
-                _context2.prev = 5;
-                _context2.t0 = _context2["catch"](0);
-                console.log(_context2.t0);
-
-              case 8:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2, null, [[0, 5]]);
-      }));
-
-      function laporanpengeluaranbulanan(_x2) {
-        return _laporanpengeluaranbulanan.apply(this, arguments);
-      }
-
-      return laporanpengeluaranbulanan;
-    }(),
-    laporanpengeluaranbulananhandler: function laporanpengeluaranbulananhandler(TahunPengeluaran) {
-      this.TahunPengeluaran = TahunPengeluaran;
-      this.laporanpengeluaranbulanan(this.TahunPengeluaran);
-    },
-    laporansisastok: function () {
-      var _laporansisastok = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(TahunSisaStok, TipeSisaStok) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(TahunPengeluaran) {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/sisa_stok/' + TahunSisaStok + '/"' + TipeSisaStok + '"');
+                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/pengeluaran_bulanan/' + TahunPengeluaran);
 
               case 3:
                 _context3.next = 8;
@@ -4656,28 +4649,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3, null, [[0, 5]]);
       }));
 
-      function laporansisastok(_x3, _x4) {
-        return _laporansisastok.apply(this, arguments);
+      function laporanpengeluaranbulanan(_x2) {
+        return _laporanpengeluaranbulanan.apply(this, arguments);
       }
 
-      return laporansisastok;
+      return laporanpengeluaranbulanan;
     }(),
-    laporansisastokhandler: function laporansisastokhandler(TahunSisaStok, TipeSisaStok) {
-      this.TahunSisaStok = TahunSisaStok;
-      this.TipeSisaStok = TipeSisaStok;
-      this.laporansisastok(this.TahunSisaStok, this.TipeSisaStok);
+    laporanpengeluaranbulananhandler: function laporanpengeluaranbulananhandler(TahunPengeluaran) {
+      this.TahunPengeluaran = TahunPengeluaran;
+      this.laporanpengeluaranbulanan(this.TahunPengeluaran);
     },
-    laporanpenjualanterbanyak: function () {
-      var _laporanpenjualanterbanyak = _asyncToGenerator(
+    laporansisastok: function () {
+      var _laporansisastok = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(TahunPenjualanTerbanyak) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(TahunSisaStok, TipeSisaStok) {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/sparepart_terlaris/' + TahunPenjualanTerbanyak);
+                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/sisa_stok/' + TahunSisaStok + '/"' + TipeSisaStok + '"');
 
               case 3:
                 _context4.next = 8;
@@ -4696,27 +4688,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4, null, [[0, 5]]);
       }));
 
-      function laporanpenjualanterbanyak(_x5) {
-        return _laporanpenjualanterbanyak.apply(this, arguments);
+      function laporansisastok(_x3, _x4) {
+        return _laporansisastok.apply(this, arguments);
       }
 
-      return laporanpenjualanterbanyak;
+      return laporansisastok;
     }(),
-    laporanpenjualanterbanyakhandler: function laporanpenjualanterbanyakhandler(TahunPenjualanTerbanyak) {
-      this.TahunPenjualanTerbanyak = TahunPenjualanTerbanyak;
-      this.laporanpenjualanterbanyak(this.TahunPenjualanTerbanyak);
+    laporansisastokhandler: function laporansisastokhandler(TahunSisaStok, TipeSisaStok) {
+      this.TahunSisaStok = TahunSisaStok;
+      this.TipeSisaStok = TipeSisaStok;
+      this.laporansisastok(this.TahunSisaStok, this.TipeSisaStok);
     },
-    laporanpendapatancabangtahunan: function () {
-      var _laporanpendapatancabangtahunan = _asyncToGenerator(
+    laporanpenjualanterbanyak: function () {
+      var _laporanpenjualanterbanyak = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(TahunPenjualanTerbanyak) {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
             switch (_context5.prev = _context5.next) {
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/pedapatan_tahunan');
+                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/sparepart_terlaris/' + TahunPenjualanTerbanyak);
 
               case 3:
                 _context5.next = 8;
@@ -4735,23 +4728,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee5, null, [[0, 5]]);
       }));
 
-      function laporanpendapatancabangtahunan() {
-        return _laporanpendapatancabangtahunan.apply(this, arguments);
+      function laporanpenjualanterbanyak(_x5) {
+        return _laporanpenjualanterbanyak.apply(this, arguments);
       }
 
-      return laporanpendapatancabangtahunan;
+      return laporanpenjualanterbanyak;
     }(),
-    laporanpenjualanjasa: function () {
-      var _laporanpenjualanjasa = _asyncToGenerator(
+    laporanpenjualanterbanyakhandler: function laporanpenjualanterbanyakhandler(TahunPenjualanTerbanyak) {
+      this.TahunPenjualanTerbanyak = TahunPenjualanTerbanyak;
+      this.laporanpenjualanterbanyak(this.TahunPenjualanTerbanyak);
+    },
+    laporanpendapatancabangtahunan: function () {
+      var _laporanpendapatancabangtahunan = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(BulanPenjualanJasa, TahunPenjualanJasa) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
           while (1) {
             switch (_context6.prev = _context6.next) {
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/penjualan_jasa/' + TahunPenjualanJasa + '/"' + BulanPenjualanJasa + '"');
+                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/pedapatan_tahunan');
 
               case 3:
                 _context6.next = 8;
@@ -4768,6 +4765,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee6, null, [[0, 5]]);
+      }));
+
+      function laporanpendapatancabangtahunan() {
+        return _laporanpendapatancabangtahunan.apply(this, arguments);
+      }
+
+      return laporanpendapatancabangtahunan;
+    }(),
+    laporanpenjualanjasa: function () {
+      var _laporanpenjualanjasa = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(BulanPenjualanJasa, TahunPenjualanJasa) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _context7.prev = 0;
+                _context7.next = 3;
+                return _service_Http__WEBPACK_IMPORTED_MODULE_2__["default"].download('/api/penjualan_jasa/' + TahunPenjualanJasa + '/"' + BulanPenjualanJasa + '"');
+
+              case 3:
+                _context7.next = 8;
+                break;
+
+              case 5:
+                _context7.prev = 5;
+                _context7.t0 = _context7["catch"](0);
+                console.log(_context7.t0);
+
+              case 8:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7, null, [[0, 5]]);
       }));
 
       function laporanpenjualanjasa(_x6, _x7) {
@@ -66049,7 +66081,6 @@ var render = function() {
                     placeholder: "Masukkan Alamat Supplier",
                     "aria-label": "Alamat_Supplier",
                     "aria-describedby": "basic-addon2",
-                    id: "Alamat_Supplier",
                     name: "Alamat_Supplier",
                     required: ""
                   },
@@ -66105,7 +66136,6 @@ var render = function() {
                     placeholder: "Masukkan Telepon Supplier",
                     "aria-label": "Telepon_Supplier",
                     "aria-describedby": "basic-addon2",
-                    id: "Telepon_Supplier",
                     name: "Telepon_Supplier",
                     required: ""
                   },
@@ -66204,7 +66234,6 @@ var render = function() {
                     placeholder: "Masukkan Nama Supplier",
                     "aria-label": "Nama_Supplier",
                     "aria-describedby": "basic-addon2",
-                    id: "Edit_Nama_Supplier",
                     name: "Nama_Supplier",
                     require: ""
                   },
@@ -66260,7 +66289,6 @@ var render = function() {
                     placeholder: "Masukkan Alamat Supplier",
                     "aria-label": "Alamat_Supplier",
                     "aria-describedby": "basic-addon2",
-                    id: "Edit_Alamat_Supplier",
                     name: "Alamat_Supplier",
                     required: ""
                   },
@@ -66316,7 +66344,6 @@ var render = function() {
                     placeholder: "Masukkan Telepon Supplier",
                     "aria-label": "Telepon_Supplier",
                     "aria-describedby": "basic-addon2",
-                    id: "Edit_Telepon_Supplier",
                     name: "Telepon_Supplier",
                     required: ""
                   },
@@ -66572,11 +66599,7 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-success btn-lg w-100",
-                  attrs: {
-                    type: "submit",
-                    "data-dismiss": "modal",
-                    id: "btnTambahSales"
-                  },
+                  attrs: { type: "submit", "data-dismiss": "modal" },
                   on: {
                     click: function($event) {
                       return _vm.updatesales(_vm.Supplier.Id_Supplier)
@@ -66627,7 +66650,6 @@ var render = function() {
                     placeholder: "Masukkan Nama Sales",
                     "aria-label": "Nama_Supplier",
                     "aria-describedby": "basic-addon2",
-                    id: "Nama_Supplier",
                     name: "Nama_Supplier",
                     require: ""
                   },
@@ -90802,8 +90824,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\JASON\atmaauto\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\JASON\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\SUMA\Documents\GitHub\atmaauto\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\SUMA\Documents\GitHub\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

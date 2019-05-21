@@ -257,11 +257,22 @@ export default {
         TahunPenjualanTerbanyak:'',
         BulanPenjualanJasa:'',
         TahunPenjualanJasa:'',
+        tampung:[],
     }),
+    // created(){
+    //     this.laporanpendapatanbulanan();
+    // },
     methods:{
+        async Print(){
+            window.print()
+        },
         async laporanpendapatanbulanan(TahunPendapatan) {
             try {
-                await Http.download('/api/pendapatan_bulanan/'+TahunPendapatan);
+                //await Http.download('/api/pendapatan_bulanan/'+TahunPendapatan);
+                this.tampung = await Http.download('/api/pendapatan_bulanan/'+TahunPendapatan);
+                window.open()
+                this.laporan = this.tampung.data;
+                console.log(this.laporan);
             } catch (err) {
                 console.log(err)
             }
