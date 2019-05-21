@@ -168,4 +168,30 @@ export default {
             Http.post('/api/detail_jasas/store', payload, successCallback, errorCallback)
         })
     },
+    pembayaran(id)
+    {
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.patch('/api/transaksi_penjualans/pembayaran/'+id, successCallback, errorCallback)
+        })
+    },
+    finish(id)
+    {
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.patch('/api/transaksi_penjualans/finish/'+id, successCallback, errorCallback)
+        })
+    }
 }

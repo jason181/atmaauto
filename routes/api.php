@@ -134,7 +134,8 @@ Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
     Route::patch('/transaksi_penjualans/update/{id}','TransaksiPenjualanController@update');
     Route::patch('/transaksi_penjualans/updatetransaksimobile/{id}','TransaksiPenjualanController@updatetransaksimobile');
     Route::delete('/transaksi_penjualans/delete/{id}','TransaksiPenjualanController@destroy');
-    
+    Route::patch('/transaksi_penjualans/pembayaran/{id}','TransaksiPenjualanController@pembayaran');
+    Route::patch('/transaksi_penjualans/finish/{id}','TransaksiPenjualanController@finish');
 // });
 
 //Detail Sparepart Transaksi Penjualan

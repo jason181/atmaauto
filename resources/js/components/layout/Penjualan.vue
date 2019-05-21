@@ -70,14 +70,15 @@
                     <thead class="table-primary text-center">
                         <tr>
                             <th scope="col">ID Transaksi</th>
-                            <th scope="col">ID Konsumen</th>
+                            <th scope="col">Nama Konsumen</th>
                             <th scope="col">Tanggal</th>
                             <th scope="col">Jenis Transaksi</th>
                             <th scope="col">Status Transaksi</th>
                             <th scope="col">Total</th>
                             <th scope="col">Detail</th>
                             <th scope="col">SPK</th>
-                            <th scope="col">Nota Lunas</th>
+                            <th scope="col">Finish</th>
+                            <th scope="col">Nota</th>
                             <th scope="col">Edit/Verify</th>
                             <th scope="col">Delete</th>
                         </tr>
@@ -85,7 +86,7 @@
                     <tbody>
                         <tr v-bind:key="transaksi['Id_Transaksi']" v-for="transaksi in filteredtransaksi">
                             <td>{{transaksi.Id_Transaksi}}</td>
-                            <td>{{transaksi.Id_Konsumen}} </td>
+                            <td>{{transaksi.Nama_Konsumen}} </td>
                             <td>{{transaksi.Tanggal_Transaksi}} </td>
                             <td v-if="transaksi.Jenis_Transaksi == 'SS'">
                                 Servis dan Sparepart
@@ -128,8 +129,16 @@
                             </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Nota Lunas">
+                                    <button @click="finish(transaksi.Id_Transaksi)" 
+                                    class="btn btn-success" data-title="Finish" :disabled="transaksi.Status !== 1">
+                                        <i class="fas fa-clipboard-check"></i>
+                                    </button>
+                                </p>
+                            </td>
+                            <td class="text-center">
+                                <p data-placement="top" data-toggle="tooltip" title="Nota Lunas">
                                     <button @click="cetaknotalunas(transaksi.Id_Transaksi)" 
-                                    class="btn btn-warning" data-title="Cetak_Nota_Lunas" :disabled="transaksi.Status !== 0"
+                                    class="btn btn-warning" data-title="Cetak_Nota_Lunas" :disabled="transaksi.Status !== 2"
                                     data-toggle="modal" data-target="#Cetak_Nota_Lunas">
                                         <i class="far fa-file-pdf"></i>
                                     </button>
@@ -140,17 +149,7 @@
                                     <button class="btn btn-primary" 
                                         @click="datatransaksihandler(transaksi)" 
                                         data-title="Edit_Transaksi" data-toggle="modal" 
-                                        data-target="#Edit_Transaksi">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                </p>
-                            </td>
-                            <td class="text-center">
-                                <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                    <button class="btn btn-primary" 
-                                        @click="datatransaksihandler(transaksi)" 
-                                        data-title="Edit_Transaksi" data-toggle="modal" 
-                                        data-target="#Edit_Transaksi">
+                                        data-target="#Edit_Transaksi" :disabled="transaksi.Status >= 2">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </p>
@@ -159,7 +158,8 @@
                                 <p data-placement="top" data-toggle="tooltip" title="Delete">
                                     <button @click="datatransaksihandler(transaksi)" 
                                         class="btn btn-danger"  data-title="Delete_Penjualan" 
-                                        data-toggle="modal" data-target="#Delete_Penjualan">
+                                        data-toggle="modal" data-target="#Delete_Penjualan"
+                                        :disabled="transaksi.Status >= 2">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </p>
@@ -1857,6 +1857,14 @@ export default {
                 console.log(err)
             }
         },
+        async finish(id) {
+            try {
+                await penjualanController.finish(id)
+                this.getallpenjualan()
+            } catch (err){
+                console.log(err)
+            }
+        },
         datatransaksihandler(transaksi){
             this.Transaksi = transaksi
             this.sparepartdata = transaksi.detail_sparepart.data;
@@ -1894,6 +1902,7 @@ export default {
             // this.Konsumen.Nama_Konsumen = '-1'
             // this.Konsumen.Alamat_Konsumen = '-1'
         },
+
     },
     computed:{
         ...mapGetters({
