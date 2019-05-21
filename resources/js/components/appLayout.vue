@@ -37,7 +37,7 @@
 				<router-link :to="{name:'Konsumen'}" class="nav-tabs nav-item nav-link">
                     <a class="nav-tabs nav-item nav-link">Konsumen</a>
                 </router-link>
-				<router-link :to="{name:'Supplier'}" id="navsupplier" class="nav-tabs nav-item nav-link">
+				<router-link :to="{name:'Supplier'}" class="nav-tabs nav-item nav-link">
                     <a class="nav-tabs nav-item nav-link">Supplier</a>
                 </router-link>
 				<router-link :to="{name:'Cabang'}" class="nav-tabs nav-item nav-link">
