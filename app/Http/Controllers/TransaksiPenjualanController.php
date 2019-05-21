@@ -506,7 +506,7 @@ class TransaksiPenjualanController extends RestController
         $penjualan->save();
 
         $response=$this->generateItem($penjualan);
-        return $this->sendResponse($response);
+        return $this->sendResponse($response,201);
     }
 
     public function finish($id)
