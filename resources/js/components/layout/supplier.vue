@@ -2,7 +2,7 @@
     <body>
         <div class="container-fluid mt-3" style="">
             <div class="clearfix my-2">
-                <button class="btn btn-success float-left mb-2" @click="getallsupplier(),refreshSupplier()" data-title="Tambah_Supplier" data-toggle="modal" data-target="#Tambah_Supplier">
+                <button class="btn btn-success float-left mb-2" @click="getallsupplier(),refreshSupplier()" data-title="Tambah_Supplier" data-toggle="modal" data-target="#Tambah_Supplier" id="btnTambahSupplier">
                     <i class="fas fa-plus mr-2"></i>Tambah
                 </button>
                 <div class="navbar navbar-light bg-light float-right p-0">
@@ -36,35 +36,35 @@
                             <td>{{supplier.Telepon_Sales}} </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                    <button class="btn btn-primary" @click="datasupplierhandler(supplier)" data-title="Edit_Supplier" data-toggle="modal" data-target="#Edit_Supplier">
+                                    <button class="btn btn-primary" @click="datasupplierhandler(supplier)" data-title="Edit_Supplier" data-toggle="modal" data-target="#Edit_Supplier" id="btnEditSupplier">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </p>
                             </td>
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                    <button @click="datasupplierhandler(supplier)" class="btn btn-danger" data-title="Delete_Supplier" data-toggle="modal" data-target="#Delete_Supplier">
+                                    <button @click="datasupplierhandler(supplier)" class="btn btn-danger" data-title="Delete_Supplier" data-toggle="modal" data-target="#Delete_Supplier" id="btnDeleteSupplier">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </p>
                             </td>
                             <td class="text-center" v-if="supplier.Nama_Sales==null">
                                 <p data-placement="top" data-toggle="tooltip" title="Tambah">
-                                    <button @click="datasupplierhandler(supplier)" class="btn btn-success" data-title="Tambah_Sales" data-toggle="modal" data-target="#Tambah_Sales">
+                                    <button @click="datasupplierhandler(supplier)" class="btn btn-success" data-title="Tambah_Sales" data-toggle="modal" data-target="#Tambah_Sales" id="btnTambahSales">
                                         <i class="fas fa-plus"></i>
                                     </button>
                                 </p>
                             </td>
                             <td class="text-center" v-else>
                                 <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                    <button @click="datasupplierhandler(supplier)" class="btn btn-primary" data-title="Edit_Sales" data-toggle="modal" data-target="#Edit_Sales">
+                                    <button @click="datasupplierhandler(supplier)" class="btn btn-primary" data-title="Edit_Sales" data-toggle="modal" data-target="#Edit_Sales" id="btnEditSales">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </p>
                             </td>
                             <td class="text-center" v-if="supplier.Nama_Sales!=null">
                                 <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                    <button @click="datasupplierhandler(supplier)" class="btn btn-danger" data-title="Delete_Sales" data-toggle="modal" data-target="#Delete_Sales">
+                                    <button @click="datasupplierhandler(supplier)" class="btn btn-danger" data-title="Delete_Sales" data-toggle="modal" data-target="#Delete_Sales" id="btnDeleteSales">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </p>
@@ -121,7 +121,7 @@
                             <p class="mb-3" style="color:red;" v-if="$v.Supplier.Telepon_Supplier.$invalid">{{phoneErrors[0]}}</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-success btn-lg w-100" @click="addsupplier()" data-dismiss="modal">Tambahkan Supplier</button>
+                            <button type="submit" class="btn btn-success btn-lg w-100" @click="addsupplier()" data-dismiss="modal" id="btnSimpanSupplier">Tambahkan Supplier</button>
                         </div>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Nama</span>
                             </div>
-                            <input type="text" v-model="Supplier.Nama_Supplier" class="form-control" placeholder="Masukkan Nama Supplier" aria-label="Nama_Supplier" aria-describedby="basic-addon2" id="Nama_Supplier" name="Nama_Supplier" @input="$v.Supplier.Nama_Supplier.$touch()" @blur="$v.Supplier.Nama_Supplier.$touch()" require>
+                            <input type="text" v-model="Supplier.Nama_Supplier" class="form-control" placeholder="Masukkan Nama Supplier" aria-label="Nama_Supplier" aria-describedby="basic-addon2" id="Edit_Nama_Supplier" name="Nama_Supplier" @input="$v.Supplier.Nama_Supplier.$touch()" @blur="$v.Supplier.Nama_Supplier.$touch()" require>
                         </div>
                         <div class="text-center">
                             <p class="mb-3" style="color:red;" v-if="$v.Supplier.Nama_Supplier.$invalid">{{nameErrors[0]}}</p>
@@ -152,7 +152,7 @@
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Alamat</span>
                             </div>
-                            <input type="text" v-model="Supplier.Alamat_Supplier" class="form-control" placeholder="Masukkan Alamat Supplier" aria-label="Alamat_Supplier" aria-describedby="basic-addon2" id="Alamat_Supplier" name="Alamat_Supplier" @input="$v.Supplier.Alamat_Supplier.$touch()" @blur="$v.Supplier.Alamat_Supplier.$touch()" required>
+                            <input type="text" v-model="Supplier.Alamat_Supplier" class="form-control" placeholder="Masukkan Alamat Supplier" aria-label="Alamat_Supplier" aria-describedby="basic-addon2" id="Edit_Alamat_Supplier" name="Alamat_Supplier" @input="$v.Supplier.Alamat_Supplier.$touch()" @blur="$v.Supplier.Alamat_Supplier.$touch()" required>
                         </div>
                         <div class="text-center">
                             <p class="mb-3" style="color:red;" v-if="$v.Supplier.Alamat_Supplier.$invalid">{{addressErrors[0]}}</p>
@@ -161,13 +161,13 @@
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Telepon</span>
                             </div>
-                            <input type="text" v-model="Supplier.Telepon_Supplier" class="form-control" placeholder="Masukkan Telepon Supplier" aria-label="Telepon_Supplier" aria-describedby="basic-addon2" id="Telepon_Supplier" name="Telepon_Supplier" @input="$v.Supplier.Telepon_Supplier.$touch()" @blur="$v.Supplier.Telepon_Supplier.$touch()" required>
+                            <input type="text" v-model="Supplier.Telepon_Supplier" class="form-control" placeholder="Masukkan Telepon Supplier" aria-label="Telepon_Supplier" aria-describedby="basic-addon2" id="Edit_Telepon_Supplier" name="Telepon_Supplier" @input="$v.Supplier.Telepon_Supplier.$touch()" @blur="$v.Supplier.Telepon_Supplier.$touch()" required>
                         </div>
                         <div class="text-center">
                             <p class="mb-3" style="color:red;" v-if="$v.Supplier.Telepon_Supplier.$invalid">{{phoneErrors[0]}}</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary btn-lg w-100" @click="updatesupplier(Supplier.Id_Supplier)" data-dismiss="modal" :disabled="($v.Supplier.Nama_Supplier.$invalid || $v.Supplier.Alamat_Supplier.$invalid || $v.Supplier.Telepon_Supplier.$invalid)">Simpan Perubahan</button>
+                            <button type="submit" class="btn btn-primary btn-lg w-100" @click="updatesupplier(Supplier.Id_Supplier)" data-dismiss="modal" :disabled="($v.Supplier.Nama_Supplier.$invalid || $v.Supplier.Alamat_Supplier.$invalid || $v.Supplier.Telepon_Supplier.$invalid)" id="btnSimpanEditSupplier">Simpan Perubahan</button>
                         </div>
                     </div>
                 </div>
@@ -191,7 +191,7 @@
                         <a id="delete_btn" class="float-left w-100">
                             <button type="button" @click="deletesupplier(Supplier.Id_Supplier)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
                         </a>
-                        <button type="button" class="btn btn-secondary float-right w-50" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
+                        <button type="button" class="btn btn-secondary float-right w-50" data-dismiss="modal" id="btnDeleteSupplier"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
                     </div>
                 </div>
             </div>
@@ -228,7 +228,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success btn-lg w-100" @click="updatesales(Supplier.Id_Supplier)" data-dismiss="modal">Tambah Sales</button>
+                        <button type="submit" class="btn btn-success btn-lg w-100" @click="updatesales(Supplier.Id_Supplier)" data-dismiss="modal" id="btnTambahSales">Tambah Sales</button>
                     </div>
                 </div>
             </div>
@@ -265,7 +265,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary btn-lg w-100" @click="updatesales(Supplier.Id_Supplier)" data-dismiss="modal">Simpan Perubahan</button>
+                        <button type="submit" class="btn btn-primary btn-lg w-100" @click="updatesales(Supplier.Id_Supplier)" data-dismiss="modal" id="btnSimpanEditSales">Simpan Perubahan</button>
                     </div>
                 </div>
             </div>
@@ -286,7 +286,7 @@
                     </div>
                     <div class="modal-footer ">
                         <a id="delete_btn" class="float-left w-100">
-                            <button type="button" @click="delsales(Supplier.Id_Supplier)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
+                            <button type="button" @click="delsales(Supplier.Id_Supplier)" class="btn btn-danger float-left w-50" data-dismiss="modal" id="btnDeleteSales"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
                         </a>
                         <button type="button" class="btn btn-secondary float-right w-50" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
                     </div>
