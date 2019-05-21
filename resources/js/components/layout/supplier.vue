@@ -106,7 +106,7 @@
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Alamat</span>
                             </div>
-                            <input type="text" v-model="Supplier.Alamat_Supplier" class="form-control" placeholder="Masukkan Alamat Supplier" aria-label="Alamat_Supplier" aria-describedby="basic-addon2" id="Alamat_Supplier" name="Alamat_Supplier" @input="$v.Supplier.Alamat_Supplier.$touch()" @blur="$v.Supplier.Alamat_Supplier.$touch()" required>
+                            <input type="text" v-model="Supplier.Alamat_Supplier" class="form-control" placeholder="Masukkan Alamat Supplier" aria-label="Alamat_Supplier" aria-describedby="basic-addon2"  name="Alamat_Supplier" @input="$v.Supplier.Alamat_Supplier.$touch()" @blur="$v.Supplier.Alamat_Supplier.$touch()" required>
                         </div>
                         <div class="text-center">
                             <p class="mb-3" style="color:red;" v-if="$v.Supplier.Alamat_Supplier.$invalid">{{addressErrors[0]}}</p>
@@ -115,7 +115,7 @@
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Telepon</span>
                             </div>
-                            <input type="text" v-model="Supplier.Telepon_Supplier" class="form-control" placeholder="Masukkan Telepon Supplier" aria-label="Telepon_Supplier" aria-describedby="basic-addon2" id="Telepon_Supplier" name="Telepon_Supplier" @input="$v.Supplier.Telepon_Supplier.$touch()" @blur="$v.Supplier.Telepon_Supplier.$touch()" required>
+                            <input type="text" v-model="Supplier.Telepon_Supplier" class="form-control" placeholder="Masukkan Telepon Supplier" aria-label="Telepon_Supplier" aria-describedby="basic-addon2"  name="Telepon_Supplier" @input="$v.Supplier.Telepon_Supplier.$touch()" @blur="$v.Supplier.Telepon_Supplier.$touch()" required>
                         </div>
                         <div class="text-center">
                             <p class="mb-3" style="color:red;" v-if="$v.Supplier.Telepon_Supplier.$invalid">{{phoneErrors[0]}}</p>
