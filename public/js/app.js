@@ -9469,6 +9469,42 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return cetaknotalunas;
     }(),
+    finish: function () {
+      var _finish = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee19(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee19$(_context19) {
+          while (1) {
+            switch (_context19.prev = _context19.next) {
+              case 0:
+                _context19.prev = 0;
+                _context19.next = 3;
+                return _service_Penjualan__WEBPACK_IMPORTED_MODULE_3__["default"].finish(id);
+
+              case 3:
+                this.getallpenjualan();
+                _context19.next = 9;
+                break;
+
+              case 6:
+                _context19.prev = 6;
+                _context19.t0 = _context19["catch"](0);
+                console.log(_context19.t0);
+
+              case 9:
+              case "end":
+                return _context19.stop();
+            }
+          }
+        }, _callee19, this, [[0, 6]]);
+      }));
+
+      function finish(_x6) {
+        return _finish.apply(this, arguments);
+      }
+
+      return finish;
+    }(),
     datatransaksihandler: function datatransaksihandler(transaksi) {
       this.Transaksi = transaksi;
       this.sparepartdata = transaksi.detail_sparepart.data;
@@ -58985,7 +59021,7 @@ var render = function() {
                 return _c("tr", { key: transaksi["Id_Transaksi"] }, [
                   _c("td", [_vm._v(_vm._s(transaksi.Id_Transaksi))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(transaksi.Id_Konsumen) + " ")]),
+                  _c("td", [_vm._v(_vm._s(transaksi.Nama_Konsumen) + " ")]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(transaksi.Tanggal_Transaksi) + " ")]),
                   _vm._v(" "),
@@ -59125,10 +59161,41 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-success",
+                            attrs: {
+                              "data-title": "Finish",
+                              disabled: transaksi.Status !== 1
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.finish(transaksi.Id_Transaksi)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-clipboard-check" })]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "p",
+                      {
+                        attrs: {
+                          "data-placement": "top",
+                          "data-toggle": "tooltip",
+                          title: "Nota Lunas"
+                        }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
                             staticClass: "btn btn-warning",
                             attrs: {
                               "data-title": "Cetak_Nota_Lunas",
-                              disabled: transaksi.Status !== 0,
+                              disabled: transaksi.Status !== 2,
                               "data-toggle": "modal",
                               "data-target": "#Cetak_Nota_Lunas"
                             },
@@ -59164,39 +59231,8 @@ var render = function() {
                             attrs: {
                               "data-title": "Edit_Transaksi",
                               "data-toggle": "modal",
-                              "data-target": "#Edit_Transaksi"
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.datatransaksihandler(transaksi)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fas fa-edit" })]
-                        )
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c(
-                      "p",
-                      {
-                        attrs: {
-                          "data-placement": "top",
-                          "data-toggle": "tooltip",
-                          title: "Edit"
-                        }
-                      },
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary",
-                            attrs: {
-                              "data-title": "Edit_Transaksi",
-                              "data-toggle": "modal",
-                              "data-target": "#Edit_Transaksi"
+                              "data-target": "#Edit_Transaksi",
+                              disabled: transaksi.Status >= 2
                             },
                             on: {
                               click: function($event) {
@@ -59228,7 +59264,8 @@ var render = function() {
                             attrs: {
                               "data-title": "Delete_Penjualan",
                               "data-toggle": "modal",
-                              "data-target": "#Delete_Penjualan"
+                              "data-target": "#Delete_Penjualan",
+                              disabled: transaksi.Status >= 2
                             },
                             on: {
                               click: function($event) {
@@ -64037,7 +64074,7 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("ID Transaksi")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("ID Konsumen")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama Konsumen")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Tanggal")]),
         _vm._v(" "),
@@ -64051,7 +64088,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("SPK")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nota Lunas")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Finish")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nota")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit/Verify")]),
         _vm._v(" "),
@@ -89243,11 +89282,13 @@ var routes = [{
 }, {
   name: 'Penjualan',
   path: '/penjualan',
-  component: _components_layout_Penjualan_vue__WEBPACK_IMPORTED_MODULE_14__["default"],
-  meta: {
-    role: ['Customer Service']
-  },
-  beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
+  component: _components_layout_Penjualan_vue__WEBPACK_IMPORTED_MODULE_14__["default"] // meta:{ role:[
+  //     'Customer Service'
+  // ]},
+  // beforeEnter: middleware([
+  //     auth
+  // ])
+
 }, {
   name: 'Laporan',
   path: '/laporan',
@@ -90257,6 +90298,34 @@ __webpack_require__.r(__webpack_exports__);
 
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/detail_jasas/store', payload, successCallback, errorCallback);
     });
+  },
+  pembayaran: function pembayaran(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/transaksi_penjualans/pembayaran/' + id, successCallback, errorCallback);
+    });
+  },
+  finish: function finish(id) {
+    return new Promise(function (resolve, reject) {
+      var successCallback = function successCallback(res) {
+        var data = res.data;
+        resolve(data);
+      };
+
+      var errorCallback = function errorCallback(err) {
+        reject(err);
+      };
+
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].patch('/api/transaksi_penjualans/finish/' + id, successCallback, errorCallback);
+    });
   }
 });
 
@@ -90824,8 +90893,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\SUMA\Documents\GitHub\atmaauto\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\SUMA\Documents\GitHub\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\JASON\atmaauto\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\JASON\atmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -39,6 +39,15 @@ class TransaksiPenjualanController extends RestController
     public function index()
     {
         $penjualan=Transaksi_Penjualan::orderBy('Id_Transaksi','DESC')->get();
+        
+        // $count = count($penjualan);
+        // for($i=0 ; $i<$count ; $i++)
+        // {
+        //     return $penjualan[$i]->Jenis_Transaksi.'-'.date('dmy', strtotime($penjualan[$i]->Tanggal_Transaksi)).'-'.$penjualan[$i]->Id_Transaksi;
+        //     $penjualan[$i]->Id_Transaksi = $penjualan[$i]->Jenis_Transaksi.'-'.date('dMY', strtotime($penjualan[$i]->Tanggal_Transaksi)).'-'.$penjualan[$i]->Id_Transaksi;
+        // }
+        // return $penjualan;
+
         $response= $this->generateCollection($penjualan);
         return $this->sendResponse($response);
     }
@@ -497,6 +506,16 @@ class TransaksiPenjualanController extends RestController
         $penjualan->save();
 
         $response=$this->generateItem($penjualan);
+        return $this->sendResponse($response);
+    }
+
+    public function finish($id)
+    {
+        $penjualan = Transaksi_Penjualan::find($id);
+        $penjualan->Status = 2;
+        $penjualan->save();
+
+        $response = $this->generateItem($penjualan);
         return $this->sendResponse($response);
     }
 }

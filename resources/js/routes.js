@@ -173,12 +173,12 @@ export const routes = [
         name: 'Penjualan',
         path: '/penjualan',
         component: Penjualan,
-        meta:{ role:[
-            'Customer Service'
-        ]},
-        beforeEnter: middleware([
-            auth
-        ])
+        // meta:{ role:[
+        //     'Customer Service'
+        // ]},
+        // beforeEnter: middleware([
+        //     auth
+        // ])
     },
     {
         name: 'Laporan',
