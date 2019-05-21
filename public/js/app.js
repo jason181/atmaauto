@@ -48296,7 +48296,7 @@ var render = function() {
                   "router-link",
                   {
                     staticClass: "nav-tabs nav-item nav-link",
-                    attrs: { to: { name: "Supplier" }, id: "navsupplier" }
+                    attrs: { to: { name: "Supplier" } }
                   },
                   [
                     _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
