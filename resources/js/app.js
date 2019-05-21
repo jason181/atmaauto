@@ -6,11 +6,14 @@ import store from './store'
 import auth from './service/Auth'
 import middleware from './middleware'
 import { routes } from './routes'
+import VueApexCharts from 'vue-apexcharts'
+
 Vue.use(Vuelidate);
 
 window.Vue = require('vue');
 window.VueRouter = require('vue-router').default;
 // Vue.use(Buefy,{defaultIconPack: 'fa'}, VueRouter, axios);
+Vue.component('apexchart', VueApexCharts);
 
 import AppLayout from './components/appLayout.vue';
 import App from './components/App.vue';

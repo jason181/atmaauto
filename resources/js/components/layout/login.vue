@@ -53,6 +53,7 @@ import auth from '../../service/Auth'
         type:'password',
       }
     },
+    
     methods: {
       async loginHandler(){
         try {

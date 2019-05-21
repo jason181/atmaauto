@@ -16,6 +16,51 @@ export default {
             Http.download('/api/pendapatan_bulanan/'+tahun, successCallback, errorCallback)
         })
     },
+    grafikpendapatanbulanan(tahun){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.get('/api/pendapatan_bulanan_desktop/'+tahun, successCallback, errorCallback)
+        })
+    },
+    grafikpengeluaranbulanan(tahun){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.get('/api/pengeluaran_bulanan_desktop/'+tahun, successCallback, errorCallback)
+        })
+    },
+    grafiksisastok(year,tipe){
+        return new Promise((resolve, reject) => {
+            
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+
+            const errorCallback = (err) => {
+                reject(err)
+            }
+
+            Http.get('/api/sisa_stok_desktop/'+year+'/"'+tipe+'"/', successCallback, errorCallback)
+        })
+    },
     laporanpengeluaranbulanan(tahun){
         return new Promise((resolve, reject) => {
             

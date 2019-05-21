@@ -20,8 +20,8 @@
                                         <div class="input-group-prepend d-block" style="width: 75px;">
                                             <span class="input-group-text" id="basic-addon2">Tahun</span>
                                         </div>
-                                        <select class="form-control" require v-model="TahunPendapatan">
-                                            <option value="2018" selected>2018</option>
+                                        <select class="form-control" require v-model="TahunPendapatan" v-on:change="grafik(TahunPendapatan)">
+                                            <option value="2018" selected >2018</option>
                                             <option value="2019">2019</option>
                                         </select>
                                     </div>
@@ -29,11 +29,15 @@
                                 <div class="col-md-4">
 
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" >
                                     <button class="btn btn-success" style="float:right;" @click="laporanpendapatanbulananhandler(TahunPendapatan)">
                                         <i class="far fa-file-pdf"></i> PRINT
                                     </button>
                                 </div>
+                            </div>
+
+                            <div class="mt-2" v-if="TahunPendapatan !=''">
+                                <apexchart width="650" type="bar" :options="options" :series="series"></apexchart>
                             </div>
                         </div>
                     </div>
@@ -56,7 +60,7 @@
                                         <div class="input-group-prepend d-block" style="width: 75px;">
                                             <span class="input-group-text" id="basic-addon2">Tahun</span>
                                         </div>
-                                        <select class="form-control" require v-model="TahunPengeluaran">
+                                        <select class="form-control" require v-model="TahunPengeluaran" v-on:change="grafikPengeluaranBulanan(TahunPengeluaran)">
                                             <option value="2018" selected>2018</option>
                                             <option value="2019">2019</option>
                                         </select>
@@ -70,6 +74,13 @@
                                         <i class="far fa-file-pdf"></i> PRINT
                                     </button>
                                 </div>
+
+                                <div class="mt-2">
+                                    <div id="chart">
+                                        <apexchart type="pie" width=420 :options="chartOptionsPengeluaran" :series="seriesPengeluaran" />
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -103,10 +114,10 @@
                                         <div class="input-group-prepend d-block" style="width: 75px;">
                                             <span class="input-group-text" id="basic-addon2">Tipe</span>
                                         </div>
-                                        <select class="form-control" require v-model="TipeSisaStok">
+                                        <select class="form-control" require v-model="TipeSisaStok" v-on:change="grafikSisaStok(TahunSisaStok,TipeSisaStok)">
                                             <option value="Sparepart Motor" selected>Motor</option>
                                             <option value="Sparepart Kelistrikan">Kelistrikan</option>
-                                            <option value="Sparepart Apa">Apa</option>
+                                            <option value="Sparepart Roda">Sparepart Roda</option>
                                             <option value="Sparepart Soal">Soal</option>
                                             <option value="Test Sparepart">Test</option>
                                         </select>
@@ -120,6 +131,11 @@
                             </div>
                         </div>
                     </div>
+
+                    <div id="chart">
+                        <apexchart type=line height=350 :options="chartOptionsStok" :series="seriesStok" />
+                    </div>
+
                 </div>
                 <div class="card">
                     <a href="#"  data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
@@ -247,6 +263,7 @@
 <script>
 import Controller from '../../service/Laporan'
 import Http from '../../service/Http'
+import { mapState } from 'vuex';
 
 export default {
     data:() => ({
@@ -257,22 +274,125 @@ export default {
         TahunPenjualanTerbanyak:'',
         BulanPenjualanJasa:'',
         TahunPenjualanJasa:'',
-        tampung:[],
+        reports:[],
+
+        series: [{
+            name: 'Service',
+            data: []
+        },
+        {
+            name: 'Sparepart',
+            data: []
+        },
+        {
+            name: 'Total',
+            data: []
+        }],
+        options: {
+            chart: {
+                type: 'bar'
+            },
+            xaxis: {
+                categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+            }
+        },
+
+        seriesPengeluaran: [],
+        chartOptionsPengeluaran: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+            }
+          }]
+        },
+
+        seriesStok: [{
+            name: "Stok",
+            data: []
+        }],
+        chartOptionsStok: {
+          chart: {
+                height: 350,
+                zoom: {
+                    enabled: false
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'straight'
+            },
+            grid: {
+                row: {
+                    colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                    opacity: 0.5
+                },
+            },
+            xaxis: {
+                categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            }
+        }
     }),
-    // created(){
-    //     this.laporanpendapatanbulanan();
-    // },
     methods:{
-        async Print(){
-            window.print()
+        // async Print(){
+        //     window.print()
+        // },
+         async grafik (TahunPendapatan) {
+            //this.TahunPendapatan=TahunPendapatan;
+            await this.grafikpendapatanbulanan(TahunPendapatan);
+            this.series[0].data=[]
+            this.series[1].data=[]
+            this.series[2].data=[]
+                this.reports.forEach(datas => {
+                this.series[0].data.push(datas.Service)
+                this.series[1].data.push(datas.Sparepart)
+                this.series[2].data.push(datas.Total)
+          });
+        },
+        async grafikSisaStok (TahunSisaStok,TipeSisaStok) {
+            await this.grafiksisastok(TahunSisaStok,TipeSisaStok);
+            this.seriesStok[0].data=[]
+                this.reports.forEach(datas => {
+                this.seriesStok[0].data.push(datas.JumlahStokSisa)
+          });
+        },
+        async grafikPengeluaranBulanan (TahunPengeluaran) {
+            await this.grafikpengeluaranbulanan(TahunPengeluaran);
+            this.seriesPengeluaran=[]
+                this.reports.forEach(datas => {
+                this.seriesPengeluaran.push(datas.JumlahPengeluaran)
+          });
+        },
+        async grafiksisastok(TahunSisaStok,TipeSisaStok) {
+            try {
+                this.reports = (await Controller.grafiksisastok(TahunSisaStok,TipeSisaStok)).datas
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async grafikpendapatanbulanan(TahunPendapatan) {
+            try {
+                this.reports = (await Controller.grafikpendapatanbulanan(TahunPendapatan)).datas
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async grafikpengeluaranbulanan(TahunPengeluaran) {
+            try {
+                this.reports = (await Controller.grafikpengeluaranbulanan(TahunPengeluaran)).datas
+            } catch (err) {
+                console.log(err)
+            }
         },
         async laporanpendapatanbulanan(TahunPendapatan) {
             try {
-                //await Http.download('/api/pendapatan_bulanan/'+TahunPendapatan);
-                this.tampung = await Http.download('/api/pendapatan_bulanan/'+TahunPendapatan);
-                window.open()
-                this.laporan = this.tampung.data;
-                console.log(this.laporan);
+                await Http.download('/api/pendapatan_bulanan/'+TahunPendapatan);
+                //await Http.get('/api/pendapatan_bulanan/'+TahunPendapatan);
             } catch (err) {
                 console.log(err)
             }
@@ -345,6 +465,14 @@ export default {
             this.TahunPenjualanJasa=TahunPenjualanJasa;
             this.laporanpenjualanjasa(this.BulanPenjualanJasa,this.TahunPenjualanJasa);
         }
-    }
+    },
+    mounted(){
+        //this.grafik();
+    },
+    // computed:{
+    //     ...mapState({
+    //         reports:state => state.Report.reports,
+    //     })  
+    // }
 }
 </script>
