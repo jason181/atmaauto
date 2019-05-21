@@ -50,14 +50,14 @@
                             </td>
                             <td class="text-center" v-if="supplier.Nama_Sales==null">
                                 <p data-placement="top" data-toggle="tooltip" title="Tambah">
-                                    <button @click="datasupplierhandler(supplier)" class="btn btn-success" data-title="Tambah_Sales" data-toggle="modal" data-target="#Tambah_Sales" id="btnTambahSales">
+                                    <button @click="datasupplierhandler(supplier)" class="btn btn-success" data-title="Tambah_Sales" data-toggle="modal" data-target="#Tambah_Sales" >
                                         <i class="fas fa-plus"></i>
                                     </button>
                                 </p>
                             </td>
                             <td class="text-center" v-else>
                                 <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                    <button @click="datasupplierhandler(supplier)" class="btn btn-primary" data-title="Edit_Sales" data-toggle="modal" data-target="#Edit_Sales" id="btnEditSales">
+                                    <button @click="datasupplierhandler(supplier)" class="btn btn-primary" data-title="Edit_Sales" data-toggle="modal" data-target="#Edit_Sales" ">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </p>
