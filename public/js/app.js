@@ -48296,7 +48296,7 @@ var render = function() {
                   "router-link",
                   {
                     staticClass: "nav-tabs nav-item nav-link",
-                    attrs: { to: { name: "Supplier" } }
+                    attrs: { to: { name: "Supplier" }, id: "navsupplier" }
                   },
                   [
                     _c("a", { staticClass: "nav-tabs nav-item nav-link" }, [
@@ -66236,7 +66236,7 @@ var render = function() {
                     placeholder: "Masukkan Nama Supplier",
                     "aria-label": "Nama_Supplier",
                     "aria-describedby": "basic-addon2",
-                    id: "Edit_Nama_Supplier",
+                    id: "Nama_Supplier",
                     name: "Nama_Supplier",
                     require: ""
                   },
@@ -66292,7 +66292,7 @@ var render = function() {
                     placeholder: "Masukkan Alamat Supplier",
                     "aria-label": "Alamat_Supplier",
                     "aria-describedby": "basic-addon2",
-                    id: "Edit_Alamat_Supplier",
+                    id: "Alamat_Supplier",
                     name: "Alamat_Supplier",
                     required: ""
                   },
@@ -66348,7 +66348,7 @@ var render = function() {
                     placeholder: "Masukkan Telepon Supplier",
                     "aria-label": "Telepon_Supplier",
                     "aria-describedby": "basic-addon2",
-                    id: "Edit_Telepon_Supplier",
+                    id: "Telepon_Supplier",
                     name: "Telepon_Supplier",
                     required: ""
                   },
