@@ -66607,7 +66607,7 @@ var render = function() {
                   attrs: {
                     type: "submit",
                     "data-dismiss": "modal",
-                    id: "btnTambahSales"
+                    id: "btnSimpanTambahSales"
                   },
                   on: {
                     click: function($event) {
