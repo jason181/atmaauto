@@ -66650,7 +66650,6 @@ var render = function() {
                     placeholder: "Masukkan Nama Sales",
                     "aria-label": "Nama_Supplier",
                     "aria-describedby": "basic-addon2",
-                    id: "Nama_Supplier",
                     name: "Nama_Supplier",
                     require: ""
                   },

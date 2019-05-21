@@ -249,7 +249,7 @@
                             <div class="input-group-prepend d-block" style="width: 100px;">
                                 <span class="input-group-text" id="basic-addon2">Nama</span>
                             </div>
-                            <input type="text" v-model="Supplier.Nama_Sales" class="form-control" placeholder="Masukkan Nama Sales" aria-label="Nama_Supplier" aria-describedby="basic-addon2" id="Nama_Supplier" name="Nama_Supplier" @input="$v.Supplier.Nama_Sales.$touch()" @blur="$v.Supplier.Nama_Sales.$touch()" require>
+                            <input type="text" v-model="Supplier.Nama_Sales" class="form-control" placeholder="Masukkan Nama Sales" aria-label="Nama_Supplier" aria-describedby="basic-addon2" name="Nama_Supplier" @input="$v.Supplier.Nama_Sales.$touch()" @blur="$v.Supplier.Nama_Sales.$touch()" require>
                         </div>
                         <div class="text-center">
                             <p class="mb-3" style="color:red;" v-if="$v.Supplier.Nama_Sales.$invalid">{{salesNameErrors[0]}}</p>
