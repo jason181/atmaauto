@@ -66604,11 +66604,7 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-success btn-lg w-100",
-                  attrs: {
-                    type: "submit",
-                    "data-dismiss": "modal",
-                    id: "btnSimpanTambahSales"
-                  },
+                  attrs: { type: "submit", "data-dismiss": "modal" },
                   on: {
                     click: function($event) {
                       return _vm.updatesales(_vm.Supplier.Id_Supplier)

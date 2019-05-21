@@ -228,7 +228,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success btn-lg w-100" @click="updatesales(Supplier.Id_Supplier)" data-dismiss="modal" id="btnSimpanTambahSales">Tambah Sales</button>
+                        <button type="submit" class="btn btn-success btn-lg w-100" @click="updatesales(Supplier.Id_Supplier)" data-dismiss="modal" >Tambah Sales</button>
                     </div>
                 </div>
             </div>
