@@ -74,10 +74,7 @@
                         <td></td>
                         <td style="text-align:right;">TOTAL</td>
                         <td>{{$datas[0]->Total}}</td>
-<<<<<<< HEAD
-=======
                         <td></td>
->>>>>>> 5bbd95b542e726875b113f29dee3efa4b5a1b8fd
                     </tr>
                     <tr class="tar">
                         <td colspan="5" style="padding-top:50px;">Dicetak Tanggal {{date('d M Y', strtotime($date))}}</td>

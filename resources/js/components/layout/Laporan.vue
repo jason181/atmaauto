@@ -248,15 +248,6 @@
 import Controller from '../../service/Laporan'
 import Http from '../../service/Http'
 
-var app = new Vue({
-  el: '#appl',
-  data: function() {
-    return {
-      
-    }
-  }
-});
-
 export default {
     data:() => ({
         TahunPendapatan:'',
@@ -267,19 +258,6 @@ export default {
         BulanPenjualanJasa:'',
         TahunPenjualanJasa:'',
         tampung:[],
-
-        options: {
-            chart: {
-                id: 'vuechart-example'
-            },
-            xaxis: {
-                categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
-            }
-        },
-        series: [{
-            name: 'series-1',
-            data: [30, 40, 45, 50, 49, 60, 70, 91]
-        }]
     }),
     // created(){
     //     this.laporanpendapatanbulanan();
@@ -291,7 +269,7 @@ export default {
         async laporanpendapatanbulanan(TahunPendapatan) {
             try {
                 //await Http.download('/api/pendapatan_bulanan/'+TahunPendapatan);
-                await Http.download('/api/pendapatan_bulanan/'+TahunPendapatan);
+                this.tampung = await Http.download('/api/pendapatan_bulanan/'+TahunPendapatan);
                 window.open()
                 this.laporan = this.tampung.data;
                 console.log(this.laporan);
