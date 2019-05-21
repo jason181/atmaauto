@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <button type="submit" class="btn btn-success btn-lg" style="width: 100%;">LOGIN</button>
+        <button type="submit" class="btn btn-success btn-lg" style="width: 100%;" id="btnLogin">LOGIN</button>
       </div>
     </form>
   </div>

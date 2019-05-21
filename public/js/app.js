@@ -54548,7 +54548,7 @@ var staticRenderFns = [
         {
           staticClass: "btn btn-success btn-lg",
           staticStyle: { width: "100%" },
-          attrs: { type: "submit" }
+          attrs: { type: "submit", id: "btnLogin" }
         },
         [_vm._v("LOGIN")]
       )
@@ -65671,7 +65671,8 @@ var render = function() {
             attrs: {
               "data-title": "Tambah_Supplier",
               "data-toggle": "modal",
-              "data-target": "#Tambah_Supplier"
+              "data-target": "#Tambah_Supplier",
+              id: "btnTambahSupplier"
             },
             on: {
               click: function($event) {
@@ -65768,7 +65769,8 @@ var render = function() {
                             attrs: {
                               "data-title": "Edit_Supplier",
                               "data-toggle": "modal",
-                              "data-target": "#Edit_Supplier"
+                              "data-target": "#Edit_Supplier",
+                              id: "btnEditSupplier"
                             },
                             on: {
                               click: function($event) {
@@ -65800,7 +65802,8 @@ var render = function() {
                             attrs: {
                               "data-title": "Delete_Supplier",
                               "data-toggle": "modal",
-                              "data-target": "#Delete_Supplier"
+                              "data-target": "#Delete_Supplier",
+                              id: "btnDeleteSupplier"
                             },
                             on: {
                               click: function($event) {
@@ -65833,7 +65836,8 @@ var render = function() {
                                 attrs: {
                                   "data-title": "Tambah_Sales",
                                   "data-toggle": "modal",
-                                  "data-target": "#Tambah_Sales"
+                                  "data-target": "#Tambah_Sales",
+                                  id: "btnTambahSales"
                                 },
                                 on: {
                                   click: function($event) {
@@ -65864,7 +65868,8 @@ var render = function() {
                                 attrs: {
                                   "data-title": "Edit_Sales",
                                   "data-toggle": "modal",
-                                  "data-target": "#Edit_Sales"
+                                  "data-target": "#Edit_Sales",
+                                  id: "btnEditSales"
                                 },
                                 on: {
                                   click: function($event) {
@@ -65897,7 +65902,8 @@ var render = function() {
                                 attrs: {
                                   "data-title": "Delete_Sales",
                                   "data-toggle": "modal",
-                                  "data-target": "#Delete_Sales"
+                                  "data-target": "#Delete_Sales",
+                                  id: "btnDeleteSales"
                                 },
                                 on: {
                                   click: function($event) {
@@ -66142,7 +66148,11 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-success btn-lg w-100",
-                    attrs: { type: "submit", "data-dismiss": "modal" },
+                    attrs: {
+                      type: "submit",
+                      "data-dismiss": "modal",
+                      id: "btnSimpanSupplier"
+                    },
                     on: {
                       click: function($event) {
                         return _vm.addsupplier()
@@ -66355,7 +66365,8 @@ var render = function() {
                       disabled:
                         _vm.$v.Supplier.Nama_Supplier.$invalid ||
                         _vm.$v.Supplier.Alamat_Supplier.$invalid ||
-                        _vm.$v.Supplier.Telepon_Supplier.$invalid
+                        _vm.$v.Supplier.Telepon_Supplier.$invalid,
+                      id: "btnSimpanEditSupplier"
                     },
                     on: {
                       click: function($event) {
@@ -66561,7 +66572,11 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-success btn-lg w-100",
-                  attrs: { type: "submit", "data-dismiss": "modal" },
+                  attrs: {
+                    type: "submit",
+                    "data-dismiss": "modal",
+                    id: "btnTambahSales"
+                  },
                   on: {
                     click: function($event) {
                       return _vm.updatesales(_vm.Supplier.Id_Supplier)
@@ -66710,7 +66725,11 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-primary btn-lg w-100",
-                  attrs: { type: "submit", "data-dismiss": "modal" },
+                  attrs: {
+                    type: "submit",
+                    "data-dismiss": "modal",
+                    id: "btnSimpanEditSales"
+                  },
                   on: {
                     click: function($event) {
                       return _vm.updatesales(_vm.Supplier.Id_Supplier)
@@ -66756,7 +66775,11 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn btn-danger float-left w-50",
-                      attrs: { type: "button", "data-dismiss": "modal" },
+                      attrs: {
+                        type: "button",
+                        "data-dismiss": "modal",
+                        id: "btnDeleteSales"
+                      },
                       on: {
                         click: function($event) {
                           return _vm.delsales(_vm.Supplier.Id_Supplier)
@@ -67022,7 +67045,11 @@ var staticRenderFns = [
       "button",
       {
         staticClass: "btn btn-secondary float-right w-50",
-        attrs: { type: "button", "data-dismiss": "modal" }
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          id: "btnDeleteSupplier"
+        }
       },
       [
         _c("span", { staticClass: "glyphicon glyphicon-remove" }),
@@ -89096,8 +89123,10 @@ var routes = [{
   component: _components_layout_Pegawai_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
   meta: {
     role: ['Admin']
-  },
-  beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
+  } // beforeEnter: middleware([
+  //     auth
+  // ]) 
+
 }, {
   name: 'Jasa_Service',
   path: '/jasa_service',
@@ -89157,8 +89186,10 @@ var routes = [{
   component: _components_layout_Cabang_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
   meta: {
     role: ['Admin']
-  },
-  beforeEnter: Object(_middleware__WEBPACK_IMPORTED_MODULE_0__["default"])([_middleware__WEBPACK_IMPORTED_MODULE_0__["auth"]])
+  } // beforeEnter: middleware([
+  //     auth
+  // ]) 
+
 }, {
   name: 'Konsumen',
   path: '/konsumen',
@@ -90595,7 +90626,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     Username: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
-      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(10),
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
       maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(30) // alphaNum,
 
     },

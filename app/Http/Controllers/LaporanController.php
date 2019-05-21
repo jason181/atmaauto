@@ -586,9 +586,9 @@ class LaporanController extends Controller
         //     'datas' => $datas,
         //     'message' => $datas ? 'Success' : 'Error',
         // ]);
-
+        $date = Carbon::now();
         $pdf = PDF::loadView('pendapatan_tahunan',
-        ['datas'=>$datas]);
+        ['datas'=>$datas,'date'=>$date]);
         $pdf->setPaper([0,0,550,900]);
 	    return $pdf->stream();
     }
