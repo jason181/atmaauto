@@ -136,6 +136,7 @@ Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
     Route::delete('/transaksi_penjualans/delete/{id}','TransaksiPenjualanController@destroy');
     Route::patch('/transaksi_penjualans/pembayaran/{id}','TransaksiPenjualanController@pembayaran');
     Route::patch('/transaksi_penjualans/finish/{id}','TransaksiPenjualanController@finish');
+    Route::get('/transaksi_penjualans/cekStatus/{hp}/{plat}','TransaksiPenjualanController@cekStatus');
 // });
 
 //Detail Sparepart Transaksi Penjualan

@@ -272,7 +272,6 @@ class LaporanController extends Controller
         return response()->json([
             'status' => (bool) $datas,
             'datas' => $datas,
-            'year' => $year,
             'message' => $datas ? 'Success' : 'Error'
         ]);
     }
@@ -669,6 +668,55 @@ class LaporanController extends Controller
         return $pdf->stream();
     }
 
+    public function sparepartterlarisDesktop(){
+        $datas = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan, 
+        Coalesce((select s.Nama_Sparepart 
+                  from detail_spareparts t 
+                  inner join spareparts s on t.Kode_Sparepart = s.Kode_Sparepart 
+                  where MONTHNAME(t.created_at) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
+                  group by t.Kode_Sparepart order by sum(t.Jumlah) DESC LIMIT 1),'-') AS NamaBarang, 
+                  Coalesce((select s.Nama_Sparepart from detail_spareparts t 
+                            inner join spareparts s on t.Kode_Sparepart = s.Kode_Sparepart 
+                            where MONTHNAME(t.created_at) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) group by t.Kode_Sparepart 
+                            order by sum(t.Jumlah) DESC LIMIT 1),'-') AS TipeBarang, 
+                            Coalesce((select sum(Jumlah) 
+                                      from detail_spareparts where MONTHNAME(created_at) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
+                                      group by Kode_Sparepart 
+                                      order by sum(Jumlah) DESC LIMIT 1),'-') AS JumlahPenjualan
+                FROM(
+                       SELECT '01' AS
+                       bulan
+                       UNION SELECT '02' AS
+                       bulan
+                       UNION SELECT '03' AS
+                       bulan
+                       UNION SELECT '04' AS
+                       bulan
+                       UNION SELECT '05' AS
+                       bulan
+                       UNION SELECT '06' AS
+                       bulan
+                       UNION SELECT '07'AS
+                       bulan
+                       UNION SELECT '08'AS
+                       bulan
+                       UNION SELECT '09' AS
+                       bulan
+                       UNION SELECT '10' AS
+                       bulan
+                       UNION SELECT '11' AS
+                       bulan
+                       UNION SELECT '12' AS
+                       bulan
+                ) AS m;");
+
+        return response()->json([
+                'datas' => (bool) $datas,
+                'datas' => $datas,
+                'message' => $datas ? 'Success' : 'Error',
+            ]);
+    }
+
     public function penjualanjasa($year,$month){
         $datas = DB::select("SELECT 
             p.Merk AS Merk,
@@ -698,11 +746,14 @@ class LaporanController extends Controller
         //     'datas' => $datas,
         //     'message' => $datas ? 'Success' : 'Error',
         // ]);
+        $date = Carbon::now();
+
         $pdf = PDF::loadView('penjualan_jasa',
-        ['datas'=>$datas]);
+        ['datas'=>$datas, 'month'=>$month, 'year'=>$year,'date'=>$date]);
         $pdf->setPaper([0,0,550,900]);
         return $pdf->stream();
     }
+    
 
     public function penjualanjasaDesktop($year,$month){
         $datas = DB::select("SELECT

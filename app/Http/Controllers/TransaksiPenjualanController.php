@@ -22,6 +22,7 @@ use App\CompatibilityJason;
 use App\Sparepart;
 use App\Pegawai_On_Duty;
 use App\Montir;
+use App\Konsumen;
 
 use App\Transformers\MontirTransformers;
 use App\Transformers\SparepartTransformers;
@@ -30,6 +31,7 @@ use App\Transformers\TransaksiPenjualanTransformers;
 use App\Transformers\MotorTransformers;
 use App\Transformers\MotorKonsumenTransformers;
 use App\Transformers\DetailSparepartTransfomers;
+use App\Transformers\KonsumenTransformers;
 
 class TransaksiPenjualanController extends RestController
 {
@@ -50,6 +52,49 @@ class TransaksiPenjualanController extends RestController
 
         $response= $this->generateCollection($penjualan);
         return $this->sendResponse($response);
+    }
+
+    public function cekStatus($hp,$plat)
+    {
+        $konsumen = Konsumen::where('Telepon_Konsumen',$hp)->first();
+        $penjualans = Transaksi_Penjualan::where('Id_Konsumen',$konsumen->Id_Konsumen)->get();
+        $arr_penjualan = [];
+
+        $arr_filtered = [];
+        $unique_arr_filtered = [];
+        foreach($penjualans as $penjualan)
+        {
+            array_push($arr_penjualan,$penjualan->Id_Transaksi);
+        }
+
+        foreach($penjualans as $penjualan)
+        {
+            if($penjualan->Jenis_Transaksi == 'SS' || $penjualan->Jenis_Transaksi == 'SV')
+            {
+                $detail_jasas = Detail_Jasa::where('Id_Transaksi',$penjualan->Id_Transaksi)->get();
+                foreach($detail_jasas as $detail_jasa)
+                {
+                    if($detail_jasa->montirs->motor_konsumens->Plat_Kendaraan == $plat)
+                    {
+                        array_push($arr_filtered,$detail_jasa->Id_Transaksi);
+                    }
+                }
+            }
+            if($penjualan->Jenis_Transaksi == 'SS' || $penjualan->Jenis_Transaksi == 'SP')
+            {
+                $detail_spareparts = Detail_Sparepart::where('Id_Transaksi',$penjualan->Id_Transaksi)->get();
+                foreach($detail_spareparts as $detail_sparepart)
+                {
+                    array_push($arr_filtered,$detail_sparepart->Id_Transaksi);
+                }
+            }
+        }
+        
+        $result=Transaksi_Penjualan::whereIn('Id_Transaksi',$arr_filtered)->get();
+
+        $response = $this->generateCollection($result);
+        return $this->sendResponse($response);
+
     }
 
     public function processed()
