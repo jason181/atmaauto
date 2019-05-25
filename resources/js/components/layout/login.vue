@@ -41,6 +41,7 @@
 
 <script>
 import auth from '../../service/Auth'
+import { mapGetter, mapGetters } from 'vuex'
   export default {
     name: 'HomeLayout',
     data () {
@@ -49,6 +50,7 @@ import auth from '../../service/Auth'
           username: '',
           password: '',
         },
+        // Role:'',
         error:'',
         type:'password',
       }
@@ -58,7 +60,18 @@ import auth from '../../service/Auth'
       async loginHandler(){
         try {
           await auth.authenticate(this.form)
-          this.$router.push({ name: 'Pegawai' })
+          if(this.Role == 'Admin')
+          {
+            this.$router.push({ name: 'Pegawai' })
+          }
+          else if(this.Role == 'Customer Service')
+          {
+            this.$router.push({ name: 'Penjualan' })
+          }
+          else if(this.Role == 'Kasir')
+          {
+            this.$router.push({ name: 'Kasir' })
+          }
         } catch (err) {
           //this.$refs.errorAlert.trigger({ message: 'Terjadi Kesalahan Login!' })
         }
@@ -70,6 +83,11 @@ import auth from '../../service/Auth'
           this.type='password';
         }
       }
+    },
+    computed:{
+        ...mapGetters({
+            Role : 'LoggedUser/role'
+        }),
     }
   }
 </script>

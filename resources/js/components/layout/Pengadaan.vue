@@ -464,7 +464,7 @@
             </div>
         </div>
         <!-- END OF EDIT TRANSAKSI PENGADAAN -->
-        <!-- TAMPIL DETAIL PENGADAAN -->
+        <!-- TAMPIL VERIFY PENGADAAN -->
         <div class="modal fade" id="Verify_Pengadaan" tabindex="-1" role="dialog" aria-labelledby="Verify_Pengadaan" 
         aria-hidden="true">
             <div class="modal-dialog" style="max-width:750px;">
@@ -507,6 +507,7 @@
                                         <th scope="col">Harga Satuan</th>
                                         <th scope="col">Jumlah Sparepart</th>
                                         <th scope="col">Subtotal Pengadaan</th>
+                                        <th scope="col">Edit</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -518,9 +519,9 @@
                                         <td>{{detail.Subtotal_Pengadaan}} </td>
                                         <td class="text-center">
                                             <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                                <button class="btn btn-primary" @click="detailhandler(pengadaan)" 
+                                                <button class="btn btn-primary" @click="this.update_masuk = true" 
                                                 data-title="Update_Detail_Pengadaan" data-toggle="modal" data-target="#Update_Detail_Pengadaan">
-                                                    <i class="fas fa-edit-ul"></i>
+                                                    <i class="fas fa-edit"></i>
                                                 </button>
                                             </p>
                                         </td>
@@ -541,7 +542,7 @@
                 </div>
             </div>
         </div>
-        <!-- END OF TAMPIL DETAIL PENGADAAN -->
+        <!-- END OF TAMPIL VERIFY PENGADAAN -->
         <!-- END OF MY MODALS -->
     </body>
 </template>

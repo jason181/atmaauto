@@ -16,7 +16,7 @@ import Pengadaan from './components/layout/Pengadaan.vue';
 import Penjualan from './components/layout/Penjualan.vue';
 import History from './components/layout/History.vue';
 import Laporan from './components/layout/Laporan.vue';
-
+import Kasir from './components/layout/Kasir.vue';
 import { homedir } from 'os';
 
 export const routes = [
@@ -130,7 +130,7 @@ export const routes = [
         path: '/konsumen',
         component: Konsumen,
         meta: { role: [
-            'Admin'
+            'Customer Service'
         ]},
         beforeEnter: middleware([
             auth
@@ -173,12 +173,12 @@ export const routes = [
         name: 'Penjualan',
         path: '/penjualan',
         component: Penjualan,
-        // meta:{ role:[
-        //     'Customer Service'
-        // ]},
-        // beforeEnter: middleware([
-        //     auth
-        // ])
+        meta:{ role:[
+            'Customer Service'
+        ]},
+        beforeEnter: middleware([
+            auth
+        ])
     },
     {
         name: 'Laporan',
@@ -191,4 +191,15 @@ export const routes = [
             auth
         ])
     },
+    {
+        name: 'Kasir',
+        path: '/kasir',
+        component:Kasir,
+        meta: { role: [
+            'Kasir'
+        ]},
+        beforeEnter: middleware([
+            auth
+        ])
+    }
 ]

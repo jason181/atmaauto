@@ -27,6 +27,18 @@ export default {
             Http.download('/api/cetak_spk/'+id, successCallback, errorCallback)
         })
     },
+    updatepembayaran(payload,id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.patch('/api/transaksi_penjualans/pembayaran/'+id, payload, successCallback, errorCallback)
+        })
+    },
     cetaknotalunas(){
         return new Promise((resolve, reject) => {
              

@@ -529,11 +529,19 @@ class TransaksiPenjualanController extends RestController
         ]);
     }
 
-    public function pembayaran($id)
+    public function pembayaran(Request $request,$id)
     {
         $penjualan = Transaksi_Penjualan::find($id);
         $penjualan->Status = 3;
         $penjualan->save();
+        if($request->Id_Pegawai !== null)
+        {
+            $pod[0]['Id_Pegawai']=$request->Id_Pegawai;
+            $penjualan = DB::transaction(function () use($penjualan,$pod){
+                $penjualan->pegawai_on_duties()->createMany($pod);
+                return $penjualan;
+            });
+        }
 
         $response=$this->generateItem($penjualan);
         return $this->sendResponse($response,201);

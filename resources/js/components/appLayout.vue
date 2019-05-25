@@ -1,6 +1,6 @@
 <template>
    <div class="content" id="homeLayout">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light" v-if="this.$route.meta.role=='Admin'">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" v-if="this.Role!=null">
 		  	<a class="navbar-brand" href="../"><img src="../../image/Logo_Transparan.png" width="50px"> SIAUTO</a>
 		  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
@@ -9,8 +9,14 @@
 		  	<div class="collapse navbar-collapse">
 		    	<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
 			        <ul class="navbar-nav">
-			          	<li class="nav-item active">
+			          	<li class="nav-item active" v-if="this.Role=='Admin'">
 			            	<a class="nav-link disabled py-2" href="#" style="font-size: 20pt;">SELAMAT DATANG OWNER</a>
+			          	</li>
+                        <li class="nav-item active" v-if="this.Role=='Customer Service'">
+			            	<a class="nav-link disabled py-2" href="#" style="font-size: 20pt;">SELAMAT DATANG CUSTOMER SERVICE</a>
+			          	</li>
+                        <li class="nav-item active" v-if="this.Role=='Kasir'">
+			            	<a class="nav-link disabled py-2" href="#" style="font-size: 20pt;">SELAMAT DATANG KASIR</a>
 			          	</li>
 			        </ul>
 			    </div>
@@ -20,7 +26,7 @@
 		  	</div>
 		</nav>
 
-		<div v-if="this.$route.meta.role=='Admin' " class="collapse navbar-collapse show" id=navbarSupportedContent>
+		<div v-if="this.Role=='Admin' && this.$route.meta.role != null" class="collapse navbar-collapse show" id=navbarSupportedContent>
 			<nav class="nav nav-pills nav-justified" style="background-color: #e3f2fd;">
                 <router-link :to="{name:'Pegawai'}" class="nav-tabs nav-item nav-link">
                     <a class="nav-tabs nav-item nav-link">Pegawai</a>
@@ -34,9 +40,9 @@
 				<router-link :to="{name:'Motor'}" class="nav-tabs nav-item nav-link">
                     <a class="nav-tabs nav-item nav-link">Motor</a>
                 </router-link>
-				<router-link :to="{name:'Konsumen'}" class="nav-tabs nav-item nav-link">
+				<!-- <router-link :to="{name:'Konsumen'}" class="nav-tabs nav-item nav-link">
                     <a class="nav-tabs nav-item nav-link">Konsumen</a>
-                </router-link>
+                </router-link> -->
 				<router-link :to="{name:'Supplier'}" class="nav-tabs nav-item nav-link">
                     <a class="nav-tabs nav-item nav-link">Supplier</a>
                 </router-link>
@@ -54,6 +60,18 @@
                 </router-link>
 			</nav>
 		</div>
+        
+        <div v-if="this.Role=='Customer Service' && this.$route.meta.role != null" class="collapse navbar-collapse show" id=navbarSupportedContent>
+			<nav class="nav nav-pills nav-justified" style="background-color: #e3f2fd;">
+				<router-link :to="{name:'Konsumen'}" class="nav-tabs nav-item nav-link">
+                    <a class="nav-tabs nav-item nav-link">Konsumen</a>
+                </router-link>
+				<router-link :to="{name:'Penjualan'}" class="nav-tabs nav-item nav-link">
+                    <a class="nav-tabs nav-item nav-link">Transaksi Penjualan</a>
+                </router-link>
+			</nav>
+		</div>
+
         <nav v-if="$route.meta.role=='User'" class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="../"><img src="../../image/Logo_Transparan.png" width="50px"> SIAUTO</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,6 +119,7 @@
 
 <script>
 import auth from './../service/Auth'
+import { mapGetter, mapGetters } from 'vuex'
 export default {
     name: 'appLayout',
     data () {
@@ -112,12 +131,17 @@ export default {
 		async logoutHandler(){
 			try{
 				await auth.logout()
-				this.router.push({name : 'Login'})
+				this.$router.push({name : 'Login'})
 			}
 			catch(err){
 				
 			}
 		}
-	}
+    },
+    computed:{
+        ...mapGetters({
+            Role : 'LoggedUser/role'
+        }),
+    }
 }
 </script>

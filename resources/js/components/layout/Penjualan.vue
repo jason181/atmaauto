@@ -1,34 +1,6 @@
 <template>
    <div class="content" id="homeLayout">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" >
-        <a class="navbar-brand" href=""><img src="" width="50px"> SIAUTO</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse">
-            <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link disabled py-2" href="#" style="font-size: 20pt;">SELAMAT DATANG CUSTOMER SERVICE</a>
-                    </li>
-                </ul>
-            </div>
-            <form class="form-inline my-2 my-lg-0" > 
-                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" @click="logoutHandler()">Logout</button>
-            </form>
-        </div>
-    </nav>
-
-    <div class="collapse navbar-collapse show" id=navbarSupportedContent>
-        <nav class="nav nav-pills nav-justified" style="background-color: #e3f2fd;">
-            <router-link :to="{name:'Pegawai'}" class="nav-tabs nav-item nav-link">
-                <a class="nav-tabs nav-item nav-link">Transaksi Penjualan</a>
-            </router-link>
-        </nav>
-	</div>
-
-    <div class="container-fluid mt-3">
+        <div class="container-fluid mt-3">
             <div class="row mb-2">
                 <div class="col-sm-3">
                     <div class="row ml-1">
@@ -78,7 +50,7 @@
                             <th scope="col">Detail</th>
                             <th scope="col">SPK</th>
                             <th scope="col">Finish</th>
-                            <th scope="col">Nota</th>
+                            <!-- <th scope="col">Nota</th> -->
                             <th scope="col">Edit/Verify</th>
                             <th scope="col">Delete</th>
                         </tr>
@@ -135,7 +107,7 @@
                                     </button>
                                 </p>
                             </td>
-                            <td class="text-center">
+                            <!-- <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Nota Lunas">
                                     <button @click="cetaknotalunas(transaksi.Id_Transaksi)" 
                                     class="btn btn-warning" data-title="Cetak_Nota_Lunas" :disabled="transaksi.Status !== 2"
@@ -143,7 +115,7 @@
                                         <i class="far fa-file-pdf"></i>
                                     </button>
                                 </p>
-                            </td>
+                            </td> -->
                             <td class="text-center">
                                 <p data-placement="top" data-toggle="tooltip" title="Edit">
                                     <button class="btn btn-primary" 
@@ -1888,19 +1860,6 @@ export default {
         },
         refreshMotorKonsumen(){
             this.Motor.Id_Motor = -1;
-        },
-        refresh(){
-            // this.Transaksi.Diskon      ='0'
-            // this.Transaksi.Subtotal    ='0'
-            // this.Transaksi.Tanggal_Transaksi=''
-            // this.Id_Jasa_Montir = '-1'
-            // this.Transaksi.Status ='0'
-            // this.jumlah = 0
-            // this.jenis = ''
-            // this.Motor.Id_Motor = '-1'
-            // this.Konsumen.Id_Konsumen = '-1'
-            // this.Konsumen.Nama_Konsumen = '-1'
-            // this.Konsumen.Alamat_Konsumen = '-1'
         },
 
     },

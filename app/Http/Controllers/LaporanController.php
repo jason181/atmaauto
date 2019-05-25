@@ -440,11 +440,6 @@ class LaporanController extends Controller
     }
 
     public function cetaknotalunasWeb($id){
-
-        $penjualan = Transaksi_Penjualan::where('Id_Transaksi',$id)->first();
-        $penjualan->Status = '3';
-        $penjualan->save();
-
         $spareparts = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, s.Kode_Sparepart as Kode, s.Nama_Sparepart as Nama, s.Merk_Sparepart as Merk, s.Rak_Sparepart as Rak, d.Jumlah as Jumlah, d.Harga_Satuan as Harga_Satuan, d.Subtotal_Detail_Sparepart as Subtotal_Detail_Sparepart
         FROM transaksi_penjualans t 
         INNER JOIN detail_spareparts d ON d.Id_Transaksi =  t.Id_Transaksi
