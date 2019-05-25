@@ -22,6 +22,7 @@ use App\CompatibilityJason;
 use App\Sparepart;
 use App\Pegawai_On_Duty;
 use App\Montir;
+use App\Konsumen;
 
 use App\Transformers\MontirTransformers;
 use App\Transformers\SparepartTransformers;
@@ -30,6 +31,7 @@ use App\Transformers\TransaksiPenjualanTransformers;
 use App\Transformers\MotorTransformers;
 use App\Transformers\MotorKonsumenTransformers;
 use App\Transformers\DetailSparepartTransfomers;
+use App\Transformers\KonsumenTransformers;
 
 class TransaksiPenjualanController extends RestController
 {
@@ -39,17 +41,51 @@ class TransaksiPenjualanController extends RestController
     public function index()
     {
         $penjualan=Transaksi_Penjualan::orderBy('Id_Transaksi','DESC')->get();
-        
-        // $count = count($penjualan);
-        // for($i=0 ; $i<$count ; $i++)
-        // {
-        //     return $penjualan[$i]->Jenis_Transaksi.'-'.date('dmy', strtotime($penjualan[$i]->Tanggal_Transaksi)).'-'.$penjualan[$i]->Id_Transaksi;
-        //     $penjualan[$i]->Id_Transaksi = $penjualan[$i]->Jenis_Transaksi.'-'.date('dMY', strtotime($penjualan[$i]->Tanggal_Transaksi)).'-'.$penjualan[$i]->Id_Transaksi;
-        // }
-        // return $penjualan;
-
         $response= $this->generateCollection($penjualan);
         return $this->sendResponse($response);
+    }
+
+    public function cekStatus($hp,$plat)
+    {
+        $konsumen = Konsumen::where('Telepon_Konsumen',$hp)->first();
+        $penjualans = Transaksi_Penjualan::where('Id_Konsumen',$konsumen->Id_Konsumen)->get();
+        $arr_penjualan = [];
+
+        $arr_filtered = [];
+        $unique_arr_filtered = [];
+        foreach($penjualans as $penjualan)
+        {
+            array_push($arr_penjualan,$penjualan->Id_Transaksi);
+        }
+
+        foreach($penjualans as $penjualan)
+        {
+            if($penjualan->Jenis_Transaksi == 'SS' || $penjualan->Jenis_Transaksi == 'SV')
+            {
+                $detail_jasas = Detail_Jasa::where('Id_Transaksi',$penjualan->Id_Transaksi)->get();
+                foreach($detail_jasas as $detail_jasa)
+                {
+                    if($detail_jasa->montirs->motor_konsumens->Plat_Kendaraan == $plat)
+                    {
+                        array_push($arr_filtered,$detail_jasa->Id_Transaksi);
+                    }
+                }
+            }
+            if($penjualan->Jenis_Transaksi == 'SS' || $penjualan->Jenis_Transaksi == 'SP')
+            {
+                $detail_spareparts = Detail_Sparepart::where('Id_Transaksi',$penjualan->Id_Transaksi)->get();
+                foreach($detail_spareparts as $detail_sparepart)
+                {
+                    array_push($arr_filtered,$detail_sparepart->Id_Transaksi);
+                }
+            }
+        }
+        
+        $result=Transaksi_Penjualan::whereIn('Id_Transaksi',$arr_filtered)->get();
+
+        $response = $this->generateCollection($result);
+        return $this->sendResponse($response);
+
     }
 
     public function processed()
@@ -79,8 +115,6 @@ class TransaksiPenjualanController extends RestController
             'message' => $keluar ? 'Success' : 'Error History Keluar'
         ]);
 
-        // $response=$this->generateCollection($masuk);
-        // return $this->sendResponse($response,201);
     }
 
     public function transaksikeluar(){
@@ -109,17 +143,15 @@ class TransaksiPenjualanController extends RestController
             ->map(function ($item) {
                 return Sparepart::find($item['Kode_Sparepart']);
             });
-        // dd($spareparts_found);
         $response=$this->generateCollection($spareparts_found, new SparepartTransformers);
         return $this->sendResponse($response,201);
     }
 
     public function store(Request $request)
     {
-        // return $request;
         try{
             date_default_timezone_set('Asia/Jakarta');
-
+            // return $request;
             $montir = Montir::create([
                 'Id_Pegawai' => $request->Id_Montir,
                 'Id_Motor_Konsumen' => $request->Id_Motor_Konsumen,
@@ -166,7 +198,6 @@ class TransaksiPenjualanController extends RestController
                     });
                 }
             }
-           // dd($penjualan);
             if($jenis == 'SS' || $jenis == 'SP')
             {
                 if($request->has('Detail_Sparepart'))
@@ -244,7 +275,6 @@ class TransaksiPenjualanController extends RestController
             $jasa = new Detail_Jasa;
 
             $montir = Montir::orderBy('Id_Jasa_Montir','DESC')->first();
-            // dd($montir);
             $jasa->Id_Transaksi        = $request->get('Id_Transaksi');
             $jasa->Id_Jasa_Montir      = $montir->Id_Jasa_Montir;
             $jasa->Id_Jasa             = $request->get("Id_Jasa");
