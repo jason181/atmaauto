@@ -237,42 +237,42 @@ class LaporanController extends Controller
                             OR YEAR(p.Tanggal_Transaksi) is null 
                             GROUP BY m.bulan, YEAR(p.Tanggal_Transaksi)");
                         
-        // $year = DB::select("SELECT YEAR(p.Tanggal_Transaksi) as Year    
-        // FROM (SELECT '01' AS
-        //                     bulan
-        //                     UNION SELECT '02' AS
-        //                     bulan
-        //                     UNION SELECT '03' AS
-        //                     bulan
-        //                     UNION SELECT '04' AS
-        //                     bulan
-        //                     UNION SELECT '05' AS
-        //                     bulan
-        //                     UNION SELECT '06' AS
-        //                     bulan
-        //                     UNION SELECT '07'AS
-        //                     bulan
-        //                     UNION SELECT '08'AS
-        //                     bulan
-        //                     UNION SELECT '09' AS
-        //                     bulan
-        //                     UNION SELECT '10' AS
-        //                     bulan
-        //                     UNION SELECT '11' AS
-        //                     bulan
-        //                     UNION SELECT '12' AS
-        //                     bulan
-        //                     ) AS m LEFT JOIN transaksi_penjualans p ON MONTHNAME(p.Tanggal_Transaksi) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
-        //                     LEFT JOIN detail_spareparts d ON p.Id_Transaksi=d.Id_Transaksi
-        //                     LEFT JOIN detail_jasas e ON p.Id_Transaksi=e.Id_Transaksi
-        //                     where p.Status = '3'
-        //                     AND YEAR(p.Tanggal_Transaksi)=$year 
-        //                     GROUP BY m.bulan, YEAR(p.Tanggal_Transaksi)");
+        $data2 = DB::select("SELECT YEAR(p.Tanggal_Transaksi) as Year    
+        FROM (SELECT '01' AS
+                            bulan
+                            UNION SELECT '02' AS
+                            bulan
+                            UNION SELECT '03' AS
+                            bulan
+                            UNION SELECT '04' AS
+                            bulan
+                            UNION SELECT '05' AS
+                            bulan
+                            UNION SELECT '06' AS
+                            bulan
+                            UNION SELECT '07'AS
+                            bulan
+                            UNION SELECT '08'AS
+                            bulan
+                            UNION SELECT '09' AS
+                            bulan
+                            UNION SELECT '10' AS
+                            bulan
+                            UNION SELECT '11' AS
+                            bulan
+                            UNION SELECT '12' AS
+                            bulan
+                            ) AS m LEFT JOIN transaksi_penjualans p ON MONTHNAME(p.Tanggal_Transaksi) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
+                            LEFT JOIN detail_spareparts d ON p.Id_Transaksi=d.Id_Transaksi
+                            LEFT JOIN detail_jasas e ON p.Id_Transaksi=e.Id_Transaksi
+                            where p.Status = '3'
+                            AND YEAR(p.Tanggal_Transaksi)=$year 
+                            GROUP BY m.bulan, YEAR(p.Tanggal_Transaksi)");
 
         return response()->json([
             'status' => (bool) $datas,
             'datas' => $datas,
-            'year' => $year,
+            'data2' => $data2,
             'message' => $datas ? 'Success' : 'Error'
         ]);
     }
@@ -614,52 +614,36 @@ class LaporanController extends Controller
     }
 
     public function sparepartterlaris(){
-        $datas = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan, 
-        Coalesce((select s.Nama_Sparepart 
-                  from detail_spareparts t 
-                  inner join spareparts s on t.Kode_Sparepart = s.Kode_Sparepart 
-                  where MONTHNAME(t.created_at) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
-                  group by t.Kode_Sparepart order by sum(t.Jumlah) DESC LIMIT 1),'-') AS NamaBarang, 
-                  Coalesce((select s.Nama_Sparepart from detail_spareparts t 
-                            inner join spareparts s on t.Kode_Sparepart = s.Kode_Sparepart 
-                            where MONTHNAME(t.created_at) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) group by t.Kode_Sparepart 
-                            order by sum(t.Jumlah) DESC LIMIT 1),'-') AS TipeBarang, 
-                            Coalesce((select sum(Jumlah) 
-                                      from detail_spareparts where MONTHNAME(created_at) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
-                                      group by Kode_Sparepart 
-                                      order by sum(Jumlah) DESC LIMIT 1),'-') AS JumlahPenjualan
-                FROM(
-                       SELECT '01' AS
-                       bulan
-                       UNION SELECT '02' AS
-                       bulan
-                       UNION SELECT '03' AS
-                       bulan
-                       UNION SELECT '04' AS
-                       bulan
-                       UNION SELECT '05' AS
-                       bulan
-                       UNION SELECT '06' AS
-                       bulan
-                       UNION SELECT '07'AS
-                       bulan
-                       UNION SELECT '08'AS
-                       bulan
-                       UNION SELECT '09' AS
-                       bulan
-                       UNION SELECT '10' AS
-                       bulan
-                       UNION SELECT '11' AS
-                       bulan
-                       UNION SELECT '12' AS
-                       bulan
-                ) AS m;");
-
-        // return response()->json([
-        //         'datas' => (bool) $datas,
-        //         'datas' => $datas,
-        //         'message' => $datas ? 'Success' : 'Error',
-        //     ]);
+        $datas = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan,COALESCE(s.Nama_Sparepart,'') as Nama,COALESCE(s.Tipe_Barang,'') as Tipe,COALESCE(SUM(d.Jumlah),'') as Total 
+            FROM (SELECT '01' AS
+            bulan
+            UNION SELECT '02' AS
+            bulan
+            UNION SELECT '03' AS
+            bulan
+            UNION SELECT '04' AS
+            bulan
+            UNION SELECT '05' AS
+            bulan
+            UNION SELECT '06' AS
+            bulan
+            UNION SELECT '07'AS
+            bulan
+            UNION SELECT '08'AS
+            bulan
+            UNION SELECT '09' AS
+            bulan
+            UNION SELECT '10' AS
+            bulan
+            UNION SELECT '11' AS
+            bulan
+            UNION SELECT '12' AS
+            bulan
+            ) AS m LEFT JOIN transaksi_penjualans t ON MONTHNAME(t.Tanggal_Transaksi) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
+            LEFT JOIN detail_spareparts d ON t.Id_Transaksi=d.Id_Transaksi
+            LEFT JOIN spareparts s ON d.Kode_Sparepart = s.Kode_Sparepart
+            where YEAR(t.Tanggal_Transaksi)=$year or YEAR(t.Tanggal_Transaksi) is null 
+            GROUP BY m.bulan, YEAR(t.Tanggal_Transaksi);");
 
         $date = Carbon::now();
 
@@ -667,6 +651,45 @@ class LaporanController extends Controller
         ['datas'=>$datas,'date'=>$date]);
         $pdf->setPaper([0,0,550,900]);
         return $pdf->stream();
+    }
+
+    public function sparepartterlarisDesktop($year){
+        $datas = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan,COALESCE(s.Nama_Sparepart,'') as Nama,COALESCE(s.Tipe_Barang,'') as Tipe,COALESCE(SUM(d.Jumlah),'') as Total 
+            FROM (SELECT '01' AS
+            bulan
+            UNION SELECT '02' AS
+            bulan
+            UNION SELECT '03' AS
+            bulan
+            UNION SELECT '04' AS
+            bulan
+            UNION SELECT '05' AS
+            bulan
+            UNION SELECT '06' AS
+            bulan
+            UNION SELECT '07'AS
+            bulan
+            UNION SELECT '08'AS
+            bulan
+            UNION SELECT '09' AS
+            bulan
+            UNION SELECT '10' AS
+            bulan
+            UNION SELECT '11' AS
+            bulan
+            UNION SELECT '12' AS
+            bulan
+            ) AS m LEFT JOIN transaksi_penjualans t ON MONTHNAME(t.Tanggal_Transaksi) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
+            LEFT JOIN detail_spareparts d ON t.Id_Transaksi=d.Id_Transaksi
+            LEFT JOIN spareparts s ON d.Kode_Sparepart = s.Kode_Sparepart
+            where YEAR(t.Tanggal_Transaksi)= $year or YEAR(t.Tanggal_Transaksi) is null 
+            GROUP BY m.bulan, YEAR(t.Tanggal_Transaksi);");
+
+        return response()->json([
+                'datas' => (bool) $datas,
+                'datas' => $datas,
+                'message' => $datas ? 'Success' : 'Error',
+            ]);
     }
 
     public function penjualanjasa($year,$month){
@@ -698,11 +721,14 @@ class LaporanController extends Controller
         //     'datas' => $datas,
         //     'message' => $datas ? 'Success' : 'Error',
         // ]);
+        $date = Carbon::now();
+
         $pdf = PDF::loadView('penjualan_jasa',
-        ['datas'=>$datas]);
+        ['datas'=>$datas, 'month'=>$month, 'year'=>$year,'date'=>$date]);
         $pdf->setPaper([0,0,550,900]);
         return $pdf->stream();
     }
+    
 
     public function penjualanjasaDesktop($year,$month){
         $datas = DB::select("SELECT
@@ -778,7 +804,7 @@ class LaporanController extends Controller
 
         public function pengeluaranBulananDesktop($year){
             $datas = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan,
-            COALESCE(SUM(p.Total_Harga),0) as JumlahPengeluaran
+            COALESCE(SUM(p.Total_Harga),0) as JumlahPengeluaran 
             FROM (SELECT '01' AS
                     bulan
                     UNION SELECT '02' AS
@@ -806,13 +832,47 @@ class LaporanController extends Controller
                     ) AS m LEFT JOIN transaksi_pengadaans p ON MONTHNAME(p.Tanggal_Pengadaan) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
                     WHERE p.Status_Pengadaan = '2' 
                     AND p.deleted_at is null
-                    AND YEAR(p.Tanggal_Pengadaan)= $year
+                    AND YEAR(p.Tanggal_Pengadaan)= $year 
                     OR YEAR(P.Tanggal_Pengadaan) is null
+                    GROUP BY m.bulan, YEAR(p.Tanggal_Pengadaan)");
+
+            $data2 = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan,
+            COALESCE(SUM(p.Total_Harga),0) as JumlahPengeluaran, COALESCE(YEAR(p.Tanggal_Pengadaan),YEAR(p.Tanggal_Pengadaan)) as Year 
+            FROM (SELECT '01' AS
+                    bulan
+                    UNION SELECT '02' AS
+                    bulan
+                    UNION SELECT '03' AS
+                    bulan
+                    UNION SELECT '04' AS
+                    bulan
+                    UNION SELECT '05' AS
+                    bulan
+                    UNION SELECT '06' AS
+                    bulan
+                    UNION SELECT '07'AS
+                    bulan
+                    UNION SELECT '08'AS
+                    bulan
+                    UNION SELECT '09' AS
+                    bulan
+                    UNION SELECT '10' AS
+                    bulan
+                    UNION SELECT '11' AS
+                    bulan
+                    UNION SELECT '12' AS
+                    bulan
+                    ) AS m LEFT JOIN transaksi_pengadaans p ON MONTHNAME(p.Tanggal_Pengadaan) = MONTHNAME(STR_TO_DATE((m.bulan), '%m')) 
+                    WHERE p.Status_Pengadaan = '2' 
+                    AND p.deleted_at is null
+                    AND YEAR(p.Tanggal_Pengadaan)= $year 
                     GROUP BY m.bulan, YEAR(p.Tanggal_Pengadaan)");
                 
                 return response()->json([
                     'datas' => (bool) $datas,
                     'datas' => $datas,
+                    'data2' => $data2,
+                    'year' => $year,
                     'message' => $datas ? 'Success' : 'Error',
                 ]);
             }
@@ -821,7 +881,7 @@ class LaporanController extends Controller
         {
             $datas = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as Bulan, COALESCE((select (
                 (select Jumlah_Sparepart + (select sum(Jumlah) from detail_spareparts join spareparts on detail_spareparts.Kode_Sparepart=spareparts.Kode_Sparepart
-                where spareparts.Tipe_Barang = 'Sparepart Roda' and EXTRACT(YEAR FROM detail_spareparts.created_at) = $year)
+                where spareparts.Tipe_Barang = $tipe and EXTRACT(YEAR FROM detail_spareparts.created_at) = $year)
                  - (select sum(Jumlah) from detail_pengadaans join spareparts on detail_pengadaans.Kode_Sparepart=spareparts.Kode_Sparepart where spareparts.Tipe_Barang = $tipe and EXTRACT(YEAR FROM detail_pengadaans.created_at) = $year) from spareparts where Tipe_Barang = $tipe)
                  - (select sum(Jumlah) from detail_spareparts join spareparts on detail_spareparts.Kode_Sparepart=spareparts.Kode_Sparepart where spareparts.Tipe_Barang = $tipe and EXTRACT(Month FROM detail_spareparts.created_at) = bulan) 
                 + (select sum(Jumlah) from detail_pengadaans join spareparts on detail_pengadaans.Kode_Sparepart=spareparts.Kode_Sparepart where spareparts.Tipe_Barang = $tipe and EXTRACT(Month FROM detail_pengadaans.created_at) = bulan))  AS JumlahSparepartSisa 

@@ -118,7 +118,7 @@
                                             <option value="Sparepart Motor" selected>Motor</option>
                                             <option value="Sparepart Kelistrikan">Kelistrikan</option>
                                             <option value="Sparepart Roda">Sparepart Roda</option>
-                                            <option value="Sparepart Soal">Soal</option>
+                                            <option value="Sparepart Ger">Sparepart Ger</option>
                                             <option value="Test Sparepart">Test</option>
                                         </select>
                                     </div>

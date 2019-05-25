@@ -56,7 +56,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="5" style="border-top:1px solid black;font-weight:bold;text-align:center;padding:5px;">LAPORAN SPAREPART TERLARIS</td>
+                        <td colspan="5" style="border-top:1px solid black;font-weight:bold;text-align:center;padding:5px;">LAPORAN SISA STOK</td>
                     </tr>
                     <tr>
                         <td colspan="5">Tahun : {{$year}}</td>

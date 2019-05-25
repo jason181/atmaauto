@@ -233,6 +233,72 @@
             </div>
         </div>
         <!-- END OF DELETE DELETE TRANSAKSI PENGADAAN -->
+         <!-- EDIT DETAIL TRANSAKSI PENGADAAN -->
+        <div class="modal fade" id="Update_Detail_Pengadaan" tabindex="-1" role="dialog" aria-labelledby="Update_Detail_Pengadaan" 
+        aria-hidden="true">
+            <div class="modal-dialog" style="max-width:600px;">
+                <div class="modal-content" style="width:600px;">
+                    <div class="modal-header">
+                        <h4 class="modal-title mx-auto" id="Heading">Update Detail Pengadaan</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" 
+                        style="margin-left: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mt-0">
+                            <div class="col-lg-5">
+                                <div class="input-group">
+                                    <div class="input-group-prepend d-block" style="width: 100px;">
+                                        <span class="input-group-text" id="basic-addon2">Sparepart</span>
+                                    </div>  
+                                    <select class="form-control mr-2" v-model="Sparepart.Kode_Sparepart" v-on:change="getSelectedIndex" >
+                                        <option disabled="disabled" selected="selected" 
+                                        value="Pilih ">-- Pilih Sparepart --</option>
+                                        <option v-bind:key="spareparts['Kode_Sparepart']" 
+                                        v-on:change="getSelectedIndex"
+                                        v-for="spareparts in sparepart" 
+                                        :value="spareparts.Kode_Sparepart">{{spareparts.Nama_Sparepart}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="input-group">
+                                    <div class="input-group-prepend d-block" style="width: 100px;">
+                                        <span class="input-group-text" id="basic-addon2">Jumlah</span>
+                                    </div>
+                                    <input type="number" v-model="Sparepart.Jumlah_Sparepart" class="form-control" 
+                                    aria-label="Jumlah_Sparepart"  aria-describedby="basic-addon2" id="Jumlah_Sparepart" name="Jumlah_Sparepart" 
+                                    required>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <button type="submit" class="btn btn-success btn" @click="sparepartHandler(sparepart)">Add Sparepart</button>
+                            </div>
+                        </div>
+
+                        <div class="input-group mt-3 w-400">
+                            <div class="row">
+                                <div class="col-12 mr-2">
+                                    <div class="list-group mr-2" v-for="spareparts in sparepartdata" :key="spareparts['Kode_Sparepart']">
+                                        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+                                            {{spareparts.Kode_Sparepart + '-' + spareparts.Nama_Sparepart}}          
+                                            <button type="submit" class="btn btn-danger" style="margin-left: 200px"
+                                            @click="deleteList(spareparts.Kode_Sparepart)">Delete</button>
+                                            <br>     
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer mt-3">
+                            <button type="submit" class="btn btn-success btn-lg w-100" :disabled="$v.Pengadaan.$invalid" data-dismiss="modal" @click="addpengadaan()">Tambahkan Transaksi Pengadaan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- EDIT DETAIL PENGADAAN -->
         <!-- TAMPIL DETAIL PENGADAAN -->
         <div class="modal fade" id="Detail_Pengadaan" tabindex="-1" role="dialog" aria-labelledby="Detail_Pengadaan" 
         aria-hidden="true">
@@ -421,6 +487,16 @@
                                 </button>
                             </div>
                         </div>
+
+                        <!-- <div class="row mb-2">
+                            <div class="col-lg-3">
+                                <button class="btn btn-success mb-2 btn-block" @click="verifikasipengadaan(Pengadaan.Id_Pengadaan),getallpengadaan()" 
+                                data-title="Update_Detail_Pengadaan" data-toggle="modal" data-target="" data-dismiss="modal">
+                                    <i class="fas fa-plus mr-2"></i>Update
+                                </button>
+                            </div>
+                        </div> -->
+
                      </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
@@ -440,6 +516,14 @@
                                         <td>{{detail.Harga_Satuan}} </td>
                                         <td>{{detail.Jumlah}}</td>
                                         <td>{{detail.Subtotal_Pengadaan}} </td>
+                                        <td class="text-center">
+                                            <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                                <button class="btn btn-primary" @click="detailhandler(pengadaan)" 
+                                                data-title="Update_Detail_Pengadaan" data-toggle="modal" data-target="#Update_Detail_Pengadaan">
+                                                    <i class="fas fa-edit-ul"></i>
+                                                </button>
+                                            </p>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

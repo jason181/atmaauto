@@ -159,13 +159,13 @@ Route::get('/cetak_surat_pemesanan/{id}', 'LaporanController@cetakSuratPemesanan
 Route::get('/cetak_spk/{id}', 'LaporanController@cetakSPK');
 Route::get('/pendapatan_bulanan/{year}','LaporanController@pendapatanBulanan');
 Route::get('/pendapatan_tahunan','LaporanController@pendapatanTahunan');
-Route::get('/sparepart_terlaris','LaporanController@sparepartterlaris');
+Route::get('/sparepart_terlaris/{year}','LaporanController@sparepartterlaris');
 Route::get('/penjualan_jasa/{year}/{month}','LaporanController@penjualanjasa');
 Route::get('/pengeluaran_bulanan/{year}','LaporanController@pengeluaranBulanan');
 Route::get('/sisa_stok/{year}/{tipe}','LaporanController@sisaStok');
 
 //Laporan Desktop
-Route::get('/sparepart_terlaris_desktop','LaporanController@sparepartterlarisDesktop');
+Route::get('/sparepart_terlaris_desktop/{year}','LaporanController@sparepartterlarisDesktop');
 Route::get('/pendapatan_bulanan_desktop/{year}','LaporanController@pendapatanBulananDesktop');
 Route::get('/pendapatan_tahunan_desktop','LaporanController@pendapatanTahunanDesktop');
 Route::get('/pengeluaran_bulanan_desktop/{year}','LaporanController@pengeluaranBulananDesktop');

@@ -38,6 +38,18 @@ export default {
             Http.patch('/api/transaksi_pengadaans/update/'+id, payload, successCallback, errorCallback)
         })
     },
+    updatedetailpengadaan(payload,id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.patch('/api/detail_pengadaans/update/'+id, payload, successCallback, errorCallback)
+        })
+    },
     deletepengadaan(id){
         return new Promise((resolve, reject) => {
             const successCallback = (res) => {
