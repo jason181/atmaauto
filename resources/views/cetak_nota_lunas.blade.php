@@ -44,27 +44,27 @@
                         <td rowspan="5" colspan="2" style="text-align:right;padding:3px">
                             <img src="{{ public_path('/images/Logo_Transparan.png') }}" alt="Logo_AA" width="120px;">
                         </td>
-                        <td colspan="3" style="text-align:center;font-size:20pt;">
+                        <td colspan="4" style="text-align:center;font-size:20pt;">
                             ATMA AUTO
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3" style="text-align:center;">
+                        <td colspan="4" style="text-align:center;">
                             MOTORCYCLE SPAREPARTS AND SERVICE
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3" style="text-align:center;">
+                        <td colspan="4" style="text-align:center;">
                             Jl. Babarsari No. 43 Yogyakarta 552181
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3" style="text-align:center;">
+                        <td colspan="4" style="text-align:center;">
                             Telp. (0274) 487711
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3" style="text-align:center;">
+                        <td colspan="4" style="text-align:center;">
                             http://atmauto.jasonfw.com/
                         </td>
                     </tr>
@@ -111,12 +111,12 @@
                         <td colspan="6" class="mytable" style="padding:1px;"></td>
                     </tr>
                     <tr class="mytable">
-                        <th class="mytable" style="text-align:center;">Kode</th>
-                        <th class="mytable" style="text-align:center;">Nama</th>
-                        <th class="mytable" style="text-align:center;">Merk</th>
-                        <th class="mytable" style="text-align:center;">Harga</th>
-                        <th class="mytable" style="text-align:center;">Jumlah</th>
-                        <th class="mytable" style="text-align:center;">Subtotal</th>
+                        <th class="mytable tal">Kode</th>
+                        <th class="mytable tal">Nama</th>
+                        <th class="mytable tal">Merk</th>
+                        <th class="mytable tar">Harga</th>
+                        <th class="mytable tar">Jumlah</th>
+                        <th class="mytable tar">Subtotal</th>
                     </tr>
                     {{$jumlah=0}}
                     @foreach($spareparts as $sparepart)
@@ -154,29 +154,30 @@
                         <td colspan="6" class="mytable" style="padding:1px;"></td>
                     </tr>
                     <tr class="mytable">
-                        <th class="mytable" style="padding-left:10px;">Kode</th>
-                        <th class="mytable">Nama</th>
+                        <th class="mytable tal" style="padding-left:10px;">Kode</th>
+                        <th class="mytable tal">Nama</th>
                         <th class="mytable"></th>
-                        <td class="mytable">Harga</td>
-                        <td class="mytable">Jumlah</td>
-                        <td class="mytable">Subtotal</td>
+                        <td class="mytable tar" style="font-weight:bold">Harga</td>
+                        <td class="mytable tar" style="font-weight:bold">Jumlah</td>
+                        <td class="mytable tar" style="font-weight:bold">Subtotal</td>
                     </tr>
                     
                     @foreach($jasas as $jasa)
-                    {{$subtotaljasa+=$jasa->Harga_Jasa}}
+                    {{$subtotaljasa+=$jasa->HargaJasa}}
                     <tr>
-                        <td style="padding-left:10px;"> {{$jasa->KodeJasa}} </td>
+                        <td style="padding-left:10px;"> 00{{$jasa->KodeJasa}} </td>
                         <td> {{$jasa->NamaJasa}} </td>
                         <td></td>
-                        <td class="tar">{{$jasa->HargaJasa}}</td>
-                        <td class="tar">{{$jasa->Subtotal}}</td>
+                        <td class="tar">Rp.{{number_format($jasa->HargaJasa)}}</td>
+                        <td class="tar">1</td>
+                        <td class="tar">Rp.{{number_format($jasa->Subtotal)}}</td>
                     </tr>
                     @endforeach
                     <tr>
                         <td colspan="6" class="mytable" style="padding:1px;"></td>
                     </tr>
                     <tr>
-                        <td colspan="6" style="text-align:right"> {{$subtotaljasa}} </td>
+                        <td colspan="6" style="text-align:right">Rp.{{number_format($subtotaljasa)}}</td>
                     </tr>
                     <tr>
                         <td colspan="6" class="mytable" style="padding:1px;"></td>
@@ -186,7 +187,7 @@
                         <td class="tac" colspan="2">Cust</td>
                         <td class="tac" colspan="2">Kasir</td>
                         <td>Subtotal</td>
-                        <td class="tar">{{$jumlah + $subtotaljasa}}</td>
+                        <td class="tar">Rp.{{number_format($jumlah + $subtotaljasa)}}</td>
                     </tr>
                     <tr>
                         <td colspan="4"></td>
@@ -196,7 +197,7 @@
                     <tr>
                         <td colspan="4"></td>
                         <td style="font-weight:bold">Total</td>
-                        <td class="tar" >{{$total[0]->Total}}</td>
+                        <td class="tar" >Rp.{{number_format($total[0]->Total)}}</td>
                     </tr>
                     <tr>
                         <td class="tac" colspan="2">

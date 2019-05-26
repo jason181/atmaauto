@@ -106,10 +106,10 @@ class DetailJasaController extends RestController
         
         $status=$detail_jasa->delete();
 
-        $find_montir_sparepart  = Detail_Sparepart::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->first();
-        $find_montir_jasa       = Detail_Jasa::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->first();
+        $find_montir_sparepart  = Detail_Sparepart::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->get();
+        $find_montir_jasa       = Detail_Jasa::where('Id_Jasa_Montir',$montir->Id_Jasa_Montir)->get();
         
-        if($find_montir_sparepart == null && $find_montir_jasa == null)
+        if($find_montir_sparepart->isEmpty() && $find_montir_jasa->isEmpty())
         {
             $status2 = $montir->delete();
             $pods = Pegawai_On_Duty::where('Id_Transaksi',$id_transaksi)->get();
@@ -119,7 +119,7 @@ class DetailJasaController extends RestController
             }
             $status3 = $penjualan->delete();
         }
-        else if($find_montir_jasa == null && $find_montir_sparepart !== null)
+        else if($find_montir_jasa->isEmpty() && !$find_montir_sparepart->isEmpty())
         {
             $penjualan->Jenis_Transaksi = 'SP';
             $status2=false;

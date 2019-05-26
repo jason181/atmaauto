@@ -775,7 +775,6 @@
                                 <tbody>
                                     <tr v-bind:key="detail['id']" v-for="detail in filtereddetail">
                                         <td>{{detail.Kode_Sparepart }} </td>
-                                        <td>{{detail.Id_Detail_Sparepart}} </td>
                                         <td>{{detail.Harga_Satuan}} </td>
                                         <td>{{detail.Jumlah}} </td>
                                         <td>{{detail.Subtotal_Detail_Sparepart}}</td>
@@ -875,20 +874,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-4">
-
-                            </div>
-                            <div class="col-sm-4">
-                                <button class="btn btn-success mb-2 btn-block" data-title="Cetak_SPK">
-                                    <i class="far fa-file-pdf"></i> Cetak Surat Perintah Kerja
-                                </button>
-                            </div>
-                            <div class="col-sm-4">
-
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1013,7 +998,7 @@
 
                         <div class="modal-footer mt-3" >
                             <button type="submit" class="btn btn-success btn-lg w-100" 
-                            data-dismiss="modal" @click="addetailspareparts()">Tambahkan Penjualan</button>
+                            data-dismiss="modal" @click="addetailspareparts(),getalldetailpenjualan()">Tambahkan Penjualan</button>
                         </div>
                     </div>
                 </div>
@@ -1801,6 +1786,7 @@ export default {
                 }
                 await penjualanController.addetailspareparts(payload)
                 this.getallpenjualan()
+                this.getalldetailpenjualan()
             } catch (err) {
                 console.log(err)
             }
@@ -1846,7 +1832,7 @@ export default {
             this.Konsumen = konsumen
         },
         detailtransaksihandler(detail){
-            this.Transaksi = transaksi
+            // this.Transaksi = transaksi
             this.Detail = detail
             //this.sparepartdata = detail
         },
