@@ -130,11 +130,11 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="chart">
+                            <apexchart type=line height=350 :options="chartOptionsStok" :series="seriesStok" />
+                        </div>
                     </div>
 
-                    <div id="chart">
-                        <apexchart type=line height=350 :options="chartOptionsStok" :series="seriesStok" />
-                    </div>
 
                 </div>
                 <div class="card">

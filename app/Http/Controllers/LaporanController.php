@@ -643,7 +643,7 @@ class LaporanController extends Controller
         $date = Carbon::now();
 
         $pdf = PDF::loadView('sparepart_terlaris',
-        ['data'=>$data,'date'=>$date]);
+        ['datas'=>$data,'date'=>$date]);
         $pdf->setPaper([0,0,550,900]);
         return $pdf->stream();
     }

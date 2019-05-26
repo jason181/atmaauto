@@ -53,7 +53,7 @@ class DetailPengadaanController extends RestController
     {
         $detail_pengadaan = Detail_Pengadaan::find($id);
         $pengadaan = Transaksi_Pengadaan::find($detail_pengadaan->Id_Pengadaan);
-        $pengadaan->Total_Harga += $pengadaan->Harga_Satuan * $request->Jumlah - $pengadaan->Total_Harga;
+        $pengadaan->Total_Harga += $detail_pengadaan->Harga_Satuan * $request->Jumlah - $detail_pengadaan->Subtotal_Pengadaan;
         $pengadaan->save();
         if(!is_null($request->Kode_Sparepart))
         {
@@ -73,6 +73,10 @@ class DetailPengadaanController extends RestController
         if(!is_null($request->Subtotal_Pengadaan))
         {
             $detail_pengadaan->Subtotal_Pengadaan = $request->Harga_Satuan * $request->Jumlah;
+        }
+        else
+        {
+            $detail_pengadaan->Subtotal_Pengadaan = $detail_pengadaan->Harga_Satuan * $request->Jumlah;
         }
         $detail_pengadaan->save();
         $response = $this->generateItem($detail_pengadaan);

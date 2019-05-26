@@ -480,12 +480,7 @@
                     <div class="modal-body">
                         <div class="container-fluid mt-3">
                         <div class="row mb-2">
-                            <div class="col-lg-3">
-                                <button class="btn btn-warning mb-2 btn-block" @click="verifikasipengadaan(Pengadaan.Id_Pengadaan),getallpengadaan()" 
-                                data-title="Tambah_Pengadaan" data-toggle="modal" data-target="" data-dismiss="modal">
-                                    <i class="fas fa-plus mr-2"></i>Verifikasi
-                                </button>
-                            </div>
+                            
                         </div>
 
                         <!-- <div class="row mb-2">
@@ -515,12 +510,26 @@
                                         <td>{{detail.Kode_Sparepart }} </td>
                                         <td>{{detail.Nama_Sparepart}} </td>
                                         <td>{{detail.Harga_Satuan}} </td>
-                                        <td>{{detail.Jumlah}}</td>
+                                        <td v-if="update_masuk == false">
+                                            {{detail.Jumlah}}
+                                        </td>
+                                        <td v-else>
+                                            <div class="input-group mb-4">
+                                                <input type="number" v-model="detail.Jumlah" class="form-control" 
+                                                aria-label="Jumlah_Sparepart"  aria-describedby="basic-addon2" 
+                                                id="Jumlah_Sparepart" name="Jumlah_Sparepart" required style="width:50px">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-success" @click="updateverifyhandler(detail)" 
+                                                    data-title="Verify_Pengadaan">
+                                                    <i class="fas fa-check-circle"></i>
+                                                </button>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>{{detail.Subtotal_Pengadaan}} </td>
                                         <td class="text-center">
                                             <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                                <button class="btn btn-primary" @click="this.update_masuk = true" 
-                                                data-title="Update_Detail_Pengadaan" data-toggle="modal" data-target="#Update_Detail_Pengadaan">
+                                                <button class="btn btn-primary" @click="verifyhandler(),getalldetailpengadaan()" >
                                                     <i class="fas fa-edit"></i>
                                                 </button>
                                             </p>
@@ -533,7 +542,12 @@
                             <div class="col-sm-4">
 
                             </div>
-                            
+                            <div class="col-sm-4">
+                                <button class="btn btn-success mb-2 btn-block" @click="verifikasipengadaan(Pengadaan.Id_Pengadaan),getallpengadaan()" 
+                                data-title="Tambah_Pengadaan" data-toggle="modal" data-target="" data-dismiss="modal">
+                                    <i class="fas fa-plus mr-2"></i>Verifikasi
+                                </button>
+                            </div>
                             <div class="col-sm-4">
 
                             </div>
@@ -591,7 +605,16 @@ export default {
             Harga_Satuan:0,
             Jumlah:0,
             Subtotal_Pengadaan:0,
-        }
+        },
+        Detail:{
+            Id_Detail_Pengadaan : 0,
+            Id_Pengadaan : 0,
+            Kode_Sparepart : '',
+            Harga_Satuan : 0,
+            Jumlah : 0,
+            Subtotal_Pengadaan : 0,
+        },
+        update_masuk : false,
     }),
     mounted(){
         this.getallpengadaan(),
@@ -712,9 +735,18 @@ export default {
                 console.log(err)
             }
         },
-        // async updatepengadaan () {
-
-        // },
+        async updateverify(id){
+            try {
+                const payload = {
+                    Jumlah : this.Detail.Jumlah
+                }
+                await Controller.updatedetailpengadaan(payload,id)
+                this.getallpengadaan()
+                this.getalldetailpengadaan()
+            } catch (err) {
+                console.log(err)
+            }
+        },
         async deletepengadaan(id) {
             try {
                 await Controller.deletepengadaan(id)
@@ -741,6 +773,16 @@ export default {
             this.Pengadaan = pengadaan;
             this.sparepartdata = pengadaan.detail_pengadaan.data;
             console.log(this.Pengadaan);
+        },
+        updateverifyhandler(detail)
+        {
+            this.Detail = detail;
+            this.Detail.Subtotal_Pengadaan = detail.Jumlah * detail.Harga_Satuan;
+            this.updateverify(detail.Id_Detail_Pengadaan);
+        },
+        verifyhandler()
+        {
+            this.update_masuk = !this.update_masuk;
         }
     },
     computed:{
