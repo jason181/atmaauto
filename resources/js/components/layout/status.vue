@@ -28,7 +28,13 @@
 </template>
 
 <script>
+// import Controller from '../../Status'
 
+export default{
+  data: () => ({
+
+  }),
+}
 
 </script>
 

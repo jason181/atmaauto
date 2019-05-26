@@ -110,7 +110,7 @@ Route::delete('/transaksi_pengadaans/delete/{id}', 'TransaksiPengadaanController
 // Route::get('/transaksi_pengadaans/show/{id}', 'TransaksiPengadaanController@showbyCustomer');
 Route::get('/transaksi_pengadaans/cetakSuratPemesanan/{id}','TransaksiPengadaanController@cetakSuratPemesanan');
 Route::patch('/transaksi_pengadaans/verify/{id}','TransaksiPengadaanController@verify');
-
+Route::delete('/transaksi_pengadaans/deletealldetails/{id}','TransaksiPengadaanController@destroyalldetails');
 
 //Detail Pengadaan
 Route::get('/detail_pengadaans','DetailPengadaanController@index');

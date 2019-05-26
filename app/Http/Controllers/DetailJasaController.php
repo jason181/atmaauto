@@ -10,6 +10,7 @@ use App\Detail_Jasa;
 use App\Detail_Sparepart;
 use App\Transaksi_Penjualan;
 use App\Montir;
+use App\Pegawai_On_Duty;
 
 class DetailJasaController extends RestController
 {
@@ -21,7 +22,6 @@ class DetailJasaController extends RestController
         $response=$this->generateCollection($detail_jasa);
         return $this->sendResponse($response,201);
     }
-
     
     public function detailjasakonsumen($id){
         $detailjasa=Detail_Jasa::where('Id_Transaksi',$id)->get();
@@ -38,9 +38,10 @@ class DetailJasaController extends RestController
         }
         else if($montirdata == null)
         {
-            $montir = Detail_Sparepart::where('Id_Transaksi',$request->Detail_Jasa[0]['Id_Transaksi'])->first()->value('Id_Jasa_Montir');
+            $montirdata = Detail_Sparepart::where('Id_Transaksi',$request->Detail_Jasa[0]['Id_Transaksi'])->first();
+            $montir = $montirdata->Id_Jasa_Montir;
         }
-
+        
         $detail_jasa = new Detail_Jasa;
 
         if($request->has('Detail_Jasa'))
@@ -133,6 +134,7 @@ class DetailJasaController extends RestController
         $penjualan->save();
         
         return response()->json([
+            'Jenis_Transaksi' => $penjualan->Jenis_Transaksi,
             'find_sparepart' => $find_montir_sparepart,
             'find_jasa' => $find_montir_jasa,
             'detail' => $status,

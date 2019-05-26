@@ -1277,7 +1277,7 @@
                     </div>
                     <div class="modal-footer ">
                         <a id="delete_btn" class="float-left w-100">
-                            <button type="button" @click="deletepenjualan(Transaksi.Id_Transaksi)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
+                            <button type="button" @click="deletedetailjasa(Detail.Id_Detail_Jasa)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
                         </a>
                         <button type="button" class="btn btn-secondary float-right w-50" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
                     </div>
@@ -1779,6 +1779,15 @@ export default {
                 console.log(err)
             }
         },
+        async deletedetailjasa(id) {
+            try {
+                await penjualanController.deletedetailjasa(id)
+                this.getallpenjualan()
+                this.getalldetailjasa()
+            } catch (err) {
+                console.log(err)
+            }
+        },
         async addetailspareparts () {
             try {
                 const payload = {
@@ -1794,11 +1803,13 @@ export default {
         async deletedetailsparepart(id) {
             try {
                 await penjualanController.deletedetailsparepart(id)
+                this.getallpenjualan()
                 this.getalldetailpenjualan()
             } catch (err) {
                 console.log(err)
             }
         },
+        
         async cetakspk(id) {
             try {
                 await Http.download('/api/cetak_spk/'+id);

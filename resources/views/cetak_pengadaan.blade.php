@@ -137,14 +137,6 @@
                         <td class="mytable" style="text-align:center;padding:5px;">{{$data->Jumlah}}</td>
                     </tr>
                     @endforeach
-                    <!-- <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Total Harga :</td>
-                        <td> {{$datas[0]->Total_Harga}} </td>
-                    </tr> -->
                     <tr>
                         <td></td>
                         <td></td>
