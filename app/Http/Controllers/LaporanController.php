@@ -460,11 +460,13 @@ class LaporanController extends Controller
         INNER JOIN spareparts s ON s.Kode_Sparepart = d.Kode_Sparepart
         WHERE t.Id_Transaksi = $id AND t.Status = '3'");
 
-        $jasas = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, j2.Id_Jasa as KodeJasa, j2.Nama_Jasa as NamaJasa
+        $jasas = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, j2.Id_Jasa as KodeJasa, j2.Nama_Jasa as NamaJasa, j2.Harga_Jasa as HargaJasa, j.Subtotal_Detail_Jasa as Subtotal
         FROM transaksi_penjualans t 
         INNER JOIN detail_jasas j ON j.Id_Transaksi = t.Id_Transaksi
         INNER JOIN jasas j2 ON j2.Id_Jasa = j.Id_Jasa
         WHERE t.Id_Transaksi = $id AND t.Status = '3'");
+
+        // return $jasas;
 
         // if($spareparts == [])
         // {

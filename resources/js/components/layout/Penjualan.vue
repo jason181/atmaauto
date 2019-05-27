@@ -776,7 +776,6 @@
                                 <tbody>
                                     <tr v-bind:key="detail['id']" v-for="detail in filtereddetail">
                                         <td>{{detail.Kode_Sparepart }} </td>
-                                        <td>{{detail.Id_Detail_Sparepart}} </td>
                                         <td>{{detail.Harga_Satuan}} </td>
                                         <td>{{detail.Jumlah}} </td>
                                         <td>{{detail.Subtotal_Detail_Sparepart}}</td>
@@ -876,20 +875,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-4">
-
-                            </div>
-                            <div class="col-sm-4">
-                                <button class="btn btn-success mb-2 btn-block" data-title="Cetak_SPK">
-                                    <i class="far fa-file-pdf"></i> Cetak Surat Perintah Kerja
-                                </button>
-                            </div>
-                            <div class="col-sm-4">
-
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1014,7 +999,7 @@
 
                         <div class="modal-footer mt-3" >
                             <button type="submit" class="btn btn-success btn-lg w-100" 
-                            data-dismiss="modal" @click="addetailspareparts()">Tambahkan Penjualan</button>
+                            data-dismiss="modal" @click="addetailspareparts(),getalldetailpenjualan()">Tambahkan Penjualan</button>
                         </div>
                     </div>
                 </div>
@@ -1293,7 +1278,7 @@
                     </div>
                     <div class="modal-footer ">
                         <a id="delete_btn" class="float-left w-100">
-                            <button type="button" @click="deletepenjualan(Transaksi.Id_Transaksi)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
+                            <button type="button" @click="deletedetailjasa(Detail.Id_Detail_Jasa)" class="btn btn-danger float-left w-50" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Ya</button>
                         </a>
                         <button type="button" class="btn btn-secondary float-right w-50" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Tidak</button>
                     </div>
@@ -1795,6 +1780,15 @@ export default {
                 console.log(err)
             }
         },
+        async deletedetailjasa(id) {
+            try {
+                await penjualanController.deletedetailjasa(id)
+                this.getallpenjualan()
+                this.getalldetailjasa()
+            } catch (err) {
+                console.log(err)
+            }
+        },
         async addetailspareparts () {
             try {
                 const payload = {
@@ -1802,6 +1796,7 @@ export default {
                 }
                 await penjualanController.addetailspareparts(payload)
                 this.getallpenjualan()
+                this.getalldetailpenjualan()
             } catch (err) {
                 console.log(err)
             }
@@ -1809,11 +1804,13 @@ export default {
         async deletedetailsparepart(id) {
             try {
                 await penjualanController.deletedetailsparepart(id)
+                this.getallpenjualan()
                 this.getalldetailpenjualan()
             } catch (err) {
                 console.log(err)
             }
         },
+        
         async cetakspk(id) {
             try {
                 await Http.download('/api/cetak_spk/'+id);
@@ -1847,7 +1844,7 @@ export default {
             this.Konsumen = konsumen
         },
         detailtransaksihandler(detail){
-            this.Transaksi = transaksi
+            // this.Transaksi = transaksi
             this.Detail = detail
             //this.sparepartdata = detail
         },
@@ -1904,12 +1901,12 @@ export default {
         },
         filtereddetailsparepart:function(){
             return this.detailpenjualandata.filter((detailpenjualan)=>{
-                return detailpenjualan.Kode_Sparepart.toLowerCase().match(this.Cari_Detail_Sparepart.toLowerCase());
+                return detailpenjualan.Nama_Sparepart.toLowerCase().match(this.Cari_Detail_Sparepart.toLowerCase());
             });
         },
         filtereddetailJasa:function(){
             return this.detailjasadata.filter((detailjasa)=>{
-                return detailjasa.Id_Jasa.toLowerCase().match(this.Cari_Detail_Jasa.toLowerCase());
+                return detailjasa.Nama_Jasa.toLowerCase().match(this.Cari_Detail_Jasa.toLowerCase());
             });
         },
         filtereddetailjasa:function(){

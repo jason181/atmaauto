@@ -180,6 +180,18 @@ export default {
             Http.post('/api/detail_jasas/store', payload, successCallback, errorCallback)
         })
     },
+    deletedetailjasa(id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.delete('/api/detail_jasas/delete/'+id, successCallback, errorCallback)
+        })
+    },
     pembayaran(id)
     {
         return new Promise((resolve, reject) => {

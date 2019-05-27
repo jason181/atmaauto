@@ -85,16 +85,23 @@ class DetailPengadaanController extends RestController
 
     public function destroy($id)
     {
+        $cari_pengadaan = Detail_Pengadaan::where('Id_Pengadaan','999')->get();
+
         $detail_pengadaan = Detail_Pengadaan::find($id);
-        $pengadaan = Transaksi_Pengadaan::find($detail->Id_Pengadaan);
+        $pengadaan = Transaksi_Pengadaan::find($detail_pengadaan->Id_Pengadaan);
         $pengadaan->Total_Harga -= $detail_pengadaan->Subtotal_Pengadaan;
         $detail_pengadaan->delete();
         $cari_pengadaan = Detail_Pengadaan::where('Id_Pengadaan',$pengadaan->Id_Pengadaan)->get();
-        if($cari_pengadaan == null)
+        // return $cari_pengadaan;
+        if($cari_pengadaan->isEmpty())
         {
             $status = $pengadaan->delete();
         }
+        else
+        {
+            $status = $pengadaan->save();
+        }
         $response = $this->generateItem($detail_pengadaan);
-        return $this->sendResponse($detail_pengadaan);
+        return $this->sendResponse($response);
     }
 }
