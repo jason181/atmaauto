@@ -505,7 +505,7 @@ class TransaksiPenjualanController extends RestController
             $montirs = Montir::where('Id_Jasa_Montir',$sparepart->Id_Jasa_Montir)->get();
             
             $sparepartdata = Sparepart::where('Kode_Sparepart',$sparepart->Kode_Sparepart)->first();
-            $sparepartdata->Jumlah_Sparepart += $detail_sparepart->Jumlah;
+            $sparepartdata->Jumlah_Sparepart += $sparepart->Jumlah;
             $sparepartdata->save();
 
             $delete_sparepart = $sparepart->delete();
