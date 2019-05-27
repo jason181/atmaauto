@@ -49,6 +49,29 @@ class LaporanController extends Controller
 	    return $pdf->stream();
     }
 
+    public function cetakSuratPemesananDesktop($id)
+    {
+        $pengadaan = Transaksi_Pengadaan::find($id);
+        $pengadaan->Status_Pengadaan = '1';
+        $pengadaan->save();
+        $datas  = DB::select("SELECT sp.Nama_Sparepart, sp.Tipe_Barang, sp.Merk_Sparepart, sp.Harga_Jual, 
+                                sp.Rak_Sparepart, sp.Jumlah_Sparepart, s.Nama_Supplier, s.Alamat_Supplier, s.Telepon_Supplier 
+                    FROM transaksi_pengadaans t 
+                    LEFT JOIN detail_pengadaans d
+                    ON t.Id_Pengadaan = d.Id_Pengadaan 
+                    LEFT JOIN suppliers s
+                    ON t.Id_Supplier = s.Id_Supplier
+                    LEFT JOIN spareparts sp
+                    ON d.Kode_Sparepart = sp.Kode_Sparepart
+                    WHERE t.Id_Pengadaan = $id");
+        return response()->json([
+            'status' => (bool) $datas,
+            'datas' => $datas,
+            'datas' => $datas,
+            'message' => $datas ? 'Success' : 'Error'
+        ]);
+    }
+
     public function cetakSPK($id)
     {
         $penjualan = Transaksi_Penjualan::find($id);
@@ -287,24 +310,6 @@ class LaporanController extends Controller
         return view('cetak_pengadaan', ['pengadaan' => $pengadaan, 'supplier' => $supplier, 'details' => $details]);
     }
 
-    public function cetakSuratPemesananDesktop($id)
-    {
-        $datas  = DB::select("SELECT * FROM transaksi_pengadaans 
-                    LEFT JOIN detail_pengadaans 
-                    ON transaksi_pengadaans.Id_Pengadaan = detail_pengadaans.Id_Pengadaan 
-                    LEFT JOIN suppliers
-                    ON transaksi_pengadaans.Id_Supplier = suppliers.Id_Supplier
-                    LEFT JOIN spareparts
-                    ON detail_pengadaans.Kode_Sparepart = spareparts.Kode_Sparepart
-                    WHERE transaksi_pengadaans.Id_Pengadaan = $id");
-
-        return response()->json([
-            'status' => (bool) $datas,
-            'data' => $datas,
-            'message' => $datas ? 'Success' : 'Error'
-        ]);
-    }
-
     public function cetakSuratPerintahKerjaDesktop($id)
     {
         $data1 = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, s.Kode_Sparepart as Kode, s.Nama_Sparepart as Nama, s.Merk_Sparepart as Merk, s.Rak_Sparepart as Rak, d.Jumlah as Jumlah
@@ -356,6 +361,13 @@ class LaporanController extends Controller
         INNER JOIN motors n ON n.Id_Motor = p.Id_Motor
         WHERE t.Id_Transaksi = $id");
 
+        $data9 = DB::select("SELECT t.Id_Transaksi, n.Merk as Merk, n.Tipe as Tipe, p.Plat_Kendaraan as Plat 
+        FROM transaksi_penjualans t 
+        INNER JOIN detail_jasas d ON d.Id_Transaksi =  t.Id_Transaksi
+        INNER JOIN montirs m ON m.Id_Jasa_Montir = d.Id_Jasa_Montir
+        INNER JOIN motor_konsumens p ON p.Id_Motor_Konsumen = m.Id_Motor_Konsumen
+        INNER JOIN motors n ON n.Id_Motor = p.Id_Motor
+        WHERE t.Id_Transaksi = $id");
        
         return response()->json([
             'status' => (bool) $data1,
@@ -367,6 +379,7 @@ class LaporanController extends Controller
             'data6' => $data6,
             'data7' => $data7,
             'data8' => $data8,
+            'data9' => $data9,
             'message' => $data1 ? 'Success' : 'Error',
         ]);
     }

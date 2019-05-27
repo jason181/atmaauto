@@ -768,6 +768,7 @@
                                         <th scope="col">Harga Satuan</th>
                                         <th scope="col">Jumlah Sparepart</th>
                                         <th scope="col">Subtotal Penjualan</th>
+                                        <th scope="col">Total</th>
                                         <th scope="col">Edit</th>
                                         <th scope="col">Delete</th>
                                     </tr>
