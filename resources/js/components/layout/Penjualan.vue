@@ -1900,12 +1900,12 @@ export default {
         },
         filtereddetailsparepart:function(){
             return this.detailpenjualandata.filter((detailpenjualan)=>{
-                return detailpenjualan.Kode_Sparepart.toLowerCase().match(this.Cari_Detail_Sparepart.toLowerCase());
+                return detailpenjualan.Nama_Sparepart.toLowerCase().match(this.Cari_Detail_Sparepart.toLowerCase());
             });
         },
         filtereddetailJasa:function(){
             return this.detailjasadata.filter((detailjasa)=>{
-                return detailjasa.Id_Jasa.toLowerCase().match(this.Cari_Detail_Jasa.toLowerCase());
+                return detailjasa.Nama_Jasa.toLowerCase().match(this.Cari_Detail_Jasa.toLowerCase());
             });
         },
         filtereddetailjasa:function(){
