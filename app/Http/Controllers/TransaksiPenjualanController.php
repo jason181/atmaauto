@@ -453,7 +453,7 @@ class TransaksiPenjualanController extends RestController
     public function updatetransaksimobile(Request $request,$id){
         try{
             $penjualan = Transaksi_Penjualan::find($id);
-            if(!is_null($request->get("Tanggal_Transaksi")))
+                if(!is_null($request->get("Tanggal_Transaksi")))
                 {
                     $penjualan->Tanggal_Transaksi   = $request->get('Tanggal_Transaksi');
                 }
