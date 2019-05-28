@@ -166,19 +166,18 @@ Route::get('/pengeluaran_bulanan/{year}','LaporanController@pengeluaranBulanan')
 Route::get('/sisa_stok/{year}/{tipe}','LaporanController@sisaStok');
 
 //Laporan Desktop
+Route::get('/cetak_surat_pemesanan_desktop/{id}','LaporanController@cetakSuratPemesananDesktop');
 Route::get('/sparepart_terlaris_desktop/{year}','LaporanController@sparepartterlarisDesktop');
 Route::get('/pendapatan_bulanan_desktop/{year}','LaporanController@pendapatanBulananDesktop');
 Route::get('/pendapatan_tahunan_desktop','LaporanController@pendapatanTahunanDesktop');
 Route::get('/pengeluaran_bulanan_desktop/{year}','LaporanController@pengeluaranBulananDesktop');
 Route::get('/penjualan_jasa_desktop/{year}/{month}','LaporanController@penjualanjasaDesktop');
 Route::get('/sisa_stok_desktop/{year}/{tipe}','LaporanController@sisastokDesktop');
-
 //Cetak Web
 Route::get('/cetaknotalunasWeb/{id}','LaporanController@cetaknotalunasWeb');
 
 //Cetak Desktop
 Route::get('/cetakNotaLunas/{id}','LaporanController@cetakNotaLunas');
-Route::get('/cetakSuratPemesananDesktop/{id}','LaporanController@cetakSuratPemesananDesktop');
 Route::get('/cetakSuratPerintahKerjaDesktop/{id}','LaporanController@cetakSuratPerintahKerjaDesktop');
 
 //History
