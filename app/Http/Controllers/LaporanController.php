@@ -385,13 +385,15 @@ class LaporanController extends Controller
     }
 
     public function cetakNotaLunas($id){
-        $data1 = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, s.Kode_Sparepart as Kode, s.Nama_Sparepart as Nama, s.Merk_Sparepart as Merk, s.Rak_Sparepart as Rak, d.Jumlah as Jumlah
+        $data1 = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, s.Kode_Sparepart as Kode, s.Nama_Sparepart as Nama, s.Merk_Sparepart as Merk, s.Rak_Sparepart as Rak, d.Jumlah as Jumlah,
+        d.Subtotal_Detail_Sparepart as SubTotal
         FROM transaksi_penjualans t 
         INNER JOIN detail_spareparts d ON d.Id_Transaksi =  t.Id_Transaksi
         INNER JOIN spareparts s ON s.Kode_Sparepart = d.Kode_Sparepart
         WHERE t.Id_Transaksi = $id AND t.Status = '3'");
 
-        $data2 = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, j2.Id_Jasa as KodeJasa, j2.Nama_Jasa as NamaJasa
+        $data2 = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, j2.Id_Jasa as KodeJasa, j2.Nama_Jasa as NamaJasa, j2.Harga_Jasa as HargaJasa,
+        j.Subtotal_Detail_Jasa as SubTotal
         FROM transaksi_penjualans t 
         INNER JOIN detail_jasas j ON j.Id_Transaksi = t.Id_Transaksi
         INNER JOIN jasas j2 ON j2.Id_Jasa = j.Id_Jasa
@@ -406,7 +408,7 @@ class LaporanController extends Controller
         FROM transaksi_penjualans t 
         INNER JOIN pegawai_on_duties m ON m.Id_Transaksi =  t.Id_Transaksi
         INNER JOIN pegawais p ON p.Id_Pegawai = m.Id_Pegawai
-        WHERE t.Id_Transaksi = $id AND t.Status = '3'");
+        WHERE t.Id_Transaksi = $id AND t.Status = '3' AND p.Id_Role = '2'");
 
         $data5 = DB::select("SELECT t.Id_Transaksi, p.Nama_Pegawai as Montir
         FROM transaksi_penjualans t 
@@ -422,7 +424,7 @@ class LaporanController extends Controller
         INNER JOIN pegawais p ON p.Id_Pegawai = m.Id_Pegawai
         WHERE t.Id_Transaksi = $id AND t.Status = '3'");
 
-        $data7 = DB::select("SELECT t.Id_Transaksi, CONCAT(t.Jenis_Transaksi,'-',t.created_at,'-',t.Id_Transaksi) AS 'Kode Transaksi'
+        $data7 = DB::select("SELECT t.Id_Transaksi, CONCAT(t.Jenis_Transaksi,'-',t.created_at,'-',t.Id_Transaksi) AS Kode_Transaksi
         FROM transaksi_penjualans t 
         WHERE t.Id_Transaksi = $id AND t.Status = '3'");
 
@@ -438,6 +440,13 @@ class LaporanController extends Controller
         INNER JOIN motors n ON n.Id_Motor = p.Id_Motor
         WHERE t.Id_Transaksi = $id AND t.Status = '3'");
 
+        $data10 = DB::select("SELECT t.Id_Transaksi, p.Nama_Pegawai as Kasir
+        FROM transaksi_penjualans t 
+        INNER JOIN pegawai_on_duties m ON m.Id_Transaksi =  t.Id_Transaksi
+        INNER JOIN pegawais p ON p.Id_Pegawai = m.Id_Pegawai
+        WHERE t.Id_Transaksi = $id AND t.Status = '3' AND p.Id_Role = '3'");
+
+
         return response()->json([
             'status' => (bool) $data1,
             'data1' => $data1,
@@ -449,6 +458,7 @@ class LaporanController extends Controller
             'data7' => $data7,
             'data8' => $data8,
             'data9' => $data9,
+            'data10' => $data10,
             'message' => $data1 ? 'Success' : 'Error',
         ]);
     }
@@ -580,6 +590,107 @@ class LaporanController extends Controller
         'motor' => $motor,'total'=>$total]);
         $pdf->setPaper([0,0,550,900]);
 	    return $pdf->stream();
+    }
+
+    public function cetaknotalunasDesktop($id){
+        $spareparts = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, s.Kode_Sparepart as Kode, s.Nama_Sparepart as Nama, s.Merk_Sparepart as Merk, s.Rak_Sparepart as Rak, d.Jumlah as Jumlah, d.Harga_Satuan as Harga_Satuan, d.Subtotal_Detail_Sparepart as Subtotal_Detail_Sparepart
+        FROM transaksi_penjualans t 
+        INNER JOIN detail_spareparts d ON d.Id_Transaksi =  t.Id_Transaksi
+        INNER JOIN spareparts s ON s.Kode_Sparepart = d.Kode_Sparepart
+        WHERE t.Id_Transaksi = $id AND t.Status = '3'");
+
+        $jasas = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, j2.Id_Jasa as KodeJasa, j2.Nama_Jasa as NamaJasa, j2.Harga_Jasa as HargaJasa, j.Subtotal_Detail_Jasa as Subtotal
+        FROM transaksi_penjualans t 
+        INNER JOIN detail_jasas j ON j.Id_Transaksi = t.Id_Transaksi
+        INNER JOIN jasas j2 ON j2.Id_Jasa = j.Id_Jasa
+        WHERE t.Id_Transaksi = $id AND t.Status = '3'");
+
+        $konsumens = DB::select("SELECT t.created_at as created_at, t.Id_Transaksi as Id_Transaksi, k.Nama_Konsumen as Cust, k.Telepon_Konsumen as Telepon
+        FROM transaksi_penjualans t 
+        INNER JOIN konsumens k ON k.Id_Konsumen = t.Id_Konsumen
+        WHERE t.Id_Transaksi = $id AND t.Status = '3'");
+
+        $cs = DB::select("SELECT t.Id_Transaksi, p.Nama_Pegawai as CS
+        FROM transaksi_penjualans t 
+        INNER JOIN pegawai_on_duties m ON m.Id_Transaksi =  t.Id_Transaksi
+        INNER JOIN pegawais p ON p.Id_Pegawai = m.Id_Pegawai
+        WHERE t.Id_Transaksi = $id AND t.Status = '3' AND p.Id_Role = '2'");
+
+        $kasir = DB::select("SELECT t.Id_Transaksi, p.Nama_Pegawai as Kasir
+        FROM transaksi_penjualans t 
+        INNER JOIN pegawai_on_duties m ON m.Id_Transaksi =  t.Id_Transaksi
+        INNER JOIN pegawais p ON p.Id_Pegawai = m.Id_Pegawai
+        WHERE t.Id_Transaksi = $id AND t.Status = '3' AND p.Id_Role = '3'");
+
+        $montirsparepart= DB::select("SELECT t.Id_Transaksi, p.Nama_Pegawai as Montir
+        FROM transaksi_penjualans t 
+        INNER JOIN detail_spareparts d ON d.Id_Transaksi =  t.Id_Transaksi
+        INNER JOIN montirs m ON m.Id_Jasa_Montir = d.Id_Jasa_Montir
+        INNER JOIN pegawais p ON p.Id_Pegawai = m.Id_Pegawai
+        WHERE t.Id_Transaksi = $id AND t.Status = '3'");
+
+        $montirjasa = DB::select("SELECT t.Id_Transaksi, p.Nama_Pegawai as Montir
+        FROM transaksi_penjualans t 
+        INNER JOIN detail_jasas d ON d.Id_Transaksi =  t.Id_Transaksi
+        INNER JOIN montirs m ON m.Id_Jasa_Montir = d.Id_Jasa_Montir
+        INNER JOIN pegawais p ON p.Id_Pegawai = m.Id_Pegawai
+        WHERE t.Id_Transaksi = $id AND t.Status = '3'");
+
+        if($spareparts == [])
+        {
+            $s_status = false;
+        }
+        else
+        {
+            $s_status = true;
+        }
+
+        if($jasas == [])
+        {
+            $j_status = false;
+        }
+        else
+        {
+            $j_status = true;
+        }
+
+        if($montirsparepart !== [])
+        {
+            $montir = $montirsparepart[0]->Montir;
+        }
+        else
+        {
+            $montir = $montirjasa[0]->Montir;
+        }
+
+        $kode = DB::select("SELECT t.Id_Transaksi, CONCAT(t.Jenis_Transaksi,'-',t.created_at,'-',t.Id_Transaksi) AS 'Kode_Transaksi'
+        FROM transaksi_penjualans t 
+        WHERE t.Id_Transaksi = $id AND t.Status = '3'");
+
+        $total = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, t.Subtotal as Subtotal, t.Diskon as Diskon, t.Total as Total
+        FROM transaksi_penjualans t 
+        WHERE t.Id_Transaksi = $id AND t.Status ='3'");
+
+        $motor = DB::select("SELECT t.Id_Transaksi, n.Merk as Merk, n.Tipe as Tipe, p.Plat_Kendaraan as Plat 
+        FROM transaksi_penjualans t 
+        INNER JOIN detail_spareparts d ON d.Id_Transaksi =  t.Id_Transaksi
+        INNER JOIN montirs m ON m.Id_Jasa_Montir = d.Id_Jasa_Montir
+        INNER JOIN motor_konsumens p ON p.Id_Motor_Konsumen = m.Id_Motor_Konsumen
+        INNER JOIN motors n ON n.Id_Motor = p.Id_Motor
+        WHERE t.Id_Transaksi = $id AND t.Status = '3'");
+
+        return response()->json([
+            'spareparts' => (bool) $spareparts,
+            'spareparts' => $spareparts,
+            'jasas' => $jasas,
+            'konsumens' => $konsumens,
+            'cs' => $cs,
+            'montir' => $montir,
+            'motor' => $motor,
+            'total' => $total,
+            'kode' => $kode,
+            'message' => $spareparts ? 'Success' : 'Error',
+        ]);
     }
 
     public function pendapatanTahunan()

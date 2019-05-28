@@ -79,6 +79,7 @@ Route::post('/spareparts/updatepicmobile', 'SparepartController@updatepicmobile'
 Route::get('/spareparts/{id}', 'SparepartController@showbyID');
 Route::patch('/spareparts/update/{id}', 'SparepartController@update');
 Route::patch('/spareparts/updatemobile/{id}', 'SparepartController@updatemobile'); 
+Route::post('/spareparts/updatedesktop/{id}', 'SparepartController@updatedesktop'); 
 Route::delete('/spareparts/delete/{id}', 'SparepartController@destroy');
 
 //Token
@@ -103,6 +104,8 @@ Route::get('/motor_konsumens/show/{id}', 'MotorKonsumenController@showbyCustomer
 Route::get('/transaksi_pengadaans','TransaksiPengadaanController@index');
 Route::post('/transaksi_pengadaans/store','TransaksiPengadaanController@store');
 Route::get('/transaksi_pengadaans/transaksimasuk','TransaksiPengadaanController@transaksimasuk');
+Route::get('/transaksi_pengadaans/printed','TransaksiPengadaanController@printed');
+Route::get('/transaksi_pengadaans/ordered','TransaksiPengadaanController@ordered');
 Route::post('/transaksi_pengadaans/storeDetail','TransaksiPengadaanController@storeDetail');
 Route::patch('/transaksi_pengadaans/update/{id}', 'TransaksiPengadaanController@update');
 Route::patch('/transaksi_pengadaans/updatemobile/{id}', 'TransaksiPengadaanController@updatemobile'); 
@@ -124,6 +127,7 @@ Route::delete('/detail_pengadaans/delete/{id}', 'DetailPengadaanController@destr
 Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
 // Route::group(['middleware' => 'token'], function () {
     Route::get('/transaksi_penjualans/showByIdMotorKonsumen/{id}','TransaksiPenjualanController@showByIdMotorKonsumen');
+    Route::get('/transaksi_penjualans/show/{id}','TransaksiPenjualanController@showbyID');
     Route::get('/transaksi_penjualans/transaksikeluar','TransaksiPenjualanController@transaksikeluar');
     Route::get('/transaksi_penjualans/unprocessed','TransaksiPenjualanController@transaksiunprocess');
     Route::get('/transaksi_penjualans/processed','TransaksiPenjualanController@processed');
@@ -136,7 +140,9 @@ Route::get('/transaksi_penjualans','TransaksiPenjualanController@index');
     Route::delete('/transaksi_penjualans/delete/{id}','TransaksiPenjualanController@destroy');
     Route::patch('/transaksi_penjualans/pembayaran/{id}','TransaksiPenjualanController@pembayaran');
     Route::patch('/transaksi_penjualans/finish/{id}','TransaksiPenjualanController@finish');
+    Route::get('/transaksi_penjualans/finishtransaction/{id}','TransaksiPenjualanController@finish');
     Route::get('/transaksi_penjualans/cekStatus/{hp}/{plat}','TransaksiPenjualanController@cekStatus');
+    Route::get('/transaksi_penjualans/kasir_desktop/{id}','TransaksiPenjualanController@kasirDesktop');
 // });
 
 //Detail Sparepart Transaksi Penjualan
@@ -173,6 +179,7 @@ Route::get('/pendapatan_tahunan_desktop','LaporanController@pendapatanTahunanDes
 Route::get('/pengeluaran_bulanan_desktop/{year}','LaporanController@pengeluaranBulananDesktop');
 Route::get('/penjualan_jasa_desktop/{year}/{month}','LaporanController@penjualanjasaDesktop');
 Route::get('/sisa_stok_desktop/{year}/{tipe}','LaporanController@sisastokDesktop');
+Route::get('cetak_nota_lunas_desktop/{id}','LaporanController@cetaknotalunasDesktop');
 //Cetak Web
 Route::get('/cetaknotalunasWeb/{id}','LaporanController@cetaknotalunasWeb');
 

@@ -546,14 +546,31 @@ class TransaksiPenjualanController extends RestController
         $response=$this->generateItem($penjualan);
         return $this->sendResponse($response,201);
     }
-
+    public function showbyID($id)
+    {
+        $penjualan = Transaksi_Penjualan::find($id);
+        return response()->json($penjualan,200);
+    }
     public function finish($id)
     {
         $penjualan = Transaksi_Penjualan::find($id);
         $penjualan->Status = 2;
         $penjualan->save();
-
         $response = $this->generateItem($penjualan);
         return $this->sendResponse($response);
+    }
+
+    public function kasirDesktop($id){
+        $data = DB::select("SELECT p.Id_Pegawai
+        FROM transaksi_penjualans t 
+        INNER JOIN pegawai_on_duties m ON m.Id_Transaksi =  t.Id_Transaksi
+        INNER JOIN pegawais p ON p.Id_Pegawai = m.Id_Pegawai
+        WHERE t.Id_Transaksi = $id AND t.Status = '3' AND p.Id_Role = '3'");
+
+        return response()->json([
+            'status' => (bool) $data,
+            'data' => $data,
+            'message' => $data ? 'Success' : 'Error',
+        ]);
     }
 }
