@@ -158,6 +158,8 @@ class TransaksiPengadaanController extends RestController
 
         $pengadaan = Transaksi_Pengadaan::find($id);
 
+            $pengadaan->detail_pengadaans()->delete();
+
         if(!is_null($request->get('Tanggal_Pengadaan'))){
             $pengadaan->Tanggal_Pengadaan   = $request->get('Tanggal_Pengadaan').' '.date('H:i:s');
         }

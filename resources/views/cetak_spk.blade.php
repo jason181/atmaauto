@@ -87,7 +87,7 @@
                     </tr>
                     <tr>
                         <td style="padding-bottom:15px;">Motor</td>
-                        <td colspan="2" style="padding-bottom:15px;">Merk Motor Jenis Motor Plat Motor</td>
+                        <td colspan="2" style="padding-bottom:15px;"> {{$motor->Merk}} {{$motor->Tipe}} {{$motor->Plat}}</td>
                         <td></td>
                         <td></td>
                     </tr>

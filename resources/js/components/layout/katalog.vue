@@ -42,7 +42,7 @@
         <div class="row">
             <div class="col-sm-3 mx-auto mb-5" v-bind:key="index" v-for="(sparepart,index) in filteredspareparts">
                 <a>
-                    <div class="card border-primary mx-auto" style="width: 18rem;">
+                    <div class="card border-primary mx-auto" style="width: 18rem;height:433px;">
                         <div class="card-header">
                             <h4 class="card-title mb-0" style="text-align: center;">{{sparepart.Nama_Sparepart}}</h4>
                         </div>

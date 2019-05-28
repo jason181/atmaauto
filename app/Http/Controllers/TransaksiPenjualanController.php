@@ -80,12 +80,11 @@ class TransaksiPenjualanController extends RestController
                 }
             }
         }
-        
+
         $result=Transaksi_Penjualan::whereIn('Id_Transaksi',$arr_filtered)->orderBy('Id_Transaksi','DESC')->get();
 
         $response = $this->generateCollection($result);
         return $this->sendResponse($response);
-
     }
 
     public function processed()
@@ -454,7 +453,7 @@ class TransaksiPenjualanController extends RestController
     public function updatetransaksimobile(Request $request,$id){
         try{
             $penjualan = Transaksi_Penjualan::find($id);
-            if(!is_null($request->get("Tanggal_Transaksi")))
+                if(!is_null($request->get("Tanggal_Transaksi")))
                 {
                     $penjualan->Tanggal_Transaksi   = $request->get('Tanggal_Transaksi');
                 }
