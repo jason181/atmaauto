@@ -236,8 +236,8 @@ import Controller from '../../service/Status'
 export default {
   data: () => ({
     transaksidata:[],
-    detail_sparepartdata:[],
-    detail_jasadata:[],
+    data_detail_sparepart:[],
+    data_detail_jasa:[],
     hp:'',
     plat:'',
     toggle:false,
@@ -332,14 +332,16 @@ export default {
         });
     },
     filtereddetailsparepart:function(){
-        // return this.transaksidata.detail_sparepart.data.filter((detailsparepart)=>{
-        //     return detailsparepart.Kode_Sparepart.toLowerCase().match(this.Cari_Detail_Sparepart.toLowerCase());
-        // });
+        return this.data_detail_sparepart.filter((detailsparepart)=>{
+            return detailsparepart.Nama_Sparepart.toLowerCase().match(this.Cari_Detail_Sparepart.toLowerCase()) &&
+            detailsparepart.Id_Transaksi == this.Transaksi.Id_Transaksi;
+        });
     },
     filtereddetailjasa:function(){
-        // return this.transaksidata.detail_jasa.data.filter((detailjasa)=>{
-        //     return detailjasa.Nama_Jasa.toLowerCase().match(this.Cari_Detail_Jasa.toLowerCase());
-        // });
+        return this.data_detail_jasa.filter((detailjasa)=>{
+            return detailjasa.Nama_Jasa.toLowerCase().match(this.Cari_Detail_Jasa.toLowerCase()) && 
+            detailjasa.Id_Transaksi == this.Transaksi.Id_Transaksi;
+        });
     },
   }
 }

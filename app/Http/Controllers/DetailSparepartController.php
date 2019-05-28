@@ -80,30 +80,54 @@ class DetailSparepartController extends RestController
         return $this->sendResponse($response);
     }
 
+    // public function update(Request $request,$id)
+    // {
+    //     $sparepart = $request->Detail_Sparepart;
+        
+    //     $penjualan = Transaksi_Penjualan::find($sparepart[0]['Id_Transaksi']);
+    //     $sparepart = $request->Detail_Sparepart;
+    //     $detail_sparepart = Detail_Sparepart::find($id);
+
+    //     $jumlah = $detail_sparepart->Jumlah - $sparepart[0]['Jumlah'];
+        
+    //     $sparepartdata = Sparepart::where('Kode_Sparepart',$sparepart[0]['Kode_Sparepart'])->get();
+    //     $sparepartdata->Jumlah_Sparepart += $jumlah;
+    //     $subtotal = $jumlah * $sparepart[0]['Harga_Satuan'];
+
+    //     $detail_sparepart->update([
+    //         'Jumlah'                    => $sparepart[0]['Jumlah'],
+    //         'Subtotal_Detail_Sparepart' => $sparepart[0]['Subtotal_Detail_Sparepart']
+    //     ]);
+        
+    //     $penjualan->Subtotal += $subtotal;
+    //     $penjualan->Total += $subtotal;
+    //     $penjualan->save();
+
+    //     $response = $this->generateItem($detail_sparepart);
+    //     return $this->sendResponse($response);
+    // }
+
     public function update(Request $request,$id) //cek lagi pake postman dan cek smua database
-    {
-        $sparepart = $request->Detail_Sparepart;
+    {   
+        $detail = Detail_Sparepart::find($id);
         
-        $penjualan = Transaksi_Penjualan::find($sparepart[0]['Id_Transaksi']);
-        $sparepart = $request->Detail_Sparepart;
-        $detail_sparepart = Detail_Sparepart::find($id);
+        $sparepart=Sparepart::where('Kode_Sparepart',$detail->Kode_Sparepart)->first();
+        $sparepart->Jumlah_Sparepart += $detail->Jumlah - $request->Jumlah;
+        $sparepart->save();
 
-        $jumlah = $detail_sparepart->Jumlah - $sparepart[0]['Jumlah'];
-        
-        $sparepartdata = Sparepart::where('Kode_Sparepart',$sparepart[0]['Kode_Sparepart'])->get();
-        $sparepartdata->Jumlah_Sparepart += $jumlah;
-        $subtotal = $jumlah * $sparepart[0]['Harga_Satuan'];
+        $penjualan = Transaksi_Penjualan::where('Id_Transaksi',$detail->Id_Transaksi)->first();
+        $subtotal = ($request->Jumlah - $detail->Jumlah ) * (int)$sparepart->Harga_Jual;
 
-        $detail_sparepart->update([
-            'Jumlah'                    => $sparepart[0]['Jumlah'],
-            'Subtotal_Detail_Sparepart' => $sparepart[0]['Subtotal_Detail_Sparepart']
-        ]);
-        
         $penjualan->Subtotal += $subtotal;
         $penjualan->Total += $subtotal;
         $penjualan->save();
 
-        $response = $this->generateItem($detail_sparepart);
+        $detail->Jumlah = $request->Jumlah;
+        $detail->Subtotal_Detail_Sparepart = $request->Jumlah * $detail->Harga_Satuan;
+        $detail->save();
+        
+
+        $response = $this->generateItem($detail);
         return $this->sendResponse($response);
     }
 

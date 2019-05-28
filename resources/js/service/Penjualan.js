@@ -156,6 +156,18 @@ export default {
             Http.post('/api/detail_spareparts/store', payload, successCallback, errorCallback)
         })
     },
+    updatesparepart(payload,id){
+        return new Promise((resolve, reject) => {
+            const successCallback = (res) => {
+                const data = res.data
+                resolve(data)
+            }
+            const errorCallback = (err) => {
+                reject(err)
+            }
+            Http.patch('/api/detail_spareparts/update/'+id, payload, successCallback, errorCallback)
+        })
+    },
     deletedetailsparepart(id){
         return new Promise((resolve, reject) => {
             const successCallback = (res) => {

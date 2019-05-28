@@ -27,7 +27,7 @@ export default {
             Http.get('/api/transaksi_penjualans', successCallback, errorCallback)
         })
     },
-    getalldetailpenjualan(){
+    getalldetailsparepart(){
         return new Promise((resolve, reject) => {
             
             const successCallback = (res) => {

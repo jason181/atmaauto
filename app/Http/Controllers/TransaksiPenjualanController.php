@@ -80,12 +80,11 @@ class TransaksiPenjualanController extends RestController
                 }
             }
         }
-        
+
         $result=Transaksi_Penjualan::whereIn('Id_Transaksi',$arr_filtered)->orderBy('Id_Transaksi','DESC')->get();
 
         $response = $this->generateCollection($result);
         return $this->sendResponse($response);
-
     }
 
     public function processed()
