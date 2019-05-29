@@ -385,7 +385,7 @@ class LaporanController extends Controller
     }
 
     public function cetakNotaLunas($id){
-        $data1 = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, s.Kode_Sparepart as Kode, s.Nama_Sparepart as Nama, s.Merk_Sparepart as Merk, s.Rak_Sparepart as Rak, d.Jumlah as Jumlah,
+        $data1 = DB::select("SELECT t.Id_Transaksi as Id_Transaksi, s.Kode_Sparepart as Kode, s.Nama_Sparepart as Nama, s.Merk_Sparepart as Merk, s.Harga_Jual as Harga, d.Jumlah as Jumlah,
         d.Subtotal_Detail_Sparepart as SubTotal
         FROM transaksi_penjualans t 
         INNER JOIN detail_spareparts d ON d.Id_Transaksi =  t.Id_Transaksi
