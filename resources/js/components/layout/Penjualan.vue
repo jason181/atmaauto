@@ -1623,6 +1623,7 @@ export default {
                 }
                 await penjualanController.adddetailjasa(payload)
                 this.getalldetailjasa()
+                this.getallpenjualan()
             } catch (err) {
                 console.log(err)
             }

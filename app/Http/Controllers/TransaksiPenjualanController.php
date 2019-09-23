@@ -59,7 +59,7 @@ class TransaksiPenjualanController extends RestController
         }
 
         foreach($penjualans as $penjualan)
-        {
+        { 
             if($penjualan->Jenis_Transaksi == 'SS' || $penjualan->Jenis_Transaksi == 'SV')
             {
                 $detail_jasas = Detail_Jasa::where('Id_Transaksi',$penjualan->Id_Transaksi)->get();
@@ -150,7 +150,6 @@ class TransaksiPenjualanController extends RestController
     {
         try{
             date_default_timezone_set('Asia/Jakarta');
-            // return $request;
             $montir = Montir::create([
                 'Id_Pegawai' => $request->Id_Montir,
                 'Id_Motor_Konsumen' => $request->Id_Motor_Konsumen,

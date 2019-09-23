@@ -3,7 +3,7 @@
         <div class="row mx-1">
             <div class="col-lg-8">
                 <div class="container text-center mb-3">
-                    <img src="/images/motor_home.png" style="max-width: 600px;">
+                    <img src="images/motor_home.png" style="max-width: 600px;">
                 </div>
             </div>
             <div class="col-lg-4">

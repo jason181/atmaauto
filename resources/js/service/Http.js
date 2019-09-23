@@ -3,6 +3,7 @@ import axios from 'axios'
 export default {
   init() {
     axios.defaults.baseURL = 'http://127.0.0.1/'
+    // axios.defaults.baseURL = '/8708'
   },
 
   setHeader (token) {

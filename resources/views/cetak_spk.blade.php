@@ -87,7 +87,7 @@
                     </tr>
                     <tr>
                         <td style="padding-bottom:15px;">Motor</td>
-                        <td colspan="2" style="padding-bottom:15px;"> {{$motor->Merk}} {{$motor->Tipe}} {{$motor->Plat}}</td>
+                        <td colspan="2" style="padding-bottom:15px;"> Honda Vario AA-5429-NG</td>
                         <td></td>
                         <td></td>
                     </tr>

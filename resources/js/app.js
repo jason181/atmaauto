@@ -7,6 +7,9 @@ import auth from './service/Auth'
 import middleware from './middleware'
 import { routes } from './routes'
 import VueApexCharts from 'vue-apexcharts'
+import Http from './service/Http'
+
+// Http.init();
 
 Vue.use(Vuelidate);
 
@@ -23,6 +26,7 @@ Vue.config.productionTip = false;
 Vue.router = router
 
 const router = new VueRouter({
+  // base:'/8708',
   mode: 'history',
   routes,
 })

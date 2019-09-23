@@ -115,11 +115,10 @@
                                             <span class="input-group-text" id="basic-addon2">Tipe</span>
                                         </div>
                                         <select class="form-control" require v-model="TipeSisaStok" v-on:change="grafikSisaStok(TahunSisaStok,TipeSisaStok)">
-                                            <option value="Sparepart Motor" selected>Motor</option>
-                                            <option value="Sparepart Kelistrikan">Kelistrikan</option>
+                                            <option value="Sparepart Ger" selected>Sparepart Ger</option>
+                                            <option value="Sparepart Kelistrikan">Sparepart Kelistrikan</option>
                                             <option value="Sparepart Roda">Sparepart Roda</option>
-                                            <option value="Sparepart Ger">Sparepart Ger</option>
-                                            <option value="Test Sparepart">Test</option>
+                                            <option value="Sparepart Ger">Sparepart Busi</option>
                                         </select>
                                     </div>
                                 </div>
