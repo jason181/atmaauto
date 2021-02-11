@@ -25,7 +25,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.8.1",
-        "apexcharts": "^3.6.12",
+        "apexcharts": "^3.24.0",
         "chart.js": "^2.8.0",
         "cookie": "^0.3.1",
         "js-cookie": "^2.2.0",
